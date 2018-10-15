@@ -35,15 +35,17 @@ declare namespace propTypes {
     onClickCallback: (n: string) => void,
   }
 
-  export interface IJapaneseSentenceProps {
+  // Sentence props
+  export interface ISentenceProps {
     options: Options,
     sentence: Sentence,
   }
 
-  export interface IEnglishSentenceProps {
-    options: Options,
-    sentence: Sentence,
+  export interface ISentenceBasicQuestionProps {
+    question: string,
+    answer: string,
   }
+
 }
 
 declare module 'propTypes' {

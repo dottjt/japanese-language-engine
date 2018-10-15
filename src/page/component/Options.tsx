@@ -10,7 +10,7 @@ import {
   __TYPENAME_OPTIONS,
  } from '../../util/constants';
 
-import Buttons from './Buttons';
+import Buttons from './Options/Buttons';
 
 import { IOptionsProps } from 'propTypes';
 
@@ -18,7 +18,7 @@ class Options extends React.Component<IOptionsProps, {}> {
 
   public render() {
     return (
-      <div >
+      <div className='options'>
         <Buttons
           title={'Sentence Politeness'}
           values={[POLITENESS_TYPE_CASUAL, POLITENESS_TYPE_FORMAL]}

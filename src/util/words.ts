@@ -6,7 +6,7 @@ import {
   RESPONSE,
 
   __TYPENAME_WORDS,
-} from '../util/constants';
+} from './constants';
 
 export const wordKobayashi = {
   japanese: '小林さん',

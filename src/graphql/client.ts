@@ -14,7 +14,7 @@ import {
   wordKobayashi,
   wordNo,
   wordPerson,
-} from '../data/words';
+} from '../util/words';
 
 const client = new ApolloClient({
   clientState: {

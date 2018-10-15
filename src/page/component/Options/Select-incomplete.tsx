@@ -5,9 +5,9 @@ import {
   
   QUESTION_VARIATION_NEGATIVE,
   QUESTION_VARIATION_POSITIVE,
- } from '../../util/constants';
+ } from '../../../util/constants';
 
-import { capitalizeFirstLetter } from '../../util/functions';
+import { capitalizeFirstLetter } from '../../../util/functions';
 
 import { IOptionsProps } from 'propTypes';
 

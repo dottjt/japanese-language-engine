@@ -9,7 +9,7 @@ import {
 
 import {
   wordPerson,
-} from '../data/words';
+} from './words';
 
 import { 
   basicWaQuestionSentenceEnglish,

@@ -4,7 +4,7 @@ import { RouteProvider, Route } from 'react-router5'
 import registerServiceWorker from './registerServiceWorker';
 import router from './router';
 
-import App from './App';
+import App from './page/App';
 
 router.start()
 

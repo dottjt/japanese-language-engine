@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { capitalizeFirstLetter } from '../../util/functions';
+import { capitalizeFirstLetter } from '../../../util/functions';
 
 import { IButtonsProps } from 'propTypes';
 
@@ -30,7 +30,7 @@ class QuestionVariationButton extends React.Component<IButtonsProps, {}> {
       <div>
         <h3>{this.props.title}</h3>
         {convertValuesIntoButtonArray(this.props.values).map(value => (
-            <button className={`options__buton options__button-${value.selected}`} value={value.value} onClick={this.handleSentenceVariationSelectChange}>{capitalizeFirstLetter(value.value)}</button>
+            <button key={value.value} className={`options__buton options__button-${value.selected}`} value={value.value} onClick={this.handleSentenceVariationSelectChange}>{capitalizeFirstLetter(value.value)}</button>
           ))}
       </div>
     );
