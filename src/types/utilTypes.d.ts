@@ -1,5 +1,4 @@
-
-declare module utilTypes {
+declare module Util {
 
   // primary 
   export type Word = { 
@@ -21,12 +20,13 @@ declare module utilTypes {
     type: string,
     question: string,
     answer: string, 
+    statement: string,
   }
 
   // composite
   export type EnglishJapaneseSentence = {
-    japaneseSentence: Sentence,
     englishSentence: Sentence,
+    japaneseSentence: Sentence,
   }
 
   export interface BasicWaQuestion {
@@ -43,8 +43,4 @@ declare module utilTypes {
     answerPredicateNoun: string,
     options: Options,
   }
-}
-
-declare module 'utilTypes' {
-  export = utilTypes;
 }

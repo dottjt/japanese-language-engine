@@ -7,7 +7,7 @@ import {
   
   QUESTION_VARIATION_POSITIVE,
 
-  QUESTION_WA_BASIC,
+  QUESTION_BASIC,
  } from '../util/constants';
 
 import {
@@ -27,7 +27,7 @@ const client = new ApolloClient({
       options: {
         __typename: __TYPENAME_OPTIONS,
         sentencePoliteness: POLITENESS_TYPE_CASUAL,
-        sentenceType: QUESTION_WA_BASIC,
+        sentenceType: QUESTION_BASIC,
         sentenceVariation: QUESTION_VARIATION_POSITIVE,
       },
     },

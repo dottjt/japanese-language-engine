@@ -1,18 +1,4 @@
-// import { Route } from "router5";
-
-declare namespace propTypes {
-  
-  export type Options = {
-    sentencePoliteness: string,
-    sentenceType: string,
-    sentenceVariation: string,
-  }
-
-  export type Sentence = {
-    type: string,
-    question: string,
-    answer: string, 
-  }
+declare module PropTypes {
 
   // Container props
   export interface IAppProps {
@@ -25,7 +11,7 @@ declare namespace propTypes {
 
   // Component props 
   export interface IOptionsProps {
-    options: Options,
+    options: Util.Options,
     client: any, // NOTE: Will need to get proper type. 
   }
 
@@ -35,19 +21,27 @@ declare namespace propTypes {
     onClickCallback: (n: string) => void,
   }
 
+  // Lesson props
+  export interface ILessonTemplateProps {
+    exercises: Util.EnglishJapaneseSentence[],
+  }
+  
   // Sentence props
+  export interface ISentencesProps {
+    englishSentence: Util.Sentence,
+    japaneseSentence: Util.Sentence,
+  }
+
   export interface ISentenceProps {
-    options: Options,
-    sentence: Sentence,
+    sentence: Util.Sentence,
+  }
+
+  export interface ISentenceBasicStatementProps {
+    statement: string,
   }
 
   export interface ISentenceBasicQuestionProps {
     question: string,
     answer: string,
   }
-
-}
-
-declare module 'propTypes' {
-  export = propTypes;
 }

@@ -1,29 +1,35 @@
 import * as React from 'react'
 
-import L01BasicQuestion from './lessons/L01BasicQuestion';
+import { 
+  L01_LESSON_TITLE,
+  L02_LESSON_TITLE,
+} from '../util/constants';
 
-import { IMainProps } from 'propTypes';
+import L01BasicStatement from './lessons/L01BasicStatement';
+import L02BasicQuestion from './lessons/L02BasicQuestion';
 
-class Main extends React.Component<IMainProps, {}> {
+class Main extends React.Component<PropTypes.IMainProps, {}> {
   public render() {
     switch (this.props.route.name) { /* this.props.previousRoute */
       case 'home':
         return (
           <div className="Main">
-            <h1>Basic Questions</h1>
-            <L01BasicQuestion/>
+            <h1>{L01_LESSON_TITLE}</h1>
+            <L01BasicStatement/>
           </div>
         );
-      case 'lesson-01':
+      case L01_LESSON_TITLE:
         return (
           <div className="Main">
-            <L01BasicQuestion/>
+            <h1>{L01_LESSON_TITLE}</h1>
+            <L02BasicQuestion/>
           </div>
         );
-      case 'lesson-02':
+      case L02_LESSON_TITLE:
         return (
           <div className="Main">
-            <L01BasicQuestion/>
+            <h1>{L02_LESSON_TITLE}</h1>
+            <L01BasicStatement/>
           </div>
         );
       default:

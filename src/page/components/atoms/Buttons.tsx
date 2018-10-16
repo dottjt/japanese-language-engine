@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import { capitalizeFirstLetter } from '../../../util/functions';
 
-import { IButtonsProps } from 'propTypes';
-
 interface IValues {
   value: string,
   selected: boolean,
@@ -23,7 +21,7 @@ const convertValuesIntoButtonArray = (values: string[]): IValues[] =>
     }
   });
 
-class QuestionVariationButton extends React.Component<IButtonsProps, {}> {
+class QuestionVariationButton extends React.Component<PropTypes.IButtonsProps, {}> {
 
   public render() {
     return (

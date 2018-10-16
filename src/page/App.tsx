@@ -5,14 +5,12 @@ import client from '../graphql/client';
 import Main from './Main';
 import Navbar from './Navbar';
 
-import { IAppProps } from 'propTypes';
-
 import './styles/reset.scss';
 import './styles/app.scss';
 import './styles/common.scss';
 import './styles/lessons.scss';
 
-class App extends React.PureComponent<IAppProps, {}> {
+class App extends React.PureComponent<PropTypes.IAppProps, {}> {
   public render() {
     return (
       <ApolloProvider client={client}>

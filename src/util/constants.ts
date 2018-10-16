@@ -1,5 +1,9 @@
+// LESSON TITLES
+export const L01_LESSON_TITLE = 'Basic は、も and が statements';
+export const L02_LESSON_TITLE = 'Basic は、も and が questions';
 
-export const QUESTION_WA_BASIC = 'basic-wa-question';
+export const QUESTION_BASIC = 'QUESTION_BASIC';
+export const STATEMENT_BASIC = 'STATEMENT_BASIC';
 
 // QUESTION TYPES 
 

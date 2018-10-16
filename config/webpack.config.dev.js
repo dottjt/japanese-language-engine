@@ -207,12 +207,17 @@ module.exports = {
           // This loader doesn't use a "test" so it will catch all modules
           // that fall through the other loaders.
           {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader',
+            include: /flexboxgrid/
+          },          
+          {
             test: /\.scss$/,
             loaders: [ 
               require.resolve('style-loader'),
               require.resolve('css-loader'),
               require.resolve('sass-loader')
-            ]
+            ],
           },
           {
             // Exclude `js` files to keep "css" loader working as it injects

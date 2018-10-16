@@ -10,11 +10,18 @@ import {
   __TYPENAME_OPTIONS,
  } from '../../util/constants';
 
-import Buttons from './Options/Buttons';
+// example use case 
+/* <div className='lessons__options'>
+  <h2>Exercise filters</h2>
+  <Options 
+    options={options} 
+    client={client}
+  />
+</div> */
 
-import { IOptionsProps } from 'propTypes';
+import Buttons from './atoms/Buttons';
 
-class Options extends React.Component<IOptionsProps, {}> {
+class Options extends React.Component<PropTypes.IOptionsProps, {}> {
 
   public render() {
     return (
