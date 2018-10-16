@@ -10,28 +10,12 @@ import {
   QUESTION_BASIC,
 } from '../util/constants';
 
-import {
-  wordKobayashi,
-  wordSasaki,
-  wordNomura,
-  wordKato,
-
-  wordYes,
-  wordPerson,
-} from '../util/words';
+import allWords from '../util/words';
 
 const client = new ApolloClient({
   clientState: {
     defaults: {
-      nouns: [
-        wordKobayashi,
-        wordSasaki,
-        wordNomura,
-        wordKato,
-        
-        wordPerson,
-        wordYes,
-      ],
+      nouns: allWords,
       options: {
         __typename: __TYPENAME_OPTIONS,
         sentencePoliteness: POLITENESS_TYPE_CASUAL,

@@ -5,7 +5,7 @@ import {
 
 import {
   wordPerson,
-} from './words';
+} from './words/humanNames';
 
 export const capitalise = (value: string): string => value.charAt(0).toUpperCase() + value.slice(1);
 export const randomArrayElement = (array: string[] | Util.Word[]): number => Math.floor(Math.random() * array.length);
