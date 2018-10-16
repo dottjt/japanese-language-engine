@@ -1,5 +1,6 @@
 
 import * as React from 'react';
+import { Flex, Heading } from 'rebass';
 import { Link } from 'react-router5';
 
 import {
@@ -11,13 +12,13 @@ import {
 class Contents extends React.PureComponent<{}, {}> {
   public render() {
     return (
-      <div>
-        <h1>Grammar Boss</h1>
-        <h2>Lesson navigation</h2>
+      <Flex flexDirection='column'>
+        <Heading>Grammar Boss</Heading>
+        <Heading>Lesson navigation</Heading>
         <Link routeName={L00_CONTENTS} routeOptions={{reload: true}}>Home</Link>
         <Link routeName={L01_LESSON_TITLE} routeOptions={{reload: true}}>{L01_LESSON_TITLE}</Link>
         <Link routeName={L02_LESSON_TITLE} routeOptions={{reload: true}}>{L02_LESSON_TITLE}</Link>
-      </div>
+      </Flex>
     )
   };
 };

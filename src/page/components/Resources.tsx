@@ -4,10 +4,7 @@ import { Flex, Link } from 'rebass';
 class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
   public render() {
     return (
-      <Flex 
-        className='resources'
-        flexDirection='column'  
-      >
+      <Flex flexDirection='column'>
         {this.props.resources.map(resource => (
           <Link href={resource.url}>{resource.url}</Link>
         ))}

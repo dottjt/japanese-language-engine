@@ -1,48 +1,32 @@
 import * as React from 'react';
+import { Flex, Heading, Button } from 'rebass';
 
-import { capitalise } from '../../util/functions';
+import {
+  capitalise,
+  convertValuesIntoButtonArray,
+ } from '../../util/functions';
 
-interface IValues {
-  value: string,
-  selected: boolean,
-};
-
-const convertValuesIntoButtonArray = (values: string[]): IValues[] =>
-  values.map((value, index) => {
-    if (index === 0) {
-      return {
-        value,
-        selected: true,
-      }
-    }
-    return {
-      value,
-      selected: false,
-    }
-  });
-
-class QuestionVariationButton extends React.Component<PropTypes.IButtonsProps, {}> {
+class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
 
   public render() {
     return (
-      <div>
-        <h3>{this.props.title}</h3>
+      <Flex>
+        <Heading>{this.props.title}</Heading>
         {convertValuesIntoButtonArray(this.props.values).map(value => (
-          <button 
-            key={value.value} 
-            className={`options__buton options__button-${value.selected}`} 
-            value={value.value} 
-            onClick={this.handleSentenceVariationSelectChange}>
+          <Button
+            key={value.value}
+            // onClick={this.handleSentenceVariationSelectChange}
+          >
             {capitalise(value.value)}
-          </button>
+          </Button>
         ))}
-      </div>
+      </Flex>
     );
-  }
+  };
 
-  private handleSentenceVariationSelectChange = (event: React.FormEvent<HTMLButtonElement>): void => {
-    this.props.onClickCallback(event.currentTarget.value);
-  }
-}
+  // private handleSentenceVariationSelectChange = (event: React.FormEvent<HTMLButtonElement>): void => {
+  //   this.props.onClickCallback(event.currentTarget.value);
+  // };
+};
 
-export default QuestionVariationButton;
+export default Buttons;

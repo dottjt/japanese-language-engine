@@ -1,3 +1,10 @@
+This project is in it's easy stages, so this reade me is gonna be a mess.
+
+What is the purpose of this project?
+To make money and most importantly, to make something that I'm proud of. 
+
+As a result, the code base is abolutely MINT. 
+
 - prettify to project. 
 - router 5
 

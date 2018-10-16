@@ -1,18 +1,19 @@
 import * as React from 'react'
+import { Flex } from 'rebass';
 
 import Sentence from '../atoms/Sentence';
 
 class Sentences extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {
     return (
-      <div className='sentences'>
+      <Flex flexDirection='column'>
         <Sentence
           sentence={this.props.englishSentence}
         />
         <Sentence
           sentence={this.props.japaneseSentence}
         />
-      </div>
+      </Flex>
     );
   };
 };

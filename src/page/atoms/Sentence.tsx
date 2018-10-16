@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Card, Flex, Text } from 'rebass';
 
 import {
   QUESTION_BASIC,
@@ -10,48 +11,46 @@ class Sentence extends React.Component<PropTypes.ISentenceProps, {}> {
     switch(this.props.sentence.type) {
       case(STATEMENT_BASIC):
         return (
-          <div className='sentence'>
+          <Card>
             <BasicStatementTemplate
               statement={this.props.sentence.statement}
             />
-          </div>
+          </Card>
         );
 
       case(QUESTION_BASIC):
         return (
-          <div className='sentence'>
+          <Card>
             <BasicQuestionTemplate
               question={this.props.sentence.question}
               answer={this.props.sentence.answer}
             />
-          </div>
+          </Card>
         );
         
       default: 
         return (
-          <div>No type selected.</div>
+          <Card>No type selected.</Card>
         );
     }
   };
 };
 
 const BasicStatementTemplate: React.SFC<PropTypes.ISentenceBasicStatementProps> = ({ statement }) => (
-  <div className='basic__statement'>
-    <div className='basic__question--question'>
-      {statement}
-    </div>
-  </div>
+  <Flex>
+    {statement}
+  </Flex>
 );
 
 const BasicQuestionTemplate: React.SFC<PropTypes.ISentenceBasicQuestionProps> = ({ question, answer }) => (
-  <div className='basic__question'>
-    <div className='basic__question--question'>
+  <Flex>
+    <Text mr={3}>
       {question}
-    </div>
-    <div className='basic__question--answer'>
+    </Text>
+    <Text mr={3}>
       {answer}
-    </div>
-  </div>
+    </Text>
+  </Flex>
 );
 
 export default Sentence;

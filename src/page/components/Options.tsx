@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Flex } from 'rebass';
 
 import {
   VARIATION_NEGATIVE,
@@ -16,7 +17,7 @@ class Options extends React.Component<PropTypes.IOptionsProps, {}> {
 
   public render() {
     return (
-      <div className='options'>
+      <Flex flexDirection='column'>
         <Buttons
           title={'Sentence Politeness'}
           values={[POLITENESS_TYPE_CASUAL, POLITENESS_TYPE_FORMAL]}
@@ -27,7 +28,7 @@ class Options extends React.Component<PropTypes.IOptionsProps, {}> {
           values={[VARIATION_POSITIVE, VARIATION_NEGATIVE]}
           onClickCallback={this.sentenceVariationCallback}
         />
-      </div>
+      </Flex>
     )
   };
 

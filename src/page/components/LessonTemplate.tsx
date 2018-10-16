@@ -1,29 +1,29 @@
 import * as React from 'react';
-import { Flex, Heading } from 'rebass';
+import { Flex, Heading, Text } from 'rebass';
 
 import Sentences from './Sentences';
 import Resources from './Resources';
 
 class LessonTemplate extends React.PureComponent<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { exercises } = this.props;
     return (
-      <Flex
-        flexDirection='column'
-      >
-        <Flex
-          flexDirection='column'
-        >
+      <Flex flexDirection='column'>
+
+        <Flex flexDirection='column' mt={2}>
+          <Heading>Exercise Explanation</Heading>
+          <Text>{this.props.explanation}</Text>
+        </Flex>
+
+        <Flex flexDirection='column' mt={2}>
           <Heading>Exercise resources</Heading>
           <Resources
             resources={this.props.resources}
           />
         </Flex>
-        <Flex 
-          flexDirection='column'        
-        >
+
+        <Flex flexDirection='column' mt={2}>
           <Heading>Lesson Exercises</Heading>
-          {exercises.map((exercise, index) => (
+          {this.props.exercises.map((exercise, index) => (
             <Sentences
               key={index}
               englishSentence={exercise.englishSentence}
@@ -31,6 +31,7 @@ class LessonTemplate extends React.PureComponent<PropTypes.ILessonTemplateProps,
             />
           ))}
         </Flex>
+
       </Flex>
     );
   };
