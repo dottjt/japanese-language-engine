@@ -24,9 +24,18 @@ declare module PropTypes {
   // Lesson props
   export interface ILessonTemplateProps {
     exercises: Util.EnglishJapaneseSentence[],
+    resources: Util.Resource[],
   }
   
+  export interface ILessonTemplateProps {
+    exercises: Util.EnglishJapaneseSentence[],
+  }
+
   // Sentence props
+  export interface IResourcesProps {
+    resources: Util.Resource[],
+  }
+
   export interface ISentencesProps {
     englishSentence: Util.Sentence,
     japaneseSentence: Util.Sentence,

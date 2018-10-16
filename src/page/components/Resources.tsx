@@ -1,16 +1,17 @@
-import * as React from 'react'
+import * as React from 'react';
+import { Flex, Link } from 'rebass';
 
-// import Sentence from './atoms/Sentence';
-
-class Resources extends React.Component<{}, {}> {
+class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
   public render() {
     return (
-      <div className='resources'>
-        <p>Random.</p>
-        {/* {this.props.resourceList.map(resource => (
-          <p>Looky here, ye bastard.</p>
-        ))} */}
-      </div>
+      <Flex 
+        className='resources'
+        flexDirection='column'  
+      >
+        {this.props.resources.map(resource => (
+          <Link href={resource.url}>{resource.url}</Link>
+        ))}
+      </Flex>
     );
   };
 };

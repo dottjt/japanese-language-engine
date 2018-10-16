@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import { 
+import {
   QUESTION_BASIC,
   STATEMENT_BASIC,
-} from '../../../util/constants';
+} from '../../util/constants';
 
 class Sentence extends React.Component<PropTypes.ISentenceProps, {}> {
   public render() {

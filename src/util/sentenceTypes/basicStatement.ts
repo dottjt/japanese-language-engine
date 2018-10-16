@@ -1,144 +1,119 @@
-
-
-import { 
-  capitalizeFirstLetter,
+import {
+  capitalise,
   randomArrayElement,
+  appendSan,
+  getOneWordPerson,
+  getOneRandomHumanNameCategoryNoun,
 } from '../functions';
-import { nounPolitenessConjugation } from '../conjugation/noun';
-import { 
-  QUESTION_BASIC,
 
-  QUESTION_VARIATION_POSITIVE,
-  QUESTION_VARIATION_NEGATIVE,
+import {
+  nounConjugationJapanese,
+  nounConjugationEnglish,
+} from '../conjugation/noun';
+
+import {
+  NULL,
+  ENGLISH,
+  JAPANESE,
+
+  STATEMENT_BASIC,
+
+  VARIATION_POSITIVE,
+  VARIATION_NEGATIVE,
 
   POLITENESS_TYPE_CASUAL,
   POLITENESS_TYPE_FORMAL,
 
   __TYPENAME_OPTIONS,
-
 } from '../constants';
+
+// UTIL FUNCTIONS
+
+const convertWordsBasicStatement = (words: Util.BasicStatement, wordType: string): Util.BasicStatementString => (
+  wordType === ENGLISH ? ({
+    topicNoun: words.topicNoun.english,
+    predicateNoun: words.predicateNoun.english,
+  }) : ({
+    topicNoun: words.topicNoun.japanese,
+    predicateNoun: words.predicateNoun.japanese,
+  })
+);
+
 
 // JAPANESE SENTENCE CONFIG FUNCTIONS
 
-const questionTypeJapanese = (variation: string, questionTopicNoun: string, questionPredicateNoun: string): string => {
-  switch(variation) {
-    case QUESTION_VARIATION_POSITIVE:
-      return `${questionTopicNoun}は${questionPredicateNoun}か？`; // 小林さんは人か？
-    case QUESTION_VARIATION_NEGATIVE:
-      return `${questionTopicNoun}は${questionPredicateNoun}か？`; // 小林さんは人じゃないか？
-    default: 
-      return 'questionType error';
-  }
-};
+const statementJapanese = (topicNoun: string, predicateNoun: string, options: Util.Options): string => (
+  // 小林さんは人。
+  // 小林さんは人じゃない。
+  `${appendSan(topicNoun)}は${nounConjugationJapanese(predicateNoun, options)}。`
+);
 
-const answerTypeJapanese = (type: string, answerPredicateNoun: string, answerResponse: string): string => {
-  switch(type) {
-    case QUESTION_VARIATION_POSITIVE: // はい、人です。
-      return `${answerResponse}, ${answerPredicateNoun}。`;
-    case QUESTION_VARIATION_NEGATIVE:
-      return `${answerResponse}, ${answerPredicateNoun}。`; // いいえ、人じゃない。
-    default: 
-      return 'answerType error';
-  }
-};
-
-const basicWaQuestionJapanese = ({ questionTopicNoun, questionPredicateNoun, answerPredicateNoun, answerResponse, options }: Util.BasicWaQuestionStringsWithOptions): Util.Sentence => ({
-  type: QUESTION_BASIC,
-  question: questionTypeJapanese(options.sentenceVariation, questionTopicNoun, questionPredicateNoun),
-  answer: answerTypeJapanese(options.sentenceVariation, answerPredicateNoun, answerResponse),
-  statement: 'NA',
+const basicStatementJapanese = ({ topicNoun, predicateNoun }: Util.BasicStatementString, options: Util.Options): Util.Sentence => ({
+  type: STATEMENT_BASIC,
+  question: NULL,
+  answer: NULL,
+  statement: statementJapanese(
+    topicNoun,
+    predicateNoun,
+    options,
+  ),
 });
 
-const basicWaQuestionOptionsJapanese = (words: Util.BasicWaQuestion, options: Util.Options): Util.BasicWaQuestionStringsWithOptions  => ({
-  questionTopicNoun: words.questionTopicNoun.japanese,
-  questionPredicateNoun: words.questionPredicateNoun.japanese,
-  answerResponse: words.answerResponse.japanese,
-  answerPredicateNoun: nounPolitenessConjugation(words.answerPredicateNoun.japanese, options.sentencePoliteness, options.sentenceVariation),
-  options,
-});
-
-export const basicWaQuestionSentenceJapanese = (words: Util.BasicWaQuestion, options: Util.Options): Util.Sentence => basicWaQuestionJapanese(basicWaQuestionOptionsJapanese(words, options));
+export const basicStatementSentenceJapanese = (words: Util.BasicStatement, options: Util.Options): Util.Sentence => basicStatementJapanese(convertWordsBasicStatement(words, JAPANESE), options);
 
 
 // ENGLISH SENTENCE CONFIG FUNCTIONS
 
-// const questionTypeEnglish = (variation: string, questionTopicNoun: string, questionPredicateNoun: string): string => {
-//   switch(variation) {
-//     case QUESTION_VARIATION_POSITIVE:
-//       return `${questionTopicNoun}は${questionPredicateNoun}か？`; // 小林さんは人か？
-//     case QUESTION_VARIATION_NEGATIVE:
-//       return `${questionTopicNoun}は${questionPredicateNoun}か？`; // 小林さんは人じゃないか？
-//     default: 
-//       return 'questionType error';
-//   }
-// };
+const statementEnglish = (topicNoun: string, predicateNoun: string, options: Util.Options): string => (
+  // Kobayashi is a human.
+  // Kobayashi is not a human.
+  `${capitalise(topicNoun)} ${nounConjugationEnglish('is', options)} a ${predicateNoun}。`
+);
 
-// const answerTypeEnglish = (type: string, answerPredicateNoun: string, answerResponse: string): string => {
-//   switch(type) {
-//     case QUESTION_VARIATION_POSITIVE: // はい、人です。
-//       return `${answerResponse}, ${answerPredicateNoun}。`;
-//     case QUESTION_VARIATION_NEGATIVE:
-//       return `${answerResponse}, ${answerPredicateNoun}。`; // いいえ、人じゃない。
-//     default: 
-//       return 'answerType error';
-//   }
-// };
-
-const basicWaQuestionEnglish = ({ questionTopicNoun, questionPredicateNoun, answerResponse, answerPredicateNoun }: Util.BasicWaQuestionStringsWithOptions): Util.Sentence => ({
-  type: QUESTION_BASIC,
-  question: `Is ${questionTopicNoun} ${questionPredicateNoun}?`,
-  answer: `${answerResponse}, I am ${answerPredicateNoun}。`,
-  statement: 'NA',
+const basicStatementEnglish = ({ topicNoun, predicateNoun }: Util.BasicStatementString, options: Util.Options): Util.Sentence => ({
+  type: STATEMENT_BASIC,
+  question: NULL,
+  answer: NULL,
+  statement: statementEnglish(
+    topicNoun,
+    predicateNoun,
+    options,
+  ),
 });
 
-const basicWaQuestionOptionsEnglish = (words: Util.BasicWaQuestion, options: Util.Options): Util.BasicWaQuestionStringsWithOptions => ({
-  questionTopicNoun: words.questionTopicNoun.english,
-  questionPredicateNoun: words.questionPredicateNoun.english,
-  answerResponse: capitalizeFirstLetter(words.answerResponse.english),
-  answerPredicateNoun: words.answerPredicateNoun.english,
-  options,
-});
+export const basicStatementSentenceEnglish = (words: Util.BasicStatement, options: Util.Options): Util.Sentence => basicStatementEnglish(convertWordsBasicStatement(words, ENGLISH), options);
 
-export const basicWaQuestionSentenceEnglish = (words: Util.BasicWaQuestion, options: Util.Options): Util.Sentence => basicWaQuestionEnglish(basicWaQuestionOptionsEnglish(words, options));
-
-import {
-  getOneWordPerson,
-  getOneRandomHumanNameCategoryNoun,
-  getOneRandomResponseCategoryNoun,
-} from '../functions';
 
 // GENERATE BASIC QUESTION WORD DATA
 
-const generateRandomBasicQuestionWordData = (options: Util.Options, nouns: Util.Word[]): Util.EnglishJapaneseSentence => {
+const generateRandomBasicStatementWordData = (options: Util.Options, nouns: Util.Word[]): Util.EnglishJapaneseSentence => {
   const predicateNoun = getOneWordPerson(nouns);
   const words = {
-    questionTopicNoun: getOneRandomHumanNameCategoryNoun(nouns),
-    questionPredicateNoun: predicateNoun,
-    answerResponse: getOneRandomResponseCategoryNoun(nouns),
-    answerPredicateNoun: predicateNoun,
+    topicNoun: getOneRandomHumanNameCategoryNoun(nouns),
+    predicateNoun,
   };
 
   return {
-    japaneseSentence: basicWaQuestionSentenceJapanese(words, options),
-    englishSentence: basicWaQuestionSentenceEnglish(words, options),
+    japaneseSentence: basicStatementSentenceJapanese(words, options),
+    englishSentence: basicStatementSentenceEnglish(words, options),
   };
 };
 
-const generateRandomBasicQuestionOptions = (): Util.Options => {
-  const politenessArray = [ POLITENESS_TYPE_CASUAL, POLITENESS_TYPE_FORMAL ];
-  const variationArray = [ QUESTION_VARIATION_POSITIVE, QUESTION_VARIATION_NEGATIVE ];
+const generateRandomBasicStatementOptions = (): Util.Options => {
+  const politenessArray = [POLITENESS_TYPE_CASUAL, POLITENESS_TYPE_FORMAL];
+  const variationArray = [VARIATION_POSITIVE, VARIATION_NEGATIVE];
 
   return {
-    sentenceType: QUESTION_BASIC,
+    sentenceType: STATEMENT_BASIC,
     sentencePoliteness: politenessArray[0],
     sentenceVariation: variationArray[randomArrayElement(variationArray)],
     __typename: __TYPENAME_OPTIONS,
   }
 };
 
-export const generateBasicQuestionExercises = (nouns: Util.Word[]): Util.EnglishJapaneseSentence[] => (
+export const generateBasicStatementExercises = (nouns: Util.Word[]): Util.EnglishJapaneseSentence[] => (
   Array.from(Array(10)).map(value => {
-    const config = generateRandomBasicQuestionOptions();
-    return generateRandomBasicQuestionWordData(config, nouns);
+    const config = generateRandomBasicStatementOptions();
+    return generateRandomBasicStatementWordData(config, nouns);
   })
 );

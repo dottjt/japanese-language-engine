@@ -1,23 +1,33 @@
 import {
-  POLITENESS_TYPE_CASUAL,
+  // POLITENESS_TYPE_CASUAL,
   POLITENESS_TYPE_FORMAL,
 
-  QUESTION_VARIATION_POSITIVE,
-  // QUESTION_VARIATION_NEGATIVE,
+  // VARIATION_POSITIVE,
+  VARIATION_NEGATIVE,
 } from '../constants';
 
-export const nounPolitenessConjugation = (noun: string, politeness: string, variation: string): string => {
-  if (politeness === POLITENESS_TYPE_CASUAL) {
-    if (variation === QUESTION_VARIATION_POSITIVE) {
-      return `${noun}`;
+export const nounConjugationJapanese = (noun: string, options: Util.Options): string => {
+  if (options.sentencePoliteness === POLITENESS_TYPE_FORMAL) {
+    if (options.sentenceVariation === VARIATION_NEGATIVE) {
+      return `${noun}じゃありません`;
     };
-    return `${noun}じゃない`; 
+    return `${noun}です`;
   };
-  if (politeness === POLITENESS_TYPE_FORMAL) {
-    if (variation === QUESTION_VARIATION_POSITIVE) {
-      return `${noun}です`;
-    };
-    return `${noun}じゃありません`;
+  if (options.sentenceVariation === VARIATION_NEGATIVE) {
+    return `${noun}じゃない`;
   };
-  return 'nounPolitenessConjugation error';
+  return `${noun}`;
+};
+
+
+export const nounConjugationEnglish = (noun: string, options: Util.Options): string => {
+  if (options.sentenceVariation === VARIATION_NEGATIVE) {
+    switch (noun) {
+      case 'is':
+        return `${noun} not`;
+      case 'yes':
+        return 'no';
+    }
+  };
+  return `${noun}`;
 };

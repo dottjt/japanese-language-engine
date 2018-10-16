@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { capitalizeFirstLetter } from '../../../util/functions';
+import { capitalise } from '../../util/functions';
 
 interface IValues {
   value: string,
   selected: boolean,
 };
 
-const convertValuesIntoButtonArray = (values: string[]): IValues[] => 
+const convertValuesIntoButtonArray = (values: string[]): IValues[] =>
   values.map((value, index) => {
     if (index === 0) {
       return {
@@ -28,8 +28,14 @@ class QuestionVariationButton extends React.Component<PropTypes.IButtonsProps, {
       <div>
         <h3>{this.props.title}</h3>
         {convertValuesIntoButtonArray(this.props.values).map(value => (
-            <button key={value.value} className={`options__buton options__button-${value.selected}`} value={value.value} onClick={this.handleSentenceVariationSelectChange}>{capitalizeFirstLetter(value.value)}</button>
-          ))}
+          <button 
+            key={value.value} 
+            className={`options__buton options__button-${value.selected}`} 
+            value={value.value} 
+            onClick={this.handleSentenceVariationSelectChange}>
+            {capitalise(value.value)}
+          </button>
+        ))}
       </div>
     );
   }

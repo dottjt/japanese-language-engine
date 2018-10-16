@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import Sentence from './atoms/Sentence';
+import Sentence from '../atoms/Sentence';
 
 class Sentences extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {

@@ -1,7 +1,12 @@
 declare module Util {
 
   // primary 
-  export type Word = { 
+  export type Resource = {
+    website: string,
+    url: string,
+  }
+
+  export type Word = {
     japanese: string,
     english: string,
     primaryType: string,
@@ -19,7 +24,7 @@ declare module Util {
   export type Sentence = {
     type: string,
     question: string,
-    answer: string, 
+    answer: string,
     statement: string,
   }
 
@@ -29,18 +34,42 @@ declare module Util {
     japaneseSentence: Sentence,
   }
 
-  export interface BasicWaQuestion {
+  export type BasicQuestion = {
     questionTopicNoun: Word,
     questionPredicateNoun: Word,
     answerResponse: Word,
     answerPredicateNoun: Word,
   }
 
-  export interface BasicWaQuestionStringsWithOptions {
+  export type BasicQuestionString = {
     questionTopicNoun: string,
     questionPredicateNoun: string,
     answerResponse: string,
     answerPredicateNoun: string,
+  }
+
+  export type BasicQuestionStringsWithOptions = {
+    questionTopicNoun: string,
+    questionPredicateNoun: string,
+    answerResponse: string,
+    answerPredicateNoun: string,
+    options: Options,
+  }
+
+
+  export type BasicStatement = {
+    topicNoun: Word,
+    predicateNoun: Word,
+  }
+
+  export type BasicStatementString = {
+    topicNoun: string,
+    predicateNoun: string,
+  }
+
+  export type BasicStatementStringsWithOptions = {
+    topicNoun: string,
+    predicateNoun: string,
     options: Options,
   }
 }

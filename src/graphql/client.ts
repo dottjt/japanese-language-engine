@@ -1,18 +1,22 @@
 import ApolloClient from "apollo-boost";
 
-import { 
+import {
   __TYPENAME_OPTIONS,
 
   POLITENESS_TYPE_CASUAL,
-  
-  QUESTION_VARIATION_POSITIVE,
+
+  VARIATION_POSITIVE,
 
   QUESTION_BASIC,
- } from '../util/constants';
+} from '../util/constants';
 
 import {
   wordKobayashi,
-  wordNo,
+  wordSasaki,
+  wordNomura,
+  wordKato,
+
+  wordYes,
   wordPerson,
 } from '../util/words';
 
@@ -21,14 +25,18 @@ const client = new ApolloClient({
     defaults: {
       nouns: [
         wordKobayashi,
+        wordSasaki,
+        wordNomura,
+        wordKato,
+        
         wordPerson,
-        wordNo,
+        wordYes,
       ],
       options: {
         __typename: __TYPENAME_OPTIONS,
         sentencePoliteness: POLITENESS_TYPE_CASUAL,
         sentenceType: QUESTION_BASIC,
-        sentenceVariation: QUESTION_VARIATION_POSITIVE,
+        sentenceVariation: VARIATION_POSITIVE,
       },
     },
     resolvers: {
