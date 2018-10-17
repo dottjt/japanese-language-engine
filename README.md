@@ -50,3 +50,6 @@ class App extends React.Component {
 
 
 Possibile optimisations: Limit constant length. May be unnecessary. 
+
+
+NOTE: Remove politeness from determineNounEndingEnglish switch statement because it is redundant.

@@ -73,7 +73,6 @@ const determineNounEndingJapanese = (options: Util.Options, identifier: string):
         return '';
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
         return 'だった';
-
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
         return 'じゃない';
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
@@ -93,7 +92,7 @@ const determineNounEndingJapanese = (options: Util.Options, identifier: string):
         return createError(
           'conjugations/noun',
           'determineNounEndingJapanese',
-          `options.polarity unknown`,
+          `${options.politeness}${options.polarity}${options.tense} unknown`,
         );
     }
   }
@@ -101,39 +100,24 @@ const determineNounEndingJapanese = (options: Util.Options, identifier: string):
 };
 
 const determineSentenceIdentifierEndingJapanese = (options: Util.Options, identifier: string): string => {
-  switch(`${identifier}${options.variation}`) {
-    case `${PREDICATE_IDENTIFIER}${WA_SOB}`:
-      return '。';
-    case `${PREDICATE_IDENTIFIER}${WA_SOB_QUESTION}`:
+  
+  if (identifier === PREDICATE_IDENTIFIER) {
+    if (options.variation === WA_SOB_QUESTION || options.variation === MO_SOB_QUESTION || options.variation === GA_SOB_QUESTION) {
       return 'か？';
-    case `${PREDICATE_IDENTIFIER}${MO_SOB}`:
+    } else {
       return '。';
-    case `${PREDICATE_IDENTIFIER}${MO_SOB_QUESTION}`:
-      return 'か？';
-    case `${PREDICATE_IDENTIFIER}${GA_SOB}`:
-      return '。';
-    case `${PREDICATE_IDENTIFIER}${GA_SOB_QUESTION}`:
-      return 'か？';
-
-    case `${TOPIC_IDENTIFIER}${WA_SOB}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${WA_SOB_QUESTION}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${MO_SOB}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${MO_SOB_QUESTION}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${GA_SOB}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${GA_SOB_QUESTION}`:
-      return '';
-    default:
-      return createError(
-        'conjugations/noun',
-        'determineSentenceIdentifierEndingJapanese',
-        `${identifier}${options.variation} unknown`,
-      );
+    }    
   }
+
+  if (identifier === TOPIC_IDENTIFIER) {
+    return '';
+  }
+
+  return createError(
+    'conjugations/noun',
+    'determineSentenceIdentifierEndingEnglish',
+    `${identifier} unknown`,
+  );
 };
 
 export const nounConjugationJapanese = (noun: Util.Word, options: Util.Options, sentenceIdentifier: string): string => {
@@ -148,39 +132,24 @@ export const nounConjugationJapanese = (noun: Util.Word, options: Util.Options, 
 // ENGLISH
 
 const determineSentenceIdentifierEndingEnglish = (options: Util.Options, identifier: string): string => {
-  switch(`${identifier}${options.variation}`) {
-    case `${PREDICATE_IDENTIFIER}${WA_SOB}`:
-      return '.';
-    case `${PREDICATE_IDENTIFIER}${WA_SOB_QUESTION}`:
-      return '?';
-    case `${PREDICATE_IDENTIFIER}${MO_SOB}`:
-      return '.';
-    case `${PREDICATE_IDENTIFIER}${MO_SOB_QUESTION}`:
-      return '?';
-      case `${PREDICATE_IDENTIFIER}${GA_SOB}`:
-      return '.';
-    case `${PREDICATE_IDENTIFIER}${GA_SOB_QUESTION}`:
-      return '?';
 
-    case `${TOPIC_IDENTIFIER}${WA_SOB}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${WA_SOB_QUESTION}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${MO_SOB}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${MO_SOB_QUESTION}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${GA_SOB}`:
-      return '';
-    case `${TOPIC_IDENTIFIER}${GA_SOB_QUESTION}`:
-      return '';
-    default:
-      return createError(
-        'conjugations/noun',
-        'determineSentenceIdentifierEndingJapanese',
-        `${identifier}${options.variation} unknown`,
-      );
+  if (identifier === PREDICATE_IDENTIFIER) {
+    if (options.variation === WA_SOB_QUESTION || options.variation === MO_SOB_QUESTION || options.variation === GA_SOB_QUESTION) {
+      return '?';
+    } else {
+      return '.';
+    }    
   }
+
+  if (identifier === TOPIC_IDENTIFIER) {
+    return '';
+  }
+
+  return createError(
+    'conjugations/noun',
+    'determineSentenceIdentifierEndingEnglish',
+    `${identifier} unknown`,
+  );
 };
 
 const determineNounBeginingEnglish = (word: Util.Word, identifier: string): string => {
@@ -198,40 +167,67 @@ const determineNounBeginingEnglish = (word: Util.Word, identifier: string): stri
 };
 
 const determineNounEndingEnglish = (options: Util.Options, identifier: string): string => {
-  // POSSIBLE OPTIMISATION IF TOO SLOW: REMOVE politeness since it's irrelevant :)
   if (identifier === TOPIC_IDENTIFIER) {
-    switch(`${options.politeness}${options.polarity}${options.tense}`) {
-      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
-        return 'is';
-      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
-        return 'was';
-
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
-        return 'is not';
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
-        return 'was not';
-
-      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
-        return 'is';
-      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
-        return 'was';
-
-      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
-        return 'is not';
-      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
-        return 'was not';
-
-      default: 
-        return createError(
-          'conjugations/noun',
-          'determineNounEndingEnglish',
-          `options.polarity unknown`,
-        );
+    if (options.variation === WA_SOB || options.variation === WA_SOB_QUESTION) {
+      switch(`${options.polarity}${options.tense}`) {
+        case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:
+          return 'is';
+        case `${POLARITY_POSITIVE}${TENSE_PAST}`:
+          return 'was';
+        case `${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
+          return 'is';
+        case `${POLARITY_NEGATIVE}${TENSE_PAST}`:
+          return 'was';
+        default: 
+          return createError(
+            'conjugations/noun',
+            'determineNounEndingEnglish - WA_SOB',
+            `${options.polarity}${options.tense} unknown`,
+          );
+      };
     }
+
+    if (options.variation === MO_SOB || options.variation === MO_SOB_QUESTION) {
+      switch(`${options.polarity}${options.tense}`) {
+        case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:
+          return 'is also';
+        case `${POLARITY_POSITIVE}${TENSE_PAST}`:
+          return 'was also';
+        case `${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
+          return 'is also not';
+        case `${POLARITY_NEGATIVE}${TENSE_PAST}`:
+          return 'was also nto';
+        default: 
+          return createError(
+            'conjugations/noun',
+            'determineNounEndingEnglish - MO_SOB',
+            `${options.polarity}${options.tense} unknown`,
+          );
+      };
+    }
+    
+    if (options.variation === GA_SOB || options.variation === GA_SOB_QUESTION) {
+      switch(`${options.polarity}${options.tense}`) {
+        case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:
+          return 'is the one that is';
+        case `${POLARITY_POSITIVE}${TENSE_PAST}`:
+          return 'is the one that was';
+        case `${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
+          return 'is the one that is not';
+        case `${POLARITY_NEGATIVE}${TENSE_PAST}`:
+          return 'is the one that was not';
+        default: 
+          return createError(
+            'conjugations/noun',
+            'determineNounEndingEnglish - GA_SOB',
+            `${options.polarity}${options.tense} unknown`,
+          );
+      };
+    } 
   }
+  // If not topic identifier, then no need to return anything. 
   return '';
 };
-
 
 export const nounConjugationEnglish = (noun: Util.Word, options: Util.Options, sentenceIdentifier: string): string => {
   const nounEnding = determineNounEndingEnglish(options, sentenceIdentifier);
