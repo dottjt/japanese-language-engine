@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Flex, Heading, Text } from 'rebass';
 
+import SentenceOptions from '../atoms/SentenceOptions';
 import Sentences from './Sentences';
 import Resources from './Resources';
 
@@ -23,9 +24,11 @@ class LessonTemplate extends React.PureComponent<PropTypes.ILessonTemplateProps,
 
         <Flex flexDirection='column' mt={2}>
           <Heading>Lesson Exercises</Heading>
+          <SentenceOptions/>
           {this.props.exercises.map((exercise, index) => (
             <Sentences
               key={index}
+              options={exercise.options}
               englishSentence={exercise.englishSentence}
               japaneseSentence={exercise.japaneseSentence}
             />

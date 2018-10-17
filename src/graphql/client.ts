@@ -1,10 +1,7 @@
 import ApolloClient from "apollo-boost";
 
 import {
-  __TYPENAME_OPTIONS,
-  POLITENESS_CASUAL,
-  POLARITY_POSITIVE,
-  TOPIC_PREDICATE
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from "../util/constants";
 
 import allWords from "../util/words";
@@ -13,11 +10,9 @@ const client = new ApolloClient({
   clientState: {
     defaults: {
       nouns: allWords,
-      options: {
-        __typename: __TYPENAME_OPTIONS,
-        politeness: POLITENESS_CASUAL,
-        sentenceType: TOPIC_PREDICATE,
-        variation: POLARITY_POSITIVE
+      sentenceDisplayOptions: {
+        showSentenceHints: true,
+        __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
       }
     },
     resolvers: {
@@ -35,10 +30,8 @@ const client = new ApolloClient({
       }
     },
     typeDefs: `
-      type Options {
-        politeness: String
-        sentenceType: String
-        variation: String
+      type SentenceDisplayOptions {
+        showSentenceHints: Boolean
       }
 
       type TypeMeta {
@@ -50,7 +43,7 @@ const client = new ApolloClient({
         english: String
         primaryType: String
         category: [ String ]
-        typeMeta: TypeMeta
+        meta: TypeMeta
       }
 
       type Mutation {
@@ -58,7 +51,7 @@ const client = new ApolloClient({
       }
 
       type Query {
-        options: Options
+        sentenceDisplayOptions: SentenceDisplayOptions
         nouns: [Word]
       }
     `

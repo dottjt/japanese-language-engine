@@ -3,6 +3,8 @@
 //   randomArrayElement,
 //   convertValuesIntoButtonArray,
 //   createError,
+//   convertPolitenessIntoValue,
+//   convertPolarityIntoValue,
 // } from '../src/util/functions';
 
 // describe('util/functions.ts', () => {
@@ -32,6 +34,18 @@
 //   }
 
 //   describe('createError', () => {
+//     test('', () => {
+        
+//     });
+//   }
+
+//   describe('convertPolitenessIntoValue', () => {
+//     test('', () => {
+        
+//     });
+//   }
+
+//   describe('convertPolarityIntoValue', () => {
 //     test('', () => {
         
 //     });

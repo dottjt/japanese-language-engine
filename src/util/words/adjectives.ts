@@ -10,7 +10,7 @@ export const wordDelicious = {
   english: 'delicious',
   primaryType: PRIMARY_TYPE_ADJECTIVE,
   category: [ CATEGORY_FOOD ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 
@@ -19,7 +19,7 @@ export const wordLike = {
   english: 'like',
   primaryType: PRIMARY_TYPE_ADJECTIVE,
   category: [ CATEGORY_FOOD ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 

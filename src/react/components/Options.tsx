@@ -6,7 +6,7 @@ import {
   POLARITY_POSITIVE,
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
-  __TYPENAME_OPTIONS
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS
 } from "../../util/constants";
 
 import Buttons from "../atoms/Buttons";
@@ -32,14 +32,14 @@ class Options extends React.Component<PropTypes.IOptionsProps, {}> {
   private politenessCallback = (value: string): void =>
     this.props.client.writeData({
       data: {
-        options: { politeness: value, __typename: __TYPENAME_OPTIONS }
+        options: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
       }
     });
 
   private variationCallback = (value: string): void => {
     this.props.client.writeData({
       data: {
-        options: { variation: value, __typename: __TYPENAME_OPTIONS }
+        options: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
       }
     });
   };

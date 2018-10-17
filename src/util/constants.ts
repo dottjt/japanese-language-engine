@@ -72,7 +72,7 @@ export const politenessArray = [
 
 // __typename
 
-export const __TYPENAME_OPTIONS = 'options';
+export const __TYPENAME_SENTENCE_DISPLAY_OPTIONS = 'options';
 export const __TYPENAME_WORDS = 'words';
 
 // word.primaryType
@@ -103,7 +103,17 @@ export const categoryArray = [
   CATEGORY_ANIMAL,
   CATEGORY_RESPONSE,
   CATEGORY_FOOD,
-  CATEGORY_DRINK,  
+  CATEGORY_DRINK,
+];
+
+// word.meta
+
+export const VERB_TYPE_RU = 'ru verb';
+export const VERB_TYPE_U = 'u verb';
+
+export const verbTypeArray = [
+  VERB_TYPE_RU,
+  VERB_TYPE_U,
 ];
 
 // resources

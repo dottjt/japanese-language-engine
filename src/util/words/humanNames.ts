@@ -10,7 +10,7 @@ export const wordSasaki = {
   english: 'Sasaki',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 
@@ -19,7 +19,7 @@ export const wordNomura = {
   english: 'Nomura',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 
@@ -28,7 +28,7 @@ export const wordKato = {
   english: 'Kato',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 
@@ -37,7 +37,7 @@ export const wordKobayashi = {
   english: 'Kobayashi',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 

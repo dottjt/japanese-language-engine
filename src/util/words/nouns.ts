@@ -14,7 +14,7 @@ export const wordPerson = {
   english: 'person',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 
@@ -26,7 +26,7 @@ export const wordCat = {
   english: 'cat',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_ANIMAL ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 
@@ -35,7 +35,7 @@ export const wordDog = {
   english: 'dog',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_ANIMAL ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 

@@ -8,7 +8,7 @@ declare module PropTypes {
   export interface IMainProps {
     route: any, // NOTE: Will need to get proper type. 
   }
-
+  
   // Component props 
   export interface IOptionsProps {
     options: Util.Options,
@@ -23,7 +23,7 @@ declare module PropTypes {
 
   // Lesson props
   export interface ILessonTemplateProps {
-    exercises: Util.EnglishJapaneseSentence[],
+    exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
     explanation: string, 
   }
@@ -34,12 +34,17 @@ declare module PropTypes {
   }
 
   export interface ISentencesProps {
+    options: Util.Options
     englishSentence: Util.Sentence,
     japaneseSentence: Util.Sentence,
   }
 
   export interface ISentenceProps {
     sentence: Util.Sentence,
+  }
+
+  export interface ISentenceHintsProps {
+    options: Util.Options,
   }
 
   export interface ISentenceBasicStatementProps {

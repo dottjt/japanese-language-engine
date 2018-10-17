@@ -10,7 +10,7 @@ export const wordYes = {
   english: 'yes',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_RESPONSE ],
-  typeMeta: {},
+  meta: {},
   __typename: __TYPENAME_WORDS,
 };
 

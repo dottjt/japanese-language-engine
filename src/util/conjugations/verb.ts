@@ -1,16 +1,19 @@
 import {
-  // createError
+  createError
 } from '../functions';
 
 import {
-  // POLITENESS_CASUAL,
-  // POLITENESS_FORMAL,
+  POLITENESS_CASUAL,
+  POLITENESS_FORMAL,
 
-  // POLARITY_POSITIVE,
-  // POLARITY_NEGATIVE,
+  POLARITY_POSITIVE,
+  POLARITY_NEGATIVE,
 
   // PREDICATE_IDENTIFIER,
   // TOPIC_IDENTIFIER,
+
+  VERB_TYPE_RU,
+  VERB_TYPE_U,
 
   // CATEGORY_HUMAN_NAME,
 } from '../constants';
@@ -32,23 +35,52 @@ const determineVerbCategoryEnding = (word: Util.Word): string => {
   return '';
 }
 
-const determineVerbEndingJapanese = (options: Util.Options): string => {
-  // switch(`${options.polarity}${options.politeness}`) {
-  //   case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
-      return '';
-  //   case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
-  //     return 'じゃない';
-  //   case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
-  //     return 'です';
-  //   case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
-  //     return 'じゃありません';
-  //   default: 
-  //     return createError(
-  //       'conjugations/noun',
-  //       'nounPolarity',
-  //       `options.polarity unknown`,
-  //     );
-  // }
+const getVerbStem = (verb: Util.Word, options: Util.Options): string => {
+  if (verb.meta.verbType === VERB_TYPE_RU) {
+    return verb.slice(0, -1);
+  }
+  if 
+};
+
+const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): string => {
+  const verbStem = getVerbStem(verb, options);
+  if (verb.meta.verbType === VERB_TYPE_RU) {
+    switch(`${options.polarity}${options.politeness}`) {
+      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
+        return `${verb}`;
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
+        return `${verbStem}`;
+      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
+        return 'です';
+      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
+        return 'じゃありません';
+      default: 
+        return createError(
+          'conjugations/verb',
+          'determineVerbConjugationJapanese',
+          `${options.polarity}${options.politeness} unknown`,
+        );
+    }
+  }
+  if (verb.meta.verbType === VERB_TYPE_U) {
+    switch(`${options.polarity}${options.politeness}`) {
+      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
+        return '';
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
+        return 'じゃない';
+      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
+        return 'です';
+      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
+        return 'じゃありません';
+      default: 
+        return createError(
+          'conjugations/verb',
+          'nounPolarity',
+          `options.polarity unknown`,
+        );
+    }
+  }
+  return '';
 };
 
 export const determineSentenceIdentifierEndingJapanese = (identifier: string): string => {
@@ -63,10 +95,11 @@ export const determineSentenceIdentifierEndingJapanese = (identifier: string): s
 };
 
 
-export const adjectiveConjugationJapanese = (adjective: Util.Word, options: Util.Options, sentenceIdentifier: string): string => {
-  const adjectiveEnding = determineVerbEndingJapanese(options);
-  const adjectiveCategoryEnding = determineVerbCategoryEnding(adjective)
-  const sentenceIdentifierEnding = determineSentenceIdentifierEndingJapanese(sentenceIdentifier);
+export const verbConjugationJapanese = (verb: Util.Word, options: Util.Options, sentenceIdentifier: string): string => {
+  const conjugatedVerb = determineVerbConjugationJapanese(verb, options);
 
-  return `${adjective.japanese}${adjectiveCategoryEnding}${adjectiveEnding}${sentenceIdentifierEnding}`;
+  // const verbCategoryEnding = determineVerbCategoryEnding(verb)
+  // const sentenceIdentifierEnding = determineSentenceIdentifierEndingJapanese(sentenceIdentifier);
+
+  return `${conjugatedVerb}${verbCategoryEnding}${verbEnding}${sentenceIdentifierEnding}`;
 };

@@ -24,7 +24,7 @@ import {
   politenessArray,
   polarityArray,
 
-  __TYPENAME_OPTIONS
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS
 } from "../constants";
 
 // LANG_JAPANESE SENTENCE CONFIG FUNCTIONS
@@ -75,10 +75,7 @@ export const topicPredicateEnglish = (
 
 // GENERATE BASIC QUESTION WORD DATA
 
-const generateRandomTopicPredicateWordData = (
-  options: Util.Options,
-  nouns: Util.Word[]
-): Util.EnglishJapaneseSentence => {
+const generateRandomTopicPredicateWordData = (options: Util.Options, nouns: Util.Word[]): Util.EnglishJapaneseSentence => {
   const predicate = getOneWordPerson(nouns);
   const words = {
     topicNoun: getOneRandomHumanNameCategoryNoun(nouns),
@@ -97,11 +94,16 @@ const generateRandomTopicPredicateOptions = (variation: string): Util.Options =>
   variation,
   politeness: politenessArray[randomArrayElement(politenessArray)],
   polarity: polarityArray[randomArrayElement(polarityArray)],
-  __typename: __TYPENAME_OPTIONS,
+  __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 });
 
-export const generateTopicPredicateExercises = (nouns: Util.Word[], variation: string): Util.EnglishJapaneseSentence[] =>
+export const generateTopicPredicateExercises = (nouns: Util.Word[], variation: string): Util.EnglishJapaneseOptionsSentence[] =>
   Array.from(Array(10)).map(() => {
-    const config = generateRandomTopicPredicateOptions(variation);
-    return generateRandomTopicPredicateWordData(config, nouns);
+    const options = generateRandomTopicPredicateOptions(variation);
+    const { englishSentence, japaneseSentence } = generateRandomTopicPredicateWordData(options, nouns);
+    return {
+      options,
+      englishSentence, 
+      japaneseSentence,
+    };
   });

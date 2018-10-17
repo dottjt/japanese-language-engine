@@ -7,6 +7,9 @@ As a result, the code base is abolutely MINT.
 
 Auth0
 
+Highlight the areas which are polite, negative in a sentence when hovering over the hints. 
+
+
 - prettify to project. 
 - router 5
 

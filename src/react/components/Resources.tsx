@@ -6,7 +6,7 @@ class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
     return (
       <Flex flexDirection='column'>
         {this.props.resources.map(resource => (
-          <Link href={resource.url}>{resource.url}</Link>
+          <Link key={resource.url} href={resource.url}>{resource.url}</Link>
         ))}
       </Flex>
     );

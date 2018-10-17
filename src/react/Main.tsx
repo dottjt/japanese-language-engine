@@ -4,7 +4,7 @@ import { Flex, Box, Heading } from 'rebass';
 
 import { 
   GET_ALL_WORDS_AND_OPTIONS
-} from '../graphql/queries/combined'
+} from '../graphql/queries'
 
 import Contents from './components/Contents';
 import LessonTemplate from './components/LessonTemplate';

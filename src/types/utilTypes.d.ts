@@ -1,5 +1,9 @@
 declare namespace Util {
   // primary
+  export type SentenceDisplayOptions = {
+    showSentenceHints: boolean;
+  }
+
   export type Resource = {
     website: string;
     url: string;
@@ -10,7 +14,9 @@ declare namespace Util {
     english: string;
     primaryType: string;
     category: string[];
-    typeMeta: {};
+    meta: {
+      verbType: string;
+    };
   };
 
   export type Options = {
@@ -31,6 +37,12 @@ declare namespace Util {
   export type EnglishJapaneseSentence = {
     englishSentence: Sentence;
     japaneseSentence: Sentence;
+  };
+
+  export type EnglishJapaneseOptionsSentence = {
+    englishSentence: Sentence;
+    japaneseSentence: Sentence;
+    options: Options,
   };
 
   // SENTENCE TYPE - BASIC QUESTION
