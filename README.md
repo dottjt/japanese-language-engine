@@ -43,3 +43,6 @@ class App extends React.Component {
 
 "semantic-ui-react": "^0.82.5",
 "semantic-ui-react-single": "^0.1.2",
+
+
+Possibile optimisations: Limit constant length. May be unnecessary. 

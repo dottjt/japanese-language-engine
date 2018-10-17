@@ -25,6 +25,7 @@ declare namespace Util {
     sentenceType: string; // topicPredicate
     variation: string; // wa-sob,
     polarity: string; // positive, negative
+    tense: string; // past, present
   };
 
   export type Sentence = {

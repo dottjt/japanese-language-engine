@@ -48,12 +48,22 @@ export const variationArray = [
 
 // options.polarity
 
-export const POLARITY_POSITIVE = 'p';
-export const POLARITY_NEGATIVE = 'n';
+export const POLARITY_POSITIVE = 'positive';
+export const POLARITY_NEGATIVE = 'negative';
 
 export const polarityArray = [ 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
+];
+
+// options.tense
+
+export const TENSE_PRESENT = 'present';
+export const TENSE_PAST = 'past';
+
+export const tenseArray = [ 
+  TENSE_PRESENT,
+  TENSE_PAST,
 ];
 
 // options.politeness

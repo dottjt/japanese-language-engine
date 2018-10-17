@@ -12,6 +12,9 @@ import {
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
+  TENSE_PRESENT,
+  TENSE_PAST,
+
   PREDICATE_IDENTIFIER,
   TOPIC_IDENTIFIER,
 
@@ -50,15 +53,27 @@ const determineTopicParticleJapanese = (options: Util.Options, identifier: strin
 
 const determineNounEndingJapanese = (options: Util.Options, identifier: string): string => {
   if (identifier === PREDICATE_IDENTIFIER) {
-    switch(`${options.politeness}${options.polarity}`) {
-      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
+    switch(`${options.politeness}${options.polarity}${options.tense}`) {
+      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
         return '';
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
+      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
+        return 'だった';
+
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
         return 'じゃない';
-      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
+        return 'じゃなかった';
+
+      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
         return 'です';
-      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
+      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
+        return 'でした';
+
+      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
         return 'じゃありません';
+      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
+        return 'じゃありませんでした';
+
       default: 
         return createError(
           'conjugations/noun',
@@ -134,17 +149,28 @@ const determineNounBeginingEnglish = (word: Util.Word, identifier: string): stri
 };
 
 const determineNounEndingEnglish = (options: Util.Options, identifier: string): string => {
-  // depending on the identifier aka position of the word in the code, it will display the language in different places. 
+  // POSSIBLE OPTIMISATION IF TOO SLOW: REMOVE politeness since it's irrelevant :)
   if (identifier === TOPIC_IDENTIFIER) {
-    switch(`${options.politeness}${options.polarity}`) {
-      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
-        return ' is';
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
-        return ' is not';
-      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
-        return ' is';
-      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
-        return ' is not';
+    switch(`${options.politeness}${options.polarity}${options.tense}`) {
+      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
+        return 'is';
+      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
+        return 'was';
+
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
+        return 'is not';
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
+        return 'was not';
+
+      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
+        return 'is';
+      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
+        return 'was';
+
+      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
+        return 'is not';
+      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
+        return 'was not';
 
       default: 
         return createError(
@@ -163,5 +189,7 @@ export const nounConjugationEnglish = (noun: Util.Word, options: Util.Options, s
   const nounBeginning = determineNounBeginingEnglish(noun, sentenceIdentifier);
   const sentenceIdentifierEnding = determineSentenceIdentifierEndingEnglish(options, sentenceIdentifier);
 
-  return `${nounBeginning} ${noun.english}${nounEnding}${sentenceIdentifierEnding}`.trim();
+  // NOTE: Create a function which removes the space if the variable doesn't exist. 
+
+  return `${nounBeginning} ${noun.english} ${nounEnding}${sentenceIdentifierEnding}`.trim();
 };
