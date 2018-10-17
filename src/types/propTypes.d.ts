@@ -23,6 +23,7 @@ declare module PropTypes {
 
   // Lesson props
   export interface ILessonTemplateProps {
+    title: string,
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
     explanation: string, 

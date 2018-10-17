@@ -9,7 +9,8 @@ class LessonTemplate extends React.PureComponent<PropTypes.ILessonTemplateProps,
   public render() {
     return (
       <Flex flexDirection='column'>
-
+        <Heading>{this.props.title}</Heading>
+        
         <Flex flexDirection='column' mt={2}>
           <Heading>Exercise Explanation</Heading>
           <Text>{this.props.explanation}</Text>

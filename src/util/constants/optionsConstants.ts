@@ -21,9 +21,19 @@ export const sentenceTypeArray = [
 export const WA_SOB = 'WA_SOB'; // WA - STATEMENT OF BEING
 export const WA_SOB_QUESTION = 'WA_SOB_QUESTION'; // WA - STATEMENT OF BEING
 
+export const MO_SOB = 'MO_SOB'; // MO - STATEMENT OF BEING
+export const MO_SOB_QUESTION = 'MO_SOB_QUESTION'; // MO - STATEMENT OF BEING
+
+export const GA_SOB = 'GA_SOB'; // GA - STATEMENT OF BEING
+export const GA_SOB_QUESTION = 'GA_SOB_QUESTION'; // GA - STATEMENT OF BEING
+
 export const variationArray = [
   WA_SOB,
   WA_SOB_QUESTION,
+  MO_SOB,
+  MO_SOB_QUESTION,
+  GA_SOB,
+  GA_SOB_QUESTION,
 ];
 
 // options.polarity

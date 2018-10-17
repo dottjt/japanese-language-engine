@@ -10,6 +10,10 @@ import {
 import {
   WA_SOB,
   WA_SOB_QUESTION,
+  MO_SOB,
+  MO_SOB_QUESTION,
+  GA_SOB,
+  GA_SOB_QUESTION,
 
   PREDICATE_IDENTIFIER,
   TOPIC_IDENTIFIER,
@@ -47,6 +51,14 @@ const determineTopicParticleJapanese = (options: Util.Options, identifier: strin
         return 'は';
       case WA_SOB_QUESTION:
         return 'は';
+      case MO_SOB:
+        return 'も';
+      case MO_SOB_QUESTION:
+        return 'も';
+      case GA_SOB:
+        return 'が';
+      case GA_SOB_QUESTION:
+        return 'が';
       default:
         return createError('conjugations/topic', 'determineTopicParticle', 'options.variation unknown');
     }
@@ -94,9 +106,26 @@ const determineSentenceIdentifierEndingJapanese = (options: Util.Options, identi
       return '。';
     case `${PREDICATE_IDENTIFIER}${WA_SOB_QUESTION}`:
       return 'か？';
+    case `${PREDICATE_IDENTIFIER}${MO_SOB}`:
+      return '。';
+    case `${PREDICATE_IDENTIFIER}${MO_SOB_QUESTION}`:
+      return 'か？';
+    case `${PREDICATE_IDENTIFIER}${GA_SOB}`:
+      return '。';
+    case `${PREDICATE_IDENTIFIER}${GA_SOB_QUESTION}`:
+      return 'か？';
+
     case `${TOPIC_IDENTIFIER}${WA_SOB}`:
       return '';
     case `${TOPIC_IDENTIFIER}${WA_SOB_QUESTION}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${MO_SOB}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${MO_SOB_QUESTION}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${GA_SOB}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${GA_SOB_QUESTION}`:
       return '';
     default:
       return createError(
@@ -124,9 +153,26 @@ const determineSentenceIdentifierEndingEnglish = (options: Util.Options, identif
       return '.';
     case `${PREDICATE_IDENTIFIER}${WA_SOB_QUESTION}`:
       return '?';
+    case `${PREDICATE_IDENTIFIER}${MO_SOB}`:
+      return '.';
+    case `${PREDICATE_IDENTIFIER}${MO_SOB_QUESTION}`:
+      return '?';
+      case `${PREDICATE_IDENTIFIER}${GA_SOB}`:
+      return '.';
+    case `${PREDICATE_IDENTIFIER}${GA_SOB_QUESTION}`:
+      return '?';
+
     case `${TOPIC_IDENTIFIER}${WA_SOB}`:
       return '';
     case `${TOPIC_IDENTIFIER}${WA_SOB_QUESTION}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${MO_SOB}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${MO_SOB_QUESTION}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${GA_SOB}`:
+      return '';
+    case `${TOPIC_IDENTIFIER}${GA_SOB_QUESTION}`:
       return '';
     default:
       return createError(
