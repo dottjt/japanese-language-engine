@@ -6,7 +6,7 @@ import { GET_ALL_SENTENCE_DISPLAY_OPTIONS_QUERY } from '../../graphql/queries';
 
 import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
-} from '../../util/constants/constants';
+} from '../../util/constants/optionsConstants';
 
 import styled from 'styled-components';
 
@@ -35,6 +35,9 @@ class SentenceOptions extends React.Component<{}, {}> {
                   onClick={() => this.toggleShowSentenceHints(client, data.sentenceDisplayOptions.showSentenceHints)}  
                 >
                   toggle show sentence hints
+                </Button>
+                <Button>
+                  reset sentence examples
                 </Button>
               </Flex>
               }

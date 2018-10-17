@@ -1,11 +1,11 @@
 import {
   CATEGORY_HUMAN_NAME,
   CATEGORY_RESPONSE,
-} from './constants/constants';
+} from './constants/wordConstants';
 
 import {
   wordPerson,
-} from './words/nouns';
+} from './words/nounWords';
 
 import {
   randomArrayElement

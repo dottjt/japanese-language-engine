@@ -4,10 +4,12 @@ import { Flex } from "rebass";
 import {
   POLARITY_NEGATIVE,
   POLARITY_POSITIVE,
+  
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
+
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
-} from "../../util/constants/constants";
+} from "../../util/constants/optionsConstants";
 
 import Buttons from "../atoms/Buttons";
 

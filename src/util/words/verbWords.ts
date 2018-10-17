@@ -7,7 +7,7 @@ import {
   VERB_TYPE_U,
 
   __TYPENAME_WORDS,
-} from '../constants/constants';
+} from '../constants/wordConstants';
 
 export const wordEat = {
   japanese: '食べる',

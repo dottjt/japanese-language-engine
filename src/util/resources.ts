@@ -1,4 +1,7 @@
-import { RESOURCE_TAE_KIM, RESOURCE_WASABI } from "./constants/constants";
+import { 
+  RESOURCE_TAE_KIM, 
+  RESOURCE_WASABI 
+} from "./constants/generalConstants";
 
 export const L01_LESSON_RESOURCES: Util.Resource[] = [
   {

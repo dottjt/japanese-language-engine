@@ -1,8 +1,8 @@
-import { adjectiveArray } from './adjectives';
-import { humanNameArray } from './humanNames';
-import { nounArray } from './nouns';
-import { responseArray } from './responses';
-import { verbArray } from './verbs';
+import { adjectiveArray } from './adjectiveWords';
+import { humanNameArray } from './humanNameWords';
+import { nounArray } from './nounWords';
+import { responseArray } from './responseWords';
+import { verbArray } from './verbWords';
 
 const allWords: Util.Word[] =
   adjectiveArray

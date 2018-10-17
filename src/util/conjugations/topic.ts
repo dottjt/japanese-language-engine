@@ -9,15 +9,17 @@ import {
 } from './noun';
 
 import {
+  PRIMARY_TYPE_NOUN,
+  PRIMARY_TYPE_VERB,
+  PRIMARY_TYPE_ADJECTIVE
+} from '../constants/wordConstants';
+
+import {
   WA_SOB,
   // WA_SOB_QUESTION,
 
   TOPIC_IDENTIFIER,
-
-  PRIMARY_TYPE_NOUN,
-  PRIMARY_TYPE_VERB,
-  PRIMARY_TYPE_ADJECTIVE
-} from '../constants/constants';
+} from '../constants/optionsConstants';
 
 // JAPANESE
 

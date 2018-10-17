@@ -3,7 +3,7 @@ import {
   CATEGORY_FOOD,
 
   __TYPENAME_WORDS,
-} from '../constants/constants';
+} from '../constants/wordConstants';
 
 export const wordDelicious = {
   japanese: 'おいしい',

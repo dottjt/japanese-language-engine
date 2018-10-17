@@ -6,7 +6,7 @@ import {
   L00_CONTENTS,
   L01_LESSON_TITLE,
   L02_LESSON_TITLE,
-} from './util/constants/constants';
+} from './util/constants/generalConstants';
 
 const routes = [
   { name: L00_CONTENTS, path: '/' },

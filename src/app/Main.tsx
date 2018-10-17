@@ -13,11 +13,12 @@ import {
   L00_CONTENTS,
   L01_LESSON_TITLE,
   L02_LESSON_TITLE,
+} from '../util/constants/generalConstants';
 
-  // variation
+import {
   WA_SOB,
   WA_SOB_QUESTION,
-} from '../util/constants/constants';
+} from '../util/constants/optionsConstants';
 
 import { 
   L01_LESSON_RESOURCES,

@@ -12,7 +12,7 @@ import router from './router';
 
 import registerServiceWorker from './registerServiceWorker';
 
-import App from './react/App';
+import App from './app/App';
 
 router.start()
 

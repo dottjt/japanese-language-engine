@@ -3,6 +3,13 @@ import {
 } from '../functions';
 
 import {
+  VERB_TYPE_RU,
+  VERB_TYPE_U,
+
+  // CATEGORY_HUMAN_NAME,
+} from '../constants/wordConstants';
+
+import {
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
 
@@ -11,19 +18,13 @@ import {
 
   // PREDICATE_IDENTIFIER,
   // TOPIC_IDENTIFIER,
-
-  VERB_TYPE_RU,
-  VERB_TYPE_U,
-
-  // CATEGORY_HUMAN_NAME,
-} from '../constants/constants';
+} from '../constants/optionsConstants';
 
 import {
   uVerbEndingU,
   uVerbEndingA,
   uVerbEndingI,
 } from '../constants/katakana';
-
 
 // used for negative u verbs
 const uVerbEndingToI = (verbEnding: string): string => {

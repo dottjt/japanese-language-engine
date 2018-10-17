@@ -1,7 +1,6 @@
 import { 
   // capitalise, 
   // randomArrayElement, 
-  // appendSan,
   createError,
 } from "../functions";
 
@@ -10,13 +9,15 @@ import {
   nounConjugationEnglish,
 } from './noun';
 
-import {
-    PREDICATE_IDENTIFIER,
-  
+import {  
   PRIMARY_TYPE_NOUN,
   PRIMARY_TYPE_VERB,
   PRIMARY_TYPE_ADJECTIVE,
-} from '../constants/constants';
+} from '../constants/wordConstants';
+
+import {  
+  PREDICATE_IDENTIFIER,
+} from '../constants/optionsConstants';
 
 const determinePredicateConjugationJapanese = (predicate: Util.Word, options: Util.Options): string => {
   switch(predicate.primaryType) {

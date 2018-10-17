@@ -17,8 +17,9 @@ import {
 
 import {
   NULL,
-  
-  // type
+} from "../constants/generalConstants";
+
+import {
   TOPIC_PREDICATE,
 
   politenessArray,
@@ -26,7 +27,8 @@ import {
   tenseArray,
 
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
-} from "../constants/constants";
+} from "../constants/optionsConstants";
+
 
 // LANG_JAPANESE SENTENCE CONFIG FUNCTIONS
 

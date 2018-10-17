@@ -4,8 +4,15 @@ import {
 } from '../functions';
 
 import {
+  CATEGORY_HUMAN_NAME,
+} from '../constants/wordConstants';
+
+import {
   WA_SOB,
   WA_SOB_QUESTION,
+
+  PREDICATE_IDENTIFIER,
+  TOPIC_IDENTIFIER,
 
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
@@ -15,12 +22,7 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
-
-  PREDICATE_IDENTIFIER,
-  TOPIC_IDENTIFIER,
-
-  CATEGORY_HUMAN_NAME,
-} from '../constants/constants';
+} from '../constants/optionsConstants';
 
 const determineNounCategoryEnding = (word: Util.Word): string => {
   const endingsArray = word.category.map(categoryString => {
@@ -36,7 +38,7 @@ const determineNounCategoryEnding = (word: Util.Word): string => {
     return endingsArray[0];
   }
   return '';
-}
+};
 
 const determineTopicParticleJapanese = (options: Util.Options, identifier: string): string => {
   if (identifier === TOPIC_IDENTIFIER) {
@@ -82,7 +84,7 @@ const determineNounEndingJapanese = (options: Util.Options, identifier: string):
           `options.polarity unknown`,
         );
     }
-  } 
+  }
   return '';
 };
 
