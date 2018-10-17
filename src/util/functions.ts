@@ -49,3 +49,5 @@ export const convertPolarityIntoValue = (polarity: string): string => {
       return createError('util/functions', 'convertPolarityIntoValue', `${polarity} value does not exist.`);
   }
 };
+
+export const removeGapIfValueEmpty = (value: string): string => value !== '' ? ` ${value}` : '';

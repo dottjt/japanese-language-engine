@@ -1,5 +1,6 @@
 import {
-  createError
+  createError,
+  removeGapIfValueEmpty,
 } from '../functions';
 
 import {
@@ -191,5 +192,5 @@ export const nounConjugationEnglish = (noun: Util.Word, options: Util.Options, s
 
   // NOTE: Create a function which removes the space if the variable doesn't exist. 
 
-  return `${nounBeginning} ${noun.english} ${nounEnding}${sentenceIdentifierEnding}`.trim();
+  return `${nounBeginning} ${noun.english}${removeGapIfValueEmpty(nounEnding)}${sentenceIdentifierEnding}`.trim();
 };

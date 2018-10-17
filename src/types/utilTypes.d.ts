@@ -15,7 +15,7 @@ declare namespace Util {
     primaryType: string;
     category: string[];
     meta: {
-      verbType: string;
+      verbType?: string 
     };
   };
 

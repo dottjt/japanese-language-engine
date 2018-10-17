@@ -23,6 +23,7 @@ import {
 
   politenessArray,
   polarityArray,
+  tenseArray,
 
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
 } from "../constants/constants";
@@ -38,10 +39,7 @@ const statementJapanese = (topicNoun: Util.Word, predicate: Util.Word, options: 
   return `${topicPhrase}${predicatePrhase}`;
 };
 
-export const topicPredicateJapanese = (
-  words: Util.TopicPredicate,
-  options: Util.Options
-): Util.Sentence => ({
+export const topicPredicateJapanese = (words: Util.TopicPredicate, options: Util.Options): Util.Sentence => ({
   type: TOPIC_PREDICATE,
   question: NULL,
   answer: NULL,
@@ -50,11 +48,7 @@ export const topicPredicateJapanese = (
 
 // LANG_ENGLISH SENTENCE CONFIG FUNCTIONS
 
-const statementEnglish = (
-  topicNoun: Util.Word,
-  predicate: Util.Word,
-  options: Util.Options
-): string => {
+const statementEnglish = (topicNoun: Util.Word, predicate: Util.Word, options: Util.Options): string => {
   // Kobayashi is a human.
   // Kobayashi is not a human.
   const topicPhrase = topicConjugationEnglish(topicNoun, options);
@@ -63,10 +57,7 @@ const statementEnglish = (
   return `${topicPhrase} ${predicatePhrase}`;
 };
 
-export const topicPredicateEnglish = (
-  words: Util.TopicPredicate,
-  options: Util.Options
-): Util.Sentence => ({
+export const topicPredicateEnglish = (words: Util.TopicPredicate, options: Util.Options): Util.Sentence => ({
   type: TOPIC_PREDICATE,
   question: NULL,
   answer: NULL,
@@ -94,6 +85,7 @@ const generateRandomTopicPredicateOptions = (variation: string): Util.Options =>
   variation,
   politeness: politenessArray[randomArrayElement(politenessArray)],
   polarity: polarityArray[randomArrayElement(polarityArray)],
+  tense: tenseArray[randomArrayElement(tenseArray)],
   __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 });
 

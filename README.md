@@ -9,6 +9,10 @@ Auth0
 
 Highlight the areas which are polite, negative in a sentence when hovering over the hints. 
 
+meta: {
+  verbType?: string 
+};
+
 
 - prettify to project. 
 - router 5
