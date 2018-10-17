@@ -1,6 +1,6 @@
 import {
   // createError
-} from '../functions';
+} from '../../functions';
 
 import {
   // POLITENESS_CASUAL,
@@ -13,7 +13,7 @@ import {
   // TOPIC_IDENTIFIER,
 
   // CATEGORY_HUMAN_NAME,
-} from '../constants/wordConstants';
+} from '../../constants/wordConstants';
 
 
 const determineAdjectiveCategoryEnding = (word: Util.Word): string => {

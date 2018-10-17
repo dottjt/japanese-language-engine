@@ -1,11 +1,11 @@
 import {
   createError,
   removeGapIfValueEmpty,
-} from '../functions';
+} from '../../functions';
 
 import {
   CATEGORY_HUMAN_NAME,
-} from '../constants/wordConstants';
+} from '../../constants/wordConstants';
 
 import {
   WA_SOB,
@@ -22,7 +22,7 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
-} from '../constants/optionsConstants';
+} from '../../constants/optionsConstants';
 
 const determineNounCategoryEnding = (word: Util.Word): string => {
   const endingsArray = word.category.map(categoryString => {

@@ -1,13 +1,13 @@
 import {
   createError
-} from '../functions';
+} from '../../functions';
 
 import {
   VERB_TYPE_RU,
   VERB_TYPE_U,
 
   // CATEGORY_HUMAN_NAME,
-} from '../constants/wordConstants';
+} from '../../constants/wordConstants';
 
 import {
   POLITENESS_CASUAL,
@@ -18,13 +18,13 @@ import {
 
   // PREDICATE_IDENTIFIER,
   // TOPIC_IDENTIFIER,
-} from '../constants/optionsConstants';
+} from '../../constants/optionsConstants';
 
 import {
   uVerbEndingU,
   uVerbEndingA,
   uVerbEndingI,
-} from '../constants/katakana';
+} from '../../constants/katakana';
 
 // used for negative u verbs
 const uVerbEndingToI = (verbEnding: string): string => {
