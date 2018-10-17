@@ -2,14 +2,13 @@ import * as React from 'react'
 import { Card, Flex, Text } from 'rebass';
 
 import {
-  QUESTION_BASIC,
-  STATEMENT_BASIC,
+  TOPIC_PREDICATE,
 } from '../../util/constants';
 
 class Sentence extends React.Component<PropTypes.ISentenceProps, {}> {
   public render() {
     switch(this.props.sentence.type) {
-      case(STATEMENT_BASIC):
+      case(TOPIC_PREDICATE):
         return (
           <Card>
             <BasicStatementTemplate
@@ -18,7 +17,7 @@ class Sentence extends React.Component<PropTypes.ISentenceProps, {}> {
           </Card>
         );
 
-      case(QUESTION_BASIC):
+      case(TOPIC_PREDICATE):
         return (
           <Card>
             <BasicQuestionTemplate

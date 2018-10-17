@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { RouteProvider, Route } from 'react-router5';
 import { ApolloProvider } from 'react-apollo';
 import { ThemeProvider } from 'styled-components';
+// import { ThemeProvider } from 'emotion-theming';
 
 import client from './graphql/client';
 import theme from './theme';
@@ -11,7 +12,7 @@ import router from './router';
 
 import registerServiceWorker from './registerServiceWorker';
 
-import App from './page/App';
+import App from './react/App';
 
 router.start()
 

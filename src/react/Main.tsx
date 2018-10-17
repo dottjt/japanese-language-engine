@@ -13,6 +13,10 @@ import {
   L00_CONTENTS,
   L01_LESSON_TITLE,
   L02_LESSON_TITLE,
+
+  // variation
+  WA_SOB,
+  WA_SOB_QUESTION,
 } from '../util/constants';
 
 import { 
@@ -25,9 +29,7 @@ import {
   L02_LESSON_EXPLANATION,
 } from '../util/explanations';
 
-
-import { generateBasicStatementExercises } from '../util/sentenceTypes/basicStatement';
-import { generateBasicQuestionExercises } from '../util/sentenceTypes/basicQuestion';
+import { generateTopicPredicateExercises } from '../util/sentences/topicPredicate';
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
   public render() {
@@ -48,7 +50,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   <LessonTemplate
                     explanation={L01_LESSON_EXPLANATION}
                     resources={L01_LESSON_RESOURCES}
-                    exercises={generateBasicStatementExercises(data.nouns)}
+                    exercises={generateTopicPredicateExercises(data.nouns, WA_SOB)}
                   />
                 </Flex>
               );
@@ -59,7 +61,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   <LessonTemplate
                     explanation={L02_LESSON_EXPLANATION}
                     resources={L02_LESSON_RESOURCES}
-                    exercises={generateBasicQuestionExercises(data.nouns)}
+                    exercises={generateTopicPredicateExercises(data.nouns, WA_SOB_QUESTION)}
                   />
                 </Flex>
               );

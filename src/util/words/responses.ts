@@ -12,7 +12,7 @@ export const wordYes = {
   category: [ CATEGORY_RESPONSE ],
   typeMeta: {},
   __typename: __TYPENAME_WORDS,
-}
+};
 
 export const responseArray = [
   wordYes,

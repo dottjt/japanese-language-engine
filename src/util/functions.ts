@@ -1,15 +1,5 @@
-import {
-  HUMAN_NAME,
-  RESPONSE,
-} from './constants';
-
-import {
-  wordPerson,
-} from './words/humanNames';
-
 export const capitalise = (value: string): string => value.charAt(0).toUpperCase() + value.slice(1);
 export const randomArrayElement = (array: string[] | Util.Word[]): number => Math.floor(Math.random() * array.length);
-export const appendSan = (value: string): string => `${value}さん`;
 
 interface IValues {
   value: string,
@@ -30,20 +20,6 @@ export const convertValuesIntoButtonArray = (values: string[]): IValues[] =>
     }
   });
 
-const singleRandomWordFilter = (nouns: Util.Word[], nounComparisonCategory: string): Util.Word => {
-  const filteredNouns = nouns.filter((noun: Util.Word) => 
-    noun.category.filter((nounCategory: string): boolean => (
-      nounCategory === nounComparisonCategory
-    )).length > 0
-  );
-  return filteredNouns[randomArrayElement(filteredNouns)];
+export const createError = (fileLocation: string, functionName: string, errorMessage: string): string => {
+  return `Error. file: ${fileLocation}, function: ${functionName}, ${errorMessage}`;
 };
-
-export const getOneRandomHumanNameCategoryNoun = (nouns: Util.Word[]): Util.Word => singleRandomWordFilter(nouns, HUMAN_NAME);
-export const getOneRandomResponseCategoryNoun = (nouns: Util.Word[]): Util.Word => singleRandomWordFilter(nouns, RESPONSE);
-
-export const getOneWordPerson = (nouns: Util.Word[]): Util.Word => {
-  const result = nouns.find((word) => word.english === 'person');
-  return result ? result : wordPerson;
-};
-

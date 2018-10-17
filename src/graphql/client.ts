@@ -2,15 +2,12 @@ import ApolloClient from "apollo-boost";
 
 import {
   __TYPENAME_OPTIONS,
+  POLITENESS_CASUAL,
+  POLARITY_POSITIVE,
+  TOPIC_PREDICATE
+} from "../util/constants";
 
-  POLITENESS_TYPE_CASUAL,
-
-  VARIATION_POSITIVE,
-
-  QUESTION_BASIC,
-} from '../util/constants';
-
-import allWords from '../util/words';
+import allWords from "../util/words";
 
 const client = new ApolloClient({
   clientState: {
@@ -18,24 +15,30 @@ const client = new ApolloClient({
       nouns: allWords,
       options: {
         __typename: __TYPENAME_OPTIONS,
-        sentencePoliteness: POLITENESS_TYPE_CASUAL,
-        sentenceType: QUESTION_BASIC,
-        sentenceVariation: VARIATION_POSITIVE,
-      },
+        politeness: POLITENESS_CASUAL,
+        sentenceType: TOPIC_PREDICATE,
+        variation: POLARITY_POSITIVE
+      }
     },
     resolvers: {
       Mutation: {
-        updateOptionsTone: async (_: any, { value }: any, { cache, getCacheKey }: any) => {
-          await cache.writeData({ data: { options: { sentencePoliteness: value } } });
+        updateOptionsTone: async (
+          _: any,
+          { value }: any,
+          { cache, getCacheKey }: any
+        ) => {
+          await cache.writeData({
+            data: { options: { politeness: value } }
+          });
           return null;
-        },
+        }
       }
     },
     typeDefs: `
       type Options {
-        sentencePoliteness: String
+        politeness: String
         sentenceType: String
-        sentenceVariation: String
+        variation: String
       }
 
       type TypeMeta {
@@ -58,9 +61,9 @@ const client = new ApolloClient({
         options: Options
         nouns: [Word]
       }
-    `,
+    `
   },
-  uri: `https://nx9zvp49q7.lp.gql.zone/graphql`,
+  uri: `https://nx9zvp49q7.lp.gql.zone/graphql`
 });
 
 export default client;

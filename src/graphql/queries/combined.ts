@@ -1,16 +1,18 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
-export const GET_ALL_WORDS_AND_OPTIONS = gql`{
-  options {
-    sentenceType @client
-    sentencePoliteness @client
-    sentenceVariation @client
-  }
+export const GET_ALL_WORDS_AND_OPTIONS = gql`
+  {
+    options {
+      sentenceType @client
+      politeness @client
+      variation @client
+    }
 
-  nouns @client {
-    japanese
-    english
-    primaryType
-    category
+    nouns @client {
+      japanese
+      english
+      primaryType
+      category
+    }
   }
-}`
+`;

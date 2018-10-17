@@ -5,6 +5,8 @@ To make money and most importantly, to make something that I'm proud of.
 
 As a result, the code base is abolutely MINT. 
 
+Auth0
+
 - prettify to project. 
 - router 5
 
@@ -15,6 +17,8 @@ As a result, the code base is abolutely MINT.
 - jss
 - typeorm
 - feathersjs. 
+
+ts jest
 
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
