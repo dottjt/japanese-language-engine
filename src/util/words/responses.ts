@@ -3,7 +3,7 @@ import {
   CATEGORY_RESPONSE,
 
   __TYPENAME_WORDS,
-} from '../constants';
+} from '../constants/constants';
 
 export const wordYes = {
   japanese: 'はい',

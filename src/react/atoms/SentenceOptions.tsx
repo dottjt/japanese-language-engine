@@ -6,7 +6,7 @@ import { GET_ALL_SENTENCE_DISPLAY_OPTIONS_QUERY } from '../../graphql/queries';
 
 import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
-} from '../../util/constants';
+} from '../../util/constants/constants';
 
 import styled from 'styled-components';
 

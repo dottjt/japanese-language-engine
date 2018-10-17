@@ -6,7 +6,7 @@ import {
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
-} from './constants';
+} from './constants/constants';
 
 export const capitalise = (value: string): string => value.charAt(0).toUpperCase() + value.slice(1);
 export const randomArrayElement = (array: string[] | Util.Word[]): number => Math.floor(Math.random() * array.length);

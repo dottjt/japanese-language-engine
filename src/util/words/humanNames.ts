@@ -3,7 +3,7 @@ import {
   CATEGORY_HUMAN_NAME,
 
   __TYPENAME_WORDS,
-} from '../constants';
+} from '../constants/constants';
 
 export const wordSasaki = {
   japanese: '佐々木',

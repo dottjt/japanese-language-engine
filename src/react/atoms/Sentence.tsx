@@ -3,7 +3,7 @@ import { Card, Flex, Text } from 'rebass';
 
 import {
   TOPIC_PREDICATE,
-} from '../../util/constants';
+} from '../../util/constants/constants';
 
 class Sentence extends React.Component<PropTypes.ISentenceProps, {}> {
   public render() {

@@ -25,7 +25,7 @@ import {
   polarityArray,
 
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
-} from "../constants";
+} from "../constants/constants";
 
 // LANG_JAPANESE SENTENCE CONFIG FUNCTIONS
 

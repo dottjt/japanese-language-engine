@@ -116,6 +116,7 @@ export const verbTypeArray = [
   VERB_TYPE_U,
 ];
 
+
 // resources
 
 export const RESOURCE_TAE_KIM = 'Tae Kim\'s Guide to Learning Japanese';

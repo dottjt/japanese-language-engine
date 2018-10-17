@@ -17,7 +17,7 @@ import {
   // variation
   WA_SOB,
   WA_SOB_QUESTION,
-} from '../util/constants';
+} from '../util/constants/constants';
 
 import { 
   L01_LESSON_RESOURCES,

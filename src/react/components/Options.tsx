@@ -7,7 +7,7 @@ import {
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
-} from "../../util/constants";
+} from "../../util/constants/constants";
 
 import Buttons from "../atoms/Buttons";
 

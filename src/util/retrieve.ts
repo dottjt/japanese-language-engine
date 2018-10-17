@@ -1,7 +1,7 @@
 import {
   CATEGORY_HUMAN_NAME,
   CATEGORY_RESPONSE,
-} from './constants';
+} from './constants/constants';
 
 import {
   wordPerson,

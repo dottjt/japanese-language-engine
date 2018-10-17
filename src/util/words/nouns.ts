@@ -5,7 +5,7 @@ import {
   CATEGORY_ANIMAL,
 
   __TYPENAME_WORDS,
-} from '../constants';
+} from '../constants/constants';
 
 // HUMAN
 

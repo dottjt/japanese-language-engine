@@ -16,7 +16,7 @@ import {
   PRIMARY_TYPE_NOUN,
   PRIMARY_TYPE_VERB,
   PRIMARY_TYPE_ADJECTIVE,
-} from '../constants';
+} from '../constants/constants';
 
 const determinePredicateConjugationJapanese = (predicate: Util.Word, options: Util.Options): string => {
   switch(predicate.primaryType) {

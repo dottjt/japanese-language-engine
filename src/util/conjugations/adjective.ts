@@ -13,7 +13,7 @@ import {
   // TOPIC_IDENTIFIER,
 
   // CATEGORY_HUMAN_NAME,
-} from '../constants';
+} from '../constants/constants';
 
 
 const determineAdjectiveCategoryEnding = (word: Util.Word): string => {

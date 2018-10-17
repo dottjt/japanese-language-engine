@@ -16,7 +16,7 @@ import {
   TOPIC_IDENTIFIER,
 
   CATEGORY_HUMAN_NAME,
-} from '../constants';
+} from '../constants/constants';
 
 const determineNounCategoryEnding = (word: Util.Word): string => {
   const endingsArray = word.category.map(categoryString => {

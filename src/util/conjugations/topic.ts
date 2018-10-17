@@ -17,7 +17,7 @@ import {
   PRIMARY_TYPE_NOUN,
   PRIMARY_TYPE_VERB,
   PRIMARY_TYPE_ADJECTIVE
-} from '../constants';
+} from '../constants/constants';
 
 // JAPANESE
 

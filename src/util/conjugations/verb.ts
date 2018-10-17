@@ -12,11 +12,21 @@ import {
   // PREDICATE_IDENTIFIER,
   // TOPIC_IDENTIFIER,
 
+  KATAKANA_U,
+  KATAKANA_SU,
+  KATAKANA_KU,
+  KATAKANA_GU,
+  KATAKANA_BU,
+  KATAKANA_TSU,
+  KATAKANA_MU,
+  KATAKANA_RU,
+  KATAKANA_NU,
+
   VERB_TYPE_RU,
   VERB_TYPE_U,
 
   // CATEGORY_HUMAN_NAME,
-} from '../constants';
+} from '../constants/constants';
 
 
 const determineVerbCategoryEnding = (word: Util.Word): string => {
@@ -35,17 +45,57 @@ const determineVerbCategoryEnding = (word: Util.Word): string => {
   return '';
 }
 
+
+const uVerbEndingToA= (verbEnding) => {
+  switch(`${verbEnding}`) {
+    case KATAKANA_U:
+      return 
+    case KATAKANA_SU:
+      return 
+    case KATAKANA_KU:
+      return 
+    case KATAKANA_GU:
+      return 
+    case KATAKANA_BU:
+      return 
+    case KATAKANA_TSU:
+      return 
+    case KATAKANA_MU:
+      return 
+    case KATAKANA_RU:
+      return 
+    case KATAKANA_NU:
+      return 
+}
+
 const getVerbStem = (verb: Util.Word, options: Util.Options): string => {
   if (verb.meta.verbType === VERB_TYPE_RU) {
-    return verb.slice(0, -1);
+    return verb.japanese.slice(0, -1);
   }
-  if 
+  if (verb.meta.verbType === VERB_TYPE_U) {
+    const verbLastLetter = verb.japanese.slice(-1);
+
+    if ()
+    switch(`${options.politeness}${options.polarity}`) {
+      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
+        return `${verb}`;
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${verbLastLetter}`:
+        return `${}`;
+      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
+        return 'です';
+      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
+        return 'じゃありません';
+      default:
+        return 'error';
+  } 
 };
+
+
 
 const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): string => {
   const verbStem = getVerbStem(verb, options);
   if (verb.meta.verbType === VERB_TYPE_RU) {
-    switch(`${options.polarity}${options.politeness}`) {
+    switch(`${options.politeness}${options.polarity}`) {
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
         return `${verb}`;
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:

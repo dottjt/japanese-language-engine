@@ -2,7 +2,7 @@ import ApolloClient from "apollo-boost";
 
 import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
-} from "../util/constants";
+} from "../util/constants/constants";
 
 import allWords from "../util/words";
 
