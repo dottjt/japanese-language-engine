@@ -128,6 +128,45 @@ export const HIRAGANA_RYA = 'りゃ';
 export const HIRAGANA_RYU = 'りゅ'; 
 export const HIRAGANA_RYO = 'りょ'; 
 
+
+export const uVerbEndingU = {
+  HIRAGANA_U,
+  HIRAGANA_SU,
+  HIRAGANA_KU,
+  HIRAGANA_GU,
+  HIRAGANA_BU,
+  HIRAGANA_TSU,
+  HIRAGANA_MU,
+  HIRAGANA_RU,
+  HIRAGANA_NU,
+};
+
+export const uVerbEndingA = {
+  HIRAGANA_A,
+  HIRAGANA_SA,
+  HIRAGANA_KA,
+  HIRAGANA_GA,
+  HIRAGANA_BA,
+  HIRAGANA_TA,
+  HIRAGANA_MA,
+  HIRAGANA_RA,
+  HIRAGANA_NA,
+};
+
+export const uVerbEndingI = {
+  HIRAGANA_I,
+  HIRAGANA_SHI,
+  HIRAGANA_KI,
+  HIRAGANA_GI,
+  HIRAGANA_BI,
+  HIRAGANA_CHI,
+  HIRAGANA_MI,
+  HIRAGANA_RI,
+  HIRAGANA_NI,
+};
+
+
+
 export const hiraganaArray = [
   HIRAGANA_A,
   HIRAGANA_I,
@@ -233,16 +272,4 @@ export const hiraganaArray = [
   HIRAGANA_RYA,
   HIRAGANA_RYU,
   HIRAGANA_RYO,
-];
-
-export const uVerbEndingsArray = [
-  HIRAGANA_U,
-  HIRAGANA_SU,
-  HIRAGANA_KU,
-  HIRAGANA_GU,
-  HIRAGANA_BU,
-  HIRAGANA_TSU,
-  HIRAGANA_MU,
-  HIRAGANA_RU,
-  HIRAGANA_NU,
 ];

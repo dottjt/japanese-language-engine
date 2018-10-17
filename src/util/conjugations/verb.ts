@@ -12,144 +12,119 @@ import {
   // PREDICATE_IDENTIFIER,
   // TOPIC_IDENTIFIER,
 
-  KATAKANA_U,
-  KATAKANA_SU,
-  KATAKANA_KU,
-  KATAKANA_GU,
-  KATAKANA_BU,
-  KATAKANA_TSU,
-  KATAKANA_MU,
-  KATAKANA_RU,
-  KATAKANA_NU,
-
   VERB_TYPE_RU,
   VERB_TYPE_U,
 
   // CATEGORY_HUMAN_NAME,
 } from '../constants/constants';
 
+import {
+  uVerbEndingU,
+  uVerbEndingA,
+  uVerbEndingI,
+} from '../constants/katakana';
 
-const determineVerbCategoryEnding = (word: Util.Word): string => {
-  // const endingsArray = word.category.map(categoryString => {
-  //   switch(categoryString) {
-  //     case `${CATEGORY_HUMAN_NAME}`:
-  //       return 'さん';
-  //     default:
-  //       return '';
-  //   } 
-  // }).filter(categoryString => categoryString !== '');
 
-  // if (endingsArray.length > 0) {
-  //   return endingsArray[0];
-  // }
-  return '';
+// used for negative u verbs
+const uVerbEndingToI = (verbEnding: string): string => {
+  switch(verbEnding) {
+    case uVerbEndingU.HIRAGANA_U:
+      return uVerbEndingI.HIRAGANA_I; 
+    case uVerbEndingU.HIRAGANA_SU:
+      return uVerbEndingI.HIRAGANA_SHI; 
+    case uVerbEndingU.HIRAGANA_KU:
+      return uVerbEndingI.HIRAGANA_KI; 
+    case uVerbEndingU.HIRAGANA_GU:
+      return uVerbEndingI.HIRAGANA_GI; 
+    case uVerbEndingU.HIRAGANA_BU:
+      return uVerbEndingI.HIRAGANA_BI; 
+    case uVerbEndingU.HIRAGANA_TSU:
+      return uVerbEndingI.HIRAGANA_CHI; 
+    case uVerbEndingU.HIRAGANA_MU:
+      return uVerbEndingI.HIRAGANA_MI; 
+    case uVerbEndingU.HIRAGANA_RU:
+      return uVerbEndingI.HIRAGANA_RI; 
+    case uVerbEndingU.HIRAGANA_NU:
+      return uVerbEndingI.HIRAGANA_NI; 
+    default:
+      return createError('conjugations/verb', 'uVerbEndingToI', `${verbEnding} does not exist.`);
+  }
 }
 
-
-const uVerbEndingToA= (verbEnding) => {
-  switch(`${verbEnding}`) {
-    case KATAKANA_U:
-      return 
-    case KATAKANA_SU:
-      return 
-    case KATAKANA_KU:
-      return 
-    case KATAKANA_GU:
-      return 
-    case KATAKANA_BU:
-      return 
-    case KATAKANA_TSU:
-      return 
-    case KATAKANA_MU:
-      return 
-    case KATAKANA_RU:
-      return 
-    case KATAKANA_NU:
-      return 
+// used for negative u verbs
+const uVerbEndingToA = (verbEnding: string): string => {
+  switch(verbEnding) {
+    case uVerbEndingU.HIRAGANA_U:
+      return uVerbEndingA.HIRAGANA_A; 
+    case uVerbEndingU.HIRAGANA_SU:
+      return uVerbEndingA.HIRAGANA_SA; 
+    case uVerbEndingU.HIRAGANA_KU:
+      return uVerbEndingA.HIRAGANA_KA; 
+    case uVerbEndingU.HIRAGANA_GU:
+      return uVerbEndingA.HIRAGANA_GA; 
+    case uVerbEndingU.HIRAGANA_BU:
+      return uVerbEndingA.HIRAGANA_BA; 
+    case uVerbEndingU.HIRAGANA_TSU:
+      return uVerbEndingA.HIRAGANA_TA; 
+    case uVerbEndingU.HIRAGANA_MU:
+      return uVerbEndingA.HIRAGANA_MA; 
+    case uVerbEndingU.HIRAGANA_RU:
+      return uVerbEndingA.HIRAGANA_RA; 
+    case uVerbEndingU.HIRAGANA_NU:
+      return uVerbEndingA.HIRAGANA_NA; 
+    default:
+      return createError('conjugations/verb', 'uVerbEndingToA', `${verbEnding} does not exist.`);
+  }
 }
 
 const getVerbStem = (verb: Util.Word, options: Util.Options): string => {
+  const everythingExceptLastLetter = verb.japanese.slice(0, -1);
+  
   if (verb.meta.verbType === VERB_TYPE_RU) {
-    return verb.japanese.slice(0, -1);
-  }
+    return everythingExceptLastLetter;
+  };
+
   if (verb.meta.verbType === VERB_TYPE_U) {
     const verbLastLetter = verb.japanese.slice(-1);
-
-    if ()
     switch(`${options.politeness}${options.polarity}`) {
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
         return `${verb}`;
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${verbLastLetter}`:
-        return `${}`;
+      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
+        return `${everythingExceptLastLetter}${uVerbEndingToA(verbLastLetter)}`;
       case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
-        return 'です';
+        return `${everythingExceptLastLetter}${uVerbEndingToI(verbLastLetter)}`;
       case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
-        return 'じゃありません';
+      return `${everythingExceptLastLetter}${uVerbEndingToI(verbLastLetter)}`;
       default:
-        return 'error';
-  } 
+        return createError('conjugations/verb', 'getVerbStem', `${options.politeness}${options.polarity} does not exist.`);
+    }
+  };
+
+  return createError('conjugations/verb', 'getVerbStem', `You broke getVerbStem. Why you do this!`);
 };
-
-
 
 const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): string => {
   const verbStem = getVerbStem(verb, options);
-  if (verb.meta.verbType === VERB_TYPE_RU) {
-    switch(`${options.politeness}${options.polarity}`) {
-      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
-        return `${verb}`;
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
-        return `${verbStem}`;
-      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
-        return 'です';
-      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
-        return 'じゃありません';
-      default: 
-        return createError(
-          'conjugations/verb',
-          'determineVerbConjugationJapanese',
-          `${options.polarity}${options.politeness} unknown`,
-        );
-    }
+  switch(`${options.politeness}${options.polarity}`) {
+    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
+      return `${verb.japanese}`;
+    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
+      return `${verbStem}ない`;
+    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
+      return `${verbStem}ます`;
+    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
+      return `${verbStem}ません`;
+    default: 
+      return createError(
+        'conjugations/verb',
+        'determineVerbConjugationJapanese',
+        `${options.polarity}${options.politeness} unknown`,
+      );
   }
-  if (verb.meta.verbType === VERB_TYPE_U) {
-    switch(`${options.polarity}${options.politeness}`) {
-      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`:
-        return '';
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`:
-        return 'じゃない';
-      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`:
-        return 'です';
-      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`:
-        return 'じゃありません';
-      default: 
-        return createError(
-          'conjugations/verb',
-          'nounPolarity',
-          `options.polarity unknown`,
-        );
-    }
-  }
-  return '';
 };
-
-export const determineSentenceIdentifierEndingJapanese = (identifier: string): string => {
-  // switch(identifier) {
-  //   case PREDICATE_IDENTIFIER:
-  //     return ''; // I've completely forgotten what I was trying to express here. 
-  //   case TOPIC_IDENTIFIER:
-  //     return '';
-  //   default:
-      return '';
-  // }
-};
-
 
 export const verbConjugationJapanese = (verb: Util.Word, options: Util.Options, sentenceIdentifier: string): string => {
   const conjugatedVerb = determineVerbConjugationJapanese(verb, options);
 
-  // const verbCategoryEnding = determineVerbCategoryEnding(verb)
-  // const sentenceIdentifierEnding = determineSentenceIdentifierEndingJapanese(sentenceIdentifier);
-
-  return `${conjugatedVerb}${verbCategoryEnding}${verbEnding}${sentenceIdentifierEnding}`;
+  return `${conjugatedVerb}`;
 };
