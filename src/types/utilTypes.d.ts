@@ -30,9 +30,9 @@ declare namespace Util {
 
   export type Sentence = {
     type: string;
-    question: string;
-    answer: string;
-    statement: string;
+    question?: string;
+    answer?: string;
+    statement?: string;
   };
 
   export type EnglishJapaneseSentence = {

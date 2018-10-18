@@ -6,6 +6,12 @@ import {
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
+
+  politenessArray,
+  polarityArray,
+  tenseArray,  
+
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from './constants/optionsConstants';
 
 export const capitalise = (value: string): string => value.charAt(0).toUpperCase() + value.slice(1);

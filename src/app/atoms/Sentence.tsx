@@ -1,37 +1,26 @@
 import * as React from 'react'
 import { Card, Flex, Text } from 'rebass';
 
-import {
-  TOPIC_PREDICATE,
-} from '../../util/constants/optionsConstants';
-
 class Sentence extends React.Component<PropTypes.ISentenceProps, {}> {
-  public render() {
-    switch(this.props.sentence.type) {
-      case(TOPIC_PREDICATE):
-        return (
-          <Card>
-            <BasicStatementTemplate
-              statement={this.props.sentence.statement}
-            />
-          </Card>
-        );
-
-      case(TOPIC_PREDICATE):
-        return (
-          <Card>
-            <BasicQuestionTemplate
-              question={this.props.sentence.question}
-              answer={this.props.sentence.answer}
-            />
-          </Card>
-        );
-        
-      default: 
-        return (
-          <Card>No type selected.</Card>
-        );
-    }
+  public render() { 
+    if (this.props.options.variation.includes("QUESTION")) {
+      return (
+        <Card>
+          <BasicQuestionTemplate
+            question={this.props.sentence.question}
+            answer={this.props.sentence.answer}
+          />
+        </Card>
+      );
+    };
+    
+    return (
+      <Card>
+        <BasicStatementTemplate
+          statement={this.props.sentence.statement}
+        />
+      </Card>
+    );
   };
 };
 

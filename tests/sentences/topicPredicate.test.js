@@ -10,7 +10,7 @@
 
 // statementJapanese = app.__get__('statementJapanese'); 
 // statementEnglish = app.__get__('statementEnglish'); 
-// generateRandomTopicPredicateWordData = app.__get__('generateRandomTopicPredicateWordData'); 
+// generateTopicPredicateSentence = app.__get__('generateTopicPredicateSentence'); 
 // generateRandomTopicPredicateOptions = app.__get__('generateRandomTopicPredicateOptions'); 
 
 // describe('util/sentences/topicPredicate.ts', () => {
@@ -53,7 +53,7 @@
 //     });
 //   }
 
-//   describe('generateRandomTopicPredicateWordData', () => {
+//   describe('generateTopicPredicateSentence', () => {
 //     test('', () => {
         
 //     });

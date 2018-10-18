@@ -9,10 +9,13 @@ Auth0
 
 Highlight the areas which are polite, negative in a sentence when hovering over the hints. 
 
+Auto import node modules.
+
 meta: {
   verbType?: string 
 };
 
+- vscode helpers for things like styled components etc.
 
 - prettify to project. 
 - router 5

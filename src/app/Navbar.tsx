@@ -31,13 +31,15 @@ class Navbar extends React.Component<{}, {}> {
         <Heading>Grammar Boss</Heading>
         <Heading>Lesson navigation</Heading>
 
-        <Flex flexDirection='column'>
+        <Flex flexDirection='column' mt={2}>
+          <Heading>Contents</Heading>
           <Link routeName={L000_HOME} routeOptions={{reload: true}}>{L000_HOME}</Link>
           <Link routeName={L000_CONTENTS} routeOptions={{reload: true}}>{L000_CONTENTS}</Link>
           <Link routeName={L000_PREREQUISITES} routeOptions={{reload: true}}>{L000_PREREQUISITES}</Link>
         </Flex>
         
-        <Flex flexDirection='column'>
+        <Flex flexDirection='column' mt={2}>
+          <Heading>Noun Statements</Heading>
           <Link routeName={L001_LESSON_TITLE} routeOptions={{reload: true}}>{L001_LESSON_TITLE}</Link>
           <Link routeName={L002_LESSON_TITLE} routeOptions={{reload: true}}>{L002_LESSON_TITLE}</Link>
           <Link routeName={L003_LESSON_TITLE} routeOptions={{reload: true}}>{L003_LESSON_TITLE}</Link>
@@ -46,7 +48,8 @@ class Navbar extends React.Component<{}, {}> {
           <Link routeName={L006_LESSON_TITLE} routeOptions={{reload: true}}>{L006_LESSON_TITLE}</Link>
         </Flex>
 
-        <Flex flexDirection='column'>
+        <Flex flexDirection='column' mt={2}>
+          <Heading>Verb Statements</Heading>
           <Link routeName={L007_LESSON_TITLE} routeOptions={{reload: true}}>{L007_LESSON_TITLE}</Link>
           <Link routeName={L008_LESSON_TITLE} routeOptions={{reload: true}}>{L008_LESSON_TITLE}</Link>
           <Link routeName={L009_LESSON_TITLE} routeOptions={{reload: true}}>{L009_LESSON_TITLE}</Link>

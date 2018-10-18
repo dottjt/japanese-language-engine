@@ -12,9 +12,11 @@ class Sentences extends React.Component<PropTypes.ISentencesProps, {}> {
           options={this.props.options}
         />
         <Sentence
+          options={this.props.options}
           sentence={this.props.englishSentence}
         />
         <Sentence
+          options={this.props.options}
           sentence={this.props.japaneseSentence}
         />
       </Flex>

@@ -8,6 +8,8 @@ import {
 } from '../../constants/wordConstants';
 
 import {
+  WA_SOB,
+
   WA_NS,
   WA_NS_QUESTION,
   MO_NS,
@@ -54,6 +56,8 @@ const determineNounCategoryEnding = (word: Util.Word): string => {
 const determineTopicParticleJapanese = (options: Util.Options, identifier: string): string => {
   if (identifier === TOPIC_IDENTIFIER) {
     switch (options.variation) {
+      case WA_SOB:
+        return 'は';
       case WA_NS:
         return 'は';
       case WA_NS_QUESTION:
@@ -122,7 +126,11 @@ const determineNounEndingJapanese = (options: Util.Options, identifier: string):
 const determineSentenceIdentifierEndingJapanese = (options: Util.Options, identifier: string): string => {
   
   if (identifier === PREDICATE_IDENTIFIER) {
-    if (options.variation === WA_NS_QUESTION || options.variation === MO_NS_QUESTION || options.variation === GA_NS_QUESTION) {
+    if (options.variation === WA_SOB ||
+        options.variation === WA_NS_QUESTION || 
+        options.variation === MO_NS_QUESTION || 
+        options.variation === GA_NS_QUESTION) 
+    {
       return 'か？';
     } else {
       return '。';
@@ -216,7 +224,7 @@ const determineNounEndingEnglish = (options: Util.Options, identifier: string): 
         case `${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
           return 'is also not';
         case `${POLARITY_NEGATIVE}${TENSE_PAST}`:
-          return 'was also nto';
+          return 'was also not';
         default: 
           return createError(
             'conjugations/noun',

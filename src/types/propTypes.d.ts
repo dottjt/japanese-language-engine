@@ -41,6 +41,7 @@ declare module PropTypes {
   }
 
   export interface ISentenceProps {
+    options: Util.Options,
     sentence: Util.Sentence,
   }
 
@@ -49,11 +50,11 @@ declare module PropTypes {
   }
 
   export interface ISentenceBasicStatementProps {
-    statement: string,
+    statement?: string,
   }
 
   export interface ISentenceBasicQuestionProps {
-    question: string,
-    answer: string,
+    question?: string,
+    answer?: string,
   }
 }
