@@ -6,7 +6,7 @@ import {
 import { 
   nounConjugationJapanese,
   nounConjugationEnglish,
-} from './basic/noun';
+} from './basic/nounConjugation';
 
 import {
   PRIMARY_TYPE_NOUN,
@@ -15,8 +15,8 @@ import {
 } from '../constants/wordConstants';
 
 import {
-  WA_SOB,
-  // WA_SOB_QUESTION,
+  WA_NS,
+  // WA_NS_QUESTION,
 
   TOPIC_IDENTIFIER,
 } from '../constants/optionsConstants';
@@ -29,10 +29,10 @@ const determineTopicConjugationJapanese = (topic: Util.Word, options: Util.Optio
     case PRIMARY_TYPE_NOUN:
       return nounConjugationJapanese(topic, options, TOPIC_IDENTIFIER);
     case PRIMARY_TYPE_VERB:
-      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_SOB}`
+      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_NS}`
       );
     case PRIMARY_TYPE_ADJECTIVE:
-      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_SOB}`);
+      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_NS}`);
     default:
       return createError('conjugations/topic', 'topicConjugation', 'topic.primaryType unknown');
   }
@@ -51,9 +51,9 @@ const determineTopicConjugationEnglish = (topic: Util.Word, options: Util.Option
     case PRIMARY_TYPE_NOUN:
       return nounConjugationEnglish(topic, options, TOPIC_IDENTIFIER);
     case PRIMARY_TYPE_VERB:
-      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_SOB}`);
+      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_NS}`);
     case PRIMARY_TYPE_ADJECTIVE:
-      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_SOB}`);
+      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_NS}`);
     default:
       return createError('conjugations/topic', 'topicConjugation', 'topic.primaryType unknown');
   }

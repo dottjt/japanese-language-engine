@@ -10,30 +10,54 @@ export const identifierArray = [
 
 // options.sentenceType
 
+export const TOPIC = 'TOPIC';
+export const PREDICATE = 'PREDICATE';
 export const TOPIC_PREDICATE = 'TOPIC_PREDICATE';
 
 export const sentenceTypeArray = [
+  TOPIC,
+  PREDICATE,
   TOPIC_PREDICATE,
 ];
 
 // options.variation
 
-export const WA_SOB = 'WA_SOB'; // WA - STATEMENT OF BEING
-export const WA_SOB_QUESTION = 'WA_SOB_QUESTION'; // WA - STATEMENT OF BEING
+export const WA_SOB = 'WA_NSOB'; // WA - STATEMENT OF BEING
 
-export const MO_SOB = 'MO_SOB'; // MO - STATEMENT OF BEING
-export const MO_SOB_QUESTION = 'MO_SOB_QUESTION'; // MO - STATEMENT OF BEING
+export const WA_NS = 'WA_NS'; // WA - NOUN STATEMENT
+export const WA_NS_QUESTION = 'WA_NS_QUESTION'; // WA - NOUN STATEMENT
 
-export const GA_SOB = 'GA_SOB'; // GA - STATEMENT OF BEING
-export const GA_SOB_QUESTION = 'GA_SOB_QUESTION'; // GA - STATEMENT OF BEING
+export const MO_NS = 'MO_NS'; // MO - NOUN STATEMENT
+export const MO_NS_QUESTION = 'MO_NS_QUESTION'; // MO - NOUN STATEMENT
+
+export const GA_NS = 'GA_NS'; // GA - NOUN STATEMENT
+export const GA_NS_QUESTION = 'GA_NS_QUESTION'; // GA - NOUN STATEMENT
+
+
+export const WO_VS = 'WO_VS'; // WO - VERB STATEMENT
+export const WO_VS_QUESTION = 'WO_VS_QUESTION'; // GA - VERB STATEMENT
+
+export const NI_VS = 'NI_VS'; // NI - VERB STATEMENT
+export const NI_VS_QUESTION = 'NI_VS_QUESTION'; // GA - VERB STATEMENT
+
+export const DE_VS = 'GA_VS'; // GA - VERB STATEMENT
+export const DE_VS_QUESTION = 'GA_VS_QUESTION'; // GA - VERB STATEMENT
+
 
 export const variationArray = [
-  WA_SOB,
-  WA_SOB_QUESTION,
-  MO_SOB,
-  MO_SOB_QUESTION,
-  GA_SOB,
-  GA_SOB_QUESTION,
+  WA_NS,
+  WA_NS_QUESTION,
+  MO_NS,
+  MO_NS_QUESTION,
+  GA_NS,
+  GA_NS_QUESTION,
+
+  WO_VS,
+  WO_VS_QUESTION,
+  NI_VS,
+  NI_VS_QUESTION,
+  DE_VS,
+  DE_VS_QUESTION,
 ];
 
 // options.polarity

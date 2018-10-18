@@ -7,7 +7,7 @@ import {
 import {
   nounConjugationJapanese,
   nounConjugationEnglish,
-} from './basic/noun';
+} from './basic/nounConjugation';
 
 import {  
   PRIMARY_TYPE_NOUN,

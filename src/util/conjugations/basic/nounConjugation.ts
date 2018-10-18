@@ -8,13 +8,20 @@ import {
 } from '../../constants/wordConstants';
 
 import {
-  WA_SOB,
-  WA_SOB_QUESTION,
-  MO_SOB,
-  MO_SOB_QUESTION,
-  GA_SOB,
-  GA_SOB_QUESTION,
-
+  WA_NS,
+  WA_NS_QUESTION,
+  MO_NS,
+  MO_NS_QUESTION,
+  GA_NS,
+  GA_NS_QUESTION,
+  
+  WO_VS,
+  WO_VS_QUESTION,
+  NI_VS,
+  NI_VS_QUESTION,
+  DE_VS,
+  DE_VS_QUESTION,
+  
   PREDICATE_IDENTIFIER,
   TOPIC_IDENTIFIER,
 
@@ -47,18 +54,31 @@ const determineNounCategoryEnding = (word: Util.Word): string => {
 const determineTopicParticleJapanese = (options: Util.Options, identifier: string): string => {
   if (identifier === TOPIC_IDENTIFIER) {
     switch (options.variation) {
-      case WA_SOB:
+      case WA_NS:
         return 'は';
-      case WA_SOB_QUESTION:
+      case WA_NS_QUESTION:
         return 'は';
-      case MO_SOB:
+      case MO_NS:
         return 'も';
-      case MO_SOB_QUESTION:
+      case MO_NS_QUESTION:
         return 'も';
-      case GA_SOB:
+      case GA_NS:
         return 'が';
-      case GA_SOB_QUESTION:
+      case GA_NS_QUESTION:
         return 'が';
+      case WO_VS:
+        return 'を';
+      case WO_VS_QUESTION:
+        return 'を';
+      case NI_VS:
+        return 'に';
+      case NI_VS_QUESTION:
+        return 'に';
+      case DE_VS:
+        return 'で';
+      case DE_VS_QUESTION:
+        return 'で';
+
       default:
         return createError('conjugations/topic', 'determineTopicParticle', 'options.variation unknown');
     }
@@ -102,7 +122,7 @@ const determineNounEndingJapanese = (options: Util.Options, identifier: string):
 const determineSentenceIdentifierEndingJapanese = (options: Util.Options, identifier: string): string => {
   
   if (identifier === PREDICATE_IDENTIFIER) {
-    if (options.variation === WA_SOB_QUESTION || options.variation === MO_SOB_QUESTION || options.variation === GA_SOB_QUESTION) {
+    if (options.variation === WA_NS_QUESTION || options.variation === MO_NS_QUESTION || options.variation === GA_NS_QUESTION) {
       return 'か？';
     } else {
       return '。';
@@ -134,7 +154,7 @@ export const nounConjugationJapanese = (noun: Util.Word, options: Util.Options, 
 const determineSentenceIdentifierEndingEnglish = (options: Util.Options, identifier: string): string => {
 
   if (identifier === PREDICATE_IDENTIFIER) {
-    if (options.variation === WA_SOB_QUESTION || options.variation === MO_SOB_QUESTION || options.variation === GA_SOB_QUESTION) {
+    if (options.variation === WA_NS_QUESTION || options.variation === MO_NS_QUESTION || options.variation === GA_NS_QUESTION) {
       return '?';
     } else {
       return '.';
@@ -168,7 +188,7 @@ const determineNounBeginingEnglish = (word: Util.Word, identifier: string): stri
 
 const determineNounEndingEnglish = (options: Util.Options, identifier: string): string => {
   if (identifier === TOPIC_IDENTIFIER) {
-    if (options.variation === WA_SOB || options.variation === WA_SOB_QUESTION) {
+    if (options.variation === WA_NS || options.variation === WA_NS_QUESTION) {
       switch(`${options.polarity}${options.tense}`) {
         case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:
           return 'is';
@@ -181,13 +201,13 @@ const determineNounEndingEnglish = (options: Util.Options, identifier: string): 
         default: 
           return createError(
             'conjugations/noun',
-            'determineNounEndingEnglish - WA_SOB',
+            'determineNounEndingEnglish - WA_NS',
             `${options.polarity}${options.tense} unknown`,
           );
       };
     }
 
-    if (options.variation === MO_SOB || options.variation === MO_SOB_QUESTION) {
+    if (options.variation === MO_NS || options.variation === MO_NS_QUESTION) {
       switch(`${options.polarity}${options.tense}`) {
         case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:
           return 'is also';
@@ -200,13 +220,13 @@ const determineNounEndingEnglish = (options: Util.Options, identifier: string): 
         default: 
           return createError(
             'conjugations/noun',
-            'determineNounEndingEnglish - MO_SOB',
+            'determineNounEndingEnglish - MO_NS',
             `${options.polarity}${options.tense} unknown`,
           );
       };
     }
     
-    if (options.variation === GA_SOB || options.variation === GA_SOB_QUESTION) {
+    if (options.variation === GA_NS || options.variation === GA_NS_QUESTION) {
       switch(`${options.polarity}${options.tense}`) {
         case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:
           return 'is the one that is';
@@ -219,7 +239,7 @@ const determineNounEndingEnglish = (options: Util.Options, identifier: string): 
         default: 
           return createError(
             'conjugations/noun',
-            'determineNounEndingEnglish - GA_SOB',
+            'determineNounEndingEnglish - GA_NS',
             `${options.polarity}${options.tense} unknown`,
           );
       };

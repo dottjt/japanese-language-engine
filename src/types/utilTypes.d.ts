@@ -71,51 +71,59 @@ declare namespace Util {
 
   // SENTENCE TYPE - BASIC STATEMENT
   export type BasicStatement = {
-    topicNoun: Word;
+    topic: Word;
     predicateNoun: Word;
   };
 
   export type BasicStatementString = {
-    topicNoun: string;
+    topic: string;
     predicateNoun: string;
   };
 
   export type BasicStatementStringsWithOptions = {
-    topicNoun: string;
+    topic: string;
     predicateNoun: string;
     options: Options;
   };
 
   // SENTENCE TYPE - BASIC STATEMENT
   export type BasicVerb = {
-    topicNoun: Word;
+    topic: Word;
     predicateVerb: Word;
   };
 
   export type BasicVerbString = {
-    topicNoun: string;
+    topic: string;
     predicateVerb: string;
   };
 
   export type BasicVerbStringsWithOptions = {
-    topicNoun: string;
+    topic: string;
     predicateVerb: string;
     options: Options;
   };
 
   // SENTENCE TYPE - TOPIC - PREDICATE
+  export type Topic = {
+    topic: Word,
+  };
+
+  export type Predicate = {
+
+  };
+  
   export type TopicPredicate = {
-    topicNoun: Word;
+    topic: Word;
     predicate: Word;
   };
 
   export type TopicPredicateString = {
-    topicNoun: string;
+    topic: string;
     predicate: string;
   };
 
   export type TopicPredicateStringsWithOptions = {
-    topicNoun: string;
+    topic: string;
     predicate: string;
     options: Options;
   };

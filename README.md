@@ -24,6 +24,7 @@ meta: {
 - jss
 - typeorm
 - feathersjs. 
+- Docker 
 
 ts jest
 
