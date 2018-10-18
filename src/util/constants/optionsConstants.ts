@@ -70,6 +70,8 @@ export const polarityArray = [
   POLARITY_NEGATIVE,
 ];
 
+export const polarityArrayLength = polarityArray.length;
+
 // options.tense
 
 export const TENSE_PRESENT = 'present';
@@ -79,6 +81,9 @@ export const tenseArray = [
   TENSE_PRESENT,
   TENSE_PAST,
 ];
+
+export const tenseArrayLength = tenseArray.length;
+
 
 // options.politeness
 
@@ -93,6 +98,19 @@ export const politenessArray = [
   // POLITENESS_HUMBLE,
   // POLITENESS_HONORIFIC,
 ];
+
+export const politenessArrayLength = politenessArray.length;
+
+// options.gender
+export const GENDER_MASCULINE = 'mas';
+export const GENDER_FEMININE = 'fem';
+
+export const genderArray = [ 
+  GENDER_MASCULINE,
+  GENDER_FEMININE,
+];
+
+export const genderArrayLength = genderArray.length;
 
 // __typename
 export const __TYPENAME_SENTENCE_DISPLAY_OPTIONS = 'options';

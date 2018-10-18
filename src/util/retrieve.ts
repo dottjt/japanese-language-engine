@@ -1,30 +1,35 @@
 import {
-  CATEGORY_HUMAN_NAME,
-  CATEGORY_RESPONSE,
-} from './constants/wordConstants';
-
-import {
-  wordPerson,
-} from './words/nounWords';
-
-import {
   randomArrayElement
 } from './functions';
 
-const singleRandomWordFilter = (nouns: Util.Word[], nounComparisonCategory: string): Util.Word => {
-  const filteredNouns = nouns.filter((noun: Util.Word) => 
+export const filterSpecifcEnglish = (nouns: Util.Word[], englishName: string): Util.Word => (
+  nouns.filter((noun: Util.Word): boolean => (
+    noun.english === englishName
+  ))[0]
+);
+
+export const filterSpecifcCategory = (nouns: Util.Word[], category: string): Util.Word[] => (
+  nouns.filter((noun: Util.Word) => 
     noun.category.filter((nounCategory: string): boolean => (
-      nounCategory === nounComparisonCategory
-    )).length > 0
-  );
-  return filteredNouns[randomArrayElement(filteredNouns)];
-};
+      nounCategory === category
+    ))
+  )
+);
 
-export const getOneRandomHumanNameCategoryNoun = (nouns: Util.Word[]): Util.Word => singleRandomWordFilter(nouns, CATEGORY_HUMAN_NAME);
-export const getOneRandomResponseCategoryNoun = (nouns: Util.Word[]): Util.Word => singleRandomWordFilter(nouns, CATEGORY_RESPONSE);
+export const filterSpecifcMeta = (nouns: Util.Word[], metaProperty: string): Util.Word[] => (
+  nouns.filter((noun: Util.Word) => (
+    noun.meta[metaProperty] === metaProperty
+  ))
+);
 
-export const getOneWordPerson = (nouns: Util.Word[]): Util.Word => {
-  const result = nouns.find((word) => word.english === 'person');
-  return result ? result : wordPerson;
-};
+export const getRandomWord = (nouns: Util.Word[]): Util.Word => (
+  nouns[randomArrayElement(nouns.length)]
+);
 
+export const getRandomWordViaCategory = (nouns: Util.Word[], category: string): Util.Word => (
+  filterSpecifcCategory(nouns, category)[randomArrayElement(nouns.length)]
+);
+
+export const getRandomWordViaMeta = (nouns: Util.Word[], metaProperty: string): Util.Word => (
+  filterSpecifcMeta(nouns, metaProperty)[randomArrayElement(nouns.length)]
+);

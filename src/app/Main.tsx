@@ -6,9 +6,7 @@ import {
 } from '../graphql/queries'
 
 import { 
-  L000_HOME,
-  L000_CONTENTS,
-  L000_PREREQUISITES,
+  LESSON_TITLE,
   
   L001,
   L002,
@@ -43,15 +41,14 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
           switch (this.props.route.name) { /* this.props.previousRoute */
             
 
-            case L000_HOME:
+            case LESSON_TITLE.HOME:
               return <Home/>
-            case L000_CONTENTS:
+            case LESSON_TITLE.CONTENTS:
               return <Contents/>
-            case L000_PREREQUISITES:
+            case LESSON_TITLE.PREREQ:
               return <Prerequisites/>
-            case L000_CONTENTS:
+            case LESSON_TITLE.CONTENTS:
               return <Contents/>
-
 
             case L001.LESSON_TITLE:
               return (

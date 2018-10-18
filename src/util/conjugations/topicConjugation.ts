@@ -29,12 +29,11 @@ const determineTopicConjugationJapanese = (topic: Util.Word, options: Util.Optio
     case PRIMARY_TYPE_NOUN:
       return nounConjugationJapanese(topic, options, TOPIC_IDENTIFIER);
     case PRIMARY_TYPE_VERB:
-      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_NS}`
-      );
+      return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_NS}`);
     case PRIMARY_TYPE_ADJECTIVE:
       return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist for ${WA_NS}`);
     default:
-      return createError('conjugations/topic', 'topicConjugation', 'topic.primaryType unknown');
+      return createError('conjugations/topic', 'topicConjugation', `${topic.primaryType} unknown`);
   }
 };
 

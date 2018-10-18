@@ -7,15 +7,18 @@ import {
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
-  politenessArray,
-  polarityArray,
-  tenseArray,  
-
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from './constants/optionsConstants';
 
+import {
+  RESOURCE_TAE_KIM,
+  // RESOURCE_WASABI,
+  RESOURCE_TAE_KIM_WEBSITE,
+  RESOURCE_WASABI_WEBSITE,
+} from './constants/lessonConstants'
+
 export const capitalise = (value: string): string => value.charAt(0).toUpperCase() + value.slice(1);
-export const randomArrayElement = (array: string[] | Util.Word[]): number => Math.floor(Math.random() * array.length);
+export const randomArrayElement = (arrayLength: number): number => Math.floor(Math.random() * arrayLength);
 
 interface IValues {
   value: string,
@@ -57,3 +60,17 @@ export const convertPolarityIntoValue = (polarity: string): string => {
 };
 
 export const removeGapIfValueEmpty = (value: string): string => value !== '' ? ` ${value}` : '';
+
+export const createRes = (resourceType: string, urlString: string): Util.Resource => {
+  if (resourceType === RESOURCE_TAE_KIM) {
+    return {
+      url: `${RESOURCE_TAE_KIM_WEBSITE}${urlString}`,
+      website: RESOURCE_TAE_KIM_WEBSITE,
+    }
+  } else {
+    return {
+      url: `${RESOURCE_WASABI_WEBSITE}${urlString}`,
+      website: RESOURCE_WASABI_WEBSITE,
+    }
+  };
+};

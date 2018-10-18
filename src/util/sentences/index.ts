@@ -1,11 +1,6 @@
 import { createError } from '../functions';
 
 import {
-  getOneWordPerson,
-  getOneRandomHumanNameCategoryNoun,
-} from '../retrieve';
-
-import {
   TOPIC,
   PREDICATE,
   TOPIC_PREDICATE,
@@ -16,6 +11,7 @@ import generatePredicateSentence from './predicate';
 import generateTopicPredicateSentence from './topicPredicate';
 
 const generateSentences = (options: Util.Options, words: Util.Topic | Util.Predicate | Util.TopicPredicate): Util.EnglishJapaneseSentence => {
+  console.log('generateSentences', words);
   switch(options.sentenceType) {
     case TOPIC: 
       return generateTopicSentence(options, words as Util.Topic);
@@ -31,30 +27,23 @@ const generateSentences = (options: Util.Options, words: Util.Topic | Util.Predi
   }
 };
 
-const generateWords = (options: Util.Options, nouns: Util.Word[]): Util.Topic | Util.Predicate | Util.TopicPredicate => {
-  switch(options.sentenceType) {
-    case TOPIC: 
-      return {
-        topic: getOneWordPerson(nouns),
-      };
-    case PREDICATE:
-      return {
-        predicate: getOneWordPerson(nouns),
-      };
-    case TOPIC_PREDICATE:
-      return {
-        topic: getOneRandomHumanNameCategoryNoun(nouns),
-        predicate: getOneWordPerson(nouns),
-      };    
-    default: 
-      return { topic: { english: '', japanese: '', primaryType: '', category: [], meta: {} }, }
-  }
-};
+// const generateWords = (options: Util.Options, nouns: Util.Word[]): Util.Topic | Util.Predicate | Util.TopicPredicate => {
+//   switch(options.sentenceType) {
+//     case TOPIC: 
+//       return generateTopicWords(nouns);
+//     case PREDICATE:
+//       return generatePredicateWords(nouns);
+//     case TOPIC_PREDICATE:
+//       return generateTopicPredicateWords(nouns);
+//     default: 
+//       return { topic: { english: '', japanese: '', primaryType: '', category: [], meta: {} }, }
+//   }
+// };
 
-const generateExercises = (nouns: Util.Word[], options: Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] =>
+const generateExercises = (words: Util.Topic | Util.Predicate | Util.TopicPredicate, options: Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] =>
   Array.from(Array(numberOfExercises)).map(() => ({
     options,
-    ...generateSentences(options, generateWords(options, nouns))
+    ...generateSentences(options, words)
   }))
 
-export default generateExercises;
+export default generateExercises

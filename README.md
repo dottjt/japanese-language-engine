@@ -1,3 +1,20 @@
+
+The ultimate way to learn Kim Tae. 
+
+I think what I need is a subject as part of the predicate as well. So subject, then verb. 
+
+----------
+Meet grammar boss.
+The most advanced Japananese grammar engine ever built. 
+
+Here's what we've done. 
+
+Using the excellent grammar material at Wasabi JPN and Kim Tae.
+
+I have devised incredibly intelligence grammar exercises to help you learn japanese grammar. 
+
+----------
+
 This project is in it's easy stages, so this reade me is gonna be a mess.
 
 What is the purpose of this project?
@@ -57,3 +74,4 @@ Possibile optimisations: Limit constant length. May be unnecessary.
 
 
 NOTE: Remove politeness from determineNounEndingEnglish switch statement because it is redundant.
+

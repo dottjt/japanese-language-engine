@@ -26,6 +26,7 @@ declare namespace Util {
     variation: string; // wa-sob,
     polarity: string; // positive, negative
     tense: string; // past, present
+    gender: string; // masculine, feminine
   };
 
   export type Sentence = {
