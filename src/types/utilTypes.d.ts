@@ -105,11 +105,11 @@ declare namespace Util {
 
   // SENTENCE TYPE - TOPIC - PREDICATE
   export type Topic = {
-    topic: Word,
+    topic: Word;
   };
 
   export type Predicate = {
-
+    predicate: Word;
   };
   
   export type TopicPredicate = {

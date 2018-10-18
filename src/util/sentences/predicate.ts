@@ -2,13 +2,7 @@ import { randomArrayElement } from "../functions";
 
 import {
   getOneWordPerson,
-  getOneRandomHumanNameCategoryNoun
 } from "../retrieve";
-
-import {
-  topicConjugationJapanese,
-  topicConjugationEnglish,
-} from "../conjugations/topicConjugation";
 
 import {
   predicateConjugationJapanese,
@@ -20,7 +14,7 @@ import {
 } from "../constants/generalConstants";
 
 import {
-  TOPIC_PREDICATE,
+  PREDICATE,
 
   politenessArray,
   polarityArray,
@@ -32,59 +26,50 @@ import {
 
 // LANG_JAPANESE SENTENCE CONFIG FUNCTIONS
 
-const statementJapanese = (topic: Util.Word, predicate: Util.Word, options: Util.Options): string => {
+const statementJapanese = (predicate: Util.Word, options: Util.Options): string => {
   // 小林さんは人。
   // 小林さんは人じゃない。
-  const topicPhrase = topicConjugationJapanese(topic, options);
-  const predicatePrhase = predicateConjugationJapanese(predicate, options);
-
-  return `${topicPhrase}${predicatePrhase}`;
+  return `${predicateConjugationJapanese(predicate, options)}`;
 };
 
-export const topicPredicateJapanese = (words: Util.TopicPredicate, options: Util.Options): Util.Sentence => ({
-  type: TOPIC_PREDICATE,
+export const predicateJapanese = (words: Util.Predicate, options: Util.Options): Util.Sentence => ({
+  type: PREDICATE,
   question: NULL,
   answer: NULL,
-  statement: statementJapanese(words.topic, words.predicate, options)
+  statement: statementJapanese(words.predicate, options)
 });
 
 // LANG_ENGLISH SENTENCE CONFIG FUNCTIONS
 
-const statementEnglish = (topic: Util.Word, predicate: Util.Word, options: Util.Options): string => {
+const statementEnglish = (predicate: Util.Word, options: Util.Options): string => {
   // Kobayashi is a human.
   // Kobayashi is not a human.
-  const topicPhrase = topicConjugationEnglish(topic, options);
-  const predicatePhrase = predicateConjugationEnglish(predicate, options);
-
-  return `${topicPhrase} ${predicatePhrase}`;
+  return `${predicateConjugationEnglish(predicate, options)}`;
 };
 
-export const topicPredicateEnglish = (words: Util.TopicPredicate, options: Util.Options): Util.Sentence => ({
-  type: TOPIC_PREDICATE,
+export const predicateEnglish = (words: Util.Predicate, options: Util.Options): Util.Sentence => ({
+  type: PREDICATE,
   question: NULL,
   answer: NULL,
-  statement: statementEnglish(words.topic, words.predicate, options)
+  statement: statementEnglish(words.predicate, options)
 });
 
 // GENERATE BASIC QUESTION WORD DATA
 
-const generateRandomTopicPredicateWordData = (options: Util.Options, nouns: Util.Word[]): Util.EnglishJapaneseSentence => {
-  const predicate = getOneWordPerson(nouns);
-  
+const generateRandomPredicateWordData = (options: Util.Options, nouns: Util.Word[]): Util.EnglishJapaneseSentence => {
   const words = {
-    topic: getOneRandomHumanNameCategoryNoun(nouns),
-    predicate,
+    predicate: getOneWordPerson(nouns),
   };
 
   return {
-    japaneseSentence: topicPredicateJapanese(words, options),
-    englishSentence: topicPredicateEnglish(words, options)
+    japaneseSentence: predicateJapanese(words, options),
+    englishSentence: predicateEnglish(words, options)
   };
 };
 
 // this needs to be res
-const generateRandomTopicPredicateOptions = (variation: string): Util.Options => ({
-  sentenceType: TOPIC_PREDICATE,
+const generateRandomPredicateOptions = (variation: string): Util.Options => ({
+  sentenceType: PREDICATE,
   variation,
   politeness: politenessArray[randomArrayElement(politenessArray)],
   polarity: polarityArray[randomArrayElement(polarityArray)],
@@ -92,10 +77,10 @@ const generateRandomTopicPredicateOptions = (variation: string): Util.Options =>
   __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 });
 
-export const generateTopicPredicateExercises = (nouns: Util.Word[], variation: string): Util.EnglishJapaneseOptionsSentence[] =>
+export const generatePredicateExercises = (nouns: Util.Word[], variation: string): Util.EnglishJapaneseOptionsSentence[] =>
   Array.from(Array(10)).map(() => {
-    const options = generateRandomTopicPredicateOptions(variation);
-    const { englishSentence, japaneseSentence } = generateRandomTopicPredicateWordData(options, nouns);
+    const options = generateRandomPredicateOptions(variation);
+    const { englishSentence, japaneseSentence } = generateRandomPredicateWordData(options, nouns);
     return {
       options,
       englishSentence, 

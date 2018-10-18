@@ -69,6 +69,10 @@ export const L012_LESSON_EXPLANATION = `
 
 `;
 
+export const L013_LESSON_EXPLANATION = `
+
+`;
+
 
 // RESOURCES
 
@@ -148,6 +152,11 @@ export const L012_LESSON_RESOURCES: Util.Resource[] = [
   { website: RESOURCE_TAE_KIM, url: "http://www.guidetojapanese.org/lea" },
 ];
 
+export const L013_LESSON_RESOURCES: Util.Resource[] = [
+  { website: RESOURCE_TAE_KIM, url: "http://www.guidetojapanese.org/learn/complete/" },
+  { website: RESOURCE_WASABI, url: "http://www.guidetojapanese.org/learn/" },
+  { website: RESOURCE_TAE_KIM, url: "http://www.guidetojapanese.org/lea" },
+];
 
 import {
   WA_SOB,
@@ -192,89 +201,89 @@ export const L001 = {
   LESSON_TITLE: L001_LESSON_TITLE,
   LESSON_EXPLANATION: L001_LESSON_EXPLANATION,
   LESSON_RESOURCES: L001_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generateTopicExercises(words, LESSON_VARIATIONS.L001),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generateTopicExercises(words, LESSON_VARIATIONS.L001),
 };
 
 export const L002 = {
   LESSON_TITLE: L002_LESSON_TITLE,
   LESSON_EXPLANATION: L002_LESSON_EXPLANATION,
   LESSON_RESOURCES: L002_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L002),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L002),
 };
 
 export const L003 = {
   LESSON_TITLE: L003_LESSON_TITLE,
   LESSON_EXPLANATION: L003_LESSON_EXPLANATION,
   LESSON_RESOURCES: L003_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L003),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L003),
 };
 
 export const L004 = {
   LESSON_TITLE: L004_LESSON_TITLE,
   LESSON_EXPLANATION: L004_LESSON_EXPLANATION,
   LESSON_RESOURCES: L004_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L004),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L004),
 };
 
 export const L005 = {
   LESSON_TITLE: L005_LESSON_TITLE,
   LESSON_EXPLANATION: L005_LESSON_EXPLANATION,
   LESSON_RESOURCES: L005_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L005),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L005),
 };
 
 export const L006 = {
   LESSON_TITLE: L006_LESSON_TITLE,
   LESSON_EXPLANATION: L006_LESSON_EXPLANATION,
   LESSON_RESOURCES: L006_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L006),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generateTopicPredicateExercises(words, LESSON_VARIATIONS.L006),
 };
 
 export const L007 = {
   LESSON_TITLE: L007_LESSON_TITLE,
   LESSON_EXPLANATION: L007_LESSON_EXPLANATION,
   LESSON_RESOURCES: L007_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generatePredicateExercises(words, LESSON_VARIATIONS.L007),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generatePredicateExercises(words, LESSON_VARIATIONS.L007),
 };
 
 export const L008 = {
   LESSON_TITLE: L008_LESSON_TITLE,
   LESSON_EXPLANATION: L008_LESSON_EXPLANATION,
   LESSON_RESOURCES: L008_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generatePredicateExercises(words, LESSON_VARIATIONS.L008),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generatePredicateExercises(words, LESSON_VARIATIONS.L008),
 };
 
 export const L009 = {
   LESSON_TITLE: L009_LESSON_TITLE,
   LESSON_EXPLANATION: L009_LESSON_EXPLANATION,
   LESSON_RESOURCES: L009_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generatePredicateExercises(words, LESSON_VARIATIONS.L009),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generatePredicateExercises(words, LESSON_VARIATIONS.L009),
 };
 
 export const L010 = {
   LESSON_TITLE: L010_LESSON_TITLE,
   LESSON_EXPLANATION: L010_LESSON_EXPLANATION,
   LESSON_RESOURCES: L010_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generatePredicateExercises(words, LESSON_VARIATIONS.L010),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generatePredicateExercises(words, LESSON_VARIATIONS.L010),
 };
 
 export const L011 = {
   LESSON_TITLE: L011_LESSON_TITLE,
   LESSON_EXPLANATION: L011_LESSON_EXPLANATION,
   LESSON_RESOURCES: L011_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generatePredicateExercises(words, LESSON_VARIATIONS.L011),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generatePredicateExercises(words, LESSON_VARIATIONS.L011),
 };
 
 export const L012 = {
   LESSON_TITLE: L012_LESSON_TITLE,
   LESSON_EXPLANATION: L012_LESSON_EXPLANATION,
   LESSON_RESOURCES: L012_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generatePredicateExercises(words, LESSON_VARIATIONS.L012),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generatePredicateExercises(words, LESSON_VARIATIONS.L012),
 };
 
 export const L013 = {
   LESSON_TITLE: L013_LESSON_TITLE,
   LESSON_EXPLANATION: L013_LESSON_EXPLANATION,
   LESSON_RESOURCES: L013_LESSON_RESOURCES,
-  LESSON_EXERCISES: (words) => generatePredicateExercises(words, LESSON_VARIATIONS.L013),
+  LESSON_EXERCISES: (words: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] => generatePredicateExercises(words, LESSON_VARIATIONS.L013),
 };

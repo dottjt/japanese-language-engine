@@ -25,23 +25,6 @@ import {
   L013,
 } from '../util/constants/lessonConstants';
 
-import {
-  WA_NS,
-  WA_NS_QUESTION,
-  MO_NS,
-  MO_NS_QUESTION,
-  GA_NS,
-  GA_NS_QUESTION,
-
-  WO_VS,
-  WO_VS_QUESTION,
-  NI_VS,
-  NI_VS_QUESTION,
-  DE_VS,
-  DE_VS_QUESTION,
-} from '../util/constants/optionsConstants';
-
-
 import LessonTemplate from './components/LessonTemplate';
 
 import Prerequisites from './pages/Prerequisites';
@@ -76,7 +59,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L001.LESSON_TITLE}
                   explanation={L001.LESSON_EXPLANATION}
                   resources={L001.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, WA_NS)}
+                  exercises={L001.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L002.LESSON_TITLE:
@@ -85,7 +68,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L002.LESSON_TITLE}
                   explanation={L002.LESSON_EXPLANATION}
                   resources={L002.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, WA_NS_QUESTION)}
+                  exercises={L002.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L003.LESSON_TITLE:
@@ -94,7 +77,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L003.LESSON_TITLE}
                   explanation={L003.LESSON_EXPLANATION}
                   resources={L003.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, MO_NS)}
+                  exercises={L003.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L004.LESSON_TITLE:
@@ -103,7 +86,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L004.LESSON_TITLE}
                   explanation={L004.LESSON_EXPLANATION}
                   resources={L004.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, MO_NS_QUESTION)}
+                  exercises={L004.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L005.LESSON_TITLE:
@@ -112,7 +95,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L005.LESSON_TITLE}
                   explanation={L005.LESSON_EXPLANATION}
                   resources={L005.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, GA_NS)}
+                  exercises={L005.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L006.LESSON_TITLE:
@@ -121,7 +104,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L006.LESSON_TITLE}
                   explanation={L006.LESSON_EXPLANATION}
                   resources={L006.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, GA_NS_QUESTION)}
+                  exercises={L006.LESSON_EXERCISES(data.nouns)}
                 />
               ); 
 
@@ -132,7 +115,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L007.LESSON_TITLE}
                   explanation={L007.LESSON_EXPLANATION}
                   resources={L007.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, WO_VS)}
+                  exercises={L007.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L008.LESSON_TITLE:
@@ -141,7 +124,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L008.LESSON_TITLE}
                   explanation={L008.LESSON_EXPLANATION}
                   resources={L008.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, WO_VS_QUESTION)}
+                  exercises={L008.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L009.LESSON_TITLE:
@@ -150,7 +133,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L009.LESSON_TITLE}
                   explanation={L009.LESSON_EXPLANATION}
                   resources={L009.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, NI_VS)}
+                  exercises={L009.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L010.LESSON_TITLE:
@@ -159,7 +142,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L010.LESSON_TITLE}
                   explanation={L010.LESSON_EXPLANATION}
                   resources={L010.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, NI_VS_QUESTION)}
+                  exercises={L010.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L011.LESSON_TITLE:
@@ -168,7 +151,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L011.LESSON_TITLE}
                   explanation={L011.LESSON_EXPLANATION}
                   resources={L011.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, DE_VS)}
+                  exercises={L011.LESSON_EXERCISES(data.nouns)}
                 />
               );
             case L012.LESSON_TITLE:
@@ -177,7 +160,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L012.LESSON_TITLE}
                   explanation={L012.LESSON_EXPLANATION}
                   resources={L012.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, DE_VS_QUESTION)}
+                  exercises={L012.LESSON_EXERCISES(data.nouns)}
                 />
               ); 
             case L013.LESSON_TITLE:
@@ -186,7 +169,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L013.LESSON_TITLE}
                   explanation={L013.LESSON_EXPLANATION}
                   resources={L013.LESSON_RESOURCES}
-                  exercises={generateTopicPredicateExercises(data.nouns, DE_VS_QUESTION)}
+                  exercises={L013.LESSON_EXERCISES(data.nouns)}
                 />
               ); 
 

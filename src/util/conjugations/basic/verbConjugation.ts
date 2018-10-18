@@ -1,4 +1,4 @@
-simport {
+import {
   createError
 } from '../../functions';
 
