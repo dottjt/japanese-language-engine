@@ -1,7 +1,18 @@
+Grammar Sensei
 
-Buildkite
-Vultr
-Docker
+# Tech
+
+Frontend: Create-React-App, Typescript, React, apollo-boost, react-router5
+CSS: Styled-Components, Rebass 
+Testing: Jest 
+Backend: Node.js, feathersjs, GraphQL, apollo-server, typeorm
+Database: Postgres
+Authentication: Auth0
+CI: Buildkite
+Server: Vultr
+Infrastructure: Docker, AWS
+
+
 
 
 The ultimate way to learn Kim Tae. 
