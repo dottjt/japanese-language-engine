@@ -1,11 +1,11 @@
 import {
   createError,
   removeGapIfValueEmpty,
-} from '../../functions';
+} from '../functions';
 
 import {
   CATEGORY_HUMAN_NAME,
-} from '../../constants/wordConstants';
+} from '../constants/wordConstants';
 
 import {
   WA_SOB,
@@ -24,8 +24,10 @@ import {
   DE_VS,
   DE_VS_QUESTION,
   
-  PREDICATE_IDENTIFIER,
-  TOPIC_IDENTIFIER,
+  TOPIC,
+  SUBJECT,
+  PREDICATE,
+  TOPIC_PREDICATE,
 
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
@@ -35,7 +37,7 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
-} from '../../constants/optionsConstants';
+} from '../constants/optionsConstants';
 
 const determineNounCategoryEnding = (word: Util.Word): string => {
   const endingsArray = word.category.map(categoryString => {
@@ -54,7 +56,10 @@ const determineNounCategoryEnding = (word: Util.Word): string => {
 };
 
 const determineTopicParticleJapanese = (options: Util.Options, identifier: string): string => {
-  if (identifier === TOPIC_IDENTIFIER) {
+  if (identifier === TOPIC_PREDICATE || 
+      identifier === PREDICATE ||
+      identifier === SUBJECT
+      ) {
     switch (options.variation) {
       case WA_SOB:
         return 'は';
@@ -82,17 +87,21 @@ const determineTopicParticleJapanese = (options: Util.Options, identifier: strin
         return 'で';
       case DE_VS_QUESTION:
         return 'で';
-
       default:
         return createError('conjugations/topic', 'determineTopicParticle', 'options.variation unknown');
     }
   }
+
   return '';
 };
 
 const determineNounEndingJapanese = (options: Util.Options, identifier: string): string => {
-  if (identifier === PREDICATE_IDENTIFIER) {
-    switch(`${options.politeness}${options.polarity}${options.tense}`) {
+  if (identifier === TOPIC_PREDICATE || 
+      identifier === PREDICATE ||
+      identifier === SUBJECT ||
+      identifier === TOPIC
+      ) {
+  switch(`${options.politeness}${options.polarity}${options.tense}`) {
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
         return '';
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
@@ -125,20 +134,21 @@ const determineNounEndingJapanese = (options: Util.Options, identifier: string):
 
 const determineSentenceIdentifierEndingJapanese = (options: Util.Options, identifier: string): string => {
   
-  if (identifier === PREDICATE_IDENTIFIER) {
-    if (options.variation === WA_SOB ||
-        options.variation === WA_NS_QUESTION || 
+  if (identifier === PREDICATE || 
+      identifier === TOPIC_PREDICATE ||
+      identifier === SUBJECT) {
+    if (options.variation === WA_NS_QUESTION || 
         options.variation === MO_NS_QUESTION || 
         options.variation === GA_NS_QUESTION) 
-    {
-      return 'か？';
-    } else {
-      return '。';
+      {
+        return 'か？';
+      } else {
+        return '。';
+      }
     }    
-  }
 
-  if (identifier === TOPIC_IDENTIFIER) {
-    return '';
+  if (identifier === TOPIC) {
+    return '。';
   }
 
   return createError(
@@ -161,7 +171,7 @@ export const nounConjugationJapanese = (noun: Util.Word, options: Util.Options, 
 
 const determineSentenceIdentifierEndingEnglish = (options: Util.Options, identifier: string): string => {
 
-  if (identifier === PREDICATE_IDENTIFIER) {
+  if (identifier === PREDICATE) {
     if (options.variation === WA_NS_QUESTION || options.variation === MO_NS_QUESTION || options.variation === GA_NS_QUESTION) {
       return '?';
     } else {
@@ -169,7 +179,7 @@ const determineSentenceIdentifierEndingEnglish = (options: Util.Options, identif
     }    
   }
 
-  if (identifier === TOPIC_IDENTIFIER) {
+  if (identifier === TOPIC) {
     return '';
   }
 
@@ -184,7 +194,7 @@ const determineNounBeginingEnglish = (word: Util.Word, identifier: string): stri
   const vowels = ['a','e','i','o','u'];
   const firstLetter = word.english[0];
 
-  if (identifier === PREDICATE_IDENTIFIER) {
+  if (identifier === PREDICATE) {
     if (vowels.includes(firstLetter)) {
       return 'an';
     } else {
@@ -195,7 +205,7 @@ const determineNounBeginingEnglish = (word: Util.Word, identifier: string): stri
 };
 
 const determineNounEndingEnglish = (options: Util.Options, identifier: string): string => {
-  if (identifier === TOPIC_IDENTIFIER) {
+  if (identifier === TOPIC) {
     if (options.variation === WA_NS || options.variation === WA_NS_QUESTION) {
       switch(`${options.polarity}${options.tense}`) {
         case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:

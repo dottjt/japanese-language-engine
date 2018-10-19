@@ -5,6 +5,8 @@
 //   createError,
 //   convertPolitenessIntoValue,
 //   convertPolarityIntoValue,
+//   removeGapIfValueEmpty,
+//   createRes,
 // } from '../src/util/functions';
 
 // describe('util/functions.ts', () => {
@@ -19,37 +21,37 @@
 //     test('', () => {
         
 //     });
-//   }
+//   });
 
 //   describe('randomArrayElement', () => {
 //     test('', () => {
         
 //     });
-//   }
+//   });
 
 //   describe('convertValuesIntoButtonArray', () => {
 //     test('', () => {
         
 //     });
-//   }
+//   });
 
 //   describe('createError', () => {
 //     test('', () => {
         
 //     });
-//   }
+//   });
 
 //   describe('convertPolitenessIntoValue', () => {
 //     test('', () => {
         
 //     });
-//   }
+//   });
 
 //   describe('convertPolarityIntoValue', () => {
 //     test('', () => {
         
 //     });
-//   }
+//   });
 
 // });
   

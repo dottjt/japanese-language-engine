@@ -2,7 +2,7 @@ import {
   randomArrayElement
 } from './functions';
 
-export const filterSpecifcEnglish = (nouns: Util.Word[], englishName: string): Util.Word => (
+export const filterSpecifcWord = (nouns: Util.Word[], englishName: string): Util.Word => (
   nouns.filter((noun: Util.Word): boolean => (
     noun.english === englishName
   ))[0]

@@ -1,4 +1,9 @@
 
+Buildkite
+Vultr
+Docker
+
+
 The ultimate way to learn Kim Tae. 
 
 I think what I need is a subject as part of the predicate as well. So subject, then verb. 

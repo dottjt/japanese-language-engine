@@ -1,20 +1,14 @@
-// conjugation identifier
-
-export const PREDICATE_IDENTIFIER = 'predicate';
-export const TOPIC_IDENTIFIER = 'topic';
-
-export const identifierArray = [
-  PREDICATE_IDENTIFIER,
-  TOPIC_IDENTIFIER,
-];
-
 // options.sentenceType
 
+export const VERB = 'VERB';
+export const SUBJECT = 'SUBJECT';
 export const TOPIC = 'TOPIC';
 export const PREDICATE = 'PREDICATE';
 export const TOPIC_PREDICATE = 'TOPIC_PREDICATE';
 
 export const sentenceTypeArray = [
+  VERB,
+  SUBJECT,
   TOPIC,
   PREDICATE,
   TOPIC_PREDICATE,

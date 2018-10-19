@@ -7,18 +7,19 @@ import {
 } from '../constants/optionsConstants';
 
 import generateTopicSentence from './topic';
-import generatePredicateSentence from './predicate';
-import generateTopicPredicateSentence from './topicPredicate';
+import generatePredicateSentence from './combined/predicate';
+// import generateTopicPredicateSentence from './combined/topicPredicate';
 
 const generateSentences = (options: Util.Options, words: Util.Topic | Util.Predicate | Util.TopicPredicate): Util.EnglishJapaneseSentence => {
-  console.log('generateSentences', words);
   switch(options.sentenceType) {
     case TOPIC: 
       return generateTopicSentence(options, words as Util.Topic);
     case PREDICATE:
       return generatePredicateSentence(options, words as Util.Predicate);
     case TOPIC_PREDICATE:
-      return generateTopicPredicateSentence(options, words as Util.TopicPredicate);
+      // NOTE: Incorrect
+      return generatePredicateSentence(options, words as Util.Predicate);
+      // return generateTopicPredicateSentence(options, words as Util.TopicPredicate);
     default: 
       return {
         englishSentence: { type: createError('sentences', 'generateSentences', `${options.sentenceType} does not exist.`) },
@@ -40,10 +41,13 @@ const generateSentences = (options: Util.Options, words: Util.Topic | Util.Predi
 //   }
 // };
 
-const generateExercises = (words: Util.Topic | Util.Predicate | Util.TopicPredicate, options: Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] =>
-  Array.from(Array(numberOfExercises)).map(() => ({
-    options,
-    ...generateSentences(options, words)
-  }))
+const generateExercises = (words: Util.Topic | Util.Predicate | Util.TopicPredicate, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] =>
+  Array.from(Array(numberOfExercises)).map(() => {
+    const options = optionsLambda();
+    return {
+      options,
+      ...generateSentences(options, words)  
+    }
+  })
 
 export default generateExercises

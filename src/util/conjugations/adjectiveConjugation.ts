@@ -1,6 +1,6 @@
 import {
   // createError
-} from '../../functions';
+} from '../functions';
 
 import {
   // POLITENESS_CASUAL,
@@ -9,11 +9,11 @@ import {
   // POLARITY_POSITIVE,
   // POLARITY_NEGATIVE,
 
-  // PREDICATE_IDENTIFIER,
-  // TOPIC_IDENTIFIER,
+  // PREDICATE,
+  // TOPIC,
 
   // CATEGORY_HUMAN_NAME,
-} from '../../constants/wordConstants';
+} from '../constants/wordConstants';
 
 
 const determineAdjectiveCategoryEnding = (word: Util.Word): string => {
@@ -53,9 +53,9 @@ const determineAdjectiveEndingJapanese = (options: Util.Options): string => {
 
 export const determineSentenceIdentifierEndingJapanese = (identifier: string): string => {
   // switch(identifier) {
-  //   case PREDICATE_IDENTIFIER:
+  //   case PREDICATE:
   //     return ''; // I've completely forgotten what I was trying to express here. 
-  //   case TOPIC_IDENTIFIER:
+  //   case TOPIC:
   //     return '';
   //   default:
       return '';

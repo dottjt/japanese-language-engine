@@ -1,7 +1,6 @@
 import {
-  topicConjugationJapanese,
-  topicConjugationEnglish,
-} from "../conjugations/topicConjugation";
+  createError,
+} from '../functions';
 
 import {
   LANG_ENGLISH,
@@ -9,30 +8,67 @@ import {
 } from "../constants/generalConstants";
 
 import {
-  TOPIC,
-  __TYPENAME_SENTENCE_DISPLAY_OPTIONS
-} from "../constants/optionsConstants";
+  PRIMARY_TYPE_NOUN,
+  PRIMARY_TYPE_VERB,
+  PRIMARY_TYPE_ADJECTIVE,
+} from '../constants/wordConstants';
 
-const determineStatement = (topic: Util.Word, options: Util.Options, type: string): string => (
+import { 
+  nounConjugationJapanese,
+  nounConjugationEnglish,
+} from '../conjugations/nounConjugation';
+
+import {
+  TOPIC,
+} from '../constants/optionsConstants';
+
+// JAPANESE
+
+const determineTopicConjugation = (topic: Util.Word, options: Util.Options, type: string): string => {
+  if (type === LANG_JAPANESE) {
+    switch (topic.primaryType) {
+      case PRIMARY_TYPE_NOUN:
+        return nounConjugationJapanese(topic, options, TOPIC);
+      case PRIMARY_TYPE_VERB:
+        return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
+      case PRIMARY_TYPE_ADJECTIVE:
+        return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_ADJECTIVE} cannot exist`);
+      default:
+        return createError('conjugations/topic', 'topicConjugation', `${topic.primaryType} unknown`);
+    }
+  } else {
+    switch (topic.primaryType) {
+      case PRIMARY_TYPE_NOUN:
+        return nounConjugationEnglish(topic, options, TOPIC);
+      case PRIMARY_TYPE_VERB:
+        return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
+      case PRIMARY_TYPE_ADJECTIVE:
+        return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
+      default:
+        return createError('conjugations/topic', 'topicConjugation', 'topic.primaryType unknown');
+    }
+  }
+};
+
+export const topicConjugation = (topic: Util.Word, options: Util.Options, type: string): string =>
   type === LANG_JAPANESE ? (
     // 人だ。
     // 人じゃない。
-    `${topicConjugationJapanese(topic, options)}`
+    `${determineTopicConjugation(topic, options, LANG_JAPANESE)}`
   ) : (
     // Kobayashi is a human.
     // Kobayashi is not a human.
-    `${topicConjugationEnglish(topic, options)}`
+    `${determineTopicConjugation(topic, options, LANG_ENGLISH)}`
   )
-);
 
 const determineTopic = (words: Util.Topic, options: Util.Options, type: string): Util.Sentence => (
   options.variation.includes("QUESTION") ? ({
     type: TOPIC,
-    question: determineStatement(words.topic, options, type),
-    answer: determineStatement(words.topic, options, type),
+    question: topicConjugation(words.topic, options, type),
+    answer: topicConjugation(words.topic, options, type),
   }) : ({
     type: TOPIC,
-    statement: determineStatement(words.topic, options, type)  
+    statement: topicConjugation(words.topic, options, type)  
   })
 );
 
