@@ -24,11 +24,11 @@ import {
 
 // JAPANESE
 
-const determineTopicConjugation = (topic: Util.Word, options: Util.Options, type: string): string => {
+const determineTopicConjugation = (topic: Util.Word, options: Util.Options, type: string, identifier: string): string => {
   if (type === LANG_JAPANESE) {
     switch (topic.primaryType) {
       case PRIMARY_TYPE_NOUN:
-        return nounConjugationJapanese(topic, options, TOPIC);
+        return nounConjugationJapanese(topic, options, identifier);
       case PRIMARY_TYPE_VERB:
         return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       case PRIMARY_TYPE_ADJECTIVE:
@@ -39,7 +39,7 @@ const determineTopicConjugation = (topic: Util.Word, options: Util.Options, type
   } else {
     switch (topic.primaryType) {
       case PRIMARY_TYPE_NOUN:
-        return nounConjugationEnglish(topic, options, TOPIC);
+        return nounConjugationEnglish(topic, options, identifier);
       case PRIMARY_TYPE_VERB:
         return createError('conjugations/topic', 'topicConjugation', `topic.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       case PRIMARY_TYPE_ADJECTIVE:
@@ -50,25 +50,25 @@ const determineTopicConjugation = (topic: Util.Word, options: Util.Options, type
   }
 };
 
-export const topicConjugation = (topic: Util.Word, options: Util.Options, type: string): string =>
-  type === LANG_JAPANESE ? (
+export const topicConjugation = (topic: Util.Word, options: Util.Options, language: string, identifier: string): string =>
+  language === LANG_JAPANESE ? (
     // 人だ。
     // 人じゃない。
-    `${determineTopicConjugation(topic, options, LANG_JAPANESE)}`
+    `${determineTopicConjugation(topic, options, LANG_JAPANESE, identifier)}`
   ) : (
     // Kobayashi is a human.
     // Kobayashi is not a human.
-    `${determineTopicConjugation(topic, options, LANG_ENGLISH)}`
+    `${determineTopicConjugation(topic, options, LANG_ENGLISH, identifier)}`
   )
 
 const determineTopic = (words: Util.Topic, options: Util.Options, type: string): Util.Sentence => (
   options.variation.includes("QUESTION") ? ({
     type: TOPIC,
-    question: topicConjugation(words.topic, options, type),
-    answer: topicConjugation(words.topic, options, type),
+    question: topicConjugation(words.topic, options, type, TOPIC),
+    answer: topicConjugation(words.topic, options, type, TOPIC),
   }) : ({
     type: TOPIC,
-    statement: topicConjugation(words.topic, options, type)  
+    statement: topicConjugation(words.topic, options, type, TOPIC)  
   })
 );
 

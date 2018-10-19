@@ -23,13 +23,13 @@ import {
 } from "../constants/optionsConstants";
 
 
-const determineVerbConjugation = (verb: Util.Word, options: Util.Options, type: string): string => {
+const determineVerbConjugation = (verb: Util.Word, options: Util.Options, type: string, identifier: string): string => {
   if (type === LANG_JAPANESE) {
     switch (verb.primaryType) {
       case PRIMARY_TYPE_NOUN:
         return createError('conjugations/verb', 'verbConjugation', `verb.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       case PRIMARY_TYPE_VERB:
-        return verbConjugationJapanese(verb, options, VERB);
+        return verbConjugationJapanese(verb, options, identifier);
       case PRIMARY_TYPE_ADJECTIVE:
         return createError('conjugations/verb', 'verbConjugation', `verb.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       default:
@@ -40,7 +40,7 @@ const determineVerbConjugation = (verb: Util.Word, options: Util.Options, type: 
       case PRIMARY_TYPE_NOUN:
         return createError('conjugations/verb', 'verbConjugation', `verb.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       case PRIMARY_TYPE_VERB:
-        return verbConjugationJapanese(verb, options, VERB);
+        return verbConjugationJapanese(verb, options, identifier);
       case PRIMARY_TYPE_ADJECTIVE:
         return createError('conjugations/verb', 'verbConjugation', `verb.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       default:
@@ -49,15 +49,15 @@ const determineVerbConjugation = (verb: Util.Word, options: Util.Options, type: 
   }
 };
 
-const verbConjugation = (verb: Util.Word, options: Util.Options, type: string): string => (
+const verbConjugation = (verb: Util.Word, options: Util.Options, type: string, identifier: string): string => (
   type === LANG_JAPANESE ? (
     // 人だ。
     // 人じゃない。
-    `${determineVerbConjugation(verb, options, VERB)}`
+    `${determineVerbConjugation(verb, options, LANG_JAPANESE, identifier)}`
   ) : (
     // Kobayashi is a human.
     // Kobayashi is not a human.
-    // `${verbConjugationEnglish(verb, options, VERB)}`
+    // `${verbConjugationEnglish(verb, options, LANG_ENGLISH, identifier)}`
     'cake'
   )
 );
@@ -65,11 +65,11 @@ const verbConjugation = (verb: Util.Word, options: Util.Options, type: string): 
 const determineVerb = (words: Util.Verb, options: Util.Options, type: string): Util.Sentence => (
   options.variation.includes("QUESTION") ? ({
     type: VERB,
-    question: verbConjugation(words.verb, options, type),
-    answer: verbConjugation(words.verb, options, type),
+    question: verbConjugation(words.verb, options, type, VERB),
+    answer: verbConjugation(words.verb, options, type, VERB),
   }) : ({
     type: VERB,
-    statement: verbConjugation(words.verb, options, type)  
+    statement: verbConjugation(words.verb, options, type, VERB)  
   })
 );
 

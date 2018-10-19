@@ -171,8 +171,12 @@ export const nounConjugationJapanese = (noun: Util.Word, options: Util.Options, 
 
 const determineSentenceIdentifierEndingEnglish = (options: Util.Options, identifier: string): string => {
 
-  if (identifier === PREDICATE) {
-    if (options.variation === WA_NS_QUESTION || options.variation === MO_NS_QUESTION || options.variation === GA_NS_QUESTION) {
+  if (identifier === PREDICATE || 
+      identifier === TOPIC_PREDICATE ||
+      identifier === SUBJECT) {
+    if (options.variation === WA_NS_QUESTION || 
+        options.variation === MO_NS_QUESTION || 
+        options.variation === GA_NS_QUESTION) {
       return '?';
     } else {
       return '.';
@@ -180,7 +184,7 @@ const determineSentenceIdentifierEndingEnglish = (options: Util.Options, identif
   }
 
   if (identifier === TOPIC) {
-    return '';
+    return '.';
   }
 
   return createError(
@@ -194,7 +198,11 @@ const determineNounBeginingEnglish = (word: Util.Word, identifier: string): stri
   const vowels = ['a','e','i','o','u'];
   const firstLetter = word.english[0];
 
-  if (identifier === PREDICATE) {
+  if (identifier === TOPIC ||
+      identifier === PREDICATE ||
+      identifier === TOPIC_PREDICATE ||
+      identifier === SUBJECT
+    ) {
     if (vowels.includes(firstLetter)) {
       return 'an';
     } else {
@@ -205,7 +213,11 @@ const determineNounBeginingEnglish = (word: Util.Word, identifier: string): stri
 };
 
 const determineNounEndingEnglish = (options: Util.Options, identifier: string): string => {
-  if (identifier === TOPIC) {
+  if (identifier === TOPIC ||
+      identifier === PREDICATE ||
+      identifier === TOPIC_PREDICATE ||
+      identifier === SUBJECT
+    ) {
     if (options.variation === WA_NS || options.variation === WA_NS_QUESTION) {
       switch(`${options.polarity}${options.tense}`) {
         case `${POLARITY_POSITIVE}${TENSE_PRESENT}`:
@@ -213,10 +225,10 @@ const determineNounEndingEnglish = (options: Util.Options, identifier: string): 
         case `${POLARITY_POSITIVE}${TENSE_PAST}`:
           return 'was';
         case `${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
-          return 'is';
+          return 'is not';
         case `${POLARITY_NEGATIVE}${TENSE_PAST}`:
-          return 'was';
-        default: 
+          return 'was not';
+        default:
           return createError(
             'conjugations/noun',
             'determineNounEndingEnglish - WA_NS',

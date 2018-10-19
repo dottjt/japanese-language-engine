@@ -19,16 +19,16 @@ import {
 } from '../conjugations/nounConjugation';
 
 import {
-  TOPIC,
+  SUBJECT,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
 } from "../constants/optionsConstants";
 
 
-const determineSubjectConjugation = (subject: Util.Word, options: Util.Options, type: string): string => {
+const determineSubjectConjugation = (subject: Util.Word, options: Util.Options, type: string, identifier: string): string => {
   if (type === LANG_JAPANESE) {
     switch (subject.primaryType) {
       case PRIMARY_TYPE_NOUN:
-        return nounConjugationJapanese(subject, options, TOPIC);
+        return nounConjugationJapanese(subject, options, identifier);
       case PRIMARY_TYPE_VERB:
         return createError('conjugations/subject', 'subjectConjugation', `subject.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       case PRIMARY_TYPE_ADJECTIVE:
@@ -39,7 +39,7 @@ const determineSubjectConjugation = (subject: Util.Word, options: Util.Options, 
   } else {
     switch (subject.primaryType) {
       case PRIMARY_TYPE_NOUN:
-        return nounConjugationEnglish(subject, options, TOPIC);
+        return nounConjugationEnglish(subject, options, identifier);
       case PRIMARY_TYPE_VERB:
         return createError('conjugations/subject', 'subjectConjugation', `subject.primaryType ${PRIMARY_TYPE_VERB} cannot exist`);
       case PRIMARY_TYPE_ADJECTIVE:
@@ -50,32 +50,32 @@ const determineSubjectConjugation = (subject: Util.Word, options: Util.Options, 
   }
 };
 
-const subjectConjugation = (subject: Util.Word, options: Util.Options, type: string): string => (
+const subjectConjugation = (subject: Util.Word, options: Util.Options, type: string, identifier: string): string => (
   type === LANG_JAPANESE ? (
     // 人だ。
     // 人じゃない。
-    `${determineSubjectConjugation(subject, options, type)}`
+    `${determineSubjectConjugation(subject, options, type, identifier)}`
   ) : (
     // Kobayashi is a human.
     // Kobayashi is not a human.
-    `${determineSubjectConjugation(subject, options, type)}`
+    `${determineSubjectConjugation(subject, options, type, identifier)}`
   )
 );
 
-const determineVerb = (words: Util.Subject, options: Util.Options, type: string): Util.Sentence => (
+const determineSubject = (words: Util.Subject, options: Util.Options, type: string): Util.Sentence => (
   options.variation.includes("QUESTION") ? ({
-    type: TOPIC,
-    question: subjectConjugation(words.subject, options, type),
-    answer: subjectConjugation(words.subject, options, type),
+    type: SUBJECT,
+    question: subjectConjugation(words.subject, options, type, SUBJECT),
+    answer: subjectConjugation(words.subject, options, type, SUBJECT),
   }) : ({
-    type: TOPIC,
-    statement: subjectConjugation(words.subject, options, type)  
+    type: SUBJECT,
+    statement: subjectConjugation(words.subject, options, type, SUBJECT)  
   })
 );
 
-const generateVerbSentence = (options: Util.Options, words: Util.Subject): Util.EnglishJapaneseSentence => ({
-  japaneseSentence: determineVerb(words, options, LANG_JAPANESE),
-  englishSentence: determineVerb(words, options, LANG_ENGLISH)
+const generateSubjectSentence = (options: Util.Options, words: Util.Subject): Util.EnglishJapaneseSentence => ({
+  japaneseSentence: determineSubject(words, options, LANG_JAPANESE),
+  englishSentence: determineSubject(words, options, LANG_ENGLISH)
 });
 
-export default generateVerbSentence;
+export default generateSubjectSentence;

@@ -18,9 +18,9 @@ const generateSentences = (options: Util.Options, words: Util.Topic | Util.Predi
       return generatePredicateSentence(options, words as Util.Predicate);
     case TOPIC_PREDICATE:
       // NOTE: Incorrect
-      return generatePredicateSentence(options, words as Util.Predicate);
+      return generatePredicateSentence(options, words as Util.TopicPredicate);
       // return generateTopicPredicateSentence(options, words as Util.TopicPredicate);
-    default: 
+    default:
       return {
         englishSentence: { type: createError('sentences', 'generateSentences', `${options.sentenceType} does not exist.`) },
         japaneseSentence: { type: createError('sentences', 'generateSentences', `${options.sentenceType} does not exist.`) }

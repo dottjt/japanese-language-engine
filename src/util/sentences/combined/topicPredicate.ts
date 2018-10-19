@@ -20,11 +20,11 @@ const determineStatement = (topic: Util.Word | undefined, subject: Util.Word | u
   type === LANG_JAPANESE ? (
     // 小林さんは人。
     // 小林さんは人じゃない。                                             // NOTE: This may not work, given verb might not exist so can't guarantee Util.Word
-    `${topicConjugation(topic as Util.Word, options, LANG_JAPANESE)}${predicateConjugation(subject as Util.Word, verb as Util.Word, options, LANG_JAPANESE)}`
+    `${topicConjugation(topic as Util.Word, options, LANG_JAPANESE, TOPIC_PREDICATE)}${predicateConjugation(subject as Util.Word, verb as Util.Word, options, LANG_JAPANESE, TOPIC_PREDICATE)}`
   ) : (
     // Kobayashi is a human.
     // Kobayashi is not a human.
-    `${topicConjugation(topic as Util.Word, options, LANG_ENGLISH)} ${predicateConjugation(subject as Util.Word, verb as Util.Word, options, LANG_ENGLISH)}`
+    `${topicConjugation(topic as Util.Word, options, LANG_ENGLISH, TOPIC_PREDICATE)} ${predicateConjugation(subject as Util.Word, verb as Util.Word, options, LANG_ENGLISH, TOPIC_PREDICATE)}`
   )
 );
 
