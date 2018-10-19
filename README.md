@@ -9,8 +9,12 @@ Backend: Node.js, feathersjs, GraphQL, apollo-server, typeorm
 Database: Postgres
 Authentication: Auth0
 CI: Buildkite
-Server: Vultr
+Server: AWS Lightsail 
 Infrastructure: Docker, AWS
+
+yarn add @types/auth0-js @types/graphql @types/rebass @types/styled-components
+yarn add graphql router5 react-router5 react-apollo apollo-boost auth0-js rebass styled-components rewire
+yarn add node-sass sass-loader react-flexbox-grid
 
 
 
