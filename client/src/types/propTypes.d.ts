@@ -48,7 +48,7 @@ declare module PropTypes {
 
   export interface ISentenceProps {
     options: Util.Options,
-    sentence: Util.Sentence,
+    sentence: string,
   }
 
   export interface ISentenceHintsProps {

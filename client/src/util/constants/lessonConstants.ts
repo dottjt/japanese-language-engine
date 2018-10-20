@@ -18,22 +18,16 @@ import {
   WA_SOB,
 
   WA_NS,
-  WA_NS_QUESTION,
   MO_NS,
-  MO_NS_QUESTION,
   GA_NS,
-  GA_NS_QUESTION,
 
   WO_VS,
-  WO_VS_QUESTION,
   NI_VS,
-  NI_VS_QUESTION,
   DE_VS,
-  DE_VS_QUESTION,
 
   TOPIC,
-  PREDICATE,
-  TOPIC_PREDICATE,
+  SUBJECT,
+  VERB,
 } from './optionsConstants';
 
 import generateExercises from '../conjugations';
@@ -125,41 +119,17 @@ const LESSON_EXPLANATION = {
 const LESSON_VARIATION = {
   L001: WA_SOB,
   L002: WA_NS,
-  L003: WA_NS_QUESTION,
+  L003: WA_NS,
   L004: MO_NS,
-  L005: MO_NS_QUESTION,
+  L005: MO_NS,
   L006: GA_NS,
-  L007: GA_NS_QUESTION,
+  L007: GA_NS,
   L008: WO_VS,
-  L009: WO_VS_QUESTION,
+  L009: WO_VS,
   L010: NI_VS,
-  L011: NI_VS_QUESTION,
+  L011: NI_VS,
   L012: DE_VS,
-  L013: DE_VS_QUESTION,
-  // L014:
-  // L015:
-  // L016:
-  // L017:
-  // L018:
-  // L019:
-  // L020:
-  // L021:
-};
-
-const LESSON_SENTENCE_TYPE = {
-  L001: TOPIC, // WA_SOB
-  L002: TOPIC_PREDICATE, // WA_NS
-  L003: TOPIC_PREDICATE, // WA_NS_QUESTION
-  L004: TOPIC_PREDICATE, // MO_NS
-  L005: TOPIC_PREDICATE, // MO_NS_QUESTION
-  L006: TOPIC_PREDICATE, // GA_NS
-  L007: TOPIC_PREDICATE, // GA_NS_QUESTION
-  L008: PREDICATE, // WO_VS
-  L009: PREDICATE, // WO_VS_QUESTION
-  L010: PREDICATE, // NI_VS
-  L011: PREDICATE, // NI_VS_QUESTION
-  L012: PREDICATE, // DE_VS
-  L013: PREDICATE, // DE_VS_QUESTION
+  L013: DE_VS,
   // L014:
   // L015:
   // L016:
@@ -178,12 +148,12 @@ const LESSON_WORDS = {
   L005: (nouns: Util.Word[]): Util.SentenceWords => ({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), predicate: { subject: filterSpecifcWord(nouns, 'person') }, }), // TOPIC_PREDICATE, // MO_NS_QUESTION
   L006: (nouns: Util.Word[]): Util.SentenceWords => ({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), predicate: { subject: filterSpecifcWord(nouns, 'person') }, }), // TOPIC_PREDICATE, // GA_NS
   L007: (nouns: Util.Word[]): Util.SentenceWords => ({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), predicate: { subject: filterSpecifcWord(nouns, 'person') }, }), // TOPIC_PREDICATE, // GA_NS_QUESTION
-  L008: (nouns: Util.Word[]): Util.SentenceWords => ({ predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // WO_VS
-  L009: (nouns: Util.Word[]): Util.SentenceWords => ({ predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // WO_VS_QUESTION
-  L010: (nouns: Util.Word[]): Util.SentenceWords => ({ predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // NI_VS
-  L011: (nouns: Util.Word[]): Util.SentenceWords => ({ predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // NI_VS_QUESTION
-  L012: (nouns: Util.Word[]): Util.SentenceWords => ({ predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // DE_VS
-  L013: (nouns: Util.Word[]): Util.SentenceWords => ({ predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // DE_VS_QUESTION
+  L008: (nouns: Util.Word[]): Util.SentenceWords => ({                                                              predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // WO_VS
+  L009: (nouns: Util.Word[]): Util.SentenceWords => ({                                                              predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // WO_VS_QUESTION
+  L010: (nouns: Util.Word[]): Util.SentenceWords => ({                                                              predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // NI_VS
+  L011: (nouns: Util.Word[]): Util.SentenceWords => ({                                                              predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // NI_VS_QUESTION
+  L012: (nouns: Util.Word[]): Util.SentenceWords => ({                                                              predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // DE_VS
+  L013: (nouns: Util.Word[]): Util.SentenceWords => ({                                                              predicate: { subject: filterSpecifcWord(nouns, 'person'), verb: filterSpecifcWord(nouns, 'person') }, }), // PREDICATE, // DE_VS_QUESTION
   // L014:
   // L015:
   // L016:
@@ -218,30 +188,30 @@ const LESSON_RESOURCES = {
   // L021:
 }
 
-const createLessonOptions = (primaryType: string, variation: string) => ({
+const createLessonOptions = (variation: string, question: boolean): Util.Options => ({
   __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   politeness: politenessArray[randomArrayElement(politenessArrayLength)],
   polarity: polarityArray[randomArrayElement(polarityArrayLength)],
   tense: tenseArray[randomArrayElement(tenseArrayLength)],
   gender: genderArray[0],
-  primaryType,
+  question,
   variation,
 });
 
 const LESSON_OPTIONS = {
-  L001: () => createLessonOptions(LESSON_SENTENCE_TYPE.L001, LESSON_VARIATION.L001),
-  L002: () => createLessonOptions(LESSON_SENTENCE_TYPE.L002, LESSON_VARIATION.L002),
-  L003: () => createLessonOptions(LESSON_SENTENCE_TYPE.L003, LESSON_VARIATION.L003),
-  L004: () => createLessonOptions(LESSON_SENTENCE_TYPE.L004, LESSON_VARIATION.L004),
-  L005: () => createLessonOptions(LESSON_SENTENCE_TYPE.L005, LESSON_VARIATION.L005),
-  L006: () => createLessonOptions(LESSON_SENTENCE_TYPE.L006, LESSON_VARIATION.L006),
-  L007: () => createLessonOptions(LESSON_SENTENCE_TYPE.L007, LESSON_VARIATION.L007),
-  L008: () => createLessonOptions(LESSON_SENTENCE_TYPE.L008, LESSON_VARIATION.L008),
-  L009: () => createLessonOptions(LESSON_SENTENCE_TYPE.L009, LESSON_VARIATION.L009),
-  L010: () => createLessonOptions(LESSON_SENTENCE_TYPE.L010, LESSON_VARIATION.L010),
-  L011: () => createLessonOptions(LESSON_SENTENCE_TYPE.L011, LESSON_VARIATION.L011),
-  L012: () => createLessonOptions(LESSON_SENTENCE_TYPE.L012, LESSON_VARIATION.L012),
-  L013: () => createLessonOptions(LESSON_SENTENCE_TYPE.L013, LESSON_VARIATION.L013),
+  L001: () => createLessonOptions(LESSON_VARIATION.L001, false), // WA_SOB
+  L002: () => createLessonOptions(LESSON_VARIATION.L002, true), // WA_NS
+  L003: () => createLessonOptions(LESSON_VARIATION.L003, false), // WA_NS_QUESTION
+  L004: () => createLessonOptions(LESSON_VARIATION.L004, true), // MO_NS
+  L005: () => createLessonOptions(LESSON_VARIATION.L005, false), // MO_NS_QUESTION
+  L006: () => createLessonOptions(LESSON_VARIATION.L006, true), // GA_NS
+  L007: () => createLessonOptions(LESSON_VARIATION.L007, false), // GA_NS_QUESTION
+  L008: () => createLessonOptions(LESSON_VARIATION.L008, true), // WO_VS
+  L009: () => createLessonOptions(LESSON_VARIATION.L009, false), // WO_VS_QUESTION
+  L010: () => createLessonOptions(LESSON_VARIATION.L010, true), // NI_VS
+  L011: () => createLessonOptions(LESSON_VARIATION.L011, false), // NI_VS_QUESTION
+  L012: () => createLessonOptions(LESSON_VARIATION.L012, true), // DE_VS
+  L013: () => createLessonOptions(LESSON_VARIATION.L013, false), // DE_VS_QUESTION
   // L014:
   // L015:
   // L016:

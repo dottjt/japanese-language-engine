@@ -21,37 +21,25 @@ import verbConjugationJapanese from "./verb/verbConjugationJapanese";
 import verbConjugationEnglish from "./verb/verbConjugationEnglish";
 
 
-const sentenceOptions = (sentence: Util.EnglishJapaneseSentence, options: Util.Options): Util.EnglishJapaneseSentence => {
-  if (identifier === PREDICATE || 
-    identifier === TOPIC_PREDICATE ||
-    identifier === SUBJECT) {
-  if (options.variation === WA_NS_QUESTION || 
-      options.variation === MO_NS_QUESTION || 
-      options.variation === GA_NS_QUESTION) 
-    {
-      return 'か？';
-    } else {
-      return '。';
-    }
-  }    
+const sentenceOptions = (sentence: Util.Sentence, options: Util.Options, lang: string): Util.Sentence => {
+  const questionEnding = lang === LANG_JAPANESE ? 'か？' : '?';
+  const normalEnding = lang === LANG_JAPANESE ? '。' : '.';
 
-  if (identifier === TOPIC) {
-    return '。';
+  if (options.question) {
+    return { ...sentence, sentence: `${sentence}${questionEnding}` }
+  } else {
+    return { ...sentence, sentence: `${sentence}${normalEnding}` }
   }
-
 };
 
-const generateWord = (words: Util.SentenceWords, options: Util.Options, identifier: string, lang: string): string => {
-  const nounConjugation = lang === LANG_JAPANESE ? nounConjugationJapanese : nounConjugationJapanese
-  const verbConjugation = lang === LANG_JAPANESE ? verbConjugationJapanese : verbConjugationJapanese 
+const generateWord = (words: Util.SentenceWords, options: Util.Options, wordType: string, lang: string): string => {
+  const nounConjugation = lang === LANG_JAPANESE ? nounConjugationJapanese : nounConjugationEnglish;
+  const verbConjugation = lang === LANG_JAPANESE ? verbConjugationJapanese : verbConjugationEnglish; 
 
-  switch (identifier) {
-    case TOPIC:
-      return nounConjugation(words, options, identifier);
-    case SUBJECT:
-      return nounConjugation(words, options, identifier);
-    case VERB:
-      return verbConjugation(words, options, identifier);
+  switch (wordType) {
+    case TOPIC: return nounConjugation(words, options, wordType);
+    case SUBJECT: return nounConjugation(words, options, wordType);
+    default: return verbConjugation(words, options, wordType);
   }
 };
 
@@ -61,26 +49,29 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
   if (!topic) {
     if (subject && !verb) {
       return  {
-        japaneseSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_JAPANESE)}`, options),
-        englishSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_ENGLISH)}`, options),
+        japaneseSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_JAPANESE)}`, options, LANG_JAPANESE),
+        englishSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
       };
     }
     if (!subject && verb) {
       return  {
-        japaneseSentence: sentenceOptions(`${generateWord(words, options, VERB, LANG_JAPANESE)}`, options),
-        englishSentence: sentenceOptions(`${generateWord(words, options, VERB, LANG_ENGLISH)}`, options),
+        japaneseSentence: sentenceOptions(`${generateWord(words, options, VERB, LANG_JAPANESE)}`, options, LANG_JAPANESE),
+        englishSentence: sentenceOptions(`${generateWord(words, options, VERB, LANG_ENGLISH)}`, options, LANG_ENGLISH),
       };
     }
     if (subject && verb) {
       return  {
-        japaneseSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_JAPANESE)}${generateWord(words, options, VERB, LANG_JAPANESE)}`, options),
-        englishSentence: sentenceOptions(`${generateWord(words, options, VERB, LANG_ENGLISH)}${generateWord(words, options, SUBJECT, LANG_ENGLISH)}`, options),
+        japaneseSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_JAPANESE)}${generateWord(words, options, VERB, LANG_JAPANESE)}`, options, LANG_JAPANESE),
+        englishSentence: sentenceOptions(`${generateWord(words, options, VERB, LANG_ENGLISH)}${generateWord(words, options, SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
       };
     }
   };
+
+
+  // topic only
   return  {
-    japaneseSentence: sentenceOptions(`${generateWord(words, options, TOPIC, LANG_JAPANESE)}`, options),
-    englishSentence: sentenceOptions(`${generateWord(words, options, TOPIC, LANG_ENGLISH)}`, options),
+    japaneseSentence: sentenceOptions(`${generateWord(words, options, TOPIC, LANG_JAPANESE)}`, options, LANG_JAPANESE),
+    englishSentence: sentenceOptions(`${generateWord(words, options, TOPIC, LANG_ENGLISH)}`, options, LANG_ENGLISH),
   };
 };
 

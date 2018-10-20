@@ -30,11 +30,10 @@ import {
 } from '../../constants/optionsConstants';
 
 const determineNounBeginingEnglish = (word: Util.Word, identifier: string): string => {
-  const vowels = ['a','e','i','o','u'];
+  const vowels = 'aeiou';
   const firstLetter = word.english[0];
 
-  if (identifier === TOPIC ||
-      identifier === SUBJECT) {
+  if (identifier === TOPIC || identifier === SUBJECT) {
     if (vowels.includes(firstLetter)) {
       return 'an';
     } else {
@@ -107,9 +106,9 @@ const determineNounEndingEnglish = (options: Util.Options, identifier: string): 
   return '';
 };
 
-const nounConjugationEnglish = (noun: Util.Word, options: Util.Options, sentenceIdentifier: string): string => {
-  const nounEnding = determineNounEndingEnglish(options, sentenceIdentifier);
-  const nounBeginning = determineNounBeginingEnglish(noun, sentenceIdentifier);
+const nounConjugationEnglish = (noun: Util.Word, options: Util.Options, wordType: string): string => {
+  const nounEnding = determineNounEndingEnglish(options, wordType);
+  const nounBeginning = determineNounBeginingEnglish(noun, wordType);
 
   return `${nounBeginning} ${noun.english}${removeGapIfValueEmpty(nounEnding)}`.trim();
 };

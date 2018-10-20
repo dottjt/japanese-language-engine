@@ -22,19 +22,16 @@ declare namespace Util {
   export type Options = {
     __typename: string;
     politeness: string; // casual, formal
-    primaryType: string; // topicPredicate
     variation: string; // wa-sob,
     polarity: string; // positive, negative
     tense: string; // past, present
     gender: string; // masculine, feminine
-    question: boolean;
+    question: boolean; // true, false
   };
 
   export type Sentence = {
     type: string;
-    question?: string;
-    answer?: string;
-    statement?: string;
+    sentence: string;
   };
 
   export type EnglishJapaneseSentence = {
@@ -89,9 +86,9 @@ declare namespace Util {
   };
 
   // SENTENCE TYPE - TOPIC - PREDICATE
-  export type Topic = string;
-  export type Verb = string;
-  export type Subject = string;
+  export type Topic = Word;
+  export type Verb = Word;
+  export type Subject = Word;
 
   export type Predicate = {
     subject?: Subject;
@@ -99,7 +96,7 @@ declare namespace Util {
   }
 
   export type SentenceWords = {
-    topic?: Word;
+    topic?: Topic;
     predicate?: Predicate;
   };
 
