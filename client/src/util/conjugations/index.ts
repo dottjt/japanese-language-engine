@@ -1,4 +1,7 @@
-import { createError } from '../functions';
+import { 
+  // createError,
+  returnSentenceParts,
+} from '../functions';
 
 import { 
   LANG_JAPANESE,
@@ -11,15 +14,11 @@ import {
   TOPIC,
 } from '../constants/optionsConstants';
 
-import {
-  nounConjugationJapanese,
-  nounConjugationEnglish,
-} from "../conjugations/noun/nounConjugationJapanese";
+import nounConjugationJapanese from "./noun/nounConjugationJapanese";
+import nounConjugationEnglish from "./noun/nounConjugationEnglish";
 
-import {
-  verbConjugationJapanese,
-  verbConjugationEnglish,
-} from "../conjugations/verbConjugation";
+import verbConjugationJapanese from "./verb/verbConjugationJapanese";
+import verbConjugationEnglish from "./verb/verbConjugationEnglish";
 
 
 const sentenceOptions = (sentence: Util.EnglishJapaneseSentence, options: Util.Options): Util.EnglishJapaneseSentence => {
@@ -57,7 +56,7 @@ const generateWord = (words: Util.SentenceWords, options: Util.Options, identifi
 };
 
 const generateSentences = (words: Util.SentenceWords, options: Util.Options): Util.EnglishJapaneseSentence => {
-  const { topic, predicate: { subject, verb } } = words as any;
+  const { topic, subject, verb } = returnSentenceParts(words);
 
   if (!topic) {
     if (subject && !verb) {
@@ -75,7 +74,7 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
     if (subject && verb) {
       return  {
         japaneseSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_JAPANESE)}${generateWord(words, options, VERB, LANG_JAPANESE)}`, options),
-        englishSentence: sentenceOptions(`${generateWord(words, options, SUBJECT, LANG_ENGLISH)}${generateWord(words, options, VERB, LANG_ENGLISH)}`, options),
+        englishSentence: sentenceOptions(`${generateWord(words, options, VERB, LANG_ENGLISH)}${generateWord(words, options, SUBJECT, LANG_ENGLISH)}`, options),
       };
     }
   };

@@ -1,3 +1,8 @@
+import { 
+  LANG_JAPANESE, 
+  // LANG_ENGLISH, 
+} from './constants/generalConstants';
+
 import {
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
@@ -6,6 +11,10 @@ import {
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
+
+  // VERB,
+  TOPIC,
+  SUBJECT,
 
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from './constants/optionsConstants';
@@ -30,6 +39,7 @@ export const createError = (fileLocation: string, functionName: string, errorMes
   return `Error. file: ${fileLocation}, function: ${functionName}, ${errorMessage}`;
 };
 
+
 export const convertPolitenessIntoValue = (politeness: string): string => {
   switch(politeness) {
     case POLITENESS_CASUAL:
@@ -53,3 +63,23 @@ export const convertPolarityIntoValue = (polarity: string): string => {
 };
 
 export const removeGapIfValueEmpty = (value: string): string => value !== '' ? ` ${value}` : '';
+
+export const returnSentenceParts = (words: Util.SentenceWords) => {
+  const { topic, predicate: { subject, verb } } = words as any;
+  
+  return {
+    topic,
+    subject,
+    verb,
+  };
+};
+
+export const filterWordType = (words: Util.SentenceWords, wordType: string): Util.Word => {
+  const { topic, subject, verb } = returnSentenceParts(words);
+
+  switch(wordType) {
+    case TOPIC: return topic;
+    case SUBJECT: return subject;
+    default: return verb;
+  }
+};

@@ -36,7 +36,7 @@ import {
   TOPIC_PREDICATE,
 } from './optionsConstants';
 
-import generateExercises from '../sentences';
+import generateExercises from '../conjugations';
 
 import { 
   politenessArray,
