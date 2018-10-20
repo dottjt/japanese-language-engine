@@ -1,22 +1,13 @@
-FROM node:8
+FROM node:9.11.2-alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+ENV NODE_ENV=development
+WORKDIR /usr/src/app/server
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
+COPY package*.json /usr/src/app/server
+RUN npm install -g feathers-cli yarn
 RUN npm install
-# If you are building your code for production
-# RUN npm install --only=production
 
-# Bundle app source
 COPY . .
 
-# will also need to build 
-
-
 EXPOSE 3030
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
