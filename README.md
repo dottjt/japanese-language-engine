@@ -3,21 +3,21 @@ Grammar Sensei
 # Tech
 
 Frontend: Create-React-App, Typescript, React, apollo-boost, react-router5
-CSS: Styled-Components, Rebass 
-Testing: Jest 
+CSS: Styled-Components, Rebass
+Testing: Jest
 Backend: Node.js, feathersjs, GraphQL, apollo-server, typeorm
 Database: Postgres
 Authentication: Auth0
 CI: Buildkite
-Server: AWS Lightsail 
+Server: AWS Lightsail
 Infrastructure: Docker, AWS
 
 yarn add @types/auth0-js @types/graphql @types/rebass @types/styled-components
 yarn add graphql router5 react-router5 react-apollo apollo-boost auth0-js rebass styled-components rewire
 yarn add node-sass sass-loader react-flexbox-grid
 
-
-
+- Word options
+- Sentence options :)
 
 The ultimate way to learn Kim Tae. 
 
