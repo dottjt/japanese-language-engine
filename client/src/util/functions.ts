@@ -64,9 +64,23 @@ export const convertPolarityIntoValue = (polarity: string): string => {
 
 export const removeGapIfValueEmpty = (value: string): string => value !== '' ? ` ${value}` : '';
 
-export const returnSentenceParts = (words: Util.SentenceWords) => {
-  const { topic, predicate: { subject, verb } } = words as any;
-  
+export const returnSentenceParts = (words: Util.SentenceWords): Util.SentenceWordsOrganised => {
+  let topic;
+  let subject;
+  let verb;
+
+  if (words.predicate) {
+    if (words.predicate.subject) {
+      subject = words.predicate.subject;
+    } 
+    if (words.predicate.verb) {
+      verb = words.predicate.verb;
+    }
+  };
+  if (words.topic) {
+    topic = words.topic;
+  };
+    
   return {
     topic,
     subject,
@@ -78,8 +92,8 @@ export const filterWordType = (words: Util.SentenceWords, wordType: string): Uti
   const { topic, subject, verb } = returnSentenceParts(words);
 
   switch(wordType) {
-    case TOPIC: return topic;
-    case SUBJECT: return subject;
-    default: return verb;
+    case TOPIC: return topic as Util.Word;
+    case SUBJECT: return subject as Util.Word;
+    default: return verb as Util.Word;
   }
 };

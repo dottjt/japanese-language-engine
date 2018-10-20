@@ -11,7 +11,8 @@ import {
 // } from '../../constants/generalConstants';
 
 import {
-  nounParticlePermissions
+  nounParticlePermissions,
+  nounEndingPermissions
 } from './nounPermissions';
 
 import {
@@ -56,7 +57,7 @@ const determineNounCategoryEnding = (word: Util.Word): string => {
 
 const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounParticlePermissions(topic, subject, verb, wordType);
+  const permissions = nounParticlePermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
 
   if (permissions) {
     switch (options.variation) {
@@ -76,7 +77,7 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
 
 const determineNounEndingJapanese = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounParticlePermissions(topic, subject, verb, wordType);
+  const permissions = nounEndingPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
 
   if (permissions) {
     switch(`${options.politeness}${options.polarity}${options.tense}`) {

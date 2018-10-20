@@ -97,6 +97,13 @@ declare namespace Util {
     predicate?: Predicate;
   };
 
+  export type SentenceWordsOrganised = {
+    topic?: Topic;
+    subject?: Subject;
+    verb?: Verb;
+  };
+
+
   // export type Predicate = {
   //   verb?: Word;
   //   subject?: Word;

@@ -1,5 +1,6 @@
 import { 
   // createError,
+  capitalise,
   returnSentenceParts,
 } from '../functions';
 
@@ -26,8 +27,14 @@ const sentenceOptions = (sentence: string, options: Util.Options, lang: string):
   const normalEnding = lang === LANG_JAPANESE ? '。' : '.';
 
   if (options.question) {
+    if (lang === LANG_ENGLISH) {
+      return capitalise(`${sentence}${questionEnding}`);
+    } 
     return `${sentence}${questionEnding}`;
   } else {
+    if (lang === LANG_ENGLISH) {
+      return capitalise(`${sentence}${normalEnding}`);
+    } 
     return `${sentence}${normalEnding}`;
   }
 };
