@@ -1,6 +1,7 @@
 import {
   createError,
   removeGapIfValueEmpty,
+  filterWordType,
 } from '../../functions';
 
 // import {
@@ -106,11 +107,13 @@ const determineNounEndingEnglish = (options: Util.Options, identifier: string): 
   return '';
 };
 
-const nounConjugationEnglish = (noun: Util.Word, options: Util.Options, wordType: string): string => {
-  const nounEnding = determineNounEndingEnglish(options, wordType);
-  const nounBeginning = determineNounBeginingEnglish(noun, wordType);
+const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
+  const word = filterWordType(words, wordType);
 
-  return `${nounBeginning} ${noun.english}${removeGapIfValueEmpty(nounEnding)}`.trim();
+  const nounEnding = determineNounEndingEnglish(options, wordType);
+  const nounBeginning = determineNounBeginingEnglish(word, wordType);
+
+  return `${nounBeginning} ${word.english}${removeGapIfValueEmpty(nounEnding)}`.trim();
 };
 
 export default nounConjugationEnglish;

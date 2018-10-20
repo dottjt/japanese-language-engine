@@ -24,10 +24,6 @@ import {
   WO_VS,
   NI_VS,
   DE_VS,
-
-  TOPIC,
-  SUBJECT,
-  VERB,
 } from './optionsConstants';
 
 import generateExercises from '../conjugations';

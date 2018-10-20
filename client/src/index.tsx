@@ -18,7 +18,11 @@ import App from './app/App';
 router.start()
 
 const auth = new Auth();
-auth.login();
+
+if (process.env.DISABLE_AUTH) {
+  auth.login();  
+}
+
 
 ReactDOM.render(
   <ThemeProvider theme={theme}> 

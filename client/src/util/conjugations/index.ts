@@ -21,14 +21,14 @@ import verbConjugationJapanese from "./verb/verbConjugationJapanese";
 import verbConjugationEnglish from "./verb/verbConjugationEnglish";
 
 
-const sentenceOptions = (sentence: Util.Sentence, options: Util.Options, lang: string): Util.Sentence => {
+const sentenceOptions = (sentence: string, options: Util.Options, lang: string): string => {
   const questionEnding = lang === LANG_JAPANESE ? 'か？' : '?';
   const normalEnding = lang === LANG_JAPANESE ? '。' : '.';
 
   if (options.question) {
-    return { ...sentence, sentence: `${sentence}${questionEnding}` }
+    return `${sentence}${questionEnding}`;
   } else {
-    return { ...sentence, sentence: `${sentence}${normalEnding}` }
+    return `${sentence}${normalEnding}`;
   }
 };
 
@@ -66,7 +66,6 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
       };
     }
   };
-
 
   // topic only
   return  {

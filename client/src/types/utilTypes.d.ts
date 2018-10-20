@@ -29,10 +29,7 @@ declare namespace Util {
     question: boolean; // true, false
   };
 
-  export type Sentence = {
-    type: string;
-    sentence: string;
-  };
+  export type Sentence = string;
 
   export type EnglishJapaneseSentence = {
     englishSentence: Sentence;

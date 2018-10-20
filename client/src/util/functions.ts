@@ -1,7 +1,7 @@
-import { 
-  LANG_JAPANESE, 
-  // LANG_ENGLISH, 
-} from './constants/generalConstants';
+// import { 
+//   LANG_JAPANESE, 
+//   // LANG_ENGLISH, 
+// } from './constants/generalConstants';
 
 import {
   POLITENESS_CASUAL,
