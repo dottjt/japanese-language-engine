@@ -42,7 +42,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data }) => {
-          console.log(data.nouns)
           switch (this.props.route.name) { /* this.props.previousRoute */
             case LESSON_TITLE.CALLBACK:
               return <Callback/>

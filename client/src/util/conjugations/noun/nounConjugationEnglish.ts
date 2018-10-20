@@ -11,7 +11,7 @@ import {
 
 import {
   nounPolarityPermissions, 
-  nounEndingPermissionsEnglish,
+  // nounEndingPermissionsEnglish,
 } from './nounPermissions';
 
 import {
@@ -35,7 +35,7 @@ import {
   TENSE_PAST,
 } from '../../constants/optionsConstants';
 
-const determineNounBeginingEnglish = (word: Util.Word, wordType: string): string => {
+const determineNounIndefiniteArticle = (word: Util.Word, wordType: string): string => {
   const vowels = 'aeiou';
   const firstLetter = word.english[0];
 
@@ -62,16 +62,16 @@ const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options,
 };
 
 
-const determineNounEndingEnglish = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
-  const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounEndingPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
+const determineNounTenseEnglish = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
+  // const { topic, subject, verb } = returnSentenceParts(words);
+  // const permissions = nounEndingPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
 
-  if (permissions) {
+  // if (permissions) {
     if (options.variation === WA_NS || options.variation === WA_SOB) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return 'is';
         case `${TENSE_PAST}`: return 'was';
-        default: return createError('conjugations/noun', 'determineNounEndingEnglish - WA_NS', `${options.polarity}${options.tense} unknown`);
+        default: return createError('conjugations/noun', 'determineNounTenseEnglish - WA_NS', `${options.polarity}${options.tense} unknown`);
       };
     }
   
@@ -79,7 +79,7 @@ const determineNounEndingEnglish = (words: Util.SentenceWords, options: Util.Opt
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return 'is also';
         case `${TENSE_PAST}`: return 'was also';
-        default: return createError('conjugations/noun', 'determineNounEndingEnglish - MO_NS', `${options.tense} unknown`);
+        default: return createError('conjugations/noun', 'determineNounTenseEnglish - MO_NS', `${options.tense} unknown`);
       };
     }
     
@@ -87,21 +87,25 @@ const determineNounEndingEnglish = (words: Util.SentenceWords, options: Util.Opt
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return 'is the one that is';
         case `${TENSE_PAST}`: return 'is the one that was';
-        default:  return createError('conjugations/noun', 'determineNounEndingEnglish - GA_NS', `${options.tense} unknown`);
+        default:  return createError('conjugations/noun', 'determineNounTenseEnglish - GA_NS', `${options.tense} unknown`);
       };
     }  
-  }    
+  // }    
   return '';
 };
 
 const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
   const word = filterWordType(words, wordType);
 
-  const nounEnding = determineNounEndingEnglish(words, options, wordType);
-  const nounBeginning = determineNounBeginingEnglish(word, wordType);
-  const nounNegative = determineNounPolarity(words, options, wordType);
+  const nounIndefiniteArticle = determineNounIndefiniteArticle(word, wordType);
+  const nounPolarity = determineNounPolarity(words, options, wordType);
+  const nounTense = determineNounTenseEnglish(words, options, wordType);
 
-  return `${removeGapIfValueEmpty(nounEnding)} ${nounNegative} ${nounBeginning} ${word.english}`.trim();
+  // if (wordType === SUBJECT) {
+    return `${removeGapIfValueEmpty(nounTense)} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();
+  // } else {
+  //   return `${removeGapIfValueEmpty(nounTense)} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();
+  // }
 };
 
 export default nounConjugationEnglish;

@@ -81,7 +81,7 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
   };
 };
 
-const generateExercises = (words: Util.SentenceWords, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] =>
+const generateExercises = (words: Util.SentenceWords, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
     const options = optionsLambda();
     return {
@@ -89,5 +89,11 @@ const generateExercises = (words: Util.SentenceWords, optionsLambda: () => Util.
       ...generateSentences(words, options)  
     }
   })
+
+// const consoleLogExercises = (words: Util.SentenceWords, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => {
+//   const getExercises = generateExercises(words, optionsLambda, numberOfExercises);
+//   console.log('exercises', getExercises);
+//   return getExercises;
+// }
 
 export default generateExercises;

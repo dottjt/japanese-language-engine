@@ -4,26 +4,30 @@ import browserPlugin from 'router5/plugins/browser';
 
 import {
   LESSON_TITLE,
+  LESSON_PATH,
 } from './util/constants/lessonConstants';
 
 const routes = [
-  
-  { name: LESSON_TITLE.HOME, path: '/' },
-  { name: LESSON_TITLE.CONTENTS, path: '/contents' },
-  { name: LESSON_TITLE.PREREQ, path: '/prerequisites' },
+  { name: LESSON_TITLE.CALLBACK, path: LESSON_PATH.CALLBACK },
+  { name: LESSON_TITLE.LOGIN, path: LESSON_PATH.LOGIN },
 
-  { name: LESSON_TITLE.L001, path: '/japanese-wa-noun-statements' },
-  { name: LESSON_TITLE.L002, path: '/japanese-wa-noun-questions' },
-  { name: LESSON_TITLE.L003, path: '/japanese-mo-noun-statements' },
-  { name: LESSON_TITLE.L004, path: '/japanese-mo-noun-questions' },
-  { name: LESSON_TITLE.L005, path: '/japanese-ga-noun-statements' },
-  { name: LESSON_TITLE.L006, path: '/japanese-ga-noun-questions' },
-  { name: LESSON_TITLE.L007, path: '/japanese-wo-verb-statements' },
-  { name: LESSON_TITLE.L008, path: '/japanese-wo-verb-questions' },
-  { name: LESSON_TITLE.L009, path: '/japanese-ni-verb-statements' },
-  { name: LESSON_TITLE.L010, path: '/japanese-ni-verb-questions' },
-  { name: LESSON_TITLE.L011, path: '/japanese-de-verb-statements' },
-  { name: LESSON_TITLE.L012, path: '/japanese-de-verb-questions' },
+  { name: LESSON_TITLE.HOME, path: LESSON_PATH.HOME },
+  { name: LESSON_TITLE.CONTENTS, path: LESSON_PATH.CONTENTS },
+  { name: LESSON_TITLE.PREREQ, path: LESSON_PATH.PREREQ },
+  
+  { name: LESSON_TITLE.L001, path: LESSON_PATH.L001 },
+  { name: LESSON_TITLE.L002, path: LESSON_PATH.L002 },
+  { name: LESSON_TITLE.L003, path: LESSON_PATH.L003 },
+  { name: LESSON_TITLE.L004, path: LESSON_PATH.L004 },
+  { name: LESSON_TITLE.L005, path: LESSON_PATH.L005 },
+  { name: LESSON_TITLE.L006, path: LESSON_PATH.L006 },
+  { name: LESSON_TITLE.L007, path: LESSON_PATH.L007 },
+  { name: LESSON_TITLE.L008, path: LESSON_PATH.L008 },
+  { name: LESSON_TITLE.L009, path: LESSON_PATH.L009 },
+  { name: LESSON_TITLE.L010, path: LESSON_PATH.L010 },
+  { name: LESSON_TITLE.L011, path: LESSON_PATH.L011 },
+  { name: LESSON_TITLE.L012, path: LESSON_PATH.L012 },
+  { name: LESSON_TITLE.L013, path: LESSON_PATH.L013 },
 
 ];
 

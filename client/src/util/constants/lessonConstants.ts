@@ -59,12 +59,35 @@ const createRes = (resourceType: string, urlString: string): Util.Resource => {
   };
 };
 
+export const LESSON_PATH = {
+  CALLBACK: '/callback',
+  LOGIN: '/login',
+  HOME: '/',
+  CONTENTS: '/contents',
+  PREREQ: '/prerequisites',
+  
+  L001: '/japanese-noun-statement-of-being',
+  L002: '/japanese-wa-noun-statements',
+  L003: '/japanese-wa-noun-questions',
+  L004: '/japanese-mo-noun-statements',
+  L005: '/japanese-mo-noun-questions',
+  L006: '/japanese-ga-noun-statements',
+  L007: '/japanese-ga-noun-questions',
+  L008: '/japanese-wo-verb-statements',
+  L009: '/japanese-wo-verb-questions',
+  L010: '/japanese-ni-verb-statements',
+  L011: '/japanese-ni-verb-questions',
+  L012: '/japanese-de-verb-statements',
+  L013: '/japanese-de-verb-questions',
+}
+
 export const LESSON_TITLE = {
   CALLBACK: 'Grammar Sensei Callback',
   LOGIN: 'Grammar Sensei Login',
   HOME: 'Grammar Sensei Home',
   CONTENTS: 'Grammar Sensei Contents',
   PREREQ: 'Grammar Sensei Prerequisites',
+  
   L001: 'は state of being',
   L002: 'は noun statements',
   L003: 'は noun questions',
@@ -196,18 +219,18 @@ const createLessonOptions = (variation: string, question: boolean): Util.Options
 
 const LESSON_OPTIONS = {
   L001: () => createLessonOptions(LESSON_VARIATION.L001, false), // WA_SOB
-  L002: () => createLessonOptions(LESSON_VARIATION.L002, true), // WA_NS
-  L003: () => createLessonOptions(LESSON_VARIATION.L003, false), // WA_NS_QUESTION
-  L004: () => createLessonOptions(LESSON_VARIATION.L004, true), // MO_NS
-  L005: () => createLessonOptions(LESSON_VARIATION.L005, false), // MO_NS_QUESTION
-  L006: () => createLessonOptions(LESSON_VARIATION.L006, true), // GA_NS
-  L007: () => createLessonOptions(LESSON_VARIATION.L007, false), // GA_NS_QUESTION
-  L008: () => createLessonOptions(LESSON_VARIATION.L008, true), // WO_VS
-  L009: () => createLessonOptions(LESSON_VARIATION.L009, false), // WO_VS_QUESTION
-  L010: () => createLessonOptions(LESSON_VARIATION.L010, true), // NI_VS
-  L011: () => createLessonOptions(LESSON_VARIATION.L011, false), // NI_VS_QUESTION
-  L012: () => createLessonOptions(LESSON_VARIATION.L012, true), // DE_VS
-  L013: () => createLessonOptions(LESSON_VARIATION.L013, false), // DE_VS_QUESTION
+  L002: () => createLessonOptions(LESSON_VARIATION.L002, false), // WA_NS
+  L003: () => createLessonOptions(LESSON_VARIATION.L003, true), // WA_NS_QUESTION
+  L004: () => createLessonOptions(LESSON_VARIATION.L004, false), // MO_NS
+  L005: () => createLessonOptions(LESSON_VARIATION.L005, true), // MO_NS_QUESTION
+  L006: () => createLessonOptions(LESSON_VARIATION.L006, false), // GA_NS
+  L007: () => createLessonOptions(LESSON_VARIATION.L007, true), // GA_NS_QUESTION
+  L008: () => createLessonOptions(LESSON_VARIATION.L008, false), // WO_VS
+  L009: () => createLessonOptions(LESSON_VARIATION.L009, true), // WO_VS_QUESTION
+  L010: () => createLessonOptions(LESSON_VARIATION.L010, false), // NI_VS
+  L011: () => createLessonOptions(LESSON_VARIATION.L011, true), // NI_VS_QUESTION
+  L012: () => createLessonOptions(LESSON_VARIATION.L012, false), // DE_VS
+  L013: () => createLessonOptions(LESSON_VARIATION.L013, true), // DE_VS_QUESTION
   // L014:
   // L015:
   // L016:
