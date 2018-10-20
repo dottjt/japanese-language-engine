@@ -1,12 +1,10 @@
-// import { rewire } from 'rewire';
-
 import {
   filterSpecifcWord,
   filterSpecifcCategory,
   filterSpecifcMeta,
-  getRandomWord,
-  getRandomWordViaCategory,
-  getRandomWordViaMeta,
+  // getRandomWord,
+  // getRandomWordViaCategory,
+  // getRandomWordViaMeta,
 } from '../src/util/retrieve';
 
 import allWords from '../src/util/words';
@@ -15,10 +13,6 @@ import {
   PRIMARY_TYPE_NOUN,
   __TYPENAME_WORDS,
 } from '../src/util/constants/wordConstants';
-
-// const app = rewire('../../src/util/conjugations/predicate');
-
-// singleRandomWordFilter = app.__get__('singleRandomWordFilter'); 
 
 const CATEGORY_TEST = 'CATEGORY_TEST';
 const wordTest = {

@@ -6,7 +6,7 @@ import {
   // convertPolitenessIntoValue,
   // convertPolarityIntoValue,
   // removeGapIfValueEmpty,
-} from '../util/functions';
+} from '../src/util/functions';
 
 describe('util/functions.ts', () => {
   describe('capitalise', () => {
