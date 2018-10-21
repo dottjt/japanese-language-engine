@@ -3,8 +3,8 @@ import {
   CATEGORY_FOOD,
   CATEGORY_DRINK,
 
-  VERB_TYPE_RU,
-  VERB_TYPE_U,
+  SENTENCE_TYPE_VERB_TYPE_RU,
+  SENTENCE_TYPE_VERB_TYPE_U,
 
   __TYPENAME_WORDS,
 } from '../constants/wordConstants';
@@ -15,7 +15,7 @@ export const wordEat = {
   primaryType: PRIMARY_TYPE_VERB,
   category: [ CATEGORY_FOOD ],
   meta: {
-    verbType: VERB_TYPE_RU,
+    verbType: SENTENCE_TYPE_VERB_TYPE_RU,
   },
   __typename: __TYPENAME_WORDS,
 };
@@ -26,7 +26,7 @@ export const wordDrink = {
   primaryType: PRIMARY_TYPE_VERB,
   category: [ CATEGORY_DRINK ],
   meta: {
-    verbType: VERB_TYPE_U,
+    verbType: SENTENCE_TYPE_VERB_TYPE_U,
   },
   __typename: __TYPENAME_WORDS,
 };

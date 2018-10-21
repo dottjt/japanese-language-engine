@@ -1,7 +1,7 @@
 import {
   createError,
   removeGapIfValueEmpty,
-  filterWordType,
+  filtersentenceType,
   returnSentenceParts,
 } from '../../functions';
 
@@ -24,9 +24,9 @@ import {
   // NI_SV,
   // DE_SV,
   
-  // VERB,
-  TOPIC,
-  SUBJECT,
+  // SENTENCE_TYPE_VERB,
+  SENTENCE_TYPE_TOPIC,
+  SENTENCE_TYPE_SUBJECT,
 
   // POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
@@ -35,11 +35,11 @@ import {
   TENSE_PAST,
 } from '../../constants/optionsConstants';
 
-const determineNounIndefiniteArticle = (word: Util.Word, wordType: string): string => {
+const determineNounIndefiniteArticle = (word: Util.Word, sentenceType: string): string => {
   const vowels = 'aeiou';
   const firstLetter = word.english[0];
 
-  if (wordType === TOPIC || wordType === SUBJECT) {
+  if (sentenceType === SENTENCE_TYPE_TOPIC || sentenceType === SENTENCE_TYPE_SUBJECT) {
     if (vowels.includes(firstLetter)) {
       return 'an';
     } else {
@@ -49,9 +49,9 @@ const determineNounIndefiniteArticle = (word: Util.Word, wordType: string): stri
   return '';
 };
 
-const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
+const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounPolarityPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
+  const permissions = nounPolarityPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (options.polarity === POLARITY_NEGATIVE) {
     if (permissions) {
@@ -62,9 +62,9 @@ const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options,
 };
 
 
-const determineNounTenseEnglish = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
+const determineNounTenseEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
   // const { topic, subject, verb } = returnSentenceParts(words);
-  // const permissions = nounEndingPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
+  // const permissions = nounEndingPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   // if (permissions) {
     if (options.variation === WA_TS || options.variation === T) {
@@ -94,14 +94,14 @@ const determineNounTenseEnglish = (words: Util.SentenceWords, options: Util.Opti
   return '';
 };
 
-const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
-  const word = filterWordType(words, wordType);
+const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+  const word = filtersentenceType(words, sentenceType);
 
-  const nounIndefiniteArticle = determineNounIndefiniteArticle(word, wordType);
-  const nounPolarity = determineNounPolarity(words, options, wordType);
-  const nounTense = determineNounTenseEnglish(words, options, wordType);
+  const nounIndefiniteArticle = determineNounIndefiniteArticle(word, sentenceType);
+  const nounPolarity = determineNounPolarity(words, options, sentenceType);
+  const nounTense = determineNounTenseEnglish(words, options, sentenceType);
 
-  // if (wordType === SUBJECT) {
+  // if (sentenceType === SENTENCE_TYPE_SUBJECT) {
     return `${removeGapIfValueEmpty(nounTense)} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();
   // } else {
   //   return `${removeGapIfValueEmpty(nounTense)} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();

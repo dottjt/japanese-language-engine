@@ -82,7 +82,7 @@ declare namespace Util {
     options: Options;
   };
 
-  // SENTENCE TYPE - TOPIC - PREDICATE
+  // SENTENCE TYPE - SENTENCE_TYPE_TOPIC
   export type Topic = Word;
   export type Verb = Word;
   export type Subject = Word;

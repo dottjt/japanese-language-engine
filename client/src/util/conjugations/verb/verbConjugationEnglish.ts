@@ -1,6 +1,6 @@
 import {
   createError,
-  filterWordType,
+  filtersentenceType,
 } from '../../functions';
 
 import {
@@ -16,8 +16,8 @@ const determineVerbConjugationEnglish = (options: Util.Options): string => {
   }
 }; 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
-  const word = filterWordType(words, wordType);
+const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+  const word = filtersentenceType(words, sentenceType);
   const verbPolarity = determineVerbConjugationEnglish(options);
 
   return `${verbPolarity}${word.english}`;

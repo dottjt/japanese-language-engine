@@ -2,7 +2,7 @@ import {
   createError,
   // removeGapIfValueEmpty,
   returnSentenceParts,
-  filterWordType,
+  filtersentenceType,
 } from '../../functions';
 
 // import { 
@@ -12,7 +12,7 @@ import {
 
 import {
   nounParticlePermissions,
-  nounEndingPermissions
+  nounConjugationPermissions,
 } from './nounPermissions';
 
 import {
@@ -30,9 +30,9 @@ import {
   NI_SV,
   DE_SV,
   
-  // VERB,
-  // TOPIC,
-  // SUBJECT,
+  // SENTENCE_TYPE_VERB,
+  // SENTENCE_TYPE_TOPIC,
+  // SENTENCE_TYPE_SUBJECT,
 
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
@@ -55,9 +55,9 @@ const determineNounCategoryEnding = (word: Util.Word): string => {
   return endingsArray.length > 0 ? endingsArray[0] : '';
 };
 
-const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
+const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounParticlePermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
+  const permissions = nounParticlePermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     switch (options.variation) {
@@ -75,9 +75,9 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
   return '';
 };
 
-const determineNounEndingJapanese = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
+const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounEndingPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
+  const permissions = nounConjugationPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     switch(`${options.politeness}${options.polarity}${options.tense}`) {
@@ -104,7 +104,7 @@ const determineNounEndingJapanese = (words: Util.SentenceWords, options: Util.Op
       default: 
         return createError(
           'conjugations/noun',
-          'determineNounEndingJapanese',
+          'determineNounConjugationJapanese',
           `${options.politeness}${options.polarity}${options.tense} unknown`,
         );
     }
@@ -112,12 +112,12 @@ const determineNounEndingJapanese = (words: Util.SentenceWords, options: Util.Op
   return '';
 };
 
-const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
-  const word = filterWordType(words, wordType);
+const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+  const word = filtersentenceType(words, sentenceType);
 
-  const nounEnding = determineNounEndingJapanese(words, options, wordType);
+  const nounEnding = determineNounConjugationJapanese(words, options, sentenceType);
   const nounCategoryEnding = determineNounCategoryEnding(word);
-  const nounTopicParticle = determineTopicParticleJapanese(words, options, wordType);
+  const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
 
   return `${word.japanese}${nounCategoryEnding}${nounEnding}${nounTopicParticle}`.trim();
 };

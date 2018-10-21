@@ -10,7 +10,7 @@ import {
   // POLARITY_NEGATIVE,
 
   // PREDICATE,
-  // TOPIC,
+  // SENTENCE_TYPE_TOPIC,
 
   // CATEGORY_HUMAN_NAME,
 } from '../../constants/wordConstants';
@@ -55,7 +55,7 @@ export const determineSentenceIdentifierEndingJapanese = (identifier: string): s
   // switch(identifier) {
   //   case PREDICATE:
   //     return ''; // I've completely forgotten what I was trying to express here. 
-  //   case TOPIC:
+  //   case SENTENCE_TYPE_TOPIC:
   //     return '';
   //   default:
       return '';

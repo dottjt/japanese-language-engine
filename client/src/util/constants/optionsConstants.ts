@@ -1,13 +1,13 @@
 // options.primaryType
 
-export const VERB = 'VERB';
-export const SUBJECT = 'SUBJECT';
-export const TOPIC = 'TOPIC';
+export const SENTENCE_TYPE_VERB = 'SENTENCE_TYPE_VERB';
+export const SENTENCE_TYPE_SUBJECT = 'SENTENCE_TYPE_SUBJECT';
+export const SENTENCE_TYPE_TOPIC = 'SENTENCE_TYPE_TOPIC';
 
 export const primaryTypeArray = [
-  VERB,
-  SUBJECT,
-  TOPIC,
+  SENTENCE_TYPE_VERB,
+  SENTENCE_TYPE_SUBJECT,
+  SENTENCE_TYPE_TOPIC,
 ];
 
 // options.variation
@@ -20,9 +20,9 @@ export const GA_TS = 'GA_TS'; // GA - NOUN STATEMENT
 
 export const V = 'V'; // WA - STATEMENT OF BEING
 
-export const WO_SV = 'WO_SV'; // WO - VERB STATEMENT
-export const NI_SV = 'NI_SV'; // NI - VERB STATEMENT
-export const DE_SV = 'GA_VS'; // GA - VERB STATEMENT
+export const WO_SV = 'WO_SV'; // WO - SENTENCE_TYPE_VERB STATEMENT
+export const NI_SV = 'NI_SV'; // NI - SENTENCE_TYPE_VERB STATEMENT
+export const DE_SV = 'GA_VS'; // GA - SENTENCE_TYPE_VERB STATEMENT
 
 export const variationArray = [
   T,

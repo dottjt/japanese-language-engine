@@ -31,12 +31,12 @@ export const categoryArray = [
 
 // word.meta
 
-export const VERB_TYPE_RU = 'ru verb';
-export const VERB_TYPE_U = 'u verb';
+export const SENTENCE_TYPE_VERB_TYPE_RU = 'ru verb';
+export const SENTENCE_TYPE_VERB_TYPE_U = 'u verb';
 
 export const verbTypeArray = [
-  VERB_TYPE_RU,
-  VERB_TYPE_U,
+  SENTENCE_TYPE_VERB_TYPE_RU,
+  SENTENCE_TYPE_VERB_TYPE_U,
 ];
 
 

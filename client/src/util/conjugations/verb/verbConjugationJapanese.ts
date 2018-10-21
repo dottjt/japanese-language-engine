@@ -1,11 +1,11 @@
 import {
   createError,
-  filterWordType,
+  filtersentenceType,
 } from '../../functions';
 
 import {
-  VERB_TYPE_RU,
-  VERB_TYPE_U,
+  SENTENCE_TYPE_VERB_TYPE_RU,
+  SENTENCE_TYPE_VERB_TYPE_U,
 } from '../../constants/wordConstants';
 
 import {
@@ -57,9 +57,9 @@ const uVerbEndingToA = (verbEnding: string): string => {
 const getVerbStem = (verb: Util.Word, options: Util.Options): string => {
   const initialStem = verb.japanese.slice(0, -1);
   
-  if (verb.meta.verbType === VERB_TYPE_RU) { return initialStem };
+  if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_RU) { return initialStem };
 
-  if (verb.meta.verbType === VERB_TYPE_U) {
+  if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_U) {
     const verbLastLetter = verb.japanese.slice(-1);
     switch(`${options.politeness}${options.polarity}`) {
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return `${verb}`;
@@ -84,8 +84,8 @@ const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options
   }
 };
 
-const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, wordType: string): string => {
-  const word = filterWordType(words, wordType);
+const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+  const word = filtersentenceType(words, sentenceType);
   const conjugatedVerb = determineVerbConjugationJapanese(word, options);
 
   return `${conjugatedVerb}`;
