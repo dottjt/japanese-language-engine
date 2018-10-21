@@ -20,15 +20,15 @@ import {
 } from '../../constants/wordConstants';
 
 import {
-  WA_SOB,
+  T,
 
-  WA_NS,
-  MO_NS,
-  GA_NS,
+  WA_TS,
+  MO_TS,
+  GA_TS,
 
-  WO_VS,
-  NI_VS,
-  DE_VS,
+  WO_SV,
+  NI_SV,
+  DE_SV,
   
   // VERB,
   // TOPIC,
@@ -61,13 +61,13 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
 
   if (permissions) {
     switch (options.variation) {
-      case WA_SOB: return 'は';
-      case WA_NS: return 'は';
-      case MO_NS: return 'も';
-      case GA_NS: return 'が';
-      case WO_VS: return 'を';
-      case NI_VS: return 'に';
-      case DE_VS: return 'で';
+      case T: return 'は';
+      case WA_TS: return 'は';
+      case MO_TS: return 'も';
+      case GA_TS: return 'が';
+      case WO_SV: return 'を';
+      case NI_SV: return 'に';
+      case DE_SV: return 'で';
       default: return createError('conjugations/topic', 'determineTopicParticle', 'options.variation unknown');
     }
   }

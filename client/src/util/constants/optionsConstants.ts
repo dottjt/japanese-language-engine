@@ -12,26 +12,26 @@ export const primaryTypeArray = [
 
 // options.variation
 
-export const WA_SOB = 'WA_SOB'; // WA - STATEMENT OF BEING
+export const T = 'T'; // WA - STATEMENT OF BEING
 
-export const WA_NS = 'WA_NS'; // WA - NOUN STATEMENT
-export const MO_NS = 'MO_NS'; // MO - NOUN STATEMENT
-export const GA_NS = 'GA_NS'; // GA - NOUN STATEMENT
+export const WA_TS = 'WA_TS'; // WA - NOUN STATEMENT
+export const MO_TS = 'MO_TS'; // MO - NOUN STATEMENT
+export const GA_TS = 'GA_TS'; // GA - NOUN STATEMENT
 
-export const WO_VS = 'WO_VS'; // WO - VERB STATEMENT
-export const NI_VS = 'NI_VS'; // NI - VERB STATEMENT
-export const DE_VS = 'GA_VS'; // GA - VERB STATEMENT
+export const WO_SV = 'WO_SV'; // WO - VERB STATEMENT
+export const NI_SV = 'NI_SV'; // NI - VERB STATEMENT
+export const DE_SV = 'GA_VS'; // GA - VERB STATEMENT
 
 export const variationArray = [
-  WA_SOB,
+  T,
   
-  WA_NS,
-  MO_NS,
-  GA_NS,
+  WA_TS,
+  MO_TS,
+  GA_TS,
 
-  WO_VS,
-  NI_VS,
-  DE_VS,
+  WO_SV,
+  NI_SV,
+  DE_SV,
 ];
 
 // options.polarity

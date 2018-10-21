@@ -15,14 +15,14 @@ import {
 } from './nounPermissions';
 
 import {
-  WA_SOB,
-  WA_NS,
-  MO_NS,
-  GA_NS,
+  T,
+  WA_TS,
+  MO_TS,
+  GA_TS,
 
-  // WO_VS,
-  // NI_VS,
-  // DE_VS,
+  // WO_SV,
+  // NI_SV,
+  // DE_SV,
   
   // VERB,
   TOPIC,
@@ -67,27 +67,27 @@ const determineNounTenseEnglish = (words: Util.SentenceWords, options: Util.Opti
   // const permissions = nounEndingPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, wordType);
 
   // if (permissions) {
-    if (options.variation === WA_NS || options.variation === WA_SOB) {
+    if (options.variation === WA_TS || options.variation === T) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return 'is';
         case `${TENSE_PAST}`: return 'was';
-        default: return createError('conjugations/noun', 'determineNounTenseEnglish - WA_NS', `${options.polarity}${options.tense} unknown`);
+        default: return createError('conjugations/noun', 'determineNounTenseEnglish - WA_TS', `${options.polarity}${options.tense} unknown`);
       };
     }
   
-    if (options.variation === MO_NS) {
+    if (options.variation === MO_TS) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return 'is also';
         case `${TENSE_PAST}`: return 'was also';
-        default: return createError('conjugations/noun', 'determineNounTenseEnglish - MO_NS', `${options.tense} unknown`);
+        default: return createError('conjugations/noun', 'determineNounTenseEnglish - MO_TS', `${options.tense} unknown`);
       };
     }
     
-    if (options.variation === GA_NS) {
+    if (options.variation === GA_TS) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return 'is the one that is';
         case `${TENSE_PAST}`: return 'is the one that was';
-        default:  return createError('conjugations/noun', 'determineNounTenseEnglish - GA_NS', `${options.tense} unknown`);
+        default:  return createError('conjugations/noun', 'determineNounTenseEnglish - GA_TS', `${options.tense} unknown`);
       };
     }  
   // }    

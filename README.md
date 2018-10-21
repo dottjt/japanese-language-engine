@@ -29,6 +29,8 @@ https://mherman.org/blog/dockerizing-a-react-app/
 
 https://docs.docker.com/compose/gettingstarted/#step-2-create-a-dockerfile
 
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
 $ docker build -t dottjt/watashi-client-nginx .
 
 - Word options
