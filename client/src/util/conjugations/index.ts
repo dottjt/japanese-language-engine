@@ -33,14 +33,14 @@ const sentenceOptions = (sentence: string, options: Util.Options, lang: string):
 
   if (options.question === HAS_QUESTION) {
     if (lang === LANG_ENGLISH) {
-      return capitalise(`${sentence}${questionEnding}`);
+      return capitalise(`${sentence.trim()}${questionEnding}`);
     } 
-    return `${sentence}${questionEnding}`;
+    return `${sentence.trim()}${questionEnding}`;
   } else {
     if (lang === LANG_ENGLISH) {
-      return capitalise(`${sentence}${normalEnding}`);
+      return capitalise(`${sentence.trim()}${normalEnding}`);
     } 
-    return `${sentence}${normalEnding}`;
+    return `${sentence.trim()}${normalEnding}`;
   }
 };
 
@@ -58,7 +58,6 @@ const generateWord = (words: Util.SentenceWords, options: Util.Options, sentence
 };
 
 const generateSentences = (words: Util.SentenceWords, options: Util.Options): Util.EnglishJapaneseSentence => {
-  console.log(words);
   const { topic, subject, verb } = returnSentenceParts(words);
   const { onlyTopic, onlySubject, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
 

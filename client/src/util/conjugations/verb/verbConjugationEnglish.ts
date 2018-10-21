@@ -21,10 +21,9 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
     switch(`${options.polarity}`) {
       case `${POLARITY_POSITIVE}`: return '';
       case `${POLARITY_NEGATIVE}`: return 'do not';
-      default: return createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity}${options.politeness} unknown`);
     }
+    throw new Error(createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity} unknown`));
   }
-
   return '';
 }; 
 
@@ -32,7 +31,7 @@ const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options
   const word = filtersentenceType(words, sentenceType);
   const verbPolarity = determineVerbConjugationEnglish(words, options, sentenceType);
 
-  return `${verbPolarity}${word.english}`;
+  return `${verbPolarity} ${word.english}`;
 };
 
 export default verbConjugationEnglish;

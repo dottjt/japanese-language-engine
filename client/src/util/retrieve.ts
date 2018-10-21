@@ -39,7 +39,6 @@ export const getRandomWordViaCategory = (nouns: Util.Word[], category: string): 
 
 export const getRandomWordViaPrimaryType = (nouns: Util.Word[], primaryType: string): Util.Word => {
   const getPrimaryWords = filterSpecifcPrimaryType(nouns, primaryType);
-  console.log('filter', filterSpecifcPrimaryType);
   return getPrimaryWords[randomArrayElement(getPrimaryWords.length)]
 };
 

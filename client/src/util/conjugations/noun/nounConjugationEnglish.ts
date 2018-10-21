@@ -5,10 +5,6 @@ import {
   returnSentenceParts,
 } from '../../functions';
 
-// import {
-//   CATEGORY_HUMAN_NAME,
-// } from '../../constants/wordConstants';
-
 import {
   nounPolarityPermissions, 
   nounConjugationPermissionsEnglish,
@@ -26,8 +22,8 @@ import {
   // DE_SV,
   
   // SENTENCE_TYPE_VERB,
-  SENTENCE_TYPE_TOPIC,
-  SENTENCE_TYPE_SUBJECT,
+  // SENTENCE_TYPE_TOPIC,
+  // SENTENCE_TYPE_SUBJECT,
 
   // POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
@@ -43,14 +39,12 @@ const determineNounIndefiniteArticle = (words: Util.SentenceWords, word: Util.Wo
   if (permissions) {
     const vowels = 'aeiou';
     const firstLetter = word.english[0];
-  
-    if (sentenceType === SENTENCE_TYPE_TOPIC || sentenceType === SENTENCE_TYPE_SUBJECT) {
-      if (vowels.includes(firstLetter)) {
-        return 'an';
-      } else {
-        return 'a';
-      };
-    }  
+
+    if (vowels.includes(firstLetter)) {
+      return 'an';
+    } else {
+      return 'a';
+    };    
   };
   return '';
 };

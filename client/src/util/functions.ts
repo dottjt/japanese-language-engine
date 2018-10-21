@@ -19,7 +19,7 @@ import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from './constants/optionsConstants';
 
-export const capitalise = (value: string): string => value.charAt(0).toUpperCase() + value.slice(1);
+export const capitalise = (sentence: string): string => sentence[0].toUpperCase() + sentence.slice(1);
 export const randomArrayElement = (arrayLength: number): number => Math.floor(Math.random() * arrayLength);
 
 interface IValues {
