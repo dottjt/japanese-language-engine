@@ -4,11 +4,22 @@ import {
 
   __TYPENAME_WORDS,
   __TYPENAME_META,
+  __TYPENAME_ENGLISH,
+  __TYPENAME_JAPANESE,
 } from '../constants/wordConstants';
 
 export const wordSasaki = {
-  japanese: '佐々木',
-  english: 'Sasaki',
+  japanese: { 
+    kanji: '佐々木',
+    // hiragana: 'ささき',
+    // furigana: 'Sasaki',
+    __typename: __TYPENAME_JAPANESE,
+  },
+  english: {
+    present: 'like',
+    past: 'NA',
+    __typename: __TYPENAME_ENGLISH,
+  },
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
   meta: {
@@ -19,8 +30,17 @@ export const wordSasaki = {
 };
 
 export const wordNomura = {
-  japanese: '野村',
-  english: 'Nomura',
+  japanese: { 
+    kanji: '野村',
+    // hiragana: 'のむら',
+    // furigana: 'Nomura',
+    __typename: __TYPENAME_JAPANESE,
+  },
+  english: {
+    present: 'Nomura',
+    past: 'NA',
+    __typename: __TYPENAME_ENGLISH,
+  },
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
   meta: {
@@ -31,8 +51,17 @@ export const wordNomura = {
 };
 
 export const wordKato = {
-  japanese: '加藤',
-  english: 'Kato',
+  japanese: { 
+    kanji: '加藤',
+    // hiragana: 'かと',
+    // furigana: 'Kato',
+    __typename: __TYPENAME_JAPANESE,
+  },
+  english: {
+    present: 'Kato',
+    past: 'NA',
+    __typename: __TYPENAME_ENGLISH,
+  },
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
   meta: {
@@ -43,8 +72,17 @@ export const wordKato = {
 };
 
 export const wordKobayashi = {
-  japanese: '小林',
-  english: 'Kobayashi',
+  japanese: { 
+    kanji: '小林',
+    // hiragana: 'こばやし',
+    // furigana: 'Kobayashi',
+    __typename: __TYPENAME_JAPANESE,
+  },
+  english: {
+    present: 'Kobayashi',
+    past: 'NA',
+    __typename: __TYPENAME_ENGLISH,
+  },
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN_NAME ],
   meta: {

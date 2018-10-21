@@ -20,6 +20,8 @@ export const CATEGORY_RESPONSE = 'response';
 export const CATEGORY_FOOD = 'food';
 export const CATEGORY_DRINK = 'drink';
 
+export const CATEGORY_LOCATION = 'location';
+
 export const categoryArray = [
   CATEGORY_HUMAN_NAME,
   CATEGORY_HUMAN,
@@ -27,6 +29,7 @@ export const categoryArray = [
   CATEGORY_RESPONSE,
   CATEGORY_FOOD,
   CATEGORY_DRINK,
+  CATEGORY_LOCATION,
 ];
 
 // word.meta
@@ -43,3 +46,5 @@ export const verbTypeArray = [
 // __typename
 export const __TYPENAME_WORDS = 'words';
 export const __TYPENAME_META = 'meta';
+export const __TYPENAME_ENGLISH = 'english';
+export const __TYPENAME_JAPANESE = 'japanese';

@@ -8,22 +8,17 @@ export const GET_ALL_SENTENCE_DISPLAY_OPTIONS_QUERY = gql`
   }
 `;
 
-export const GET_ALL_NOUNS = gql`{
-  nouns @client {
-    japanese
-    english
-    primaryType
-    category
-    meta @client {
-      verbType
-    }
-  }
-}`
-
 export const GET_ALL_WORDS_AND_OPTIONS = gql`{
     nouns @client {
-      japanese
-      english
+      japanese @client {
+        kanji
+        # hiragana
+        # furigana
+      }
+      english @client {
+        present
+        past
+      }
       primaryType
       category
       meta @client {
