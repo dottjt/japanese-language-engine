@@ -26,7 +26,7 @@ declare namespace Util {
     polarity: string; // positive, negative
     tense: string; // past, present
     gender: string; // masculine, feminine
-    question: boolean; // true, false
+    question: string; // HAS_QUESTION, NOT_QUESTION
   };
 
   export type Sentence = string;

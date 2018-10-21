@@ -17,10 +17,10 @@ import {
   L007,
   L008,
   L009,
-  L010,
-  L011,
-  L012,
-  L013,
+  // L010,
+  // L011,
+  // L012,
+  // L013,
 } from '../util/constants/lessonConstants';
 
 import LessonTemplate from './components/LessonTemplate';
@@ -111,8 +111,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   exercises={L006.LESSON_EXERCISES(data.nouns)}
                 />
               ); 
-
-
             case L007.LESSON_TITLE:
               return (
                 <LessonTemplate
@@ -140,42 +138,42 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   exercises={L009.LESSON_EXERCISES(data.nouns)}
                 />
               );
-            case L010.LESSON_TITLE:
-              return (
-                <LessonTemplate
-                  title={L010.LESSON_TITLE}
-                  explanation={L010.LESSON_EXPLANATION}
-                  resources={L010.LESSON_RESOURCES}
-                  exercises={L010.LESSON_EXERCISES(data.nouns)}
-                />
-              );
-            case L011.LESSON_TITLE:
-              return (
-                <LessonTemplate
-                  title={L011.LESSON_TITLE}
-                  explanation={L011.LESSON_EXPLANATION}
-                  resources={L011.LESSON_RESOURCES}
-                  exercises={L011.LESSON_EXERCISES(data.nouns)}
-                />
-              );
-            case L012.LESSON_TITLE:
-              return (
-                <LessonTemplate
-                  title={L012.LESSON_TITLE}
-                  explanation={L012.LESSON_EXPLANATION}
-                  resources={L012.LESSON_RESOURCES}
-                  exercises={L012.LESSON_EXERCISES(data.nouns)}
-                />
-              ); 
-            case L013.LESSON_TITLE:
-              return (
-                <LessonTemplate
-                  title={L013.LESSON_TITLE}
-                  explanation={L013.LESSON_EXPLANATION}
-                  resources={L013.LESSON_RESOURCES}
-                  exercises={L013.LESSON_EXERCISES(data.nouns)}
-                />
-              ); 
+            // case L010.LESSON_TITLE:
+            //   return (
+            //     <LessonTemplate
+            //       title={L010.LESSON_TITLE}
+            //       explanation={L010.LESSON_EXPLANATION}
+            //       resources={L010.LESSON_RESOURCES}
+            //       exercises={L010.LESSON_EXERCISES(data.nouns)}
+            //     />
+            //   );
+            // case L011.LESSON_TITLE:
+            //   return (
+            //     <LessonTemplate
+            //       title={L011.LESSON_TITLE}
+            //       explanation={L011.LESSON_EXPLANATION}
+            //       resources={L011.LESSON_RESOURCES}
+            //       exercises={L011.LESSON_EXERCISES(data.nouns)}
+            //     />
+            //   );
+            // case L012.LESSON_TITLE:
+            //   return (
+            //     <LessonTemplate
+            //       title={L012.LESSON_TITLE}
+            //       explanation={L012.LESSON_EXPLANATION}
+            //       resources={L012.LESSON_RESOURCES}
+            //       exercises={L012.LESSON_EXERCISES(data.nouns)}
+            //     />
+            //   ); 
+            // case L013.LESSON_TITLE:
+            //   return (
+            //     <LessonTemplate
+            //       title={L013.LESSON_TITLE}
+            //       explanation={L013.LESSON_EXPLANATION}
+            //       resources={L013.LESSON_RESOURCES}
+            //       exercises={L013.LESSON_EXERCISES(data.nouns)}
+            //     />
+            //   ); 
 
             default:
               return <Page404/>;

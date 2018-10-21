@@ -40,7 +40,6 @@ class SentenceOptions extends React.Component<{}, {}> {
                   reset sentence examples
                 </Button>
               </Flex>
-              }
             </Card>
           )
         }}

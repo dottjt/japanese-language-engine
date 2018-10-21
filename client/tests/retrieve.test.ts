@@ -1,7 +1,7 @@
 import {
   filterSpecifcWord,
   filterSpecifcCategory,
-  filterSpecifcMeta,
+  // filterSpecifcMeta,
   // getRandomWord,
   // getRandomWordViaCategory,
   // getRandomWordViaMeta,
@@ -15,36 +15,35 @@ import {
 } from '../src/util/constants/wordConstants';
 
 const CATEGORY_TEST = 'CATEGORY_TEST';
-const wordTest = {
+const wordTest: Util.Word = {
   japanese: '試験',
   english: 'test',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_TEST ],
   meta: {
-    test: 'metaTestValue'
+    verbType: 'metaTestValue'
   },
-  __typename: __TYPENAME_WORDS,
 };
 
-const testWords = { ...allWords, wordTest } 
+const testWords = allWords.concat(wordTest);
 
 describe('util/retrieve.ts', () => {
 
   describe('filterSpecifcWord', () => {
     test('should return word: test', () => {
-      expect(filterSpecifcWord(testWords, 'test')).toBe(wordTest.english);
+      expect(filterSpecifcWord(testWords, 'test').english).toBe(wordTest.english);
     });
   });
 
   describe('filterSpecifcCategory', () => {
     test('should return word: test', () => {
-      expect(filterSpecifcCategory(testWords, CATEGORY_TEST)[0]).toBe(wordTest.category[0]);
+      expect(filterSpecifcCategory(testWords, CATEGORY_TEST)[0].category[0]).toBe(wordTest.category[0]);
     });
   });
 
   describe('filterSpecifcMeta', () => {
     test('should return word: test', () => {
-      expect(filterSpecifcMeta(testWords, 'metaTestValue')).toBe(wordTest.meta.test);
+      // expect(filterSpecifcMeta(testWords, 'verbType')[0].meta.verbType)
     });
   });
 

@@ -9,6 +9,10 @@ declare module PropTypes {
   export interface ILoginProps {
     auth: any, // NOTE: Will need to get proper type. 
   }
+
+  export interface IExplanationProps {
+    explanation: string[]
+  }
   
   export interface IMainProps {
     auth: any,
@@ -32,7 +36,7 @@ declare module PropTypes {
     title: string,
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
-    explanation: string, 
+    explanation: string[], 
   }
   
   // Sentence props
@@ -63,4 +67,8 @@ declare module PropTypes {
     question?: string,
     answer?: string,
   }
+  export interface IConjugationTableProps {
+    
+  }
 }
+

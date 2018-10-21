@@ -12,11 +12,13 @@ export const primaryTypeArray = [
 
 // options.variation
 
-export const T = 'T'; // WA - STATEMENT OF BEING
+export const T = 'T'; // T
 
 export const WA_TS = 'WA_TS'; // WA - NOUN STATEMENT
 export const MO_TS = 'MO_TS'; // MO - NOUN STATEMENT
 export const GA_TS = 'GA_TS'; // GA - NOUN STATEMENT
+
+export const V = 'V'; // WA - STATEMENT OF BEING
 
 export const WO_SV = 'WO_SV'; // WO - VERB STATEMENT
 export const NI_SV = 'NI_SV'; // NI - VERB STATEMENT
@@ -29,10 +31,24 @@ export const variationArray = [
   MO_TS,
   GA_TS,
 
+  V,
+  
   WO_SV,
   NI_SV,
   DE_SV,
 ];
+
+// options.question
+
+export const HAS_QUESTION = 'HAS_QUESTION';
+export const NOT_QUESTION = 'NOT_QUESTION';
+
+export const questionArray = [
+  HAS_QUESTION,
+  NOT_QUESTION,
+];
+
+export const questionArrayLength = questionArray.length;
 
 // options.polarity
 
