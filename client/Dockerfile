@@ -1,23 +1,25 @@
-FROM node:9.11.2-alpine as client-deps
+FROM node:10.12.0-alpine as build-deps
 
-ENV NODE_ENV production
-ENV NODE_PATH /usr/src/app/client/node_modules
-ENV PATH /usr/src/app/client/node_modules/.bin:$PATH
+ENV NODE_ENV=production
+ENV NODE_PATH=/usr/src/app/client/node_modules
+ENV PATH=/usr/src/app/client/node_modules/.bin:$PATH
 
 WORKDIR /usr/src/app/client
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock /tmp/client/
+RUN cd /tmp/client && yarn
+RUN cp -a /tmp/client/node_modules /usr/src/app/client
 
-RUN yarn
+COPY . .
 
-COPY . ./
+RUN yarn build
 
-EXPOSE 3000
-CMD ["npm", "start"]
+FROM nginx:1.13.9-alpine
+COPY --from=build-deps /usr/src/app/client/build /usr/share/nginx/html
 
-# RUN yarn build
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
 
-# FROM nginx:1.12-alpine
-# COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html
 
-# EXPOSE 80
-# CMD ["nginx", "-g", "daemon off;"]
+# docker image build -t dottjt:watashi-client-nginx .
+# docker run -it -p 80:80 --rm dottjt:watashi-client-nginx
+

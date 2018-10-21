@@ -10,7 +10,7 @@ what is the difference between region and availability zones?
 
 prod and dev aws profiles have been created. 
 
-
+https://github.com/brikis98/infrastructure-as-code-talk/blob/master/docker-compose.yml
 
 
 # provider "aws" {

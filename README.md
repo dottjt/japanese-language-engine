@@ -21,6 +21,16 @@ yarn add node-sass sass-loader react-flexbox-grid
 - 
 
 
+https://stackoverflow.com/questions/31798849/how-to-serve-static-files-with-nginx-inside-of-a-docker-container
+https://stackoverflow.com/questions/39202964/how-to-reach-another-container-from-a-dockerised-nginx
+https://stackoverflow.com/questions/29905953/how-to-correctly-link-php-fpm-and-nginx-docker-containers
+https://www.peterbe.com/plog/how-to-create-react-app-with-docker
+https://mherman.org/blog/dockerizing-a-react-app/
+
+https://docs.docker.com/compose/gettingstarted/#step-2-create-a-dockerfile
+
+$ docker build -t dottjt/watashi-client-nginx .
+
 - Word options
 - Sentence options :)
 

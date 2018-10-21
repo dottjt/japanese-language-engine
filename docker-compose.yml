@@ -3,27 +3,23 @@ services:
 
   nginx-server: 
     image: nginx:alpine
-    ports: 
+    ports:
       - 3030:80
     volumes: 
-      - type: volume
-        source: mydata
-        target: /data
-        volume:
-          nocopy: true
-
+    - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      
   postgres:
     image: postgres:alpine
     expose: 
       - 5432
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - ./watashi-postgres:/var/lib/postgresql/data:rw
     restart: always
   
   server:
     build: .
     volumes:
-      - .:/usr/src/app/server
+      - ./watashi-server:/usr/src/app/server:rw
     ports:
       - 3030:3030
     depends_on:
@@ -32,7 +28,7 @@ services:
   client:
     build: client
     volumes:
-      - ./client:/usr/src/app/client
+      - ./watashi-client:/usr/src/app/client:rw
     ports:
       - 3000:3000
     depends_on:
