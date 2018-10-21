@@ -15,17 +15,6 @@ export const filterSpecifcCategory = (nouns: Util.Word[], category: string): Uti
   })
 );
 
-
-
-  // const filteredCategories = (mappedCategoriesParameter: { string }) => mappedCategoriesParameter.filter((categoryArray: string[]): boolean => categoryArray.indexOf(category) !== -1 ? true : false)
-
-  // // this makes all the relevant categories
-  // return filteredCategories(nouns).map((noun) => noun.category.map((nounCategory => { if(filteredCategories(nouns)) { return noun } }) ));
-
-  // // this filters all the categories to the ones that 
-
-
-
 export const filterSpecifcPrimaryType = (nouns: Util.Word[], primaryType: string): Util.Word[] => (
   nouns.filter((noun: Util.Word): boolean => (
     noun.primaryType === primaryType
@@ -34,6 +23,7 @@ export const filterSpecifcPrimaryType = (nouns: Util.Word[], primaryType: string
 
 export const filterSpecifcMeta = (nouns: Util.Word[], metaProperty: string): Util.Word[] => (
   nouns.filter((noun: Util.Word): boolean => (
+    // noun.verbType !== undefined && noun.verbType === metaProperty
     Object.keys(noun.meta).indexOf(metaProperty) > -1
   ))
 );
@@ -44,13 +34,14 @@ export const getRandomWord = (nouns: Util.Word[]): Util.Word => (
 
 export const getRandomWordViaCategory = (nouns: Util.Word[], category: string): Util.Word => {
   const getCategoryWords = filterSpecifcCategory(nouns, category);
-  console.log('filter', getCategoryWords);
   return getCategoryWords[randomArrayElement(getCategoryWords.length)]
 }
 
-export const getRandomWordViaPrimaryType = (nouns: Util.Word[], primaryType: string): Util.Word => (
-  filterSpecifcPrimaryType(nouns, primaryType)[randomArrayElement(nouns.length)]
-);
+export const getRandomWordViaPrimaryType = (nouns: Util.Word[], primaryType: string): Util.Word => {
+  const getPrimaryWords = filterSpecifcPrimaryType(nouns, primaryType);
+  console.log('filter', filterSpecifcPrimaryType);
+  return getPrimaryWords[randomArrayElement(getPrimaryWords.length)]
+};
 
 export const getRandomWordViaMeta = (nouns: Util.Word[], metaProperty: string): Util.Word => (
   filterSpecifcMeta(nouns, metaProperty)[randomArrayElement(nouns.length)]

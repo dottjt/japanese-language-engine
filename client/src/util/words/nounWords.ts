@@ -5,6 +5,7 @@ import {
   CATEGORY_ANIMAL,
 
   __TYPENAME_WORDS,
+  __TYPENAME_META,
 } from '../constants/wordConstants';
 
 // HUMAN
@@ -14,7 +15,10 @@ export const wordPerson = {
   english: 'person',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_HUMAN ],
-  meta: {},
+  meta: {
+    verbType: 'NA',  
+    __typename: __TYPENAME_META,
+  },
   __typename: __TYPENAME_WORDS,
 };
 
@@ -26,7 +30,10 @@ export const wordCat = {
   english: 'cat',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_ANIMAL ],
-  meta: {},
+  meta: {
+    verbType: 'NA',
+    __typename: __TYPENAME_META,
+  },
   __typename: __TYPENAME_WORDS,
 };
 
@@ -35,7 +42,10 @@ export const wordDog = {
   english: 'dog',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_ANIMAL ],
-  meta: {},
+  meta: {
+    verbType: 'NA',
+    __typename: __TYPENAME_META,
+  },
   __typename: __TYPENAME_WORDS,
 };
 

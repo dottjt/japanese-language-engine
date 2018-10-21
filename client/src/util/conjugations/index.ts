@@ -58,6 +58,7 @@ const generateWord = (words: Util.SentenceWords, options: Util.Options, sentence
 };
 
 const generateSentences = (words: Util.SentenceWords, options: Util.Options): Util.EnglishJapaneseSentence => {
+  console.log(words);
   const { topic, subject, verb } = returnSentenceParts(words);
   const { onlyTopic, onlySubject, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
 

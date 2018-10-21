@@ -3,6 +3,7 @@ import {
   CATEGORY_RESPONSE,
 
   __TYPENAME_WORDS,
+  __TYPENAME_META,
 } from '../constants/wordConstants';
 
 export const wordYes = {
@@ -10,7 +11,10 @@ export const wordYes = {
   english: 'yes',
   primaryType: PRIMARY_TYPE_NOUN,
   category: [ CATEGORY_RESPONSE ],
-  meta: {},
+  meta: {
+    verbType: 'NA',  
+    __typename: __TYPENAME_META,
+  },
   __typename: __TYPENAME_WORDS,
 };
 

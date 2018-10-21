@@ -7,6 +7,7 @@ import {
   SENTENCE_TYPE_VERB_TYPE_U,
 
   __TYPENAME_WORDS,
+  __TYPENAME_META,
 } from '../constants/wordConstants';
 
 export const wordEat = {
@@ -16,6 +17,7 @@ export const wordEat = {
   category: [ CATEGORY_FOOD ],
   meta: {
     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+    __typename: __TYPENAME_META,
   },
   __typename: __TYPENAME_WORDS,
 };
@@ -27,6 +29,7 @@ export const wordDrink = {
   category: [ CATEGORY_DRINK ],
   meta: {
     verbType: SENTENCE_TYPE_VERB_TYPE_U,
+    __typename: __TYPENAME_META,
   },
   __typename: __TYPENAME_WORDS,
 };

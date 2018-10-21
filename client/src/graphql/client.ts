@@ -17,11 +17,7 @@ const client = new ApolloClient({
     },
     resolvers: {
       Mutation: {
-        updateOptionsTone: async (
-          _: any,
-          { value }: any,
-          { cache, getCacheKey }: any
-        ) => {
+        updateOptionsTone: async (_: any, { value }: any, { cache, getCacheKey }: any) => {
           await cache.writeData({
             data: { options: { politeness: value } }
           });
@@ -35,7 +31,7 @@ const client = new ApolloClient({
       }
 
       type TypeMeta {
-        iDontKnowYet: String
+        verbType: String
       }
 
       type Word {

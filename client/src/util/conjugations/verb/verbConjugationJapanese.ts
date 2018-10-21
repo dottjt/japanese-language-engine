@@ -56,7 +56,8 @@ const uVerbEndingToA = (verbEnding: string): string => {
 
 const getVerbStem = (verb: Util.Word, options: Util.Options): string => {
   const initialStem = verb.japanese.slice(0, -1);
-  
+  console.log(verb)
+
   if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_RU) { return initialStem };
 
   if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_U) {

@@ -14,16 +14,21 @@ export const GET_ALL_NOUNS = gql`{
     english
     primaryType
     category
+    meta @client {
+      verbType
+    }
   }
 }`
 
-export const GET_ALL_WORDS_AND_OPTIONS = gql`
-  {
+export const GET_ALL_WORDS_AND_OPTIONS = gql`{
     nouns @client {
       japanese
       english
       primaryType
       category
+      meta @client {
+        verbType
+      }
     }
   }
 `;

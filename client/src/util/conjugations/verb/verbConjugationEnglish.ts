@@ -1,6 +1,7 @@
 import {
   createError,
   filtersentenceType,
+  returnSentenceParts,
 } from '../../functions';
 
 import {
@@ -8,17 +9,28 @@ import {
   POLARITY_NEGATIVE,
 } from '../../constants/optionsConstants';
 
-const determineVerbConjugationEnglish = (options: Util.Options): string => {
-  switch(`${options.polarity}`) {
-    case `${POLARITY_POSITIVE}`: return '';
-    case `${POLARITY_NEGATIVE}`: return 'do not';
-    default: return createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity}${options.politeness} unknown`);
+import {
+  verbConjugationPermissionsEnglish,
+} from './verbPermissions';
+
+const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+  const { topic, subject, verb } = returnSentenceParts(words);
+  const permissions = verbConjugationPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
+
+  if (permissions) {
+    switch(`${options.polarity}`) {
+      case `${POLARITY_POSITIVE}`: return '';
+      case `${POLARITY_NEGATIVE}`: return 'do not';
+      default: return createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity}${options.politeness} unknown`);
+    }
   }
+
+  return '';
 }; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
   const word = filtersentenceType(words, sentenceType);
-  const verbPolarity = determineVerbConjugationEnglish(options);
+  const verbPolarity = determineVerbConjugationEnglish(words, options, sentenceType);
 
   return `${verbPolarity}${word.english}`;
 };

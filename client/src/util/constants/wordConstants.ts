@@ -42,3 +42,4 @@ export const verbTypeArray = [
 
 // __typename
 export const __TYPENAME_WORDS = 'words';
+export const __TYPENAME_META = 'meta';
