@@ -82,13 +82,13 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
   if (onlyTopicAndSubject) {
     return  {
       japaneseSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE)}${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE)}`, options, LANG_JAPANESE),
-      englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)}${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
+      englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)} ${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
     };  
   };
   if (onlySubjectAndVerb) {
     return  {
       japaneseSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE)}${generateWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE)}`, options, LANG_JAPANESE),
-      englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH)}${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
+      englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH)} ${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
     };  
   };
 

@@ -279,6 +279,7 @@ export const L001 = {
   LESSON_TITLE: LESSON_TITLE.L001,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L001,
   LESSON_RESOURCES: LESSON_RESOURCES.L001,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L001(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L001(nouns) as any, LESSON_OPTIONS.L001, 10),
 };
@@ -287,6 +288,7 @@ export const L002 = {
   LESSON_TITLE: LESSON_TITLE.L002,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L002,
   LESSON_RESOURCES: LESSON_RESOURCES.L002,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L002(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L002(nouns) as any, LESSON_OPTIONS.L002, 10),
 };
@@ -295,6 +297,7 @@ export const L003 = {
   LESSON_TITLE: LESSON_TITLE.L003,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L003,
   LESSON_RESOURCES: LESSON_RESOURCES.L003,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L003(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L003(nouns) as any, LESSON_OPTIONS.L003, 10),
 };
@@ -303,6 +306,7 @@ export const L004 = {
   LESSON_TITLE: LESSON_TITLE.L004,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L004,
   LESSON_RESOURCES: LESSON_RESOURCES.L004,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L004(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L004(nouns) as any, LESSON_OPTIONS.L004, 10),
 };
@@ -311,6 +315,7 @@ export const L005 = {
   LESSON_TITLE: LESSON_TITLE.L005,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L005,
   LESSON_RESOURCES: LESSON_RESOURCES.L005,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L005(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L005(nouns) as any, LESSON_OPTIONS.L005, 10),
 };
@@ -319,6 +324,7 @@ export const L006 = {
   LESSON_TITLE: LESSON_TITLE.L006,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L006,
   LESSON_RESOURCES: LESSON_RESOURCES.L006,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L006(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L006(nouns) as any, LESSON_OPTIONS.L006, 10),
 };
@@ -327,6 +333,7 @@ export const L007 = {
   LESSON_TITLE: LESSON_TITLE.L007,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L007,
   LESSON_RESOURCES: LESSON_RESOURCES.L007,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L007(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L007(nouns) as any, LESSON_OPTIONS.L007, 10),
 };
@@ -335,6 +342,7 @@ export const L008 = {
   LESSON_TITLE: LESSON_TITLE.L008,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L008,
   LESSON_RESOURCES: LESSON_RESOURCES.L008,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L008(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L008(nouns) as any, LESSON_OPTIONS.L008, 10),
 };
@@ -343,6 +351,7 @@ export const L009 = {
   LESSON_TITLE: LESSON_TITLE.L009,
   LESSON_EXPLANATION: LESSON_EXPLANATION.L009,
   LESSON_RESOURCES: LESSON_RESOURCES.L009,
+  LESSON_WORDS: (nouns: Util.Word[]) => LESSON_WORDS.L009(nouns),
   LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
     generateExercises(LESSON_WORDS.L009(nouns) as any, LESSON_OPTIONS.L009, 10),
 };

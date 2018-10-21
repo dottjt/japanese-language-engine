@@ -68,7 +68,7 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
       case WO_SV: return 'を';
       case NI_SV: return 'に';
       case DE_SV: return 'で';
-      default: return createError('conjugations/topic', 'determineTopicParticle', 'options.variation unknown');
+      default: throw new Error(createError('conjugations/noun/nounConjugationJapanese', 'determineTopicParticleJapanese', 'options.variation unknown'));
     }
   }
 
