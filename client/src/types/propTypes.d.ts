@@ -21,7 +21,7 @@ declare module PropTypes {
   
   // Component props 
   export interface IOptionsProps {
-    options: Util.Options,
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
     client: any, // NOTE: Will need to get proper type. 
   }
 
@@ -37,6 +37,8 @@ declare module PropTypes {
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
     explanation: string[], 
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    client: any,
   }
   
   // Sentence props
@@ -53,7 +55,7 @@ declare module PropTypes {
 
   export interface ISentenceProps {
     options: Util.Options,
-    sentence: Util.ConjugatedEnglishArray | Util.ConjugatedJapaneseArray,
+    sentence: Util.ConjugatedJapaneseArray | Util.ConjugatedEnglishArray,
   }
 
   export interface ISentenceHintsProps {
@@ -61,14 +63,6 @@ declare module PropTypes {
     options: Util.Options,
   }
 
-  export interface ISentenceBasicStatementProps {
-    statement?: string,
-  }
-
-  export interface ISentenceBasicQuestionProps {
-    question?: string,
-    answer?: string,
-  }
   export interface IConjugationTableProps {
     
   }

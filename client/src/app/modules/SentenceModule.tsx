@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Card, Flex } from 'rebass';
 import { FlexColumn } from '../atoms/Layout';
-import { Button } from '../atoms/Button';
+// import { Button } from '../atoms/Button';
 import { Text } from '../atoms/Text';
 
 import {
@@ -10,32 +10,12 @@ import {
   convertPolarityIntoValue,
 } from '../../util/functions';
 
-// class SentenceOptions extends React.Component<{}, {}> {
-//   public render() {
-//     return (
-//       <Card>
-//         <Flex>
-//           <Button
-//             onClick={() => this.toggleShowSentenceHints(client, data.sentenceDisplayOptions.showSentenceHints)}  
-//           >
-//             toggle show sentence hints
-//           </Button>
-//           <Button>
-//             reset sentence examples
-//           </Button>
-//         </Flex>
-//       </Card>
-//     );
-//   }
-
-//   private toggleShowSentenceHints = (client: any, value: boolean): void =>
-//     client.writeData({
-//       data: {
-//         sentenceDisplayOptions: { showSentenceHints: value!, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
-//       }
-//     });
-// };
-
+import {
+  CONJUGATION_TYPE_NOUN_ENGLISH,
+  CONJUGATION_TYPE_NOUN_JAPANESE,
+  CONJUGATION_TYPE_VERB_ENGLISH,
+  CONJUGATION_TYPE_VERB_JAPANESE,
+} from '../../util/constants/optionsConstants';
 
 class SentenceHints extends React.Component<PropTypes.ISentenceHintsProps, {}> {
   public render() {
@@ -57,6 +37,23 @@ class SentenceHints extends React.Component<PropTypes.ISentenceHintsProps, {}> {
   }
 };
 
+class Sentence extends React.Component<PropTypes.ISentenceProps, {}> {
+  public render() {
+    return (
+      this.props.sentence.map(word => {
+        switch(word.type) {
+          case CONJUGATION_TYPE_NOUN_ENGLISH: return <Text>{word.type}</Text>
+          case CONJUGATION_TYPE_NOUN_JAPANESE: return <Text>{word.type}</Text>
+          case CONJUGATION_TYPE_VERB_ENGLISH: return <Text>{word.type}</Text>
+          case CONJUGATION_TYPE_VERB_JAPANESE: return <Text>{word.type}</Text>
+          default: <Text>hi</Text>
+        }
+      });
+    );
+  };
+};
+
+
 class Sentences extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {    
     return (
@@ -65,12 +62,14 @@ class Sentences extends React.Component<PropTypes.ISentencesProps, {}> {
           sentenceDisplayOptions={this.props.sentenceDisplayOptions}
           options={this.props.options}
         />
-        <Flex>
-          {this.props.englishSentence}
-        </Flex>
-        <Flex>
-          {this.props.japaneseSentence}
-        </Flex>
+        <Sentence 
+          sentence={this.props.englishSentence}
+          options={this.props.options}
+        />
+        <Sentence 
+          sentence={this.props.japaneseSentence}
+          options={this.props.options}
+        />
       </FlexColumn>
     );
   };

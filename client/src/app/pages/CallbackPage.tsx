@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { Flex, Text } from 'rebass';
 
-import { FlexColumn } from '../atoms/Layout';
-import { Link } from '../atoms/Button';
-
+import { PageWrapper } from '../atoms/Layout';
+import { Text } from '../atoms/Text';
 
 class CallbackPage extends React.Component {
   public render() {
     return (
-      <Flex>
+      <PageWrapper>
         <Text>Loading</Text>
-      </Flex>
+      </PageWrapper>
     );
   }
 }

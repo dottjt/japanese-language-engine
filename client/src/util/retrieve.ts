@@ -4,7 +4,7 @@ import {
 
 export const filterSpecifcWord = (nouns: Util.Word[], englishName: string): Util.Word => (
   nouns.filter((noun: Util.Word): boolean => (
-    noun.english === englishName
+    noun.english.present === englishName
   ))[0]
 );
 

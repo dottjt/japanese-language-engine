@@ -38,7 +38,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
   public render() {
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
-        {({ data }) => {
+        {({ data, client }) => {
           switch (this.props.route.name) { /* this.props.previousRoute */
             
             case LESSON_TITLE.HOME:
@@ -73,6 +73,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L001.LESSON_EXPLANATION}
                   resources={L001.LESSON_RESOURCES}
                   exercises={L001.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               );
             case L002.LESSON_TITLE:
@@ -82,6 +84,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L002.LESSON_EXPLANATION}
                   resources={L002.LESSON_RESOURCES}
                   exercises={L002.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               );
             case L003.LESSON_TITLE:
@@ -91,6 +95,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L003.LESSON_EXPLANATION}
                   resources={L003.LESSON_RESOURCES}
                   exercises={L003.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               );
             case L004.LESSON_TITLE:
@@ -100,6 +106,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L004.LESSON_EXPLANATION}
                   resources={L004.LESSON_RESOURCES}
                   exercises={L004.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               );
             case L005.LESSON_TITLE:
@@ -109,6 +117,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L005.LESSON_EXPLANATION}
                   resources={L005.LESSON_RESOURCES}
                   exercises={L005.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               );
             case L006.LESSON_TITLE:
@@ -118,6 +128,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L006.LESSON_EXPLANATION}
                   resources={L006.LESSON_RESOURCES}
                   exercises={L006.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               ); 
             case L007.LESSON_TITLE:
@@ -127,6 +139,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L007.LESSON_EXPLANATION}
                   resources={L007.LESSON_RESOURCES}
                   exercises={L007.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               );
             case L008.LESSON_TITLE:
@@ -136,6 +150,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L008.LESSON_EXPLANATION}
                   resources={L008.LESSON_RESOURCES}
                   exercises={L008.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}
                 />
               );
             case L009.LESSON_TITLE:
@@ -145,6 +161,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   explanation={L009.LESSON_EXPLANATION}
                   resources={L009.LESSON_RESOURCES}
                   exercises={L009.LESSON_EXERCISES(data.nouns)}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  client={client}                  
                 />
               );
             // case L010.LESSON_TITLE:

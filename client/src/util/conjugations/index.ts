@@ -72,9 +72,6 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
     return {
       japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE) ],
       englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ]
-
-      // sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE)}`, options, LANG_JAPANESE),
-      // englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)}`, options, LANG_ENGLISH),
     };
   };
   // if (onlySubject) {

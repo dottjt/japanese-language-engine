@@ -30,6 +30,8 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
+
+  CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
 
 const determineNounIndefiniteArticle = (words: Util.SentenceWords, word: Util.Word, sentenceType: string): string => {
@@ -96,6 +98,7 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
 
 const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishNoun => {
   const word = filtersentenceType(words, sentenceType);
+  const type = CONJUGATION_TYPE_NOUN_ENGLISH;
 
   const nounIndefiniteArticle = determineNounIndefiniteArticle(words, word, sentenceType);
   const nounPolarity = determineNounPolarity(words, options, sentenceType);
@@ -106,6 +109,7 @@ const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options
     nounPolarity,
     nounIndefiniteArticle,
     word,
+    type,
   }
     // return `${nounTense} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();
 };

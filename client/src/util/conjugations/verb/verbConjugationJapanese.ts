@@ -14,6 +14,8 @@ import {
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
+
+  CONJUGATION_TYPE_VERB_JAPANESE,
 } from '../../constants/optionsConstants';
 
 import {
@@ -83,11 +85,13 @@ const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options
 
 const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseVerb => {
   const word = filtersentenceType(words, sentenceType);
+  const type = CONJUGATION_TYPE_VERB_JAPANESE;
   const conjugatedVerb = determineVerbConjugationJapanese(word, options);
 
   return {
     conjugatedVerb,
     word,
+    type,
   }
   // return `${conjugatedVerb}`;
 };

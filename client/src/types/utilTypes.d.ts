@@ -12,8 +12,8 @@ declare namespace Util {
   export type Word = {
     japanese: {
       kanji: string;
-      hiragana: string;
-      furigana: string;
+      // hiragana: string;
+      // furigana: string;
     }
     english: {
       present: string;
@@ -30,7 +30,8 @@ declare namespace Util {
     word: Word;
     nounCategoryEnding: string;
     nounEnding: string;
-    nounTopicParticle: string;    
+    nounTopicParticle: string;
+    type: string;
   };
 
   export type ConjugatedEnglishNoun = {
@@ -38,16 +39,19 @@ declare namespace Util {
     nounPolarity: string;
     nounIndefiniteArticle: string;
     word: Word;
+    type: string;
   };
 
   export type ConjugatedJapaneseVerb = {
     conjugatedVerb: string;
     word: Word;
+    type: string;
   };
 
   export type ConjugatedEnglishVerb = {
     verbPolarity: string;
     word: Word;
+    type: string;
   };
 
   export type ConjugatedJapaneseArray = (ConjugatedJapaneseNoun|ConjugatedJapaneseVerb)[]
@@ -66,8 +70,8 @@ declare namespace Util {
   // export type Sentence = string;
 
   export type EnglishJapaneseSentence = {
-    englishSentence: ConjugatedJapaneseArray; // will change
-    japaneseSentence: ConjugatedEnglishArray; // will change
+    englishSentence: ConjugatedEnglishArray; // will change
+    japaneseSentence: ConjugatedJapaneseArray; // will change
 
     // ConjugatedJapaneseNoun
     // ConjugatedEnglishNoun
@@ -80,50 +84,9 @@ declare namespace Util {
 
 
   export type EnglishJapaneseOptionsSentence = {
-    englishSentence: ConjugatedJapaneseArray;
-    japaneseSentence: ConjugatedEnglishArray;
+    englishSentence: ConjugatedEnglishArray;
+    japaneseSentence: ConjugatedJapaneseArray;
     options: Options,
-  };
-
-  
-  // SENTENCE TYPE - BASIC QUESTION
-  export type BasicQuestion = {
-    questionTopicNoun: Word;
-    questionPredicateNoun: Word;
-    answerResponse: Word;
-    answerPredicateNoun: Word;
-  };
-
-  export type BasicQuestionString = {
-    questionTopicNoun: string;
-    questionPredicateNoun: string;
-    answerResponse: string;
-    answerPredicateNoun: string;
-  };
-
-  export type BasicQuestionStringsWithOptions = {
-    questionTopicNoun: string;
-    questionPredicateNoun: string;
-    answerResponse: string;
-    answerPredicateNoun: string;
-    options: Options;
-  };
-
-  // SENTENCE TYPE - BASIC STATEMENT
-  export type BasicStatement = {
-    topic: Word;
-    predicateNoun: Word;
-  };
-
-  export type BasicStatementString = {
-    topic: string;
-    predicateNoun: string;
-  };
-
-  export type BasicStatementStringsWithOptions = {
-    topic: string;
-    predicateNoun: string;
-    options: Options;
   };
 
   // SENTENCE TYPE - SENTENCE_TYPE_TOPIC
@@ -146,16 +109,4 @@ declare namespace Util {
     subject?: Subject;
     verb?: Verb;
   };
-
-
-  // export type Predicate = {
-  //   verb?: Word;
-  //   subject?: Word;
-  // };
-  
-  // export type TopicPredicate = {
-  //   topic: Word;
-  //   subject?: Word;
-  //   verb?: Word;
-  // };
 }

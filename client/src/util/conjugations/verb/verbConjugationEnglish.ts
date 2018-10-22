@@ -7,6 +7,8 @@ import {
 import {
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
+
+  CONJUGATION_TYPE_VERB_ENGLISH,
 } from '../../constants/optionsConstants';
 
 import {
@@ -29,11 +31,14 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
 
 const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishVerb => {
   const word = filtersentenceType(words, sentenceType);
+  const type = CONJUGATION_TYPE_VERB_ENGLISH;
+
   const verbPolarity = determineVerbConjugationEnglish(words, options, sentenceType);
 
   return {
     verbPolarity,
     word,
+    type,
   }
   // return `${verbPolarity} ${word.english}`;
 };

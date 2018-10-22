@@ -16,6 +16,8 @@ export const AppWrapper = styled.div`
 export const NavbarWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 250px;
+  max-width: 250px;
 `;
 
 export const PageWrapper = styled.div`

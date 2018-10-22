@@ -40,8 +40,7 @@ class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
   };
 };
 
-
-class SentenceOptionsModule extends React.Component<PropTypes.IOptionsProps, {}> {
+class ExerciseOptionsModule extends React.Component<PropTypes.IOptionsProps, {}> {
   public render() {
     return (
       <FlexColumn>
@@ -62,17 +61,17 @@ class SentenceOptionsModule extends React.Component<PropTypes.IOptionsProps, {}>
   private politenessCallback = (value: string): void =>
     this.props.client.writeData({
       data: {
-        options: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
+        SentenceDisplayOptions: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
       }
     });
 
   private variationCallback = (value: string): void => {
     this.props.client.writeData({
       data: {
-        options: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
+        SentenceDisplayOptions: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
       }
     });
   };
 }
 
-export default SentenceOptionsModule;
+export default ExerciseOptionsModule;

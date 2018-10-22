@@ -4,7 +4,7 @@ import * as React from 'react';
 import { PageWrapper, ModuleWrapper } from '../atoms/Layout';
 import { H2 } from '../atoms/Text';
 
-import SentenceOptions from '../atoms/SentenceOptions';
+import ExerciseOptionsModule from '../modules/ExerciseOptionsModule';
 // import Sentences from './Sentences';
 // import Resources from './Resources';
 // import Explanation from './Explanation';
@@ -32,7 +32,10 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
 
         <ModuleWrapper>
           <H2>Lesson Exercises</H2>
-          <SentenceOptions/>
+          <ExerciseOptionsModule
+            sentenceDisplayOptions={this.props.sentenceDisplayOptions}
+            client={this.props.client}
+          />
           {/* {this.props.exercises.map((exercise, index) => (
             <Sentences
               key={index}

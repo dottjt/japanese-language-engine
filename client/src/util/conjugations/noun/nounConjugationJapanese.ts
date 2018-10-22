@@ -42,6 +42,8 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
+
+  CONJUGATION_TYPE_VERB_JAPANESE,
 } from '../../constants/optionsConstants';
 
 const determineNounCategoryEnding = (word: Util.Word): string => {
@@ -114,7 +116,7 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
 
 const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseNoun => {
   const word = filtersentenceType(words, sentenceType);
-
+  const type = CONJUGATION_TYPE_VERB_JAPANESE;
   const nounEnding = determineNounConjugationJapanese(words, options, sentenceType);
   const nounCategoryEnding = determineNounCategoryEnding(word);
   const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
@@ -124,6 +126,7 @@ const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Option
     nounCategoryEnding,
     nounEnding,
     nounTopicParticle,
+    type,
   }
   // return `${word.japanese}${nounCategoryEnding}${nounEnding}${nounTopicParticle}`.trim();
 };
