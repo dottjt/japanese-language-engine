@@ -66,7 +66,7 @@ const generateJapaneseWord = (words: Util.SentenceWords, options: Util.Options, 
 
 const generateSentences = (words: Util.SentenceWords, options: Util.Options): Util.EnglishJapaneseSentence => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const { onlyTopic, /* onlySubject, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb */ } = generateSentenceTypes(topic, subject, verb);
+  const { onlyTopic, onlySubject, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
 
   if (onlyTopic) {
     return {
@@ -74,30 +74,30 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
       englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ]
     };
   };
-  // if (onlySubject) {
-  //   return  {
-  //     japaneseSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE)}`, options, LANG_JAPANESE),
-  //     englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
-  //   };
-  // };
-  // if (onlyVerb) {
-  //   return  {
-  //     japaneseSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE)}`, options, LANG_JAPANESE),
-  //     englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH)}`, options, LANG_ENGLISH),
-  //   };
-  // };
-  // if (onlyTopicAndSubject) {
-  //   return  {
-  //     japaneseSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE)}${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE)}`, options, LANG_JAPANESE),
-  //     englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)} ${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
-  //   };  
-  // };
-  // if (onlySubjectAndVerb) {
-  //   return  {
-  //     japaneseSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE)}${generateWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE)}`, options, LANG_JAPANESE),
-  //     englishSentence: sentenceOptions(`${generateWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH)} ${generateWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH)}`, options, LANG_ENGLISH),
-  //   };  
-  // };
+  if (onlySubject) {
+    return {
+      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+    }
+  };
+  if (onlyVerb) {
+    return  {
+      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH) ],
+    };
+  };
+  if (onlyTopicAndSubject) {
+    return  {
+      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE), generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH), generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+    };  
+  };
+  if (onlySubjectAndVerb) {
+    return  {
+      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE), generateJapaneseWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH), generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+    };  
+  };
 
   throw new Error(createError('conjugations/index.tsx', 'generateSentences', 'sentenceType does not exist'));
 };

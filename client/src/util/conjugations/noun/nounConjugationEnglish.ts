@@ -34,13 +34,13 @@ import {
   CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
 
-const determineNounIndefiniteArticle = (words: Util.SentenceWords, word: Util.Word, sentenceType: string): string => {
+const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Word, sentenceType: string): string => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounIndefiniteArticlePermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     const vowels = 'aeiou';
-    const firstLetter = word.english[0];
+    const firstLetter = noun.english[0];
 
     if (vowels.includes(firstLetter)) {
       return 'an';
@@ -97,10 +97,10 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
 };
 
 const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishNoun => {
-  const word = filtersentenceType(words, sentenceType);
+  const noun = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_NOUN_ENGLISH;
 
-  const nounIndefiniteArticle = determineNounIndefiniteArticle(words, word, sentenceType);
+  const nounIndefiniteArticle = determineNounIndefiniteArticle(words, noun, sentenceType);
   const nounPolarity = determineNounPolarity(words, options, sentenceType);
   const nounTense = determineNounConjugationEnglish(words, options, sentenceType);
 
@@ -108,7 +108,7 @@ const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options
     nounTense,
     nounPolarity,
     nounIndefiniteArticle,
-    word,
+    noun,
     type,
   }
     // return `${nounTense} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();

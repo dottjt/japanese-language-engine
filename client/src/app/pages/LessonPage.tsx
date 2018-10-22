@@ -5,9 +5,9 @@ import { PageWrapper, ModuleWrapper } from '../atoms/Layout';
 import { H2 } from '../atoms/Text';
 
 import ExerciseOptionsModule from '../modules/ExerciseOptionsModule';
-// import Sentences from './Sentences';
-// import Resources from './Resources';
-// import Explanation from './Explanation';
+import SentenceModule from '../modules/SentenceModule';
+// import ResourcesModule from '../modules/ResourcesModule';
+// import ExplanationModule from '../modules/ExplanationModule';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
@@ -18,14 +18,14 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
         {/* <ModuleWrapper>
           <Heading>Grammatical Resources</Heading>
           <Text>Please have a read of these resources in order to understand the grammar.</Text>
-          <Resources
+          <ResourcesModule
             resources={this.props.resources}
           />
         </ModuleWrapper>
 
         <ModuleWrapper>
           <Heading>Additional Notes</Heading>
-          <Explanation
+          <ExplanationModule
             explanation={this.props.explanation}
           />
         </ModuleWrapper> */}
@@ -36,14 +36,15 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={this.props.client}
           />
-          {/* {this.props.exercises.map((exercise, index) => (
-            <Sentences
+          {this.props.exercises.map((exercise, index) => (
+            <SentenceModule
               key={index}
               options={exercise.options}
+              sentenceDisplayOptions={this.props.sentenceDisplayOptions}
               englishSentence={exercise.englishSentence}
               japaneseSentence={exercise.japaneseSentence}
             />
-          ))} */}
+          ))}
         </ModuleWrapper>
       </PageWrapper>
     );

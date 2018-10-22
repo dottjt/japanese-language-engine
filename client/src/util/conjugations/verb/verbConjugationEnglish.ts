@@ -30,14 +30,14 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
 }; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishVerb => {
-  const word = filtersentenceType(words, sentenceType);
+  const verb = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_ENGLISH;
 
   const verbPolarity = determineVerbConjugationEnglish(words, options, sentenceType);
 
   return {
     verbPolarity,
-    word,
+    verb,
     type,
   }
   // return `${verbPolarity} ${word.english}`;

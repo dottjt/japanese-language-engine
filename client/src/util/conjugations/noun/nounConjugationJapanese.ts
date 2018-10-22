@@ -46,8 +46,8 @@ import {
   CONJUGATION_TYPE_VERB_JAPANESE,
 } from '../../constants/optionsConstants';
 
-const determineNounCategoryEnding = (word: Util.Word): string => {
-  const endingsArray = word.category.map(categoryString => {
+const determineNounCategoryEnding = (noun: Util.Word): string => {
+  const endingsArray = noun.category.map(categoryString => {
     switch(categoryString) {
       case `${CATEGORY_HUMAN_NAME}`: return 'さん';
       default: return '';
@@ -115,14 +115,15 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
 };
 
 const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseNoun => {
-  const word = filtersentenceType(words, sentenceType);
+  const noun = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_JAPANESE;
+
   const nounEnding = determineNounConjugationJapanese(words, options, sentenceType);
-  const nounCategoryEnding = determineNounCategoryEnding(word);
+  const nounCategoryEnding = determineNounCategoryEnding(noun);
   const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
 
   return {
-    word,
+    noun,
     nounCategoryEnding,
     nounEnding,
     nounTopicParticle,

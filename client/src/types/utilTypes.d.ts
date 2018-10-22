@@ -27,7 +27,7 @@ declare namespace Util {
   };
 
   export type ConjugatedJapaneseNoun = {
-    word: Word;
+    noun: Word;
     nounCategoryEnding: string;
     nounEnding: string;
     nounTopicParticle: string;
@@ -38,19 +38,19 @@ declare namespace Util {
     nounTense: string;
     nounPolarity: string;
     nounIndefiniteArticle: string;
-    word: Word;
+    noun: Word;
     type: string;
   };
 
   export type ConjugatedJapaneseVerb = {
     conjugatedVerb: string;
-    word: Word;
+    verb: Word;
     type: string;
   };
 
   export type ConjugatedEnglishVerb = {
     verbPolarity: string;
-    word: Word;
+    verb: Word;
     type: string;
   };
 

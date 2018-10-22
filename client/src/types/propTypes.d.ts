@@ -53,9 +53,14 @@ declare module PropTypes {
     japaneseSentence: Util.ConjugatedJapaneseArray,
   }
 
-  export interface ISentenceProps {
+  export interface IJapaneseSentenceProps {
     options: Util.Options,
-    sentence: Util.ConjugatedJapaneseArray | Util.ConjugatedEnglishArray,
+    sentence: Util.ConjugatedJapaneseArray,
+  }
+
+  export interface IEnglishSentenceProps {
+    options: Util.Options,
+    sentence: Util.ConjugatedEnglishArray,
   }
 
   export interface ISentenceHintsProps {
