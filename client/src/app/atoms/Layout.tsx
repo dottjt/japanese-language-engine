@@ -6,7 +6,6 @@ export const FlexColumn = styled(Flex)`
 `;
 
 
-
 // WRAPPERS
 
 export const AppWrapper = styled.div`
@@ -16,14 +15,16 @@ export const AppWrapper = styled.div`
 export const NavbarWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
-  max-width: 250px;
+  min-width: 250px;
+
+  border-right: 1px solid black;
 `;
 
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  width: 100%;
   margin-left: 20px;
 `;
 

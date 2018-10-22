@@ -50,7 +50,7 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
           
           console.log(nounEnglishElement);
           switch(element.type) {
-            case CONJUGATION_TYPE_NOUN_ENGLISH: 
+            case CONJUGATION_TYPE_NOUN_ENGLISH:
               return (
                 <SentenceWrapper key={index}>
                   {capitalise(nounEnglishElement.nounTense)} {nounEnglishElement.nounPolarity} {nounEnglishElement.nounIndefiniteArticle} {nounEnglishElement.noun.english.present}
