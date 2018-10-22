@@ -5,6 +5,7 @@ import { Sentence, Phrase, EnglishWord } from '../../atoms/Sentence';
 import {
   createError,
   capitalise,
+  beginningOfPhrase,
 } from '../../../util/functions';
 
 import {
@@ -16,7 +17,7 @@ import {
 
 const englishSentenceOptions = (englishSentence: Util.ConjugatedEnglishArray, options: Util.Options, index: number) => {
   const sentenceEndingMarker = options.question === HAS_QUESTION ? '?' : '.';
-  if (englishSentence.length - 1 === index) {
+  if (beginningOfPhrase(englishSentence.length, index)) {
     return {
       sentenceEnding: sentenceEndingMarker,
     }
@@ -26,9 +27,9 @@ const englishSentenceOptions = (englishSentence: Util.ConjugatedEnglishArray, op
   }
 };
 
-// const englishSentenceSpace = () => {
+const englishPhraseOptions = (sentence: Util.ConjugatedEnglishArray, word:  ) => {
 
-// };
+};
 
 class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
   public render() {
