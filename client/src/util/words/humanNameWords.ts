@@ -16,7 +16,7 @@ export const wordSasaki = {
     __typename: __TYPENAME_JAPANESE,
   },
   english: {
-    present: 'like',
+    present: 'Sasaki',
     past: 'NA',
     __typename: __TYPENAME_ENGLISH,
   },

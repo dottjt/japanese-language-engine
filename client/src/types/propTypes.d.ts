@@ -1,38 +1,38 @@
 declare module PropTypes {
 
   // Container props
-  export interface IAppProps {
+  export type IAppProps = {
     auth: any,
     route: any, // NOTE: Will need to get proper type. 
   }
 
-  export interface ILoginProps {
+  export type ILoginProps = {
     auth: any, // NOTE: Will need to get proper type. 
   }
 
-  export interface IExplanationProps {
+  export type IExplanationProps = {
     explanation: string[]
   }
   
-  export interface IMainProps {
+  export type IMainProps = {
     auth: any,
     route: any, // NOTE: Will need to get proper type. 
   }
   
   // Component props 
-  export interface IOptionsProps {
+  export type IOptionsProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     client: any, // NOTE: Will need to get proper type. 
   }
 
-  export interface IButtonsProps {
+  export type IButtonsProps = {
     title: string,
     values: string[],
     onClickCallback: (n: string) => void,
   }
 
   // Lesson props
-  export interface ILessonTemplateProps {
+  export type ILessonTemplateProps = {
     title: string,
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
@@ -42,33 +42,33 @@ declare module PropTypes {
   }
   
   // Sentence props
-  export interface IResourcesProps {
+  export type IResourcesProps = {
     resources: Util.Resource[],
   }
 
-  export interface ISentencesProps {
+  export type ISentencesProps = {
     options: Util.Options,
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     englishSentence: Util.ConjugatedEnglishArray,
     japaneseSentence: Util.ConjugatedJapaneseArray,
   }
 
-  export interface IJapaneseSentenceProps {
+  export type IJapaneseSentenceProps = {
     options: Util.Options,
     sentence: Util.ConjugatedJapaneseArray,
   }
 
-  export interface IEnglishSentenceProps {
+  export type IEnglishSentenceProps = {
     options: Util.Options,
     sentence: Util.ConjugatedEnglishArray,
   }
 
-  export interface ISentenceHintsProps {
+  export type ISentenceHintsProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     options: Util.Options,
   }
 
-  export interface IConjugationTableProps {
+  export type IConjugationTableProps = {
     
   }
 }

@@ -26,23 +26,6 @@ import nounConjugationEnglish from "./noun/nounConjugationEnglish";
 import verbConjugationJapanese from "./verb/verbConjugationJapanese";
 import verbConjugationEnglish from "./verb/verbConjugationEnglish";
 
-// const sentenceOptions = (sentence: string, options: Util.Options, lang: string): string => {
-//   const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
-//   const questionEnding = lang === LANG_JAPANESE ? japaneseQuestionEnding : '?';
-//   const normalEnding = lang === LANG_JAPANESE ? '。' : '.';
-
-//   if (options.question === HAS_QUESTION) {
-//     if (lang === LANG_ENGLISH) {
-//       return capitalise(`${sentence.trim()}${questionEnding}`);
-//     } 
-//     return `${sentence.trim()}${questionEnding}`;
-//   } else {
-//     if (lang === LANG_ENGLISH) {
-//       return capitalise(`${sentence.trim()}${normalEnding}`);
-//     } 
-//     return `${sentence.trim()}${normalEnding}`;
-//   }
-// };
 
 const generateEnglishWord = (words: Util.SentenceWords, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishNoun | Util.ConjugatedEnglishVerb => {
   switch (sentenceType) {

@@ -5,7 +5,7 @@ import { PageWrapper, ModuleWrapper } from '../atoms/Layout';
 import { H2 } from '../atoms/Text';
 
 import ExerciseOptionsModule from '../modules/ExerciseOptionsModule';
-import SentenceModule from '../modules/SentenceModule';
+import SentenceModule from '../modules/SentenceModule/SentenceModule';
 // import ResourcesModule from '../modules/ResourcesModule';
 // import ExplanationModule from '../modules/ExplanationModule';
 

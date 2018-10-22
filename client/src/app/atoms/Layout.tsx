@@ -1,5 +1,10 @@
-import { Flex } from 'rebass';
+import { Flex as RebassFlex } from 'rebass';
 import styled from 'styled-components';
+
+
+export const Flex = styled(RebassFlex)`
+  flex-direction: column;
+`;
 
 export const FlexColumn = styled(Flex)`
   flex-direction: column;
