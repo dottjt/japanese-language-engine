@@ -28,10 +28,7 @@ class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
       <Flex>
         <H3>{this.props.title}</H3>
         {convertValuesIntoButtonArray(this.props.values).map(value => (
-          <Button
-            key={value.value}
-            // onClick={this.props.onClickCallback}
-          >
+          <Button key={value.value} /* onClick={this.props.onClickCallback} */ >
             {capitalise(value.value)}
           </Button>
         ))}

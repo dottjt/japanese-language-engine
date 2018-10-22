@@ -11,7 +11,7 @@ const client = new ApolloClient({
     defaults: {
       nouns: allWords,
       sentenceDisplayOptions: {
-        showSentenceHints: true,
+        showSentenceStats: true,
         __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
       }
     },
@@ -27,7 +27,7 @@ const client = new ApolloClient({
     },
     typeDefs: `
       type SentenceDisplayOptions {
-        showSentenceHints: Boolean
+        showSentenceStats: Boolean
       }
 
       type TypeMeta {

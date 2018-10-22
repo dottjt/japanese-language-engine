@@ -19,7 +19,7 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
     }
 
     sentenceDisplayOptions @client {
-      showSentenceHints 
+      showSentenceStats 
     }
   }
 `;

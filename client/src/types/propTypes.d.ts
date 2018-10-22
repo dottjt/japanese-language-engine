@@ -63,7 +63,7 @@ declare module PropTypes {
     sentence: Util.ConjugatedEnglishArray,
   }
 
-  export type ISentenceHintsProps = {
+  export type ISentenceStatsProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     options: Util.Options,
   }

@@ -1,7 +1,7 @@
 declare namespace Util {
   // primary
   export type SentenceDisplayOptions = {
-    showSentenceHints: boolean;
+    showSentenceStats: boolean;
   }
 
   export type Resource = {
