@@ -1,6 +1,8 @@
 import * as React from 'react'
-import { Flex, Heading } from 'rebass';
 import { Link } from 'react-router5';
+
+import { NavbarWrapper, FlexColumn } from './atoms/Layout';
+import { H1, H2, H3 } from './atoms/Text';
 
 import {
   LESSON_TITLE,
@@ -9,39 +11,35 @@ import {
 class Navbar extends React.Component<{}, {}> {
   public render() {
     return (
-      <Flex flexDirection='column'>
+      <NavbarWrapper>
       
-        <Heading>Grammar Boss</Heading>
-        <Heading>Lesson navigation</Heading>
+        <H1>Grammar Boss</H1>
+        <H2>Lesson navigation</H2>
 
-        <Flex flexDirection='column' mt={2}>
-          <Heading>Contents</Heading>
+        <FlexColumn>
+          <H3>Contents</H3>
           <Link routeName={LESSON_TITLE.HOME} routeOptions={{reload: true}}>{LESSON_TITLE.HOME}</Link>
           <Link routeName={LESSON_TITLE.CONTENTS} routeOptions={{reload: true}}>{LESSON_TITLE.CONTENTS}</Link>
           <Link routeName={LESSON_TITLE.PREREQ} routeOptions={{reload: true}}>{LESSON_TITLE.PREREQ}</Link>
-        </Flex>
+        </FlexColumn>
         
-        <Flex flexDirection='column' mt={2}>
-          <Heading>Nouns - Basic</Heading>
+        <FlexColumn>
+          <H3>Nouns - Basic</H3>
           <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>{LESSON_TITLE.L001}</Link>
           <Link routeName={LESSON_TITLE.L002} routeOptions={{reload: true}}>{LESSON_TITLE.L002}</Link>
           <Link routeName={LESSON_TITLE.L003} routeOptions={{reload: true}}>{LESSON_TITLE.L003}</Link>
           <Link routeName={LESSON_TITLE.L004} routeOptions={{reload: true}}>{LESSON_TITLE.L004}</Link>
-        </Flex>
+        </FlexColumn>
 
-        <Flex flexDirection='column' mt={2}>
-          <Heading>Verbs - Basic</Heading>
+        <FlexColumn>
+          <H3>Verbs - Basic</H3>
           <Link routeName={LESSON_TITLE.L005} routeOptions={{reload: true}}>{LESSON_TITLE.L005}</Link>
           <Link routeName={LESSON_TITLE.L006} routeOptions={{reload: true}}>{LESSON_TITLE.L006}</Link>
           <Link routeName={LESSON_TITLE.L007} routeOptions={{reload: true}}>{LESSON_TITLE.L007}</Link>
           <Link routeName={LESSON_TITLE.L008} routeOptions={{reload: true}}>{LESSON_TITLE.L008}</Link>
           <Link routeName={LESSON_TITLE.L009} routeOptions={{reload: true}}>{LESSON_TITLE.L009}</Link>
-          {/* <Link routeName={LESSON_TITLE.L010} routeOptions={{reload: true}}>{LESSON_TITLE.L010}</Link>
-          <Link routeName={LESSON_TITLE.L011} routeOptions={{reload: true}}>{LESSON_TITLE.L011}</Link>
-          <Link routeName={LESSON_TITLE.L012} routeOptions={{reload: true}}>{LESSON_TITLE.L012}</Link> */}
-        </Flex>
-
-      </Flex>
+        </FlexColumn>
+      </NavbarWrapper>
     );
   };
 };

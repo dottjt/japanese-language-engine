@@ -10,15 +10,48 @@ declare namespace Util {
   };
 
   export type Word = {
-    japanese: string;
-    english: string;
+    japanese: {
+      kanji: string;
+      hiragana: string;
+      furigana: string;
+    }
+    english: {
+      present: string;
+      past: string;
+    },
     primaryType: string;
     category: string[];
-    verbType?: string;
     meta: {
       verbType?: string 
     };
   };
+
+  export type ConjugatedJapaneseNoun = {
+    word: Word;
+    nounCategoryEnding: string;
+    nounEnding: string;
+    nounTopicParticle: string;    
+  };
+
+  export type ConjugatedEnglishNoun = {
+    nounTense: string;
+    nounPolarity: string;
+    nounIndefiniteArticle: string;
+    word: Word;
+  };
+
+  export type ConjugatedJapaneseVerb = {
+    conjugatedVerb: string;
+    word: Word;
+  };
+
+  export type ConjugatedEnglishVerb = {
+    verbPolarity: string;
+    word: Word;
+  };
+
+  export type ConjugatedJapaneseArray = (ConjugatedJapaneseNoun|ConjugatedJapaneseVerb)[]
+  export type ConjugatedEnglishArray = (ConjugatedEnglishNoun|ConjugatedEnglishVerb)[]
 
   export type Options = {
     __typename: string;
@@ -30,19 +63,29 @@ declare namespace Util {
     question: string; // HAS_QUESTION, NOT_QUESTION
   };
 
-  export type Sentence = string;
+  // export type Sentence = string;
 
   export type EnglishJapaneseSentence = {
-    englishSentence: Sentence;
-    japaneseSentence: Sentence;
+    englishSentence: ConjugatedJapaneseArray; // will change
+    japaneseSentence: ConjugatedEnglishArray; // will change
+
+    // ConjugatedJapaneseNoun
+    // ConjugatedEnglishNoun
+    // ConjugatedJapaneseVerb
+    // ConjugatedEnglishVerb
+
+    // englishSentence: any; // will change
+    // japaneseSentence: any; // will change
   };
 
+
   export type EnglishJapaneseOptionsSentence = {
-    englishSentence: Sentence;
-    japaneseSentence: Sentence;
+    englishSentence: ConjugatedJapaneseArray;
+    japaneseSentence: ConjugatedEnglishArray;
     options: Options,
   };
 
+  
   // SENTENCE TYPE - BASIC QUESTION
   export type BasicQuestion = {
     questionTopicNoun: Word;

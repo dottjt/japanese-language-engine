@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Flex } from 'rebass';
-import styled from 'styled-components';
 
-const Button = styled.button``;
+import { PageWrapper } from '../atoms/Layout';
+import { Button } from '../atoms/Button';
 
-class Login extends React.Component<PropTypes.ILoginProps, {}> {
+class LoginPage extends React.Component<PropTypes.ILoginProps, {}> {
 
   public login() {
     this.props.auth.login();
@@ -17,7 +16,7 @@ class Login extends React.Component<PropTypes.ILoginProps, {}> {
   public render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <Flex>
+      <PageWrapper>
         {!isAuthenticated() && (
           <Button
             className="btn-margin"
@@ -36,11 +35,9 @@ class Login extends React.Component<PropTypes.ILoginProps, {}> {
               </Button>
             )
         }
-      </Flex> 
+      </PageWrapper> 
     );
   };
 };
 
-export default Login;
-
-
+export default LoginPage;

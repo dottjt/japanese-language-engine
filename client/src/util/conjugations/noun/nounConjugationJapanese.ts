@@ -112,14 +112,20 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
   return '';
 };
 
-const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseNoun => {
   const word = filtersentenceType(words, sentenceType);
 
   const nounEnding = determineNounConjugationJapanese(words, options, sentenceType);
   const nounCategoryEnding = determineNounCategoryEnding(word);
   const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
 
-  return `${word.japanese}${nounCategoryEnding}${nounEnding}${nounTopicParticle}`.trim();
+  return {
+    word,
+    nounCategoryEnding,
+    nounEnding,
+    nounTopicParticle,
+  }
+  // return `${word.japanese}${nounCategoryEnding}${nounEnding}${nounTopicParticle}`.trim();
 };
 
 export default nounConjugationJapanese;

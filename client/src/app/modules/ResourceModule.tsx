@@ -1,14 +1,18 @@
 import * as React from 'react';
-import { Flex, Link } from 'rebass';
+
+import { FlexColumn } from '../atoms/Layout';
+import { Link } from '../atoms/Button';
 
 class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
   public render() {
     return (
-      <Flex flexDirection='column'>
+      <FlexColumn>
         {this.props.resources.map((resource, index) => (
-          <Link key={index} href={resource.url}>{resource.url}</Link>
+          <Link key={index} href={resource.url}>
+            {resource.url}
+          </Link>
         ))}
-      </Flex>
+      </FlexColumn>
     );
   };
 };

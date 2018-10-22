@@ -1,23 +1,25 @@
 import * as React from 'react';
-import { Flex, Heading, Text } from 'rebass';
+
+import { PageWrapper, FlexColumn } from '../atoms/Layout';
+import { H3, Text } from '../atoms/Text';
 
 class Prerequistes extends React.Component<{}, {}> {
   public render() {
     return (
-      <Flex flexDirection='column'>
-        <Flex flexDirection='column'>
-          <Heading>
+      <PageWrapper>
+        <FlexColumn>
+          <H3>
             Prequisites
-          </Heading>
+          </H3>
           <Text>
             This application heavily utilises 
           </Text>
-        </Flex>
+        </FlexColumn>
 
-        <Flex flexDirection='column'>
-          <Heading>
+        <FlexColumn>
+          <H3>
             My number one recommendation
-          </Heading>
+          </H3>
           <Text>
             Having learnt Japanese to a sufficient degree, there is one single point I can recommend for your future progress.
           </Text>
@@ -49,17 +51,17 @@ class Prerequistes extends React.Component<{}, {}> {
             It is not mean to be a one-to-one translation. It is a fluid interpretation and if you can keep this in mind, you'll do well.             
           </Text>
 
-          <Heading>
+          <H3>
             Effective Learning
-          </Heading>
+          </H3>
           <Text>
             There really are two aspects to keep in mind: Understanding and active practice.
           </Text>
           <Text>
             What this application essentially provides is the active practice aspect of this equation. 
           </Text>
-        </Flex> 
-    </Flex> 
+        </FlexColumn> 
+    </PageWrapper> 
     );
   };
 };

@@ -27,11 +27,15 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return '';
 }; 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishVerb => {
   const word = filtersentenceType(words, sentenceType);
   const verbPolarity = determineVerbConjugationEnglish(words, options, sentenceType);
 
-  return `${verbPolarity} ${word.english}`;
+  return {
+    verbPolarity,
+    word,
+  }
+  // return `${verbPolarity} ${word.english}`;
 };
 
 export default verbConjugationEnglish;

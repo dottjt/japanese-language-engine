@@ -94,14 +94,20 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return '';
 };
 
-const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishNoun => {
   const word = filtersentenceType(words, sentenceType);
 
   const nounIndefiniteArticle = determineNounIndefiniteArticle(words, word, sentenceType);
   const nounPolarity = determineNounPolarity(words, options, sentenceType);
   const nounTense = determineNounConjugationEnglish(words, options, sentenceType);
 
-    return `${nounTense} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();
+  return {
+    nounTense,
+    nounPolarity,
+    nounIndefiniteArticle,
+    word,
+  }
+    // return `${nounTense} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();
 };
 
 export default nounConjugationEnglish;

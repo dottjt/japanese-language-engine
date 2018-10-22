@@ -23,40 +23,49 @@ import {
   // L013,
 } from '../util/constants/lessonConstants';
 
-import LessonTemplate from './components/LessonTemplate';
+import LessonTemplate from './pages/LessonPage';
 
-import Prerequisites from './pages/Prerequisites';
-import Contents from './pages/Contents';
-import Home from './pages/Home';
-import Callback from './pages/Callback';
-import Login from './pages/Login';
+import Prerequisites from './pages/PrerequisitesPage';
+import Contents from './pages/ContentsPage';
+import Home from './pages/HomePage';
+import Callback from './pages/CallbackPage';
+import Login from './pages/LoginPage';
 import Page404 from './pages/Page404';
 
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
 
   public render() {
-    if (!this.props.route) {
-      return <Page404/>
-    };
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data }) => {
           switch (this.props.route.name) { /* this.props.previousRoute */
-            case LESSON_TITLE.CALLBACK:
-              return <Callback/>
-            case LESSON_TITLE.LOGIN:
-              return <Login auth={this.props.auth}/>
-
+            
             case LESSON_TITLE.HOME:
-              return <Home/>
+              return (
+                <Home/>
+              )
+            
             case LESSON_TITLE.CONTENTS:
-              return <Contents/>
+              return (
+                <Contents/>
+              );
+            
             case LESSON_TITLE.PREREQ:
-              return <Prerequisites/>
-            case LESSON_TITLE.CONTENTS:
-              return <Contents/>
+              return (
+                <Prerequisites/>
+              );
 
+            case LESSON_TITLE.CALLBACK:
+              return (
+                <Callback/>
+              );
+
+            case LESSON_TITLE.LOGIN:
+              return (
+                <Login auth={this.props.auth}/>
+              );
+            
             case L001.LESSON_TITLE:
               return (
                 <LessonTemplate

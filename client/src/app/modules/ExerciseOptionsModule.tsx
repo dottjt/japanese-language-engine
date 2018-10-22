@@ -1,6 +1,15 @@
 import * as React from "react";
 import { Flex } from "rebass";
 
+import { FlexColumn } from '../atoms/Layout';
+import { Button } from '../atoms/Button';
+import { H3 } from '../atoms/Text';
+
+import {
+  capitalise,
+  convertValuesIntoButtonArray,
+} from '../../util/functions';
+
 import {
   POLARITY_NEGATIVE,
   POLARITY_POSITIVE,
@@ -11,12 +20,31 @@ import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS
 } from "../../util/constants/optionsConstants";
 
-import Buttons from "../atoms/Buttons";
 
-class Options extends React.Component<PropTypes.IOptionsProps, {}> {
+class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
+
   public render() {
     return (
-      <Flex flexDirection="column">
+      <Flex>
+        <H3>{this.props.title}</H3>
+        {convertValuesIntoButtonArray(this.props.values).map(value => (
+          <Button
+            key={value.value}
+            // onClick={this.props.onClickCallback}
+          >
+            {capitalise(value.value)}
+          </Button>
+        ))}
+      </Flex>
+    );
+  };
+};
+
+
+class SentenceOptionsModule extends React.Component<PropTypes.IOptionsProps, {}> {
+  public render() {
+    return (
+      <FlexColumn>
         <Buttons
           title={"Sentence Politeness"}
           values={[POLITENESS_CASUAL, POLITENESS_FORMAL]}
@@ -27,7 +55,7 @@ class Options extends React.Component<PropTypes.IOptionsProps, {}> {
           values={[POLARITY_POSITIVE, POLARITY_NEGATIVE]}
           onClickCallback={this.variationCallback}
         />
-      </Flex>
+      </FlexColumn>
     );
   }
 
@@ -47,4 +75,4 @@ class Options extends React.Component<PropTypes.IOptionsProps, {}> {
   };
 }
 
-export default Options;
+export default SentenceOptionsModule;

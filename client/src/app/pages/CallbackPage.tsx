@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Flex, Text } from 'rebass';
 
-class Callback extends React.Component {
+import { FlexColumn } from '../atoms/Layout';
+import { Link } from '../atoms/Button';
+
+
+class CallbackPage extends React.Component {
   public render() {
     return (
       <Flex>
@@ -11,4 +15,4 @@ class Callback extends React.Component {
   }
 }
 
-export default Callback;
+export default CallbackPage;

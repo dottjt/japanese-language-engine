@@ -2,14 +2,16 @@ import * as React from 'react';
 
 import { PageWrapper } from '../atoms/Layout';
 
-class Page404 extends React.Component<{}, {}> {
+import Navbar from '../Navbar';
+
+class ContentsPage extends React.Component<{}, {}> {
   public render() {
     return (
       <PageWrapper>
-        404'd
+        <Navbar/>
       </PageWrapper> 
     );
   };
 };
 
-export default Page404;
+export default ContentsPage;

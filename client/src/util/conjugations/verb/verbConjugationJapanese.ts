@@ -55,8 +55,8 @@ const uVerbEndingToA = (verbEnding: string): string => {
 };
 
 const getVerbStem = (verb: Util.Word, options: Util.Options): string => {
-  const initialStem = verb.japanese.slice(0, -1);
-  const verbLastLetter = verb.japanese.slice(-1);
+  const initialStem = verb.japanese.kanji.slice(0, -1);
+  const verbLastLetter = verb.japanese.kanji.slice(-1);
 
   if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_RU) { return initialStem };
   if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_U) {
@@ -81,11 +81,15 @@ const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };
 
-const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseVerb => {
   const word = filtersentenceType(words, sentenceType);
   const conjugatedVerb = determineVerbConjugationJapanese(word, options);
 
-  return `${conjugatedVerb}`;
+  return {
+    conjugatedVerb,
+    word,
+  }
+  // return `${conjugatedVerb}`;
 };
 
 export default verbConjugationJapanese;

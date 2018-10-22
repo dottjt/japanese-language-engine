@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Flex } from 'rebass';
+
+import { AppWrapper } from './atoms/Layout';
 
 import Main from './Main';
 import Navbar from './Navbar';
@@ -8,10 +9,10 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
 
   public render() {
     return (
-      <Flex>
+      <AppWrapper>
         <Navbar/>
         <Main auth={this.props.auth} route={this.props.route}/>
-      </Flex> 
+      </AppWrapper> 
     );
   };
 };

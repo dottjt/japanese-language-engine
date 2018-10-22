@@ -45,17 +45,19 @@ declare module PropTypes {
   }
 
   export interface ISentencesProps {
-    options: Util.Options
-    englishSentence: Util.Sentence,
-    japaneseSentence: Util.Sentence,
+    options: Util.Options,
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    englishSentence: Util.ConjugatedEnglishArray,
+    japaneseSentence: Util.ConjugatedJapaneseArray,
   }
 
   export interface ISentenceProps {
     options: Util.Options,
-    sentence: Util.Sentence,
+    sentence: Util.ConjugatedEnglishArray | Util.ConjugatedJapaneseArray,
   }
 
   export interface ISentenceHintsProps {
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
     options: Util.Options,
   }
 

@@ -1,14 +1,18 @@
 import * as React from 'react';
-import { Flex, Text } from 'rebass';
+
+import { FlexColumn } from '../atoms/Layout';
+import { Text } from '../atoms/Text';
 
 class Explanation extends React.Component<PropTypes.IExplanationProps, {}> {
   public render() {
     return (
-      <Flex flexDirection='column'>
+      <FlexColumn>
         {this.props.explanation.map((text, index) => (
-          <Text key={index}>{text}</Text>
+          <Text key={index}>
+            {text}
+          </Text>
         ))}
-      </Flex>
+      </FlexColumn>
     );
   };
 };
