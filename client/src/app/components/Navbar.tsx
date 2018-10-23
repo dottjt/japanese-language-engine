@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { Link } from 'react-router5';
 
-import { NavbarWrapper, FlexColumn } from './atoms/Layout';
-import { H1, H2, H3 } from './atoms/Text';
+import { NavbarWrapper, FlexColumn } from '../atoms/Layout';
+import { H1, H2, H3 } from '../atoms/Text';
 
 import {
   LESSON_TITLE,
-} from '../util/constants/lessonConstants';
+} from '../../util/constants/lessonConstants';
 
 class Navbar extends React.Component<{}, {}> {
   public render() {
@@ -18,7 +18,7 @@ class Navbar extends React.Component<{}, {}> {
 
         <FlexColumn>
           <H3>Contents</H3>
-          <Link routeName={LESSON_TITLE.HOME} routeOptions={{reload: true}}>{LESSON_TITLE.HOME}</Link>
+          <Link routeName={LESSON_TITLE.WELCOME} routeOptions={{reload: true}}>{LESSON_TITLE.WELCOME}</Link>
           <Link routeName={LESSON_TITLE.CONTENTS} routeOptions={{reload: true}}>{LESSON_TITLE.CONTENTS}</Link>
           <Link routeName={LESSON_TITLE.PREREQ} routeOptions={{reload: true}}>{LESSON_TITLE.PREREQ}</Link>
         </FlexColumn>

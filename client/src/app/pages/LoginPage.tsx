@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PageWrapper } from '../atoms/Layout';
-import { Button } from '../atoms/Button';
+import { Button } from '../atoms/Clickables';
 
 class LoginPage extends React.Component<PropTypes.ILoginProps, {}> {
 

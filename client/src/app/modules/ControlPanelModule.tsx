@@ -1,13 +1,15 @@
 import * as React from "react";
-import { Flex } from "rebass";
 
 import { FlexColumn } from '../atoms/Layout';
-import { Button } from '../atoms/Button';
+import { Button } from '../atoms/Clickables';
 import { H3 } from '../atoms/Text';
+import { ControlPanel } from '../atoms/ControlPanel';
 
 import {
   capitalise,
   convertValuesIntoButtonArray,
+  convertPolitenessIntoValue,
+  convertPolarityIntoValue,
 } from '../../util/functions';
 
 import {
@@ -25,33 +27,33 @@ class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
 
   public render() {
     return (
-      <Flex>
+      <FlexColumn>
         <H3>{this.props.title}</H3>
         {convertValuesIntoButtonArray(this.props.values).map(value => (
           <Button key={value.value} /* onClick={this.props.onClickCallback} */ >
             {capitalise(value.value)}
           </Button>
         ))}
-      </Flex>
+      </FlexColumn>
     );
   };
 };
 
-class ExerciseOptionsModule extends React.Component<PropTypes.IOptionsProps, {}> {
+class ControlPanelModule extends React.Component<PropTypes.IOptionsProps, {}> {
   public render() {
     return (
-      <FlexColumn>
+      <ControlPanel>
         <Buttons
           title={"Sentence Politeness"}
-          values={[POLITENESS_CASUAL, POLITENESS_FORMAL]}
+          values={[convertPolitenessIntoValue(POLITENESS_CASUAL), convertPolitenessIntoValue(POLITENESS_FORMAL)]}
           onClickCallback={this.politenessCallback}
         />
         <Buttons
           title={"Question Variation"}
-          values={[POLARITY_POSITIVE, POLARITY_NEGATIVE]}
+          values={[convertPolarityIntoValue(POLARITY_POSITIVE), convertPolarityIntoValue(POLARITY_NEGATIVE)]}
           onClickCallback={this.variationCallback}
         />
-      </FlexColumn>
+      </ControlPanel>
     );
   }
 
@@ -71,4 +73,4 @@ class ExerciseOptionsModule extends React.Component<PropTypes.IOptionsProps, {}>
   };
 }
 
-export default ExerciseOptionsModule;
+export default ControlPanelModule;

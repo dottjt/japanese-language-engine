@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 
 export const Flex = styled(RebassFlex)`
-  flex-direction: column;
+  display: flex;
 `;
 
 export const FlexColumn = styled(Flex)`
+  display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 `;
 
 
@@ -15,6 +17,11 @@ export const FlexColumn = styled(Flex)`
 
 export const AppWrapper = styled.div`
   display: flex; 
+`;
+
+export const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const NavbarWrapper = styled.div`
@@ -38,4 +45,16 @@ export const ModuleWrapper = styled.div`
   flex-direction: column;
 
   margin-top: 20px;
+`;
+
+
+
+// HOMEPAGE 
+
+export const HomepageWrapper = styled(RebassFlex)`
+  display: flex;
+`;
+
+export const HomepageSection = styled(RebassFlex)`
+  display: flex;
 `;

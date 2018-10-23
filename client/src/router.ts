@@ -1,4 +1,3 @@
-
 import createRouter from 'router5';
 import browserPlugin from 'router5/plugins/browser';
 
@@ -7,11 +6,17 @@ import {
   LESSON_PATH,
 } from './util/constants/lessonConstants';
 
-const routes = [
-  { name: LESSON_TITLE.CALLBACK, path: LESSON_PATH.CALLBACK },
-  { name: LESSON_TITLE.LOGIN, path: LESSON_PATH.LOGIN },
+import {
+  ROUTE_TITLE,
+  ROUTE_PATH,
+} from './util/constants/generalConstants';
 
-  { name: LESSON_TITLE.HOME, path: LESSON_PATH.HOME },
+const routes = [
+  { name: ROUTE_TITLE.CALLBACK, path: ROUTE_PATH.CALLBACK },
+  { name: ROUTE_TITLE.LOGIN, path: ROUTE_PATH.LOGIN },
+  { name: ROUTE_TITLE.HOME, path: ROUTE_PATH.HOME },
+  { name: ROUTE_TITLE.APP, path: ROUTE_PATH.APP },
+
   { name: LESSON_TITLE.CONTENTS, path: LESSON_PATH.CONTENTS },
   { name: LESSON_TITLE.PREREQ, path: LESSON_PATH.PREREQ },
   

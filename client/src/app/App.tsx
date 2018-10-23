@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { AppWrapper } from './atoms/Layout';
 
-import Main from './Main';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
+import Main from './components/Main';
 
 class App extends React.Component<PropTypes.IAppProps, {}> {
 

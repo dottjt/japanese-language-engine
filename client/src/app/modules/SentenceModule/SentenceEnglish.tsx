@@ -27,9 +27,9 @@ const englishSentenceOptions = (englishSentence: Util.ConjugatedEnglishArray, op
   }
 };
 
-const englishPhraseOptions = (sentence: Util.ConjugatedEnglishArray, word:  ) => {
+// const englishPhraseOptions = (sentence: Util.ConjugatedEnglishArray, word: string): string => {
 
-};
+// };
 
 class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
   public render() {

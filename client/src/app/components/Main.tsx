@@ -3,7 +3,7 @@ import { Query } from 'react-apollo';
 
 import { 
   GET_ALL_WORDS_AND_OPTIONS
-} from '../graphql/queries'
+} from '../../graphql/queries'
 
 import { 
   LESSON_TITLE,
@@ -21,17 +21,12 @@ import {
   // L011,
   // L012,
   // L013,
-} from '../util/constants/lessonConstants';
+} from '../../util/constants/lessonConstants';
 
-import LessonTemplate from './pages/LessonPage';
+import LessonTemplate from '../lessons/LessonPage';
 
-import Prerequisites from './pages/PrerequisitesPage';
-import Contents from './pages/ContentsPage';
-import Home from './pages/HomePage';
-import Callback from './pages/CallbackPage';
-import Login from './pages/LoginPage';
-import Page404 from './pages/Page404';
-
+import Prerequisites from '../lessons/PrerequisitesPage';
+import Contents from '../lessons/ContentsPage';
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
 
@@ -40,32 +35,14 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
           switch (this.props.route.name) { /* this.props.previousRoute */
-            
-            case LESSON_TITLE.HOME:
-              return (
-                <Home/>
-              )
-            
             case LESSON_TITLE.CONTENTS:
               return (
                 <Contents/>
               );
-            
             case LESSON_TITLE.PREREQ:
               return (
                 <Prerequisites/>
               );
-
-            case LESSON_TITLE.CALLBACK:
-              return (
-                <Callback/>
-              );
-
-            case LESSON_TITLE.LOGIN:
-              return (
-                <Login auth={this.props.auth}/>
-              );
-            
             case L001.LESSON_TITLE:
               return (
                 <LessonTemplate
@@ -203,7 +180,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             //   ); 
 
             default:
-              return <Page404/>;
+              throw new Error('le application is not working, sorry buddy.');
           }
         }}
       </Query>

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { PageWrapper, ModuleWrapper } from '../atoms/Layout';
 import { H2 } from '../atoms/Text';
 
-import ExerciseOptionsModule from '../modules/ExerciseOptionsModule';
+import ExerciseOptionsModule from '../modules/ControlPanelModule';
 import SentenceModule from '../modules/SentenceModule';
 // import ResourcesModule from '../modules/ResourcesModule';
 // import ExplanationModule from '../modules/ExplanationModule';

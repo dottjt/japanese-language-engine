@@ -76,9 +76,7 @@ const createRes = (resourceType: string, urlString: string): Util.Resource => {
 };
 
 export const LESSON_PATH = {
-  CALLBACK: '/callback',
-  LOGIN: '/login',
-  HOME: '/',
+  WELCOME: '/welcome',
   CONTENTS: '/contents',
   PREREQ: '/prerequisites',
   
@@ -100,9 +98,7 @@ export const LESSON_PATH = {
 }
 
 export const LESSON_TITLE = {
-  CALLBACK: 'Grammar Sensei Callback',
-  LOGIN: 'Grammar Sensei Login',
-  HOME: 'Grammar Sensei Home',
+  WELCOME: 'Grammar Sensei Welcome',
   CONTENTS: 'Grammar Sensei Contents',
   PREREQ: 'Grammar Sensei Prerequisites',
 
