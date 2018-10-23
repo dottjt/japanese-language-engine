@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Sentence, Phrase, EnglishWord } from '../../atoms/Sentence';
+import { Sentence, Phrase, EnglishWord } from '../../atoms/SentenceStyles';
 
 import {
   createError,

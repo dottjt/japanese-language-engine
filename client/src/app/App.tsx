@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { AppWrapper } from './atoms/Layout';
+import { AppWrapper } from './atoms/LayoutStyles';
 
 import Navbar from './components/Navbar';
 import Main from './components/Main';

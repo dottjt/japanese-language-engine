@@ -1,8 +1,8 @@
 
 import * as React from 'react';
 
-import { PageWrapper, ModuleWrapper } from '../atoms/Layout';
-import { H2 } from '../atoms/Text';
+import { PageWrapper, ModuleWrapper } from '../atoms/LayoutStyles';
+import { H2 } from '../atoms/TextStyles';
 
 import ExerciseOptionsModule from '../modules/ControlPanelModule';
 import SentenceModule from '../modules/SentenceModule';

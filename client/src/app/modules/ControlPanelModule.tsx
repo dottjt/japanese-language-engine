@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { FlexColumn } from '../atoms/Layout';
-import { Button } from '../atoms/Clickables';
-import { H3 } from '../atoms/Text';
-import { ControlPanel } from '../atoms/ControlPanel';
+import { FlexColumn } from '../atoms/LayoutStyles';
+import { Button } from '../atoms/ClickableStyles';
+import { H3 } from '../atoms/TextStyles';
+import { ControlPanel } from '../atoms/ControlPanelStyles';
 
 import {
   capitalise,

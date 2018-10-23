@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { PageWrapper, FlexColumn } from '../atoms/Layout';
-import { H3, Text } from '../atoms/Text';
+import { PageWrapper, FlexColumn } from '../atoms/LayoutStyles';
+import { H3, Text } from '../atoms/TextStyles';
 
 class Prerequistes extends React.Component<{}, {}> {
   public render() {

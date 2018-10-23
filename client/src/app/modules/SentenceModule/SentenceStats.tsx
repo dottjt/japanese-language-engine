@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { SentenceStat, Stat } from '../../atoms/Sentence';
+import { SentenceStat, Stat } from '../../atoms/SentenceStyles';
 
 import {
   convertPolitenessIntoValue,

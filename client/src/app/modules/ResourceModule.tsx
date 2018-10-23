@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FlexColumn } from '../atoms/Layout';
-import { Link } from '../atoms/Clickables';
+import { FlexColumn } from '../atoms/LayoutStyles';
+import { Link } from '../atoms/ClickableStyles';
 
 class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
   public render() {

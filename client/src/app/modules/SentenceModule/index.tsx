@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { FlexColumn } from '../../atoms/Layout';
+import { FlexColumn } from '../../atoms/LayoutStyles';
 
 import SentenceStats from './SentenceStats';
 import SentenceEnglish from './SentenceEnglish';

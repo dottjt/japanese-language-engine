@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PageWrapper } from '../atoms/Layout';
+import { PageWrapper } from '../atoms/LayoutStyles';
 
 class Page404 extends React.Component<{}, {}> {
   public render() {

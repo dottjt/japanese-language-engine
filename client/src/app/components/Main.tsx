@@ -6,6 +6,10 @@ import {
 } from '../../graphql/queries'
 
 import { 
+  ROUTE_TITLE,
+} from '../../util/constants/generalConstants';
+
+import { 
   LESSON_TITLE,
   
   L001,
@@ -27,6 +31,7 @@ import LessonTemplate from '../lessons/LessonPage';
 
 import Prerequisites from '../lessons/PrerequisitesPage';
 import Contents from '../lessons/ContentsPage';
+import Welcome from '../lessons/WelcomePage';
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
 
@@ -35,6 +40,14 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
           switch (this.props.route.name) { /* this.props.previousRoute */
+            case ROUTE_TITLE.APP:
+              return (
+                <Welcome/>
+              );
+            case LESSON_TITLE.WELCOME:
+              return (
+                <Welcome/>
+              );
             case LESSON_TITLE.CONTENTS:
               return (
                 <Contents/>

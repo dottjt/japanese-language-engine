@@ -1,9 +1,9 @@
 import * as React from 'react'
 
 import { Card, Flex } from 'rebass';
-import { FlexColumn } from '../../atoms/Layout';
+import { FlexColumn } from '../../atoms/LayoutStyles';
 // import { Button } from '../atoms/Button';
-import { Text } from '../../atoms/Text';
+import { Text } from '../../atoms/TextStyles';
 
 import {
   convertPolitenessIntoValue,

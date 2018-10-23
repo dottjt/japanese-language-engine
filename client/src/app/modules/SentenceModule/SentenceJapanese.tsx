@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Sentence, Phrase, JapaneseWord } from '../../atoms/Sentence';
+import { Sentence, Phrase, JapaneseWord } from '../../atoms/SentenceStyles';
 
 import {
   createError,

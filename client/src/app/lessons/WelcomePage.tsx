@@ -2,16 +2,16 @@ import * as React from 'react';
 
 import { PageWrapper } from '../atoms/LayoutStyles';
 
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 
-class ContentsPage extends React.Component<{}, {}> {
+class WelcomePage extends React.Component<{}, {}> {
   public render() {
     return (
       <PageWrapper>
-        <Navbar/>
+        <p>helli</p>
       </PageWrapper> 
     );
   };
 };
 
-export default ContentsPage;
+export default WelcomePage;

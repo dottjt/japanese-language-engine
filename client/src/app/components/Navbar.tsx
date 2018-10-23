@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Link } from 'react-router5';
 
-import { NavbarWrapper, FlexColumn } from '../atoms/Layout';
-import { H1, H2, H3 } from '../atoms/Text';
+import { NavbarWrapper, FlexColumn } from '../atoms/LayoutStyles';
+import { H1, H2, H3 } from '../atoms/TextStyles';
 
 import {
   LESSON_TITLE,

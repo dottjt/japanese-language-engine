@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FlexColumn } from '../atoms/Layout';
-import { Text } from '../atoms/Text';
+import { FlexColumn } from '../atoms/LayoutStyles';
+import { Text } from '../atoms/TextStyles';
 
 class Explanation extends React.Component<PropTypes.IExplanationProps, {}> {
   public render() {

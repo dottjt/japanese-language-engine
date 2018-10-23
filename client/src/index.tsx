@@ -35,6 +35,7 @@ ReactDOM.render(
       <RouteProvider router={router}>
         <Route>{({ route }) => {
           if (route !== null ) {
+            console.log(route)
             switch(route.name) {
               case ROUTE_TITLE.HOME: 
                 return <Homepage/>
@@ -42,10 +43,8 @@ ReactDOM.render(
                 return <Callback/>
               case ROUTE_TITLE.LOGIN:
                 return <Login auth={auth}/>
-              case ROUTE_TITLE.LOGIN:
+              default:
                 return <App route={route} auth={auth}/>
-              default: 
-                return <Page404/>                
             }
           } else {
             return <Page404/>

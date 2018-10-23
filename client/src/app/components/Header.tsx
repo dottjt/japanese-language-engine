@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { HeaderWrapper } from '../atoms/Layout';
-import { Link } from '../atoms/Clickables';
+import { HeaderWrapper } from '../atoms/HeaderStyles';
+import { Link } from '../atoms/ClickableStyles';
 
 class Header extends React.Component<{}, {}> {
 

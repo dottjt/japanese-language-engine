@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { PageWrapper } from '../atoms/Layout';
-import { Text } from '../atoms/Text';
+import { PageWrapper } from '../atoms/LayoutStyles';
+import { Text } from '../atoms/TextStyles';
 
 class CallbackPage extends React.Component {
   public render() {

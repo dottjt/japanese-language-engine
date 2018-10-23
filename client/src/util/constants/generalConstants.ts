@@ -9,7 +9,7 @@ export const ROUTE_PATH = {
   CALLBACK: '/callback',
   LOGIN: '/login',
   HOME: '/',
-  APP: '/app',
+  APP: '/japanese-grammar-exercises',
 };
 
 // NULL
