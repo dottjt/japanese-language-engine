@@ -15,14 +15,6 @@ What it isn't:
 
 - A language translator (although it may become one in the distant future)
 
-Free usage: 
-- Access to the basic grammar exercises (try before you buy)
-
-Paid usage: 
-- 
-
-
-
 # Tech
 
 - Frontend: Create-React-App, Typescript, React, apollo-boost, react-router5
@@ -42,12 +34,12 @@ yarn add typescript-plugin-styled-components --dev
 npm install --save-dev babel-plugin-styled-components
 
 
-yarn storybook
 
 
 # TODO
 - Unit Testing
 - Implement Stripe 
+- 0Auth setup (proper)
 
 You could think of it as a 'did do' relationship. 
 
