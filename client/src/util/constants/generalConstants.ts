@@ -1,17 +1,17 @@
 export const ROUTE_TITLE = {
-  CALLBACK: 'Watashi Engine Callback',
-  LOGIN: 'Watashi Engine Login',
-  HOME: 'Watashi Engine Home',  
-  APP: 'Watashi Engine Application',
-  BLOG: 'Watashi Engine Blog',
-  SIGN_UP: '/Watashi Engine Signup',
+  CALLBACK: 'Callback',
+  LOGIN: 'Login',
+  HOME: 'Home',  
+  APP: 'Exercises',
+  BLOG: 'Blog',
+  SIGN_UP: 'Sign Up',
 };
 
 export const ROUTE_PATH = {
   CALLBACK: '/callback',
   LOGIN: '/login',
   HOME: '/',
-  APP: '/japanese-grammar-exercises',
+  APP: '/exercises',
   BLOG: '/blog',
   SIGN_UP: '/sign-up',
 };

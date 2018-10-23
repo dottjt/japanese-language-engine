@@ -19,7 +19,7 @@ export const AppWrapper = styled(Flex)`
 
 `;
 
-export const NavbarWrapper = styled(FlexColumn)`
+export const SidebarWrapper = styled(FlexColumn)`
   min-width: 250px;
   border-right: 1px solid black;
 `;

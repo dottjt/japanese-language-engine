@@ -40,7 +40,7 @@ import {
   // PRIMARY_TYPE_ADJECTIVE,
 } from './wordConstants';
 
-import generateExercises from '../conjugations';
+import generateExercises from '../conjugations/generateExercises';
 
 import { 
   politenessArray,
@@ -98,9 +98,9 @@ export const LESSON_PATH = {
 }
 
 export const LESSON_TITLE = {
-  WELCOME: 'Grammar Sensei Welcome',
-  CONTENTS: 'Grammar Sensei Contents',
-  PREREQ: 'Grammar Sensei Prerequisites',
+  WELCOME: 'Welcome',
+  CONTENTS: 'Contents',
+  PREREQ: 'Prerequisites',
 
   L001: 'Noun statements',
   L002: 'は and も statements',

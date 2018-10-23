@@ -1,38 +1,10 @@
 import * as React from 'react'
 
-import { Card, Flex } from 'rebass';
 import { FlexColumn } from '../../atoms/LayoutStyles';
-// import { Button } from '../atoms/Button';
-import { Text } from '../../atoms/TextStyles';
 
-import {
-  convertPolitenessIntoValue,
-  convertPolarityIntoValue,
-} from '../../../util/functions';
-
+import SentenceStats from './SentenceStats';
 import EnglishSentence from './SentenceEnglish';
 import JapaneseSentence from './SentenceJapanese';
-
-class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
-  public render() {
-    const { politeness, polarity, /* primaryType, variation */ } = this.props.options;
-    return (
-      <Card>
-        {this.props.sentenceDisplayOptions.showSentenceStats &&
-          <Flex>
-            <Text>
-              {convertPolitenessIntoValue(politeness)}
-            </Text>
-            <Text>
-              {convertPolarityIntoValue(polarity)}
-            </Text>
-          </Flex>
-        }
-      </Card>    
-    );
-  }
-};
-
 
 class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {    

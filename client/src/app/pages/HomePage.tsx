@@ -6,8 +6,8 @@ import { GET_ALL_WORDS_AND_OPTIONS } from '../../graphql/queries';
 import { randomArrayElement } from '../../util/functions';
 import { LESSON_TITLE, LESSON_WORDS, LESSON_OPTIONS } from '../../util/constants/lessonConstants';
 
-import generateExercises from '../../util/conjugations';
-import Header from '../components/Header';
+import generateExercises from '../../util/conjugations/generateExercises';
+import Navbar from '../components/Navbar';
 import SentenceModule from '../modules/SentenceModule'
 
 import { 
@@ -43,7 +43,7 @@ class Homepage extends React.Component<{}, { randomIndex: number }> {
 
           return (
             <HomepageWrapper>
-              <Header/>
+              <Navbar/>
               <MainWrapper>
                 <H1>Watashi Language Engine.</H1>
                 

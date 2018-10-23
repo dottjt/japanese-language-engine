@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import { PageWrapper } from '../atoms/LayoutStyles';
 
-// import Navbar from '../components/Navbar';
-
 class WelcomePage extends React.Component<{}, {}> {
   public render() {
     return (

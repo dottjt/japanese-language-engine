@@ -1,47 +1,23 @@
-import * as React from 'react'
+import * as React from 'react';
+
+import { NavbarWrapper, NavbarLinks } from '../atoms/NavbarStyles';
 import { Link } from 'react-router5';
 
-import { NavbarWrapper, FlexColumn } from '../atoms/LayoutStyles';
-import { H1, H2, H3 } from '../atoms/TextStyles';
-
-import {
-  LESSON_TITLE,
-} from '../../util/constants/lessonConstants';
+import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 
 class Navbar extends React.Component<{}, {}> {
   public render() {
     return (
       <NavbarWrapper>
-      
-        <H1>Grammar Boss</H1>
-        <H2>Lesson navigation</H2>
-
-        <FlexColumn>
-          <H3>Contents</H3>
-          <Link routeName={LESSON_TITLE.WELCOME} routeOptions={{reload: true}}>{LESSON_TITLE.WELCOME}</Link>
-          <Link routeName={LESSON_TITLE.CONTENTS} routeOptions={{reload: true}}>{LESSON_TITLE.CONTENTS}</Link>
-          <Link routeName={LESSON_TITLE.PREREQ} routeOptions={{reload: true}}>{LESSON_TITLE.PREREQ}</Link>
-        </FlexColumn>
-        
-        <FlexColumn>
-          <H3>Nouns - Basic</H3>
-          <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>{LESSON_TITLE.L001}</Link>
-          <Link routeName={LESSON_TITLE.L002} routeOptions={{reload: true}}>{LESSON_TITLE.L002}</Link>
-          <Link routeName={LESSON_TITLE.L003} routeOptions={{reload: true}}>{LESSON_TITLE.L003}</Link>
-          <Link routeName={LESSON_TITLE.L004} routeOptions={{reload: true}}>{LESSON_TITLE.L004}</Link>
-        </FlexColumn>
-
-        <FlexColumn>
-          <H3>Verbs - Basic</H3>
-          <Link routeName={LESSON_TITLE.L005} routeOptions={{reload: true}}>{LESSON_TITLE.L005}</Link>
-          <Link routeName={LESSON_TITLE.L006} routeOptions={{reload: true}}>{LESSON_TITLE.L006}</Link>
-          <Link routeName={LESSON_TITLE.L007} routeOptions={{reload: true}}>{LESSON_TITLE.L007}</Link>
-          <Link routeName={LESSON_TITLE.L008} routeOptions={{reload: true}}>{LESSON_TITLE.L008}</Link>
-          <Link routeName={LESSON_TITLE.L009} routeOptions={{reload: true}}>{LESSON_TITLE.L009}</Link>
-        </FlexColumn>
+        <NavbarLinks>
+          <Link routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
+          <Link routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>
+          <Link routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
+        </NavbarLinks>
       </NavbarWrapper>
-    );
+    )
   };
 };
+
 
 export default Navbar;
