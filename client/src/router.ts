@@ -14,8 +14,10 @@ import {
 const routes = [
   { name: ROUTE_TITLE.CALLBACK, path: ROUTE_PATH.CALLBACK },
   { name: ROUTE_TITLE.LOGIN, path: ROUTE_PATH.LOGIN },
+  { name: ROUTE_TITLE.SIGN_UP, path: ROUTE_PATH.SIGN_UP },
   { name: ROUTE_TITLE.HOME, path: ROUTE_PATH.HOME },
   { name: ROUTE_TITLE.APP, path: ROUTE_PATH.APP },
+  { name: ROUTE_TITLE.BLOG, path: ROUTE_PATH.BLOG },
 
   { name: LESSON_TITLE.WELCOME, path: `${ROUTE_PATH.APP}${LESSON_PATH.WELCOME}` },
   { name: LESSON_TITLE.CONTENTS, path: `${ROUTE_PATH.APP}${LESSON_PATH.CONTENTS}` },

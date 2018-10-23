@@ -3,6 +3,8 @@ export const ROUTE_TITLE = {
   LOGIN: 'Watashi Engine Login',
   HOME: 'Watashi Engine Home',  
   APP: 'Watashi Engine Application',
+  BLOG: 'Watashi Engine Blog',
+  SIGN_UP: '/Watashi Engine Signup',
 };
 
 export const ROUTE_PATH = {
@@ -10,6 +12,8 @@ export const ROUTE_PATH = {
   LOGIN: '/login',
   HOME: '/',
   APP: '/japanese-grammar-exercises',
+  BLOG: '/blog',
+  SIGN_UP: '/sign-up',
 };
 
 // NULL
