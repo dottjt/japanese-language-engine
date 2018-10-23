@@ -152,6 +152,7 @@ $ npm install -g @feathersjs/cli          # Install Feathers CLI
 $ feathers generate service               # Generate a new Service
 $ feathers generate hook                  # Generate a new Hook
 $ feathers help                           # Show all commands
+<<<<<<< HEAD
 ```
 
 
@@ -159,3 +160,6 @@ $ feathers help                           # Show all commands
 The homepage features a modal with a list on the left side and the translation on the right side.
 Demonstrating how it can create random sentences on the fly. 
 
+=======
+```
+>>>>>>> a17f61ea8b4f6685e0acdb2ba9732ef25f79792f
