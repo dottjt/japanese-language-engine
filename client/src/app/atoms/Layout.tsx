@@ -6,7 +6,7 @@ export const Flex = styled(RebassFlex)`
   display: flex;
 `;
 
-export const FlexColumn = styled(Flex)`
+export const FlexColumn = styled(RebassFlex)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -15,35 +15,25 @@ export const FlexColumn = styled(Flex)`
 
 // WRAPPERS
 
-export const AppWrapper = styled.div`
-  display: flex; 
+export const AppWrapper = styled(Flex)`
+
 `;
 
-export const HeaderWrapper = styled.div`
-  display: flex;
+export const HeaderWrapper = styled(Flex)`
   justify-content: flex-end;
 `;
 
-export const NavbarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+export const NavbarWrapper = styled(FlexColumn)`
   min-width: 250px;
-
   border-right: 1px solid black;
 `;
 
-export const PageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
+export const PageWrapper = styled(FlexColumn)`
   width: 100%;
   margin-left: 20px;
 `;
 
-export const ModuleWrapper = styled.div`
-    display: flex;
-  flex-direction: column;
-
+export const ModuleWrapper = styled(FlexColumn)`
   margin-top: 20px;
 `;
 
@@ -51,10 +41,25 @@ export const ModuleWrapper = styled.div`
 
 // HOMEPAGE 
 
-export const HomepageWrapper = styled(RebassFlex)`
-  display: flex;
+export const HomepageWrapper = styled(FlexColumn)`
+
 `;
 
-export const HomepageSection = styled(RebassFlex)`
-  display: flex;
+export const MainWrapper = styled(FlexColumn)`
+  margin-top: 7rem;
+  margin-left: 5rem;
+  margin-bottom: 10rem;
+  width: 600px;
+`;
+
+export const HomepageSection = styled(FlexColumn)`
+
+`;
+
+export const List = styled.ul`
+
+`;
+
+export const Item = styled.li`
+  margin-bottom: 0.8rem;
 `;

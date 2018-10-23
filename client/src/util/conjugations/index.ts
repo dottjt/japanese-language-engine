@@ -94,10 +94,10 @@ const generateExercises = (words: Util.SentenceWords, optionsLambda: () => Util.
     }
   })
 
-const consoleLogExercises = (words: Util.SentenceWords, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => {
-  const getExercises = generateExercises(words, optionsLambda, numberOfExercises);
-  console.log('exercises', getExercises);
-  return getExercises;
-}
+// const consoleLogExercises = (words: Util.SentenceWords, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => {
+//   const getExercises = generateExercises(words, optionsLambda, numberOfExercises);
+//   console.log('exercises', getExercises);
+//   return getExercises;
+// }
 
-export default consoleLogExercises;
+export default generateExercises;

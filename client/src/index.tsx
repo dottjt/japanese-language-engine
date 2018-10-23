@@ -34,19 +34,21 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <RouteProvider router={router}>
         <Route>{({ route }) => {
-          const routeAny = route as any;
-
-          switch(routeAny.name) {
-            case ROUTE_TITLE.HOME: 
-              return <Homepage/>
-            case ROUTE_TITLE.CALLBACK:
-              return <Callback/>
-            case ROUTE_TITLE.LOGIN:
-              return <Login auth={auth}/>
-            case ROUTE_TITLE.LOGIN:
-              return <App route={route} auth={auth}/>
-            default: 
-              return <Page404/>
+          if (route !== null ) {
+            switch(route.name) {
+              case ROUTE_TITLE.HOME: 
+                return <Homepage/>
+              case ROUTE_TITLE.CALLBACK:
+                return <Callback/>
+              case ROUTE_TITLE.LOGIN:
+                return <Login auth={auth}/>
+              case ROUTE_TITLE.LOGIN:
+                return <App route={route} auth={auth}/>
+              default: 
+                return <Page404/>                
+            }
+          } else {
+            return <Page404/>
           }
         }}</Route>
       </RouteProvider>
