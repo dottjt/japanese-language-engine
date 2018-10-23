@@ -8,7 +8,7 @@ import { LESSON_TITLE, LESSON_WORDS, LESSON_OPTIONS } from '../../util/constants
 
 import generateExercises from '../../util/conjugations/generateExercises';
 import Navbar from '../components/Navbar';
-import SentenceModule from '../modules/SentenceModule'
+import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import { 
   HomepageWrapper, 
@@ -25,7 +25,7 @@ import {
 import { H1, H2, H3, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
 
-class Homepage extends React.Component<{}, { randomIndex: number }> {
+class Home extends React.Component<{}, { randomIndex: number }> {
   constructor({}) {
     super({});
     this.state = {
@@ -162,4 +162,4 @@ class Homepage extends React.Component<{}, { randomIndex: number }> {
 
 };
 
-export default Homepage;
+export default Home;

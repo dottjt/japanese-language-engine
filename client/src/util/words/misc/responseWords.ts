@@ -6,7 +6,7 @@ import {
   __TYPENAME_META,
   __TYPENAME_JAPANESE,
   __TYPENAME_ENGLISH,
-} from '../constants/wordConstants';
+} from '../../constants/wordConstants';
 
 export const wordYes = {
   japanese: { 

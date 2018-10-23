@@ -4,7 +4,7 @@ import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from "../util/constants/optionsConstants";
 
-import allWords from "../util/words";
+import allWords from "../util/words/collection";
 
 const client = new ApolloClient({
   clientState: {

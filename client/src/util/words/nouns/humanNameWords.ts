@@ -1,56 +1,27 @@
 import {
   PRIMARY_TYPE_NOUN,
-
-  CATEGORY_HUMAN,
-  CATEGORY_ANIMAL,
-  CATEGORY_LOCATION,
+  CATEGORY_HUMAN_NAME,
 
   __TYPENAME_WORDS,
   __TYPENAME_META,
   __TYPENAME_ENGLISH,
   __TYPENAME_JAPANESE,
-} from '../constants/wordConstants';
+} from '../../constants/wordConstants';
 
-// HUMAN
-
-export const wordPerson = {
+export const wordSasaki = {
   japanese: { 
-    kanji: '人',
-    // hiragana: 'ひと',
-    // furigana: 'hito',
+    kanji: '佐々木',
+    // hiragana: 'ささき',
+    // furigana: 'Sasaki',
     __typename: __TYPENAME_JAPANESE,
   },
   english: {
-    present: 'person',
+    present: 'Sasaki',
     past: 'NA',
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_NOUN,
-  category: [ CATEGORY_HUMAN ],
-  meta: {
-    verbType: 'NA',  
-    __typename: __TYPENAME_META,
-  },
-  __typename: __TYPENAME_WORDS,
-};
-
-
-// ANIMAL
-
-export const wordCat = {
-  japanese: { 
-    kanji: '猫',
-    // hiragana: 'ねこ',
-    // furigana: 'neko',
-    __typename: __TYPENAME_JAPANESE,
-  },
-  english: {
-    present: 'cat',
-    past: 'NA',
-    __typename: __TYPENAME_ENGLISH,
-  },
-  primaryType: PRIMARY_TYPE_NOUN,
-  category: [ CATEGORY_ANIMAL ],
+  category: [ CATEGORY_HUMAN_NAME ],
   meta: {
     verbType: 'NA',
     __typename: __TYPENAME_META,
@@ -58,20 +29,20 @@ export const wordCat = {
   __typename: __TYPENAME_WORDS,
 };
 
-export const wordDog = {
+export const wordNomura = {
   japanese: { 
-    kanji: '犬',
-    // hiragana: 'いぬ',
-    // furigana: 'inu',
+    kanji: '野村',
+    // hiragana: 'のむら',
+    // furigana: 'Nomura',
     __typename: __TYPENAME_JAPANESE,
   },
   english: {
-    present: 'dog',
+    present: 'Nomura',
     past: 'NA',
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_NOUN,
-  category: [ CATEGORY_ANIMAL ],
+  category: [ CATEGORY_HUMAN_NAME ],
   meta: {
     verbType: 'NA',
     __typename: __TYPENAME_META,
@@ -79,23 +50,41 @@ export const wordDog = {
   __typename: __TYPENAME_WORDS,
 };
 
-
-// LOCATION
-
-export const wordHome = {
+export const wordKato = {
   japanese: { 
-    kanji: '家',
-    // hiragana: 'いえ',
-    // furigana: 'ie',
+    kanji: '加藤',
+    // hiragana: 'かと',
+    // furigana: 'Kato',
     __typename: __TYPENAME_JAPANESE,
   },
   english: {
-    present: 'home',
+    present: 'Kato',
     past: 'NA',
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_NOUN,
-  category: [ CATEGORY_LOCATION ],
+  category: [ CATEGORY_HUMAN_NAME ],
+  meta: {
+    verbType: 'NA',
+    __typename: __TYPENAME_META,
+  },
+  __typename: __TYPENAME_WORDS,
+};
+
+export const wordKobayashi = {
+  japanese: { 
+    kanji: '小林',
+    // hiragana: 'こばやし',
+    // furigana: 'Kobayashi',
+    __typename: __TYPENAME_JAPANESE,
+  },
+  english: {
+    present: 'Kobayashi',
+    past: 'NA',
+    __typename: __TYPENAME_ENGLISH,
+  },
+  primaryType: PRIMARY_TYPE_NOUN,
+  category: [ CATEGORY_HUMAN_NAME ],
   meta: {
     verbType: 'NA',
     __typename: __TYPENAME_META,
@@ -104,13 +93,9 @@ export const wordHome = {
 };
 
 
-
-
-
-
-
-export const nounArray = [
-  wordPerson,
-  wordCat,
-  wordDog,
+export const humanNameArray = [
+  wordSasaki,
+  wordNomura,
+  wordKato,
+  wordKobayashi,
 ];

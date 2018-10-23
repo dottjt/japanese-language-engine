@@ -16,9 +16,9 @@ import Auth from './auth/Auth';
 import registerServiceWorker from './registerServiceWorker';
 
 import App from './app/App';
-import Homepage from './app/pages/HomePage';
-import Callback from './app/pages/CallbackPage';
-import Login from './app/pages/LoginPage';
+import Homepage from './app/pages/Home';
+import Callback from './app/pages/Callback';
+import Login from './app/pages/Login';
 import Page404 from './app/pages/Page404';
 
 router.start()

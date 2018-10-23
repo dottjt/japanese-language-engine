@@ -27,11 +27,11 @@ import {
   // L013,
 } from '../../util/constants/lessonConstants';
 
-import LessonTemplate from '../lessons/LessonPage';
+import LessonTemplate from '../lessons/LessonTemplate';
 
-import Prerequisites from '../lessons/PrerequisitesPage';
-import Contents from '../lessons/ContentsPage';
-import Welcome from '../lessons/WelcomePage';
+import Prerequisites from '../lessons/Prerequisites';
+import Contents from '../lessons/Contents';
+import Welcome from '../lessons/Welcome';
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
 

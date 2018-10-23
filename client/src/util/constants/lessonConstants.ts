@@ -9,7 +9,7 @@ import {
   getRandomWordViaCategory,
   filterSpecifcWord,
   getRandomWordViaPrimaryType,
-} from '../retrieve';
+} from '../filters';
 
 import {
   randomArrayElement,

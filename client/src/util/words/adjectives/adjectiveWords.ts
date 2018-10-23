@@ -6,7 +6,7 @@ import {
   __TYPENAME_META,
   __TYPENAME_ENGLISH,
   __TYPENAME_JAPANESE,
-} from '../constants/wordConstants';
+} from '../../constants/wordConstants';
 
 export const wordDelicious = {
   japanese: { 
