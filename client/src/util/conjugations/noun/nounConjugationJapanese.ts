@@ -6,11 +6,6 @@ import {
   createWord,
 } from '../../functions';
 
-// import { 
-//   LANG_JAPANESE, 
-//   // LANG_ENGLISH, 
-// } from '../../constants/generalConstants';
-
 import {
   nounParticlePermissions,
   nounConjugationPermissions,
@@ -128,7 +123,6 @@ const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Option
     nounTopicParticle,
     type,
   }
-  // return `${word.japanese}${nounCategoryEnding}${nounEnding}${nounTopicParticle}`.trim();
 };
 
 export default nounConjugationJapanese;

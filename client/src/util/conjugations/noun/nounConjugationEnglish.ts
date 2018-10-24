@@ -68,7 +68,6 @@ const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options,
   return createWord([''], NOUN_ENGLISH_POLARITY);
 };
 
-
 const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounConjugationPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
@@ -115,8 +114,7 @@ const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options
     nounIndefiniteArticle,
     noun,
     type,
-  }
-    // return `${nounTense} ${nounPolarity} ${nounIndefiniteArticle} ${word.english}`.trim();
+  };
 };
 
 export default nounConjugationEnglish;

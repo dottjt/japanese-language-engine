@@ -17,8 +17,7 @@ export const JapaneseWord = styled.div`
 
 export const EnglishWord = styled.div`
   display: flex;
-  margin-left: 0.05rem;
-  margin-right: 0.05rem;
+  margin-right: 0.2rem;
 `;
 
 // Sentence Stats
