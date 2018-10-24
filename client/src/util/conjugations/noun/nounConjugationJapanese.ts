@@ -3,6 +3,7 @@ import {
   // removeGapIfValueEmpty,
   returnSentenceParts,
   filtersentenceType,
+  createWord,
 } from '../../functions';
 
 // import { 
@@ -44,74 +45,72 @@ import {
   TENSE_PAST,
 
   CONJUGATION_TYPE_VERB_JAPANESE,
+
+  NOUN_JAPANESE_CONJUGATION,
+  NOUN_JAPANESE_TOPIC_PARTICLE,
+  NOUN_JAPANESE_CATEGORY_ENDING,
+
 } from '../../constants/optionsConstants';
 
-const determineNounCategoryEnding = (noun: Util.Word): string => {
+const determineNounCategoryEnding = (noun: Util.Word): Util.WordElement => {
   const endingsArray = noun.category.map(categoryString => {
     switch(categoryString) {
-      case `${CATEGORY_HUMAN_NAME}`: return 'さん';
-      default: return '';
+      case `${CATEGORY_HUMAN_NAME}`: return createWord(['さ','ん'], NOUN_JAPANESE_CATEGORY_ENDING);
+      default: return createWord([''], NOUN_JAPANESE_CATEGORY_ENDING);
     } 
-  }).filter(categoryString => categoryString !== '');
+  }).filter(categoryString => categoryString.wordArray[0] !== '');
 
-  return endingsArray.length > 0 ? endingsArray[0] : '';
+  return endingsArray.length > 0 ? endingsArray[0] : createWord([''], NOUN_JAPANESE_CATEGORY_ENDING);
 };
 
-const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounParticlePermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     switch (options.variation) {
-      case T: return 'は';
-      case WA_TS: return 'は';
-      case MO_TS: return 'も';
-      case GA_TS: return 'が';
-      case WO_SV: return 'を';
-      case NI_SV: return 'に';
-      case DE_SV: return 'で';
-      default: throw new Error(createError('conjugations/noun/nounConjugationJapanese', 'determineTopicParticleJapanese', 'options.variation unknown'));
+      case T:     return createWord(['は'], NOUN_JAPANESE_TOPIC_PARTICLE);
+      case WA_TS: return createWord(['は'], NOUN_JAPANESE_TOPIC_PARTICLE);
+      case MO_TS: return createWord(['も'], NOUN_JAPANESE_TOPIC_PARTICLE);
+      case GA_TS: return createWord(['が'], NOUN_JAPANESE_TOPIC_PARTICLE);
+      case WO_SV: return createWord(['を'], NOUN_JAPANESE_TOPIC_PARTICLE);
+      case NI_SV: return createWord(['に'], NOUN_JAPANESE_TOPIC_PARTICLE);
+      case DE_SV: return createWord(['で'], NOUN_JAPANESE_TOPIC_PARTICLE);
     }
+    throw new Error(createError('conjugations/noun/nounConjugationJapanese', 'determineTopicParticleJapanese', 'options.variation unknown'));
   }
-
-  return '';
+  return createWord([''], NOUN_JAPANESE_TOPIC_PARTICLE);
 };
 
-const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounConjugationPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     switch(`${options.politeness}${options.polarity}${options.tense}`) {
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
-        return '';
+        return createWord([''], NOUN_JAPANESE_CONJUGATION);
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
-        return 'だった';
+        return createWord(['だ','っ','た'], NOUN_JAPANESE_CONJUGATION);
 
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
-        return 'じゃない';
+        return createWord(['じ','ゃ','な','い'], NOUN_JAPANESE_CONJUGATION);
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
-        return 'じゃなかった';
+        return createWord(['じ','ゃ','な','か','っ','た'], NOUN_JAPANESE_CONJUGATION);
 
       case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
-        return 'です';
+        return createWord(['で','す'], NOUN_JAPANESE_CONJUGATION);
       case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
-        return 'でした';
+        return createWord(['で','し','た'], NOUN_JAPANESE_CONJUGATION);
 
       case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
-        return 'じゃありません';
+        return createWord(['じ','ゃ','あ','り','ま','せ','ん'], NOUN_JAPANESE_CONJUGATION);
       case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
-        return 'じゃありませんでした';
-
-      default: 
-        return createError(
-          'conjugations/noun',
-          'determineNounConjugationJapanese',
-          `${options.politeness}${options.polarity}${options.tense} unknown`,
-        );
+        return createWord(['じ','ゃ','あ','り','ま','せ','ん','で','し','た'], NOUN_JAPANESE_CONJUGATION);
     }
+    throw new Error(createError('conjugations/noun', 'determineNounConjugationJapanese', `${options.politeness}${options.polarity}${options.tense} unknown`));
   }
-  return '';
+  return createWord([''], NOUN_JAPANESE_CONJUGATION);
 };
 
 const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseNoun => {

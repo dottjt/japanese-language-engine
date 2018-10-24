@@ -6,7 +6,7 @@ import {
 } from '../../functions';
 
 import {
-  VERB_CONJUGATION,
+  VERB_ENGLISH_CONJUGATION,
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
@@ -24,12 +24,12 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
 
   if (permissions) {
     switch(`${options.polarity}`) {
-      case `${POLARITY_POSITIVE}`: return createWord([''], VERB_CONJUGATION);
-      case `${POLARITY_NEGATIVE}`: return createWord(['do', 'not'], VERB_CONJUGATION);
+      case `${POLARITY_POSITIVE}`: return createWord([''], VERB_ENGLISH_CONJUGATION);
+      case `${POLARITY_NEGATIVE}`: return createWord(['do', 'not'], VERB_ENGLISH_CONJUGATION);
     }
     throw new Error(createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity} unknown`));
   }
-  return createWord([''], VERB_CONJUGATION);
+  return createWord([''], VERB_ENGLISH_CONJUGATION);
 }; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishVerb => {

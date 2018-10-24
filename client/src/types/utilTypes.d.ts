@@ -32,25 +32,25 @@ declare namespace Util {
   };
 
   export type ConjugatedJapaneseNoun = {
-    noun: Word;
-    nounCategoryEnding: string;
-    nounEnding: string;
-    nounTopicParticle: string;
     type: string;
+    noun: Word;
+    nounCategoryEnding: WordElement;
+    nounEnding: WordElement;
+    nounTopicParticle: WordElement;
   };
 
   export type ConjugatedEnglishNoun = {
+    type: string;
     nounTense: WordElement;
     nounPolarity:  WordElement;
     nounIndefiniteArticle: WordElement;
     noun: Word;
-    type: string;
   };
 
   export type ConjugatedJapaneseVerb = {
-    conjugatedVerb: string;
-    verb: Word;
     type: string;
+    conjugatedVerb: WordElement;
+    verb: Word;
   };
 
   export type ConjugatedEnglishVerb = {
