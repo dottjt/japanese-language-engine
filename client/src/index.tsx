@@ -16,7 +16,8 @@ import Auth from './auth/Auth';
 import registerServiceWorker from './registerServiceWorker';
 
 import App from './app/App';
-import Homepage from './app/pages/Home';
+import Blog from './app/pages/Blog';
+import Home from './app/pages/Home';
 import Callback from './app/pages/Callback';
 import Login from './app/pages/Login';
 import Page404 from './app/pages/Page404';
@@ -38,7 +39,9 @@ ReactDOM.render(
             console.log(route)
             switch(route.name) {
               case ROUTE_TITLE.HOME: 
-                return <Homepage/>
+                return <Home/>
+              case ROUTE_TITLE.BLOG: 
+                return <Blog/>
               case ROUTE_TITLE.CALLBACK:
                 return <Callback/>
               case ROUTE_TITLE.LOGIN:

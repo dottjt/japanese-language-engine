@@ -3,6 +3,7 @@ import {
   // removeGapIfValueEmpty,
   filtersentenceType,
   returnSentenceParts,
+  createWord,
 } from '../../functions';
 
 import {
@@ -12,6 +13,10 @@ import {
 } from './nounPermissions';
 
 import {
+  NOUN_CONJUGATION,
+  NOUN_POLARITY,
+  NOUN_INDEFINITE_ARTICLE,
+
   T,
   WA_TS,
   MO_TS,
@@ -34,7 +39,7 @@ import {
   CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
 
-const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Word, sentenceType: string): string => {
+const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Word, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounIndefiniteArticlePermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
@@ -43,57 +48,57 @@ const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Wo
     const firstLetter = noun.english[0];
 
     if (vowels.includes(firstLetter)) {
-      return 'an';
+      return createWord(['an'], NOUN_INDEFINITE_ARTICLE);
     } else {
-      return 'a';
+      return createWord(['a'], NOUN_INDEFINITE_ARTICLE);
     };    
   };
-  return '';
+  return createWord([''], NOUN_INDEFINITE_ARTICLE);
 };
 
-const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounPolarityPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     if (options.polarity === POLARITY_NEGATIVE) {
-      return 'not';
+      return createWord(['not'], NOUN_POLARITY);
     }  
   }
-  return '';
+  return createWord([''], NOUN_POLARITY);
 };
 
 
-const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounConjugationPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     if (options.variation === WA_TS || options.variation === T) {
       switch(`${options.tense}`) {
-        case `${TENSE_PRESENT}`: return 'is';
-        case `${TENSE_PAST}`: return 'was';
-        default: return createError('conjugations/noun', 'determineNounConjugationEnglish - WA_TS', `${options.polarity}${options.tense} unknown`);
+        case `${TENSE_PRESENT}`: return createWord(['is'], NOUN_CONJUGATION);
+        case `${TENSE_PAST}`: return createWord(['was'], NOUN_CONJUGATION);
       };
+      throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - WA_TS', `${options.polarity}${options.tense} unknown`));
     }
   
     if (options.variation === MO_TS) {
       switch(`${options.tense}`) {
-        case `${TENSE_PRESENT}`: return 'is also';
-        case `${TENSE_PAST}`: return 'was also';
-        default: return createError('conjugations/noun', 'determineNounConjugationEnglish - MO_TS', `${options.tense} unknown`);
+        case `${TENSE_PRESENT}`: return createWord(['is', 'also'], NOUN_CONJUGATION);
+        case `${TENSE_PAST}`: return createWord(['was', 'also'], NOUN_CONJUGATION);
       };
+      throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - MO_TS', `${options.tense} unknown`));
     }
     
     if (options.variation === GA_TS) {
       switch(`${options.tense}`) {
-        case `${TENSE_PRESENT}`: return 'is the one that is';
-        case `${TENSE_PAST}`: return 'is the one that was';
-        default:  return createError('conjugations/noun', 'determineNounConjugationEnglish - GA_TS', `${options.tense} unknown`);
+        case `${TENSE_PRESENT}`: return createWord(['is', 'the', 'one', 'that', 'is'], NOUN_CONJUGATION);
+        case `${TENSE_PAST}`: return createWord(['is', 'the', 'one', 'that', 'was'], NOUN_CONJUGATION);
       };
+      throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - GA_TS', `${options.tense} unknown`));
     }  
   }
-  return '';
+  return createWord([''], NOUN_CONJUGATION);
 };
 
 const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishNoun => {

@@ -138,3 +138,6 @@ export const generateSentenceTypes = (topic?: Util.Word, subject?: Util.Word, ve
     onlySubjectAndVerb,
   };
 };
+
+
+export const createWord = (wordArray: string[], wordType: string): Util.WordObject => ({ wordArray, wordType });

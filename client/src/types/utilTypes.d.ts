@@ -9,6 +9,11 @@ declare namespace Util {
     url: string;
   };
 
+  export type WordElement = {
+    wordArray: string[];
+    wordType: string;
+  };
+
   export type Word = {
     japanese: {
       kanji: string;
@@ -35,9 +40,9 @@ declare namespace Util {
   };
 
   export type ConjugatedEnglishNoun = {
-    nounTense: string;
-    nounPolarity: string;
-    nounIndefiniteArticle: string;
+    nounTense: WordElement;
+    nounPolarity:  WordElement;
+    nounIndefiniteArticle: WordElement;
     noun: Word;
     type: string;
   };
@@ -49,7 +54,7 @@ declare namespace Util {
   };
 
   export type ConjugatedEnglishVerb = {
-    verbPolarity: string;
+    verbPolarity: WordElement;
     verb: Word;
     type: string;
   };

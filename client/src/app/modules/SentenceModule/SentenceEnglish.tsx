@@ -15,54 +15,63 @@ import {
   CONJUGATION_TYPE_VERB_ENGLISH,
 } from '../../../util/constants/optionsConstants';
 
-const englishSentenceOptions = (englishSentence: Util.ConjugatedEnglishArray, options: Util.Options, index: number) => {
-  const sentenceEndingMarker = options.question === HAS_QUESTION ? '?' : '.';
-  if (beginningOfPhrase(englishSentence.length, index)) {
-    return {
-      sentenceEnding: sentenceEndingMarker,
-    }
-  }
-  return {
-    sentenceEnding: ' ',
-  }
+const nounPresentOptions = (word: string, englishSentence: Util.ConjugatedEnglishArray, options: Util.Options, index: number): string => {
+  return beginningOfPhrase(englishSentence.length, index) ? ( 
+      options.question === HAS_QUESTION ? `${word}?` : `${word}.`
+    ) : ( 
+      `${word} `
+    );
 };
 
-// const englishPhraseOptions = (sentence: Util.ConjugatedEnglishArray, word: string): string => {
+const nounIndefiniteArticleOptions = (word: string, englishSentence: Util.ConjugatedEnglishArray, options: Util.Options, index: number): string => {
+  return beginningOfPhrase(englishSentence.length, index) ? capitalise(word) + ' ' : word + ' ';
+};
 
-// };
+const nounPolarityOptions = (word: string, englishSentence: Util.ConjugatedEnglishArray, options: Util.Options, index: number): string => {
+  return word + ' ';
+};
+
+const nounTenseOptions = (word: string, englishSentence: Util.ConjugatedEnglishArray, options: Util.Options, index: number): string => {
+  return word + ' ';  
+};
+
+const verbPolarityOptions = (word: string, englishSentence: Util.ConjugatedEnglishArray, options: Util.Options, index: number): string => {
+  return beginningOfPhrase(englishSentence.length, index) ? capitalise(word) + ' ' : word + ' ';
+};
+
 
 class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
   public render() {
+    const { sentence, options } = this.props;
     return (
       <Sentence>
-        {this.props.sentence.map((element, index) => {
-          const nounEnglishElement = element as Util.ConjugatedEnglishNoun;
-          const verbEnglishElement = element as Util.ConjugatedEnglishVerb;
-          
-          const { sentenceEnding } = englishSentenceOptions(this.props.sentence, this.props.options, index);
-
-          switch(element.type) {
-            case CONJUGATION_TYPE_NOUN_ENGLISH:
-              return (
-                <Phrase key={index}>
-                  <EnglishWord>{nounEnglishElement.nounTense}</EnglishWord> 
-                  <EnglishWord>{nounEnglishElement.nounPolarity}</EnglishWord>
-                  <EnglishWord>{nounEnglishElement.nounIndefiniteArticle}</EnglishWord>
-                  <EnglishWord>{nounEnglishElement.noun.english.present}</EnglishWord>
-                  <EnglishWord>{sentenceEnding}</EnglishWord>
-                </Phrase>
-              );
-            case CONJUGATION_TYPE_VERB_ENGLISH: 
-              return (
-                <Phrase key={index}>
-                  <EnglishWord>{capitalise(verbEnglishElement.verbPolarity)}</EnglishWord>
-                  <EnglishWord>{verbEnglishElement.verb.english.present}</EnglishWord>
-                </Phrase>
-              );
+        <Phrase key={index}>
+          {sentence.map((element, index) => {
+            const nounEnglishElement = element as Util.ConjugatedEnglishNoun;
+            const verbEnglishElement = element as Util.ConjugatedEnglishVerb;
+            
+            // const { sentenceEnding } = nounPresentOptions(this.props.sentence, this.props.options, index);
+            
+            switch(element.type) {
+              case CONJUGATION_TYPE_NOUN_ENGLISH:
+                return (
+                  <EnglishWord>{nounTenseOptions(nounEnglishElement.nounTense, sentence, options, index)}</EnglishWord> 
+                  // <EnglishWord>{nounPolarityOptions(nounEnglishElement.nounPolarity, sentence, options, index)}</EnglishWord>
+                  // <EnglishWord>{nounIndefiniteArticleOptions(nounEnglishElement.nounIndefiniteArticle, sentence, options, index)}</EnglishWord>
+                  // <EnglishWord>{nounPresentOptions(nounEnglishElement.noun.english.present, sentence, options, index)}</EnglishWord>
+                );
+              case CONJUGATION_TYPE_VERB_ENGLISH: 
+                return (
+                  <Phrase key={index}>
+                    <EnglishWord>{verbPolarityOptions(verbEnglishElement.verbPolarity, sentence, options, index)}</EnglishWord>
+                    {/* <EnglishWord>{nounPresentOptions(verbEnglishElement.verb.english.present, sentence, options, index)}</EnglishWord> */}
+                  </Phrase>
+                );
+            }
+            throw new Error(createError('SentenceModule.tsx', 'EnglishSentence', `${element.type} does not exist.`));
+          })
           }
-          throw new Error(createError('SentenceModule.tsx', 'EnglishSentence', `${element.type} does not exist.`));
-        })
-        }
+        </Phrase>
       </Sentence>
     );
   };

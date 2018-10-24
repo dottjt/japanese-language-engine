@@ -5,6 +5,7 @@ import { GET_ALL_WORDS_AND_OPTIONS } from '../../graphql/queries';
 
 import { randomArrayElement } from '../../util/functions';
 import { LESSON_TITLE, LESSON_WORDS, LESSON_OPTIONS } from '../../util/constants/lessonConstants';
+import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 
 import generateExercises from '../../util/conjugations/generateExercises';
 import Navbar from '../components/Navbar';
@@ -21,7 +22,8 @@ import {
   PricingList,
   PricingListItem,
   Price,
-} from '../atoms/HomepageStyles';
+  PricingButtonStyles,
+} from '../atoms/HomeStyles';
 import { H1, H2, H3, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
 
@@ -45,7 +47,7 @@ class Home extends React.Component<{}, { randomIndex: number }> {
             <HomepageWrapper>
               <Navbar/>
               <MainWrapper>
-                <H1>Watashi Language Engine.</H1>
+                <H1>Watashi Engine.</H1>
                 
                 <HomepageSection>
                   <H2>What is it?</H2>
@@ -83,33 +85,40 @@ class Home extends React.Component<{}, { randomIndex: number }> {
 
                 <HomepageSection>
                   <H2>Pricing</H2>
-                  <PricingWrapper>
-                    <PricingCard>
-                      <H3>Free</H3>
-                      <Price>$0</Price>
-                      <PricingList>
-                        <PricingListItem>Limited access to basic grammar exercises.</PricingListItem>
-                        <PricingListItem>Try Watashi Language Engine before you buy.</PricingListItem>
-                      </PricingList>
-                    </PricingCard>
-                    <PricingCard>
-                      <H3>Monthly</H3>
-                      <Price>$7.95</Price>
-                      <PricingList>
-                        <PricingListItem>Full access to the Watashi Language Engine.</PricingListItem>
-                        <PricingListItem>Full access to all 100+ grammar exercises.</PricingListItem>
-                      </PricingList>
-                    </PricingCard>
-                    <PricingCard>
-                      <H3>Yearly</H3>
-                      <Price>$59.95</Price>
-                      <PricingList>
-                        <PricingListItem>Full access to the Watashi Language Engine at a discounted price.</PricingListItem>
-                      </PricingList>
-                    </PricingCard>
-                  </PricingWrapper>
                 </HomepageSection>
 
+                <PricingWrapper>
+
+                  <PricingCard>
+                    <H3>Free</H3>
+                    <Price>$0</Price>
+                    <PricingList>
+                      <PricingListItem>Limited access to basic grammar exercises.</PricingListItem>
+                      <PricingListItem>Try Watashi Engine before you buy.</PricingListItem>
+                    </PricingList>
+                    <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
+                  </PricingCard>
+
+                  <PricingCard>
+                    <H3>Monthly</H3>
+                    <Price>$7.95</Price>
+                    <PricingList>
+                      <PricingListItem>Full access to the Watashi Engine.</PricingListItem>
+                      <PricingListItem>Full access to all 100+ grammar exercises.</PricingListItem>
+                    </PricingList>
+                    <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
+                  </PricingCard>
+
+                  <PricingCard>
+                    <H3>Yearly</H3>
+                    <Price>$59.95</Price>
+                    <PricingList>
+                      <PricingListItem>Full access to the Watashi Engine at a discounted price.</PricingListItem>
+                    </PricingList>
+                    <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</Link>
+                  </PricingCard>
+
+                </PricingWrapper>
 
                 <HomepageSection>
                   <H2>Strong use cases</H2>

@@ -1,3 +1,14 @@
+// verb types
+
+export const VERB_CONJUGATION = 'VERB_CONJUGATION';
+
+// noun types
+
+export const NOUN_CONJUGATION = 'NOUN_CONJUGATION';
+export const NOUN_POLARITY = 'NOUN_POLARITY';
+export const NOUN_INDEFINITE_ARTICLE = 'NOUN_INDEFINITE_ARTICLE';
+
+
 // conjugation types
 
 export const CONJUGATION_TYPE_NOUN_ENGLISH = 'CONJUGATION_TYPE_ENGLISH';

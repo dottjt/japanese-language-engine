@@ -2,9 +2,12 @@ import {
   createError,
   filtersentenceType,
   returnSentenceParts,
+  createWord,
 } from '../../functions';
 
 import {
+  VERB_CONJUGATION,
+
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
@@ -15,18 +18,18 @@ import {
   verbConjugationPermissionsEnglish,
 } from './verbPermissions';
 
-const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): string => {
+const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = verbConjugationPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     switch(`${options.polarity}`) {
-      case `${POLARITY_POSITIVE}`: return '';
-      case `${POLARITY_NEGATIVE}`: return 'do not';
+      case `${POLARITY_POSITIVE}`: return createWord([''], VERB_CONJUGATION);
+      case `${POLARITY_NEGATIVE}`: return createWord(['do', 'not'], VERB_CONJUGATION);
     }
     throw new Error(createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity} unknown`));
   }
-  return '';
+  return createWord([''], VERB_CONJUGATION);
 }; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishVerb => {

@@ -17,6 +17,8 @@ export const JapaneseWord = styled.div`
 
 export const EnglishWord = styled.div`
   display: flex;
+  margin-left: 0.05rem;
+  margin-right: 0.05rem;
 `;
 
 // Sentence Stats
@@ -34,6 +36,6 @@ export const Stat = styled.p`
   margin-left: 1rem;
 
   /* background: orange; */
-  color: purple;
+  color: lightgreen;
 `;
 
