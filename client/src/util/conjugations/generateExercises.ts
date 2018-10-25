@@ -136,35 +136,28 @@ const genTSV = ({ topic, subject, verb }: { topic?: Util.Topic, subject?: Util.S
 
 const generateWords = (nouns: Util.Word[], variation: string): () => Util.SentenceWords => {
   switch(variation) {
-    case T:     return () => genTSV({ topic: filterSpecifcWord(nouns, 'person') });                                                                   // T
-    case WA_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person') });                      // WA_TS
-    case MO_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person') });                      // MO_TS
-    case GA_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person') });                      // GA_TS
-    case V:     return () => genTSV({ verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });                                                                   // V
-    case WO_SV: return () => genTSV({ subject: filterSpecifcWord(nouns, 'person'), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });                      // WO_SV
-    case NI_SV: return () => genTSV({ subject: getRandomWordViaCategory(nouns, CATEGORY_LOCATION), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });      // NI_SV
-    case DE_SV: return () => genTSV({ subject: getRandomWordViaCategory(nouns, CATEGORY_LOCATION), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB)});       // DE_SV
+    case T:     return () => genTSV({ topic: filterSpecifcWord(nouns, 'person'), subject: undefined, verb: undefined });                                                                 // T
+    case WA_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person'), verb: undefined });                      // WA_TS
+    case MO_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person'), verb: undefined });                      // MO_TS
+    case GA_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person'), verb: undefined });                      // GA_TS
+    case V:     return () => genTSV({ topic: undefined, subject: undefined, verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });                                              // V
+    case WO_SV: return () => genTSV({ topic: undefined, subject: filterSpecifcWord(nouns, 'person'), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });                     // WO_SV
+    case NI_SV: return () => genTSV({ topic: undefined, subject: getRandomWordViaCategory(nouns, CATEGORY_LOCATION), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });     // NI_SV
+    case DE_SV: return () => genTSV({ topic: undefined, subject: getRandomWordViaCategory(nouns, CATEGORY_LOCATION), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB)});      // DE_SV
   }
   throw new Error(createError('conjugations/generateExercises.tsx', 'generateWords', `${variation} does not exist`));
 };
 
 
-const generateExercises = (exerciseTypeArray: string | string[], words: Util.Word[], optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
+const generateExercises = (words: Util.Word[], optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
 
     const options = optionsLambda();
     const variationWords = generateWords(words, options.variation);
-
     return {
       options,
       ...generateSentences(variationWords(), options)  
     }
   })
-
-// const consoleLogExercises = (words: Util.SentenceWords, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => {
-//   const getExercises = generateExercises(words, optionsLambda, numberOfExercises);
-//   console.log('exercises', getExercises);
-//   return getExercises;
-// }
 
 export default generateExercises;
