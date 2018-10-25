@@ -1,10 +1,13 @@
 import {
   createError,
+} from '../../functions';
+
+import {
   filtersentenceType,
   createWord,
   getInitialVerbStem,
   getLastLetterVerb,
-} from '../../functions';
+} from '../../utilConjugation';
 
 import {
   SENTENCE_TYPE_VERB_TYPE_RU,

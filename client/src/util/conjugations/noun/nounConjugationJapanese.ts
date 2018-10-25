@@ -1,10 +1,12 @@
 import {
   createError,
-  // removeGapIfValueEmpty,
+} from '../../functions';
+
+import {
   returnSentenceParts,
   filtersentenceType,
   createWord,
-} from '../../functions';
+} from '../../utilConjugation';
 
 import {
   nounParticlePermissions,

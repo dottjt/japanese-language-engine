@@ -9,6 +9,11 @@ declare namespace Util {
     url: string;
   };
 
+  export type WordArrayElement = {
+    word: string;
+    tag: string;
+  };
+
   export type WordElement = {
     wordArray: string[];
     wordType: string;

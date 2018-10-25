@@ -12,10 +12,6 @@ import {
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
-  // SENTENCE_TYPE_VERB,
-  SENTENCE_TYPE_TOPIC,
-  SENTENCE_TYPE_SUBJECT,
-
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from './constants/optionsConstants';
 
@@ -23,10 +19,7 @@ export const capitalise = (word: string): string => word ? word[0].toUpperCase()
 export const randomArrayElement = (arrayLength: number): number => Math.floor(Math.random() * arrayLength);
 export const startOfSentence = (sentenceLength: number, index: number) => index === 0;
 export const endOfSentence = (sentenceLength: number, index: number) => sentenceLength - 1 === index;
-
-export const createWord = (wordArray: string[], wordType: string): Util.WordElement => ({ wordArray, wordType });
-export const getInitialVerbStem = (word: string): string[] => word.slice(0, -1).split('');
-export const getLastLetterVerb = (word: string): string => word.slice(-1);
+export const tagArray = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag }))
 
 interface IValues {
   value: string,
@@ -44,7 +37,6 @@ export const convertValuesIntoButtonArray = (values: string[]): IValues[] =>
 export const createError = (fileLocation: string, functionName: string, errorMessage: string): string => {
   return `Error. file: ${fileLocation}, function: ${functionName}, ${errorMessage}`;
 };
-
 
 export const convertPolitenessIntoValue = (politeness: string): string => {
   switch(politeness) {
@@ -67,80 +59,3 @@ export const convertPolarityIntoValue = (polarity: string): string => {
       return createError('util/functions', 'convertPolarityIntoValue', `${polarity} value does not exist.`);
   }
 };
-
-export const removeGapIfValueEmpty = (value: string): string => value !== '' ? ` ${value}` : '';
-
-export const returnSentenceParts = (words: Util.SentenceWords): Util.SentenceWordsOrganised => {
-  let topic;
-  let subject;
-  let verb;
-
-  if (words.predicate) {
-    if (words.predicate.subject) {
-      subject = words.predicate.subject;
-    } 
-    if (words.predicate.verb) {
-      verb = words.predicate.verb;
-    }
-  };
-  if (words.topic) {
-    topic = words.topic;
-  };
-    
-  return {
-    topic,
-    subject,
-    verb,
-  };
-};
-
-export const filtersentenceType = (words: Util.SentenceWords, sentenceType: string): Util.Word => {
-  const { topic, subject, verb } = returnSentenceParts(words);
-
-  switch(sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return topic as Util.Word;
-    case SENTENCE_TYPE_SUBJECT: return subject as Util.Word;
-    default: return verb as Util.Word;
-  }
-};
-
-export const createCommonPermissions = (topic: Util.Word, subject: Util.Word, verb: Util.Word, sentenceType: string) => {
-  const onlyTopic = (topic && !subject && !verb);
-  const onlySubject = (!topic && subject && !verb);
-  const onlyVerb = (!topic && !subject && verb);
-
-  const onlySubjectAndVerb = (!topic && subject && verb);
-
-  const onlyTopicAndSubjectTOPIC = (topic && subject && !verb && sentenceType === SENTENCE_TYPE_TOPIC);
-  const onlyTopicAndSubjectSUBJECT = (topic && subject && !verb && sentenceType === SENTENCE_TYPE_SUBJECT);
-
-  return {
-    onlyTopic,
-    onlySubject,
-    onlyVerb,
-
-    onlySubjectAndVerb,
-
-    onlyTopicAndSubjectTOPIC,
-    onlyTopicAndSubjectSUBJECT,
-  };
-};
-
-
-export const generateSentenceTypes = (topic?: Util.Word, subject?: Util.Word, verb?: Util.Word) => {
-  const onlyTopic = (topic && !subject && !verb);
-  const onlySubject = (!topic && subject && !verb);
-  const onlyVerb = (!topic && !subject && verb);
-
-  const onlyTopicAndSubject =  (topic && subject && !verb);
-  const onlySubjectAndVerb = (!topic && subject && verb);
-
-  return {
-    onlyTopic,
-    onlySubject,
-    onlyVerb,
-    onlyTopicAndSubject,
-    onlySubjectAndVerb,
-  };
-};
-

@@ -13,6 +13,9 @@ import {
   POLITENESS_CASUAL,
   CONJUGATION_TYPE_NOUN_JAPANESE,
   CONJUGATION_TYPE_VERB_JAPANESE,
+
+  VERB_JAPANESE,
+  NOUN_JAPANESE,
 } from '../../../util/constants/optionsConstants';
 
 

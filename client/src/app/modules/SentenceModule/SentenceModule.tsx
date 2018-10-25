@@ -3,8 +3,8 @@ import * as React from 'react'
 import { FlexColumn } from '../../atoms/LayoutStyles';
 
 import SentenceStats from './SentenceStats';
-import EnglishSentence from './SentenceEnglish';
-import JapaneseSentence from './SentenceJapanese';
+import SentenceEnglish from './SentenceEnglish';
+import SentenceJapanese from './SentenceJapanese';
 
 class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {    
@@ -14,11 +14,11 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
           sentenceDisplayOptions={this.props.sentenceDisplayOptions}
           options={this.props.options}
         />
-        <EnglishSentence 
+        <SentenceEnglish 
           sentence={this.props.englishSentence}
           options={this.props.options}
         />
-        <JapaneseSentence 
+        <SentenceJapanese 
           sentence={this.props.japaneseSentence}
           options={this.props.options}
         />

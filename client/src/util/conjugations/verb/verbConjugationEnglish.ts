@@ -1,9 +1,13 @@
 import {
   createError,
+} from '../../functions';
+
+import {
   filtersentenceType,
   returnSentenceParts,
   createWord,
-} from '../../functions';
+} from '../../utilConjugation';
+
 
 import {
   VERB_ENGLISH_CONJUGATION,

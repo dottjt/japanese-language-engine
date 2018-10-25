@@ -8,6 +8,7 @@ import {
   startOfSentence,
   endOfSentence,
   capitalise,
+  tagArray,
 } from '../../../util/functions';
 
 import {
@@ -15,6 +16,9 @@ import {
 
   CONJUGATION_TYPE_NOUN_ENGLISH,
   CONJUGATION_TYPE_VERB_ENGLISH,
+
+  VERB_ENGLISH,
+  NOUN_ENGLISH,
 } from '../../../util/constants/optionsConstants';
 
 const wordOptionsEnglish = (word: string, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
@@ -50,7 +54,13 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
             switch(phraseArray.type) {
               case CONJUGATION_TYPE_NOUN_ENGLISH:
                 const nounPhrase = phraseArray as Util.ConjugatedEnglishNoun;
-                const nounPhraseArray = nounPhrase.nounTense.wordArray.concat(nounPhrase.nounPolarity.wordArray).concat(nounPhrase.nounIndefiniteArticle.wordArray).concat(nounPhrase.noun.english.present);
+
+                const nounTense = tagArray(nounPhrase.nounTense.wordArray, nounPhrase.nounTense.wordType);
+                const nounPolarity = tagArray(nounPhrase.nounPolarity.wordArray, nounPhrase.nounPolarity.wordType);
+                const nounIndefiniteArticle = tagArray(nounPhrase.nounIndefiniteArticle.wordArray, nounPhrase.nounIndefiniteArticle.wordType);
+                const noun = tagArray([nounPhrase.noun.english.present], NOUN_ENGLISH);
+
+                const nounPhraseArray = nounTense.concat(nounPolarity).concat(nounIndefiniteArticle).concat(noun);
                 const nounPhraseArrayComplete = phraseOptionsEnglish(nounPhraseArray, options, phraseIndex);
                 // nounTense, nounPolarity, nounIndefiniteArticle, noun
 

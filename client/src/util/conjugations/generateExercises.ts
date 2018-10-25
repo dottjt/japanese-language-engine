@@ -1,17 +1,18 @@
 import { 
   createError,
   // capitalise,
+} from '../functions';
+
+import {
   returnSentenceParts,
   generateSentenceTypes,
-} from '../functions';
+} from '../utilConjugation';
 
 import { 
   filterSpecifcWord,
   getRandomWordViaCategory,
   getRandomWordViaPrimaryType,
 } from '../filters';
-
-
 
 import { 
   LANG_JAPANESE,

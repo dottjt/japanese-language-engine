@@ -1,10 +1,12 @@
 import {
   createError,
-  // removeGapIfValueEmpty,
+} from '../../functions';
+
+import {
   filtersentenceType,
   returnSentenceParts,
-  createWord,
-} from '../../functions';
+  createWord,  
+} from '../../utilConjugation';
 
 import {
   nounPolarityPermissions, 
