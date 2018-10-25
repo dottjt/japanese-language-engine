@@ -16,10 +16,10 @@ import {
 } from '../../../util/constants/optionsConstants';
 
 
-const wordOptionsJapanese = (character: string, japaneseSentence: string[], options: Util.Options, index: number): string => {
+const wordOptionsJapanese = (character: string, japaneseSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
   const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
 
-  if (endOfSentence(japaneseSentence.length, index)) {
+  if (endOfSentence(japaneseSentenceLength, index) && endOfSentence(phraseLength, phraseIndex)) {
     return options.question === HAS_QUESTION ? `${character}${japaneseQuestionEnding}` : `${character}。`
   };
   return character;
@@ -51,7 +51,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
                 return (
                   <Phrase key={phraseIndex}>
                     {nounPhraseArrayComplete.map((word: string, nounIndex: number) => (
-                      <JapaneseWord key={nounIndex}>{wordOptionsJapanese(word, nounPhraseArrayComplete, options, nounIndex)}</JapaneseWord>
+                      <JapaneseWord key={nounIndex}>{wordOptionsJapanese(word, nounPhraseArrayComplete.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</JapaneseWord>
                     ))}
                   </Phrase>
                 );
@@ -64,7 +64,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
                 return (
                   <Phrase key={phraseIndex}>
                     {verbPhraseArrayComplete.map((word: string, verbIndex: number) => (
-                      <JapaneseWord key={verbIndex}>{wordOptionsJapanese(word, verbPhraseArrayComplete, options, verbIndex)}</JapaneseWord>
+                      <JapaneseWord key={verbIndex}>{wordOptionsJapanese(word, verbPhraseArrayComplete.length, options, verbIndex, phraseArrayComplete.length, phraseIndex)}</JapaneseWord>
                     ))};
                   </Phrase>
                 );
