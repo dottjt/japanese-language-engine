@@ -18,14 +18,15 @@ import {
 } from '../../../util/constants/optionsConstants';
 
 const wordOptionsEnglish = (word: string, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
+
   if(startOfSentence(englishSentenceLength, index) && startOfSentence(phraseLength, phraseIndex)) {
     return capitalise(word);
   };
-  console.log(phraseLength, phraseIndex);
 
   if (endOfSentence(englishSentenceLength, index) && endOfSentence(phraseLength, phraseIndex)) {
     return options.question === HAS_QUESTION ? `${word}?` : `${word}.`
   };
+
   return word;
 };
 
@@ -51,6 +52,7 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
                 const nounPhrase = phraseArray as Util.ConjugatedEnglishNoun;
                 const nounPhraseArray = nounPhrase.nounTense.wordArray.concat(nounPhrase.nounPolarity.wordArray).concat(nounPhrase.nounIndefiniteArticle.wordArray).concat(nounPhrase.noun.english.present);
                 const nounPhraseArrayComplete = phraseOptionsEnglish(nounPhraseArray, options, phraseIndex);
+                // nounTense, nounPolarity, nounIndefiniteArticle, noun
 
                 return (
                   <Phrase key={phraseIndex}>
@@ -64,12 +66,13 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
                 const verbPhrase = phraseArray as Util.ConjugatedEnglishVerb;
                 const verbPhraseArray = verbPhrase.verbPolarity.wordArray.concat(verbPhrase.verb.english.present);
                 const verbPhraseArrayComplete = phraseOptionsEnglish(verbPhraseArray, options, phraseIndex);
-
+                // verbPolarity
+                
                 return (
                   <Phrase key={phraseIndex}>
                     {verbPhraseArrayComplete.map((word: string, verbIndex: number) => (
                       <EnglishWord key={verbIndex}>{wordOptionsEnglish(word, verbPhraseArrayComplete.length, options, verbIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
-                    ))};
+                    ))}
                   </Phrase>
                 );
             }

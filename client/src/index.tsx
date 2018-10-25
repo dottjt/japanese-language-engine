@@ -36,7 +36,6 @@ ReactDOM.render(
       <RouteProvider router={router}>
         <Route>{({ route }) => {
           if (route !== null ) {
-            console.log(route)
             switch(route.name) {
               case ROUTE_TITLE.HOME: 
                 return <Home/>

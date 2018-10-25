@@ -3,13 +3,13 @@ import { Query } from 'react-apollo';
 import { Link } from 'react-router5';
 import { GET_ALL_WORDS_AND_OPTIONS } from '../../graphql/queries';
 
-import { randomArrayElement } from '../../util/functions';
-import { LESSON_TITLE, LESSON_WORDS, LESSON_OPTIONS } from '../../util/constants/lessonConstants';
+// import { randomArrayElement } from '../../util/functions';
+import { LESSON_TITLE, /* LESSON_OPTIONS */ } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 
-import generateExercises from '../../util/conjugations/generateExercises';
+// import generateExercises from '../../util/conjugations/generateExercises';
 import Navbar from '../components/Navbar';
-import SentenceModule from '../modules/SentenceModule/SentenceModule'
+// import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import { 
   HomepageWrapper, 
@@ -39,9 +39,9 @@ class Home extends React.Component<{}, { randomIndex: number }> {
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data }) => {
-          const randomIndex = this.state.randomIndex;
-          const randomProperty = Object.keys(LESSON_WORDS)[randomIndex];
-          const exercise = generateExercises(LESSON_WORDS[randomProperty](data.nouns) as any, LESSON_OPTIONS[randomProperty], 1);
+          // const randomIndex = this.state.randomIndex;
+          // const randomProperty = Object.keys(LESSON_WORDS)[randomIndex];
+          // const exercise = generateExercises(LESSON_WORDS[randomProperty](data.nouns) as any, LESSON_OPTIONS[randomProperty], 1);
 
           return (
             <HomepageWrapper>
@@ -53,12 +53,12 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                   <H2>What is it?</H2>
                   <Text>A highly sophisticated Japanese language engine.</Text>
                   <Button onClick={this.randomiseSentence}>Random</Button>
-                  <SentenceModule
+                  {/* <SentenceModule
                     sentenceDisplayOptions={data.sentenceDisplayOptions}
                     englishSentence={exercise[randomIndex].englishSentence}
                     japaneseSentence={exercise[randomIndex].japaneseSentence}
                     options={exercise[randomIndex].options}
-                  />
+                  /> */}
                 </HomepageSection>
                 
                 <HomepageSection>
@@ -165,7 +165,7 @@ class Home extends React.Component<{}, { randomIndex: number }> {
 
   private randomiseSentence = () => {
     this.setState({
-      randomIndex: randomArrayElement(Object.keys(LESSON_WORDS).length),
+      // randomIndex: randomArrayElement(Object.keys(LESSON_WORDS).length),
     });
   };
 

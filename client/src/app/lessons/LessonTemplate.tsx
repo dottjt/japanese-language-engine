@@ -9,8 +9,21 @@ import SentenceModule from '../modules/SentenceModule/SentenceModule';
 // import ResourcesModule from '../modules/ResourcesModule';
 // import ExplanationModule from '../modules/ExplanationModule';
 
+// import generateExercises from 'src/util/conjugations/generateExercises';
+
+// const determineNouns = () => {
+  
+// };
+
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
+
+
+    // generateExercises(
+    //   options
+    // );
+
+
     return (
       <PageWrapper>
         <H2>{this.props.title}</H2>
