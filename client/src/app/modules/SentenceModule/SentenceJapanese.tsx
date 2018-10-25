@@ -16,7 +16,7 @@ import {
 } from '../../../util/constants/optionsConstants';
 
 
-const wordOptionsJapanese = (character: string, japaneseSentence: Util.ConjugatedJapaneseArray, options: Util.Options, index: number): string => {
+const wordOptionsJapanese = (character: string, japaneseSentence: string[], options: Util.Options, index: number): string => {
   const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
 
   if (endOfSentence(japaneseSentence.length, index)) {
@@ -45,24 +45,26 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
             switch(phraseArray.type) {
               case CONJUGATION_TYPE_NOUN_JAPANESE:
                 const nounPhrase = phraseArray as Util.ConjugatedJapaneseNoun;
-                const nounArray = [nounPhrase.noun.japanese.kanji].concat(nounPhrase.nounCategoryEnding.wordArray).concat(nounPhrase.nounEnding.wordArray).concat(nounPhrase.nounTopicParticle.wordArray);
-                const nounArrayComplete = phraseOptionsJapanese(nounArray, options, phraseIndex);
+                const nounPhraseArray = [nounPhrase.noun.japanese.kanji].concat(nounPhrase.nounCategoryEnding.wordArray).concat(nounPhrase.nounEnding.wordArray).concat(nounPhrase.nounTopicParticle.wordArray);
+                const nounPhraseArrayComplete = phraseOptionsJapanese(nounPhraseArray, options, phraseIndex);
 
                 return (
                   <Phrase key={phraseIndex}>
-                    {nounArrayComplete.map((word: string, nounIndex: number) => (
-                      <JapaneseWord key={nounIndex}>{wordOptionsJapanese(word, sentence, options, nounIndex)}</JapaneseWord>
+                    {nounPhraseArrayComplete.map((word: string, nounIndex: number) => (
+                      <JapaneseWord key={nounIndex}>{wordOptionsJapanese(word, nounPhraseArrayComplete, options, nounIndex)}</JapaneseWord>
                     ))}
                   </Phrase>
                 );
               
               case CONJUGATION_TYPE_VERB_JAPANESE: 
                 const verbPhrase = phraseArray as Util.ConjugatedJapaneseVerb;
-                const verbArray = verbPhrase.conjugatedVerb.wordArray.concat(verbPhrase.verb.japanese.kanji);
+                const verbPhraseArray = verbPhrase.conjugatedVerb.wordArray.concat(verbPhrase.verb.japanese.kanji);
+                const verbPhraseArrayComplete = phraseOptionsJapanese(verbPhraseArray, options, phraseIndex);
+                
                 return (
                   <Phrase key={phraseIndex}>
-                    {verbArray.map((word: string, verbIndex: number) => (
-                      <JapaneseWord key={verbIndex}>{wordOptionsJapanese(word, sentence, options, verbIndex)}</JapaneseWord>
+                    {verbPhraseArrayComplete.map((word: string, verbIndex: number) => (
+                      <JapaneseWord key={verbIndex}>{wordOptionsJapanese(word, verbPhraseArrayComplete, options, verbIndex)}</JapaneseWord>
                     ))};
                   </Phrase>
                 );

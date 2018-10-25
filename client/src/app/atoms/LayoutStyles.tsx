@@ -21,6 +21,7 @@ export const AppWrapper = styled(Flex)`
 
 export const SidebarWrapper = styled(FlexColumn)`
   min-width: 250px;
+  margin-left: 1rem;
   border-right: 1px solid black;
 `;
 
