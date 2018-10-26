@@ -6,6 +6,7 @@ import {
   createError,
   // startOfSentence,
   endOfSentence,
+  tagArray,
 } from '../../../util/functions';
 
 import {
@@ -19,16 +20,16 @@ import {
 } from '../../../util/constants/optionsConstants';
 
 
-const wordArrayOptionsJapanese = (character: string, japaneseSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
+const wordArrayOptionsJapanese = (character: Util.WordArrayElement, japaneseSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
   const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
 
   if (endOfSentence(japaneseSentenceLength, index) && endOfSentence(phraseLength, phraseIndex)) {
-    return options.question === HAS_QUESTION ? `${character}${japaneseQuestionEnding}` : `${character}。`
+    return options.question === HAS_QUESTION ? `${character.word}${japaneseQuestionEnding}` : `${character.word}。`
   };
-  return character;
+  return character.word;
 };
 
-const phraseOptionsJapanese = (phraseArray: string[], options: Util.Options, index: number): string[] => {
+const phraseOptionsJapanese = (phraseArray: Util.WordArrayElement[], options: Util.Options, index: number): Util.WordArrayElement[] => {
   return phraseArray;
 };
 
@@ -49,24 +50,33 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
           
           switch(phrase.type) {
             case CONJUGATION_TYPE_NOUN_JAPANESE: 
-              const nounWordArray = [nounPhrase.noun.japanese.kanji].concat(nounPhrase.nounCategoryEnding.wordArray).concat(nounPhrase.nounEnding.wordArray).concat(nounPhrase.nounTopicParticle.wordArray);
+
+              const noun = tagArray([nounPhrase.noun.japanese.kanji], NOUN_JAPANESE);
+              const nounCategoryEnding = tagArray(nounPhrase.nounCategoryEnding.wordArray, nounPhrase.nounCategoryEnding.wordType);
+              const nounEnding = tagArray(nounPhrase.nounEnding.wordArray, nounPhrase.nounEnding.wordType);
+              const nounTopicParticle = tagArray(nounPhrase.nounTopicParticle.wordArray, nounPhrase.nounTopicParticle.wordType);
+
+              const nounWordArray = noun.concat(nounCategoryEnding).concat(nounEnding).concat(nounTopicParticle);
               const nounWordArrayComplete = phraseOptionsJapanese(nounWordArray, options, phraseIndex);
 
               return (
                 <Phrase key={phraseIndex}>
-                  {nounWordArrayComplete.map((word: string, nounIndex: number) => (
+                  {nounWordArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => (
                     <JapaneseWord key={nounIndex}>{wordArrayOptionsJapanese(word, nounWordArrayComplete.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
                   ))}
                 </Phrase>
               );
             
             case CONJUGATION_TYPE_VERB_JAPANESE: 
-              const verbWordArray = verbPhrase.conjugatedVerb.wordArray;
+              
+              const verb = tagArray(verbPhrase.conjugatedVerb.wordArray, VERB_JAPANESE);
+
+              const verbWordArray = verb;
               const verbWordArrayComplete = phraseOptionsJapanese(verbWordArray, options, phraseIndex);
               
               return (
                 <Phrase key={phraseIndex}>
-                  {verbWordArrayComplete.map((word: string, verbIndex: number) => (
+                  {verbWordArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => (
                     <JapaneseWord key={verbIndex}>{wordArrayOptionsJapanese(word, verbWordArrayComplete.length, options, verbIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
                   ))}
                 </Phrase>

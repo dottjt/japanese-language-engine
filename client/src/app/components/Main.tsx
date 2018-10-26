@@ -33,6 +33,7 @@ import Prerequisites from '../lessons/Prerequisites';
 import Contents from '../lessons/Contents';
 import Welcome from '../lessons/Welcome';
 
+
 class Main extends React.Component<PropTypes.IMainProps, {}> {
 
   public render() {
@@ -66,6 +67,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L001.LESSON_RESOURCES}
                   exercises={L001.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               );
@@ -79,6 +81,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L002.LESSON_RESOURCES}
                   exercises={L002.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               );
@@ -92,6 +95,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L003.LESSON_RESOURCES}
                   exercises={L003.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               );
@@ -105,6 +109,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L004.LESSON_RESOURCES}
                   exercises={L004.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               );
@@ -118,6 +123,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L005.LESSON_RESOURCES}
                   exercises={L005.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               );
@@ -131,6 +137,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L006.LESSON_RESOURCES}
                   exercises={L006.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               ); 
@@ -144,6 +151,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L007.LESSON_RESOURCES}
                   exercises={L007.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               );
@@ -157,6 +165,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L008.LESSON_RESOURCES}
                   exercises={L008.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}
                 />
               );
@@ -170,6 +179,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   resources={L009.LESSON_RESOURCES}
                   exercises={L009.LESSON_EXERCISES(data.nouns)}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
                   client={client}                  
                 />
               );

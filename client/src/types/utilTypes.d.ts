@@ -4,6 +4,12 @@ declare namespace Util {
     showSentenceStats: boolean;
   }
 
+  export type SentenceStats = {
+    nounPolarityHover: Boolean,
+    nounPastHover: Boolean,
+    selectedExerciseNumber: number | undefined,
+  }
+
   export type Resource = {
     website: string;
     url: string;

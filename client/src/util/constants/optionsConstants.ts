@@ -141,3 +141,6 @@ export const genderArrayLength = genderArray.length;
 
 // __typename
 export const __TYPENAME_SENTENCE_DISPLAY_OPTIONS = 'options';
+export const __TYPENAME_SENTENCE_STATS = 'sentence stats';
+
+

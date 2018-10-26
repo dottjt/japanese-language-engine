@@ -21,21 +21,21 @@ import {
   NOUN_ENGLISH,
 } from '../../../util/constants/optionsConstants';
 
-const wordOptionsEnglish = (word: string, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
+const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
 
   if(startOfSentence(englishSentenceLength, index) && startOfSentence(phraseLength, phraseIndex)) {
-    return capitalise(word);
+    return capitalise(wordArrayElement.word);
   };
 
   if (endOfSentence(englishSentenceLength, index) && endOfSentence(phraseLength, phraseIndex)) {
-    return options.question === HAS_QUESTION ? `${word}?` : `${word}.`
+    return options.question === HAS_QUESTION ? `${wordArrayElement.word}?` : `${wordArrayElement.word}.`
   };
 
-  return word;
+  return wordArrayElement.word;
 };
 
-const phraseOptionsEnglish = (phraseArray: string[], options: Util.Options, phraseIndex: number): string[] => {
-  const filteredArray: string[] = phraseArray.filter((word: string): boolean => word !== '');
+const phraseOptionsEnglish = (phraseArray: Util.WordArrayElement[], options: Util.Options, phraseIndex: number): Util.WordArrayElement[] => {
+  const filteredArray: Util.WordArrayElement[] = phraseArray.filter((wordArrayElement: Util.WordArrayElement): boolean => wordArrayElement.word !== '');
   return filteredArray;
 };
 
@@ -45,15 +45,17 @@ const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishArray, opti
 
 class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
   public render() {
-    const { sentence, options } = this.props;
+    const { /* sentenceStats,*/ sentence, options } = this.props;
     const phraseArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
       <Sentence>
           {phraseArrayComplete.map((phraseArray, phraseIndex: number) => {
+            const nounPhrase = phraseArray as Util.ConjugatedEnglishNoun;
+            const verbPhrase = phraseArray as Util.ConjugatedEnglishVerb;
+
             switch(phraseArray.type) {
               case CONJUGATION_TYPE_NOUN_ENGLISH:
-                const nounPhrase = phraseArray as Util.ConjugatedEnglishNoun;
 
                 const nounTense = tagArray(nounPhrase.nounTense.wordArray, nounPhrase.nounTense.wordType);
                 const nounPolarity = tagArray(nounPhrase.nounPolarity.wordArray, nounPhrase.nounPolarity.wordType);
@@ -66,21 +68,24 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
 
                 return (
                   <Phrase key={phraseIndex}>
-                    {nounPhraseArrayComplete.map((word: string, nounIndex: number) => (
+                    {nounPhraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => (
                       <EnglishWord key={nounIndex}>{wordOptionsEnglish(word, nounPhraseArrayComplete.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
                     ))}
                   </Phrase>
                 );
               
               case CONJUGATION_TYPE_VERB_ENGLISH: 
-                const verbPhrase = phraseArray as Util.ConjugatedEnglishVerb;
-                const verbPhraseArray = verbPhrase.verbPolarity.wordArray.concat(verbPhrase.verb.english.present);
+
+                const verbPolarity = tagArray(verbPhrase.verbPolarity.wordArray, verbPhrase.verbPolarity.wordType);
+                const verb = tagArray([verbPhrase.verb.english.present], VERB_ENGLISH);
+
+                const verbPhraseArray = verbPolarity.concat(verb);
                 const verbPhraseArrayComplete = phraseOptionsEnglish(verbPhraseArray, options, phraseIndex);
                 // verbPolarity
                 
                 return (
                   <Phrase key={phraseIndex}>
-                    {verbPhraseArrayComplete.map((word: string, verbIndex: number) => (
+                    {verbPhraseArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => (
                       <EnglishWord key={verbIndex}>{wordOptionsEnglish(word, verbPhraseArrayComplete.length, options, verbIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
                     ))}
                   </Phrase>

@@ -40,6 +40,7 @@ declare module PropTypes {
     resources: Util.Resource[],
     explanation: string[], 
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    sentenceStats: Util.SentenceStats,
     client: any,
   }
   
@@ -49,25 +50,37 @@ declare module PropTypes {
   }
 
   export type ISentencesProps = {
+    client: any,
     options: Util.Options,
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    sentenceStats: Util.SentenceStats,
     englishSentence: Util.ConjugatedEnglishArray,
     japaneseSentence: Util.ConjugatedJapaneseArray,
+    exerciseIndex: number,
   }
 
   export type IJapaneseSentenceProps = {
+    client: any,
     options: Util.Options,
     sentence: Util.ConjugatedJapaneseArray,
+    exerciseIndex: number,
+    sentenceStats: Util.SentenceStats,
   }
 
   export type IEnglishSentenceProps = {
+    client: any,  
     options: Util.Options,
     sentence: Util.ConjugatedEnglishArray,
+    exerciseIndex: number,
+    sentenceStats: Util.SentenceStats,
   }
 
   export type ISentenceStatsProps = {
-    sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    client: any,  
     options: Util.Options,
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    exerciseIndex: number,
+    sentenceStats: Util.SentenceStats,
   }
 
   export type IConjugationTableProps = {

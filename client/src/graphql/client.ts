@@ -2,9 +2,16 @@ import ApolloClient from "apollo-boost";
 
 import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+  __TYPENAME_SENTENCE_STATS,
 } from "../util/constants/optionsConstants";
 
 import allWords from "../util/words/collection";
+
+import router from '../router';
+
+// const generateExercises
+
+console.log(router);
 
 const client = new ApolloClient({
   clientState: {
@@ -13,7 +20,16 @@ const client = new ApolloClient({
       sentenceDisplayOptions: {
         showSentenceStats: true,
         __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
-      }
+      },
+      sentenceStats: {
+        nounPolarityHover: false,
+        nounPastHover: false,
+        selectedExerciseNumber: 0,
+        __typename: __TYPENAME_SENTENCE_STATS,
+      },
+      // exercises: {
+
+      // }
     },
     resolvers: {
       Mutation: {
@@ -25,7 +41,13 @@ const client = new ApolloClient({
         }
       }
     },
-    typeDefs: `
+    typeDefs:`
+      type SentenceStats {
+        nounPolarityHover: Boolean
+        nounPastHover: Boolean
+        selectedExerciseNumber: Int
+      }
+
       type SentenceDisplayOptions {
         showSentenceStats: Boolean
       }
@@ -47,6 +69,7 @@ const client = new ApolloClient({
       }
 
       type Query {
+        sentenceStats: SentenceStats
         sentenceDisplayOptions: SentenceDisplayOptions
         nouns: [Word]
       }

@@ -36,11 +36,14 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={this.props.client}
           />
-          {this.props.exercises.map((exercise, index) => (
+          {this.props.exercises.map((exercise, exerciseIndex) => (
             <SentenceModule
-              key={index}
+              key={exerciseIndex}
+              client={this.props.client}
+              exerciseIndex={exerciseIndex}
               options={exercise.options}
               sentenceDisplayOptions={this.props.sentenceDisplayOptions}
+              sentenceStats={this.props.sentenceStats}
               englishSentence={exercise.englishSentence}
               japaneseSentence={exercise.japaneseSentence}
             />
