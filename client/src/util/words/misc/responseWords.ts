@@ -1,12 +1,14 @@
 import {
   PRIMARY_TYPE_NOUN,
   CATEGORY_RESPONSE,
-
-  __TYPENAME_WORDS,
-  __TYPENAME_META,
-  __TYPENAME_JAPANESE,
-  __TYPENAME_ENGLISH,
 } from '../../constants/wordConstants';
+
+import {
+  __TYPENAME_WORD,
+  __TYPENAME_META,
+  __TYPENAME_ENGLISH,
+  __TYPENAME_JAPANESE,
+} from '../../constants/typeNameConstants';
 
 export const wordYes = {
   japanese: { 
@@ -26,7 +28,7 @@ export const wordYes = {
     verbType: 'NA',  
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const responseArray = [

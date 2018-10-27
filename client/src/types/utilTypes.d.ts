@@ -1,47 +1,55 @@
 declare namespace Util {
-  // primary
-  export type SentenceDisplayOptions = {
-    showSentenceStats: boolean;
-  }
-
-  export type SentenceStats = {
-    nounPolarityHover: Boolean,
-    nounPastHover: Boolean,
-    selectedExerciseNumber: number | undefined,
-  }
-
-  export type Resource = {
-    website: string;
-    url: string;
-  };
+  // ui types
 
   export type WordArrayElement = {
     word: string;
     tag: string;
   };
 
+  // primary
+  export type SentenceDisplayOptions = {
+    showSentenceStats: boolean;
+    __typename: string;
+  }
+
+  export type SentenceStats = {
+    nounPolarityHover: Boolean,
+    nounPastHover: Boolean,
+    selectedExerciseNumber: number | undefined,
+    __typename: string;
+  }
+
   export type WordElement = {
     wordArray: string[];
     wordType: string;
+    __typename: string;
   };
 
   export type MetaType = {
     verbType?: string;
+    __typename: string;
   };
 
+  export type English = {
+    present: string;
+    past: string;
+    __typename: string;
+  }
+
+  export type Japanese = {
+    kanji: string;
+    // hiragana: string;
+    // furigana: string;
+    __typename: string;
+  }
+
   export type Word = {
-    japanese: {
-      kanji: string;
-      // hiragana: string;
-      // furigana: string;
-    }
-    english: {
-      present: string;
-      past: string;
-    },
+    japanese: Japanese;
+    english: English;
     primaryType: string;
     category: string[];
     meta: MetaType;
+    __typename: string;
   };
 
   export type ConjugatedJapaneseNoun = {
@@ -50,6 +58,7 @@ declare namespace Util {
     nounCategoryEnding: WordElement;
     nounEnding: WordElement;
     nounTopicParticle: WordElement;
+    __typename: string;
   };
 
   export type ConjugatedEnglishNoun = {
@@ -58,18 +67,21 @@ declare namespace Util {
     nounPolarity:  WordElement;
     nounIndefiniteArticle: WordElement;
     noun: Word;
+    __typename: string;
   };
 
   export type ConjugatedJapaneseVerb = {
     type: string;
     conjugatedVerb: WordElement;
     verb: Word;
+    __typename: string;
   };
 
   export type ConjugatedEnglishVerb = {
     verbPolarity: WordElement;
     verb: Word;
     type: string;
+    __typename: string;
   };
 
   export type ConjugatedJapaneseArray = (ConjugatedJapaneseNoun|ConjugatedJapaneseVerb)[]
@@ -85,26 +97,22 @@ declare namespace Util {
     question: string; // HAS_QUESTION, NOT_QUESTION
   };
 
-  // export type Sentence = string;
-
   export type EnglishJapaneseSentence = {
     englishSentence: ConjugatedEnglishArray; // will change
     japaneseSentence: ConjugatedJapaneseArray; // will change
-
-    // ConjugatedJapaneseNoun
-    // ConjugatedEnglishNoun
-    // ConjugatedJapaneseVerb
-    // ConjugatedEnglishVerb
-
-    // englishSentence: any; // will change
-    // japaneseSentence: any; // will change
+    __typename: string;
   };
-
 
   export type EnglishJapaneseOptionsSentence = {
     englishSentence: ConjugatedEnglishArray;
     japaneseSentence: ConjugatedJapaneseArray;
     options: Options,
+    __typename: string;
+  };
+
+  export type Resource = {
+    url: string;
+    website: string;
   };
 
   // SENTENCE TYPE - SENTENCE_TYPE_TOPIC

@@ -2,11 +2,14 @@ import {
   // SENTENCE_TYPE_VERB,
   SENTENCE_TYPE_TOPIC,
   SENTENCE_TYPE_SUBJECT,
-
-  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from './constants/optionsConstants';
 
-export const createWord = (wordArray: string[], wordType: string): Util.WordElement => ({ wordArray, wordType });
+import {
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+  __TYPENAME_WORD_ELEMENT,
+} from "./constants/typeNameConstants";
+
+export const createWord = (wordArray: string[], wordType: string): Util.WordElement => ({ wordArray, wordType, __typename:__TYPENAME_WORD_ELEMENT });
 export const getInitialVerbStem = (word: string): string[] => word.slice(0, -1).split('');
 export const getLastLetterVerb = (word: string): string => word.slice(-1);
 

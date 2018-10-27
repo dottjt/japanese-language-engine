@@ -11,7 +11,7 @@
 
 // import {
 //   PRIMARY_TYPE_NOUN,
-//   __TYPENAME_WORDS,
+//   __TYPENAME_WORD,
 // } from '../src/util/constants/wordConstants';
 
 // const CATEGORY_TEST = 'CATEGORY_TEST';

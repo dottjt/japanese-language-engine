@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-boost';
 import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   __TYPENAME_SENTENCE_STATS,
-} from '../util/constants/optionsConstants';
+} from '../util/constants/typeNameConstants';
 
 import {
   LESSON_PATH,

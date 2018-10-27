@@ -4,12 +4,14 @@ import {
   CATEGORY_HUMAN,
   CATEGORY_ANIMAL,
   CATEGORY_LOCATION,
+} from '../../constants/wordConstants';
 
-  __TYPENAME_WORDS,
+import {
+  __TYPENAME_WORD,
   __TYPENAME_META,
   __TYPENAME_ENGLISH,
   __TYPENAME_JAPANESE,
-} from '../../constants/wordConstants';
+} from '../../constants/typeNameConstants';
 
 // HUMAN
 
@@ -31,7 +33,7 @@ export const wordPerson = {
     verbType: 'NA',  
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 
@@ -55,7 +57,7 @@ export const wordCat = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordDog = {
@@ -76,7 +78,7 @@ export const wordDog = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 
@@ -100,7 +102,7 @@ export const wordHome = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 

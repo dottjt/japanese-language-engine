@@ -11,9 +11,14 @@ import {
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
-
-  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from './constants/optionsConstants';
+
+
+// import {
+//   __TYPENAME_SENTENCE_STATS,
+//   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+// } from "./constants/typeNameConstants";
+
 
 export const capitalise = (word: string): string => word ? word[0].toUpperCase() + word.slice(1) : word
 export const randomArrayElement = (arrayLength: number): number => Math.floor(Math.random() * arrayLength);

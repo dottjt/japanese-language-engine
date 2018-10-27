@@ -41,10 +41,3 @@ export const verbTypeArray = [
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
 ];
-
-
-// __typename
-export const __TYPENAME_WORDS = 'words';
-export const __TYPENAME_META = 'meta';
-export const __TYPENAME_ENGLISH = 'english';
-export const __TYPENAME_JAPANESE = 'japanese';

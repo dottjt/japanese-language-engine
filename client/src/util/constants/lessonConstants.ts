@@ -44,9 +44,11 @@ import {
   polarityArrayLength,
   tenseArrayLength,
   questionArrayLength,
-  
-  __TYPENAME_SENTENCE_DISPLAY_OPTIONS ,
 } from './optionsConstants';
+
+import {
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+} from './typeNameConstants';
 
 const createRes = (resourceType: string, urlString: string): Util.Resource => {
   if (resourceType === RESOURCE_TAE_KIM) {

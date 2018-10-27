@@ -5,12 +5,14 @@ import {
 
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
+} from '../../constants/wordConstants';
 
-  __TYPENAME_WORDS,
+import {
+  __TYPENAME_WORD,
   __TYPENAME_META,
   __TYPENAME_ENGLISH,
   __TYPENAME_JAPANESE,
-} from '../../constants/wordConstants';
+} from '../../constants/typeNameConstants';
 
 export const wordEat = {
   japanese: { 
@@ -30,7 +32,7 @@ export const wordEat = {
     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordDrink = {
@@ -51,7 +53,7 @@ export const wordDrink = {
     verbType: SENTENCE_TYPE_VERB_TYPE_U,
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordDo = {
@@ -72,7 +74,7 @@ export const wordDo = {
     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordCome = {
@@ -93,7 +95,7 @@ export const wordCome = {
     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 

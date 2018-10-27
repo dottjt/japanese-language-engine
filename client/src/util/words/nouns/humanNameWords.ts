@@ -1,12 +1,14 @@
 import {
   PRIMARY_TYPE_NOUN,
   CATEGORY_HUMAN_NAME,
+} from '../../constants/wordConstants';
 
-  __TYPENAME_WORDS,
+import {
+  __TYPENAME_WORD,
   __TYPENAME_META,
   __TYPENAME_ENGLISH,
   __TYPENAME_JAPANESE,
-} from '../../constants/wordConstants';
+} from '../../constants/typeNameConstants';
 
 export const wordSasaki = {
   japanese: { 
@@ -26,7 +28,7 @@ export const wordSasaki = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordNomura = {
@@ -47,7 +49,7 @@ export const wordNomura = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordKato = {
@@ -68,7 +70,7 @@ export const wordKato = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordKobayashi = {
@@ -89,7 +91,7 @@ export const wordKobayashi = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 

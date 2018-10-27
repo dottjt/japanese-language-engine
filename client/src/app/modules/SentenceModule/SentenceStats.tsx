@@ -7,23 +7,28 @@ import {
   convertPolarityIntoValue,
 } from '../../../util/functions';
 
-import {
-  // VERB_ENGLISH,
-  // VERB_ENGLISH_CONJUGATION,
-  // VERB_JAPANESE,
-  // VERB_JAPANESE_CONJUGATION,
-  // NOUN_ENGLISH,
-  // NOUN_ENGLISH_CONJUGATION,
-  // NOUN_ENGLISH_POLARITY,
-  // NOUN_ENGLISH_INDEFINITE_ARTICLE,
-  // NOUN_JAPANESE,
-  // NOUN_JAPANESE_CONJUGATION,
-  // NOUN_JAPANESE_TOPIC_PARTICLE,
-  // NOUN_JAPANESE_CATEGORY_ENDING,
+// import {
+//   // VERB_ENGLISH,
+//   // VERB_ENGLISH_CONJUGATION,
+//   // VERB_JAPANESE,
+//   // VERB_JAPANESE_CONJUGATION,
+//   // NOUN_ENGLISH,
+//   // NOUN_ENGLISH_CONJUGATION,
+//   // NOUN_ENGLISH_POLARITY,
+//   // NOUN_ENGLISH_INDEFINITE_ARTICLE,
+//   // NOUN_JAPANESE,
+//   // NOUN_JAPANESE_CONJUGATION,
+//   // NOUN_JAPANESE_TOPIC_PARTICLE,
+//   // NOUN_JAPANESE_CATEGORY_ENDING,
 
+// } from '../../../util/constants/optionsConstants';
+
+import {
   __TYPENAME_SENTENCE_STATS,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
-} from '../../../util/constants/optionsConstants';
+} from "../../../util/constants/typeNameConstants";
+
+
 
 const sentenceStatsObject = (sentenceStatsFields: any): any => ({
   data: { sentenceStats: { __typename: __TYPENAME_SENTENCE_STATS, ...sentenceStatsFields }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }

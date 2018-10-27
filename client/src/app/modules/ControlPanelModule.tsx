@@ -18,9 +18,11 @@ import {
   
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
-
-  __TYPENAME_SENTENCE_DISPLAY_OPTIONS
 } from "../../util/constants/optionsConstants";
+
+import {
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+} from "../../util/constants/typeNameConstants";
 
 
 class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {

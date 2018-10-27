@@ -1,12 +1,14 @@
 import {
   PRIMARY_TYPE_ADJECTIVE,
   CATEGORY_FOOD,
+} from '../../constants/wordConstants';
 
-  __TYPENAME_WORDS,
+import {
+  __TYPENAME_WORD,
   __TYPENAME_META,
   __TYPENAME_ENGLISH,
   __TYPENAME_JAPANESE,
-} from '../../constants/wordConstants';
+} from '../../constants/typeNameConstants';
 
 export const wordDelicious = {
   japanese: { 
@@ -26,7 +28,7 @@ export const wordDelicious = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const wordLike = {
@@ -47,7 +49,7 @@ export const wordLike = {
     verbType: 'NA',
     __typename: __TYPENAME_META,
   },
-  __typename: __TYPENAME_WORDS,
+  __typename: __TYPENAME_WORD,
 };
 
 export const adjectiveArray = [
