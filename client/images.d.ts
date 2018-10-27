@@ -12,3 +12,5 @@ declare module "*.md" {
 }
 
 declare module 'markdown-to-jsx'
+declare module 'apollo-router5'
+declare module 'rebass'

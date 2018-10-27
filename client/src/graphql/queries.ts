@@ -27,5 +27,11 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
       nounPastHover
       selectedExerciseNumber
     }
+
+    exercises @client {
+      englishSentence
+      japaneseSentence
+      options
+    }
   }
 `;

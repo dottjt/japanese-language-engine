@@ -25,6 +25,10 @@ declare namespace Util {
     wordType: string;
   };
 
+  export type MetaType = {
+    verbType?: string;
+  };
+
   export type Word = {
     japanese: {
       kanji: string;
@@ -37,9 +41,7 @@ declare namespace Util {
     },
     primaryType: string;
     category: string[];
-    meta: {
-      verbType?: string 
-    };
+    meta: MetaType;
   };
 
   export type ConjugatedJapaneseNoun = {

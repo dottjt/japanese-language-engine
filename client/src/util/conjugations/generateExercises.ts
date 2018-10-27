@@ -35,9 +35,7 @@ import {
   V,
   WO_SV,
   NI_SV,
-  DE_SV,
-
-  
+  DE_SV,  
 } from '../constants/optionsConstants';
 
 import {

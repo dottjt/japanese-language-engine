@@ -208,8 +208,6 @@ const createLessonOptions = ( variation: string | string[], politeness?: string,
   }
 };
 
-
-
 export const LESSON_OPTIONS = {
   L001: () => createLessonOptions(LESSON_VARIATION.L001, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T
   L002: () => createLessonOptions(LESSON_VARIATION.L002, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WA_TS, MO_TS

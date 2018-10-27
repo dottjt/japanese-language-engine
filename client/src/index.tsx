@@ -22,8 +22,6 @@ import Callback from './app/pages/Callback';
 import Login from './app/pages/Login';
 import Page404 from './app/pages/Page404';
 
-router.start()
-
 const auth = new Auth();
 
 if (process.env.DISABLE_AUTH) {
