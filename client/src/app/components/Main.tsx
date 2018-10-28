@@ -66,7 +66,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L001.LESSON_VARIATION}
                   options={L001.LESSON_OPTIONS}
                   resources={L001.LESSON_RESOURCES}
-                  exercises={L001.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L001.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -80,7 +81,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L002.LESSON_VARIATION}
                   options={L002.LESSON_OPTIONS}
                   resources={L002.LESSON_RESOURCES}
-                  exercises={L002.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L002.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -94,7 +96,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L003.LESSON_VARIATION}
                   options={L003.LESSON_OPTIONS}
                   resources={L003.LESSON_RESOURCES}
-                  exercises={L003.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L003.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -108,7 +111,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L004.LESSON_VARIATION}
                   options={L004.LESSON_OPTIONS}
                   resources={L004.LESSON_RESOURCES}
-                  exercises={L004.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L004.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -122,7 +126,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L005.LESSON_VARIATION}
                   options={L005.LESSON_OPTIONS}
                   resources={L005.LESSON_RESOURCES}
-                  exercises={L005.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L005.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -136,7 +141,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L006.LESSON_VARIATION}
                   options={L006.LESSON_OPTIONS}
                   resources={L006.LESSON_RESOURCES}
-                  exercises={L006.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L006.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -150,7 +156,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L007.LESSON_VARIATION}
                   options={L007.LESSON_OPTIONS}
                   resources={L007.LESSON_RESOURCES}
-                  exercises={L007.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L007.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -164,7 +171,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L008.LESSON_VARIATION}
                   options={L008.LESSON_OPTIONS}
                   resources={L008.LESSON_RESOURCES}
-                  exercises={L008.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L008.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
@@ -178,7 +186,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   variation={L009.LESSON_VARIATION}
                   options={L009.LESSON_OPTIONS}
                   resources={L009.LESSON_RESOURCES}
-                  exercises={L009.LESSON_EXERCISES(data.nouns)}
+                  // exercises={L009.LESSON_EXERCISES(data.nouns)}
+                  exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}                  

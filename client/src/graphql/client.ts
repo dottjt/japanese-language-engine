@@ -10,16 +10,11 @@ import {
   LESSON_OPTIONS,
 } from '../util/constants/lessonConstants';
 
-import {
-  index, 
-  sentenceTypes,
-  optionTypes,
-} from './types';
+import { index, sentenceTypes, optionTypes } from './types';
+import mutations from './mutations';
 
 import allWords from '../util/words/collection';
 import generateExercises from 'src/util/conjugations/generateExercises';
-
-import mutations from './mutations';
 
 const determineGetExercise = (path: string): Util.EnglishJapaneseOptionsSentence[] => {
   switch(path) {
