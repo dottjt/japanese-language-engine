@@ -23,15 +23,32 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
     }
 
     sentenceStats @client {
-      nounPolarityHover
+      polarityHover
       nounPastHover
       selectedExerciseNumber
     }
 
     exercises @client {
-      englishSentence
-      japaneseSentence
-      options
+      englishSentence @client {
+        type
+        # tense
+        # polarity
+        # indefiniteArticle
+        noun
+        # verbPolarity
+        # verb
+      }
+      japaneseSentence @client {
+        type
+      }
+      options @client {
+        politeness
+        variation
+        polarity
+        tense
+        gender
+        question
+      }
     }
   }
 `;

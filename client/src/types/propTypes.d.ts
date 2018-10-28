@@ -54,15 +54,15 @@ declare module PropTypes {
     options: Util.Options,
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
-    englishSentence: Util.ConjugatedEnglishArray,
-    japaneseSentence: Util.ConjugatedJapaneseArray,
+    englishSentence: Util.ConjugatedEnglishWord[],
+    japaneseSentence: Util.ConjugatedJapaneseWord[],
     exerciseIndex: number,
   }
 
   export type IJapaneseSentenceProps = {
     client: any,
     options: Util.Options,
-    sentence: Util.ConjugatedJapaneseArray,
+    sentence: Util.ConjugatedJapaneseWord[],
     exerciseIndex: number,
     sentenceStats: Util.SentenceStats,
   }
@@ -70,7 +70,7 @@ declare module PropTypes {
   export type IEnglishSentenceProps = {
     client: any,  
     options: Util.Options,
-    sentence: Util.ConjugatedEnglishArray,
+    sentence: Util.ConjugatedEnglishWord[],
     exerciseIndex: number,
     sentenceStats: Util.SentenceStats,
   }

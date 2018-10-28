@@ -17,47 +17,37 @@ export const sentenceTypes = `
     meta: TypeMeta
   }  
 
-  type ConjugatedJapaneseVerb {
+  type ConjugatedJapaneseWord {
     type: String
-    conjugatedVerb: WordElement
-    verb: Word
-  }
-
-  type ConjugatedJapaneseNoun {
-    type: String
-    noun: Word
+    word: Word
     nounCategoryEnding: WordElement
     nounEnding: WordElement
     nounTopicParticle: WordElement
+    conjugatedVerb: WordElement
   }
 
-  type ConjugatedEnglishNoun {
+  type ConjugatedEnglishWord {
     type: String
-    nounTense: WordElement
-    nounPolarity: WordElement
-    nounIndefiniteArticle: WordElement
-    noun: Word
+    tense: WordElement
+    polarity: WordElement
+    indefiniteArticle: WordElement
+    word: Word
   }
 
-  type ConjugatedEnglishVerb {
-    verbPolarity: WordElement
-    verb: Word
+  type ConjugatedEnglishWord {
     type: String
   }
-
-  union ConjugatedJapaneseArray = ConjugatedJapaneseNoun | ConjugatedJapaneseVerb
-  union ConjugatedEnglishArray = ConjugatedEnglishNoun | ConjugatedEnglishVerb
 
   type EnglishJapaneseOptionsSentence {
-    englishSentence: [ ConjugatedEnglishArray ]
-    japaneseSentence: [ ConjugatedJapaneseArray ] 
+    englishSentence: [ ConjugatedEnglishWord ]
+    japaneseSentence: [ ConjugatedJapaneseWord ] 
     options: 
   }
 `;
 
 export const optionTypes = `
   type SentenceStats {
-    nounPolarityHover: Boolean
+    polarityHover: Boolean
     nounPastHover: Boolean
     selectedExerciseNumber: Int
   }

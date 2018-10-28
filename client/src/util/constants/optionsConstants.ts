@@ -89,8 +89,8 @@ export const questionArrayLength = questionArray.length;
 
 // options.polarity
 
-export const POLARITY_POSITIVE = 'positive';
-export const POLARITY_NEGATIVE = 'negative';
+export const POLARITY_POSITIVE = 'POLARITY_POSITIVE';
+export const POLARITY_NEGATIVE = 'POLARITY_NEGATIVE';
 
 export const polarityArray = [ 
   POLARITY_POSITIVE,
@@ -101,8 +101,8 @@ export const polarityArrayLength = polarityArray.length;
 
 // options.tense
 
-export const TENSE_PRESENT = 'present';
-export const TENSE_PAST = 'past';
+export const TENSE_PRESENT = 'TENSE_PRESENT';
+export const TENSE_PAST = 'TENSE_PAST';
 
 export const tenseArray = [ 
   TENSE_PRESENT,
@@ -114,10 +114,10 @@ export const tenseArrayLength = tenseArray.length;
 
 // options.politeness
 
-export const POLITENESS_CASUAL = 'c';
-export const POLITENESS_FORMAL = 'f';
-export const POLITENESS_HUMBLE = 'hu';
-export const POLITENESS_HONORIFIC = 'ho';
+export const POLITENESS_CASUAL = 'POLITENESS_CASUAL';
+export const POLITENESS_FORMAL = 'POLITENESS_FORMAL';
+export const POLITENESS_HUMBLE = 'POLITENESS_HUMBLE';
+export const POLITENESS_HONORIFIC = 'POLITENESS_HONORIFIC';
 
 export const politenessArray = [ 
   POLITENESS_CASUAL,
@@ -129,8 +129,8 @@ export const politenessArray = [
 export const politenessArrayLength = politenessArray.length;
 
 // options.gender
-export const GENDER_MASCULINE = 'mas';
-export const GENDER_FEMININE = 'fem';
+export const GENDER_MASCULINE = 'GENDER_MASCULINE';
+export const GENDER_FEMININE = 'GENDER_FEMININE';
 
 export const genderArray = [ 
   GENDER_MASCULINE,

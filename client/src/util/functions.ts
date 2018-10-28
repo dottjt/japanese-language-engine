@@ -25,6 +25,7 @@ export const randomArrayElement = (arrayLength: number): number => Math.floor(Ma
 export const startOfSentence = (sentenceLength: number, index: number) => index === 0;
 export const endOfSentence = (sentenceLength: number, index: number) => sentenceLength - 1 === index;
 export const tagArray = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag }))
+export const emptyWordElement = (): Util.WordElement => ({ wordArray: [''], wordType: 'NA', __typename: 'NA' });
 
 interface IValues {
   value: string,

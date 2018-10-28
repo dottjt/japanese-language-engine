@@ -33,7 +33,7 @@ export const nounConjugationPermissions = (topic: Util.Word, subject: Util.Word,
 
 // ENGLISH
 
-export const nounPolarityPermissions = (topic: Util.Word, subject: Util.Word, verb: Util.Word, sentenceType: string): boolean => {
+export const polarityPermissions = (topic: Util.Word, subject: Util.Word, verb: Util.Word, sentenceType: string): boolean => {
   const { onlyTopic, onlySubject, onlyVerb, onlySubjectAndVerb, onlyTopicAndSubjectTOPIC, onlyTopicAndSubjectSUBJECT } = createCommonPermissions(topic, subject, verb, sentenceType);
 
   if (onlyTopic) { return true };
@@ -43,7 +43,7 @@ export const nounPolarityPermissions = (topic: Util.Word, subject: Util.Word, ve
   if (onlyTopicAndSubjectTOPIC) { return false };
   if (onlyTopicAndSubjectSUBJECT) { return true };  
 
-  throw new Error('nounPolarityPermissions - sentence situation not covered');
+  throw new Error('polarityPermissions - sentence situation not covered');
 };
 
 
@@ -61,7 +61,7 @@ export const nounConjugationPermissionsEnglish = (topic: Util.Word, subject: Uti
 };
 
 
-export const nounIndefiniteArticlePermissionsEnglish = (topic: Util.Word, subject: Util.Word, verb: Util.Word, sentenceType: string): boolean => {
+export const indefiniteArticlePermissionsEnglish = (topic: Util.Word, subject: Util.Word, verb: Util.Word, sentenceType: string): boolean => {
   const { onlyTopic, onlySubject, onlyVerb, onlySubjectAndVerb, onlyTopicAndSubjectTOPIC, onlyTopicAndSubjectSUBJECT } = createCommonPermissions(topic, subject, verb, sentenceType);
 
   if (onlyTopic) { return false };
@@ -71,6 +71,6 @@ export const nounIndefiniteArticlePermissionsEnglish = (topic: Util.Word, subjec
   if (onlyTopicAndSubjectTOPIC) { return false };
   if (onlyTopicAndSubjectSUBJECT) { return true };  
 
-  throw new Error('nounIndefiniteArticlePermissionsEnglish - sentence situation not covered');  
+  throw new Error('indefiniteArticlePermissionsEnglish - sentence situation not covered');  
 };
 

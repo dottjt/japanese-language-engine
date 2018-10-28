@@ -39,11 +39,12 @@ const phraseOptionsEnglish = (phraseArray: Util.WordArrayElement[], options: Uti
   return filteredArray;
 };
 
-const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishArray, options: Util.Options): Util.ConjugatedEnglishArray => {
+const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], options: Util.Options): Util.ConjugatedEnglishWord[] => {
   return sentenceArray;
 };
 
-class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
+
+class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
   public render() {
     const { /* sentenceStats,*/ sentence, options } = this.props;
     const phraseArrayComplete = sentenceOptionsEnglish(sentence, options);
@@ -51,20 +52,20 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
     return (
       <Sentence>
           {phraseArrayComplete.map((phraseArray, phraseIndex: number) => {
-            const nounPhrase = phraseArray as Util.ConjugatedEnglishNoun;
-            const verbPhrase = phraseArray as Util.ConjugatedEnglishVerb;
+            const nounPhrase = phraseArray as Util.ConjugatedEnglishWord;
+            const verbPhrase = phraseArray as Util.ConjugatedEnglishWord;
 
             switch(phraseArray.type) {
               case CONJUGATION_TYPE_NOUN_ENGLISH:
 
-                const nounTense = tagArray(nounPhrase.nounTense.wordArray, nounPhrase.nounTense.wordType);
-                const nounPolarity = tagArray(nounPhrase.nounPolarity.wordArray, nounPhrase.nounPolarity.wordType);
-                const nounIndefiniteArticle = tagArray(nounPhrase.nounIndefiniteArticle.wordArray, nounPhrase.nounIndefiniteArticle.wordType);
-                const noun = tagArray([nounPhrase.noun.english.present], NOUN_ENGLISH);
+                const tense = tagArray(nounPhrase.tense.wordArray, nounPhrase.tense.wordType);
+                const polarity = tagArray(nounPhrase.polarity.wordArray, nounPhrase.polarity.wordType);
+                const indefiniteArticle = tagArray(nounPhrase.indefiniteArticle.wordArray, nounPhrase.indefiniteArticle.wordType);
+                const noun = tagArray([nounPhrase.word.english.present], NOUN_ENGLISH);
 
-                const nounPhraseArray = nounTense.concat(nounPolarity).concat(nounIndefiniteArticle).concat(noun);
+                const nounPhraseArray = tense.concat(polarity).concat(indefiniteArticle).concat(noun);
                 const nounPhraseArrayComplete = phraseOptionsEnglish(nounPhraseArray, options, phraseIndex);
-                // nounTense, nounPolarity, nounIndefiniteArticle, noun
+                // tense, polarity, indefiniteArticle, noun
 
                 return (
                   <Phrase key={phraseIndex}>
@@ -76,8 +77,8 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
               
               case CONJUGATION_TYPE_VERB_ENGLISH: 
 
-                const verbPolarity = tagArray(verbPhrase.verbPolarity.wordArray, verbPhrase.verbPolarity.wordType);
-                const verb = tagArray([verbPhrase.verb.english.present], VERB_ENGLISH);
+                const verbPolarity = tagArray(verbPhrase.polarity.wordArray, verbPhrase.polarity.wordType);
+                const verb = tagArray([verbPhrase.word.english.present], VERB_ENGLISH);
 
                 const verbPhraseArray = verbPolarity.concat(verb);
                 const verbPhraseArrayComplete = phraseOptionsEnglish(verbPhraseArray, options, phraseIndex);
@@ -91,7 +92,7 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
                   </Phrase>
                 );
             }
-            throw new Error(createError('SentenceModule.tsx', 'EnglishSentence', `${phraseArray.type} does not exist.`));
+            throw new Error(createError('SentenceModule.tsx', 'SentenceEnglish', `${phraseArray.type} does not exist.`));
           })
           }
       </Sentence>
@@ -99,4 +100,4 @@ class EnglishSentence extends React.Component<PropTypes.IEnglishSentenceProps, {
   };
 };
 
-export default EnglishSentence;
+export default SentenceEnglish;

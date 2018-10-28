@@ -1,5 +1,6 @@
 import {
-  createError,
+  createError, 
+  emptyWordElement,
 } from '../../functions';
 
 import {
@@ -25,6 +26,10 @@ import {
 
   VERB_JAPANESE_CONJUGATION,
 } from '../../constants/optionsConstants';
+
+import {
+  __TYPENAME_CONJUGATED_JAPANESE_VERB,
+} from '../../constants/typeNameConstants';
 
 import {
   uVerbEndingU,
@@ -92,15 +97,19 @@ const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };
 
-const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseVerb => {
-  const verb = filtersentenceType(words, sentenceType);
+const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
+  const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_JAPANESE;
-  const conjugatedVerb = determineVerbConjugationJapanese(verb, options);
+  const conjugatedVerb = determineVerbConjugationJapanese(word, options);
 
   return {
     conjugatedVerb,
-    verb,
+    word,
+    nounCategoryEnding: emptyWordElement(),
+    nounEnding: emptyWordElement(),
+    nounTopicParticle: emptyWordElement(),
     type,
+    __typename: __TYPENAME_CONJUGATED_JAPANESE_VERB,
   }
   // return `${conjugatedVerb}`;
 };

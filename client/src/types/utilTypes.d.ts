@@ -13,7 +13,7 @@ declare namespace Util {
   }
 
   export type SentenceStats = {
-    nounPolarityHover: Boolean,
+    polarityHover: Boolean,
     nounPastHover: Boolean,
     selectedExerciseNumber: number | undefined,
     __typename: string;
@@ -52,40 +52,24 @@ declare namespace Util {
     __typename: string;
   };
 
-  export type ConjugatedJapaneseNoun = {
-    type: string;
-    noun: Word;
-    nounCategoryEnding: WordElement;
-    nounEnding: WordElement;
-    nounTopicParticle: WordElement;
-    __typename: string;
+  export type ConjugatedJapaneseWord = {
+    type: string; // noun, verb
+    word: Word; // noun, verb
+    nounCategoryEnding: WordElement; // noun
+    nounEnding: WordElement; // noun
+    nounTopicParticle: WordElement; // noun
+    conjugatedVerb: WordElement; // verb
+    __typename: string; // noun, verb
   };
 
-  export type ConjugatedEnglishNoun = {
-    type: string;
-    nounTense: WordElement;
-    nounPolarity:  WordElement;
-    nounIndefiniteArticle: WordElement;
-    noun: Word;
-    __typename: string;
+  export type ConjugatedEnglishWord = {
+    type: string; // noun, verb
+    tense: WordElement; // noun
+    polarity:  WordElement; // noun, verb
+    indefiniteArticle: WordElement; // noun
+    word: Word; // noun, verb
+    __typename: string; // noun, verb
   };
-
-  export type ConjugatedJapaneseVerb = {
-    type: string;
-    conjugatedVerb: WordElement;
-    verb: Word;
-    __typename: string;
-  };
-
-  export type ConjugatedEnglishVerb = {
-    verbPolarity: WordElement;
-    verb: Word;
-    type: string;
-    __typename: string;
-  };
-
-  export type ConjugatedJapaneseArray = (ConjugatedJapaneseNoun|ConjugatedJapaneseVerb)[]
-  export type ConjugatedEnglishArray = (ConjugatedEnglishNoun|ConjugatedEnglishVerb)[]
 
   export type Options = {
     __typename: string;
@@ -98,14 +82,14 @@ declare namespace Util {
   };
 
   export type EnglishJapaneseSentence = {
-    englishSentence: ConjugatedEnglishArray; // will change
-    japaneseSentence: ConjugatedJapaneseArray; // will change
+    englishSentence: ConjugatedEnglishWord[];
+    japaneseSentence: ConjugatedJapaneseWord[];
     __typename: string;
   };
 
   export type EnglishJapaneseOptionsSentence = {
-    englishSentence: ConjugatedEnglishArray;
-    japaneseSentence: ConjugatedJapaneseArray;
+    englishSentence: ConjugatedEnglishWord[];
+    japaneseSentence: ConjugatedJapaneseWord[];
     options: Options,
     __typename: string;
   };

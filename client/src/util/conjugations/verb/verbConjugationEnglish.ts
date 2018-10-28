@@ -1,5 +1,6 @@
 import {
   createError,
+  emptyWordElement,
 } from '../../functions';
 
 import {
@@ -7,7 +8,6 @@ import {
   returnSentenceParts,
   createWord,
 } from '../../utilConjugation';
-
 
 import {
   VERB_ENGLISH_CONJUGATION,
@@ -17,6 +17,10 @@ import {
 
   CONJUGATION_TYPE_VERB_ENGLISH,
 } from '../../constants/optionsConstants';
+
+import {
+  __TYPENAME_CONJUGATED_ENGLISH_VERB,
+} from '../../constants/typeNameConstants';
 
 import {
   verbConjugationPermissionsEnglish,
@@ -36,16 +40,19 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return createWord([''], VERB_ENGLISH_CONJUGATION);
 }; 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishVerb => {
-  const verb = filtersentenceType(words, sentenceType);
+const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
+  const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_ENGLISH;
 
-  const verbPolarity = determineVerbConjugationEnglish(words, options, sentenceType);
+  const polarity = determineVerbConjugationEnglish(words, options, sentenceType);
 
   return {
-    verbPolarity,
-    verb,
+    tense: emptyWordElement(),
+    indefiniteArticle: emptyWordElement(),
+    polarity,
+    word,
     type,
+    __typename: __TYPENAME_CONJUGATED_ENGLISH_VERB,
   }
   // return `${verbPolarity} ${word.english}`;
 };

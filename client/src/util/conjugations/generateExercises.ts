@@ -39,13 +39,18 @@ import {
 } from '../constants/optionsConstants';
 
 import {
-//   // PRIMARY_TYPE_NOUN,
+  // PRIMARY_TYPE_NOUN,
   PRIMARY_TYPE_VERB,
-//   // PRIMARY_TYPE_ADJECTIVE,
+  // PRIMARY_TYPE_ADJECTIVE,
 
   CATEGORY_HUMAN_NAME,
   CATEGORY_LOCATION,
 } from '../constants/wordConstants';
+
+import {
+  __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+} from '../constants/typeNameConstants';
+
 
 
 import nounConjugationJapanese from "./noun/nounConjugationJapanese";
@@ -55,7 +60,7 @@ import verbConjugationJapanese from "./verb/verbConjugationJapanese";
 import verbConjugationEnglish from "./verb/verbConjugationEnglish";
 
 
-const generateEnglishWord = (words: Util.SentenceWords, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishNoun | Util.ConjugatedEnglishVerb => {
+const generateEnglishWord = (words: Util.SentenceWords, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord | Util.ConjugatedEnglishWord => {
   switch (sentenceType) {
     case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, options, sentenceType);
     case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, options, sentenceType);
@@ -65,7 +70,7 @@ const generateEnglishWord = (words: Util.SentenceWords, options: Util.Options, s
   throw new Error(createError('conjugations/generateExercises.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
 };
 
-const generateJapaneseWord = (words: Util.SentenceWords, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedJapaneseNoun | Util.ConjugatedJapaneseVerb => {
+const generateJapaneseWord = (words: Util.SentenceWords, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedJapaneseWord | Util.ConjugatedJapaneseWord => {
   switch (sentenceType) {
     case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(words, options, sentenceType);
     case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(words, options, sentenceType);
@@ -82,31 +87,36 @@ const generateSentences = (words: Util.SentenceWords, options: Util.Options): Ut
   if (onlyTopic) {
     return {
       japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ]
+      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ],
+      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
   if (onlySubject) {
     return {
       japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
       englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     }
   };
   if (onlyVerb) {
     return  {
       japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
       englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH) ],
+      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
   if (onlyTopicAndSubject) {
     return  {
       japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE), generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
       englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH), generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };
   if (onlySubjectAndVerb) {
     return  {
       japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE), generateJapaneseWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
       englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH), generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };
   throw new Error(createError('conjugations/generateExercises.tsx', 'generateSentences', 'sentenceType does not exist'));

@@ -45,7 +45,7 @@ const determineAdjectiveEndingJapanese = (options: Util.Options): string => {
   //   default: 
   //     return createError(
   //       'conjugations/noun',
-  //       'nounPolarity',
+  //       'polarity',
   //       `options.polarity unknown`,
   //     );
   // }

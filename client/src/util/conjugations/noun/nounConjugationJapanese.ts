@@ -1,5 +1,6 @@
 import {
   createError,
+  emptyWordElement,
 } from '../../functions';
 
 import {
@@ -16,6 +17,10 @@ import {
 import {
   CATEGORY_HUMAN_NAME,
 } from '../../constants/wordConstants';
+
+import {
+  __TYPENAME_CONJUGATED_JAPANESE_NOUN,
+} from '../../constants/typeNameConstants';
 
 import {
   T,
@@ -110,20 +115,22 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
   return createWord([''], NOUN_JAPANESE_CONJUGATION);
 };
 
-const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseNoun => {
-  const noun = filtersentenceType(words, sentenceType);
+const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
+  const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_NOUN_JAPANESE;
 
   const nounEnding = determineNounConjugationJapanese(words, options, sentenceType);
-  const nounCategoryEnding = determineNounCategoryEnding(noun);
+  const nounCategoryEnding = determineNounCategoryEnding(word);
   const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
 
   return {
-    noun,
+    word,
     nounCategoryEnding,
     nounEnding,
+    conjugatedVerb: emptyWordElement(),
     nounTopicParticle,
     type,
+    __typename: __TYPENAME_CONJUGATED_JAPANESE_NOUN,
   }
 };
 

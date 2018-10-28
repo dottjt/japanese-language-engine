@@ -47,7 +47,7 @@ import {
 } from './optionsConstants';
 
 import {
-  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+  __TYPENAME_OPTIONS,
 } from './typeNameConstants';
 
 const createRes = (resourceType: string, urlString: string): Util.Resource => {
@@ -200,7 +200,7 @@ const randomQuestionValue = (): string => questionArray[randomArrayElement(quest
 const createLessonOptions = ( variation: string | string[], politeness?: string, polarity?: string, tense?: string, question?: string, gender?: string): Util.Options => {
  
   return {
-    __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+    __typename: __TYPENAME_OPTIONS,
     variation: typeof variation === 'string' ? variation : randomVariationValue(variation),
     question: question ? question : randomQuestionValue(),
     politeness: politeness ? politeness : randomPolitenessValue(),

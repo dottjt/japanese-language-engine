@@ -45,7 +45,7 @@ const defaults = {
     __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   },
   sentenceStats: {
-    nounPolarityHover: false,
+    polarityHover: false,
     nounPastHover: false,
     selectedExerciseNumber: 0,
     __typename: __TYPENAME_SENTENCE_STATS,

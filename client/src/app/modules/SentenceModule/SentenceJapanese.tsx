@@ -33,7 +33,7 @@ const phraseOptionsJapanese = (phraseArray: Util.WordArrayElement[], options: Ut
   return phraseArray;
 };
 
-const sentenceOptionsJapanese = (sentenceArray: Util.ConjugatedJapaneseArray, options: Util.Options): Util.ConjugatedJapaneseArray => {
+const sentenceOptionsJapanese = (sentenceArray: Util.ConjugatedJapaneseWord[], options: Util.Options): Util.ConjugatedJapaneseWord[] => {
   return sentenceArray;
 };
 
@@ -45,13 +45,13 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     return (
       <Sentence>
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
-          const nounPhrase = phrase as Util.ConjugatedJapaneseNoun;
-          const verbPhrase = phrase as Util.ConjugatedJapaneseVerb;
+          const nounPhrase = phrase as Util.ConjugatedJapaneseWord;
+          const verbPhrase = phrase as Util.ConjugatedJapaneseWord;
           
           switch(phrase.type) {
             case CONJUGATION_TYPE_NOUN_JAPANESE: 
 
-              const noun = tagArray([nounPhrase.noun.japanese.kanji], NOUN_JAPANESE);
+              const noun = tagArray([nounPhrase.word.japanese.kanji], NOUN_JAPANESE);
               const nounCategoryEnding = tagArray(nounPhrase.nounCategoryEnding.wordArray, nounPhrase.nounCategoryEnding.wordType);
               const nounEnding = tagArray(nounPhrase.nounEnding.wordArray, nounPhrase.nounEnding.wordType);
               const nounTopicParticle = tagArray(nounPhrase.nounTopicParticle.wordArray, nounPhrase.nounTopicParticle.wordType);
@@ -82,7 +82,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
                 </Phrase>
               );
           }
-          throw new Error(createError('SentenceModule.tsx', 'EnglishSentence', `${phrase.type} does not exist.`));
+          throw new Error(createError('SentenceModule.tsx', 'JapaneseSentence', `${phrase.type} does not exist.`));
         })
         }
       </Sentence>

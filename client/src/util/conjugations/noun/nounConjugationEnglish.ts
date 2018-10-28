@@ -9,10 +9,14 @@ import {
 } from '../../utilConjugation';
 
 import {
-  nounPolarityPermissions, 
+  polarityPermissions, 
   nounConjugationPermissionsEnglish,
-  nounIndefiniteArticlePermissionsEnglish,
+  indefiniteArticlePermissionsEnglish,
 } from './nounPermissions';
+
+import {
+  __TYPENAME_CONJUGATED_ENGLISH_NOUN,
+} from '../../constants/typeNameConstants';
 
 import {
   NOUN_ENGLISH_CONJUGATION,
@@ -43,7 +47,7 @@ import {
 
 const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Word, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounIndefiniteArticlePermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
+  const permissions = indefiniteArticlePermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     const vowels = 'aeiou';
@@ -60,7 +64,7 @@ const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Wo
 
 const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounPolarityPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
+  const permissions = polarityPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     if (options.polarity === POLARITY_NEGATIVE) {
@@ -102,20 +106,21 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return createWord([''], NOUN_ENGLISH_CONJUGATION);
 };
 
-const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishNoun => {
-  const noun = filtersentenceType(words, sentenceType);
+const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
+  const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_NOUN_ENGLISH;
 
-  const nounIndefiniteArticle = determineNounIndefiniteArticle(words, noun, sentenceType);
-  const nounPolarity = determineNounPolarity(words, options, sentenceType);
-  const nounTense = determineNounConjugationEnglish(words, options, sentenceType);
+  const indefiniteArticle = determineNounIndefiniteArticle(words, word, sentenceType);
+  const polarity = determineNounPolarity(words, options, sentenceType);
+  const tense = determineNounConjugationEnglish(words, options, sentenceType);
 
   return {
-    nounTense,
-    nounPolarity,
-    nounIndefiniteArticle,
-    noun,
+    tense,
+    polarity,
+    indefiniteArticle,
+    word,
     type,
+    __typename: __TYPENAME_CONJUGATED_ENGLISH_NOUN,
   };
 };
 
