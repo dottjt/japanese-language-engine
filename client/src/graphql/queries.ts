@@ -1,108 +1,248 @@
 import gql from 'graphql-tag';
 
-export const GET_ALL_WORDS_AND_OPTIONS = gql`{
-    nouns @client {
-      japanese @client {
-        kanji
-        # hiragana
-        # furigana
+// const sentenceDisplayOptions = gql`
+//   sentenceDisplayOptions @client {
+//     showSentenceStats 
+//   }
+// `;
+
+// const sentenceStats = gql`
+//   sentenceStats @client {
+//     polarityHover
+//     nounPastHover
+//     selectedExerciseNumber
+//   }
+// `;
+
+// const nouns = gql`
+//   nouns @client {
+//     japanese @client {
+//       kanji
+//       # hiragana
+//       # furigana
+//     }
+//     english @client {
+//       present
+//       past
+//     }
+//     primaryType
+//     category
+//     meta @client {
+//       verbType
+//     }
+//   }
+// `;
+
+export const GET_EXERCISES = gql`{
+  exercises @client {
+    englishSentence @client {
+      type
+      tense @client {
+        wordArray
+        wordType
       }
-      english @client {
-        present
-        past
+      polarity @client {
+        wordArray
+        wordType
       }
-      primaryType
-      category
-      meta @client {
-        verbType
+      indefiniteArticle @client {
+        wordArray
+        wordType
+      }
+      word @client {
+        japanese @client {
+          kanji
+          # hiragana
+          # furigana
+        }
+        english @client {
+          present
+          past
+        }
+        primaryType
+        category
+        meta @client {
+          verbType
+        }
       }
     }
 
-    sentenceDisplayOptions @client {
-      showSentenceStats 
+    japaneseSentence @client {
+      type
+      nounCategoryEnding @client {
+        wordArray
+        wordType
+      }
+      nounEnding @client {
+        wordArray
+        wordType
+      }
+      nounTopicParticle @client {
+        wordArray
+        wordType
+      }
+      conjugatedVerb @client {
+        wordArray
+        wordType
+      }
+      word @client {
+        japanese @client {
+          kanji
+          # hiragana
+          # furigana
+        }
+        english @client {
+          present
+          past
+        }
+        primaryType
+        category
+        meta @client {
+          verbType
+        }
+      }
     }
-
-    sentenceStats @client {
-      polarityHover
-      nounPastHover
-      selectedExerciseNumber
-    }
-
-    exercises @client {
-      englishSentence @client {
-        type
-        tense @client {
-          wordArray
-          wordType
-        }
-        polarity @client {
-          wordArray
-          wordType
-        }
-        indefiniteArticle @client {
-          wordArray
-          wordType
-        }
-        word @client {
-          japanese @client {
-            kanji
-            # hiragana
-            # furigana
-          }
-          english @client {
-            present
-            past
-          }
-          primaryType
-          category
-          meta @client {
-            verbType
-          }
-        }
-      }
-      japaneseSentence @client {
-        type
-        nounCategoryEnding @client {
-          wordArray
-          wordType
-        }
-        nounEnding @client {
-          wordArray
-          wordType
-        }
-        nounTopicParticle @client {
-          wordArray
-          wordType
-        }
-        conjugatedVerb @client {
-          wordArray
-          wordType
-        }
-        word @client {
-          japanese @client {
-            kanji
-            # hiragana
-            # furigana
-          }
-          english @client {
-            present
-            past
-          }
-          primaryType
-          category
-          meta @client {
-            verbType
-          }
-        }
-      }
-      options @client {
-        politeness
-        variation
-        polarity
-        tense
-        gender
-        question
-      }
+    
+    options @client {
+      politeness
+      variation
+      polarity
+      tense
+      gender
+      question
     }
   }
-`;
+}`;
+
+export const GET_NOUNS = gql`{
+  nouns @client {
+    japanese @client {
+      kanji
+      # hiragana
+      # furigana
+    }
+    english @client {
+      present
+      past
+    }
+    primaryType
+    category
+    meta @client {
+      verbType
+    }
+  }
+}`
+
+export const GET_ALL_WORDS_AND_OPTIONS = gql`{
+  
+  sentenceDisplayOptions @client {
+    showSentenceStats 
+  }
+
+  sentenceStats @client {
+    polarityHover
+    nounPastHover
+    selectedExerciseNumber
+  }
+
+  nouns @client {
+    japanese @client {
+      kanji
+      # hiragana
+      # furigana
+    }
+    english @client {
+      present
+      past
+    }
+    primaryType
+    category
+    meta @client {
+      verbType
+    }
+  }
+
+  exercises @client {
+    englishSentence @client {
+      type
+      tense @client {
+        wordArray
+        wordType
+      }
+      polarity @client {
+        wordArray
+        wordType
+      }
+      indefiniteArticle @client {
+        wordArray
+        wordType
+      }
+      word @client {
+        japanese @client {
+          kanji
+          # hiragana
+          # furigana
+        }
+        english @client {
+          present
+          past
+        }
+        primaryType
+        category
+        meta @client {
+          verbType
+        }
+      }
+    }
+
+    japaneseSentence @client {
+      type
+      nounCategoryEnding @client {
+        wordArray
+        wordType
+      }
+      nounEnding @client {
+        wordArray
+        wordType
+      }
+      nounTopicParticle @client {
+        wordArray
+        wordType
+      }
+      conjugatedVerb @client {
+        wordArray
+        wordType
+      }
+      word @client {
+        japanese @client {
+          kanji
+          # hiragana
+          # furigana
+        }
+        english @client {
+          present
+          past
+        }
+        primaryType
+        category
+        meta @client {
+          verbType
+        }
+      }
+    }
+    
+    options @client {
+      politeness
+      variation
+      polarity
+      tense
+      gender
+      question
+    }
+  }
+}`;
+
+// ${sentenceDisplayOptions}
+// ${sentenceStats}
+// ${nouns}
+// ${exercises}

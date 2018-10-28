@@ -23,7 +23,6 @@ import {
   // NOUN_JAPANESE_CATEGORY_ENDING,
 } from '../../../util/constants/optionsConstants';
 
-
 const wordArrayOptionsJapanese = (character: Util.WordArrayElement, japaneseSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
   const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
 
@@ -42,8 +41,6 @@ const sentenceOptionsJapanese = (sentenceArray: Util.ConjugatedJapaneseWord[], o
 };
 
 const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
-  console.log(sentenceStats.selectedExerciseNumber, exerciseIndex, tag);
-
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
     if (sentenceStats.polarityHover && tag === NOUN_JAPANESE_TOPIC_PARTICLE) {
       return 'red';
@@ -86,7 +83,6 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
                 <Phrase key={phraseIndex}>
                   {nounWordArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                     const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
-                    console.log(hoverColour)
                     return (
                       <JapaneseWord hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, nounWordArrayComplete.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
                     );

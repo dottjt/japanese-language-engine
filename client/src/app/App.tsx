@@ -11,7 +11,7 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
     return (
       <AppWrapper>
         <Sidebar/>
-        <Main auth={this.props.auth} route={this.props.route}/>
+        <Main auth={this.props.auth} route={this.props.route} previousRoute={this.props.previousRoute} />
       </AppWrapper> 
     );
   };

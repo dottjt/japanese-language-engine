@@ -11,7 +11,7 @@ import {
 } from '../../constants/typeNameConstants';
 
 export const wordDelicious = {
-  japanese: { 
+  japanese: {
     kanji: 'おいしい',
     // hiragana: 'おいしい',
     // furigana: 'oishi',

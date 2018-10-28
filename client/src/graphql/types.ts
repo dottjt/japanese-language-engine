@@ -1,5 +1,4 @@
 export const sentenceTypes = `
-
   type WordElement = {
     wordArray: [ String ]
     wordType: String
@@ -41,7 +40,7 @@ export const sentenceTypes = `
   type EnglishJapaneseOptionsSentence {
     englishSentence: [ ConjugatedEnglishWord ]
     japaneseSentence: [ ConjugatedJapaneseWord ] 
-    options: 
+    options: Options
   }
 `;
 
@@ -63,9 +62,7 @@ export const optionTypes = `
     tense: String
     gender: String
     question: String
-  };
-
-
+  }
 `;
 
 export const index = `
@@ -74,9 +71,9 @@ export const index = `
   }
 
   type Query {
-    exercises: 
+    exercises?: [ EnglishJapaneseOptionsSentence ]
     sentenceStats: SentenceStats
     sentenceDisplayOptions: SentenceDisplayOptions
-    nouns: [Word]
+    nouns: [ Word ]
   }
 `;

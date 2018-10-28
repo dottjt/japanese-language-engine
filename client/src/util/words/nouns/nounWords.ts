@@ -16,7 +16,7 @@ import {
 // HUMAN
 
 export const wordPerson = {
-  japanese: { 
+  japanese: {
     kanji: '人',
     // hiragana: 'ひと',
     // furigana: 'hito',

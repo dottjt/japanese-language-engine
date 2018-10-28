@@ -4,6 +4,7 @@ declare module PropTypes {
   export type IAppProps = {
     auth: any,
     route: any, // NOTE: Will need to get proper type. 
+    previousRoute: any,
   }
 
   export type ILoginProps = {
@@ -17,6 +18,7 @@ declare module PropTypes {
   export type IMainProps = {
     auth: any,
     route: any, // NOTE: Will need to get proper type. 
+    previousRoute: any,
   }
   
   // Component props 

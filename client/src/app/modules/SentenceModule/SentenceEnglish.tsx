@@ -48,7 +48,6 @@ const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], opt
 };
 
 const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string => {
-  // console.log(sentenceStats.selectedExerciseNumber, exerciseIndex, tag);
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
     if (sentenceStats.polarityHover && tag === NOUN_ENGLISH_POLARITY) {
       return 'red';

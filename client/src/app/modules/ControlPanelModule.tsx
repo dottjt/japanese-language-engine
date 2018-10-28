@@ -62,14 +62,14 @@ class ControlPanelModule extends React.Component<PropTypes.IOptionsProps, {}> {
   private politenessCallback = (value: string): void =>
     this.props.client.writeData({
       data: {
-        SentenceDisplayOptions: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
+        sentenceDisplayOptions: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
       }
     });
 
   private variationCallback = (value: string): void => {
     this.props.client.writeData({
       data: {
-        SentenceDisplayOptions: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
+        sentenceDisplayOptions: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
       }
     });
   };

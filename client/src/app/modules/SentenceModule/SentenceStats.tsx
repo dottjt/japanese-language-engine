@@ -30,7 +30,7 @@ import {
 
 const sentenceStatsObject = (sentenceStatsFields: any): any => ({
   data: { sentenceStats: { __typename: __TYPENAME_SENTENCE_STATS, ...sentenceStatsFields }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
-})
+});
 
 class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   public render() {
@@ -61,14 +61,12 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   private onPolarityExit = () => {
     this.props.client.writeData(sentenceStatsObject({ polarityHover: false }));
   }
-  
   private onPolitenessEnter = (exerciseIndex: number) => {
     this.props.client.writeData(sentenceStatsObject({ nounPolitenessHover: true, selectedExerciseNumber: exerciseIndex }));
   }
   private onPolitenessExit = () => {
     this.props.client.writeData(sentenceStatsObject({ nounPolitenessHover: false }));
   }
-
 };
 
 export default SentenceStats;
