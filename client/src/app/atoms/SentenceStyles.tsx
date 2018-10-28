@@ -11,13 +11,15 @@ export const Phrase = styled.div`
   display: flex;
 `;
 
-export const JapaneseWord = styled.div`
+export const JapaneseWord = styled.div<{ hoverColour?: string }>`
   display: flex;
+  background: ${props => props.hoverColour || 'white'};
 `;
 
-export const EnglishWord = styled.div`
+export const EnglishWord = styled.div<{ hoverColour?: string }>`
   display: flex;
   margin-right: 0.2rem;
+  background: ${props => props.hoverColour || 'white'};
 `;
 
 // Sentence Stats

@@ -40,7 +40,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
-          console.log(data);
           switch (this.props.route.name) { /* this.props.previousRoute */
             case ROUTE_TITLE.APP:
               return (

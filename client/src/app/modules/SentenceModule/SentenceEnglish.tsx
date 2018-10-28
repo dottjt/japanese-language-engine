@@ -18,7 +18,11 @@ import {
   CONJUGATION_TYPE_VERB_ENGLISH,
 
   VERB_ENGLISH,
+  // VERB_ENGLISH_CONJUGATION,
   NOUN_ENGLISH,
+  // NOUN_ENGLISH_CONJUGATION,
+  NOUN_ENGLISH_POLARITY,
+  // NOUN_ENGLISH_INDEFINITE_ARTICLE,
 } from '../../../util/constants/optionsConstants';
 
 const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
@@ -43,10 +47,28 @@ const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], opt
   return sentenceArray;
 };
 
+const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string => {
+  // console.log(sentenceStats.selectedExerciseNumber, exerciseIndex, tag);
+  if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
+    if (sentenceStats.polarityHover && tag === NOUN_ENGLISH_POLARITY) {
+      return 'red';
+    }
+
+    // switch(`{tag}`) {
+    //   case VERB_ENGLISH: return 'blue';
+    //   case VERB_ENGLISH_CONJUGATION: return 'green';
+    //   case NOUN_ENGLISH: return 'red';
+    //   case NOUN_ENGLISH_CONJUGATION: return 'orange';
+    //   case NOUN_ENGLISH_POLARITY: return 'purple';
+    //   case NOUN_ENGLISH_INDEFINITE_ARTICLE: return 'yellow';
+    // }  
+  }
+  return '';  
+};
 
 class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
   public render() {
-    const { /* sentenceStats,*/ sentence, options } = this.props;
+    const { /* sentenceStats,*/ sentence, options, exerciseIndex } = this.props;
     const phraseArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
@@ -69,9 +91,12 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
 
                 return (
                   <Phrase key={phraseIndex}>
-                    {nounPhraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => (
-                      <EnglishWord key={nounIndex}>{wordOptionsEnglish(word, nounPhraseArrayComplete.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
-                    ))}
+                    {nounPhraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
+                      const hoverColour = convertSentenceStatsEnglish(this.props.sentenceStats, exerciseIndex, word.tag);
+                      return (
+                        <EnglishWord hoverColour={hoverColour} key={nounIndex}>{wordOptionsEnglish(word, nounPhraseArrayComplete.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
+                      );
+                    })}
                   </Phrase>
                 );
               
@@ -86,9 +111,12 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
                 
                 return (
                   <Phrase key={phraseIndex}>
-                    {verbPhraseArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => (
-                      <EnglishWord key={verbIndex}>{wordOptionsEnglish(word, verbPhraseArrayComplete.length, options, verbIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
-                    ))}
+                    {verbPhraseArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => {
+                      const hoverColour = convertSentenceStatsEnglish(this.props.sentenceStats, exerciseIndex, word.tag);
+                      return (
+                        <EnglishWord hoverColour={hoverColour} key={verbIndex}>{wordOptionsEnglish(word, verbPhraseArrayComplete.length, options, verbIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
+                      )
+                    })}
                   </Phrase>
                 );
             }

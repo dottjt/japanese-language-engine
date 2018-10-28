@@ -16,7 +16,11 @@ import {
   CONJUGATION_TYPE_VERB_JAPANESE,
 
   VERB_JAPANESE,
+  // VERB_JAPANESE_CONJUGATION,
   NOUN_JAPANESE,
+  // NOUN_JAPANESE_CONJUGATION,
+  NOUN_JAPANESE_TOPIC_PARTICLE,
+  // NOUN_JAPANESE_CATEGORY_ENDING,
 } from '../../../util/constants/optionsConstants';
 
 
@@ -37,9 +41,28 @@ const sentenceOptionsJapanese = (sentenceArray: Util.ConjugatedJapaneseWord[], o
   return sentenceArray;
 };
 
+const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
+  console.log(sentenceStats.selectedExerciseNumber, exerciseIndex, tag);
+
+  if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
+    if (sentenceStats.polarityHover && tag === NOUN_JAPANESE_TOPIC_PARTICLE) {
+      return 'red';
+    }
+    // switch(tag) {
+    //   case VERB_JAPANESE: return 'blue';
+    //   case VERB_JAPANESE_CONJUGATION: return 'green';
+    //   case NOUN_JAPANESE: return 'red';
+    //   case NOUN_JAPANESE_CONJUGATION: return 'orange';
+    //   case NOUN_JAPANESE_TOPIC_PARTICLE: return 'purple';
+    //   case NOUN_JAPANESE_CATEGORY_ENDING: return 'yellow';
+    // }
+  }
+  return undefined;
+};
+
 class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps, {}> {
   public render() {
-    const { sentence, options } = this.props;
+    const { sentence, options, exerciseIndex } = this.props;
     const sentenceArrayComplete = sentenceOptionsJapanese(sentence, options);
 
     return (
@@ -61,9 +84,13 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
 
               return (
                 <Phrase key={phraseIndex}>
-                  {nounWordArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => (
-                    <JapaneseWord key={nounIndex}>{wordArrayOptionsJapanese(word, nounWordArrayComplete.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
-                  ))}
+                  {nounWordArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
+                    const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
+                    console.log(hoverColour)
+                    return (
+                      <JapaneseWord hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, nounWordArrayComplete.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
+                    );
+                  })}
                 </Phrase>
               );
             
@@ -76,9 +103,13 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
               
               return (
                 <Phrase key={phraseIndex}>
-                  {verbWordArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => (
-                    <JapaneseWord key={verbIndex}>{wordArrayOptionsJapanese(word, verbWordArrayComplete.length, options, verbIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
-                  ))}
+                  {verbWordArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => {
+                    const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);
+                    console.log(hoverColour)
+                    return (
+                      <JapaneseWord hoverColour={hoverColour} key={verbIndex}>{wordArrayOptionsJapanese(word, verbWordArrayComplete.length, options, verbIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
+                    );
+                  })}
                 </Phrase>
               );
           }

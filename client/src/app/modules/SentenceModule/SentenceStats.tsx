@@ -28,8 +28,6 @@ import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from "../../../util/constants/typeNameConstants";
 
-
-
 const sentenceStatsObject = (sentenceStatsFields: any): any => ({
   data: { sentenceStats: { __typename: __TYPENAME_SENTENCE_STATS, ...sentenceStatsFields }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
 })
@@ -42,14 +40,14 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
       this.props.sentenceDisplayOptions.showSentenceStats &&
         <SentenceStat>
           <Stat 
-            onMouseEnter={() => this.onPolarityEnter(exerciseIndex)}
-            onMouseLeave={this.onPolarityExit}
+            onMouseEnter={() => this.onPolitenessEnter(exerciseIndex)}
+            onMouseLeave={this.onPolitenessExit}
           >
             {convertPolitenessIntoValue(politeness)}
           </Stat>
           <Stat 
-            onMouseEnter={() => this.onPolitenessEnter(exerciseIndex)}
-            onMouseLeave={this.onPolitenessExit}
+            onMouseEnter={() => this.onPolarityEnter(exerciseIndex)}
+            onMouseLeave={this.onPolarityExit}
           >
             {convertPolarityIntoValue(polarity)}
           </Stat>
@@ -58,14 +56,14 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   }
 
   private onPolarityEnter = (exerciseIndex: number) => {
-    this.props.client.writeData(sentenceStatsObject({ polarityHover: true, exerciseNumber: exerciseIndex }));
+    this.props.client.writeData(sentenceStatsObject({ polarityHover: true, selectedExerciseNumber: exerciseIndex }));
   }
   private onPolarityExit = () => {
     this.props.client.writeData(sentenceStatsObject({ polarityHover: false }));
   }
   
   private onPolitenessEnter = (exerciseIndex: number) => {
-    this.props.client.writeData(sentenceStatsObject({ nounPolitenessHover: true, exerciseNumber: exerciseIndex }));
+    this.props.client.writeData(sentenceStatsObject({ nounPolitenessHover: true, selectedExerciseNumber: exerciseIndex }));
   }
   private onPolitenessExit = () => {
     this.props.client.writeData(sentenceStatsObject({ nounPolitenessHover: false }));
