@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { AppWrapper } from './atoms/LayoutStyles';
+import { Flex } from './atoms/LayoutStyles';
 
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
@@ -9,10 +9,10 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
 
   public render() {
     return (
-      <AppWrapper>
+      <Flex>
         <Sidebar/>
         <Main auth={this.props.auth} route={this.props.route} previousRoute={this.props.previousRoute} />
-      </AppWrapper> 
+      </Flex> 
     );
   };
 };

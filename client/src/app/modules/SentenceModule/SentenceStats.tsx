@@ -30,7 +30,6 @@ import {
 class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   public render() {
     const { exerciseIndex } = this.props;
-    // const { polarityTenseValue, questionValue, politenessValue } 
     const statTypes = determineStatTypes(this.props.options);
 
     return (

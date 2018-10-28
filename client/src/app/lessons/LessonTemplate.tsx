@@ -1,10 +1,10 @@
 
 import * as React from 'react';
 
-import { PageWrapper, ModuleWrapper } from '../atoms/LayoutStyles';
-import { H2 } from '../atoms/TextStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
+import { Heading } from '../atoms/TextStyles';
 
-import ExerciseOptionsModule from '../modules/ControlPanelModule';
+// import ControlPanelModule from '../modules/ControlPanelModule';
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
 // import ResourcesModule from '../modules/ResourcesModule';
 // import ExplanationModule from '../modules/ExplanationModule';
@@ -12,30 +12,30 @@ import SentenceModule from '../modules/SentenceModule/SentenceModule';
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
     return (
-      <PageWrapper>
-        <H2>{this.props.title}</H2>
+      <FlexColumn width={[1]} ml={4}>
+        <Heading is='h2'>{this.props.title}</Heading>
         
-        {/* <ModuleWrapper>
-          <Heading>Grammatical Resources</Heading>
+        {/* <FlexColumn mt={4}>
+          <Heading is='h2'>Grammatical Resources</Heading>
           <Text>Please have a read of these resources in order to understand the grammar.</Text>
           <ResourcesModule
             resources={this.props.resources}
           />
-        </ModuleWrapper>
+        </FlexColumn>
 
-        <ModuleWrapper>
-          <Heading>Additional Notes</Heading>
+        <FlexColumn mt={4}>
+          <Heading is='h2'>Additional Notes</Heading>
           <ExplanationModule
             explanation={this.props.explanation}
           />
-        </ModuleWrapper> */}
+        </FlexColumn> */}
 
-        <ModuleWrapper>
-          <H2>Lesson Exercises</H2>
-          <ExerciseOptionsModule
+        <FlexColumn mt={4}>
+          <Heading is='h2'>Lesson Exercises</Heading>
+          {/* <ControlPanelModule
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={this.props.client}
-          />
+          /> */}
           {this.props.exercises.map((exercise, exerciseIndex) => (
             <SentenceModule
               key={exerciseIndex}
@@ -48,8 +48,8 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
               japaneseSentence={exercise.japaneseSentence}
             />
           ))}
-        </ModuleWrapper>
-      </PageWrapper>
+        </FlexColumn>
+      </FlexColumn>
     );
   };
 };

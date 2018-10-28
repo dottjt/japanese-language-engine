@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { PageWrapper } from '../atoms/LayoutStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
 
 class Page404 extends React.Component<{}, {}> {
   public render() {
     return (
-      <PageWrapper>
+      <FlexColumn>
         404'd
-      </PageWrapper> 
+      </FlexColumn> 
     );
   };
 };

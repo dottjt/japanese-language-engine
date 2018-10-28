@@ -1,29 +1,35 @@
-import styled from 'styled-components';
+// import { Text as RebassText } from 'rebass';
+// import styled from 'styled-components';
+import system from 'system-components';
 
-export const H1 = styled.h1`
-  font-size: 2rem;
-`;
+export const Text = system(
+  {
+    is: 'p',
+    fontSize: 2,
+    color: 'dark-gray',
+    fontFamily: 'sansSerif',
+  },
+  'space',
+  'width',
+  'textAlign',
+  'lineHeight',
+  'fontWeight',
+  'letterSpacing',
+);
+Text.displayName = 'Text';
 
-export const H2 = styled.h2`
-  font-size: 1.4rem;
-`;
-
-export const H3 = styled.h3`
-  font-size: 1.2rem;
-`;
-
-export const H4 = styled.h4`
-  font-size: 1.1rem;
-`;
-
-export const H5 = styled.h5`
-  font-size: 1rem;
-`;
-
-export const H6 = styled.h6`
-  font-size: 1rem;
-`;
-
-export const Text = styled.p`
-  font-size: 1rem;
-`;
+export const Heading = system(
+  {
+    is: 'h1',
+    m: 0,
+    fontSize: 6,
+    color: 'dark-gray',
+    fontFamily: 'sansSerif',
+  },
+  'width',
+  'textAlign',
+  'lineHeight',
+  'fontWeight',
+  'letterSpacing',
+);
+Heading.displayName = 'Heading';

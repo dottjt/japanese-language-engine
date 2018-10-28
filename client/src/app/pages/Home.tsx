@@ -15,16 +15,15 @@ import {
   HomepageWrapper, 
   MainWrapper, 
   HomepageSection, 
-  List, 
+  List,
   Item,
   PricingWrapper,
-  PricingCard,
+  Card,
   PricingList,
   PricingListItem,
-  Price,
   PricingButtonStyles,
 } from '../atoms/HomeStyles';
-import { H1, H2, H3, Text } from '../atoms/TextStyles';
+import { Heading, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
 
 class Home extends React.Component<{}, { randomIndex: number }> {
@@ -47,10 +46,10 @@ class Home extends React.Component<{}, { randomIndex: number }> {
             <HomepageWrapper>
               <Navbar/>
               <MainWrapper>
-                <H1>Watashi Engine.</H1>
+                <Heading>Watashi Engine.</Heading>
                 
                 <HomepageSection>
-                  <H2>What is it?</H2>
+                  <Heading is='h2'>What is it?</Heading>
                   <Text>A highly sophisticated Japanese language engine.</Text>
                   <Button onClick={this.randomiseSentence}>Random</Button>
                   {/* <SentenceModule
@@ -62,7 +61,7 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                 </HomepageSection>
                 
                 <HomepageSection>
-                  <H2>Features</H2>
+                  <Heading is='h2'>Features</Heading>
                   <List>
                     <Item>Allows you to create a variety of accurate Japanese sentences using random Kanji.</Item>
                     <Item>Provides in-depth analysis of Japanese word and sentence structure. </Item>
@@ -74,7 +73,7 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                 </HomepageSection>
 
                 <HomepageSection>
-                  <H2>What it doesn't do</H2>
+                  <Heading is='h2'>What it doesn't do</Heading>
                   <List>
                     <Item>Translate arbitrary Japanese text into English.</Item>
                     <Item>Focus on enhancing your vocabulary or speaking skills.</Item>
@@ -84,44 +83,44 @@ class Home extends React.Component<{}, { randomIndex: number }> {
 
 
                 <HomepageSection>
-                  <H2>Pricing</H2>
+                  <Heading is='h2'>Pricing</Heading>
                 </HomepageSection>
 
                 <PricingWrapper>
 
-                  <PricingCard>
-                    <H3>Free</H3>
-                    <Price>$0</Price>
+                  <Card borderColor="blacks.3">
+                    <Heading is='h3'>Free</Heading>
+                    <Heading is='h2'>$0</Heading>
                     <PricingList>
                       <PricingListItem>Limited access to basic grammar exercises.</PricingListItem>
                       <PricingListItem>Try Watashi Engine before you buy.</PricingListItem>
                     </PricingList>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
-                  </PricingCard>
+                  </Card>
 
-                  <PricingCard>
-                    <H3>Monthly</H3>
-                    <Price>$7.95</Price>
+                  <Card borderColor="blacks.3">
+                    <Heading is='h3'>Monthly</Heading>
+                    <Heading is='h2'>$7.95</Heading>
                     <PricingList>
                       <PricingListItem>Full access to the Watashi Engine.</PricingListItem>
                       <PricingListItem>Full access to all 100+ grammar exercises.</PricingListItem>
                     </PricingList>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
-                  </PricingCard>
+                  </Card>
 
-                  <PricingCard>
-                    <H3>Yearly</H3>
-                    <Price>$59.95</Price>
+                  <Card borderColor="blacks.3">
+                    <Heading is='h3'>Yearly</Heading>
+                    <Heading is='h2'>$59.95</Heading>
                     <PricingList>
-                      <PricingListItem>Full access to the Watashi Engine at a discounted price.</PricingListItem>
+                      <PricingListItem>Full access to the Watashi Engine at a discounted Heading.</PricingListItem>
                     </PricingList>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</Link>
-                  </PricingCard>
+                  </Card>
 
                 </PricingWrapper>
 
                 <HomepageSection>
-                  <H2>Strong use cases</H2>
+                  <Heading is='h2'>Strong use cases</Heading>
                   <List>
                     <Item>Students aiming to take the isntantaneous composition method seriously.</Item>
                     <Item>Students who benefit from a micro approach towards language.</Item>
@@ -131,7 +130,7 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                 </HomepageSection>
 
                 <HomepageSection>
-                  <H2>Free features</H2>
+                  <Heading is='h2'>Free features</Heading>
                   <List>
                     <Item>Limited access to the basic grammar course.</Item>
                     <Item>Limited access the grammar engine.</Item>
@@ -139,7 +138,7 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                 </HomepageSection>
             
                 <HomepageSection>
-                  <H2>Premium features</H2>
+                  <Heading is='h2'>Premium features</Heading>
                   <List>
                     <Item>Full Access to all 100 pre-defined grammar exercises.</Item>
                     <Item>Exercises ranging from N1 to N5 JLPT levels.</Item>
@@ -148,7 +147,7 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                 </HomepageSection>
 
                 <HomepageSection>
-                  <H2>Try Watashi Engine Today</H2>
+                  <Heading is='h2'>Try Watashi Engine Today</Heading>
                     <Text>Decide before you buy.</Text>
                     <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
                 </HomepageSection>

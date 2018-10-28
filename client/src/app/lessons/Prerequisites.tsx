@@ -1,25 +1,25 @@
 import * as React from 'react';
 
-import { PageWrapper, FlexColumn } from '../atoms/LayoutStyles';
-import { H3, Text } from '../atoms/TextStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
+import { Heading, Text } from '../atoms/TextStyles';
 
 class Prerequistes extends React.Component<{}, {}> {
   public render() {
     return (
-      <PageWrapper>
+      <FlexColumn width={[1]} ml={4}>
         <FlexColumn>
-          <H3>
+          <Heading is='h3'>
             Prequisites
-          </H3>
+          </Heading>
           <Text>
             This application heavily utilises 
           </Text>
         </FlexColumn>
 
         <FlexColumn>
-          <H3>
+          <Heading is='h3'>
             My number one recommendation
-          </H3>
+          </Heading>
           <Text>
             Having learnt Japanese to a sufficient degree, there is one single point I can recommend for your future progress.
           </Text>
@@ -51,9 +51,9 @@ class Prerequistes extends React.Component<{}, {}> {
             It is not mean to be a one-to-one translation. It is a fluid interpretation and if you can keep this in mind, you'll do well.             
           </Text>
 
-          <H3>
+          <Heading is='h3'>
             Effective Learning
-          </H3>
+          </Heading>
           <Text>
             There really are two aspects to keep in mind: Understanding and active practice.
           </Text>
@@ -61,7 +61,7 @@ class Prerequistes extends React.Component<{}, {}> {
             What this application essentially provides is the active practice aspect of this equation. 
           </Text>
         </FlexColumn> 
-    </PageWrapper> 
+    </FlexColumn> 
     );
   };
 };

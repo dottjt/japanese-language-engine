@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { NavbarWrapper, NavbarLogo, NavbarLinks } from '../atoms/NavbarStyles';
+import { NavbarWrapper, NavbarLinks } from '../atoms/NavbarStyles';
+import { Heading } from '../atoms/TextStyles';
 import { Link } from 'react-router5';
 
 import { ROUTE_TITLE } from '../../util/constants/generalConstants';
@@ -9,9 +10,9 @@ class Navbar extends React.Component<{}, {}> {
   public render() {
     return (
       <NavbarWrapper>
-        <NavbarLogo>
+        <Heading>
           Watashi Engine
-        </NavbarLogo>
+        </Heading>
 
         <NavbarLinks>
           <Link routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</Link>

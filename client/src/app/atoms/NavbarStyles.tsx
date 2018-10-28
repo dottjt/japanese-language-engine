@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Flex } from './LayoutStyles';
-import { H3 } from './TextStyles';
 
 export const NavbarWrapper = styled(Flex)`
   height: 4rem;
@@ -20,8 +19,4 @@ export const NavbarWrapper = styled(Flex)`
 export const NavbarLinks = styled(Flex)`
   width: 300px;
   justify-content: space-around;
-`;
-
-export const NavbarLogo = styled(H3)`
-  margin-left: 2rem;
 `;

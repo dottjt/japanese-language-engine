@@ -1,16 +1,16 @@
 import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 
-import { PageWrapper } from '../atoms/LayoutStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
 
 import example from '../../blog/example.md';
 
 class Blog extends React.Component {
   public render() {
     return (
-      <PageWrapper>
+      <FlexColumn>
         <Markdown>{example}</Markdown>
-      </PageWrapper>
+      </FlexColumn>
     );
   }
 }

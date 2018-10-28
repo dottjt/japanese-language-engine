@@ -18,7 +18,8 @@ import {
 } from '../../../util/constants/optionsConstants';
 
 import {
-  __TYPENAME_SENTENCE_STATS
+  __TYPENAME_SENTENCE_STATS,
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from '../../../util/constants/typeNameConstants';
 
 const determinePolarityTense = (polarity: string, tense: string): string | undefined => {

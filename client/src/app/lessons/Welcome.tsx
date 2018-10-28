@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { PageWrapper } from '../atoms/LayoutStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
 
 class WelcomePage extends React.Component<{}, {}> {
   public render() {
     return (
-      <PageWrapper>
+      <FlexColumn width={[1]} ml={4}>
         <p>helli</p>
-      </PageWrapper> 
+      </FlexColumn> 
     );
   };
 };

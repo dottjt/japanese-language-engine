@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PageWrapper } from '../atoms/LayoutStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
 import { Button } from '../atoms/ClickableStyles';
 
 class LoginPage extends React.Component<PropTypes.ILoginProps, {}> {
@@ -16,7 +16,7 @@ class LoginPage extends React.Component<PropTypes.ILoginProps, {}> {
   public render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <PageWrapper>
+      <FlexColumn>
         {!isAuthenticated() && (
           <Button
             className="btn-margin"
@@ -35,7 +35,7 @@ class LoginPage extends React.Component<PropTypes.ILoginProps, {}> {
               </Button>
             )
         }
-      </PageWrapper> 
+      </FlexColumn> 
     );
   };
 };

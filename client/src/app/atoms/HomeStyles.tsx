@@ -1,6 +1,5 @@
-import { Card } from 'rebass';
+import { Card as RebassCard } from 'rebass';
 import { Flex, FlexColumn } from './LayoutStyles';
-import { H2 } from './TextStyles';
 
 import styled from 'styled-components';
 
@@ -31,7 +30,6 @@ export const Item = styled.li`
   margin-bottom: 0.8rem;
 `;
 
-
 // Pricing
 
 export const PricingWrapper = styled(Flex)`
@@ -39,20 +37,15 @@ export const PricingWrapper = styled(Flex)`
   margin-bottom: 4rem;
 `;
 
-export const PricingCard = styled(Card)`
+export const Card = styled(RebassCard)`
   position: relative;
   flex: 1;
-  border: 1px solid lightgrey;
   border-radius: 0;
   padding: 2rem;
   padding-bottom: 6rem;
 
   flex-wrap: wrap;
   max-width: 300px;
-`;
-
-export const Price = styled(H2)`
-  font-size: 2rem;
 `;
 
 export const PricingList = styled.ul`

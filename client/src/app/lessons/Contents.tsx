@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import { PageWrapper } from '../atoms/LayoutStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
 
 import Sidebar from '../components/Sidebar';
 
 class ContentsPage extends React.Component<{}, {}> {
   public render() {
     return (
-      <PageWrapper>
+      <FlexColumn width={[1]} ml={4}>
         <Sidebar/>
-      </PageWrapper> 
+      </FlexColumn> 
     );
   };
 };
