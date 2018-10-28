@@ -65,7 +65,7 @@ declare namespace Util {
   export type ConjugatedEnglishWord = {
     type: string; // noun, verb
     tense: WordElement; // noun
-    polarity:  WordElement; // noun, verb
+    polarity: WordElement; // noun, verb
     indefiniteArticle: WordElement; // noun
     word: Word; // noun, verb
     __typename: string; // noun, verb
@@ -73,11 +73,11 @@ declare namespace Util {
 
   export type Options = {
     __typename: string;
-    politeness: string; // casual, formal
+    politeness: string; // POLITENESS_CASUAL, POLITENESS_FORMAL
     variation: string; // wa-sob,
-    polarity: string; // positive, negative
-    tense: string; // past, present
-    gender: string; // masculine, feminine
+    polarity: string; // POLARITY_POSITIVE, POLARITY_NEGATIVE
+    tense: string; // TENSE_PRESENT, TENSE_PAST
+    gender: string; // GENDER_MASCULINE, GENDER_FEMININE
     question: string; // HAS_QUESTION, NOT_QUESTION
   };
 
