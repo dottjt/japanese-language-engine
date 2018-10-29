@@ -5,18 +5,29 @@ import { Text } from './TextStyles';
 import styled from 'styled-components';
 // import system from 'system-components';
 
-export const SentenceStatsWrapper = styled(Flex)<any>`
+export const ToggleSentenceStats = styled(Flex)<any>`
   visibility: ${props => props.togglevisibility};
 `;
 
-SentenceStatsWrapper.defaultProps = {
+ToggleSentenceStats.defaultProps = {
   togglevisibility: 'visible',
 };
 
-export const Word = styled(Text)<any>`
+
+export const TextHover = styled(Text)<any>`
   background: ${props => props.hovercolour};
 `;
 
-Word.defaultProps = {
+TextHover.defaultProps = {
   hovercolour: 'white',
 };
+
+
+export const ToggleSentenceOrder = styled(Flex)<any>`
+  flex-direction: ${props => props.sentenceorder};
+`;
+
+ToggleSentenceOrder.defaultProps = {
+  sentenceorder: 'column',
+};
+

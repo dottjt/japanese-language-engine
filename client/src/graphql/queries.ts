@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 // const sentenceDisplayOptions = gql`
 //   sentenceDisplayOptions @client {
-//     showSentenceStats 
+//     toggleSentenceStats 
 //   }
 // `;
 
@@ -136,8 +136,8 @@ export const GET_NOUNS = gql`{
 export const GET_ALL_WORDS_AND_OPTIONS = gql`{
   
   sentenceDisplayOptions @client {
-    showSentenceStats
-    firstExerciseEnglish
+    toggleSentenceStats
+    toggleSentenceOrder
   }
 
   sentenceStats @client {

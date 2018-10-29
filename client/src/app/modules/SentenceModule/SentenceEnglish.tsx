@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { Flex } from '../../atoms/LayoutStyles';
-import { Word } from '../../atoms/CustomStyles';
+import { TextHover } from '../../atoms/CustomStyles';
 import {
   // capitalise,
   startOfSentence,
@@ -79,7 +79,7 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
               {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                 const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
                 return (
-                  <Word mr={1} hovercolour={hoverColour} key={nounIndex}>{wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</Word>
+                  <TextHover mr={1} hovercolour={hoverColour} key={nounIndex}>{wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</TextHover>
                 );
               })}
             </Flex>

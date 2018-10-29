@@ -1,10 +1,13 @@
 import * as React from 'react'
 
 import { FlexColumn } from '../../atoms/LayoutStyles';
+import { ToggleSentenceOrder } from '../../atoms/CustomStyles';
 
 import SentenceStats from './SentenceStats';
 import SentenceEnglish from './SentenceEnglish';
 import SentenceJapanese from './SentenceJapanese';
+
+const toggleSentenceOrder = (value: boolean): string => value ? 'column' : 'column-reverse';
 
 class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {    
@@ -19,7 +22,7 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
           options={options}
           exerciseIndex={exerciseIndex}
         />
-        {/* <FlexColumn> */}
+        <ToggleSentenceOrder sentenceorder={toggleSentenceOrder(sentenceDisplayOptions.toggleSentenceOrder)}>
           <SentenceEnglish 
             client={client}
             sentenceStats={sentenceStats}
@@ -34,7 +37,7 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
             options={options}
             exerciseIndex={exerciseIndex}
           />
-        {/* </FlexColumn> */}
+        </ToggleSentenceOrder>
       </FlexColumn>
     );
   };

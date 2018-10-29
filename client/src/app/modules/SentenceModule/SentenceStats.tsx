@@ -1,18 +1,14 @@
 import * as React from 'react'
 
-import { Flex } from '../../atoms/LayoutStyles';
 import { Text } from '../../atoms/TextStyles';
-import { SentenceStatsWrapper } from '../../atoms/CustomStyles';
-
-import {
-  visibleOrHidden
-} from '../../../util/functions';
+import { ToggleSentenceStats } from '../../atoms/CustomStyles';
 
 import {
   determineStatTypes,
   changeSentenceStats,
 } from './sentenceUtil';
 
+const toggleSentenceStats = (value: boolean): string => value ? 'visible' : 'hidden';
 
 class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   public render() {
@@ -20,7 +16,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
     const statTypes = determineStatTypes(this.props.options);
 
     return (
-        <SentenceStatsWrapper togglevisibility={visibleOrHidden(sentenceDisplayOptions.showSentenceStats)} justifyContent='flex-end'>
+        <ToggleSentenceStats togglevisibility={toggleSentenceStats(sentenceDisplayOptions.toggleSentenceStats)} justifyContent='flex-end'>
           {statTypes.questionValue &&
             <Text mr={4} p={2} color='lightgreen'
               onMouseEnter={() => this.onQuestionEnter(exerciseIndex)}
@@ -45,7 +41,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
               {statTypes.polarityTenseValue}
             </Text>
           }
-        </SentenceStatsWrapper>
+        </ToggleSentenceStats>
     );
   }
 

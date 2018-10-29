@@ -53,7 +53,7 @@ export const optionTypes = `
   }
 
   type SentenceDisplayOptions {
-    showSentenceStats: Boolean
+    toggleSentenceStats: Boolean
   }
 
   type Options {

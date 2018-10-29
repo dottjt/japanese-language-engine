@@ -13,8 +13,8 @@ import allWords from '../util/words/collection';
 const defaults = {
   nouns: allWords,
   sentenceDisplayOptions: {
-    showSentenceStats: true,
-    firstExerciseEnglish: true, 
+    toggleSentenceStats: true,
+    toggleSentenceOrder: true, 
     __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   },
   sentenceStats: {

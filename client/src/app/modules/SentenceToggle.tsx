@@ -49,13 +49,13 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
     const { client, route, sentenceDisplayOptions } = this.props;
     return (
       <FlexColumn>
-        <Button onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.showSentenceStats)}>
+        <Button onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.toggleSentenceStats)}>
           Toggle sentence stats
         </Button>
         <Button onClick={() => this.randomiseExerices(client, route.path)}>
           Randomise exercises
         </Button>
-        <Button onClick={() => this.switchLanguage(client, sentenceDisplayOptions.firstExerciseEnglish)}>
+        <Button onClick={() => this.switchLanguage(client, sentenceDisplayOptions.toggleSentenceOrder)}>
           Switch English with Japanese
         </Button>
 
@@ -73,16 +73,16 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
     );
   }
 
-  private toggleSentenceStats = (client: any, showSentenceStats: boolean): void => {
-    client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, showSentenceStats: !showSentenceStats }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
+  private toggleSentenceStats = (client: any, toggleSentenceStats: boolean): void => {
+    client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, toggleSentenceStats: !toggleSentenceStats }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
   };
 
   private randomiseExerices = (client: any, path: string): void => {
     getExercisesApollo(client, path, 10);
   };
 
-  private switchLanguage = (client: any, firstExerciseEnglish: boolean): void => {
-    client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, firstExerciseEnglish: !firstExerciseEnglish }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
+  private switchLanguage = (client: any, toggleSentenceOrder: boolean): void => {
+    client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, toggleSentenceOrder: !toggleSentenceOrder }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
   };
 
   // private politenessCallback = (value: string): void =>

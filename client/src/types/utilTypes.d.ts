@@ -8,8 +8,8 @@ declare namespace Util {
 
   // primary
   export type SentenceDisplayOptions = {
-    showSentenceStats: boolean;
-    firstExerciseEnglish: boolean;
+    toggleSentenceStats: boolean;
+    toggleSentenceOrder: boolean;
     __typename: string;
   }
 
