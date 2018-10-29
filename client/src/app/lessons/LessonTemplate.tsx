@@ -2,31 +2,33 @@
 import * as React from 'react';
 
 import { FlexColumn } from '../atoms/LayoutStyles';
-import { Heading } from '../atoms/TextStyles';
+import { Heading, Text } from '../atoms/TextStyles';
 
 // import ControlPanelModule from '../modules/ControlPanelModule';
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
-// import ResourcesModule from '../modules/ResourcesModule';
+import ResourceModule from '../modules/ResourceModule';
 // import ExplanationModule from '../modules/ExplanationModule';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
+    const { title, client, sentenceDisplayOptions, sentenceStats, exercises, resources } = this.props; 
+
     return (
       <FlexColumn width={[1]} ml={4}>
-        <Heading is='h2'>{this.props.title}</Heading>
+        <Heading is='h2'>{title}</Heading>
         
-        {/* <FlexColumn mt={4}>
+        <FlexColumn mt={4}>
           <Heading is='h2'>Grammatical Resources</Heading>
           <Text>Please have a read of these resources in order to understand the grammar.</Text>
-          <ResourcesModule
-            resources={this.props.resources}
+          <ResourceModule
+            resources={resources}
           />
         </FlexColumn>
 
-        <FlexColumn mt={4}>
+        {/* <FlexColumn mt={4}>
           <Heading is='h2'>Additional Notes</Heading>
           <ExplanationModule
-            explanation={this.props.explanation}
+            explanation={explanation}
           />
         </FlexColumn> */}
 
@@ -36,16 +38,18 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={this.props.client}
           /> */}
-          {this.props.exercises.map((exercise, exerciseIndex) => (
+          {exercises.map((exercise, exerciseIndex) => (
             <SentenceModule
               key={exerciseIndex}
-              client={this.props.client}
               exerciseIndex={exerciseIndex}
+
               options={exercise.options}
-              sentenceDisplayOptions={this.props.sentenceDisplayOptions}
-              sentenceStats={this.props.sentenceStats}
               englishSentence={exercise.englishSentence}
               japaneseSentence={exercise.japaneseSentence}
+
+              client={client}
+              sentenceDisplayOptions={sentenceDisplayOptions}
+              sentenceStats={sentenceStats}
             />
           ))}
         </FlexColumn>

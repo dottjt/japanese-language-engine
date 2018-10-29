@@ -35,8 +35,6 @@ declare module PropTypes {
   export type ILessonTemplateProps = {
     title: string,
     exercises: Util.EnglishJapaneseOptionsSentence[],
-    variation: string,
-    options: () => Util.Options,
     resources: Util.Resource[],
     explanation: string[], 
     sentenceDisplayOptions: Util.SentenceDisplayOptions,

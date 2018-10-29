@@ -5,7 +5,7 @@ import {
   GET_ALL_WORDS_AND_OPTIONS,
 } from '../../graphql/queries'
 
-import { 
+import {
   ROUTE_TITLE,
 } from '../../util/constants/generalConstants';
 
@@ -34,7 +34,6 @@ import Contents from '../lessons/Contents';
 import Welcome from '../lessons/Welcome';
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
-
   public render() {
     const { route } = this.props; 
     return (
@@ -62,8 +61,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L001.LESSON_TITLE}
                   explanation={L001.LESSON_EXPLANATION}
-                  variation={L001.LESSON_VARIATION}
-                  options={L001.LESSON_OPTIONS}
                   resources={L001.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -76,8 +73,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L002.LESSON_TITLE}
                   explanation={L002.LESSON_EXPLANATION}
-                  variation={L002.LESSON_VARIATION}
-                  options={L002.LESSON_OPTIONS}
                   resources={L002.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -90,8 +85,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L003.LESSON_TITLE}
                   explanation={L003.LESSON_EXPLANATION}
-                  variation={L003.LESSON_VARIATION}
-                  options={L003.LESSON_OPTIONS}
                   resources={L003.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -104,8 +97,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L004.LESSON_TITLE}
                   explanation={L004.LESSON_EXPLANATION}
-                  variation={L004.LESSON_VARIATION}
-                  options={L004.LESSON_OPTIONS}
                   resources={L004.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -118,8 +109,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L005.LESSON_TITLE}
                   explanation={L005.LESSON_EXPLANATION}
-                  variation={L005.LESSON_VARIATION}
-                  options={L005.LESSON_OPTIONS}
                   resources={L005.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -132,8 +121,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L006.LESSON_TITLE}
                   explanation={L006.LESSON_EXPLANATION}
-                  variation={L006.LESSON_VARIATION}
-                  options={L006.LESSON_OPTIONS}
                   resources={L006.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -146,8 +133,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L007.LESSON_TITLE}
                   explanation={L007.LESSON_EXPLANATION}
-                  variation={L007.LESSON_VARIATION}
-                  options={L007.LESSON_OPTIONS}
                   resources={L007.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -160,8 +145,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L008.LESSON_TITLE}
                   explanation={L008.LESSON_EXPLANATION}
-                  variation={L008.LESSON_VARIATION}
-                  options={L008.LESSON_OPTIONS}
                   resources={L008.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -174,8 +157,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                 <LessonTemplate
                   title={L009.LESSON_TITLE}
                   explanation={L009.LESSON_EXPLANATION}
-                  variation={L009.LESSON_VARIATION}
-                  options={L009.LESSON_OPTIONS}
                   resources={L009.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
@@ -188,8 +169,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             //     <LessonTemplate
             //       title={L010.LESSON_TITLE}
             //       explanation={L010.LESSON_EXPLANATION}
-            //       variation={L010.LESSON_VARIATION}
-            //       options={L010.LESSON_OPTIONS}
             //       resources={L010.LESSON_RESOURCES}
             //     />
             //   );
@@ -198,8 +177,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             //     <LessonTemplate
             //       title={L011.LESSON_TITLE}
             //       explanation={L011.LESSON_EXPLANATION}
-            //       variation={L011.LESSON_VARIATION}
-            //       options={L011.LESSON_OPTIONS}
             //       resources={L011.LESSON_RESOURCES}
             //     />
             //   );
@@ -208,8 +185,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             //     <LessonTemplate
             //       title={L012.LESSON_TITLE}
             //       explanation={L012.LESSON_EXPLANATION}
-            //       variation={L012.LESSON_VARIATION}
-            //       options={L012.LESSON_OPTIONS}
             //       resources={L012.LESSON_RESOURCES}
             //     />
             //   ); 
@@ -218,8 +193,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             //     <LessonTemplate
             //       title={L013.LESSON_TITLE}
             //       explanation={L013.LESSON_EXPLANATION}
-            //       variation={L013.LESSON_VARIATION}
-            //       options={L013.LESSON_OPTIONS}
             //       resources={L013.LESSON_RESOURCES}
             //     />
             //   ); 

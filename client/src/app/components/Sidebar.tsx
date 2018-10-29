@@ -12,7 +12,12 @@ import {
 class Sidebar extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn ml={1} minWidth={5} borderRight={2} fontSize={5}>
+      <FlexColumn 
+        ml={1} 
+        minWidth={5} 
+        borderRight={2} 
+        fontSize={5}>
+        
         <Heading>Watashi Engine</Heading>
         <Heading is='h2' fontSize={3}>Lesson navigation</Heading>
 
