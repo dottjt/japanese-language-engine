@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { Sentence, Phrase, EnglishWord } from '../../atoms/SentenceStyles';
-
+import { Flex } from '../../atoms/LayoutStyles';
+import { Text } from '../../atoms/TextStyles';
 import {
   createError,
   // capitalise,
@@ -71,7 +71,7 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
     const phraseArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
-      <Sentence>
+      <Flex m={4} p={4} border={2}>
           {phraseArrayComplete.map((phraseArray, phraseIndex: number) => {
             const nounPhrase = phraseArray as Util.ConjugatedEnglishWord;
             const verbPhrase = phraseArray as Util.ConjugatedEnglishWord;
@@ -89,14 +89,14 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
                 // tense, polarity, indefiniteArticle, noun
 
                 return (
-                  <Phrase key={phraseIndex}>
+                  <Flex border={2} key={phraseIndex}>
                     {nounPhraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                       const hoverColour = convertSentenceStatsEnglish(this.props.sentenceStats, exerciseIndex, word.tag);
                       return (
-                        <EnglishWord hoverColour={hoverColour} key={nounIndex}>{wordOptionsEnglish(word, nounPhraseArrayComplete.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
+                        <Text m={1} hoverColour={hoverColour} key={nounIndex}>{wordOptionsEnglish(word, nounPhraseArrayComplete.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</Text>
                       );
                     })}
-                  </Phrase>
+                  </Flex>
                 );
               
               case CONJUGATION_TYPE_VERB_ENGLISH: 
@@ -109,20 +109,20 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
                 // verbPolarity
                 
                 return (
-                  <Phrase key={phraseIndex}>
+                  <Flex border={2} key={phraseIndex}>
                     {verbPhraseArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => {
                       const hoverColour = convertSentenceStatsEnglish(this.props.sentenceStats, exerciseIndex, word.tag);
                       return (
-                        <EnglishWord hoverColour={hoverColour} key={verbIndex}>{wordOptionsEnglish(word, verbPhraseArrayComplete.length, options, verbIndex, phraseArrayComplete.length, phraseIndex)}</EnglishWord>
+                        <Text m={1} hoverColour={hoverColour} key={verbIndex}>{wordOptionsEnglish(word, verbPhraseArrayComplete.length, options, verbIndex, phraseArrayComplete.length, phraseIndex)}</Text>
                       )
                     })}
-                  </Phrase>
+                  </Flex>
                 );
             }
             throw new Error(createError('SentenceModule.tsx', 'SentenceEnglish', `${phraseArray.type} does not exist.`));
           })
           }
-      </Sentence>
+      </Flex>
     );
   };
 };

@@ -140,8 +140,9 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
   }
 
   sentenceStats @client {
-    polarityHover
+    nounPolitenessHover
     nounPastHover
+    questionHover    
     selectedExerciseNumber
   }
 

@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { Sentence, Phrase, JapaneseWord } from '../../atoms/SentenceStyles';
+import { Flex } from '../../atoms/LayoutStyles';
+import { Text } from '../../atoms/TextStyles';
 
 import {
   createError,
@@ -63,7 +64,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     const sentenceArrayComplete = sentenceOptionsJapanese(sentence, options);
 
     return (
-      <Sentence>
+      <Flex m={4} p={4} border={2}>
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const nounPhrase = phrase as Util.ConjugatedJapaneseWord;
           const verbPhrase = phrase as Util.ConjugatedJapaneseWord;
@@ -80,14 +81,14 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
               const nounWordArrayComplete = phraseOptionsJapanese(nounWordArray, options, phraseIndex);
 
               return (
-                <Phrase key={phraseIndex}>
+                <Flex key={phraseIndex}>
                   {nounWordArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                     const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
                     return (
-                      <JapaneseWord hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, nounWordArrayComplete.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
+                      <Text hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, nounWordArrayComplete.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
                     );
                   })}
-                </Phrase>
+                </Flex>
               );
             
             case CONJUGATION_TYPE_VERB_JAPANESE: 
@@ -98,21 +99,21 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
               const verbWordArrayComplete = phraseOptionsJapanese(verbWordArray, options, phraseIndex);
               
               return (
-                <Phrase key={phraseIndex}>
+                <Flex key={phraseIndex}>
                   {verbWordArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => {
                     const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);
                     console.log(hoverColour)
                     return (
-                      <JapaneseWord hoverColour={hoverColour} key={verbIndex}>{wordArrayOptionsJapanese(word, verbWordArrayComplete.length, options, verbIndex, sentenceArrayComplete.length, phraseIndex)}</JapaneseWord>
+                      <Text hoverColour={hoverColour} key={verbIndex}>{wordArrayOptionsJapanese(word, verbWordArrayComplete.length, options, verbIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
                     );
                   })}
-                </Phrase>
+                </Flex>
               );
           }
           throw new Error(createError('SentenceModule.tsx', 'JapaneseSentence', `${phrase.type} does not exist.`));
         })
         }
-      </Sentence>
+      </Flex>
     );
   };
 };

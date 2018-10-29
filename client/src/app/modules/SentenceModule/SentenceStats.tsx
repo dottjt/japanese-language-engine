@@ -1,15 +1,12 @@
 import * as React from 'react'
 
-import { SentenceStat, Stat } from '../../atoms/SentenceStyles';
+import { Flex } from '../../atoms/LayoutStyles';
+import { Text } from '../../atoms/TextStyles';
 
 import {
   determineStatTypes,
   changeSentenceStats,
 } from './sentenceUtil';
-
-// import {
-//   createError,
-// } from '../../../util/functions';
 
 // import {
 // //   // VERB_ENGLISH,
@@ -34,32 +31,32 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
 
     return (
       this.props.sentenceDisplayOptions.showSentenceStats &&
-        <SentenceStat>
+        <Flex justifyContent='flex-end'>
           {statTypes.questionValue &&
-            <Stat
+            <Text ml={4} p={2} color='lightgreen' 
               onMouseEnter={() => this.onQuestionEnter(exerciseIndex)}
               onMouseLeave={this.onQuestionExit}
             >
               {statTypes.questionValue}
-            </Stat>
+            </Text>
           }
           {statTypes.politenessValue &&
-            <Stat 
+            <Text ml={4} p={2} color='lightgreen' 
               onMouseEnter={() => this.onPolitenessEnter(exerciseIndex)}
               onMouseLeave={this.onPolitenessExit}
             >
               {statTypes.politenessValue}
-            </Stat>
+            </Text>
           }
           {statTypes.polarityTenseValue &&
-            <Stat
+            <Text ml={4} p={2} color='lightgreen' 
               onMouseEnter={() => this.onPolarityTenseEnter(exerciseIndex)}
               onMouseLeave={this.onPolarityTenseExit}
             >
               {statTypes.polarityTenseValue}
-            </Stat>
+            </Text>
           }
-        </SentenceStat>
+        </Flex>
     );
   }
 
@@ -84,6 +81,5 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
     changeSentenceStats(this.props.client, { nounPolitenessHover: true });
   }
 };
-
 
 export default SentenceStats;

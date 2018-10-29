@@ -1,5 +1,4 @@
 // import { Text as RebassText } from 'rebass';
-// import styled from 'styled-components';
 import system from 'system-components';
 
 export const Text = system(
@@ -26,6 +25,7 @@ export const Heading = system(
     color: 'dark-gray',
     fontFamily: 'sansSerif',
   },
+  'space',
   'width',
   'textAlign',
   'lineHeight',
