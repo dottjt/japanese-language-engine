@@ -64,7 +64,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     const sentenceArrayComplete = sentenceOptionsJapanese(sentence, options);
 
     return (
-      <Flex m={4} p={4} border={2}>
+      <Flex m={2} p={2} border={2}>
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const phraseArray = createTaggedArrayJapanese(phrase);
           const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);

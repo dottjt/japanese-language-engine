@@ -69,7 +69,7 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
     const sentenceArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
-      <Flex m={4} p={4} border={2}>
+      <Flex m={2} p={2} border={2}>
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const phraseArray = createTaggedArrayEnglish(phrase);
           const phraseArrayComplete = phraseOptionsEnglish(phraseArray, options, phraseIndex);

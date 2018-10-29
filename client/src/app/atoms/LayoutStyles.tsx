@@ -23,6 +23,7 @@ export const List = system(
 export const ListItem = system(
   {
     is: 'li',
+    lineHeight: 2,
   },
   'space',
   'width',
