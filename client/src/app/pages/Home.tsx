@@ -12,23 +12,21 @@ import Navbar from '../components/Navbar';
 // import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import { 
-  HomepageWrapper, 
-  MainWrapper, 
-  HomepageSection, 
-  List,
-  Item,
-  PricingWrapper,
   Card,
   PricingList,
   PricingListItem,
   PricingButtonStyles,
 } from '../atoms/HomeStyles';
+
 import { Heading, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
+import { Flex, FlexColumn, List, ListItem } from '../atoms/LayoutStyles';
+
+
 
 class Home extends React.Component<{}, { randomIndex: number }> {
-  constructor({}) {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       randomIndex: 0 // randomArrayElement(Object.keys(LESSON_WORDS).length)
     };
@@ -43,12 +41,15 @@ class Home extends React.Component<{}, { randomIndex: number }> {
           // const exercise = generateExercises(LESSON_WORDS[randomProperty](data.nouns) as any, LESSON_OPTIONS[randomProperty], 1);
 
           return (
-            <HomepageWrapper>
+            <FlexColumn>
+              
               <Navbar/>
-              <MainWrapper>
+
+              <FlexColumn mt={8} ml={4} mb={8} mr={4}>
+
                 <Heading>Watashi Engine.</Heading>
                 
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>What is it?</Heading>
                   <Text>A highly sophisticated Japanese language engine.</Text>
                   <Button onClick={this.randomiseSentence}>Random</Button>
@@ -58,35 +59,35 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                     japaneseSentence={exercise[randomIndex].japaneseSentence}
                     options={exercise[randomIndex].options}
                   /> */}
-                </HomepageSection>
+                </FlexColumn>
                 
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>Features</Heading>
                   <List>
-                    <Item>Allows you to create a variety of accurate Japanese sentences using random Kanji.</Item>
-                    <Item>Provides in-depth analysis of Japanese word and sentence structure. </Item>
-                    <Item>Provides english mappings to various Japanese sentence types. </Item>
-                    <Item>Japanese grammar ranging from N1 to N5 JLPT levels.</Item>
-                    <Item>Actively teaches you Japanese grammar usage in the most effective and intuitive way possible.</Item>
-                    <Item>More than 100 randomly generated grammar exercises.</Item>
+                    <ListItem>Allows you to create a variety of accurate Japanese sentences using random Kanji.</ListItem>
+                    <ListItem>Provides in-depth analysis of Japanese word and sentence structure. </ListItem>
+                    <ListItem>Provides english mappings to various Japanese sentence types. </ListItem>
+                    <ListItem>Japanese grammar ranging from N1 to N5 JLPT levels.</ListItem>
+                    <ListItem>Actively teaches you Japanese grammar usage in the most effective and intuitive way possible.</ListItem>
+                    <ListItem>More than 100 randomly generated grammar exercises.</ListItem>
                   </List>
-                </HomepageSection>
+                </FlexColumn>
 
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>What it doesn't do</Heading>
                   <List>
-                    <Item>Translate arbitrary Japanese text into English.</Item>
-                    <Item>Focus on enhancing your vocabulary or speaking skills.</Item>
-                    <Item>Provide in-depth knowledge of Japanese grammar (we use Kim Tae and Watashi as excellent references).</Item>
+                    <ListItem>Translate arbitrary Japanese text into English.</ListItem>
+                    <ListItem>Focus on enhancing your vocabulary or speaking skills.</ListItem>
+                    <ListItem>Provide in-depth knowledge of Japanese grammar (we use Kim Tae and Watashi as excellent references).</ListItem>
                   </List>
-                </HomepageSection>
+                </FlexColumn>
 
 
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>Pricing</Heading>
-                </HomepageSection>
+                </FlexColumn>
 
-                <PricingWrapper>
+                <Flex justifyContent='space-around' mb={4}>
 
                   <Card borderColor="blacks.3">
                     <Heading is='h3'>Free</Heading>
@@ -117,44 +118,44 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</Link>
                   </Card>
 
-                </PricingWrapper>
+                </Flex>
 
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>Strong use cases</Heading>
                   <List>
-                    <Item>Students aiming to take the isntantaneous composition method seriously.</Item>
-                    <Item>Students who benefit from a micro approach towards language.</Item>
-                    <Item>Students seeking mass exposure to various Japanese grammar concepts.</Item>
-                    <Item>Teachers wanting the ability to easily create grammar exercises for their students.</Item>
+                    <ListItem>Students aiming to take the isntantaneous composition method seriously.</ListItem>
+                    <ListItem>Students who benefit from a micro approach towards language.</ListItem>
+                    <ListItem>Students seeking mass exposure to various Japanese grammar concepts.</ListItem>
+                    <ListItem>Teachers wanting the ability to easily create grammar exercises for their students.</ListItem>
                   </List>
-                </HomepageSection>
+                </FlexColumn>
 
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>Free features</Heading>
                   <List>
-                    <Item>Limited access to the basic grammar course.</Item>
-                    <Item>Limited access the grammar engine.</Item>
+                    <ListItem>Limited access to the basic grammar course.</ListItem>
+                    <ListItem>Limited access the grammar engine.</ListItem>
                   </List>
-                </HomepageSection>
+                </FlexColumn>
             
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>Premium features</Heading>
                   <List>
-                    <Item>Full Access to all 100 pre-defined grammar exercises.</Item>
-                    <Item>Exercises ranging from N1 to N5 JLPT levels.</Item>
-                    <Item>Full access of the grammar engine in order to create your own exercises.</Item>
+                    <ListItem>Full Access to all 100 pre-defined grammar exercises.</ListItem>
+                    <ListItem>Exercises ranging from N1 to N5 JLPT levels.</ListItem>
+                    <ListItem>Full access of the grammar engine in order to create your own exercises.</ListItem>
                   </List>
-                </HomepageSection>
+                </FlexColumn>
 
-                <HomepageSection>
+                <FlexColumn width='600px'>
                   <Heading is='h2'>Try Watashi Engine Today</Heading>
                     <Text>Decide before you buy.</Text>
                     <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
-                </HomepageSection>
+                </FlexColumn>
 
-              </MainWrapper>
+              </FlexColumn>
 
-            </HomepageWrapper>
+            </FlexColumn>
           )      
       }
     }

@@ -4,21 +4,21 @@ import { Flex } from '../../atoms/LayoutStyles';
 import { Text } from '../../atoms/TextStyles';
 
 import {
-  createError,
   // startOfSentence,
   endOfSentence,
-  tagArray,
 } from '../../../util/functions';
+
+import {
+  createTaggedArrayJapanese
+} from './sentenceUtil';
 
 import {
   HAS_QUESTION,
   POLITENESS_CASUAL,
-  CONJUGATION_TYPE_NOUN_JAPANESE,
-  CONJUGATION_TYPE_VERB_JAPANESE,
 
-  VERB_JAPANESE,
+  // VERB_JAPANESE,
   // VERB_JAPANESE_CONJUGATION,
-  NOUN_JAPANESE,
+  // NOUN_JAPANESE,
   // NOUN_JAPANESE_CONJUGATION,
   NOUN_JAPANESE_TOPIC_PARTICLE,
   // NOUN_JAPANESE_CATEGORY_ENDING,
@@ -66,53 +66,20 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     return (
       <Flex m={4} p={4} border={2}>
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
-          const nounPhrase = phrase as Util.ConjugatedJapaneseWord;
-          const verbPhrase = phrase as Util.ConjugatedJapaneseWord;
-          
-          switch(phrase.type) {
-            case CONJUGATION_TYPE_NOUN_JAPANESE: 
+          const phraseArray = createTaggedArrayJapanese(phrase);
+          const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
 
-              const noun = tagArray([nounPhrase.word.japanese.kanji], NOUN_JAPANESE);
-              const nounCategoryEnding = tagArray(nounPhrase.nounCategoryEnding.wordArray, nounPhrase.nounCategoryEnding.wordType);
-              const nounEnding = tagArray(nounPhrase.nounEnding.wordArray, nounPhrase.nounEnding.wordType);
-              const nounTopicParticle = tagArray(nounPhrase.nounTopicParticle.wordArray, nounPhrase.nounTopicParticle.wordType);
-
-              const nounWordArray = noun.concat(nounCategoryEnding).concat(nounEnding).concat(nounTopicParticle);
-              const nounWordArrayComplete = phraseOptionsJapanese(nounWordArray, options, phraseIndex);
-
-              return (
-                <Flex key={phraseIndex}>
-                  {nounWordArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
-                    const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
-                    return (
-                      <Text hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, nounWordArrayComplete.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
-                    );
-                  })}
-                </Flex>
-              );
-            
-            case CONJUGATION_TYPE_VERB_JAPANESE: 
-              
-              const verb = tagArray(verbPhrase.conjugatedVerb.wordArray, VERB_JAPANESE);
-
-              const verbWordArray = verb;
-              const verbWordArrayComplete = phraseOptionsJapanese(verbWordArray, options, phraseIndex);
-              
-              return (
-                <Flex key={phraseIndex}>
-                  {verbWordArrayComplete.map((word: Util.WordArrayElement, verbIndex: number) => {
-                    const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);
-                    console.log(hoverColour)
-                    return (
-                      <Text hoverColour={hoverColour} key={verbIndex}>{wordArrayOptionsJapanese(word, verbWordArrayComplete.length, options, verbIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
-                    );
-                  })}
-                </Flex>
-              );
-          }
-          throw new Error(createError('SentenceModule.tsx', 'JapaneseSentence', `${phrase.type} does not exist.`));
-        })
-        }
+          return (
+            <Flex key={phraseIndex}>
+              {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
+                const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
+                return (
+                  <Text hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
+                );
+              })}
+            </Flex>
+          );
+        })}
       </Flex>
     );
   };

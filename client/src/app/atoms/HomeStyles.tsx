@@ -1,41 +1,20 @@
 import { Card as RebassCard } from 'rebass';
-import { Flex, FlexColumn } from './LayoutStyles';
 
 import styled from 'styled-components';
 
 
 // Homepage 
 
-export const HomepageWrapper = styled(FlexColumn)`
-
+export const PricingList = styled.ul`
+  list-style: none;
+  padding: 0;
 `;
 
-export const MainWrapper = styled(FlexColumn)`
-  margin-top: 10rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  margin-bottom: 10rem;
-`;
-
-export const HomepageSection = styled(FlexColumn)`
-  width: 600px;
-`;
-
-export const List = styled.ul`
-
-`;
-
-export const Item = styled.li`
-  line-height: 1.5rem;
-  margin-bottom: 0.8rem;
+export const PricingListItem = styled.li`
+  margin-bottom: 1rem;
 `;
 
 // Pricing
-
-export const PricingWrapper = styled(Flex)`
-  justify-content: space-around;
-  margin-bottom: 4rem;
-`;
 
 export const Card = styled(RebassCard)`
   position: relative;
@@ -48,14 +27,6 @@ export const Card = styled(RebassCard)`
   max-width: 300px;
 `;
 
-export const PricingList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-export const PricingListItem = styled.li`
-  margin-bottom: 1rem;
-`;
 
 export const PricingButtonStyles: React.CSSProperties = {
   position: 'absolute', 

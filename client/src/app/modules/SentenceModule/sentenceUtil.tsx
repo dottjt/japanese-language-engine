@@ -15,12 +15,25 @@ import {
   TENSE_PAST,
 
   HAS_QUESTION,
+
+  NOUN_ENGLISH,
+  VERB_ENGLISH,
+
+  NOUN_JAPANESE,
+  VERB_JAPANESE,
+
+  CONJUGATION_TYPE_NOUN_ENGLISH,
+  CONJUGATION_TYPE_VERB_ENGLISH,
+  CONJUGATION_TYPE_NOUN_JAPANESE,
+  CONJUGATION_TYPE_VERB_JAPANESE,
 } from '../../../util/constants/optionsConstants';
 
 import {
   __TYPENAME_SENTENCE_STATS,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from '../../../util/constants/typeNameConstants';
+
+// SENTENCE STATS
 
 const determinePolarityTense = (polarity: string, tense: string): string | undefined => {
   switch(`${polarity}${tense}`) {
@@ -67,4 +80,46 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
   } catch(error) {
     throw new Error(createError('SentenceModule/SentenceStats', 'changeSentenceStats', `Error: ${error}. Unable to update local graphql cache.`));    
   }
+};
+
+
+
+// SENTENCE ENGLISH && JAPANESE 
+
+const tagArray = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag }));
+
+export const createTaggedArrayEnglish = (phrase: Util.ConjugatedEnglishWord): Util.WordArrayElement[] => {
+  const polarity = tagArray(phrase.polarity.wordArray, phrase.polarity.wordType);
+
+  switch(phrase.type) {
+    case CONJUGATION_TYPE_NOUN_ENGLISH: 
+      const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
+      const indefiniteArticle = tagArray(phrase.indefiniteArticle.wordArray, phrase.indefiniteArticle.wordType);
+      const noun = tagArray([phrase.word.english.present], NOUN_ENGLISH);
+      return tense.concat(polarity).concat(indefiniteArticle).concat(noun); 
+
+    case CONJUGATION_TYPE_VERB_ENGLISH: 
+      const verb = tagArray([phrase.word.english.present], VERB_ENGLISH);
+      return polarity.concat(verb);
+  }
+  throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayEnglish', `${phrase.type} does not exist.`));    
+};
+
+
+export const createTaggedArrayJapanese = (phrase: Util.ConjugatedJapaneseWord): Util.WordArrayElement[] => {
+  switch(phrase.type) {
+    case CONJUGATION_TYPE_NOUN_JAPANESE: 
+      const noun = tagArray([phrase.word.japanese.kanji], NOUN_JAPANESE);
+      const nounCategoryEnding = tagArray(phrase.nounCategoryEnding.wordArray, phrase.nounCategoryEnding.wordType);
+      const nounEnding = tagArray(phrase.nounEnding.wordArray, phrase.nounEnding.wordType);
+      const nounTopicParticle = tagArray(phrase.nounTopicParticle.wordArray, phrase.nounTopicParticle.wordType);
+
+      return noun.concat(nounCategoryEnding).concat(nounEnding).concat(nounTopicParticle);
+
+    case CONJUGATION_TYPE_VERB_JAPANESE: 
+      const verb = tagArray(phrase.conjugatedVerb.wordArray, VERB_JAPANESE);
+
+      return verb;
+  }
+  throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayJapanese', `${phrase.type} does not exist.`));    
 };

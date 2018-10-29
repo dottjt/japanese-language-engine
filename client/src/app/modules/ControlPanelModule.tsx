@@ -3,7 +3,6 @@
 // import { FlexColumn } from '../atoms/LayoutStyles';
 // import { Button } from '../atoms/ClickableStyles';
 // import { Heading } from '../atoms/TextStyles';
-// import { ControlPanel } from '../atoms/ControlPanelStyles';
 
 // import {
 //   capitalise,
@@ -44,7 +43,7 @@
 // class ControlPanelModule extends React.Component<PropTypes.IOptionsProps, {}> {
 //   public render() {
 //     return (
-//       <ControlPanel>
+//       <FlexColumn>
 //         <Buttons
 //           title={"Sentence Politeness"}
 //           values={[convertPolitenessIntoValue(POLITENESS_CASUAL), convertPolitenessIntoValue(POLITENESS_FORMAL)]}
@@ -55,7 +54,7 @@
 //           values={[convertPolarityIntoValue(POLARITY_POSITIVE), convertPolarityIntoValue(POLARITY_NEGATIVE)]}
 //           onClickCallback={this.variationCallback}
 //         />
-//       </ControlPanel>
+//       </FlexColumn>
 //     );
 //   }
 

@@ -12,7 +12,13 @@ export const FlexColumn = styled(RebassFlex)`
   justify-content: flex-start;
 `;
 
-export const ModuleWrapper = styled(FlexColumn)`
-  margin-top: 20px;
+export const List = styled.ul`
+
 `;
+
+export const ListItem = styled.li`
+  line-height: 1.5rem;
+  margin-bottom: 0.8rem;
+`;
+
 
