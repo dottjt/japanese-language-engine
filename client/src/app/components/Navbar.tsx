@@ -21,7 +21,7 @@ class Navbar extends React.Component<{}, {}> {
       >
         <Heading fontSize={4}>Watashi Engine</Heading>
 
-        <Flex width='300px' justifyContent='space-around'>
+        <Flex width={300} justifyContent='space-around'>
           <Link routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</Link>
           <Link routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
           <Link routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>

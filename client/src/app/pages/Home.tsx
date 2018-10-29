@@ -36,7 +36,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               <FlexColumn mt={5} ml={5} mb={6} mr={4}>
                 <Heading mb={5}>Watashi Engine.</Heading>
                 
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>What is it?</Heading>
                   <Text>A highly sophisticated Japanese language engine.</Text>
                   <Button onClick={() => this.randomiseExerices(client)}>Random</Button>
@@ -57,7 +57,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   ))}
                 </FlexColumn>
                 
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>Features</Heading>
                   <List>
                     <ListItem>Allows you to create a variety of accurate Japanese sentences using random Kanji.</ListItem>
@@ -69,7 +69,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   </List>
                 </FlexColumn>
 
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>What it doesn't do</Heading>
                   <List>
                     <ListItem>Translate arbitrary Japanese text into English.</ListItem>
@@ -79,7 +79,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 </FlexColumn>
 
 
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>Pricing</Heading>
                 </FlexColumn>
 
@@ -116,7 +116,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
 
                 </Flex>
 
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>Strong use cases</Heading>
                   <List>
                     <ListItem>Students aiming to take the isntantaneous composition method seriously.</ListItem>
@@ -126,7 +126,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   </List>
                 </FlexColumn>
 
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>Free features</Heading>
                   <List>
                     <ListItem>Limited access to the basic grammar course.</ListItem>
@@ -134,7 +134,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   </List>
                 </FlexColumn>
             
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>Premium features</Heading>
                   <List>
                     <ListItem>Full Access to all 100 pre-defined grammar exercises.</ListItem>
@@ -143,7 +143,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   </List>
                 </FlexColumn>
 
-                <FlexColumn width='600px' mb={5}>
+                <FlexColumn width={600} mb={5}>
                   <Heading is='h2' fontSize={4}>Try Watashi Engine Today</Heading>
                     <Text>Decide before you buy.</Text>
                     <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>

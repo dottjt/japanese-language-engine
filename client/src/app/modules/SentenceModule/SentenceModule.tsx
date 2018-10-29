@@ -19,20 +19,22 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
           options={options}
           exerciseIndex={exerciseIndex}
         />
-        <SentenceEnglish 
-          client={client}
-          sentenceStats={sentenceStats}
-          sentence={englishSentence}
-          options={options}
-          exerciseIndex={exerciseIndex}
-        />
-        <SentenceJapanese 
-          client={client}
-          sentenceStats={sentenceStats}
-          sentence={japaneseSentence}
-          options={options}
-          exerciseIndex={exerciseIndex}
-        />
+        {/* <FlexColumn> */}
+          <SentenceEnglish 
+            client={client}
+            sentenceStats={sentenceStats}
+            sentence={englishSentence}
+            options={options}
+            exerciseIndex={exerciseIndex}
+          />
+          <SentenceJapanese 
+            client={client}
+            sentenceStats={sentenceStats}
+            sentence={japaneseSentence}
+            options={options}
+            exerciseIndex={exerciseIndex}
+          />
+        {/* </FlexColumn> */}
       </FlexColumn>
     );
   };

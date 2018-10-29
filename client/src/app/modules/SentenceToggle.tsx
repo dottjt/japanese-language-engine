@@ -24,6 +24,7 @@ import {
 // } from "../../util/constants/optionsConstants";
 
 import {
+  __TYPENAME_SENTENCE_STATS,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from "../../util/constants/typeNameConstants";
 
@@ -73,7 +74,7 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
   }
 
   private toggleSentenceStats = (client: any, showSentenceStats: boolean): void => {
-    client.writeData({ data: { sentenceDisplayOptions: { showSentenceStats: !showSentenceStats } }})
+    client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, showSentenceStats: !showSentenceStats }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
   };
 
   private randomiseExerices = (client: any, path: string): void => {
@@ -81,7 +82,7 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
   };
 
   private switchLanguage = (client: any, firstExerciseEnglish: boolean): void => {
-    client.writeData({ data: { sentenceDisplayOptions: { firstExerciseEnglish: !firstExerciseEnglish }  }})
+    client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, firstExerciseEnglish: !firstExerciseEnglish }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
   };
 
   // private politenessCallback = (value: string): void =>

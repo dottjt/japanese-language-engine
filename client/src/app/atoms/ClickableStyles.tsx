@@ -9,7 +9,7 @@ export const Button = system(
     borderRadius: 1,
     border: 2,
     color: 'purple',
-    fontSize: 3,
+    fontSize: 2,
     ':hover': {
       background: 'purple',
     }

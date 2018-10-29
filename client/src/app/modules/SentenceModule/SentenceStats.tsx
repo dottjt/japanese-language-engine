@@ -2,20 +2,25 @@ import * as React from 'react'
 
 import { Flex } from '../../atoms/LayoutStyles';
 import { Text } from '../../atoms/TextStyles';
+import { SentenceStatsWrapper } from '../../atoms/CustomStyles';
+
+import {
+  visibleOrHidden
+} from '../../../util/functions';
 
 import {
   determineStatTypes,
   changeSentenceStats,
 } from './sentenceUtil';
 
+
 class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   public render() {
-    const { exerciseIndex } = this.props;
+    const { exerciseIndex, sentenceDisplayOptions } = this.props;
     const statTypes = determineStatTypes(this.props.options);
 
     return (
-      this.props.sentenceDisplayOptions.showSentenceStats &&
-        <Flex justifyContent='flex-end'>
+        <SentenceStatsWrapper togglevisibility={visibleOrHidden(sentenceDisplayOptions.showSentenceStats)} justifyContent='flex-end'>
           {statTypes.questionValue &&
             <Text mr={4} p={2} color='lightgreen'
               onMouseEnter={() => this.onQuestionEnter(exerciseIndex)}
@@ -40,7 +45,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
               {statTypes.polarityTenseValue}
             </Text>
           }
-        </Flex>
+        </SentenceStatsWrapper>
     );
   }
 

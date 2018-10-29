@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { Flex } from '../../atoms/LayoutStyles';
-import { Text } from '../../atoms/TextStyles';
+import { Word } from '../../atoms/CustomStyles';
 
 import {
   // startOfSentence,
@@ -74,7 +74,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
               {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                 const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
                 return (
-                  <Text hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
+                  <Word hovercolour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Word>
                 );
               })}
             </Flex>

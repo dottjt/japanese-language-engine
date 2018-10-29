@@ -12,7 +12,7 @@ class Sidebar extends React.Component<{}, {}> {
   public render() {
     return (
       <FlexColumn 
-        width='256px'
+        width={256}
         minWidth={4}
         borderRight={1} 
         fontSize={5}

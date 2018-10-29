@@ -19,6 +19,8 @@ export const startOfSentence = (sentenceLength: number, index: number) => index 
 export const endOfSentence = (sentenceLength: number, index: number) => sentenceLength - 1 === index;
 export const emptyWordElement = (): Util.WordElement => ({ wordArray: [''], wordType: 'NA', __typename: 'NA' });
 
+export const visibleOrHidden = (showSentenceStats: boolean) => showSentenceStats ? 'visible' : 'hidden';
+
 interface IValues {
   value: string,
   selected: boolean,
