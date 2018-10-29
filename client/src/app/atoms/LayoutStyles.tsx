@@ -1,5 +1,5 @@
 import { Flex as RebassFlex } from 'rebass';
-import { borders } from 'styled-system';
+import { borders, minWidth } from 'styled-system';
 
 import styled from 'styled-components';
 import system from 'system-components';
@@ -14,6 +14,7 @@ export const FlexColumn = styled(RebassFlex)`
   flex-direction: column;
   justify-content: flex-start;
   ${borders}
+  ${minWidth}
 `;
 
 export const List = system(

@@ -14,6 +14,7 @@ const defaults = {
   nouns: allWords,
   sentenceDisplayOptions: {
     showSentenceStats: true,
+    firstExerciseEnglish: true, 
     __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   },
   sentenceStats: {

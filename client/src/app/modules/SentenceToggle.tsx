@@ -43,14 +43,21 @@ import {
 //   };
 // };
 
-class ControlPanelModule extends React.Component<PropTypes.IControlPanelProps, {}> {
+class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
   public render() {
-    const { client, route } = this.props;
+    const { client, route, sentenceDisplayOptions } = this.props;
     return (
       <FlexColumn>
-        <Button onClick={() => this.randomiseExerices(client, route.path)}>
-          randomise exercises
+        <Button onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.showSentenceStats)}>
+          Toggle sentence stats
         </Button>
+        <Button onClick={() => this.randomiseExerices(client, route.path)}>
+          Randomise exercises
+        </Button>
+        <Button onClick={() => this.switchLanguage(client, sentenceDisplayOptions.firstExerciseEnglish)}>
+          Switch English with Japanese
+        </Button>
+
         {/* <Buttons
           title={"Sentence Politeness"}
           values={[convertPolitenessIntoValue(POLITENESS_CASUAL), convertPolitenessIntoValue(POLITENESS_FORMAL)]}
@@ -65,8 +72,16 @@ class ControlPanelModule extends React.Component<PropTypes.IControlPanelProps, {
     );
   }
 
+  private toggleSentenceStats = (client: any, showSentenceStats: boolean): void => {
+    client.writeData({ data: { sentenceDisplayOptions: { showSentenceStats: !showSentenceStats } }})
+  };
+
   private randomiseExerices = (client: any, path: string): void => {
     getExercisesApollo(client, path, 10);
+  };
+
+  private switchLanguage = (client: any, firstExerciseEnglish: boolean): void => {
+    client.writeData({ data: { sentenceDisplayOptions: { firstExerciseEnglish: !firstExerciseEnglish }  }})
   };
 
   // private politenessCallback = (value: string): void =>
@@ -86,4 +101,4 @@ class ControlPanelModule extends React.Component<PropTypes.IControlPanelProps, {
 
 }
 
-export default ControlPanelModule;
+export default SentenceToggle;

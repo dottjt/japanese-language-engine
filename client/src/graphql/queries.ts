@@ -136,7 +136,8 @@ export const GET_NOUNS = gql`{
 export const GET_ALL_WORDS_AND_OPTIONS = gql`{
   
   sentenceDisplayOptions @client {
-    showSentenceStats 
+    showSentenceStats
+    firstExerciseEnglish
   }
 
   sentenceStats @client {

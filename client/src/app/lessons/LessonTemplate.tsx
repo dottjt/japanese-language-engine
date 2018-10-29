@@ -2,22 +2,22 @@
 import * as React from 'react';
 
 import { FlexColumn } from '../atoms/LayoutStyles';
-import { Heading, Text } from '../atoms/TextStyles';
+import { Heading, /*Text*/ } from '../atoms/TextStyles';
 
-import ControlPanelModule from '../modules/ControlPanelModule';
+import SentenceToggle from '../modules/SentenceToggle';
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
-import ResourceModule from '../modules/ResourceModule';
-import ExplanationModule from '../modules/ExplanationModule';
+// import ResourceModule from '../modules/ResourceModule';
+// import ExplanationModule from '../modules/ExplanationModule';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { title, client, route, sentenceDisplayOptions, sentenceStats, exercises, explanation, resources } = this.props; 
+    const { title, client, route, sentenceDisplayOptions, sentenceStats, exercises, /*explanation, resources*/ } = this.props; 
 
     return (
-      <FlexColumn ml={4} mt={4}>
+      <FlexColumn ml={4} mt={4} width={[1]}>
         <Heading is='h2' fontSize={3}>{title}</Heading>
         
-        <FlexColumn mt={4}>
+        {/* <FlexColumn mt={4}>
           <Heading is='h2' fontSize={3}>Grammatical Resources</Heading>
           <Text>Please have a read of these resources in order to understand the grammar.</Text>
           <ResourceModule resources={resources}/>
@@ -26,11 +26,11 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
         <FlexColumn mt={4}>
           <Heading is='h2' fontSize={3}>Additional Notes</Heading>
           <ExplanationModule explanation={explanation}/>
-        </FlexColumn>
+        </FlexColumn> */}
 
         <FlexColumn mt={4}>
           <Heading is='h2' fontSize={3}>Lesson Exercises</Heading>
-          <ControlPanelModule
+          <SentenceToggle
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={client}
             route={route}

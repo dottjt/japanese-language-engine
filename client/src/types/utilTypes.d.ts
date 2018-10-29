@@ -9,6 +9,7 @@ declare namespace Util {
   // primary
   export type SentenceDisplayOptions = {
     showSentenceStats: boolean;
+    firstExerciseEnglish: boolean;
     __typename: string;
   }
 

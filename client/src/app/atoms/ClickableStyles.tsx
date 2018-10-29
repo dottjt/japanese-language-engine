@@ -10,6 +10,9 @@ export const Button = system(
     border: 2,
     color: 'purple',
     fontSize: 3,
+    ':hover': {
+      background: 'purple',
+    }
   },
   'space',
   'width',
