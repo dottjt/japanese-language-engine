@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { FlexColumn } from '../atoms/LayoutStyles';
-import { Link } from '../atoms/ClickableStyles';
+import { ExternalLink } from '../atoms/ClickableStyles';
 
 class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
   public render() {
@@ -9,9 +9,9 @@ class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
     return (
       <FlexColumn>
         {resources.map((resource, index) => (
-          <Link key={index} href={resource.url}>
+          <ExternalLink key={index} href={resource.url}>
             {resource.url}
-          </Link>
+          </ExternalLink>
         ))}
       </FlexColumn>
     );

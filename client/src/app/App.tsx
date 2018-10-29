@@ -8,12 +8,13 @@ import Main from './components/Main';
 class App extends React.Component<PropTypes.IAppProps, {}> {
 
   public render() {
+    const { auth, route } = this.props;
     return (
       <Flex>
         <Sidebar/>
         <Main 
-          auth={this.props.auth} 
-          route={this.props.route} 
+          auth={auth} 
+          route={route} 
         />
       </Flex> 
     );

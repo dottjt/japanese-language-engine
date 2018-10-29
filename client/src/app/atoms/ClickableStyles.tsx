@@ -36,3 +36,16 @@ export const Link = system(
 
 Link.displayName = 'Link';
 
+
+export const ExternalLink = system(
+  {
+    is: 'a',
+    fontSize: 2,
+  },
+  'space',
+  'width',
+  'fontWeight',
+);
+
+ExternalLink.displayName = 'ExternalLink';
+

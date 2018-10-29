@@ -1,44 +1,28 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router5';
-import { GET_ALL_WORDS_AND_OPTIONS } from '../../graphql/queries';
+import { GET_EXERCISES } from '../../graphql/queries';
 
-// import { randomArrayElement } from '../../util/functions';
-import { LESSON_TITLE, /* LESSON_OPTIONS */ } from '../../util/constants/lessonConstants';
+import { LESSON_TITLE } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 
-// import generateExercises from '../../util/conjugations/generateExercises';
 import Navbar from '../components/Navbar';
-// import SentenceModule from '../modules/SentenceModule/SentenceModule'
-
-import { 
-  Card,
-  PricingList,
-  PricingListItem,
-  PricingButtonStyles,
-} from '../atoms/HomeStyles';
+import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import { Heading, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
-import { Flex, FlexColumn, List, ListItem } from '../atoms/LayoutStyles';
+import { Flex, FlexColumn, List, ListItem, 
+  Card,
+  PricingButtonStyles,
+ } from '../atoms/LayoutStyles';
 
 
 class Home extends React.Component<{}, { randomIndex: number }> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      randomIndex: 0 // randomArrayElement(Object.keys(LESSON_WORDS).length)
-    };
-  }
 
   public render() {
     return (
-      <Query query={GET_ALL_WORDS_AND_OPTIONS}>
-        {({ data }) => {
-          // const randomIndex = this.state.randomIndex;
-          // const randomProperty = Object.keys(LESSON_WORDS)[randomIndex];
-          // const exercise = generateExercises(LESSON_WORDS[randomProperty](data.nouns) as any, LESSON_OPTIONS[randomProperty], 1);
-
+      <Query query={GET_EXERCISES}>
+        {({ data, client }) => {
           return (
             <FlexColumn>
               
@@ -52,12 +36,17 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                   <Heading is='h2'>What is it?</Heading>
                   <Text>A highly sophisticated Japanese language engine.</Text>
                   <Button onClick={this.randomiseSentence}>Random</Button>
-                  {/* <SentenceModule
+                  <SentenceModule
+                    exerciseIndex={0}
+
                     sentenceDisplayOptions={data.sentenceDisplayOptions}
-                    englishSentence={exercise[randomIndex].englishSentence}
-                    japaneseSentence={exercise[randomIndex].japaneseSentence}
-                    options={exercise[randomIndex].options}
-                  /> */}
+                    sentenceStats={data.sentenceStats}
+                    client={client}
+                    
+                    options={data.exercises.options}
+                    englishSentence={data.exercises.englishSentence}
+                    japaneseSentence={data.exercises.japaneseSentence}
+                  />
                 </FlexColumn>
                 
                 <FlexColumn width='600px'>
@@ -151,14 +140,12 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                     <Text>Decide before you buy.</Text>
                     <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
                 </FlexColumn>
-
               </FlexColumn>
-
             </FlexColumn>
           )      
+        }
       }
-    }
-  </Query>
+    </Query>
   )
   };
 

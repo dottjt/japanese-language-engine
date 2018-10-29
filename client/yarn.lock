@@ -1980,7 +1980,7 @@ babel-plugin-react-docgen@^2.0.0:
     lodash "^4.17.10"
     react-docgen "^3.0.0-rc.1"
 
-"babel-plugin-styled-components@>= 1", babel-plugin-styled-components@^1.8.0:
+"babel-plugin-styled-components@>= 1", babel-plugin-styled-components@^1.1.4, babel-plugin-styled-components@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.8.0.tgz#9dd054c8e86825203449a852a5746f29f2dab857"
   dependencies:
@@ -3872,7 +3872,7 @@ dotenv-webpack@^1.5.7:
   dependencies:
     dotenv "^5.0.1"
 
-dotenv@4.0.0:
+dotenv@4.0.0, dotenv@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npmjs.org/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
@@ -8140,6 +8140,20 @@ react-apollo@^2.2.4:
     lodash.flowright "^3.5.0"
     lodash.isequal "^4.5.0"
     prop-types "^15.6.0"
+
+react-app-rewire-styled-components@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-app-rewire-styled-components/-/react-app-rewire-styled-components-3.0.2.tgz#e1acfaff2738af7ff4c4ad557ebd4599d6cda862"
+  dependencies:
+    babel-plugin-styled-components "^1.1.4"
+    react-app-rewired "^1.2.0"
+
+react-app-rewired@^1.2.0, react-app-rewired@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-1.6.2.tgz#32ce90abc2c4e2b86c71e4e270bd36663b3b1c9a"
+  dependencies:
+    cross-spawn "^5.1.0"
+    dotenv "^4.0.0"
 
 react-dev-utils@^5.0.2:
   version "5.0.3"

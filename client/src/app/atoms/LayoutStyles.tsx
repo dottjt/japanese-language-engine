@@ -27,3 +27,30 @@ export const ListItem = system(
   'space',
   'width',
 );
+
+
+// MISC
+import { Card as RebassCard } from 'rebass';
+
+export const Card = styled(RebassCard)`
+  position: relative;
+  flex: 1;
+  border-radius: 0;
+  padding: 2rem;
+  padding-bottom: 6rem;
+
+  flex-wrap: wrap;
+  max-width: 300px;
+`;
+
+export const PricingButtonStyles: React.CSSProperties = {
+  position: 'absolute', 
+  padding: '1.5rem',
+  bottom: 0, 
+  marginBottom: '2rem',
+  background: '#00cc47',
+  borderRadius: 2,
+  color: 'white',
+  textDecoration: 'none',
+  boxShadow: '0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)',
+};

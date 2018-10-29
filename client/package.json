@@ -34,6 +34,8 @@
     "raf": "3.4.0",
     "react": "^16.5.2",
     "react-apollo": "^2.2.4",
+    "react-app-rewire-styled-components": "^3.0.2",
+    "react-app-rewired": "^1.6.2",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.5.2",
     "react-router5": "^6.5.3",
@@ -127,11 +129,11 @@
     }
   },
   "babel": {
+    "plugins": [
+      ["babel-plugin-styled-components"]
+    ],
     "presets": [
       "react-app"
-    ],
-    "plugins": [
-      "babel-plugin-styled-components"
     ]
   }
 }
