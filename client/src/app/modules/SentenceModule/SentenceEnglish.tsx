@@ -69,17 +69,17 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
     const sentenceArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
-      <Flex m={2} p={2} border={2}>
+      <Flex m={2} p={2} pl={3} border={1}>
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const phraseArray = createTaggedArrayEnglish(phrase);
           const phraseArrayComplete = phraseOptionsEnglish(phraseArray, options, phraseIndex);
           
           return (
-            <Flex border={2} key={phraseIndex}>
+            <Flex key={phraseIndex}>
               {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                 const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
                 return (
-                  <Text m={1} hoverColour={hoverColour} key={nounIndex}>{wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</Text>
+                  <Text mr={1} hoverColour={hoverColour} key={nounIndex}>{wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex)}</Text>
                 );
               })}
             </Flex>

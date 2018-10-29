@@ -13,6 +13,7 @@ import {
 
 const routes = [
   { name: ROUTE_TITLE.CALLBACK, path: ROUTE_PATH.CALLBACK },
+  { name: ROUTE_TITLE.PROFILE, path: ROUTE_PATH.PROFILE },
   { name: ROUTE_TITLE.LOGIN, path: ROUTE_PATH.LOGIN },
   { name: ROUTE_TITLE.SIGN_UP, path: ROUTE_PATH.SIGN_UP },
   { name: ROUTE_TITLE.HOME, path: ROUTE_PATH.HOME },

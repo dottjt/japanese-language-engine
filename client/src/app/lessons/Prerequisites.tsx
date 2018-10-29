@@ -1,23 +1,22 @@
 import * as React from 'react';
 
-import { FlexColumn } from '../atoms/LayoutStyles';
+import { FlexColumn, List, ListItem } from '../atoms/LayoutStyles';
 import { Heading, Text } from '../atoms/TextStyles';
 
 class Prerequistes extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn width={[1]} ml={4}>
+      <FlexColumn ml={4} mt={4}>
         <FlexColumn>
-          <Heading is='h3'>
-            Prequisites
-          </Heading>
-          <Text>
-            This application heavily utilises 
-          </Text>
+          <Heading is='h2' fontSize={3}>Prerequisites</Heading>
+          <Text>Before you can begin this course you must have a basic understanding of the Japanese language, including:</Text>
+          <List>
+            <ListItem>The ability to read and recognise Hiragana, Katakana and some basic Kanji.</ListItem>
+          </List>
         </FlexColumn>
 
         <FlexColumn>
-          <Heading is='h3'>
+          <Heading is='h3' fontSize={3}>
             My number one recommendation
           </Heading>
           <Text>
@@ -51,7 +50,7 @@ class Prerequistes extends React.Component<{}, {}> {
             It is not mean to be a one-to-one translation. It is a fluid interpretation and if you can keep this in mind, you'll do well.             
           </Text>
 
-          <Heading is='h3'>
+          <Heading is='h3' fontSize={3}>
             Effective Learning
           </Heading>
           <Text>

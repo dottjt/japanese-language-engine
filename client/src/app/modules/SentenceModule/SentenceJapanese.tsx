@@ -64,17 +64,17 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     const sentenceArrayComplete = sentenceOptionsJapanese(sentence, options);
 
     return (
-      <Flex m={2} p={2} border={2}>
+      <Flex m={2} p={2} pl={3} border={1}>
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const phraseArray = createTaggedArrayJapanese(phrase);
           const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
 
           return (
-            <Flex border={2} key={phraseIndex}>
+            <Flex key={phraseIndex}>
               {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                 const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
                 return (
-                  <Text m={1} hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
+                  <Text hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
                 );
               })}
             </Flex>

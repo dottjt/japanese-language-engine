@@ -28,6 +28,7 @@ export const Link = system(
     is: RouterLink,
     color: 'red',
     fontSize: 2,
+    mb: 1,
   },
   'space',
   'width',

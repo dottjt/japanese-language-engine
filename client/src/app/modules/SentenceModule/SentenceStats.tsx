@@ -8,22 +8,6 @@ import {
   changeSentenceStats,
 } from './sentenceUtil';
 
-// import {
-// //   // VERB_ENGLISH,
-// //   // VERB_ENGLISH_CONJUGATION,
-// //   // VERB_JAPANESE,
-// //   // VERB_JAPANESE_CONJUGATION,
-// //   // NOUN_ENGLISH,
-// //   // NOUN_ENGLISH_CONJUGATION,
-// //   // NOUN_ENGLISH_POLARITY,
-// //   // NOUN_ENGLISH_INDEFINITE_ARTICLE,
-// //   // NOUN_JAPANESE,
-// //   // NOUN_JAPANESE_CONJUGATION,
-// //   // NOUN_JAPANESE_TOPIC_PARTICLE,
-// //   // NOUN_JAPANESE_CATEGORY_ENDING,
-// } from '../../../util/constants/optionsConstants';
-
-
 class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   public render() {
     const { exerciseIndex } = this.props;
@@ -33,7 +17,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
       this.props.sentenceDisplayOptions.showSentenceStats &&
         <Flex justifyContent='flex-end'>
           {statTypes.questionValue &&
-            <Text mr={4} p={2} color='lightgreen' 
+            <Text mr={4} p={2} color='lightgreen'
               onMouseEnter={() => this.onQuestionEnter(exerciseIndex)}
               onMouseLeave={this.onQuestionExit}
             >
@@ -41,7 +25,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
             </Text>
           }
           {statTypes.politenessValue &&
-            <Text mr={4} p={2} color='lightgreen' 
+            <Text mr={4} p={2} color='lightgreen'
               onMouseEnter={() => this.onPolitenessEnter(exerciseIndex)}
               onMouseLeave={this.onPolitenessExit}
             >
@@ -49,7 +33,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
             </Text>
           }
           {statTypes.polarityTenseValue &&
-            <Text mr={4} p={2} color='lightgreen' 
+            <Text mr={4} p={2} color='lightgreen'
               onMouseEnter={() => this.onPolarityTenseEnter(exerciseIndex)}
               onMouseLeave={this.onPolarityTenseExit}
             >

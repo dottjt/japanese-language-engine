@@ -15,3 +15,5 @@ declare module 'markdown-to-jsx'
 declare module 'apollo-router5'
 declare module 'rebass'
 declare module 'system-components'
+declare module 'styled-system'
+

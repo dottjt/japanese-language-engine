@@ -1,14 +1,16 @@
 import * as React from 'react';
 
 import { FlexColumn } from '../atoms/LayoutStyles';
+import { Heading } from '../atoms/TextStyles';
 
-import Sidebar from '../components/Sidebar';
+import CourseList from '../components/CourseList';
 
 class ContentsPage extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn width={[1]} ml={4}>
-        <Sidebar/>
+      <FlexColumn ml={4} mt={4}>
+        <Heading is='h2' fontSize={3}>Contents</Heading>
+        <CourseList/>
       </FlexColumn> 
     );
   };

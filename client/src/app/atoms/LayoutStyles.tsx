@@ -1,15 +1,19 @@
 import { Flex as RebassFlex } from 'rebass';
+import { borders } from 'styled-system';
+
 import styled from 'styled-components';
 import system from 'system-components';
 
 export const Flex = styled(RebassFlex)`
   display: flex;
+  ${borders}
 `;
 
 export const FlexColumn = styled(RebassFlex)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  ${borders}
 `;
 
 export const List = system(

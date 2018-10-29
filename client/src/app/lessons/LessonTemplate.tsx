@@ -14,22 +14,18 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
     const { title, client, route, sentenceDisplayOptions, sentenceStats, exercises, explanation, resources } = this.props; 
 
     return (
-      <FlexColumn width={[1]} ml={4}>
+      <FlexColumn ml={4} mt={4}>
         <Heading is='h2' fontSize={3}>{title}</Heading>
         
         <FlexColumn mt={4}>
           <Heading is='h2' fontSize={3}>Grammatical Resources</Heading>
           <Text>Please have a read of these resources in order to understand the grammar.</Text>
-          <ResourceModule
-            resources={resources}
-          />
+          <ResourceModule resources={resources}/>
         </FlexColumn>
 
         <FlexColumn mt={4}>
           <Heading is='h2' fontSize={3}>Additional Notes</Heading>
-          <ExplanationModule
-            explanation={explanation}
-          />
+          <ExplanationModule explanation={explanation}/>
         </FlexColumn>
 
         <FlexColumn mt={4}>

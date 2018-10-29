@@ -5,6 +5,7 @@ export const ROUTE_TITLE = {
   APP: 'Exercises',
   BLOG: 'Blog',
   SIGN_UP: 'Sign Up',
+  PROFILE: 'Profile',
 };
 
 export const ROUTE_PATH = {
@@ -14,6 +15,7 @@ export const ROUTE_PATH = {
   APP: '/exercises',
   BLOG: '/blog',
   SIGN_UP: '/sign-up',
+  PROFILE: '/profile',
 };
 
 // NULL

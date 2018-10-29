@@ -9,6 +9,7 @@ import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 import { randomArrayElement, getExercisesApollo } from '../../util/functions'
 
 import Navbar from '../components/Navbar';
+import CourseList from '../components/CourseList';
 import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import { Heading, Text } from '../atoms/TextStyles';
@@ -33,7 +34,6 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               <Navbar/>
 
               <FlexColumn mt={5} ml={5} mb={6} mr={4}>
-
                 <Heading mb={5}>Watashi Engine.</Heading>
                 
                 <FlexColumn width='600px' mb={5}>
@@ -90,7 +90,6 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                     <Heading is='h2' fontSize={4}>$0</Heading>
                     <List>
                       <ListItem mb={2}>Limited access to basic grammar exercises.</ListItem>
-                      <ListItem mb={2}>Try Watashi Engine before you buy.</ListItem>
                     </List>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
                   </Card>
@@ -110,6 +109,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                     <Heading is='h2' fontSize={4}>$59.95</Heading>
                     <List>
                       <ListItem mb={2}>Full access to the Watashi Engine at a discounted Heading.</ListItem>
+                      <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
                     </List>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</Link>
                   </Card>
@@ -148,6 +148,9 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                     <Text>Decide before you buy.</Text>
                     <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
                 </FlexColumn>
+
+                <CourseList/>
+                
               </FlexColumn>
             </FlexColumn>
           )      

@@ -20,6 +20,7 @@ import App from './app/App';
 import Blog from './app/pages/Blog';
 import Home from './app/pages/Home';
 import Callback from './app/pages/Callback';
+import Profile from './app/pages/Profile';
 import Login from './app/pages/Login';
 import Page404 from './app/pages/Page404';
 
@@ -42,6 +43,8 @@ ReactDOM.render(
                 return <Blog/>
               case ROUTE_TITLE.CALLBACK:
                 return <Callback/>
+              case ROUTE_TITLE.PROFILE:
+                return <Profile/>
               case ROUTE_TITLE.LOGIN:
                 return <Login auth={auth}/>
               default:

@@ -3,14 +3,18 @@ import * as React from 'react';
 import { FlexColumn } from '../atoms/LayoutStyles';
 import { Text } from '../atoms/TextStyles';
 
-class Callback extends React.Component {
+class Profile extends React.Component {
   public render() {
     return (
       <FlexColumn>
-        <Text>Loading</Text>
+        <Text>My Profile</Text>
+
+        <Text>Change Password</Text>
+        <Text>Update Subscription</Text>
+
       </FlexColumn>
     );
   }
 }
 
-export default Callback;
+export default Profile;

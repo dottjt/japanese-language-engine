@@ -10,8 +10,6 @@ class Navbar extends React.Component<{}, {}> {
   public render() {
     return (
       <Flex
-        height={4}
-        width={[1]}
         justifyContent='space-between'
         alignItems='center'
         zIndex={10}
@@ -19,12 +17,9 @@ class Navbar extends React.Component<{}, {}> {
         position='fixed'
         top={0}
         right={0}
-        borderBottom={2}
-        borderColor='black'>
-
-        <Heading>
-          Watashi Engine
-        </Heading>
+        borderBottom={1}
+      >
+        <Heading fontSize={4}>Watashi Engine</Heading>
 
         <Flex width='300px' justifyContent='space-around'>
           <Link routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</Link>
