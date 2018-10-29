@@ -12,8 +12,6 @@ class Sidebar extends React.Component<{}, {}> {
   public render() {
     return (
       <FlexColumn 
-        pl={3}
-        pr={3}
         minWidth={6}
         borderRight={1} 
         fontSize={5}
@@ -22,20 +20,23 @@ class Sidebar extends React.Component<{}, {}> {
           alignItems='center' 
           justifyContent='space-around' 
           borderBottom={1} 
-          mb={3}
-          pt={2}
-          pb={2}
+          mb={4}
         >
-          <Flex>
+          <Flex pt={2} pb={2} width={[1]} justifyContent='center' alignItems='center' borderRight={1}>
             <Link routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
           </Flex>
-          <Flex>
+          <Flex pt={2} pb={2} width={[1]} justifyContent='center' alignItems='center'>
             <Link routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>
           </Flex>
         </Flex>
 
-        <Heading mb={4} fontSize={5}>Watashi Engine</Heading>
-        <CourseList/>
+        <FlexColumn
+          pl={3}
+          pr={3}
+        >
+          <Heading mb={3} fontSize={5}>Watashi Engine</Heading>
+          <CourseList/>
+        </FlexColumn>
         
       </FlexColumn>
     );
