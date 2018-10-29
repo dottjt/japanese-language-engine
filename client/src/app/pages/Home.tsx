@@ -23,7 +23,6 @@ import { Button } from '../atoms/ClickableStyles';
 import { Flex, FlexColumn, List, ListItem } from '../atoms/LayoutStyles';
 
 
-
 class Home extends React.Component<{}, { randomIndex: number }> {
   constructor(props: {}) {
     super(props);
@@ -92,29 +91,29 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                   <Card borderColor="blacks.3">
                     <Heading is='h3'>Free</Heading>
                     <Heading is='h2'>$0</Heading>
-                    <PricingList>
-                      <PricingListItem>Limited access to basic grammar exercises.</PricingListItem>
-                      <PricingListItem>Try Watashi Engine before you buy.</PricingListItem>
-                    </PricingList>
+                    <List>
+                      <ListItem mb={2}>Limited access to basic grammar exercises.</ListItem>
+                      <ListItem mb={2}>Try Watashi Engine before you buy.</ListItem>
+                    </List>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
                   </Card>
 
                   <Card borderColor="blacks.3">
                     <Heading is='h3'>Monthly</Heading>
                     <Heading is='h2'>$7.95</Heading>
-                    <PricingList>
-                      <PricingListItem>Full access to the Watashi Engine.</PricingListItem>
-                      <PricingListItem>Full access to all 100+ grammar exercises.</PricingListItem>
-                    </PricingList>
+                    <List>
+                      <ListItem mb={2}>Full access to the Watashi Engine.</ListItem>
+                      <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
+                    </List>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
                   </Card>
 
                   <Card borderColor="blacks.3">
                     <Heading is='h3'>Yearly</Heading>
                     <Heading is='h2'>$59.95</Heading>
-                    <PricingList>
-                      <PricingListItem>Full access to the Watashi Engine at a discounted Heading.</PricingListItem>
-                    </PricingList>
+                    <List>
+                      <ListItem mb={2}>Full access to the Watashi Engine at a discounted Heading.</ListItem>
+                    </List>
                     <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</Link>
                   </Card>
 

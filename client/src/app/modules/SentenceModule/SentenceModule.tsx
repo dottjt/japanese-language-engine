@@ -8,28 +8,30 @@ import SentenceJapanese from './SentenceJapanese';
 
 class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {    
+    const { client, sentenceDisplayOptions, sentenceStats, options, exerciseIndex, englishSentence, japaneseSentence } = this.props;
+
     return (
       <FlexColumn>
         <SentenceStats
-          client={this.props.client}
-          sentenceDisplayOptions={this.props.sentenceDisplayOptions}
-          sentenceStats={this.props.sentenceStats}          
-          options={this.props.options}
-          exerciseIndex={this.props.exerciseIndex}
+          client={client}
+          sentenceDisplayOptions={sentenceDisplayOptions}
+          sentenceStats={sentenceStats}          
+          options={options}
+          exerciseIndex={exerciseIndex}
         />
         <SentenceEnglish 
-          client={this.props.client}
-          sentenceStats={this.props.sentenceStats}
-          sentence={this.props.englishSentence}
-          options={this.props.options}
-          exerciseIndex={this.props.exerciseIndex}
+          client={client}
+          sentenceStats={sentenceStats}
+          sentence={englishSentence}
+          options={options}
+          exerciseIndex={exerciseIndex}
         />
         <SentenceJapanese 
-          client={this.props.client}
-          sentenceStats={this.props.sentenceStats}
-          sentence={this.props.japaneseSentence}
-          options={this.props.options}
-          exerciseIndex={this.props.exerciseIndex}
+          client={client}
+          sentenceStats={sentenceStats}
+          sentence={japaneseSentence}
+          options={options}
+          exerciseIndex={exerciseIndex}
         />
       </FlexColumn>
     );

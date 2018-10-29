@@ -25,16 +25,14 @@ class LoginPage extends React.Component<PropTypes.ILoginProps, {}> {
             Log In
           </Button>
         )}
-        {
-          isAuthenticated() && (
-              <Button
-                className="btn-margin"
-                onClick={this.logout}
-              >
-                Log Out
-              </Button>
-            )
-        }
+        {isAuthenticated() && (
+          <Button
+            className="btn-margin"
+            onClick={this.logout}
+          >
+            Log Out
+          </Button>
+        )}
       </FlexColumn> 
     );
   };

@@ -5,9 +5,10 @@ import { Link } from '../atoms/ClickableStyles';
 
 class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
   public render() {
+    const { resources } = this.props;
     return (
       <FlexColumn>
-        {this.props.resources.map((resource, index) => (
+        {resources.map((resource, index) => (
           <Link key={index} href={resource.url}>
             {resource.url}
           </Link>

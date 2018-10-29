@@ -11,7 +11,10 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
     return (
       <Flex>
         <Sidebar/>
-        <Main auth={this.props.auth} route={this.props.route} previousRoute={this.props.previousRoute} />
+        <Main 
+          auth={this.props.auth} 
+          route={this.props.route} 
+        />
       </Flex> 
     );
   };

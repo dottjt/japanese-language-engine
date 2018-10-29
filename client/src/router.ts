@@ -1,7 +1,5 @@
 import createRouter from 'router5';
 import browserPlugin from 'router5/plugins/browser';
-// import { apolloPluginFactory, injectRouterToApollo } from 'apollo-router5';
-// import client from './graphql/client';
 
 import {
   LESSON_TITLE,
@@ -48,9 +46,6 @@ const routes = [
 ];
 
 const router = createRouter(routes).usePlugin(browserPlugin());
-// const router = createRouter(routes);
-// injectRouterToApollo(router);
-// router.usePlugin(apolloPluginFactory(client.mutate));
 router.start()
 
 export default router;

@@ -36,10 +36,11 @@ import Welcome from '../lessons/Welcome';
 class Main extends React.Component<PropTypes.IMainProps, {}> {
 
   public render() {
+    const { route } = this.props; 
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
-          switch (this.props.route.name) { /* this.props.previousRoute */
+          switch (route.name) {
             case ROUTE_TITLE.APP:
               return (
                 <Welcome/>

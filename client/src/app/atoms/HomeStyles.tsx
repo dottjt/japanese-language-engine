@@ -3,17 +3,6 @@ import { Card as RebassCard } from 'rebass';
 import styled from 'styled-components';
 
 
-// Homepage 
-
-export const PricingList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-export const PricingListItem = styled.li`
-  margin-bottom: 1rem;
-`;
-
 // Pricing
 
 export const Card = styled(RebassCard)`

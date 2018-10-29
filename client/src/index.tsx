@@ -65,22 +65,11 @@ ReactDOM.render(
   <ThemeProvider theme={theme}>
     <ApolloProvider client={client}>
       <RouteProvider router={router}>
-        <Route>{({ route, previousRoute }) => {
+        <Route>{({ route }) => {
           if (route !== null ) {
-            console.log(route.path)
-            
-            // NOTE: In future, get nouns, adjectives and verbs etc. only based on what is needed
-
             try {
               const data = client.readQuery({ query: GET_NOUNS }) as any;
-
-              if (data) {
-                client.writeData({
-                  data: {
-                    exercises: determineGetExercise(data.nouns, route.path),
-                  }
-                });
-              }  
+              client.writeData({ data: { exercises: determineGetExercise(data.nouns, route.path) } });
             } catch(error) {
               throw new Error(createError('index.tsx', '<Route>', `Unable to access graphql and pull down nouns.`));
             }
@@ -95,7 +84,7 @@ ReactDOM.render(
               case ROUTE_TITLE.LOGIN:
                 return <Login auth={auth}/>
               default:
-                return <App route={route} previousRoute={previousRoute} auth={auth}/>
+                return <App route={route} auth={auth}/>
             }
           } else {
             return <Page404/>

@@ -70,11 +70,11 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
           const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
 
           return (
-            <Flex key={phraseIndex}>
+            <Flex border={2} key={phraseIndex}>
               {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                 const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
                 return (
-                  <Text hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
+                  <Text m={1} hoverColour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</Text>
                 );
               })}
             </Flex>

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Flex } from 'rebass';
+import { FlexColumn } from '../atoms/LayoutStyles';
 
 class ConjugationTable extends React.Component<PropTypes.IConjugationTableProps, {}> {
   public render() {
     return (
-      <Flex flexDirection='column'>
+      <FlexColumn>
         yo
-      </Flex>
+      </FlexColumn>
     );
   };
 };
