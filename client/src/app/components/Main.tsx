@@ -36,6 +36,7 @@ import Welcome from '../lessons/Welcome';
 class Main extends React.Component<PropTypes.IMainProps, {}> {
   public render() {
     const { route } = this.props; 
+    
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
@@ -66,6 +67,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               );
             case L002.LESSON_TITLE:
@@ -78,6 +80,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               );
             case L003.LESSON_TITLE:
@@ -90,6 +93,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               );
             case L004.LESSON_TITLE:
@@ -102,6 +106,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               );
             case L005.LESSON_TITLE:
@@ -114,6 +119,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               );
             case L006.LESSON_TITLE:
@@ -126,6 +132,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               ); 
             case L007.LESSON_TITLE:
@@ -138,6 +145,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               );
             case L008.LESSON_TITLE:
@@ -150,6 +158,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
+                  route={route}
                 />
               );
             case L009.LESSON_TITLE:
@@ -161,7 +170,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
-                  client={client}                  
+                  client={client}
+                  route={route}                  
                 />
               );
             // case L010.LESSON_TITLE:

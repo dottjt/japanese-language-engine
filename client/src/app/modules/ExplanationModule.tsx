@@ -8,7 +8,7 @@ class Explanation extends React.Component<PropTypes.IExplanationProps, {}> {
     const { explanation } = this.props;
     return (
       <FlexColumn>
-        {explanation.map((text, index) => (
+        {explanation.map((text: string, index: number): any => (
           <Text key={index}>
             {text}
           </Text>

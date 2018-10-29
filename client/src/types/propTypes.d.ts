@@ -3,6 +3,12 @@ declare module PropTypes {
   // Container props
   export type IAppProps = {
     auth: any,
+    client: any,
+    route: any, // NOTE: Will need to get proper type. 
+  }
+  
+  export type IHomeProps = {
+    client: any,
     route: any, // NOTE: Will need to get proper type. 
   }
 
@@ -20,9 +26,10 @@ declare module PropTypes {
   }
   
   // Component props 
-  export type IOptionsProps = {
+  export type IControlPanelProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     client: any, // NOTE: Will need to get proper type. 
+    route: any, // NOTE: Will need to get proper type. 
   }
 
   export type IButtonsProps = {
@@ -40,6 +47,7 @@ declare module PropTypes {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
     client: any,
+    route: any,
   }
   
   // Sentence props

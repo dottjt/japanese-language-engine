@@ -8,7 +8,7 @@ class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
     const { resources } = this.props;
     return (
       <FlexColumn>
-        {resources.map((resource, index) => (
+        {resources.map((resource: Util.Resource, index: number): any => (
           <ExternalLink key={index} href={resource.url}>
             {resource.url}
           </ExternalLink>

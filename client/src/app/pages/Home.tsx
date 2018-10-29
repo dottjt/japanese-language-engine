@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router5';
-import { GET_EXERCISES } from '../../graphql/queries';
+import { GET_ALL_WORDS_AND_OPTIONS } from '../../graphql/queries';
 
-import { LESSON_TITLE } from '../../util/constants/lessonConstants';
+import { LESSON_TITLE, lessonPathArray } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE } from '../../util/constants/generalConstants';
+
+import { randomArrayElement, getExercisesApollo } from '../../util/functions'
 
 import Navbar from '../components/Navbar';
 import SentenceModule from '../modules/SentenceModule/SentenceModule'
@@ -17,11 +19,13 @@ import { Flex, FlexColumn, List, ListItem,
  } from '../atoms/LayoutStyles';
 
 
-class Home extends React.Component<{}, { randomIndex: number }> {
+class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }> {
 
   public render() {
+    getExercisesApollo(this.props.client, this.props.route.path, 1);
+
     return (
-      <Query query={GET_EXERCISES}>
+      <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
           return (
             <FlexColumn>
@@ -35,18 +39,22 @@ class Home extends React.Component<{}, { randomIndex: number }> {
                 <FlexColumn width='600px'>
                   <Heading is='h2'>What is it?</Heading>
                   <Text>A highly sophisticated Japanese language engine.</Text>
-                  <Button onClick={this.randomiseSentence}>Random</Button>
-                  <SentenceModule
-                    exerciseIndex={0}
+                  <Button onClick={() => this.randomiseExerices(client)}>Random</Button>
+                  
+                  {data.exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => (
+                    <SentenceModule
+                      key={exerciseIndex}
+                      exerciseIndex={exerciseIndex}
 
-                    sentenceDisplayOptions={data.sentenceDisplayOptions}
-                    sentenceStats={data.sentenceStats}
-                    client={client}
-                    
-                    options={data.exercises.options}
-                    englishSentence={data.exercises.englishSentence}
-                    japaneseSentence={data.exercises.japaneseSentence}
-                  />
+                      sentenceDisplayOptions={data.sentenceDisplayOptions}
+                      sentenceStats={data.sentenceStats}
+                      client={client}
+                      
+                      options={exercise.options}
+                      englishSentence={exercise.englishSentence}
+                      japaneseSentence={exercise.japaneseSentence}
+                    />
+                  ))}
                 </FlexColumn>
                 
                 <FlexColumn width='600px'>
@@ -149,10 +157,9 @@ class Home extends React.Component<{}, { randomIndex: number }> {
   )
   };
 
-  private randomiseSentence = () => {
-    this.setState({
-      // randomIndex: randomArrayElement(Object.keys(LESSON_WORDS).length),
-    });
+  private randomiseExerices = (client: any): void => {
+    console.log(lessonPathArray[randomArrayElement(lessonPathArray.length)])
+    getExercisesApollo(client, lessonPathArray[randomArrayElement(lessonPathArray.length)], 1);
   };
 
 };

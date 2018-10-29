@@ -6,7 +6,7 @@ import system from 'system-components';
 export const Button = system(
   {
     is: 'p',
-    borderRadius: 3,
+    borderRadius: 1,
     border: 2,
     color: 'purple',
     fontSize: 3,

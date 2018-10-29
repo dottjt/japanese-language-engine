@@ -1,15 +1,19 @@
-// import * as React from "react";
+import * as React from "react";
 
-// import { FlexColumn } from '../atoms/LayoutStyles';
-// import { Button } from '../atoms/ClickableStyles';
+import { FlexColumn } from '../atoms/LayoutStyles';
+import { Button } from '../atoms/ClickableStyles';
 // import { Heading } from '../atoms/TextStyles';
 
+import {
+  // capitalise,
+  // convertValuesIntoButtonArray,
+  getExercisesApollo,
+} from '../../util/functions';
+
 // import {
-//   capitalise,
-//   convertValuesIntoButtonArray,
-//   convertPolitenessIntoValue,
-//   convertPolarityIntoValue,
-// } from '../../util/functions';
+//   // capitalise,
+//   // convertValuesIntoButtonArray,
+// } from '../../util/constants/lessonConstants';
 
 // import {
 //   POLARITY_NEGATIVE,
@@ -19,10 +23,9 @@
 //   POLITENESS_FORMAL,
 // } from "../../util/constants/optionsConstants";
 
-// import {
-//   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
-// } from "../../util/constants/typeNameConstants";
-
+import {
+  __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
+} from "../../util/constants/typeNameConstants";
 
 // class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
 
@@ -40,38 +43,47 @@
 //   };
 // };
 
-// class ControlPanelModule extends React.Component<PropTypes.IOptionsProps, {}> {
-//   public render() {
-//     return (
-//       <FlexColumn>
-//         <Buttons
-//           title={"Sentence Politeness"}
-//           values={[convertPolitenessIntoValue(POLITENESS_CASUAL), convertPolitenessIntoValue(POLITENESS_FORMAL)]}
-//           onClickCallback={this.politenessCallback}
-//         />
-//         <Buttons
-//           title={"Question Variation"}
-//           values={[convertPolarityIntoValue(POLARITY_POSITIVE), convertPolarityIntoValue(POLARITY_NEGATIVE)]}
-//           onClickCallback={this.variationCallback}
-//         />
-//       </FlexColumn>
-//     );
-//   }
+class ControlPanelModule extends React.Component<PropTypes.IControlPanelProps, {}> {
+  public render() {
+    const { client, route } = this.props;
+    return (
+      <FlexColumn>
+        <Button onClick={() => this.randomiseExerices(client, route.path)}>
+          randomise exercises
+        </Button>
+        {/* <Buttons
+          title={"Sentence Politeness"}
+          values={[convertPolitenessIntoValue(POLITENESS_CASUAL), convertPolitenessIntoValue(POLITENESS_FORMAL)]}
+          onClickCallback={this.politenessCallback}
+        />
+        <Buttons
+          title={"Question Variation"}
+          values={[convertPolarityIntoValue(POLARITY_POSITIVE), convertPolarityIntoValue(POLARITY_NEGATIVE)]}
+          onClickCallback={this.variationCallback}
+        /> */}
+      </FlexColumn>
+    );
+  }
 
-//   private politenessCallback = (value: string): void =>
-//     this.props.client.writeData({
-//       data: {
-//         sentenceDisplayOptions: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
-//       }
-//     });
+  private randomiseExerices = (client: any, path: string): void => {
+    getExercisesApollo(client, path, 10);
+  };
 
-//   private variationCallback = (value: string): void => {
-//     this.props.client.writeData({
-//       data: {
-//         sentenceDisplayOptions: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
-//       }
-//     });
-//   };
-// }
+  // private politenessCallback = (value: string): void =>
+  //   this.props.client.writeData({
+  //     data: {
+  //       sentenceDisplayOptions: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
+  //     }
+  //   });
 
-// export default ControlPanelModule;
+  // private variationCallback = (value: string): void => {
+  //   this.props.client.writeData({
+  //     data: {
+  //       sentenceDisplayOptions: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
+  //     }
+  //   });
+  // };
+
+}
+
+export default ControlPanelModule;
