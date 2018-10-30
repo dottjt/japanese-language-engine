@@ -53,10 +53,10 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
   }
 
   private onPolarityTenseEnter = (exerciseIndex: number): void => {
-    changeSentenceStats(this.props.client, { polarityTenseHover: true, selectedExerciseNumber: exerciseIndex });
+    changeSentenceStats(this.props.client, { polarityHover: true, tenseHover: true, selectedExerciseNumber: exerciseIndex });
   }
   private onPolarityTenseExit = (): void => {
-    changeSentenceStats(this.props.client, { polarityTenseHover: false });
+    changeSentenceStats(this.props.client, { polarityHover: false, tenseHover: false });
   }
 
   private onPolitenessEnter = (exerciseIndex: number): void => {

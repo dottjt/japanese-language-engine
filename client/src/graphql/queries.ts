@@ -148,7 +148,8 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
 
   sentenceStats @client {
     politenessHover
-    polarityTenseHover
+    polarityHover
+    tenseHover
     questionHover    
     selectedExerciseNumber
   }

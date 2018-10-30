@@ -91,7 +91,7 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
 
 export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.polarityTenseHover && 
+    if ((sentenceStats.polarityHover && sentenceStats.tenseHover) &&
         tag === ENGLISH_POLARITY) {
           return 'red';
     }
@@ -109,9 +109,9 @@ export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, e
 
 export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.polarityTenseHover && 
-        tag === JAPANESE_TENSE ||
-        tag === JAPANESE_POLARITY) {
+    if ((sentenceStats.tenseHover && sentenceStats.polarityHover) &&
+        (tag === JAPANESE_TENSE ||
+        tag === JAPANESE_POLARITY)) {
           return 'red';
     }
     // if (sentenceStats.politenessHover && 
