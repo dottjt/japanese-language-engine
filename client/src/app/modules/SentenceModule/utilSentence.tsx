@@ -86,7 +86,7 @@ const determineTopicSubjectVerb = (variation: string): { topic: boolean, subject
     case NI_SV: return { topic: false, subject: true, verb: true };
     case DE_SV: return { topic: false, subject: true, verb: true };
   }
-  throw new Error(createError('SentenceModule/utilSentence', 'determineTopicSubjectVerb', `${variation} does not exist.`));    
+  throw new Error(createError('utilSentence.tsx', 'determineTopicSubjectVerb', `${variation} does not exist.`));    
 };
 
 const convertQuestionIntoValue = (question: string): string | undefined => 
@@ -116,34 +116,28 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
       data: { sentenceStats: { __typename: __TYPENAME_SENTENCE_STATS, ...sentenceStatsFields }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
     });
   } catch(error) {
-    throw new Error(createError('SentenceModule/SentenceStats', 'changeSentenceStats', `Error: ${error}. Unable to update local graphql cache.`));    
+    throw new Error(createError('utilSentence.tsx', 'changeSentenceStats', `Error: ${error}. Unable to update local graphql cache.`));    
   }
 };
 
 export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.topicHover && tag === ENGLISH_TENSE) {
+    if (sentenceStats.topicHover && tag === ENGLISH_TOPIC) {
       return 'yellow';
     }
-    if (sentenceStats.subjectHover && tag === ENGLISH_TENSE) {
+    if (sentenceStats.subjectHover && tag === ENGLISH_SUBJECT) {
       return 'yellow';      
     }
-    if (sentenceStats.verbHover && tag === ENGLISH_TENSE) {
+    if (sentenceStats.verbHover && tag === ENGLISH_VERB) {
       return 'yellow';      
     }
-
     if ((sentenceStats.polarityHover && sentenceStats.tenseHover) &&
         (tag === ENGLISH_POLARITY || tag === ENGLISH_TENSE)) {
           return 'red';
     }
-    // english does not have any politness values
-    // if (sentenceStats.politenessHover) {
-    //       return 'green';
-    // }
     if (sentenceStats.questionHover) {
-          return 'blue';
+      return 'blue';
     }
-    // VERB_ENGLISH, VERB_ENGLISH_CONJUGATION, ENGLISH, ENGLISH_CONJUGATION, ENGLISH_POLARITY, ENGLISH_INDEFINITE_ARTICLE
   }
   return undefined;
 };
@@ -159,20 +153,13 @@ export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, 
     if (sentenceStats.verbHover && tag === JAPANESE_VERB_STEM) {
       return 'yellow';      
     }
-
     if ((sentenceStats.tenseHover && sentenceStats.polarityHover) &&
         (tag === JAPANESE_TENSE || tag === JAPANESE_POLARITY)) {
           return 'red';
     }
-    // if (sentenceStats.politenessHover && 
-    //     tag === JAPANESE_CONJUGATION) {
-    //       return 'green';
-    // }
     if (sentenceStats.questionHover) {
-          return 'blue';
+      return 'blue';
     }
-    // VERB_JAPANESE, VERB_JAPANESE_CONJUGATION, JAPANESE, JAPANESE_CONJUGATION, JAPANESE_TOPIC_PARTICLE, JAPANESE_CATEGORY_ENDING
-
   }
   return undefined;
 };
@@ -205,20 +192,15 @@ export const createTaggedArrayJapanese = (phrase: Util.ConjugatedJapaneseWord): 
 
   switch(phrase.type) {
     case CONJUGATION_TYPE_NOUN_JAPANESE: 
-    // NOTE: will need to specify if noun is topic or subject.
-    // SENTENCE_TYPE_TOPIC is used in nounConjugation. 
-
       const noun = phrase.sentenceType === SENTENCE_TYPE_TOPIC ? tagArray([phrase.word.japanese.kanji], JAPANESE_TOPIC) : tagArray([phrase.word.japanese.kanji], JAPANESE_SUBJECT);
       const categoryEnding = tagArray(phrase.categoryEnding.wordArray, phrase.categoryEnding.wordType);
       const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
       const topicParticle = tagArray(phrase.topicParticle.wordArray, phrase.topicParticle.wordType);
-
       return noun.concat(categoryEnding).concat(polarity).concat(tense).concat(topicParticle);
 
     case CONJUGATION_TYPE_VERB_JAPANESE: 
       const verbStem = tagArray(phrase.verbStem.wordArray, phrase.verbStem.wordType);
-
       return verbStem.concat(polarity);
   }
-  throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayJapanese', `${phrase.type} does not exist.`));    
+  throw new Error(createError('utilSentence.tsx', 'createTaggedArrayJapanese', `${phrase.type} does not exist.`));    
 };
