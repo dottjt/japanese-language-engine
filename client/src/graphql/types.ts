@@ -46,8 +46,8 @@ export const sentenceTypes = `
 
 export const optionTypes = `
   type SentenceStats {
-    nounPolitenessHover: Boolean
-    nounPastHover: Boolean
+    politenessHover: Boolean
+    politenessHover: Boolean
     questionHover: Boolean
     selectedExerciseNumber: Int
   }

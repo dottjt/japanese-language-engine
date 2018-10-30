@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { Flex } from '../../atoms/LayoutStyles';
+import { Flex, FlexColumn } from '../../atoms/LayoutStyles';
+import { Heading } from '../../atoms/TextStyles';
 import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
 import {
   // capitalise,
@@ -17,10 +18,11 @@ import {
 import {
   HAS_QUESTION,
 
+  VERB_ENGLISH,
   // VERB_ENGLISH_CONJUGATION,
   // NOUN_ENGLISH,
-  // NOUN_ENGLISH_CONJUGATION,
-  NOUN_ENGLISH_POLARITY,
+  NOUN_ENGLISH_CONJUGATION,
+  // NOUN_ENGLISH_POLARITY,
   // NOUN_ENGLISH_INDEFINITE_ARTICLE,
 } from '../../../util/constants/optionsConstants';
 
@@ -46,22 +48,23 @@ const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], opt
   return sentenceArray;
 };
 
-const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string => {
+const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.polarityHover && tag === NOUN_ENGLISH_POLARITY) {
-      return 'red';
+    if (sentenceStats.polarityTenseHover && 
+        tag === VERB_ENGLISH) {
+          return 'red';
     }
-
-    // switch(`{tag}`) {
-    //   case VERB_ENGLISH: return 'blue';
-    //   case VERB_ENGLISH_CONJUGATION: return 'green';
-    //   case NOUN_ENGLISH: return 'red';
-    //   case NOUN_ENGLISH_CONJUGATION: return 'orange';
-    //   case NOUN_ENGLISH_POLARITY: return 'purple';
-    //   case NOUN_ENGLISH_INDEFINITE_ARTICLE: return 'yellow';
-    // }  
+    if (sentenceStats.politenessHover && 
+        tag === NOUN_ENGLISH_CONJUGATION) {
+          return 'green';
+    }
+    if (sentenceStats.questionHover && 
+        tag === NOUN_ENGLISH_CONJUGATION) {
+          return 'blue';
+    }
+    // VERB_ENGLISH ,VERB_ENGLISH_CONJUGATION ,NOUN_ENGLISH ,NOUN_ENGLISH_CONJUGATION ,NOUN_ENGLISH_POLARITY ,NOUN_ENGLISH_INDEFINITE_ARTICLE
   }
-  return '';  
+  return undefined;
 };
 
 class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, { hoverState: boolean }> {
@@ -77,30 +80,33 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
     const sentenceArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
-      <SentenceCover 
-        background={determineSentenceCover(toggleSentenceOrder, hoverState, toggleSentenceHide)}
-        onMouseEnter={this.onHoverEnter}
-        onMouseLeave={this.onHoverExit}
-        m={2} p={3} pl={3} border={1}
-        >
-        {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
-          const phraseArray = createTaggedArrayEnglish(phrase);
-          const phraseArrayComplete = phraseOptionsEnglish(phraseArray, options, phraseIndex);
-          return (
-            <Flex key={phraseIndex}>
-              {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
-                const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
-                const wordComplete = wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex);
-                return (
-                  <TextHover mr={1} hovercolour={hoverColour} key={nounIndex}>
-                    {wordComplete}
-                  </TextHover>
-                );
-              })}
-            </Flex>
-          );
-        })}
-      </SentenceCover>
+      <FlexColumn>
+        <Heading is='h5' fontSize={2}>English</Heading>
+        <SentenceCover
+          background={determineSentenceCover(!toggleSentenceOrder, hoverState, toggleSentenceHide)}
+          onMouseEnter={this.onHoverEnter}
+          onMouseLeave={this.onHoverExit}
+          m={2} ml={0} p={3} pl={3} border={1}
+          >
+          {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
+            const phraseArray = createTaggedArrayEnglish(phrase);
+            const phraseArrayComplete = phraseOptionsEnglish(phraseArray, options, phraseIndex);
+            return (
+              <Flex key={phraseIndex}>
+                {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
+                  const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
+                  const wordComplete = wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex);
+                  return (
+                    <TextHover mr={1} hovercolour={hoverColour} key={nounIndex}>
+                      {wordComplete}
+                    </TextHover>
+                  );
+                })}
+              </Flex>
+            );
+          })}
+        </SentenceCover>
+      </FlexColumn>
     );
   };
   private onHoverEnter = (): void => {

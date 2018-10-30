@@ -7,7 +7,7 @@ import SentenceStats from './SentenceStats';
 import SentenceEnglish from './SentenceEnglish';
 import SentenceJapanese from './SentenceJapanese';
 
-const toggleSentenceOrder = (value: boolean): string => value ? 'column' : 'column-reverse';
+const toggleSentenceOrder = (value: boolean): string => value ? 'column-reverse' : 'column';
 
 class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
   public render() {    

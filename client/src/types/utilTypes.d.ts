@@ -15,8 +15,9 @@ declare namespace Util {
   }
 
   export type SentenceStats = {
-    polarityHover: Boolean,
-    nounPastHover: Boolean,
+    polarityTenseHover: Boolean,
+    politenessHover: Boolean,
+    questionHover: Boolean,
     selectedExerciseNumber: number | undefined,
     __typename: string;
   }

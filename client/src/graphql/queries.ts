@@ -10,7 +10,7 @@ import gql from 'graphql-tag';
 // const sentenceStats = gql`
 //   sentenceStats @client {
 //     polarityHover
-//     nounPastHover
+//     politenessHover
 //     selectedExerciseNumber
 //   }
 // `;
@@ -143,8 +143,8 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
   }
 
   sentenceStats @client {
-    nounPolitenessHover
-    nounPastHover
+    politenessHover
+    polarityTenseHover
     questionHover    
     selectedExerciseNumber
   }

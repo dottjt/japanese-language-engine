@@ -19,8 +19,8 @@ const defaults = {
     __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   },
   sentenceStats: {
-    nounPolitenessHover: false,
-    nounPastHover: false,
+    polarityTenseHover: false,
+    politenessHover: false,
     questionHover: false,
     selectedExerciseNumber: 0,
     __typename: __TYPENAME_SENTENCE_STATS,

@@ -65,6 +65,17 @@ declare module PropTypes {
     exerciseIndex: number,
   }
 
+  export type ISentencePropTypes = {
+    client: any,
+    options: Util.Options,
+    sentence: Util.ConjugatedJapaneseWord[],
+    exerciseIndex: number,
+    sentenceStats: Util.SentenceStats,
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    
+    title: string;
+  }
+
   export type IJapaneseSentenceProps = {
     client: any,
     options: Util.Options,

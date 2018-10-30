@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { Flex } from '../../atoms/LayoutStyles';
+import { Flex, FlexColumn } from '../../atoms/LayoutStyles';
+import { Heading } from '../../atoms/TextStyles';
 import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
 
 import {
@@ -20,7 +21,7 @@ import {
   // VERB_JAPANESE,
   // VERB_JAPANESE_CONJUGATION,
   // NOUN_JAPANESE,
-  // NOUN_JAPANESE_CONJUGATION,
+  NOUN_JAPANESE_CONJUGATION,
   NOUN_JAPANESE_TOPIC_PARTICLE,
   // NOUN_JAPANESE_CATEGORY_ENDING,
 } from '../../../util/constants/optionsConstants';
@@ -44,17 +45,20 @@ const sentenceOptionsJapanese = (sentenceArray: Util.ConjugatedJapaneseWord[], o
 
 const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.polarityHover && tag === NOUN_JAPANESE_TOPIC_PARTICLE) {
-      return 'red';
+    if (sentenceStats.polarityTenseHover && 
+        tag === NOUN_JAPANESE_TOPIC_PARTICLE) {
+          return 'red';
     }
-    // switch(tag) {
-    //   case VERB_JAPANESE: return 'blue';
-    //   case VERB_JAPANESE_CONJUGATION: return 'green';
-    //   case NOUN_JAPANESE: return 'red';
-    //   case NOUN_JAPANESE_CONJUGATION: return 'orange';
-    //   case NOUN_JAPANESE_TOPIC_PARTICLE: return 'purple';
-    //   case NOUN_JAPANESE_CATEGORY_ENDING: return 'yellow';
-    // }
+    if (sentenceStats.politenessHover && 
+        tag === NOUN_JAPANESE_CONJUGATION) {
+          return 'green';
+    }
+    if (sentenceStats.questionHover && 
+        tag === NOUN_JAPANESE_CONJUGATION) {
+          return 'blue';
+    }
+    // VERB_JAPANESE, VERB_JAPANESE_CONJUGATION, NOUN_JAPANESE, NOUN_JAPANESE_CONJUGATION, NOUN_JAPANESE_TOPIC_PARTICLE, NOUN_JAPANESE_CATEGORY_ENDING
+
   }
   return undefined;
 };
@@ -72,30 +76,36 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     const sentenceArrayComplete = sentenceOptionsJapanese(sentence, options);
 
     return (
-      <SentenceCover
-        background={determineSentenceCover(!toggleSentenceOrder, hoverState, toggleSentenceHide)}
-        onMouseEnter={this.onHoverEnter}
-        onMouseLeave={this.onHoverExit}
-        m={2} p={3} pl={3} border={1}
-        >
-        {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
-          const phraseArray = createTaggedArrayJapanese(phrase);
-          const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
-          return (
-            <Flex key={phraseIndex}>
-              {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
-                const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
-                const wordComplete = wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex);
-                return (
-                  <TextHover hovercolour={hoverColour} key={nounIndex}>
-                    {wordComplete}
-                  </TextHover>
-                );
-              })}
-            </Flex>
-          );
-        })}
-      </SentenceCover>
+      <FlexColumn>
+        <Heading is='h5' fontSize={2}>Japanese</Heading>
+
+        <SentenceCover
+          background={determineSentenceCover(toggleSentenceOrder, hoverState, toggleSentenceHide)}
+          onMouseEnter={this.onHoverEnter}
+          onMouseLeave={this.onHoverExit}
+          m={2} ml={0} p={3} pl={3} border={1}
+          >
+          {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
+            const phraseArray = createTaggedArrayJapanese(phrase);
+            const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
+            return (
+              <Flex key={phraseIndex}>
+                {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
+                  const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
+                  const wordComplete = wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex);
+
+                  console.log(hoverColour);
+                  return (
+                    <TextHover hovercolour={hoverColour} key={nounIndex}>
+                      {wordComplete}
+                    </TextHover>
+                  );
+                })}
+              </Flex>
+            );
+          })}
+        </SentenceCover>
+      </FlexColumn>
     );
   };
   private onHoverEnter = (): void => {
