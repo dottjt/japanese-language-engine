@@ -70,7 +70,7 @@ export const GET_EXERCISES = gql`{
 
     japaneseSentence @client {
       type
-      nounCategoryEnding @client {
+      categoryEnding @client {
         wordArray
         wordType
       }
@@ -78,11 +78,15 @@ export const GET_EXERCISES = gql`{
         wordArray
         wordType
       }
-      nounTopicParticle @client {
+      topicParticle @client {
         wordArray
         wordType
       }
-      conjugatedVerb @client {
+      tense @client {
+        wordArray
+        wordType
+      }
+      polarity @client {
         wordArray
         wordType
       }
@@ -201,19 +205,19 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
 
     japaneseSentence @client {
       type
-      nounCategoryEnding @client {
+      categoryEnding @client {
         wordArray
         wordType
       }
-      nounEnding @client {
+      tense @client {
         wordArray
         wordType
       }
-      nounTopicParticle @client {
+      polarity @client {
         wordArray
         wordType
       }
-      conjugatedVerb @client {
+      topicParticle @client {
         wordArray
         wordType
       }

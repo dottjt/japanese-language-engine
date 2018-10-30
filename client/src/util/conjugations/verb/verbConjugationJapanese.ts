@@ -23,8 +23,8 @@ import {
   POLARITY_NEGATIVE,
 
   CONJUGATION_TYPE_VERB_JAPANESE,
-
-  VERB_JAPANESE_CONJUGATION,
+  
+  JAPANESE_POLARITY,
 } from '../../constants/optionsConstants';
 
 import {
@@ -89,10 +89,10 @@ const getVerbStem = (verb: Util.Word, options: Util.Options): string[] => {
 const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): Util.WordElement => {
   const verbStem = getVerbStem(verb, options);
   switch(`${options.politeness}${options.polarity}`) {
-    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return createWord(verb.japanese.kanji.split(''), VERB_JAPANESE_CONJUGATION);
-    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return createWord(verbStem.concat(['な','い']), VERB_JAPANESE_CONJUGATION);
-    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return createWord(verbStem.concat(['ま','す']), VERB_JAPANESE_CONJUGATION);
-    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return createWord(verbStem.concat(['ま','せ','ん']), VERB_JAPANESE_CONJUGATION);
+    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return createWord(verb.japanese.kanji.split(''), JAPANESE_POLARITY);
+    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return createWord(verbStem.concat(['な','い']), JAPANESE_POLARITY);
+    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return createWord(verbStem.concat(['ま','す']), JAPANESE_POLARITY);
+    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return createWord(verbStem.concat(['ま','せ','ん']), JAPANESE_POLARITY);
   }
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };
@@ -100,18 +100,17 @@ const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options
 const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_JAPANESE;
-  const conjugatedVerb = determineVerbConjugationJapanese(word, options);
+  const polarity = determineVerbConjugationJapanese(word, options);
 
   return {
-    conjugatedVerb,
     word,
-    nounCategoryEnding: emptyWordElement(),
-    nounEnding: emptyWordElement(),
-    nounTopicParticle: emptyWordElement(),
+    polarity,
+    categoryEnding: emptyWordElement(),
+    tense: emptyWordElement(),
+    topicParticle: emptyWordElement(),
     type,
     __typename: __TYPENAME_CONJUGATED_JAPANESE_VERB,
   }
-  // return `${conjugatedVerb}`;
 };
 
 export default verbConjugationJapanese;

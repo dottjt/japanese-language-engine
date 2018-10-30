@@ -58,10 +58,10 @@ declare namespace Util {
   export type ConjugatedJapaneseWord = {
     type: string; // noun, verb
     word: Word; // noun, verb
-    nounCategoryEnding: WordElement; // noun
-    nounEnding: WordElement; // noun
-    nounTopicParticle: WordElement; // noun
-    conjugatedVerb: WordElement; // verb
+    categoryEnding: WordElement; // noun
+    tense: WordElement; // noun
+    polarity: WordElement;// noun, verb
+    topicParticle: WordElement; // noun
     __typename: string; // noun, verb
   };
 

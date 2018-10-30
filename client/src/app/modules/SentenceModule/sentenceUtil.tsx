@@ -16,25 +16,25 @@ import {
 
   HAS_QUESTION,
 
-  NOUN_ENGLISH,
+  ENGLISH,
   VERB_ENGLISH,
   // VERB_ENGLISH_CONJUGATION,
-  NOUN_ENGLISH_CONJUGATION,
-  // NOUN_ENGLISH_POLARITY,
-  // NOUN_ENGLISH_INDEFINITE_ARTICLE,
+  ENGLISH_CONJUGATION,
+  ENGLISH_POLARITY,
+  // ENGLISH_INDEFINITE_ARTICLE,
 
-  NOUN_JAPANESE,
-  VERB_JAPANESE,
-  // VERB_JAPANESE_CONJUGATION,
-  NOUN_JAPANESE_CONJUGATION,
-  NOUN_JAPANESE_TOPIC_PARTICLE,
-  // NOUN_JAPANESE_CATEGORY_ENDING,
+  JAPANESE,
+  // VERB_JAPANESE,
+  JAPANESE_CONJUGATION,
+  // JAPANESE_TOPIC_PARTICLE,
+  // JAPANESE_CATEGORY_ENDING,
 
 
-  CONJUGATION_TYPE_NOUN_ENGLISH,
+  CONJUGATION_TYPE_ENGLISH,
   CONJUGATION_TYPE_VERB_ENGLISH,
-  CONJUGATION_TYPE_NOUN_JAPANESE,
+  CONJUGATION_TYPE_JAPANESE,
   CONJUGATION_TYPE_VERB_JAPANESE,
+  VERB_ENGLISH_CONJUGATION,
 } from '../../../util/constants/optionsConstants';
 
 import {
@@ -94,18 +94,20 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
 export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
     if (sentenceStats.polarityTenseHover && 
-        tag === VERB_ENGLISH) {
+        tag === ENGLISH_POLARITY ||
+        tag === ENGLISH_CONJUGATION ||
+        tag === VERB_ENGLISH_CONJUGATION) {
           return 'red';
     }
-    if (sentenceStats.politenessHover && 
-        tag === NOUN_ENGLISH_CONJUGATION) {
-          return 'green';
-    }
+    // english does not have any politness values
+    // if (sentenceStats.politenessHover) {
+    //       return 'green';
+    // }
     if (sentenceStats.questionHover && 
-        tag === NOUN_ENGLISH_CONJUGATION) {
+        tag === ENGLISH_CONJUGATION) {
           return 'blue';
     }
-    // VERB_ENGLISH ,VERB_ENGLISH_CONJUGATION ,NOUN_ENGLISH ,NOUN_ENGLISH_CONJUGATION ,NOUN_ENGLISH_POLARITY ,NOUN_ENGLISH_INDEFINITE_ARTICLE
+    // VERB_ENGLISH, VERB_ENGLISH_CONJUGATION, ENGLISH, ENGLISH_CONJUGATION, ENGLISH_POLARITY, ENGLISH_INDEFINITE_ARTICLE
   }
   return undefined;
 };
@@ -113,18 +115,18 @@ export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, e
 export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
     if (sentenceStats.polarityTenseHover && 
-        tag === NOUN_JAPANESE_TOPIC_PARTICLE) {
+        tag === JAPANESE_CONJUGATION) {
           return 'red';
     }
-    if (sentenceStats.politenessHover && 
-        tag === NOUN_JAPANESE_CONJUGATION) {
-          return 'green';
-    }
+    // if (sentenceStats.politenessHover && 
+    //     tag === JAPANESE_CONJUGATION) {
+    //       return 'green';
+    // }
     if (sentenceStats.questionHover && 
-        tag === NOUN_JAPANESE_CONJUGATION) {
+        tag === JAPANESE_CONJUGATION) {
           return 'blue';
     }
-    // VERB_JAPANESE, VERB_JAPANESE_CONJUGATION, NOUN_JAPANESE, NOUN_JAPANESE_CONJUGATION, NOUN_JAPANESE_TOPIC_PARTICLE, NOUN_JAPANESE_CATEGORY_ENDING
+    // VERB_JAPANESE, VERB_JAPANESE_CONJUGATION, JAPANESE, JAPANESE_CONJUGATION, JAPANESE_TOPIC_PARTICLE, JAPANESE_CATEGORY_ENDING
 
   }
   return undefined;
@@ -136,36 +138,36 @@ const tagArray = (array: string[], tag: string): Util.WordArrayElement[] => arra
 
 export const createTaggedArrayEnglish = (phrase: Util.ConjugatedEnglishWord): Util.WordArrayElement[] => {
   const polarity = tagArray(phrase.polarity.wordArray, phrase.polarity.wordType);
+  const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
 
   switch(phrase.type) {
-    case CONJUGATION_TYPE_NOUN_ENGLISH: 
-      const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
+    case CONJUGATION_TYPE_ENGLISH: 
       const indefiniteArticle = tagArray(phrase.indefiniteArticle.wordArray, phrase.indefiniteArticle.wordType);
-      const noun = tagArray([phrase.word.english.present], NOUN_ENGLISH);
+      const noun = tagArray([phrase.word.english.present], ENGLISH);
       return tense.concat(polarity).concat(indefiniteArticle).concat(noun); 
 
     case CONJUGATION_TYPE_VERB_ENGLISH: 
       const verb = tagArray([phrase.word.english.present], VERB_ENGLISH);
-      return polarity.concat(verb);
+      return tense.concat(polarity).concat(verb);
   }
   throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayEnglish', `${phrase.type} does not exist.`));    
 };
 
 
 export const createTaggedArrayJapanese = (phrase: Util.ConjugatedJapaneseWord): Util.WordArrayElement[] => {
-  switch(phrase.type) {
-    case CONJUGATION_TYPE_NOUN_JAPANESE: 
-      const noun = tagArray([phrase.word.japanese.kanji], NOUN_JAPANESE);
-      const nounCategoryEnding = tagArray(phrase.nounCategoryEnding.wordArray, phrase.nounCategoryEnding.wordType);
-      const nounEnding = tagArray(phrase.nounEnding.wordArray, phrase.nounEnding.wordType);
-      const nounTopicParticle = tagArray(phrase.nounTopicParticle.wordArray, phrase.nounTopicParticle.wordType);
+  const polarity = tagArray(phrase.polarity.wordArray, phrase.polarity.wordType);
 
-      return noun.concat(nounCategoryEnding).concat(nounEnding).concat(nounTopicParticle);
+  switch(phrase.type) {
+    case CONJUGATION_TYPE_JAPANESE: 
+      const noun = tagArray([phrase.word.japanese.kanji], JAPANESE);
+      const categoryEnding = tagArray(phrase.categoryEnding.wordArray, phrase.categoryEnding.wordType);
+      const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
+      const topicParticle = tagArray(phrase.topicParticle.wordArray, phrase.topicParticle.wordType);
+
+      return noun.concat(categoryEnding).concat(polarity).concat(tense).concat(topicParticle);
 
     case CONJUGATION_TYPE_VERB_JAPANESE: 
-      const verb = tagArray(phrase.conjugatedVerb.wordArray, VERB_JAPANESE);
-
-      return verb;
+      return polarity;
   }
   throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayJapanese', `${phrase.type} does not exist.`));    
 };

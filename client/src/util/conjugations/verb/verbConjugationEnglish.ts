@@ -11,6 +11,7 @@ import {
 
 import {
   VERB_ENGLISH_CONJUGATION,
+  VERB_ENGLISH_POLARITY,
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
@@ -26,28 +27,28 @@ import {
   verbConjugationPermissionsEnglish,
 } from './verbPermissions';
 
-const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
+const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { tense: Util.WordElement, polarity: Util.WordElement } => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = verbConjugationPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
     switch(`${options.polarity}`) {
-      case `${POLARITY_POSITIVE}`: return createWord([''], VERB_ENGLISH_CONJUGATION);
-      case `${POLARITY_NEGATIVE}`: return createWord(['do', 'not'], VERB_ENGLISH_CONJUGATION);
+      case `${POLARITY_POSITIVE}`: return { tense: createWord([''], VERB_ENGLISH_CONJUGATION), polarity: createWord([''], VERB_ENGLISH_CONJUGATION) };
+      case `${POLARITY_NEGATIVE}`: return { tense: createWord(['do'], VERB_ENGLISH_CONJUGATION), polarity: createWord(['not'], VERB_ENGLISH_POLARITY) };
     }
     throw new Error(createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity} unknown`));
   }
-  return createWord([''], VERB_ENGLISH_CONJUGATION);
+  return { tense: createWord([''], VERB_ENGLISH_CONJUGATION), polarity: createWord([''], VERB_ENGLISH_CONJUGATION) };
 }; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_ENGLISH;
 
-  const polarity = determineVerbConjugationEnglish(words, options, sentenceType);
+  const { tense, polarity } = determineVerbConjugationEnglish(words, options, sentenceType);
 
   return {
-    tense: emptyWordElement(),
+    tense,
     indefiniteArticle: emptyWordElement(),
     polarity,
     word,

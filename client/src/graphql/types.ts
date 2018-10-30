@@ -19,10 +19,10 @@ export const sentenceTypes = `
   type ConjugatedJapaneseWord {
     type: String
     word: Word
-    nounCategoryEnding: WordElement
-    nounEnding: WordElement
-    nounTopicParticle: WordElement
-    conjugatedVerb: WordElement
+    categoryEnding: WordElement
+    tense: WordElement
+    polarity: WordElement
+    topicParticle: WordElement
   }
 
   type ConjugatedEnglishWord {
