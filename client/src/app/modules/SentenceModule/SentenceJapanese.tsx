@@ -1,11 +1,12 @@
 import * as React from 'react'
 
 import { Flex } from '../../atoms/LayoutStyles';
-import { TextHover } from '../../atoms/CustomStyles';
+import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
 
 import {
   // startOfSentence,
   endOfSentence,
+  determineSentenceCover,
 } from '../../../util/functions';
 
 import {
@@ -58,13 +59,24 @@ const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exercis
   return undefined;
 };
 
-class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps, {}> {
+class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps, { hoverState: boolean }> {
+  constructor(props: PropTypes.IJapaneseSentenceProps) {
+    super(props);
+    this.state = { hoverState: false }
+  }
+
   public render() {
-    const { sentence, options, exerciseIndex } = this.props;
+    const { sentence, sentenceStats, sentenceDisplayOptions, options, exerciseIndex } = this.props;
+    const { hoverState } = this.state;
     const sentenceArrayComplete = sentenceOptionsJapanese(sentence, options);
 
     return (
-      <Flex m={2} p={2} pl={3} border={1}>
+      <SentenceCover
+        background={determineSentenceCover(!sentenceDisplayOptions.toggleSentenceOrder, hoverState)}
+        onMouseEnter={this.onHoverEnter}
+        onMouseLeave={this.onHoverExit}
+        m={2} p={3} pl={3} border={1}
+        >
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const phraseArray = createTaggedArrayJapanese(phrase);
           const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
@@ -72,7 +84,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
           return (
             <Flex key={phraseIndex}>
               {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
-                const hoverColour = convertSentenceStatsJapanese(this.props.sentenceStats, exerciseIndex, word.tag);                    
+                const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
                 return (
                   <TextHover hovercolour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</TextHover>
                 );
@@ -80,9 +92,15 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
             </Flex>
           );
         })}
-      </Flex>
+      </SentenceCover>
     );
   };
+  private onHoverEnter = (): void => {
+    this.setState({ hoverState: true });
+  }
+  private onHoverExit = (): void => {
+    this.setState({ hoverState: false });
+  }
 };
 
 export default JapaneseSentence;

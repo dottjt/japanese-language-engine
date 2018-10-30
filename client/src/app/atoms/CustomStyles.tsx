@@ -19,7 +19,7 @@ export const TextHover = styled(Text)<any>`
 `;
 
 TextHover.defaultProps = {
-  hovercolour: 'white',
+  hovercolour: 'initial',
 };
 
 
@@ -29,5 +29,14 @@ export const ToggleSentenceOrder = styled(Flex)<any>`
 
 ToggleSentenceOrder.defaultProps = {
   sentenceorder: 'column',
+};
+
+
+export const SentenceCover = styled(Flex)<any>`
+  background: ${props => props.background};
+`;
+
+SentenceCover.defaultProps = {
+  background: 'white',
 };
 

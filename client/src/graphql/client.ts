@@ -14,7 +14,7 @@ const defaults = {
   nouns: allWords,
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
-    toggleSentenceOrder: true, 
+    toggleSentenceOrder: false, 
     __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   },
   sentenceStats: {

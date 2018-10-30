@@ -1,19 +1,23 @@
 import { Flex as RebassFlex } from 'rebass';
-import { borders, minWidth } from 'styled-system';
+import { borders, minWidth, space, width } from 'styled-system';
 
 import styled from 'styled-components';
 import system from 'system-components';
 
 export const Flex = styled(RebassFlex)`
   display: flex;
+  ${space}
   ${borders}
+  ${width}
 `;
 
 export const FlexColumn = styled(RebassFlex)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  ${space}
   ${borders}
+  ${width}
   ${minWidth}
 `;
 

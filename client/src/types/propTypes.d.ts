@@ -71,14 +71,16 @@ declare module PropTypes {
     sentence: Util.ConjugatedJapaneseWord[],
     exerciseIndex: number,
     sentenceStats: Util.SentenceStats,
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
   }
 
   export type IEnglishSentenceProps = {
-    client: any,  
+    client: any,
     options: Util.Options,
     sentence: Util.ConjugatedEnglishWord[],
     exerciseIndex: number,
     sentenceStats: Util.SentenceStats,
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
   }
 
   export type ISentenceStatsProps = {

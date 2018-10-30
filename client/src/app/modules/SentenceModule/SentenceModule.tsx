@@ -25,6 +25,7 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
         <ToggleSentenceOrder sentenceorder={toggleSentenceOrder(sentenceDisplayOptions.toggleSentenceOrder)}>
           <SentenceEnglish 
             client={client}
+            sentenceDisplayOptions={sentenceDisplayOptions}
             sentenceStats={sentenceStats}
             sentence={englishSentence}
             options={options}
@@ -32,6 +33,7 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
           />
           <SentenceJapanese 
             client={client}
+            sentenceDisplayOptions={sentenceDisplayOptions}
             sentenceStats={sentenceStats}
             sentence={japaneseSentence}
             options={options}

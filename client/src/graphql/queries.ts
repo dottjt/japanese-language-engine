@@ -2,7 +2,8 @@ import gql from 'graphql-tag';
 
 // const sentenceDisplayOptions = gql`
 //   sentenceDisplayOptions @client {
-//     toggleSentenceStats 
+//     toggleSentenceStats
+//     toggleSentenceOrder
 //   }
 // `;
 

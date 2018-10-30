@@ -1,12 +1,13 @@
 import * as React from 'react'
 
 import { Flex } from '../../atoms/LayoutStyles';
-import { TextHover } from '../../atoms/CustomStyles';
+import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
 import {
   // capitalise,
   startOfSentence,
   endOfSentence,
   capitalise,
+  determineSentenceCover,
 } from '../../../util/functions';
 
 import {
@@ -63,13 +64,24 @@ const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exercise
   return '';  
 };
 
-class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {}> {
+class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, { hoverState: boolean }> {
+  constructor(props: PropTypes.IEnglishSentenceProps) {
+    super(props);
+    this.state = { hoverState: false }
+  }
+
   public render() {
-    const { sentenceStats, sentence, options, exerciseIndex } = this.props;
+    const { sentence, sentenceStats, sentenceDisplayOptions, options, exerciseIndex } = this.props;
+    const { hoverState } = this.state;
     const sentenceArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
-      <Flex m={2} p={2} pl={3} border={1}>
+      <SentenceCover 
+        background={determineSentenceCover(sentenceDisplayOptions.toggleSentenceOrder, hoverState)}
+        onMouseEnter={this.onHoverEnter}
+        onMouseLeave={this.onHoverExit}
+        m={2} p={3} pl={3} border={1}
+        >
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const phraseArray = createTaggedArrayEnglish(phrase);
           const phraseArrayComplete = phraseOptionsEnglish(phraseArray, options, phraseIndex);
@@ -85,9 +97,15 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
             </Flex>
           );
         })}
-      </Flex>
+      </SentenceCover>
     );
   };
+  private onHoverEnter = (): void => {
+    this.setState({ hoverState: true });
+  }
+  private onHoverExit = (): void => {
+    this.setState({ hoverState: false });
+  }
 };
 
 export default SentenceEnglish;
