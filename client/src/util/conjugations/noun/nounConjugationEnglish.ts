@@ -43,7 +43,7 @@ import {
 
   ENGLISH_TENSE,
 
-  CONJUGATION_TYPE_ENGLISH,
+  CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
 
 const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Word, sentenceType: string): Util.WordElement => {
@@ -109,7 +109,7 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
 
 const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
   const word = filtersentenceType(words, sentenceType);
-  const type = CONJUGATION_TYPE_ENGLISH;
+  const type = CONJUGATION_TYPE_NOUN_ENGLISH;
 
   const indefiniteArticle = determineNounIndefiniteArticle(words, word, sentenceType);
   const polarity = determineNounPolarity(words, options, sentenceType);
@@ -121,6 +121,7 @@ const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options
     indefiniteArticle,
     word,
     type,
+    sentenceType,
     __typename: __TYPENAME_CONJUGATED_ENGLISH_NOUN,
   };
 };

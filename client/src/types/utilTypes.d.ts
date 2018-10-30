@@ -15,6 +15,10 @@ declare namespace Util {
   }
 
   export type SentenceStats = {
+    topicHover: Boolean;
+    subjectHover: Boolean;
+    verbHover: Boolean;
+
     polarityHover: Boolean;
     tenseHover: Boolean;
     politenessHover: Boolean;
@@ -58,8 +62,10 @@ declare namespace Util {
 
   export type ConjugatedJapaneseWord = {
     type: string; // noun, verb
+    sentenceType: string; // noun
     word: Word; // noun, verb
     categoryEnding: WordElement; // noun
+    verbStem: WordElement; // verb
     tense: WordElement; // noun
     polarity: WordElement;// noun, verb
     topicParticle: WordElement; // noun
@@ -68,10 +74,11 @@ declare namespace Util {
 
   export type ConjugatedEnglishWord = {
     type: string; // noun, verb
+    sentenceType: string; // noun
+    word: Word; // noun, verb
     tense: WordElement; // noun
     polarity: WordElement; // noun, verb
     indefiniteArticle: WordElement; // noun
-    word: Word; // noun, verb
     __typename: string; // noun, verb
   };
 

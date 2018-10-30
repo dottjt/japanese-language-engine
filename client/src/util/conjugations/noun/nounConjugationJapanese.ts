@@ -1,5 +1,6 @@
 import {
-  createError,
+  createError, 
+  emptyWordElement,
 } from '../../functions';
 
 import {
@@ -45,7 +46,7 @@ import {
   TENSE_PRESENT,
   TENSE_PAST,
 
-  CONJUGATION_TYPE_JAPANESE,
+  CONJUGATION_TYPE_NOUN_JAPANESE,
 
   JAPANESE_CONJUGATION,
   JAPANESE_TOPIC_PARTICLE,
@@ -124,7 +125,7 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
 
 const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
   const word = filtersentenceType(words, sentenceType);
-  const type = CONJUGATION_TYPE_JAPANESE;
+  const type = CONJUGATION_TYPE_NOUN_JAPANESE;
 
   const { tense, polarity } = determineNounConjugationJapanese(words, options, sentenceType);
   const categoryEnding = determinecategoryEnding(word);
@@ -135,8 +136,10 @@ const nounConjugationJapanese = (words: Util.SentenceWords, options: Util.Option
     categoryEnding,
     topicParticle,
     tense,
+    verbStem: emptyWordElement(),
     polarity, 
     type,
+    sentenceType,
     __typename: __TYPENAME_CONJUGATED_JAPANESE_NOUN,
   }
 };

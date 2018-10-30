@@ -25,6 +25,7 @@ import {
   CONJUGATION_TYPE_VERB_JAPANESE,
   
   JAPANESE_POLARITY,
+  JAPANESE_VERB_STEM,
 } from '../../constants/optionsConstants';
 
 import {
@@ -38,33 +39,33 @@ import {
 } from '../../constants/katakana';
 
 // Polite U Verbs
-const uVerbEndingToI = (verbEnding: string): string => {
+const uVerbEndingToI = (verbEnding: string): string[] => {
   switch(verbEnding) {
-    case uVerbEndingU.HIRAGANA_U: return uVerbEndingI.HIRAGANA_I; 
-    case uVerbEndingU.HIRAGANA_SU: return uVerbEndingI.HIRAGANA_SHI; 
-    case uVerbEndingU.HIRAGANA_KU: return uVerbEndingI.HIRAGANA_KI; 
-    case uVerbEndingU.HIRAGANA_GU: return uVerbEndingI.HIRAGANA_GI; 
-    case uVerbEndingU.HIRAGANA_BU: return uVerbEndingI.HIRAGANA_BI; 
-    case uVerbEndingU.HIRAGANA_TSU: return uVerbEndingI.HIRAGANA_CHI; 
-    case uVerbEndingU.HIRAGANA_MU: return uVerbEndingI.HIRAGANA_MI; 
-    case uVerbEndingU.HIRAGANA_RU: return uVerbEndingI.HIRAGANA_RI; 
-    case uVerbEndingU.HIRAGANA_NU: return uVerbEndingI.HIRAGANA_NI; 
+    case uVerbEndingU.HIRAGANA_U: return [ uVerbEndingI.HIRAGANA_I ]; 
+    case uVerbEndingU.HIRAGANA_SU: return [ uVerbEndingI.HIRAGANA_SHI ]; 
+    case uVerbEndingU.HIRAGANA_KU: return [ uVerbEndingI.HIRAGANA_KI ]; 
+    case uVerbEndingU.HIRAGANA_GU: return [ uVerbEndingI.HIRAGANA_GI ]; 
+    case uVerbEndingU.HIRAGANA_BU: return [ uVerbEndingI.HIRAGANA_BI ]; 
+    case uVerbEndingU.HIRAGANA_TSU: return [ uVerbEndingI.HIRAGANA_CHI ]; 
+    case uVerbEndingU.HIRAGANA_MU: return [ uVerbEndingI.HIRAGANA_MI ]; 
+    case uVerbEndingU.HIRAGANA_RU: return [ uVerbEndingI.HIRAGANA_RI ]; 
+    case uVerbEndingU.HIRAGANA_NU: return [ uVerbEndingI.HIRAGANA_NI ]; 
   }
   throw new Error(createError('conjugations/verb', 'uVerbEndingToI', `${verbEnding} does not exist.`));
 };
 
 // Negative U Verbs
-const uVerbEndingToA = (verbEnding: string): string => {
+const uVerbEndingToA = (verbEnding: string): string[] => {
   switch(verbEnding) {
-    case uVerbEndingU.HIRAGANA_U: return uVerbEndingA.HIRAGANA_A; 
-    case uVerbEndingU.HIRAGANA_SU: return uVerbEndingA.HIRAGANA_SA; 
-    case uVerbEndingU.HIRAGANA_KU: return uVerbEndingA.HIRAGANA_KA; 
-    case uVerbEndingU.HIRAGANA_GU: return uVerbEndingA.HIRAGANA_GA; 
-    case uVerbEndingU.HIRAGANA_BU: return uVerbEndingA.HIRAGANA_BA; 
-    case uVerbEndingU.HIRAGANA_TSU: return uVerbEndingA.HIRAGANA_TA; 
-    case uVerbEndingU.HIRAGANA_MU: return uVerbEndingA.HIRAGANA_MA; 
-    case uVerbEndingU.HIRAGANA_RU: return uVerbEndingA.HIRAGANA_RA; 
-    case uVerbEndingU.HIRAGANA_NU: return uVerbEndingA.HIRAGANA_NA; 
+    case uVerbEndingU.HIRAGANA_U: return [ uVerbEndingA.HIRAGANA_A ]; 
+    case uVerbEndingU.HIRAGANA_SU: return [ uVerbEndingA.HIRAGANA_SA ]; 
+    case uVerbEndingU.HIRAGANA_KU: return [ uVerbEndingA.HIRAGANA_KA ]; 
+    case uVerbEndingU.HIRAGANA_GU: return [ uVerbEndingA.HIRAGANA_GA ]; 
+    case uVerbEndingU.HIRAGANA_BU: return [ uVerbEndingA.HIRAGANA_BA ]; 
+    case uVerbEndingU.HIRAGANA_TSU: return [ uVerbEndingA.HIRAGANA_TA ]; 
+    case uVerbEndingU.HIRAGANA_MU: return [ uVerbEndingA.HIRAGANA_MA ]; 
+    case uVerbEndingU.HIRAGANA_RU: return [ uVerbEndingA.HIRAGANA_RA ]; 
+    case uVerbEndingU.HIRAGANA_NU: return [ uVerbEndingA.HIRAGANA_NA ]; 
   }
   throw new Error(createError('conjugations/verb', 'uVerbEndingToA', `${verbEnding} does not exist.`));
 };
@@ -86,13 +87,13 @@ const getVerbStem = (verb: Util.Word, options: Util.Options): string[] => {
   throw new Error(createError('conjugations/verb', 'getVerbStem', `Verb meta.verbType does not exist.`));
 };
 
-const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): Util.WordElement => {
+const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): { verbStem: Util.WordElement, polarity: Util.WordElement } => {
   const verbStem = getVerbStem(verb, options);
   switch(`${options.politeness}${options.polarity}`) {
-    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return createWord(verb.japanese.kanji.split(''), JAPANESE_POLARITY);
-    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return createWord(verbStem.concat(['な','い']), JAPANESE_POLARITY);
-    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return createWord(verbStem.concat(['ま','す']), JAPANESE_POLARITY);
-    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return createWord(verbStem.concat(['ま','せ','ん']), JAPANESE_POLARITY);
+    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verb.japanese.kanji.split(''), JAPANESE_POLARITY)  };
+    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verbStem.concat(['な','い']), JAPANESE_POLARITY)  };
+    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verbStem.concat(['ま','す']), JAPANESE_POLARITY)  };
+    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verbStem.concat(['ま','せ','ん']), JAPANESE_POLARITY)  };
   }
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };
@@ -100,15 +101,17 @@ const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options
 const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_JAPANESE;
-  const polarity = determineVerbConjugationJapanese(word, options);
+  const { verbStem, polarity } = determineVerbConjugationJapanese(word, options);
 
   return {
+    type,
+    sentenceType,
     word,
+    verbStem, 
     polarity,
     categoryEnding: emptyWordElement(),
     tense: emptyWordElement(),
     topicParticle: emptyWordElement(),
-    type,
     __typename: __TYPENAME_CONJUGATED_JAPANESE_VERB,
   }
 };

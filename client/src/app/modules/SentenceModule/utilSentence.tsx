@@ -16,23 +16,36 @@ import {
 
   HAS_QUESTION,
 
+  SENTENCE_TYPE_TOPIC,
+
+  JAPANESE_TOPIC,
+  JAPANESE_SUBJECT,
+  JAPANESE_VERB_STEM,
   JAPANESE_TENSE,
   JAPANESE_POLARITY,
-
-  ENGLISH,
-  ENGLISH_POLARITY,
-  // ENGLISH_INDEFINITE_ARTICLE,
-
-  JAPANESE,
-  // VERB_JAPANESE,
   // JAPANESE_TOPIC_PARTICLE,
   // JAPANESE_CATEGORY_ENDING,
 
+  ENGLISH_TOPIC,
+  ENGLISH_SUBJECT,
+  ENGLISH_VERB,
+  ENGLISH_POLARITY,
+  ENGLISH_TENSE,
+  // ENGLISH_INDEFINITE_ARTICLE,
 
-  CONJUGATION_TYPE_ENGLISH,
+  CONJUGATION_TYPE_NOUN_ENGLISH,
   CONJUGATION_TYPE_VERB_ENGLISH,
-  CONJUGATION_TYPE_JAPANESE,
+  CONJUGATION_TYPE_NOUN_JAPANESE,
   CONJUGATION_TYPE_VERB_JAPANESE,
+
+  T,
+  WA_TS,
+  MO_TS,
+  GA_TS,
+  V,
+  WO_SV,
+  NI_SV,
+  DE_SV,
 } from '../../../util/constants/optionsConstants';
 
 import {
@@ -62,20 +75,38 @@ const convertPolitenessIntoValue = (politeness: string): string | undefined => {
   }
 };
 
+const determineTopicSubjectVerb = (variation: string): { topic: boolean, subject: boolean, verb: boolean } => {
+  switch(variation) {
+    case T:     return { topic: true, subject: false, verb: false };
+    case WA_TS: return { topic: true, subject: true, verb: false };
+    case MO_TS: return { topic: true, subject: true, verb: false };
+    case GA_TS: return { topic: true, subject: true, verb: false };
+    case V:     return { topic: false, subject: false, verb: true };
+    case WO_SV: return { topic: false, subject: true, verb: true };
+    case NI_SV: return { topic: false, subject: true, verb: true };
+    case DE_SV: return { topic: false, subject: true, verb: true };
+  }
+  throw new Error(createError('SentenceModule/utilSentence', 'determineTopicSubjectVerb', `${variation} does not exist.`));    
+};
+
 const convertQuestionIntoValue = (question: string): string | undefined => 
   question === HAS_QUESTION ? 'Question' : undefined;
 
 export const determineStatTypes = (options: Util.Options) => {
-  const { politeness, polarity, tense, question, /* variation, gender */ } = options;
+  const { politeness, polarity, tense, question, variation, /* gender */ } = options;
     
   const politenessValue = convertPolitenessIntoValue(politeness);
   const polarityTenseValue = determinePolarityTense(polarity, tense);
   const questionValue = convertQuestionIntoValue(question);
+  const { topic, subject, verb } = determineTopicSubjectVerb(variation);
 
   return {
     polarityTenseValue,
     questionValue,
     politenessValue,
+    topic,
+    subject,
+    verb,
   }
 };
 
@@ -91,8 +122,18 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
 
 export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
+    if (sentenceStats.topicHover && tag === ENGLISH_TENSE) {
+      return 'yellow';
+    }
+    if (sentenceStats.subjectHover && tag === ENGLISH_TENSE) {
+      return 'yellow';      
+    }
+    if (sentenceStats.verbHover && tag === ENGLISH_TENSE) {
+      return 'yellow';      
+    }
+
     if ((sentenceStats.polarityHover && sentenceStats.tenseHover) &&
-        tag === ENGLISH_POLARITY) {
+        (tag === ENGLISH_POLARITY || tag === ENGLISH_TENSE)) {
           return 'red';
     }
     // english does not have any politness values
@@ -109,9 +150,18 @@ export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, e
 
 export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
+    if (sentenceStats.topicHover && tag === JAPANESE_TOPIC) {
+      return 'yellow';
+    }
+    if (sentenceStats.subjectHover && tag === JAPANESE_SUBJECT) {
+      return 'yellow';      
+    }
+    if (sentenceStats.verbHover && tag === JAPANESE_VERB_STEM) {
+      return 'yellow';      
+    }
+
     if ((sentenceStats.tenseHover && sentenceStats.polarityHover) &&
-        (tag === JAPANESE_TENSE ||
-        tag === JAPANESE_POLARITY)) {
+        (tag === JAPANESE_TENSE || tag === JAPANESE_POLARITY)) {
           return 'red';
     }
     // if (sentenceStats.politenessHover && 
@@ -136,13 +186,14 @@ export const createTaggedArrayEnglish = (phrase: Util.ConjugatedEnglishWord): Ut
   const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
 
   switch(phrase.type) {
-    case CONJUGATION_TYPE_ENGLISH: 
+    case CONJUGATION_TYPE_NOUN_ENGLISH: 
+    // NOTE: will need to specify if noun is topic or subject.
       const indefiniteArticle = tagArray(phrase.indefiniteArticle.wordArray, phrase.indefiniteArticle.wordType);
-      const noun = tagArray([phrase.word.english.present], ENGLISH);
+      const noun = phrase.sentenceType === SENTENCE_TYPE_TOPIC ? tagArray([phrase.word.english.present], ENGLISH_TOPIC) : tagArray([phrase.word.english.present], ENGLISH_SUBJECT);
       return tense.concat(polarity).concat(indefiniteArticle).concat(noun); 
 
     case CONJUGATION_TYPE_VERB_ENGLISH: 
-      const verb = tagArray([phrase.word.english.present], ENGLISH);
+      const verb = tagArray([phrase.word.english.present], ENGLISH_VERB);
       return tense.concat(polarity).concat(verb);
   }
   throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayEnglish', `${phrase.type} does not exist.`));    
@@ -153,8 +204,11 @@ export const createTaggedArrayJapanese = (phrase: Util.ConjugatedJapaneseWord): 
   const polarity = tagArray(phrase.polarity.wordArray, phrase.polarity.wordType);
 
   switch(phrase.type) {
-    case CONJUGATION_TYPE_JAPANESE: 
-      const noun = tagArray([phrase.word.japanese.kanji], JAPANESE);
+    case CONJUGATION_TYPE_NOUN_JAPANESE: 
+    // NOTE: will need to specify if noun is topic or subject.
+    // SENTENCE_TYPE_TOPIC is used in nounConjugation. 
+
+      const noun = phrase.sentenceType === SENTENCE_TYPE_TOPIC ? tagArray([phrase.word.japanese.kanji], JAPANESE_TOPIC) : tagArray([phrase.word.japanese.kanji], JAPANESE_SUBJECT);
       const categoryEnding = tagArray(phrase.categoryEnding.wordArray, phrase.categoryEnding.wordType);
       const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
       const topicParticle = tagArray(phrase.topicParticle.wordArray, phrase.topicParticle.wordType);
@@ -162,7 +216,9 @@ export const createTaggedArrayJapanese = (phrase: Util.ConjugatedJapaneseWord): 
       return noun.concat(categoryEnding).concat(polarity).concat(tense).concat(topicParticle);
 
     case CONJUGATION_TYPE_VERB_JAPANESE: 
-      return polarity;
+      const verbStem = tagArray(phrase.verbStem.wordArray, phrase.verbStem.wordType);
+
+      return verbStem.concat(polarity);
   }
   throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayJapanese', `${phrase.type} does not exist.`));    
 };

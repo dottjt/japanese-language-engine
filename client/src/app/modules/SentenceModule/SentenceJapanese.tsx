@@ -12,7 +12,7 @@ import {
 import {
   createTaggedArrayJapanese,
   convertSentenceStatsJapanese,
-} from './sentenceUtil';
+} from './utilSentence';
 
 import {
   HAS_QUESTION,

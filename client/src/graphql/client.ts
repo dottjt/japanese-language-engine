@@ -19,6 +19,10 @@ const defaults = {
     __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   },
   sentenceStats: {
+    topicHover: false,
+    subjectHover: false,
+    verbHover: false,
+
     tenseHover: false,
     polarityHover: false,
     politenessHover: false,

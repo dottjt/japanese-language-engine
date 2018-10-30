@@ -14,7 +14,7 @@ import {
 import {
   createTaggedArrayEnglish,
   convertSentenceStatsEnglish,
-} from './sentenceUtil';
+} from './utilSentence';
 
 import {
   HAS_QUESTION,
@@ -42,7 +42,7 @@ const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], opt
   return sentenceArray;
 };
 
-class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, { hoverState: boolean }> {
+class SentenceEnglish extends React.PureComponent<PropTypes.IEnglishSentenceProps, { hoverState: boolean }> {
   constructor(props: PropTypes.IEnglishSentenceProps) {
     super(props);
     this.state = { hoverState: false }
@@ -69,6 +69,7 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
             return (
               <Flex key={phraseIndex}>
                 {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
+                  
                   const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
                   const wordComplete = wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex);
                   return (

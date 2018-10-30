@@ -38,6 +38,7 @@ export const GET_EXERCISES = gql`{
   exercises @client {
     englishSentence @client {
       type
+      sentenceType
       tense @client {
         wordArray
         wordType
@@ -70,11 +71,12 @@ export const GET_EXERCISES = gql`{
 
     japaneseSentence @client {
       type
+      sentenceType
       categoryEnding @client {
         wordArray
         wordType
       }
-      nounEnding @client {
+      verbStem @client {
         wordArray
         wordType
       }
@@ -147,6 +149,10 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
   }
 
   sentenceStats @client {
+    topicHover
+    subjectHover
+    verbHover
+
     politenessHover
     polarityHover
     tenseHover
@@ -174,6 +180,7 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
   exercises @client {
     englishSentence @client {
       type
+      sentenceType
       tense @client {
         wordArray
         wordType
@@ -206,7 +213,12 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
 
     japaneseSentence @client {
       type
+      sentenceType
       categoryEnding @client {
+        wordArray
+        wordType
+      }
+      verbStem @client {
         wordArray
         wordType
       }

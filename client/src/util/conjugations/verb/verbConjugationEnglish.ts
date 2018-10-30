@@ -53,6 +53,7 @@ const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options
     polarity,
     word,
     type,
+    sentenceType,
     __typename: __TYPENAME_CONJUGATED_ENGLISH_VERB,
   }
   // return `${verbPolarity} ${word.english}`;

@@ -18,8 +18,10 @@ export const sentenceTypes = `
 
   type ConjugatedJapaneseWord {
     type: String
+    sentenceType: String
     word: Word
     categoryEnding: WordElement
+    verbStem: WordElement
     tense: WordElement
     polarity: WordElement
     topicParticle: WordElement
@@ -27,14 +29,11 @@ export const sentenceTypes = `
 
   type ConjugatedEnglishWord {
     type: String
+    sentenceType: String
     tense: WordElement
     polarity: WordElement
     indefiniteArticle: WordElement
     word: Word
-  }
-
-  type ConjugatedEnglishWord {
-    type: String
   }
 
   type EnglishJapaneseOptionsSentence {
@@ -46,6 +45,10 @@ export const sentenceTypes = `
 
 export const optionTypes = `
   type SentenceStats {
+    topicHover: Boolean
+    subjectHover: Boolean
+    verbHover: Boolean
+    tenseHover: Boolean
     politenessHover: Boolean
     politenessHover: Boolean
     questionHover: Boolean
