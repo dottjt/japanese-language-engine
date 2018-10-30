@@ -18,7 +18,7 @@ export const randomArrayElement = (arrayLength: number): number => Math.floor(Ma
 export const startOfSentence = (sentenceLength: number, index: number) => index === 0;
 export const endOfSentence = (sentenceLength: number, index: number) => sentenceLength - 1 === index;
 export const emptyWordElement = (): Util.WordElement => ({ wordArray: [''], wordType: 'NA', __typename: 'NA' });
-export const determineSentenceCover = (toggleSentenceOrder: boolean, hoverState: boolean): string => toggleSentenceOrder || hoverState ? 'none' : 'black'; 
+export const determineSentenceCover = (toggleSentenceOrder: boolean, hoverState: boolean, toggleSentenceHide: boolean): string => toggleSentenceOrder || hoverState || toggleSentenceHide ? 'none' : 'black'; 
 
 interface IValues {
   value: string,

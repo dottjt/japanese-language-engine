@@ -15,6 +15,7 @@ const defaults = {
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
     toggleSentenceOrder: false, 
+    toggleSentenceHide: false,
     __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   },
   sentenceStats: {

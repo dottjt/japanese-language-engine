@@ -72,12 +72,13 @@ class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, {
 
   public render() {
     const { sentence, sentenceStats, sentenceDisplayOptions, options, exerciseIndex } = this.props;
+    const { toggleSentenceOrder, toggleSentenceHide } = sentenceDisplayOptions;
     const { hoverState } = this.state;
     const sentenceArrayComplete = sentenceOptionsEnglish(sentence, options);
 
     return (
       <SentenceCover 
-        background={determineSentenceCover(sentenceDisplayOptions.toggleSentenceOrder, hoverState)}
+        background={determineSentenceCover(toggleSentenceOrder, hoverState, toggleSentenceHide)}
         onMouseEnter={this.onHoverEnter}
         onMouseLeave={this.onHoverExit}
         m={2} p={3} pl={3} border={1}

@@ -55,8 +55,11 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
         <Button onClick={() => this.randomiseExerices(client, route.path)}>
           Randomise exercises
         </Button>
-        <Button onClick={() => this.switchLanguage(client, sentenceDisplayOptions.toggleSentenceOrder)}>
-          Switch English with Japanese
+        <Button onClick={() => this.toggleSentenceOrder(client, sentenceDisplayOptions.toggleSentenceOrder)}>
+          Toggle Language Order
+        </Button>
+        <Button onClick={() => this.toggleSentenceHide(client, sentenceDisplayOptions.toggleSentenceHide)}>
+          Toggle Sentence Hide
         </Button>
 
         {/* <Buttons
@@ -72,6 +75,9 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
       </FlexColumn>
     );
   }
+  private toggleSentenceHide = (client: any, toggleSentenceHide: boolean): void => {
+    client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, toggleSentenceHide: !toggleSentenceHide }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
+  };
 
   private toggleSentenceStats = (client: any, toggleSentenceStats: boolean): void => {
     client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, toggleSentenceStats: !toggleSentenceStats }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
@@ -81,7 +87,7 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
     getExercisesApollo(client, path, 10);
   };
 
-  private switchLanguage = (client: any, toggleSentenceOrder: boolean): void => {
+  private toggleSentenceOrder = (client: any, toggleSentenceOrder: boolean): void => {
     client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, toggleSentenceOrder: !toggleSentenceOrder }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
   };
 

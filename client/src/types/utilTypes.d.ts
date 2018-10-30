@@ -10,6 +10,7 @@ declare namespace Util {
   export type SentenceDisplayOptions = {
     toggleSentenceStats: boolean;
     toggleSentenceOrder: boolean;
+    toggleSentenceHide: boolean;
     __typename: string;
   }
 

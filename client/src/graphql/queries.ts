@@ -139,6 +139,7 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
   sentenceDisplayOptions @client {
     toggleSentenceStats
     toggleSentenceOrder
+    toggleSentenceHide
   }
 
   sentenceStats @client {
