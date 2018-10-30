@@ -13,17 +13,11 @@ import {
 
 import {
   createTaggedArrayEnglish,
+  convertSentenceStatsEnglish,
 } from './sentenceUtil';
 
 import {
   HAS_QUESTION,
-
-  VERB_ENGLISH,
-  // VERB_ENGLISH_CONJUGATION,
-  // NOUN_ENGLISH,
-  NOUN_ENGLISH_CONJUGATION,
-  // NOUN_ENGLISH_POLARITY,
-  // NOUN_ENGLISH_INDEFINITE_ARTICLE,
 } from '../../../util/constants/optionsConstants';
 
 const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
@@ -46,25 +40,6 @@ const phraseOptionsEnglish = (phraseArray: Util.WordArrayElement[], options: Uti
 
 const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], options: Util.Options): Util.ConjugatedEnglishWord[] => {
   return sentenceArray;
-};
-
-const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
-  if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.polarityTenseHover && 
-        tag === VERB_ENGLISH) {
-          return 'red';
-    }
-    if (sentenceStats.politenessHover && 
-        tag === NOUN_ENGLISH_CONJUGATION) {
-          return 'green';
-    }
-    if (sentenceStats.questionHover && 
-        tag === NOUN_ENGLISH_CONJUGATION) {
-          return 'blue';
-    }
-    // VERB_ENGLISH ,VERB_ENGLISH_CONJUGATION ,NOUN_ENGLISH ,NOUN_ENGLISH_CONJUGATION ,NOUN_ENGLISH_POLARITY ,NOUN_ENGLISH_INDEFINITE_ARTICLE
-  }
-  return undefined;
 };
 
 class SentenceEnglish extends React.Component<PropTypes.IEnglishSentenceProps, { hoverState: boolean }> {

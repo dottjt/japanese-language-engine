@@ -5,25 +5,18 @@ import { Heading } from '../../atoms/TextStyles';
 import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
 
 import {
-  // startOfSentence,
   endOfSentence,
   determineSentenceCover,
 } from '../../../util/functions';
 
 import {
-  createTaggedArrayJapanese
+  createTaggedArrayJapanese,
+  convertSentenceStatsJapanese,
 } from './sentenceUtil';
 
 import {
   HAS_QUESTION,
   POLITENESS_CASUAL,
-
-  // VERB_JAPANESE,
-  // VERB_JAPANESE_CONJUGATION,
-  // NOUN_JAPANESE,
-  NOUN_JAPANESE_CONJUGATION,
-  NOUN_JAPANESE_TOPIC_PARTICLE,
-  // NOUN_JAPANESE_CATEGORY_ENDING,
 } from '../../../util/constants/optionsConstants';
 
 const wordArrayOptionsJapanese = (character: Util.WordArrayElement, japaneseSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
@@ -41,26 +34,6 @@ const phraseOptionsJapanese = (phraseArray: Util.WordArrayElement[], options: Ut
 
 const sentenceOptionsJapanese = (sentenceArray: Util.ConjugatedJapaneseWord[], options: Util.Options): Util.ConjugatedJapaneseWord[] => {
   return sentenceArray;
-};
-
-const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
-  if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.polarityTenseHover && 
-        tag === NOUN_JAPANESE_TOPIC_PARTICLE) {
-          return 'red';
-    }
-    if (sentenceStats.politenessHover && 
-        tag === NOUN_JAPANESE_CONJUGATION) {
-          return 'green';
-    }
-    if (sentenceStats.questionHover && 
-        tag === NOUN_JAPANESE_CONJUGATION) {
-          return 'blue';
-    }
-    // VERB_JAPANESE, VERB_JAPANESE_CONJUGATION, NOUN_JAPANESE, NOUN_JAPANESE_CONJUGATION, NOUN_JAPANESE_TOPIC_PARTICLE, NOUN_JAPANESE_CATEGORY_ENDING
-
-  }
-  return undefined;
 };
 
 class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps, { hoverState: boolean }> {

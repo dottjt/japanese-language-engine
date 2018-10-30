@@ -18,9 +18,18 @@ import {
 
   NOUN_ENGLISH,
   VERB_ENGLISH,
+  // VERB_ENGLISH_CONJUGATION,
+  NOUN_ENGLISH_CONJUGATION,
+  // NOUN_ENGLISH_POLARITY,
+  // NOUN_ENGLISH_INDEFINITE_ARTICLE,
 
   NOUN_JAPANESE,
   VERB_JAPANESE,
+  // VERB_JAPANESE_CONJUGATION,
+  NOUN_JAPANESE_CONJUGATION,
+  NOUN_JAPANESE_TOPIC_PARTICLE,
+  // NOUN_JAPANESE_CATEGORY_ENDING,
+
 
   CONJUGATION_TYPE_NOUN_ENGLISH,
   CONJUGATION_TYPE_VERB_ENGLISH,
@@ -82,7 +91,44 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
   }
 };
 
+export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
+  if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
+    if (sentenceStats.polarityTenseHover && 
+        tag === VERB_ENGLISH) {
+          return 'red';
+    }
+    if (sentenceStats.politenessHover && 
+        tag === NOUN_ENGLISH_CONJUGATION) {
+          return 'green';
+    }
+    if (sentenceStats.questionHover && 
+        tag === NOUN_ENGLISH_CONJUGATION) {
+          return 'blue';
+    }
+    // VERB_ENGLISH ,VERB_ENGLISH_CONJUGATION ,NOUN_ENGLISH ,NOUN_ENGLISH_CONJUGATION ,NOUN_ENGLISH_POLARITY ,NOUN_ENGLISH_INDEFINITE_ARTICLE
+  }
+  return undefined;
+};
 
+export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
+  if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
+    if (sentenceStats.polarityTenseHover && 
+        tag === NOUN_JAPANESE_TOPIC_PARTICLE) {
+          return 'red';
+    }
+    if (sentenceStats.politenessHover && 
+        tag === NOUN_JAPANESE_CONJUGATION) {
+          return 'green';
+    }
+    if (sentenceStats.questionHover && 
+        tag === NOUN_JAPANESE_CONJUGATION) {
+          return 'blue';
+    }
+    // VERB_JAPANESE, VERB_JAPANESE_CONJUGATION, NOUN_JAPANESE, NOUN_JAPANESE_CONJUGATION, NOUN_JAPANESE_TOPIC_PARTICLE, NOUN_JAPANESE_CATEGORY_ENDING
+
+  }
+  return undefined;
+};
 
 // SENTENCE ENGLISH && JAPANESE 
 
