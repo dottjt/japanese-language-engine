@@ -14,7 +14,7 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
     const { client, sentenceDisplayOptions, sentenceStats, options, exerciseIndex, englishSentence, japaneseSentence } = this.props;
 
     return (
-      <FlexColumn>
+      <FlexColumn mb={2}>
         <SentenceStats
           client={client}
           sentenceDisplayOptions={sentenceDisplayOptions}

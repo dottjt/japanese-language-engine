@@ -81,13 +81,15 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
         {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
           const phraseArray = createTaggedArrayJapanese(phrase);
           const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
-
           return (
             <Flex key={phraseIndex}>
               {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
                 const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
+                const wordComplete = wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex);
                 return (
-                  <TextHover hovercolour={hoverColour} key={nounIndex}>{wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex)}</TextHover>
+                  <TextHover hovercolour={hoverColour} key={nounIndex}>
+                    {wordComplete}
+                  </TextHover>
                 );
               })}
             </Flex>

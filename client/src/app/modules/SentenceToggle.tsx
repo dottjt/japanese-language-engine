@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { FlexColumn } from '../atoms/LayoutStyles';
+import { Flex } from '../atoms/LayoutStyles';
 import { Button } from '../atoms/ClickableStyles';
 // import { Heading } from '../atoms/TextStyles';
 
@@ -48,17 +48,17 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
   public render() {
     const { client, route, sentenceDisplayOptions } = this.props;
     return (
-      <FlexColumn>
-        <Button onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.toggleSentenceStats)}>
+      <Flex>
+        <Button p={1} onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.toggleSentenceStats)}>
           Toggle sentence stats
         </Button>
-        <Button onClick={() => this.randomiseExerices(client, route.path)}>
+        <Button p={1} onClick={() => this.randomiseExerices(client, route.path)}>
           Randomise exercises
         </Button>
-        <Button onClick={() => this.toggleSentenceOrder(client, sentenceDisplayOptions.toggleSentenceOrder)}>
+        <Button p={1} onClick={() => this.toggleSentenceOrder(client, sentenceDisplayOptions.toggleSentenceOrder)}>
           Toggle Language Order
         </Button>
-        <Button onClick={() => this.toggleSentenceHide(client, sentenceDisplayOptions.toggleSentenceHide)}>
+        <Button p={1} onClick={() => this.toggleSentenceHide(client, sentenceDisplayOptions.toggleSentenceHide)}>
           Toggle Sentence Hide
         </Button>
 
@@ -72,7 +72,7 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
           values={[convertPolarityIntoValue(POLARITY_POSITIVE), convertPolarityIntoValue(POLARITY_NEGATIVE)]}
           onClickCallback={this.variationCallback}
         /> */}
-      </FlexColumn>
+      </Flex>
     );
   }
   private toggleSentenceHide = (client: any, toggleSentenceHide: boolean): void => {

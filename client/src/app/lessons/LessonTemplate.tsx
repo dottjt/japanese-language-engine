@@ -14,7 +14,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
     const { title, client, route, sentenceDisplayOptions, sentenceStats, exercises, /*explanation, resources*/ } = this.props; 
 
     return (
-      <FlexColumn ml={4} mt={4} width={[1]}>
+      <FlexColumn m={4} width={[1]}>
         <Heading is='h2' fontSize={3}>{title}</Heading>
         
         {/* <FlexColumn mt={4}>
