@@ -19,7 +19,6 @@ import {
 } from '../../constants/typeNameConstants';
 
 import {
-  ENGLISH_CONJUGATION,
   ENGLISH_POLARITY,
   ENGLISH_INDEFINITE_ARTICLE,
 
@@ -41,6 +40,8 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
+
+  ENGLISH_TENSE,
 
   CONJUGATION_TYPE_ENGLISH,
 } from '../../constants/optionsConstants';
@@ -81,29 +82,29 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
   if (permissions) {
     if (options.variation === WA_TS || options.variation === T) {
       switch(`${options.tense}`) {
-        case `${TENSE_PRESENT}`: return createWord(['is'], ENGLISH_CONJUGATION);
-        case `${TENSE_PAST}`: return createWord(['was'], ENGLISH_CONJUGATION);
+        case `${TENSE_PRESENT}`: return createWord(['is'], ENGLISH_TENSE);
+        case `${TENSE_PAST}`: return createWord(['was'], ENGLISH_TENSE);
       };
       throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - WA_TS', `${options.polarity}${options.tense} unknown`));
     }
   
     if (options.variation === MO_TS) {
       switch(`${options.tense}`) {
-        case `${TENSE_PRESENT}`: return createWord(['is', 'also'], ENGLISH_CONJUGATION);
-        case `${TENSE_PAST}`: return createWord(['was', 'also'], ENGLISH_CONJUGATION);
+        case `${TENSE_PRESENT}`: return createWord(['is', 'also'], ENGLISH_TENSE);
+        case `${TENSE_PAST}`: return createWord(['was', 'also'], ENGLISH_TENSE);
       };
       throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - MO_TS', `${options.tense} unknown`));
     }
     
     if (options.variation === GA_TS) {
       switch(`${options.tense}`) {
-        case `${TENSE_PRESENT}`: return createWord(['is', 'the', 'one', 'that', 'is'], ENGLISH_CONJUGATION);
-        case `${TENSE_PAST}`: return createWord(['is', 'the', 'one', 'that', 'was'], ENGLISH_CONJUGATION);
+        case `${TENSE_PRESENT}`: return createWord(['is', 'the', 'one', 'that', 'is'], ENGLISH_TENSE);
+        case `${TENSE_PAST}`: return createWord(['is', 'the', 'one', 'that', 'was'], ENGLISH_TENSE);
       };
       throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - GA_TS', `${options.tense} unknown`));
     }  
   }
-  return createWord([''], ENGLISH_CONJUGATION);
+  return createWord([''], ENGLISH_TENSE);
 };
 
 const nounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {

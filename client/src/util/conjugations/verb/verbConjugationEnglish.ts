@@ -10,11 +10,11 @@ import {
 } from '../../utilConjugation';
 
 import {
-  VERB_ENGLISH_CONJUGATION,
-  VERB_ENGLISH_POLARITY,
-
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
+
+  ENGLISH_TENSE,
+  ENGLISH_POLARITY,
 
   CONJUGATION_TYPE_VERB_ENGLISH,
 } from '../../constants/optionsConstants';
@@ -33,12 +33,12 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
 
   if (permissions) {
     switch(`${options.polarity}`) {
-      case `${POLARITY_POSITIVE}`: return { tense: createWord([''], VERB_ENGLISH_CONJUGATION), polarity: createWord([''], VERB_ENGLISH_CONJUGATION) };
-      case `${POLARITY_NEGATIVE}`: return { tense: createWord(['do'], VERB_ENGLISH_CONJUGATION), polarity: createWord(['not'], VERB_ENGLISH_POLARITY) };
+      case `${POLARITY_POSITIVE}`: return { tense: createWord([''], ENGLISH_TENSE), polarity: createWord([''], ENGLISH_POLARITY) };
+      case `${POLARITY_NEGATIVE}`: return { tense: createWord(['do'], ENGLISH_TENSE), polarity: createWord(['not'], ENGLISH_POLARITY) };
     }
     throw new Error(createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity} unknown`));
   }
-  return { tense: createWord([''], VERB_ENGLISH_CONJUGATION), polarity: createWord([''], VERB_ENGLISH_CONJUGATION) };
+  return { tense: createWord([''], ENGLISH_TENSE), polarity: createWord([''], ENGLISH_POLARITY) };
 }; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {

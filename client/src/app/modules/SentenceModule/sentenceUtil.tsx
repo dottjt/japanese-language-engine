@@ -16,16 +16,15 @@ import {
 
   HAS_QUESTION,
 
+  JAPANESE_TENSE,
+  JAPANESE_POLARITY,
+
   ENGLISH,
-  VERB_ENGLISH,
-  // VERB_ENGLISH_CONJUGATION,
-  ENGLISH_CONJUGATION,
   ENGLISH_POLARITY,
   // ENGLISH_INDEFINITE_ARTICLE,
 
   JAPANESE,
   // VERB_JAPANESE,
-  JAPANESE_CONJUGATION,
   // JAPANESE_TOPIC_PARTICLE,
   // JAPANESE_CATEGORY_ENDING,
 
@@ -34,7 +33,6 @@ import {
   CONJUGATION_TYPE_VERB_ENGLISH,
   CONJUGATION_TYPE_JAPANESE,
   CONJUGATION_TYPE_VERB_JAPANESE,
-  VERB_ENGLISH_CONJUGATION,
 } from '../../../util/constants/optionsConstants';
 
 import {
@@ -94,17 +92,14 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
 export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
     if (sentenceStats.polarityTenseHover && 
-        tag === ENGLISH_POLARITY ||
-        tag === ENGLISH_CONJUGATION ||
-        tag === VERB_ENGLISH_CONJUGATION) {
+        tag === ENGLISH_POLARITY) {
           return 'red';
     }
     // english does not have any politness values
     // if (sentenceStats.politenessHover) {
     //       return 'green';
     // }
-    if (sentenceStats.questionHover && 
-        tag === ENGLISH_CONJUGATION) {
+    if (sentenceStats.questionHover) {
           return 'blue';
     }
     // VERB_ENGLISH, VERB_ENGLISH_CONJUGATION, ENGLISH, ENGLISH_CONJUGATION, ENGLISH_POLARITY, ENGLISH_INDEFINITE_ARTICLE
@@ -115,15 +110,15 @@ export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, e
 export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
     if (sentenceStats.polarityTenseHover && 
-        tag === JAPANESE_CONJUGATION) {
+        tag === JAPANESE_TENSE ||
+        tag === JAPANESE_POLARITY) {
           return 'red';
     }
     // if (sentenceStats.politenessHover && 
     //     tag === JAPANESE_CONJUGATION) {
     //       return 'green';
     // }
-    if (sentenceStats.questionHover && 
-        tag === JAPANESE_CONJUGATION) {
+    if (sentenceStats.questionHover) {
           return 'blue';
     }
     // VERB_JAPANESE, VERB_JAPANESE_CONJUGATION, JAPANESE, JAPANESE_CONJUGATION, JAPANESE_TOPIC_PARTICLE, JAPANESE_CATEGORY_ENDING
@@ -147,7 +142,7 @@ export const createTaggedArrayEnglish = (phrase: Util.ConjugatedEnglishWord): Ut
       return tense.concat(polarity).concat(indefiniteArticle).concat(noun); 
 
     case CONJUGATION_TYPE_VERB_ENGLISH: 
-      const verb = tagArray([phrase.word.english.present], VERB_ENGLISH);
+      const verb = tagArray([phrase.word.english.present], ENGLISH);
       return tense.concat(polarity).concat(verb);
   }
   throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayEnglish', `${phrase.type} does not exist.`));    
