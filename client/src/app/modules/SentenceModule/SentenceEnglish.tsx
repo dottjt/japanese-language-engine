@@ -22,7 +22,7 @@ import {
 
 const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
 
-  if(startOfSentence(englishSentenceLength, index) && startOfSentence(phraseLength, phraseIndex)) {
+  if (startOfSentence(englishSentenceLength, index) && startOfSentence(phraseLength, phraseIndex)) {
     return capitalise(wordArrayElement.word);
   };
 

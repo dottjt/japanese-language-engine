@@ -67,7 +67,6 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
                   const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
                   const wordComplete = wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex);
 
-                  console.log(hoverColour);
                   return (
                     <TextHover hovercolour={hoverColour} key={nounIndex}>
                       {wordComplete}

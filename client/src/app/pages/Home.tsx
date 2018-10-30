@@ -161,7 +161,6 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
   };
 
   private randomiseExerices = (client: any): void => {
-    console.log(lessonPathArray[randomArrayElement(lessonPathArray.length)])
     getExercisesApollo(client, lessonPathArray[randomArrayElement(lessonPathArray.length)], 1);
   };
 
