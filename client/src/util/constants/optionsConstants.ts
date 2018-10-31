@@ -59,6 +59,9 @@ export const WO_SV = 'WO_SV'; // WO - SENTENCE_TYPE_VERB STATEMENT
 export const NI_SV = 'NI_SV'; // NI - SENTENCE_TYPE_VERB STATEMENT
 export const DE_SV = 'GA_VS'; // GA - SENTENCE_TYPE_VERB STATEMENT
 
+export const KARA_TS = 'KARA_TS';
+export const MADE_TS = 'MADE_TS';
+
 export const variationArray = [
   T,
   
@@ -71,7 +74,44 @@ export const variationArray = [
   WO_SV,
   NI_SV,
   DE_SV,
+
+  KARA_TS,
+  MADE_TS,
 ];
+
+
+// options.modifiers
+
+export const S_ADJ = 'SADJ';
+export const S_ADV = 'SADV';
+
+export const T_ADJ = 'TADJ';
+export const T_ADV = 'TADV';
+
+export const T_NO1 = 'TNO1';
+export const T_NO2 = 'TNO2';
+export const T_NO3 = 'TNO3';
+
+export const S_NO1 = 'S_NO1';
+export const S_NO2 = 'S_NO2';
+export const S_NO3 = 'S_NO3';
+
+export const modifiersArray = [
+  S_ADJ,
+  S_ADV,
+
+  T_ADJ,
+  T_ADV,
+
+  T_NO1,
+  T_NO2,
+  T_NO3,
+  
+  S_NO1,
+  S_NO2,
+  S_NO3,
+];
+
 
 // options.question
 
@@ -127,6 +167,7 @@ export const politenessArray = [
 export const politenessArrayLength = politenessArray.length;
 
 // options.gender
+
 export const GENDER_MASCULINE = 'GENDER_MASCULINE';
 export const GENDER_FEMININE = 'GENDER_FEMININE';
 
@@ -137,3 +178,14 @@ export const genderArray = [
 
 export const genderArrayLength = genderArray.length;
 
+// options.sentenceEnding 
+
+export const SENTENCE_ENDING_NE = 'SENTENCE_ENDING_NE';
+export const SENTENCE_ENDING_YO = 'SENTENCE_ENDING_YO';
+export const SENTENCE_ENDING_YO_NE = 'SENTENCE_ENDING_YO_NE';
+
+export const sentenceEndingArray = [ 
+  SENTENCE_ENDING_NE,
+  SENTENCE_ENDING_YO,
+  SENTENCE_ENDING_YO_NE,
+];

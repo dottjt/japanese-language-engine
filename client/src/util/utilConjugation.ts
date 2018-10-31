@@ -29,7 +29,7 @@ export const returnSentenceParts = (words: Util.SentenceWords): Util.SentenceWor
   if (words.topic) {
     topic = words.topic;
   };
-    
+
   return {
     topic,
     subject,

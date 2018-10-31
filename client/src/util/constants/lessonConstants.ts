@@ -396,7 +396,3 @@ export const L009 = {
 
 
 
-
-// LESSON_EXERCISES: (nouns: Util.Word[]): Util.EnglishJapaneseOptionsSentence[] =>  
-  // generateExercises(nouns, LESSON_OPTIONS.L001, 10),
-

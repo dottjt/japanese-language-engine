@@ -118,6 +118,15 @@ export const GET_EXERCISES = gql`{
       gender
       question
     }
+
+    modifiers @client {
+      topicNo
+      subjectNo
+      topicAdjective
+      subjectAdjective
+      topicAdverb
+      topicAdjective
+    }
   }
 }`;
 
@@ -259,6 +268,15 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
       tense
       gender
       question
+    }
+    
+    modifiers @client {
+      topicNo
+      subjectNo
+      topicAdjective
+      subjectAdjective
+      topicAdverb
+      topicAdjective
     }
   }
 }`;

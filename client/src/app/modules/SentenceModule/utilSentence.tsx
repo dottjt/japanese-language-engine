@@ -31,7 +31,7 @@ import {
   ENGLISH_VERB,
   ENGLISH_POLARITY,
   ENGLISH_TENSE,
-  // ENGLISH_INDEFINITE_ARTICLE,
+  ENGLISH_INDEFINITE_ARTICLE,
 
   CONJUGATION_TYPE_NOUN_ENGLISH,
   CONJUGATION_TYPE_VERB_ENGLISH,
@@ -122,10 +122,12 @@ export const changeSentenceStats = (client: any, sentenceStatsFields: any): void
 
 export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.topicHover && tag === ENGLISH_TOPIC) {
+    if (sentenceStats.topicHover &&
+       (tag === ENGLISH_TOPIC /*|| tag === ENGLISH_TENSE */)) {
       return 'yellow';
     }
-    if (sentenceStats.subjectHover && tag === ENGLISH_SUBJECT) {
+    if (sentenceStats.subjectHover &&
+       (tag === ENGLISH_SUBJECT || tag === ENGLISH_POLARITY || tag === ENGLISH_INDEFINITE_ARTICLE)) {
       return 'yellow';      
     }
     if (sentenceStats.verbHover && tag === ENGLISH_VERB) {
@@ -144,10 +146,12 @@ export const convertSentenceStatsEnglish = (sentenceStats: Util.SentenceStats, e
 
 export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, exerciseIndex: number, tag: string): string | undefined => {
   if (sentenceStats && exerciseIndex === sentenceStats.selectedExerciseNumber) {
-    if (sentenceStats.topicHover && tag === JAPANESE_TOPIC) {
+    if (sentenceStats.topicHover && 
+       (tag === JAPANESE_TOPIC)) {
       return 'yellow';
     }
-    if (sentenceStats.subjectHover && tag === JAPANESE_SUBJECT) {
+    if (sentenceStats.subjectHover && 
+       (tag === JAPANESE_SUBJECT || tag === JAPANESE_TENSE)) {
       return 'yellow';      
     }
     if (sentenceStats.verbHover && tag === JAPANESE_VERB_STEM) {

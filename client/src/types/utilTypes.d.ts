@@ -101,7 +101,7 @@ declare namespace Util {
   export type EnglishJapaneseOptionsSentence = {
     englishSentence: ConjugatedEnglishWord[];
     japaneseSentence: ConjugatedJapaneseWord[];
-    options: Options,
+    options: Options;
     __typename: string;
   };
 
@@ -130,4 +130,25 @@ declare namespace Util {
     subject?: Subject;
     verb?: Verb;
   };
+
+  export type SentenceWordModifiers = {
+    tAdj?: WordModifier;
+    tAdv?: WordModifier;
+
+    sAdj?: WordModifier;
+    sAdv?: WordModifier;
+
+    tNo1?: WordModifier;
+    tNo2?: WordModifier;
+    tNo3?: WordModifier;
+
+    sNo1?: WordModifier;
+    sNo2?: WordModifier;
+    sNo3?: WordModifier;
+  };
+
+  export type WordModifier = {
+    type: string;
+    word: Word;
+  }
 }

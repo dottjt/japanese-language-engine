@@ -35,7 +35,20 @@ import {
   V,
   WO_SV,
   NI_SV,
-  DE_SV,  
+  DE_SV, 
+  KARA_TS,
+  MADE_TS,
+  
+  S_ADJ,
+  S_ADV,
+  T_ADJ,
+  T_ADV,
+  T_NO1,
+  T_NO2,
+  T_NO3,
+  S_NO1,
+  S_NO2,
+  S_NO3,
 } from '../constants/optionsConstants';
 
 import {
@@ -144,24 +157,49 @@ const genTSV = ({ topic, subject, verb }: { topic?: Util.Topic, subject?: Util.S
 
 
 const generateWords = (nouns: Util.Word[], variation: string): () => Util.SentenceWords => {
+  const wordPerson = filterSpecifcWord(nouns, 'person');
+  const randomHumanName = getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME);
+  const randomLocationWord = getRandomWordViaCategory(nouns, CATEGORY_LOCATION);
+  const randomVerb = getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB);
+
   switch(variation) {
-    case T:     return () => genTSV({ topic: filterSpecifcWord(nouns, 'person'),                   subject: undefined,                                          verb: undefined });                                                                 // T
-    case WA_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person'),                 verb: undefined });                      // WA_TS
-    case MO_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person'),                 verb: undefined });                      // MO_TS
-    case GA_TS: return () => genTSV({ topic: getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWord(nouns, 'person'),                 verb: undefined });                      // GA_TS
-    case V:     return () => genTSV({ topic: undefined,                                            subject: undefined,                                          verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });                                              // V
-    case WO_SV: return () => genTSV({ topic: undefined,                                            subject: filterSpecifcWord(nouns, 'person'),                 verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });                     // WO_SV
-    case NI_SV: return () => genTSV({ topic: undefined,                                            subject: getRandomWordViaCategory(nouns, CATEGORY_LOCATION), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB) });     // NI_SV
-    case DE_SV: return () => genTSV({ topic: undefined,                                            subject: getRandomWordViaCategory(nouns, CATEGORY_LOCATION), verb: getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB)});      // DE_SV
+    case T:     return () =>   genTSV({ topic: wordPerson,      subject: undefined,          verb: undefined });    // T                                                         
+    case WA_TS: return () =>   genTSV({ topic: randomHumanName, subject: wordPerson,         verb: undefined });    // WA_TS
+    case MO_TS: return () =>   genTSV({ topic: randomHumanName, subject: wordPerson,         verb: undefined });    // MO_TS
+    case GA_TS: return () =>   genTSV({ topic: randomHumanName, subject: wordPerson,         verb: undefined });    // GA_TS
+    case V:     return () =>   genTSV({ topic: undefined,       subject: undefined,          verb: randomVerb });   // V
+    case WO_SV: return () =>   genTSV({ topic: undefined,       subject: wordPerson,         verb: randomVerb });   // WO_SV
+    case NI_SV: return () =>   genTSV({ topic: undefined,       subject: randomLocationWord, verb: randomVerb });   // NI_SV
+    case DE_SV: return () =>   genTSV({ topic: undefined,       subject: randomLocationWord, verb: randomVerb });   // DE_SV
+    case KARA_TS: return () => genTSV({ topic: undefined,       subject: randomLocationWord, verb: randomVerb });   // KARA_TS
+    case MADE_TS: return () => genTSV({ topic: undefined,       subject: randomLocationWord, verb: randomVerb });   // MADE_TS
   }
   throw new Error(createError('conjugations/generateExercises.tsx', 'generateWords', `${variation} does not exist`));
 };
 
+const generateWordModifiers = (nouns: Util.Word[], modifiers: string): () => Util.SentenceWords => {
+  
+  // modifiers
+  switch(modifierType) {
+    case S_ADJ: return { topicModifier: '', ;
+    case S_ADV: return { topicModifier: '', ;
+    case T_ADJ: return { topicModifier: '', ;
+    case T_ADV: return { topicModifier: '', ;
+    case T_NO1: return { topicModifier: '', ;
+    case T_NO2: return { topicModifier: '', ;
+    case T_NO3: return { topicModifier: '', ;
+    case S_NO1: return { topicModifier: '', ;
+    case S_NO2: return { topicModifier: '', ;
+    case S_NO3: return { topicModifier: '', ;
+  }
+  throw new Error(createError('conjugations/generateExercises.tsx', 'generateWordModifiers', `${modifierType} does not exist`));
+};
 
 const generateExercises = (words: Util.Word[], optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
 
     const options = optionsLambda();
+    
     const variationWords = generateWords(words, options.variation);
     return {
       options,

@@ -39,6 +39,7 @@ export const sentenceTypes = `
   type EnglishJapaneseOptionsSentence {
     englishSentence: [ ConjugatedEnglishWord ]
     japaneseSentence: [ ConjugatedJapaneseWord ] 
+    modifiers: Modifiers
     options: Options
   }
 `;
@@ -58,6 +59,15 @@ export const optionTypes = `
   type SentenceDisplayOptions {
     toggleSentenceStats: Boolean
   }
+  
+  type Modifiers {
+    topicNo: String
+    subjectNo: String
+    topicAdjective: String
+    subjectAdjective: String
+    topicAdverb: String
+    topicAdjective: String
+  }
 
   type Options {
     politeness: String
@@ -66,6 +76,7 @@ export const optionTypes = `
     tense: String
     gender: String
     question: String
+    sentenceEnding: String
   }
 `;
 
