@@ -199,13 +199,16 @@ const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): U
 
   const modifiersKeys = Object.keys(modifiers);
   const sentenceWordModifiers: Util.SentenceWordModifiers = {
-    tNo1: undefined,
-    tNo2: undefined,
-    tNo3: undefined,
-
-    sNo1: undefined,
-    sNo2: undefined,
-    sNo3: undefined,
+    tNo: {
+      no1: undefined,
+      no2: undefined,
+      no3: undefined,
+    },
+    sNo: {
+      no1: undefined,
+      no2: undefined,
+      no3: undefined,
+    },
 
     tAdj: undefined,
     tAdv: undefined,
@@ -214,33 +217,35 @@ const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): U
     sAdv: undefined,
   };
 
-  modifiersKeys.map((modifierField: string) => {
+  const word = filterSpecifcWord(nouns, 'person');
+
+  modifiersKeys.forEach((modifierField: string): void => {
     if (modifiers[modifierField] !== undefined) {
       if (modifierField === TOPIC_NO) {
-        switch(modifiers[modifierField]) {
-          case T_NO1: sentenceWordModifiers.tNo1 = createWordModifier(T_NO1, word); break;
-          case T_NO2: sentenceWordModifiers.tNo2 = createWordModifier(T_NO2, word); break;
-          case T_NO3: sentenceWordModifiers.tNo3 = createWordModifier(T_NO3, word); break;
+        switch(modifiers[modifierField]) { 
+          case T_NO1: sentenceWordModifiers.tNo = { no1: createWordModifier(T_NO1, word) }; return;
+          case T_NO2: sentenceWordModifiers.tNo = { no1: createWordModifier(T_NO2, word), no2: createWordModifier(T_NO2, word) }; return;
+          case T_NO3: sentenceWordModifiers.tNo = { no1: createWordModifier(T_NO3, word), no2: createWordModifier(T_NO3, word), no3: createWordModifier(T_NO3, word) }; return;
         }
       }
       if (modifierField === SUBJECT_NO) {
         switch(modifiers[modifierField]) {
-          case S_NO1: sentenceWordModifiers.sNo1 = createWordModifier(S_NO1, word); break;
-          case S_NO2: sentenceWordModifiers.sNo2 = createWordModifier(S_NO2, word); break;
-          case S_NO3: sentenceWordModifiers.sNo3 = createWordModifier(S_NO3, word); break;
+          case S_NO1: sentenceWordModifiers.sNo = { no1: createWordModifier(T_NO1, word) }; return;
+          case S_NO2: sentenceWordModifiers.sNo = { no1: createWordModifier(T_NO2, word), no2: createWordModifier(T_NO2, word) }; return;
+          case S_NO3: sentenceWordModifiers.sNo = { no1: createWordModifier(T_NO3, word), no2: createWordModifier(T_NO3, word), no3: createWordModifier(T_NO3, word) }; return;
         }
       }
       if (modifierField === TOPIC_ADJECTIVE) {
-        sentenceWordModifiers.tAdj = createWordModifier(T_ADJ, word);
+        sentenceWordModifiers.tAdj = createWordModifier(T_ADJ, word); return;
       }
       if (modifierField === TOPIC_ADVERB) {
-        sentenceWordModifiers.tAdv = createWordModifier(T_ADV, word);
+        sentenceWordModifiers.tAdv = createWordModifier(T_ADV, word); return;
       }
       if (modifierField === SUBJECT_ADJECTIVE) {
-        sentenceWordModifiers.sAdj = createWordModifier(S_ADJ, word);
+        sentenceWordModifiers.sAdj = createWordModifier(S_ADJ, word); return;
       }
       if (modifierField === SUBJECT_ADVERB) {
-        sentenceWordModifiers.sAdv = createWordModifier(S_ADV, word);
+        sentenceWordModifiers.sAdv = createWordModifier(S_ADV, word); return;
       }
     }
   });

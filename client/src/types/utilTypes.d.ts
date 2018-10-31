@@ -147,17 +147,18 @@ declare namespace Util {
     sAdj?: WordModifier;
     sAdv?: WordModifier;
 
-    tNo1?: WordModifier;
-    tNo2?: WordModifier;
-    tNo3?: WordModifier;
-
-    sNo1?: WordModifier;
-    sNo2?: WordModifier;
-    sNo3?: WordModifier;
+    tNo?: WordModifierNo;
+    sNo?: WordModifierNo;
   };
 
   export type WordModifier = {
     type: string;
     word: Word;
-  }
+  };
+
+  export type WordModifierNo = {
+    no1?: WordModifier;
+    no2?: WordModifier;
+    no3?: WordModifier;
+  };
 }
