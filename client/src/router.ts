@@ -51,6 +51,9 @@ const routes = [
   { name: LESSON_TITLE.L016, path: `${ROUTE_PATH.APP}${LESSON_PATH.L016}` },
   { name: LESSON_TITLE.L017, path: `${ROUTE_PATH.APP}${LESSON_PATH.L017}` },
   { name: LESSON_TITLE.L018, path: `${ROUTE_PATH.APP}${LESSON_PATH.L018}` },
+  { name: LESSON_TITLE.L019, path: `${ROUTE_PATH.APP}${LESSON_PATH.L019}` },
+  { name: LESSON_TITLE.L020, path: `${ROUTE_PATH.APP}${LESSON_PATH.L020}` },
+
 ];
 
 const router = createRouter(routes).usePlugin(browserPlugin());

@@ -30,6 +30,8 @@ import {
   L016,
   L017,
   L018,
+  L019,
+  L020,
 } from '../../util/constants/lessonConstants';
 
 import LessonTemplate from '../lessons/LessonTemplate';
@@ -291,6 +293,32 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   title={L018.LESSON_TITLE}
                   explanation={L018.LESSON_EXPLANATION}
                   resources={L018.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L019.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L019.LESSON_TITLE}
+                  explanation={L019.LESSON_EXPLANATION}
+                  resources={L019.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L020.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L020.LESSON_TITLE}
+                  explanation={L020.LESSON_EXPLANATION}
+                  resources={L020.LESSON_RESOURCES}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}

@@ -84,26 +84,28 @@ export const LESSON_PATH = {
   CONTENTS: '/contents',
   PREREQ: '/prerequisites',
   
-  L001: '/japanese-noun-statements',
+  L001: '/japanese-noun-congjuations',
   L002: '/japanese-wa-and-mo-noun-statements',
   L003: '/japanese-ga-noun-statements',
   L004: '/japanese-wa-vs-ga-noun-statements',
   L005: '/japanese-wa-vs-mo-vs-ga-noun-statements',
-  L006: '/japanese-verb-statements',
-  L007: '/japanese-wo-verb-statements',
-  L008: '/japanese-ni-verb-statements',
-  L009: '/japanese-de-verb-statements',
-  L010: '/japanese-wo-vs-ni-verb-statements',
-  L011: '/japanese-ni-vs-de-verb-statements',
-  L012: '/japanese-de-vs-wo-verb-statements',
-  L013: '/japanese-wo-vs-ni-vs-de-verb-statements',
-  L014: '/japanese-location-from',
-  L015: '/japanese-location-up-until', // NOTE: Will probably want a kara-made combination. Will have to introduce clause types. 
-  L016: '/japanese-no-modifiers',
-  L017: '/japanese-adjective-modifiers',
-  L018: '/japanese-adverb-modifiers',
-  // L019: 
-  // L020: 
+
+  L006: '/japanese-ru-verb-conjugations',
+  L007: '/japanese-u-verb-conjugations',
+  L008: '/japanese-irregular-verb-conjugations',
+  L009: '/japanese-wo-verb-statements',
+  L010: '/japanese-ni-verb-statements',
+  L011: '/japanese-de-verb-statements',
+  L012: '/japanese-wo-vs-ni-verb-statements',
+  L013: '/japanese-ni-vs-de-verb-statements',
+  L014: '/japanese-de-vs-wo-verb-statements',
+  L015: '/japanese-wo-vs-ni-vs-de-verb-statements',
+
+  L016: '/japanese-location-from',
+  L017: '/japanese-location-up-until', // NOTE: Will probably want a kara-made combination. Will have to introduce clause types. 
+  L018: '/japanese-no-modifiers',
+  L019: '/japanese-adjective-modifiers',
+  L020: '/japanese-adverb-modifiers',
   // L021: 
   // L022: 
   // L023: 
@@ -120,29 +122,31 @@ export const LESSON_TITLE = {
   CONTENTS: 'Contents',
   PREREQ: 'Prerequisites',
 
-  L001: 'Noun statements',
-  L002: 'は and も statements',
+  L001: 'Noun conjugations',
+
+  L002: 'は and も noun statements',
   L003: 'が noun statements',
   L004: 'は vs が noun statements',
-  L005: 'は vs も vs が statements',
-  
-  L006: 'Verb statements',
-  L007: 'を verb statements',
-  L008: 'に verb statements',
-  L009: 'で verb statements',
-  L010: 'を vs に verb statements',
-  L011: 'に vs で verb statements',
-  L012: 'で vs を verb statements',
-  L013: 'を vs に vs で verb statements',
+  L005: 'は vs も vs が noun statements',
 
-  L014: 'から from statement',
-  L015: 'まで until statement',
+  L006: 'る verb conjugations',
+  L007: 'う verb conjugations',
+  L008: 'Irregular verb conjugations',
 
-  L016: 'の noun modifiers',
-  L017: 'Japanese adjective modifiers',
-  L018: 'Japanese adverb modifiers',
-  // L019: 
-  // L020: 
+  L009: 'を verb statements',
+  L010: 'に verb statements',
+  L011: 'で verb statements',
+  L012: 'を vs に verb statements',
+  L013: 'に vs で verb statements',
+  L014: 'で vs を verb statements',
+  L015: 'を vs に vs で verb statements',
+
+  L016: 'から from statement',
+  L017: 'まで until statement',
+
+  L018: 'の noun modifiers',
+  L019: 'Japanese adjective modifiers',
+  L020: 'Japanese adverb modifiers',
   // L021: 
   // L022: 
   // L023: 
@@ -171,8 +175,8 @@ const LESSON_EXPLANATION = {
   L016: [''],
   L017: [''],
   L018: [''],
-  // L019: [''],
-  // L020: [''],
+  L019: [''],
+  L020: [''],
   // L021: [''],
   // L022: [''],
   // L023: [''],
@@ -189,20 +193,20 @@ const LESSON_VARIATION = {
   L004: [ WA_TS, GA_TS ],
   L005: [ WA_TS, MO_TS, GA_TS ],
   L006: V,
-  L007: WO_SV,
-  L008: NI_SV,
-  L009: DE_SV,
-  L010: [ WO_SV, NI_SV ],
-  L011: [ NI_SV, DE_SV ],
-  L012: [ DE_SV, WO_SV ],
-  L013: [ WA_TS, MO_TS, GA_TS ],
-  L014: KARA_TS,
-  L015: MADE_TS,
-  L016: NA,
-  L017: T,
-  L018: T,
-  // L019:
-  // L020:
+  L007: V,
+  L008: V,
+  L009: WO_SV,
+  L010: NI_SV,
+  L011: DE_SV,
+  L012: [ WO_SV, NI_SV ],
+  L013: [ NI_SV, DE_SV ],
+  L014: [ DE_SV, WO_SV ],
+  L015: [ WA_TS, MO_TS, GA_TS ],
+  L016: KARA_TS,
+  L017: MADE_TS,
+  L018: NA,
+  L019: T,
+  L020: T,
   // L021:
   // L022: 
   // L023: 
@@ -219,20 +223,20 @@ const LESSON_RESOURCES = {
   L004: [], // WA_TS, GA_TS
   L005: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/subjects-of-japanese-verbs-with-the-particles-wa-and-ga/') ], // WA_TS, MO_TS, GA_TS
   L006: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/japanese-verbs-u-verbs-and-ru-verbs-and-conjugation/') ], // V
-  L007: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // WO_SV
-  L008: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // NI_SV
-  L009: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // DE_SV
-  L010: [], // WO_SV, NI_SV
-  L011: [], // DE_SV, NI_SV
-  L012: [], // DE_SV, WO_SV
-  L013: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // WO_SV, NI_SV, DE_SV
-  L014: [], // KARA_TS
-  L015: [], // MADE_TS
-  L016: [], // NA - TNO
-  L017: [], // T - 
-  L018: [], // T - 
-  // L019:
-  // L020:
+  L007: [], // V
+  L008: [], // V
+  L009: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // WO_SV
+  L010: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // NI_SV
+  L011: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // DE_SV
+  L012: [], // WO_SV, NI_SV
+  L013: [], // DE_SV, NI_SV
+  L014: [], // DE_SV, WO_SV
+  L015: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // WO_SV, NI_SV, DE_SV
+  L016: [], // KARA_TS
+  L017: [], // MADE_TS
+  L018: [], // NA - TNO
+  L019: [], // T - 
+  L020: [], // T - 
   // L021:
   // L022: 
   // L023: 
@@ -267,20 +271,20 @@ export const LESSON_OPTIONS = {
   L004: () => createLessonOptions(LESSON_VARIATION.L003, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WA_TS, GA_TS
   L005: () => createLessonOptions(LESSON_VARIATION.L004, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WA_TS, MO_TS, GA_TS
   L006: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // V
-  L007: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV
-  L008: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV
-  L009: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV
-  L010: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV
-  L011: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV, DE_SV
-  L012: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV, WO_SV
-  L013: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV, DE_SV
-  L014: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // KARA_SV
-  L015: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // MADE_SV
-  L016: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NA - T_NO
-  L017: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T - T_ADJ
-  L018: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T - T_ADV
-  // L019:
-  // L020:
+  L007: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // V
+  L008: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // V
+  L009: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV
+  L010: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV
+  L011: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV
+  L012: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV
+  L013: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV, DE_SV
+  L014: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV, WO_SV
+  L015: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV, DE_SV
+  L016: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // KARA_SV
+  L017: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // MADE_SV
+  L018: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NA - T_NO
+  L019: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T - T_ADJ
+  L020: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T - T_ADV
   // L021:
   // L022: 
   // L023: 
@@ -316,20 +320,20 @@ export const LESSON_MODIFIERS = {
   L004: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, GA_TS
   L005: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS, GA_TS
   L006: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
-  L007: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV
-  L008: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV
-  L009: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV
-  L010: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV
-  L011: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV, DE_SV
-  L012: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV, WO_SV
-  L013: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV, DE_SV
-  L014: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // KARA_SV
-  L015: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // MADE_SV
-  L016: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NA - T_NO
-  L017: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADJ
-  L018: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADV
-  // L019:
-  // L020:
+  L007: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
+  L008: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
+  L009: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV
+  L010: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV
+  L011: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV
+  L012: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV
+  L013: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV, DE_SV
+  L014: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV, WO_SV
+  L015: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV, DE_SV
+  L016: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // KARA_SV
+  L017: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // MADE_SV
+  L018: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NA - T_NO
+  L019:() => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADJ
+  L020:() => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADV
   // L021:
 };
 
@@ -495,21 +499,21 @@ export const L018 = {
   LESSON_MODIFIERS: LESSON_MODIFIERS.L018,
 };
 
-// export const L019 = {
-//   LESSON_TITLE: LESSON_TITLE.L019,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L019,
-//   LESSON_VARIATION: LESSON_TITLE.L019,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L019,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L019,
-// };
+export const L019 = {
+  LESSON_TITLE: LESSON_TITLE.L019,
+  LESSON_OPTIONS: LESSON_OPTIONS.L019,
+  LESSON_VARIATION: LESSON_TITLE.L019,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L019,
+  LESSON_RESOURCES: LESSON_RESOURCES.L019,
+};
 
-// export const L020 = {
-//   LESSON_TITLE: LESSON_TITLE.L020,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L020,
-//   LESSON_VARIATION: LESSON_VARIATION.L020,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L020,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L020,
-// };
+export const L020 = {
+  LESSON_TITLE: LESSON_TITLE.L020,
+  LESSON_OPTIONS: LESSON_OPTIONS.L020,
+  LESSON_VARIATION: LESSON_VARIATION.L020,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L020,
+  LESSON_RESOURCES: LESSON_RESOURCES.L020,
+};
 
 
 

@@ -9,6 +9,7 @@ import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 import { randomArrayElement, getExercisesApollo } from '../../util/functions'
 
 import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 import CourseList from '../components/CourseList';
 import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
@@ -34,7 +35,8 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
             <FlexColumn>
               
               <Navbar/>
-
+              <Flex>
+                <Sidebar/>
               <FlexColumn mt={5} ml={5} mb={6} mr={4}>
                 <Heading mb={5}>Watashi Engine.</Heading>
                 
@@ -154,6 +156,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 <CourseList/>
                 
               </FlexColumn>
+              </Flex>
             </FlexColumn>
           )      
         }
