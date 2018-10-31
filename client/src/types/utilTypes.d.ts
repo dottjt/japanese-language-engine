@@ -112,6 +112,7 @@ declare namespace Util {
     englishSentence: ConjugatedEnglishWord[];
     japaneseSentence: ConjugatedJapaneseWord[];
     options: Options;
+    modifiers: Modifiers;
     __typename: string;
   };
 

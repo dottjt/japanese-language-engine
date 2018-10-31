@@ -21,10 +21,15 @@ import {
   L007,
   L008,
   L009,
-  // L010,
-  // L011,
-  // L012,
-  // L013,
+  L010,
+  L011,
+  L012,
+  L013,
+  L014,
+  L015,
+  L016,
+  L017,
+  L018,
 } from '../../util/constants/lessonConstants';
 
 import LessonTemplate from '../lessons/LessonTemplate';
@@ -40,6 +45,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
+          console.log(data);
+
           switch (route.name) {
             case ROUTE_TITLE.APP:
               return (
@@ -174,39 +181,123 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   route={route}                  
                 />
               );
-            // case L010.LESSON_TITLE:
-            //   return (
-            //     <LessonTemplate
-            //       title={L010.LESSON_TITLE}
-            //       explanation={L010.LESSON_EXPLANATION}
-            //       resources={L010.LESSON_RESOURCES}
-            //     />
-            //   );
-            // case L011.LESSON_TITLE:
-            //   return (
-            //     <LessonTemplate
-            //       title={L011.LESSON_TITLE}
-            //       explanation={L011.LESSON_EXPLANATION}
-            //       resources={L011.LESSON_RESOURCES}
-            //     />
-            //   );
-            // case L012.LESSON_TITLE:
-            //   return (
-            //     <LessonTemplate
-            //       title={L012.LESSON_TITLE}
-            //       explanation={L012.LESSON_EXPLANATION}
-            //       resources={L012.LESSON_RESOURCES}
-            //     />
-            //   ); 
-            // case L013.LESSON_TITLE:
-            //   return (
-            //     <LessonTemplate
-            //       title={L013.LESSON_TITLE}
-            //       explanation={L013.LESSON_EXPLANATION}
-            //       resources={L013.LESSON_RESOURCES}
-            //     />
-            //   ); 
-
+            case L010.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L010.LESSON_TITLE}
+                  explanation={L010.LESSON_EXPLANATION}
+                  resources={L010.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L011.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L011.LESSON_TITLE}
+                  explanation={L011.LESSON_EXPLANATION}
+                  resources={L011.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L012.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L012.LESSON_TITLE}
+                  explanation={L012.LESSON_EXPLANATION}
+                  resources={L012.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L013.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L013.LESSON_TITLE}
+                  explanation={L013.LESSON_EXPLANATION}
+                  resources={L013.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L014.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L014.LESSON_TITLE}
+                  explanation={L014.LESSON_EXPLANATION}
+                  resources={L014.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L015.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L015.LESSON_TITLE}
+                  explanation={L015.LESSON_EXPLANATION}
+                  resources={L015.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L016.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L016.LESSON_TITLE}
+                  explanation={L016.LESSON_EXPLANATION}
+                  resources={L016.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L017.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L017.LESSON_TITLE}
+                  explanation={L017.LESSON_EXPLANATION}
+                  resources={L017.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
+            case L018.LESSON_TITLE:
+              return (
+                <LessonTemplate
+                  title={L018.LESSON_TITLE}
+                  explanation={L018.LESSON_EXPLANATION}
+                  resources={L018.LESSON_RESOURCES}
+                  exercises={data.exercises}
+                  sentenceDisplayOptions={data.sentenceDisplayOptions}
+                  sentenceStats={data.sentenceStats}
+                  client={client}
+                  route={route}                  
+                />
+              );
             default:
               throw new Error('le application is not working, sorry buddy.');
           }

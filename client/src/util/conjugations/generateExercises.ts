@@ -28,6 +28,8 @@ import {
   SENTENCE_TYPE_SUBJECT,
   SENTENCE_TYPE_TOPIC,
 
+  NA,
+
   T,
 
   WA_TS,
@@ -179,6 +181,7 @@ const generateWords = (nouns: Util.Word[], variation: string): () => Util.Senten
   const randomVerb = getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB);
 
   switch(variation) {
+    case NA:    return () =>   genTSV({ topic: undefined,       subject: undefined,          verb: undefined })
     case T:     return () =>   genTSV({ topic: wordPerson,      subject: undefined,          verb: undefined });    // T                                                         
     case WA_TS: return () =>   genTSV({ topic: randomHumanName, subject: wordPerson,         verb: undefined });    // WA_TS
     case MO_TS: return () =>   genTSV({ topic: randomHumanName, subject: wordPerson,         verb: undefined });    // MO_TS
@@ -263,6 +266,7 @@ const generateExercises = (words: Util.Word[], modifiersLambda: () => Util.Modif
 
     return {
       options,
+      modifiers,
       ...generateSentences(variationWords(), modifierWords, options)  
     }
   })

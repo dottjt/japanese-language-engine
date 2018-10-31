@@ -28,6 +28,8 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
+          console.log(data);
+
           return (
             <FlexColumn>
               

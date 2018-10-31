@@ -47,6 +47,8 @@ export const primaryTypeArray = [
 
 // options.variation
 
+export const NA = 'NA'; // NA
+
 export const T = 'T'; // T
 
 export const WA_TS = 'WA_TS'; // WA - NOUN STATEMENT

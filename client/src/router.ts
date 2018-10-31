@@ -12,6 +12,7 @@ import {
 } from './util/constants/generalConstants';
 
 const routes = [
+  // Main pages
   { name: ROUTE_TITLE.CALLBACK, path: ROUTE_PATH.CALLBACK },
   { name: ROUTE_TITLE.PROFILE, path: ROUTE_PATH.PROFILE },
   { name: ROUTE_TITLE.LOGIN, path: ROUTE_PATH.LOGIN },
@@ -20,6 +21,7 @@ const routes = [
   { name: ROUTE_TITLE.APP, path: ROUTE_PATH.APP },
   { name: ROUTE_TITLE.BLOG, path: ROUTE_PATH.BLOG },
 
+  // Other lesson pages
   { name: LESSON_TITLE.WELCOME, path: `${ROUTE_PATH.APP}${LESSON_PATH.WELCOME}` },
   { name: LESSON_TITLE.CONTENTS, path: `${ROUTE_PATH.APP}${LESSON_PATH.CONTENTS}` },
   { name: LESSON_TITLE.PREREQ, path: `${ROUTE_PATH.APP}${LESSON_PATH.PREREQ}` },
@@ -29,21 +31,26 @@ const routes = [
   { name: LESSON_TITLE.L002, path: `${ROUTE_PATH.APP}${LESSON_PATH.L002}` },
   { name: LESSON_TITLE.L003, path: `${ROUTE_PATH.APP}${LESSON_PATH.L003}` },
   { name: LESSON_TITLE.L004, path: `${ROUTE_PATH.APP}${LESSON_PATH.L004}` },
+  { name: LESSON_TITLE.L005, path: `${ROUTE_PATH.APP}${LESSON_PATH.L005}` },
 
   // Verb - Basic
-  { name: LESSON_TITLE.L005, path: `${ROUTE_PATH.APP}${LESSON_PATH.L005}` },
   { name: LESSON_TITLE.L006, path: `${ROUTE_PATH.APP}${LESSON_PATH.L006}` },
   { name: LESSON_TITLE.L007, path: `${ROUTE_PATH.APP}${LESSON_PATH.L007}` },
   { name: LESSON_TITLE.L008, path: `${ROUTE_PATH.APP}${LESSON_PATH.L008}` },
   { name: LESSON_TITLE.L009, path: `${ROUTE_PATH.APP}${LESSON_PATH.L009}` },
+  { name: LESSON_TITLE.L010, path: `${ROUTE_PATH.APP}${LESSON_PATH.L010}` },
+  { name: LESSON_TITLE.L011, path: `${ROUTE_PATH.APP}${LESSON_PATH.L011}` },
+  { name: LESSON_TITLE.L012, path: `${ROUTE_PATH.APP}${LESSON_PATH.L012}` },
+  { name: LESSON_TITLE.L013, path: `${ROUTE_PATH.APP}${LESSON_PATH.L013}` },
 
-  // Adjectives - Basic
+  // From / Until statements
+  { name: LESSON_TITLE.L014, path: `${ROUTE_PATH.APP}${LESSON_PATH.L014}` },
+  { name: LESSON_TITLE.L015, path: `${ROUTE_PATH.APP}${LESSON_PATH.L015}` },
 
-  // { name: LESSON_TITLE.L010, path: LESSON_PATH.L010 },
-  // { name: LESSON_TITLE.L011, path: LESSON_PATH.L011 },
-  // { name: LESSON_TITLE.L012, path: LESSON_PATH.L012 },
-  // { name: LESSON_TITLE.L013, path: LESSON_PATH.L013 },
-
+  // modifier statements
+  { name: LESSON_TITLE.L016, path: `${ROUTE_PATH.APP}${LESSON_PATH.L016}` },
+  { name: LESSON_TITLE.L017, path: `${ROUTE_PATH.APP}${LESSON_PATH.L017}` },
+  { name: LESSON_TITLE.L018, path: `${ROUTE_PATH.APP}${LESSON_PATH.L018}` },
 ];
 
 const router = createRouter(routes).usePlugin(browserPlugin());

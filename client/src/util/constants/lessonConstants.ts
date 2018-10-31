@@ -10,6 +10,8 @@ import {
 } from '../functions';
 
 import {
+  NA,
+
   T,
 
   WA_TS,
@@ -21,6 +23,9 @@ import {
   WO_SV,
   NI_SV,
   DE_SV,
+
+  KARA_TS,
+  MADE_TS,
 
   POLITENESS_CASUAL,
 
@@ -82,18 +87,30 @@ export const LESSON_PATH = {
   L001: '/japanese-noun-statements',
   L002: '/japanese-wa-and-mo-noun-statements',
   L003: '/japanese-ga-noun-statements',
-  L004: '/japanese-wa-and-mo-and-ga-noun-statements',
-
-  L005: '/japanese-verb-statements',
-  L006: '/japanese-wo-verb-statements',
-  L007: '/japanese-ni-verb-statements',
-  L008: '/japanese-de-verb-statements',
-  L009: '/japanese-wo-and-ni-and-de-verb-statements',
-  // L010: 
-  // L011: 
-  // L012: 
-  // L013: 
-  // L014: 
+  L004: '/japanese-wa-vs-ga-noun-statements',
+  L005: '/japanese-wa-vs-mo-vs-ga-noun-statements',
+  L006: '/japanese-verb-statements',
+  L007: '/japanese-wo-verb-statements',
+  L008: '/japanese-ni-verb-statements',
+  L009: '/japanese-de-verb-statements',
+  L010: '/japanese-wo-vs-ni-verb-statements',
+  L011: '/japanese-ni-vs-de-verb-statements',
+  L012: '/japanese-de-vs-wo-verb-statements',
+  L013: '/japanese-wo-vs-ni-vs-de-verb-statements',
+  L014: '/japanese-location-from',
+  L015: '/japanese-location-up-until', // NOTE: Will probably want a kara-made combination. Will have to introduce clause types. 
+  L016: '/japanese-no-modifiers',
+  L017: '/japanese-adjective-modifiers',
+  L018: '/japanese-adverb-modifiers',
+  // L019: 
+  // L020: 
+  // L021: 
+  // L022: 
+  // L023: 
+  // L024: 
+  // L025: 
+  // L026: 
+  // L027: 
 }
 
 export const lessonPathArray = [LESSON_PATH.L001, LESSON_PATH.L002, LESSON_PATH.L003, LESSON_PATH.L004, LESSON_PATH.L005, LESSON_PATH.L006, LESSON_PATH.L007, LESSON_PATH.L008, LESSON_PATH.L009 ];
@@ -106,27 +123,33 @@ export const LESSON_TITLE = {
   L001: 'Noun statements',
   L002: 'は and も statements',
   L003: 'が noun statements',
-  L004: 'は and も and が statements',
+  L004: 'は vs が noun statements',
+  L005: 'は vs も vs が statements',
+  
+  L006: 'Verb statements',
+  L007: 'を verb statements',
+  L008: 'に verb statements',
+  L009: 'で verb statements',
+  L010: 'を vs に verb statements',
+  L011: 'に vs で verb statements',
+  L012: 'で vs を verb statements',
+  L013: 'を vs に vs で verb statements',
 
-  L005: 'Verb statements',
-  L006: 'を verb statements',
-  L007: 'に verb statements',
-  L008: 'で verb statements',
-  L009: 'を and に and で statements',
+  L014: 'から from statement',
+  L015: 'まで until statement',
 
-  // L010: 
-  // L011: 
-  // L012: 
-  // L013: 
-  // L014: 
-  // L018: 
-  // L015:
-  // L016:
-  // L017:
-  // L018:
-  // L019:
-  // L020:
-  // L021:
+  L016: 'の noun modifiers',
+  L017: 'Japanese adjective modifiers',
+  L018: 'Japanese adverb modifiers',
+  // L019: 
+  // L020: 
+  // L021: 
+  // L022: 
+  // L023: 
+  // L024: 
+  // L025: 
+  // L026: 
+  // L027: 
 };
 
 const LESSON_EXPLANATION = {
@@ -139,68 +162,84 @@ const LESSON_EXPLANATION = {
   L007: [''],
   L008: [''],
   L009: [''],
-  // L010: '',
-  // L011: '',
-  // L012: '',
-  // L013: '',
-  // L014
-  // L015
-  // L016
-  // L017
-  // L018
-  // L019
-  // L020
-  // L021
+  L010: [''], 
+  L011: [''], 
+  L012: [''], 
+  L013: [''], 
+  L014: [''],
+  L015: [''],
+  L016: [''],
+  L017: [''],
+  L018: [''],
+  // L019: [''],
+  // L020: [''],
+  // L021: [''],
+  // L022: [''],
+  // L023: [''],
+  // L024: [''],
+  // L025: [''],
+  // L026: [''],
+  // L027: [''],
 };
 
 const LESSON_VARIATION = {
   L001: T,
   L002: [ WA_TS, MO_TS ],
   L003: GA_TS,
-  L004: [ WA_TS, MO_TS, GA_TS ],
-  L005: V,
-  L006: WO_SV,
-  L007: NI_SV,
-  L008: DE_SV,
-  L009: [ WA_TS, MO_TS, GA_TS ],
-  // L010: 
-  // L011: 
-  // L012: 
-  // L013: 
-  // L014:
-  // L015:
-  // L016:
-  // L017:
-  // L018:
+  L004: [ WA_TS, GA_TS ],
+  L005: [ WA_TS, MO_TS, GA_TS ],
+  L006: V,
+  L007: WO_SV,
+  L008: NI_SV,
+  L009: DE_SV,
+  L010: [ WO_SV, NI_SV ],
+  L011: [ NI_SV, DE_SV ],
+  L012: [ DE_SV, WO_SV ],
+  L013: [ WA_TS, MO_TS, GA_TS ],
+  L014: KARA_TS,
+  L015: MADE_TS,
+  L016: NA,
+  L017: T,
+  L018: T,
   // L019:
   // L020:
   // L021:
+  // L022: 
+  // L023: 
+  // L024: 
+  // L025: 
+  // L026: 
+  // L027: 
 };
-
-
 
 const LESSON_RESOURCES = {
   L001: [ createRes(RESOURCE_TAE_KIM, '/learn/complete/stateofbeing'), createRes(RESOURCE_TAE_KIM, '/learn/grammar/stateofbeing'), createRes(RESOURCE_WASABI, '/japanese-grammar/japanese-nouns-state-of-being/') ], // T
   L002: [ createRes(RESOURCE_TAE_KIM, '/learn/'), createRes(RESOURCE_TAE_KIM, '/learn/grammar/particlesintro'), createRes(RESOURCE_WASABI, '/japanese-grammar/topic-particle-wa-and-particle-mo/') ], // WA_TS, MO_TS
   L003: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/japanese-adjectives-with-particle-ga/') ], // GA_TS
-  L004: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/subjects-of-japanese-verbs-with-the-particles-wa-and-ga/') ], // WA_TS, MO_TS, GA_TS
-  L005: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/japanese-verbs-u-verbs-and-ru-verbs-and-conjugation/') ], // V
-  L006: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // WO_SV
-  L007: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // NI_SV
-  L008: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // DE_SV
-  L009: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // WO_SV, NI_SV, DE_SV
-  // L010: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // NI_SV
-  // L011: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // NI_SV_QUESTION
-  // L012: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // DE_SV
-  // L013: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // DE_SV_QUESTION
-  // L014:
-  // L015:
-  // L016:
-  // L017:
-  // L018:
+  L004: [], // WA_TS, GA_TS
+  L005: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/subjects-of-japanese-verbs-with-the-particles-wa-and-ga/') ], // WA_TS, MO_TS, GA_TS
+  L006: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/japanese-verbs-u-verbs-and-ru-verbs-and-conjugation/') ], // V
+  L007: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // WO_SV
+  L008: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '/japanese-grammar/objects-of-japanese-verbs-with-particles-o-ni-and-to/') ], // NI_SV
+  L009: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // DE_SV
+  L010: [], // WO_SV, NI_SV
+  L011: [], // DE_SV, NI_SV
+  L012: [], // DE_SV, WO_SV
+  L013: [ createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_TAE_KIM, '/learn/complete'), createRes(RESOURCE_WASABI, '') ], // WO_SV, NI_SV, DE_SV
+  L014: [], // KARA_TS
+  L015: [], // MADE_TS
+  L016: [], // NA - TNO
+  L017: [], // T - 
+  L018: [], // T - 
   // L019:
   // L020:
   // L021:
+  // L022: 
+  // L023: 
+  // L024: 
+  // L025: 
+  // L026: 
+  // L027: 
 }
 
 const randomVariationValue = (variationArray: string[]): string => variationArray[randomArrayElement(variationArray.length)];
@@ -225,26 +264,31 @@ export const LESSON_OPTIONS = {
   L001: () => createLessonOptions(LESSON_VARIATION.L001, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T
   L002: () => createLessonOptions(LESSON_VARIATION.L002, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WA_TS, MO_TS
   L003: () => createLessonOptions(LESSON_VARIATION.L003, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // GA_TS
-  L004: () => createLessonOptions(LESSON_VARIATION.L004, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WA_TS, MO_TS, GA_TS
-  L005: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // V
-  L006: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV
-  L007: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV
-  L008: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV
-  L009: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV, DE_SV
-  // L010:
-  // L011:
-  // L012:
-  // L013:
-  // L014:
-  // L015:
-  // L016:
-  // L017:
-  // L018:
+  L004: () => createLessonOptions(LESSON_VARIATION.L003, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WA_TS, GA_TS
+  L005: () => createLessonOptions(LESSON_VARIATION.L004, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WA_TS, MO_TS, GA_TS
+  L006: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // V
+  L007: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV
+  L008: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV
+  L009: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV
+  L010: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV
+  L011: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV, DE_SV
+  L012: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV, WO_SV
+  L013: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV, DE_SV
+  L014: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // KARA_SV
+  L015: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // MADE_SV
+  L016: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NA - T_NO
+  L017: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T - T_ADJ
+  L018: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // T - T_ADV
   // L019:
   // L020:
   // L021:
+  // L022: 
+  // L023: 
+  // L024: 
+  // L025: 
+  // L026: 
+  // L027: 
 };
-
 
 const randomTopicNo = (): string => topicNoArray[randomArrayElement(topicNoArray.length)];
 const randomSubjectNoValue = (): string => subjectNoArray[randomArrayElement(subjectNoArray.length)];
@@ -269,21 +313,21 @@ export const LESSON_MODIFIERS = {
   L001: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T
   L002: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS
   L003: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // GA_TS
-  L004: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS, GA_TS
-  L005: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
-  L006: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV
-  L007: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV
-  L008: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV
-  L009: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV, DE_SV
-  // L010:
-  // L011:
-  // L012:
-  // L013:
-  // L014:
-  // L015:
-  // L016:
-  // L017:
-  // L018:
+  L004: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, GA_TS
+  L005: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS, GA_TS
+  L006: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
+  L007: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV
+  L008: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV
+  L009: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV
+  L010: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV
+  L011: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV, DE_SV
+  L012: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV, WO_SV
+  L013: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV, DE_SV
+  L014: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // KARA_SV
+  L015: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // MADE_SV
+  L016: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NA - T_NO
+  L017: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADJ
+  L018: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADV
   // L019:
   // L020:
   // L021:
@@ -295,6 +339,7 @@ export const L001 = {
   LESSON_VARIATION: LESSON_TITLE.L001,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L001,
   LESSON_RESOURCES: LESSON_RESOURCES.L001,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L001,
 };
 
 export const L002 = {
@@ -303,6 +348,7 @@ export const L002 = {
   LESSON_VARIATION: LESSON_TITLE.L002,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L002,
   LESSON_RESOURCES: LESSON_RESOURCES.L002,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L002,
 };
 
 export const L003 = {
@@ -311,6 +357,7 @@ export const L003 = {
   LESSON_VARIATION: LESSON_TITLE.L003,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L003,
   LESSON_RESOURCES: LESSON_RESOURCES.L003,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L003,
 };
 
 export const L004 = {
@@ -319,6 +366,7 @@ export const L004 = {
   LESSON_VARIATION: LESSON_TITLE.L004,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L004,
   LESSON_RESOURCES: LESSON_RESOURCES.L004,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L004,
 };
 
 export const L005 = {
@@ -327,6 +375,7 @@ export const L005 = {
   LESSON_VARIATION: LESSON_TITLE.L005,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L005,
   LESSON_RESOURCES: LESSON_RESOURCES.L005,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L005,
 };
 
 export const L006 = {
@@ -335,6 +384,7 @@ export const L006 = {
   LESSON_VARIATION: LESSON_TITLE.L006,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L006,
   LESSON_RESOURCES: LESSON_RESOURCES.L006,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L006,
 };
 
 export const L007 = {
@@ -343,6 +393,7 @@ export const L007 = {
   LESSON_VARIATION: LESSON_TITLE.L007,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L007,
   LESSON_RESOURCES: LESSON_RESOURCES.L007,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L007,
 };
 
 export const L008 = {
@@ -351,6 +402,7 @@ export const L008 = {
   LESSON_VARIATION: LESSON_TITLE.L008,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L008,
   LESSON_RESOURCES: LESSON_RESOURCES.L008,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L008,
 };
 
 export const L009 = {
@@ -359,79 +411,89 @@ export const L009 = {
   LESSON_VARIATION: LESSON_TITLE.L009,  
   LESSON_EXPLANATION: LESSON_EXPLANATION.L009,
   LESSON_RESOURCES: LESSON_RESOURCES.L009,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L009,
 };
 
-// export const L010 = {
-//   LESSON_TITLE: LESSON_TITLE.L010,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L010,
-//   LESSON_VARIATION: LESSON_TITLE.L010,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L010,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L010,
-// };
+export const L010 = {
+  LESSON_TITLE: LESSON_TITLE.L010,
+  LESSON_OPTIONS: LESSON_OPTIONS.L010,
+  LESSON_VARIATION: LESSON_TITLE.L010,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L010,
+  LESSON_RESOURCES: LESSON_RESOURCES.L010,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L010,
+};
 
-// export const L011 = {
-//   LESSON_TITLE: LESSON_TITLE.L011,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L011,
-//   LESSON_VARIATION: LESSON_TITLE.L011,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L011,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L011,
-// };
+export const L011 = {
+  LESSON_TITLE: LESSON_TITLE.L011,
+  LESSON_OPTIONS: LESSON_OPTIONS.L011,
+  LESSON_VARIATION: LESSON_TITLE.L011,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L011,
+  LESSON_RESOURCES: LESSON_RESOURCES.L011,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L011,
+};
 
-// export const L012 = {
-//   LESSON_TITLE: LESSON_TITLE.L012,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L012,
-//   LESSON_VARIATION: LESSON_TITLE.L012,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L012,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L012,
-// };
+export const L012 = {
+  LESSON_TITLE: LESSON_TITLE.L012,
+  LESSON_OPTIONS: LESSON_OPTIONS.L012,
+  LESSON_VARIATION: LESSON_TITLE.L012,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L012,
+  LESSON_RESOURCES: LESSON_RESOURCES.L012,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L012,
+};
 
-// export const L013 = {
-//   LESSON_TITLE: LESSON_TITLE.L013,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L013,
-//   LESSON_VARIATION: LESSON_TITLE.L013,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L013,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L013,
-// };
+export const L013 = {
+  LESSON_TITLE: LESSON_TITLE.L013,
+  LESSON_OPTIONS: LESSON_OPTIONS.L013,
+  LESSON_VARIATION: LESSON_TITLE.L013,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L013,
+  LESSON_RESOURCES: LESSON_RESOURCES.L013,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L013,
+};
 
-// export const L014 = {
-//   LESSON_TITLE: LESSON_TITLE.L014,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L014,
-//   LESSON_VARIATION: LESSON_TITLE.L014,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L014,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L014,
-// };
+export const L014 = {
+  LESSON_TITLE: LESSON_TITLE.L014,
+  LESSON_OPTIONS: LESSON_OPTIONS.L014,
+  LESSON_VARIATION: LESSON_TITLE.L014,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L014,
+  LESSON_RESOURCES: LESSON_RESOURCES.L014,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L014,
+};
 
-// export const L015 = {
-//   LESSON_TITLE: LESSON_TITLE.L015,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L015,
-//   LESSON_VARIATION: LESSON_TITLE.L015,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L015,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L015,
-// };
+export const L015 = {
+  LESSON_TITLE: LESSON_TITLE.L015,
+  LESSON_OPTIONS: LESSON_OPTIONS.L015,
+  LESSON_VARIATION: LESSON_TITLE.L015,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L015,
+  LESSON_RESOURCES: LESSON_RESOURCES.L015,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L015,
+};
 
-// export const L016 = {
-//   LESSON_TITLE: LESSON_TITLE.L016,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L016,
-//   LESSON_VARIATION: LESSON_TITLE.L016,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L016,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L016,
-// };
+export const L016 = {
+  LESSON_TITLE: LESSON_TITLE.L016,
+  LESSON_OPTIONS: LESSON_OPTIONS.L016,
+  LESSON_VARIATION: LESSON_TITLE.L016,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L016,
+  LESSON_RESOURCES: LESSON_RESOURCES.L016,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L016,
+};
 
-// export const L017 = {
-//   LESSON_TITLE: LESSON_TITLE.L017,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L017,
-//   LESSON_VARIATION: LESSON_TITLE.L017,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L017,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L017,
-// };
+export const L017 = {
+  LESSON_TITLE: LESSON_TITLE.L017,
+  LESSON_OPTIONS: LESSON_OPTIONS.L017,
+  LESSON_VARIATION: LESSON_TITLE.L017,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L017,
+  LESSON_RESOURCES: LESSON_RESOURCES.L017,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L017,
+};
 
-// export const L018 = {
-//   LESSON_TITLE: LESSON_TITLE.L018,
-//   LESSON_OPTIONS: LESSON_OPTIONS.L018,
-//   LESSON_VARIATION: LESSON_TITLE.L018,
-//   LESSON_EXPLANATION: LESSON_EXPLANATION.L018,
-//   LESSON_RESOURCES: LESSON_RESOURCES.L018,
-// };
+export const L018 = {
+  LESSON_TITLE: LESSON_TITLE.L018,
+  LESSON_OPTIONS: LESSON_OPTIONS.L018,
+  LESSON_VARIATION: LESSON_TITLE.L018,
+  LESSON_EXPLANATION: LESSON_EXPLANATION.L018,
+  LESSON_RESOURCES: LESSON_RESOURCES.L018,
+  LESSON_MODIFIERS: LESSON_MODIFIERS.L018,
+};
 
 // export const L019 = {
 //   LESSON_TITLE: LESSON_TITLE.L019,

@@ -64,9 +64,9 @@ export const optionTypes = `
     topicNo: String
     subjectNo: String
     topicAdjective: String
-    subjectAdjective: String
     topicAdverb: String
-    topicAdjective: String
+    subjectAdjective: String
+    subjectAdverb: String
   }
 
   type Options {
