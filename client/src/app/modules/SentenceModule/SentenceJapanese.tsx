@@ -5,6 +5,8 @@ import { Heading } from '../../atoms/TextStyles';
 import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
 
 import {
+  // startOfArray,
+  endOfArray,
   determineSentenceCover,
 } from '../../../util/functions';
 
@@ -18,27 +20,27 @@ import {
   POLITENESS_CASUAL,
 } from '../../../util/constants/optionsConstants';
 
-// const wordArrayOptionsJapanese = (character: Util.WordArrayElement, japaneseSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
-//   // const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
-
-//   // if (endOfArray(japaneseSentenceLength, index) && endOfArray(phraseLength, phraseIndex)) {
-//   //   return options.question === HAS_QUESTION ? `${character.word}${japaneseQuestionEnding}` : `${character.word}。`
-//   // };
-//   return character.word;
-// };
-
 const phraseOptionsJapanese = (phraseArray: Util.WordArrayElement[], options: Util.Options, index: number): Util.WordArrayElement[] => {
-  const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
+  // const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
 
-  options.question === HAS_QUESTION ? 
-    phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}${japaneseQuestionEnding}` : 
-    phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}。`
+  // options.question === HAS_QUESTION ? 
+  //   phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}${japaneseQuestionEnding}` : 
+  //   phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}。`
 
   return phraseArray;
 };
 
 const sentenceOptionsJapanese = (sentenceArray: Util.ConjugatedJapaneseWord[], options: Util.Options): Util.ConjugatedJapaneseWord[] => {
   return sentenceArray;
+};
+
+const wordArrayOptionsJapanese = (character: Util.WordArrayElement, options: Util.Options, wordArrayLength: number, wordIndex: number, sentenceLength: number, sentencePartIndex: number): string => {
+  const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
+
+  if (endOfArray(wordArrayLength, wordIndex) && endOfArray(sentenceLength, sentencePartIndex)) {
+    return options.question === HAS_QUESTION ? `${character.word}${japaneseQuestionEnding}` : `${character.word}。`
+  };
+  return character.word;
 };
 
 class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps, { hoverState: boolean }> {
@@ -51,7 +53,7 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     const { sentence, sentenceStats, sentenceDisplayOptions, options, exerciseIndex } = this.props;
     const { toggleSentenceOrder, toggleSentenceHide } = sentenceDisplayOptions;
     const { hoverState } = this.state;
-    const sentenceArrayComplete = sentenceOptionsJapanese(sentence, options);
+    const sentenceComplete = sentenceOptionsJapanese(sentence, options);
 
     return (
       <FlexColumn>
@@ -63,19 +65,18 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
           onMouseLeave={this.onHoverExit}
           m={2} ml={0} p={3} pl={3} border={1}
           >
-          {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
-            const phraseArray = createTaggedArrayJapanese(phrase);
-            const phraseArrayComplete = phraseOptionsJapanese(phraseArray, options, phraseIndex);
+          {sentenceComplete.map((sentencePart, sentencePartIndex: number) => {
+            const sentencePartWordArray = createTaggedArrayJapanese(sentencePart);
+            const sentencePartWordArrayComplete = phraseOptionsJapanese(sentencePartWordArray, options, sentencePartIndex);
 
             return (
-              <Flex key={phraseIndex}>
-                {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
+              <Flex key={sentencePartIndex}>
+                {sentencePartWordArrayComplete.map((word: Util.WordArrayElement, wordIndex: number) => {
                   const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
-                  // const wordComplete = wordArrayOptionsJapanese(word, phraseArray.length, options, nounIndex, sentenceArrayComplete.length, phraseIndex);
-
+                  const wordComplete = wordArrayOptionsJapanese(word, options, sentencePartWordArrayComplete.length, wordIndex, sentenceComplete.length, sentencePartIndex);
                   return (
-                    <TextHover hovercolour={hoverColour} key={nounIndex}>
-                      {word.word}
+                    <TextHover hovercolour={hoverColour} key={wordIndex}>
+                      {wordComplete}
                     </TextHover>
                   );
                 })}
