@@ -5,8 +5,8 @@ import { Heading } from '../../atoms/TextStyles';
 import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
 import {
   // capitalise,
-  startOfSentence,
-  endOfSentence,
+  // startOfArray,
+  // endOfArray,
   capitalise,
   determineSentenceCover,
 } from '../../../util/functions';
@@ -20,21 +20,29 @@ import {
   HAS_QUESTION,
 } from '../../../util/constants/optionsConstants';
 
-const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
+// const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, englishSentenceLength: number, options: Util.Options, index: number, phraseLength: number, phraseIndex: number): string => {
 
-  if (startOfSentence(englishSentenceLength, index) && startOfSentence(phraseLength, phraseIndex)) {
-    return capitalise(wordArrayElement.word);
-  };
+//   // if (startOfArray(englishSentenceLength, index) && startOfArray(phraseLength, phraseIndex)) {
+//   //   return capitalise(wordArrayElement.word);
+//   // };
 
-  if (endOfSentence(englishSentenceLength, index) && endOfSentence(phraseLength, phraseIndex)) {
-    return options.question === HAS_QUESTION ? `${wordArrayElement.word}?` : `${wordArrayElement.word}.`
-  };
+//   // if (endOfArray(englishSentenceLength, index) && endOfArray(phraseLength, phraseIndex)) {
+//   //   return options.question === HAS_QUESTION ? `${wordArrayElement.word}?` : `${wordArrayElement.word}.`
+//   // };
 
-  return wordArrayElement.word;
-};
+//   return wordArrayElement.word;
+// };
 
 const phraseOptionsEnglish = (phraseArray: Util.WordArrayElement[], options: Util.Options, phraseIndex: number): Util.WordArrayElement[] => {
+
+  phraseArray[0].word = capitalise(phraseArray[0].word);
+
+  options.question === HAS_QUESTION ? 
+    phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}?` : 
+    phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}.`
+
   const filteredArray: Util.WordArrayElement[] = phraseArray.filter((wordArrayElement: Util.WordArrayElement): boolean => wordArrayElement.word !== '');
+
   return filteredArray;
 };
 
@@ -66,15 +74,15 @@ class SentenceEnglish extends React.PureComponent<PropTypes.IEnglishSentenceProp
           {sentenceArrayComplete.map((phrase, phraseIndex: number) => {
             const phraseArray = createTaggedArrayEnglish(phrase);
             const phraseArrayComplete = phraseOptionsEnglish(phraseArray, options, phraseIndex);
+
             return (
               <Flex key={phraseIndex}>
                 {phraseArrayComplete.map((word: Util.WordArrayElement, nounIndex: number) => {
-                  
                   const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
-                  const wordComplete = wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex);
+                  // const wordComplete = wordOptionsEnglish(word, phraseArray.length, options, nounIndex, phraseArrayComplete.length, phraseIndex);
                   return (
                     <TextHover mr={1} hovercolour={hoverColour} key={nounIndex}>
-                      {wordComplete}
+                      {word.word}
                     </TextHover>
                   );
                 })}

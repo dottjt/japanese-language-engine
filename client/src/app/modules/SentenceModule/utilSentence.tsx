@@ -169,12 +169,11 @@ export const convertSentenceStatsJapanese = (sentenceStats: Util.SentenceStats, 
 const tagArray = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag }));
 
 export const createTaggedArrayEnglish = (phrase: Util.ConjugatedEnglishWord): Util.WordArrayElement[] => {
-  const polarity = tagArray(phrase.polarity.wordArray, phrase.polarity.wordType);
   const tense = tagArray(phrase.tense.wordArray, phrase.tense.wordType);
+  const polarity = tagArray(phrase.polarity.wordArray, phrase.polarity.wordType);
 
   switch(phrase.type) {
     case CONJUGATION_TYPE_NOUN_ENGLISH: 
-    // NOTE: will need to specify if noun is topic or subject.
       const indefiniteArticle = tagArray(phrase.indefiniteArticle.wordArray, phrase.indefiniteArticle.wordType);
       const noun = phrase.sentenceType === SENTENCE_TYPE_TOPIC ? tagArray([phrase.word.english.present], ENGLISH_TOPIC) : tagArray([phrase.word.english.present], ENGLISH_SUBJECT);
       return tense.concat(polarity).concat(indefiniteArticle).concat(noun); 
