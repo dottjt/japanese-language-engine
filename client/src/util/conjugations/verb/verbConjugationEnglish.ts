@@ -41,7 +41,7 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return { tense: createWord([''], ENGLISH_TENSE), polarity: createWord([''], ENGLISH_POLARITY) };
 }; 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
+const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_ENGLISH;
 

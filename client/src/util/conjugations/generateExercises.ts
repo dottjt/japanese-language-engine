@@ -89,62 +89,62 @@ import verbConjugationJapanese from "./verb/verbConjugationJapanese";
 import verbConjugationEnglish from "./verb/verbConjugationEnglish";
 
 
-const generateEnglishWord = (words: Util.SentenceWords, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord | Util.ConjugatedEnglishWord => {
+const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord | Util.ConjugatedEnglishWord => {
   switch (sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, options, sentenceType);
-    case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, options, sentenceType);
-    case SENTENCE_TYPE_VERB: return verbConjugationEnglish(words, options, sentenceType);
+    case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, modifiers, options, sentenceType);
+    case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, modifiers, options, sentenceType);
+    case SENTENCE_TYPE_VERB: return verbConjugationEnglish(words, modifiers, options, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateExercises.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
 };
 
-const generateJapaneseWord = (words: Util.SentenceWords, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedJapaneseWord | Util.ConjugatedJapaneseWord => {
+const generateJapaneseWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedJapaneseWord | Util.ConjugatedJapaneseWord => {
   switch (sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(words, options, sentenceType);
-    case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(words, options, sentenceType);
-    case SENTENCE_TYPE_VERB: return verbConjugationJapanese(words, options, sentenceType);
+    case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(words, modifiers, options, sentenceType);
+    case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(words, modifiers, options, sentenceType);
+    case SENTENCE_TYPE_VERB: return verbConjugationJapanese(words, modifiers, options, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateExercises.tsx', 'generateJapaneseWord', 'sentenceType does not exist'));
 };
 
-const generateSentences = (words: Util.SentenceWords, options: Util.Options): Util.EnglishJapaneseSentence => {
+const generateSentences = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options): Util.EnglishJapaneseSentence => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const { onlyTopic, onlySubject, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
 
   if (onlyTopic) {
     return {
-      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ],
+      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
   if (onlySubject) {
     return {
-      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     }
   };
   if (onlyVerb) {
     return  {
-      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH) ],
+      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH) ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
   if (onlyTopicAndSubject) {
     return  {
-      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE), generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH), generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE), generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH), generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };
   if (onlySubjectAndVerb) {
     return  {
-      japaneseSentence: [ generateJapaneseWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE), generateJapaneseWord(words, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, options, SENTENCE_TYPE_VERB, LANG_ENGLISH), generateEnglishWord(words, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE), generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
+      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH), generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };
@@ -252,7 +252,7 @@ const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): U
   return sentenceWordModifiers;
 };
 
-const generateExercises = (words: Util.Word[], optionsLambda: () => Util.Options, modifiersLambda: () => Util.Modifiers, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
+const generateExercises = (words: Util.Word[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
 
     const options = optionsLambda();
@@ -263,7 +263,7 @@ const generateExercises = (words: Util.Word[], optionsLambda: () => Util.Options
 
     return {
       options,
-      ...generateSentences(variationWords(), options, )  
+      ...generateSentences(variationWords(), modifierWords, options)  
     }
   })
 

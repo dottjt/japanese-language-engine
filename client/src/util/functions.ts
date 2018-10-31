@@ -1,6 +1,7 @@
 import {
   LESSON_PATH,
   LESSON_OPTIONS,
+  LESSON_MODIFIERS,
 } from './constants/lessonConstants';
 
 import { 
@@ -39,16 +40,16 @@ export const createError = (fileLocation: string, functionName: string, errorMes
 
 export const determineGetExercise = (nouns: Util.Word[], path: string, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
   switch(path) {
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return generateExercises(nouns, LESSON_OPTIONS.L001, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return generateExercises(nouns, LESSON_OPTIONS.L002, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L003}`: return generateExercises(nouns, LESSON_OPTIONS.L003, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L004}`: return generateExercises(nouns, LESSON_OPTIONS.L004, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L005}`: return generateExercises(nouns, LESSON_OPTIONS.L005, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L006}`: return generateExercises(nouns, LESSON_OPTIONS.L006, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L007}`: return generateExercises(nouns, LESSON_OPTIONS.L007, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L008}`: return generateExercises(nouns, LESSON_OPTIONS.L008, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L009}`: return generateExercises(nouns, LESSON_OPTIONS.L009, numberOfExercices);
-    default: return generateExercises(nouns, LESSON_OPTIONS.L001, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return generateExercises(nouns, LESSON_MODIFIERS.L001, LESSON_OPTIONS.L001, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return generateExercises(nouns, LESSON_MODIFIERS.L002, LESSON_OPTIONS.L002, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L003}`: return generateExercises(nouns, LESSON_MODIFIERS.L003, LESSON_OPTIONS.L003, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L004}`: return generateExercises(nouns, LESSON_MODIFIERS.L004, LESSON_OPTIONS.L004, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L005}`: return generateExercises(nouns, LESSON_MODIFIERS.L005, LESSON_OPTIONS.L005, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L006}`: return generateExercises(nouns, LESSON_MODIFIERS.L006, LESSON_OPTIONS.L006, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L007}`: return generateExercises(nouns, LESSON_MODIFIERS.L007, LESSON_OPTIONS.L007, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L008}`: return generateExercises(nouns, LESSON_MODIFIERS.L008, LESSON_OPTIONS.L008, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L009}`: return generateExercises(nouns, LESSON_MODIFIERS.L009, LESSON_OPTIONS.L009, numberOfExercices);
+    default: return generateExercises(nouns, LESSON_MODIFIERS.L001, LESSON_OPTIONS.L001, numberOfExercices);
   };
 };
 

@@ -93,6 +93,7 @@ declare namespace Util {
   };
 
   export type Modifiers = {
+    __typename: string;
     topicNo: string;
     subjectNo: string;
     topicAdjective: string;

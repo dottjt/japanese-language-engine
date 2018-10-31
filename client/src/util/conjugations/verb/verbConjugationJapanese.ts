@@ -98,7 +98,7 @@ const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };
 
-const verbConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
+const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_JAPANESE;
   const { verbStem, polarity } = determineVerbConjugationJapanese(word, options);

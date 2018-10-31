@@ -45,7 +45,19 @@ import {
 } from './optionsConstants';
 
 import {
+  topicNoArray,
+  subjectNoArray,
+  topicAdjectiveArray,
+  topicAdverbArray,
+  subjectAdjectiveArray,
+  subjectAdverbArray,
+  
+  MODIFIERS_NA,
+} from './modifiersConstants';
+
+import {
   __TYPENAME_OPTIONS,
+  __TYPENAME_MODIFIERS,
 } from './typeNameConstants';
 
 const createRes = (resourceType: string, urlString: string): Util.Resource => {
@@ -198,7 +210,6 @@ const randomTenseValue = (): string => tenseArray[randomArrayElement(tenseArrayL
 const randomQuestionValue = (): string => questionArray[randomArrayElement(questionArrayLength)];
 
 const createLessonOptions = ( variation: string | string[], politeness?: string, polarity?: string, tense?: string, question?: string, gender?: string): Util.Options => {
- 
   return {
     __typename: __TYPENAME_OPTIONS,
     variation: typeof variation === 'string' ? variation : randomVariationValue(variation),
@@ -220,10 +231,54 @@ export const LESSON_OPTIONS = {
   L007: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // NI_SV
   L008: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // DE_SV
   L009: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, randomPolarityValue(), randomTenseValue(), NOT_QUESTION ), // WO_SV, NI_SV, DE_SV
-  // L010: () => 
-  // L011: () => 
-  // L012: () => 
-  // L013: () => 
+  // L010:
+  // L011:
+  // L012:
+  // L013:
+  // L014:
+  // L015:
+  // L016:
+  // L017:
+  // L018:
+  // L019:
+  // L020:
+  // L021:
+};
+
+
+const randomTopicNo = (): string => topicNoArray[randomArrayElement(topicNoArray.length)];
+const randomSubjectNoValue = (): string => subjectNoArray[randomArrayElement(subjectNoArray.length)];
+const randomTopicAdjectiveValue = (): string =>  topicAdjectiveArray[randomArrayElement(topicAdjectiveArray.length)];
+const randomTopicAdverbValue = (): string => topicAdverbArray[randomArrayElement(topicAdverbArray.length)];
+const randomSubjectAdjectiveValue = (): string => subjectAdjectiveArray[randomArrayElement(subjectAdjectiveArray.length)];
+const randomSubjectAdverbValue = (): string => subjectAdverbArray[randomArrayElement(subjectAdverbArray.length)];
+
+const createLessonModifiers = ( topicNo?: string, subjectNo?: string, topicAdjective?: string, topicAdverb?: string, subjectAdjective?: string, subjectAdverb?: string): Util.Modifiers => {
+  return {
+    __typename: __TYPENAME_MODIFIERS,
+    topicNo: topicNo ? topicNo : randomTopicNo(),
+    subjectNo: subjectNo ? subjectNo : randomSubjectNoValue(),
+    topicAdjective: topicAdjective ? topicAdjective : randomTopicAdjectiveValue(),
+    topicAdverb: topicAdverb ? topicAdverb : randomTopicAdverbValue(),
+    subjectAdjective: subjectAdjective ? subjectAdjective : randomSubjectAdjectiveValue(),
+    subjectAdverb: subjectAdverb ? subjectAdverb : randomSubjectAdverbValue(),  
+  }
+};
+
+export const LESSON_MODIFIERS = {
+  L001: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T
+  L002: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS
+  L003: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // GA_TS
+  L004: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS, GA_TS
+  L005: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
+  L006: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV
+  L007: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV
+  L008: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV
+  L009: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV, DE_SV
+  // L010:
+  // L011:
+  // L012:
+  // L013:
   // L014:
   // L015:
   // L016:
