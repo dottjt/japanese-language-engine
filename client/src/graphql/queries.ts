@@ -123,9 +123,9 @@ export const GET_EXERCISES = gql`{
       topicNo
       subjectNo
       topicAdjective
-      subjectAdjective
       topicAdverb
-      topicAdjective
+      subjectAdjective
+      subjectAdverb
     }
   }
 }`;
@@ -274,9 +274,9 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
       topicNo
       subjectNo
       topicAdjective
-      subjectAdjective
       topicAdverb
-      topicAdjective
+      subjectAdjective
+      subjectAdverb
     }
   }
 }`;

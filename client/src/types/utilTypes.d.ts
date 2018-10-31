@@ -92,6 +92,15 @@ declare namespace Util {
     question: string; // HAS_QUESTION, NOT_QUESTION
   };
 
+  export type Modifiers = {
+    topicNo: string;
+    subjectNo: string;
+    topicAdjective: string;
+    topicAdverb: string;
+    subjectAdjective: string;
+    subjectAdverb: string;
+  };
+
   export type EnglishJapaneseSentence = {
     englishSentence: ConjugatedEnglishWord[];
     japaneseSentence: ConjugatedJapaneseWord[];

@@ -29,27 +29,43 @@ import {
   SENTENCE_TYPE_TOPIC,
 
   T,
+
   WA_TS,
   MO_TS,
   GA_TS,
+
   V,
+
   WO_SV,
   NI_SV,
   DE_SV, 
+
   KARA_TS,
   MADE_TS,
-  
-  S_ADJ,
-  S_ADV,
+
+} from '../constants/optionsConstants';
+
+import {
   T_ADJ,
   T_ADV,
+
+  S_ADJ,
+  S_ADV,
+
   T_NO1,
   T_NO2,
   T_NO3,
   S_NO1,
   S_NO2,
   S_NO3,
-} from '../constants/optionsConstants';
+
+  TOPIC_NO,
+  SUBJECT_NO,
+  TOPIC_ADJECTIVE,
+  TOPIC_ADVERB,
+  SUBJECT_ADJECTIVE,
+  SUBJECT_ADVERB,
+} from '../constants/modifiersConstants';
 
 import {
   // PRIMARY_TYPE_NOUN,
@@ -177,33 +193,72 @@ const generateWords = (nouns: Util.Word[], variation: string): () => Util.Senten
   throw new Error(createError('conjugations/generateExercises.tsx', 'generateWords', `${variation} does not exist`));
 };
 
-const generateWordModifiers = (nouns: Util.Word[], modifiers: string): () => Util.SentenceWords => {
-  
-  // modifiers
-  switch(modifierType) {
-    case S_ADJ: return { topicModifier: '', ;
-    case S_ADV: return { topicModifier: '', ;
-    case T_ADJ: return { topicModifier: '', ;
-    case T_ADV: return { topicModifier: '', ;
-    case T_NO1: return { topicModifier: '', ;
-    case T_NO2: return { topicModifier: '', ;
-    case T_NO3: return { topicModifier: '', ;
-    case S_NO1: return { topicModifier: '', ;
-    case S_NO2: return { topicModifier: '', ;
-    case S_NO3: return { topicModifier: '', ;
-  }
-  throw new Error(createError('conjugations/generateExercises.tsx', 'generateWordModifiers', `${modifierType} does not exist`));
+const createWordModifier = (type: string, word: Util.Word): Util.WordModifier => ({ type, word });
+
+const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): Util.SentenceWordModifiers => {
+
+  const modifiersKeys = Object.keys(modifiers);
+  const sentenceWordModifiers: Util.SentenceWordModifiers = {
+    tNo1: undefined,
+    tNo2: undefined,
+    tNo3: undefined,
+
+    sNo1: undefined,
+    sNo2: undefined,
+    sNo3: undefined,
+
+    tAdj: undefined,
+    tAdv: undefined,
+
+    sAdj: undefined,
+    sAdv: undefined,
+  };
+
+  modifiersKeys.map((modifierField: string) => {
+    if (modifiers[modifierField] !== undefined) {
+      if (modifierField === TOPIC_NO) {
+        switch(modifiers[modifierField]) {
+          case T_NO1: sentenceWordModifiers.tNo1 = createWordModifier(T_NO1, word); break;
+          case T_NO2: sentenceWordModifiers.tNo2 = createWordModifier(T_NO2, word); break;
+          case T_NO3: sentenceWordModifiers.tNo3 = createWordModifier(T_NO3, word); break;
+        }
+      }
+      if (modifierField === SUBJECT_NO) {
+        switch(modifiers[modifierField]) {
+          case S_NO1: sentenceWordModifiers.sNo1 = createWordModifier(S_NO1, word); break;
+          case S_NO2: sentenceWordModifiers.sNo2 = createWordModifier(S_NO2, word); break;
+          case S_NO3: sentenceWordModifiers.sNo3 = createWordModifier(S_NO3, word); break;
+        }
+      }
+      if (modifierField === TOPIC_ADJECTIVE) {
+        sentenceWordModifiers.tAdj = createWordModifier(T_ADJ, word);
+      }
+      if (modifierField === TOPIC_ADVERB) {
+        sentenceWordModifiers.tAdv = createWordModifier(T_ADV, word);
+      }
+      if (modifierField === SUBJECT_ADJECTIVE) {
+        sentenceWordModifiers.sAdj = createWordModifier(S_ADJ, word);
+      }
+      if (modifierField === SUBJECT_ADVERB) {
+        sentenceWordModifiers.sAdv = createWordModifier(S_ADV, word);
+      }
+    }
+  });
+  return sentenceWordModifiers;
 };
 
-const generateExercises = (words: Util.Word[], optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
+const generateExercises = (words: Util.Word[], optionsLambda: () => Util.Options, modifiersLambda: () => Util.Modifiers, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
 
     const options = optionsLambda();
+    const modifiers = modifiersLambda();
     
     const variationWords = generateWords(words, options.variation);
+    const modifierWords = generateWordModifiers(words, modifiers);
+
     return {
       options,
-      ...generateSentences(variationWords(), options)  
+      ...generateSentences(variationWords(), options, )  
     }
   })
 
