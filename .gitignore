@@ -119,22 +119,38 @@ data/
 # CLIENT GITIGNORE
 
 # dependencies
-client/node_modules
+watashi-client/node_modules
 
 # testing
-client/coverage
+watashi-client/coverage
 
 # production
-client/build
+watashi-client/build
 
 # misc
-client/.DS_Store
-client/.env.local
-client/.env.development.local
-client/.env.test.local
-client/.env.production.local
+watashi-client/.DS_Store
+watashi-client/.env.local
+watashi-client/.env
+watashi-client/.env.development.local
+watashi-client/.env.test.local
+watashi-client/.env.production.local
 
-client/npm-debug.log*
-client/yarn-debug.log*
-client/yarn-error.log*
+watashi-client/npm-debug.log*
+watashi-client/yarn-debug.log*
+watashi-client/yarn-error.log*
+
+
+# dependencies
+watashi-api/node_modules
+
+# production
+watashi-api/build
+
+# misc
+watashi-api/.DS_Store
+watashi-api/.env
+
+watashi-client/npm-debug.log*
+watashi-client/yarn-debug.log*
+watashi-client/yarn-error.log*
 
