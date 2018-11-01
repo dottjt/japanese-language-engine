@@ -1,0 +1,54 @@
+{
+  "name": "watashi-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@loadable/component": "^4.0.2",
+    "@types/auth0-js": "^8.11.7",
+    "@types/graphql": "^14.0.3",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "@types/rebass": "^0.3.1",
+    "@types/styled-components": "^4.0.3",
+    "apollo-boost": "^0.1.19",
+    "apollo-cache-inmemory": "^1.3.8",
+    "apollo-client": "^2.4.5",
+    "apollo-link-http": "^1.5.5",
+    "auth0-js": "^9.8.1",
+    "graphql": "^14.0.2",
+    "react": "^16.6.0",
+    "react-apollo": "^2.2.4",
+    "react-dom": "^16.6.0",
+    "react-flexbox-grid": "^2.1.2",
+    "react-helmet": "^5.2.0",
+    "react-markdown": "^4.0.3",
+    "react-router5": "^6.5.3",
+    "react-scripts": "2.1.0",
+    "rebass": "^2.3.4",
+    "router5": "^6.6.2",
+    "styled-components": "^4.0.3",
+    "system-components": "^3.0.1",
+    "typescript": "^3.1.5"
+  },
+  "devDependencies": {
+    "react-app-rewire-styled-components": "^3.0.2",
+    "react-app-rewired": "^1.6.2",
+    "react-snap": "^1.19.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "postbuild": "react-snap"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
