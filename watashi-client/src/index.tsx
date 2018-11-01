@@ -5,10 +5,6 @@ import { RouteProvider, Route } from 'react-router5';
 import { ApolloProvider } from 'react-apollo';
 import { ThemeProvider } from 'styled-components';
 
-// import { 
-//   ROUTE_TITLE,
-// } from './util/constants/generalConstants';
-
 import client from './graphql/client';
 import theme from './theme';
 import router from './router';
@@ -32,12 +28,6 @@ const Index = () => (
         <Route>{({ route }) => {
           if (route !== null) {
             return <App client={client} route={route} auth={auth}/>
-            // switch(route.name) {
-            //   case ROUTE_TITLE.BLOG: 
-            //     // return <Blog/>
-            //   default:
-            //     return <App client={client} route={route} auth={auth}/>
-            // }
           } else {
             return <Page404/>
           }

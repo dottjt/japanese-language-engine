@@ -20,7 +20,7 @@ const routes = [
   { name: ROUTE_TITLE.HOME, path: ROUTE_PATH.HOME },
   { name: ROUTE_TITLE.APP, path: ROUTE_PATH.APP },
   { name: ROUTE_TITLE.BLOG, path: ROUTE_PATH.BLOG },
-  { name: ROUTE_TITLE.TOOLS, path: ROUTE_PATH.TOOLS },
+  { name: ROUTE_TITLE.ABOUT, path: ROUTE_PATH.ABOUT },
 
   // Other lesson pages
   { name: ROUTE_TITLE.WELCOME, path: `${ROUTE_PATH.APP}${ROUTE_PATH.WELCOME}` },
@@ -56,12 +56,6 @@ const routes = [
   { name: LESSON_TITLE.L020, path: `${ROUTE_PATH.APP}${LESSON_PATH.L020}` },
 
 ];
-
-
-const preloadedState = (<any>window).__APOLLO_STATE__;
-
-delete (<any>window).__APOLLO_STATE__;
-
 
 const router = createRouter(routes).usePlugin(browserPlugin());
 router.start()

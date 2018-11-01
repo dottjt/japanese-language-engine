@@ -7,6 +7,7 @@ export const Text = system(
     fontSize: 2,
     color: 'dark-gray',
     fontFamily: 'sansSerif',
+    lineHeight: 2,
   },
   'space',
   'width',

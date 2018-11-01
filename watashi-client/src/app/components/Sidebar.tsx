@@ -27,7 +27,7 @@ class Sidebar extends React.Component<{}, {}> {
             <Heading is='h3' mb={2} fontSize={2}>Sitemap</Heading>
             <Link routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
             <Link routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
-            <Link routeName={ROUTE_TITLE.TOOLS} routeOptions={{reload: true}}>{ROUTE_TITLE.TOOLS}</Link>
+            <Link routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</Link>
             <Link routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
             <Link routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>
           </FlexColumn>

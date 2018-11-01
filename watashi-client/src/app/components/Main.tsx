@@ -42,7 +42,7 @@ import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
 import Welcome from '../pages/Welcome';
 import Blog from '../pages/Blog';
-import Tools from '../pages/Tools';
+import Tools from '../pages/About';
 
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
@@ -72,7 +72,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             case ROUTE_TITLE.CALLBACK:
               return <Callback/>
               
-            case ROUTE_TITLE.TOOLS:
+            case ROUTE_TITLE.ABOUT:
               return <Tools/>
 
 
