@@ -8,6 +8,7 @@ export const Text = system(
     color: 'dark-gray',
     fontFamily: 'sansSerif',
     lineHeight: 2,
+    mb: 2,
   },
   'space',
   'width',
@@ -21,10 +22,10 @@ Text.displayName = 'Text';
 export const Heading = system(
   {
     is: 'h1',
-    m: 0,
     fontSize: 6,
     color: 'dark-gray',
     fontFamily: 'sansSerif',
+    m: 0,
   },
   'space',
   'width',

@@ -8,7 +8,6 @@ import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalCons
 
 import { randomArrayElement, getExercisesApollo } from '../../util/functions'
 
-import CourseList from '../components/CourseList';
 import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import Helmet from '../components/Helmet';
@@ -151,8 +150,6 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
               </FlexColumn>
 
-              <CourseList/>
-              
             </FlexColumn>
           )      
         }

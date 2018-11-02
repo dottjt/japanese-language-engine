@@ -71,24 +71,27 @@ Adjectives
 
 Where/What/Who/
 
-TODO
-Unit Testing
-Implement Stripe
-0Auth setup (proper)
-Markdown-to-jsx
-SSR and code splitting
-Link hover states with the actual words.
-Figure out appropiate words to use with different sentence types.
-Break down sentence structure even more so that it's ever-more accurate.
-Amazon SES
-Save the Sentence Stats transformations inside the apollo cache, rather than dynamically generate it.
-Consider separate sidebar and lesson titles.
-Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)
-Write an article on the instanteous composition method.
-Interactive Kanji Chart
-Interactive Katakana Chart
-In each exercise, show which parameters have been set for the exercises, and demonstrate that you can change them with a premium subscription.
-You could think of it as a 'did do' relationship.
+## TODO
+- Unit Testing
+- Implement Stripe
+- 0Auth setup (proper)
+- Markdown-to-jsx
+- SSR and code splitting
+- Link hover states with the actual words.
+- Figure out appropiate words to use with different sentence types.
+- Break down sentence structure even more so that it's ever-more accurate.
+- Amazon SES
+- Save the Sentence Stats transformations inside the apollo cache, rather than dynamically generate it.
+- Consider separate sidebar and lesson titles.
+- Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)
+- Write an article on the instanteous composition method.
+- Interactive Kanji Chart
+- Interactive Katakana Chart
+- In each exercise, show which parameters have been set for the exercises, and demonstrate that you can change them with a premium subscription.
+- You could think of it as a 'did do' relationship.
+- Instead of navbar fixed, you have 
+
+Docker Swarm - Docker Machine - Docker Engine 
 
 https://stackoverflow.com/questions/31798849/how-to-serve-static-files-with-nginx-inside-of-a-docker-container https://stackoverflow.com/questions/39202964/how-to-reach-another-container-from-a-dockerised-nginx https://stackoverflow.com/questions/29905953/how-to-correctly-link-php-fpm-and-nginx-docker-containers https://www.peterbe.com/plog/how-to-create-react-app-with-docker https://mherman.org/blog/dockerizing-a-react-app/
 

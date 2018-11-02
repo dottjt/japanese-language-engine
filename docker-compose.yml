@@ -12,13 +12,14 @@ services:
 
   nginxproxy:
     build:
-      context: ./watashi-nginxproxy
-      dockerfile: ./infrastructure/docker/DockerfileNginxProxy
+      context: ./watashi-haproxy
+      dockerfile: ./infrastructure/docker/DockerfileHaproxy
     volumes:
-      - ./nginxproxy/nginx.conf:/etc/nginx/nginx.conf:rw
+      - ./my-haproxy.cfg:/etc/haproxy/haproxy.cfg:rw
     ports:
-      - 8080:8080
+      - 80:80
     restart: always
+
 
   nginx: 
     build:

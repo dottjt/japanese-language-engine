@@ -39,4 +39,3 @@ export const SentenceCover = styled(Flex)<any>`
 SentenceCover.defaultProps = {
   background: 'white',
 };
-

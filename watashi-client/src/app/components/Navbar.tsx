@@ -1,10 +1,59 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 import { Flex } from '../atoms/LayoutStyles';
 import { Heading } from '../atoms/TextStyles';
 import { Link } from '../atoms/ClickableStyles';
 
 import { ROUTE_TITLE } from '../../util/constants/generalConstants';
+
+const Dropdown = styled(Flex)<any>`
+  visibility: ${props => props.togglevisibility ? 'visible' : 'hidden'};
+`;
+Dropdown.defaultProps = {
+  togglevisibility: 'visible',
+};
+
+
+class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
+  constructor() {
+    super({});
+    this.state = {
+      dropdownOpenState: false,
+    }
+  }
+
+  public render() {
+    return (
+      <Flex position='relative'>
+        <Heading 
+          fontSize={4} 
+          ml={4} 
+          onClick={this.clickDropdown}
+          >
+          Watashi Engine</Heading>
+        <Dropdown
+          position='absolute'
+          ml={4}
+          togglevisibility={this.state.dropdownOpenState}
+          >
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>
+        </Dropdown>
+      </Flex>
+    );
+  };
+
+  private clickDropdown = () => {
+    this.setState({
+      dropdownOpenState: !this.state.dropdownOpenState,
+    });
+  }
+};
+
 
 class Navbar extends React.Component<{}, {}> {
   public render() {
@@ -14,14 +63,15 @@ class Navbar extends React.Component<{}, {}> {
         alignItems='center'
         zIndex={10}
         bg='white'
-        position='fixed'
-        top={0}
-        right={0}
+        // position='fixed'
+        // top={0}
+        // right={0}
         borderBottom={1}
         height={64}
         width={[1]}
-      >
-        <Heading fontSize={4} ml={4}>Watashi Engine</Heading>
+        >
+
+        <LogoDropdown/>
 
         <Flex width={200} justifyContent='space-around'>
           <Link routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>

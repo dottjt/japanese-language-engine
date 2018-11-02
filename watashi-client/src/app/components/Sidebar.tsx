@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { FlexColumn } from '../atoms/LayoutStyles';
+import { Flex, FlexColumn } from '../atoms/LayoutStyles';
 import { Heading } from '../atoms/TextStyles';
 import { Link } from '../atoms/ClickableStyles';
 
@@ -8,7 +8,23 @@ import {
   ROUTE_TITLE,
 } from '../../util/constants/generalConstants';
 
-import CourseList from './CourseList';
+import {
+  LESSON_TITLE,
+} from '../../util/constants/lessonConstants';
+
+const Item = (props) => <Flex alignItems='center' width={[1]} height='3rem' borderBottom={1}>{props.children}</Flex>
+
+const SidebarItem = (props) => (
+  <Item>
+    <Link ml={3} routeName={props.routeName} routeOptions={props.routeOptions}>{props.children}</Link>
+  </Item>
+);
+
+const HeadingItem = (props) => (
+  <Item>
+    <Heading is='h3' ml={3} fontSize={2}>{props.children}</Heading>
+  </Item>
+);
 
 class Sidebar extends React.Component<{}, {}> {
   public render() {
@@ -16,51 +32,62 @@ class Sidebar extends React.Component<{}, {}> {
       <FlexColumn 
         width={282}
         minWidth={282}
-        // minWidth={4}
         borderRight={1} 
         fontSize={5}
         >
-        <FlexColumn
-          pl={3}
-          pr={3}
-          >
-          <FlexColumn mt={5}>
-            <Heading is='h3' mb={2} fontSize={2}>Sitemap</Heading>
-            <Link routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
-            <Link routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
-            <Link routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</Link>
-            <Link routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
-            <Link routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>
-          </FlexColumn>
-
-          <FlexColumn mt={5}>
-            <Heading is='h3' mb={2} fontSize={2}>00 - Introduction</Heading>
-            <Link routeName={ROUTE_TITLE.WELCOME} routeOptions={{reload: true}}>{ROUTE_TITLE.WELCOME}</Link>
-            <Link routeName={ROUTE_TITLE.CONTENTS} routeOptions={{reload: true}}>{ROUTE_TITLE.CONTENTS}</Link>
-            <Link routeName={ROUTE_TITLE.PREREQ} routeOptions={{reload: true}}>{ROUTE_TITLE.PREREQ}</Link>
-          </FlexColumn>
-          
-          <CourseList/>
+        <FlexColumn>
+          <HeadingItem>00 - Introduction</HeadingItem>
+          <SidebarItem routeName={ROUTE_TITLE.WELCOME} routeOptions={{reload: true}}>{ROUTE_TITLE.WELCOME}</SidebarItem>
+          <SidebarItem routeName={ROUTE_TITLE.CONTENTS} routeOptions={{reload: true}}>{ROUTE_TITLE.CONTENTS}</SidebarItem>
+          <SidebarItem routeName={ROUTE_TITLE.PREREQ} routeOptions={{reload: true}}>{ROUTE_TITLE.PREREQ}</SidebarItem>
         </FlexColumn>
-        
+
+        <FlexColumn>
+          <HeadingItem>01 - Noun Conjugation Basics</HeadingItem>
+          <SidebarItem routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>{LESSON_TITLE.L001}</SidebarItem>
+        </FlexColumn>
+
+        <FlexColumn>
+          <HeadingItem>02 - Noun Basics</HeadingItem>
+          <SidebarItem routeName={LESSON_TITLE.L002} routeOptions={{reload: true}}>{LESSON_TITLE.L002}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L003} routeOptions={{reload: true}}>{LESSON_TITLE.L003}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L004} routeOptions={{reload: true}}>{LESSON_TITLE.L004}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L005} routeOptions={{reload: true}}>{LESSON_TITLE.L005}</SidebarItem>
+        </FlexColumn>
+
+        <FlexColumn>
+          <HeadingItem>03 - Verb Conjugation Basics</HeadingItem>
+          <SidebarItem routeName={LESSON_TITLE.L006} routeOptions={{reload: true}}>{LESSON_TITLE.L006}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L007} routeOptions={{reload: true}}>{LESSON_TITLE.L007}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L008} routeOptions={{reload: true}}>{LESSON_TITLE.L008}</SidebarItem>
+        </FlexColumn>
+
+        <FlexColumn>
+          <HeadingItem>04 - Verb Basics</HeadingItem>
+          <SidebarItem routeName={LESSON_TITLE.L009} routeOptions={{reload: true}}>{LESSON_TITLE.L009}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L010} routeOptions={{reload: true}}>{LESSON_TITLE.L010}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L011} routeOptions={{reload: true}}>{LESSON_TITLE.L011}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L012} routeOptions={{reload: true}}>{LESSON_TITLE.L012}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L013} routeOptions={{reload: true}}>{LESSON_TITLE.L013}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L014} routeOptions={{reload: true}}>{LESSON_TITLE.L014}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L015} routeOptions={{reload: true}}>{LESSON_TITLE.L015}</SidebarItem>
+        </FlexColumn>
+
+        <FlexColumn>
+          <HeadingItem>05 - From / Until statements</HeadingItem>
+          <SidebarItem routeName={LESSON_TITLE.L016} routeOptions={{reload: true}}>{LESSON_TITLE.L016}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L017} routeOptions={{reload: true}}>{LESSON_TITLE.L017}</SidebarItem>
+        </FlexColumn>
+
+        <FlexColumn>
+          <HeadingItem>06 - Modifier Basics</HeadingItem>
+          <SidebarItem routeName={LESSON_TITLE.L018} routeOptions={{reload: true}}>{LESSON_TITLE.L018}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L019} routeOptions={{reload: true}}>{LESSON_TITLE.L019}</SidebarItem>
+          <SidebarItem routeName={LESSON_TITLE.L020} routeOptions={{reload: true}}>{LESSON_TITLE.L020}</SidebarItem>
+        </FlexColumn>
       </FlexColumn>
     );
   };
 };
 
 export default Sidebar;
-
-
-        {/* <Flex 
-          alignItems='center' 
-          justifyContent='space-around' 
-          borderBottom={1} 
-          mb={4}
-        >
-          <Flex pt={2} pb={2} width={[1]} justifyContent='center' alignItems='center' borderRight={1}>
-            <Link routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
-          </Flex>
-          <Flex pt={2} pb={2} width={[1]} justifyContent='center' alignItems='center'>
-            <Link routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>
-          </Flex>
-        </Flex> */}
