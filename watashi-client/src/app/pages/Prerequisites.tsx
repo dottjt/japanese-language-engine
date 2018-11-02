@@ -9,11 +9,12 @@ import Helmet from '../components/Helmet';
 class Prerequistes extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn ml={4} mt={4}>
+      <FlexColumn ml={4} mt={5}>
         <Helmet
           title={ROUTE_TITLE.PREREQ}
           description={ROUTE_DESCRIPTION.PREREQ}
         />
+        <Heading is='h2' fontSize={5}>{ROUTE_TITLE.PREREQ}</Heading>
 
         <FlexColumn>
           <Heading is='h2' fontSize={3}>Prerequisites</Heading>

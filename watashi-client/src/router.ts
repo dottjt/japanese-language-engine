@@ -57,7 +57,7 @@ const routes = [
 ];
 
 const moveToTopOfThePagePlugin = (router: any, dependencies: any) => ({
-  onTransitionSuccess: (toState: any, fromState: any) => {
+  onTransitionStart: (toState: any, fromState: any) => {
     window.scroll(0,0);
     window.scrollTo(0, 0);
   }

@@ -22,20 +22,20 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           description={description}
         />
 
-        <Heading is='h2' fontSize={3}>{title}</Heading>
+        <Heading is='h2' fontSize={5}>{title}</Heading>
         
-        {/* <FlexColumn mt={4}>
+        {/* <FlexColumn mt={5}>
           <Heading is='h2' fontSize={3}>Grammatical Resources</Heading>
           <Text>Please have a read of these resources in order to understand the grammar.</Text>
           <ResourceModule resources={resources}/>
         </FlexColumn>
 
-        <FlexColumn mt={4}>
+        <FlexColumn mt={5}>
           <Heading is='h2' fontSize={3}>Additional Notes</Heading>
           <ExplanationModule explanation={explanation}/>
         </FlexColumn> */}
 
-        <FlexColumn mt={4}>
+        <FlexColumn mt={5}>
           <Heading is='h2' fontSize={3}>Lesson Exercises</Heading>
           <SentenceToggle
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}

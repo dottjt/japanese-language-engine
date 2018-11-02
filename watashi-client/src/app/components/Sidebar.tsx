@@ -15,7 +15,8 @@ class Sidebar extends React.Component<{}, {}> {
     return (
       <FlexColumn 
         width={282}
-        minWidth={4}
+        minWidth={282}
+        // minWidth={4}
         borderRight={1} 
         fontSize={5}
         >
@@ -23,7 +24,7 @@ class Sidebar extends React.Component<{}, {}> {
           pl={3}
           pr={3}
           >
-          <FlexColumn mt={4}>
+          <FlexColumn mt={5}>
             <Heading is='h3' mb={2} fontSize={2}>Sitemap</Heading>
             <Link routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
             <Link routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
@@ -32,7 +33,7 @@ class Sidebar extends React.Component<{}, {}> {
             <Link routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>
           </FlexColumn>
 
-          <FlexColumn mt={4}>
+          <FlexColumn mt={5}>
             <Heading is='h3' mb={2} fontSize={2}>00 - Introduction</Heading>
             <Link routeName={ROUTE_TITLE.WELCOME} routeOptions={{reload: true}}>{ROUTE_TITLE.WELCOME}</Link>
             <Link routeName={ROUTE_TITLE.CONTENTS} routeOptions={{reload: true}}>{ROUTE_TITLE.CONTENTS}</Link>

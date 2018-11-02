@@ -10,14 +10,14 @@ import { ExternalLink } from '../atoms/ClickableStyles';
 class About extends React.Component {
   public render() {
     return (
-      <FlexColumn ml={4} mt={4}>
+      <FlexColumn ml={4} mt={5}>
         <Helmet
           title={ROUTE_TITLE.ABOUT}
           description={ROUTE_DESCRIPTION.ABOUT}
         />
         <Heading is='h2' fontSize={5}>About Watashi Engine</Heading>
-        <FlexColumn width={600}>
-          <Text>Watashi Engine is a (rediculously over-engineered) Japanese language engine. It can do all sorts of stuff like randomly generate accurate Japanese sentences with English mappings, analyse sentence composition and conjugate Japanese words.</Text>
+        <FlexColumn width={600} mt={3}>
+          <Text>Watashi Engine is a (rediculously over-engineered) Japanese language engine. It can do all sorts of stuff like compose randomly generated Japanese sentences with English mappings, provide accurate word analysis, along with conjugate a variety Japanese words and phrases.</Text>
           <Text>I decided to create the Watashi Engine because I felt like there were no tools out there to effectively practice the Instanteous Composition Method.</Text>
           <Text>The Instanteous Composition Method is the most effective way to learn Japanese Grammar. It utilises active practice in order to consolidate our understanding.</Text>
           <Text>In order to make full use of the Watashi Engine, I have designed a grammar course which runs through all the different grammar and conjugation variances of the Japanese language.</Text>

@@ -11,7 +11,7 @@ import Helmet from '../components/Helmet';
 class WelcomePage extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn ml={4} mt={4}>
+      <FlexColumn ml={4} mt={5}>
         <Helmet
           title={ROUTE_TITLE.WELCOME}
           description={ROUTE_DESCRIPTION.WELCOME}

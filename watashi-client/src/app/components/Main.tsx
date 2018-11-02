@@ -48,7 +48,7 @@ import Tools from '../pages/About';
 class Main extends React.Component<PropTypes.IMainProps, {}> {
   public render() {
     const { route, auth } = this.props; 
-    
+
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {

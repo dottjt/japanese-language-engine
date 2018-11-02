@@ -10,12 +10,12 @@ import CourseList from '../components/CourseList';
 class ContentsPage extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn ml={4} mt={4}>
+      <FlexColumn ml={4} mt={5}>
         <Helmet
           title={ROUTE_TITLE.CONTENTS}
           description={ROUTE_DESCRIPTION.CONTENTS}
         />
-        <Heading is='h2' fontSize={3}>Contents</Heading>
+        <Heading is='h2' fontSize={5}>{ROUTE_TITLE.CONTENTS}</Heading>
         <CourseList/>
       </FlexColumn> 
     );
