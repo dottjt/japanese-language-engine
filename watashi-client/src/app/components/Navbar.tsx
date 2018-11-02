@@ -8,11 +8,6 @@ import { Link } from '../atoms/ClickableStyles';
 import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 
 const Dropdown = styled(Flex)<any>`
-  position: absolute;
-  margin-top: 6px;
-  width: 300px;
-  justify-content: space-between;
-  margin-right: 1rem;
   visibility: ${props => props.togglevisibility ? 'visible' : 'hidden'};
 `;
 
@@ -26,7 +21,16 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
 
   public render() {
     return (
-      <Flex position='relative'>
+      <Flex 
+        css={{
+          position: 'relative',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          height: '100%',
+          width: '260px',
+          minWidth: '260px',        
+        }}
+        >
         <Heading 
           fontSize={4} 
           ml={4} 
@@ -35,6 +39,13 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
           Watashi Engine</Heading>
         <Dropdown
           ml={7}
+          css={{
+            position: 'absolute',
+            marginTop: '2px',
+            width: '300px',
+            justifyContent: 'space-between',
+            marginRight: '1rem',          
+          }}
           togglevisibility={this.state.dropdownOpenState}
           >
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
@@ -62,9 +73,9 @@ class Navbar extends React.Component<{}, {}> {
         alignItems='center'
         zIndex={10}
         bg='white'
-        // position='fixed'
-        // top={0}
-        // right={0}
+        position='fixed'
+        top={0}
+        right={0}
         borderBottom={1}
         height={64}
         width={[1]}

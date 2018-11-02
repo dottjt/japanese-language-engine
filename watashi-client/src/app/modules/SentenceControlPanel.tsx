@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Flex } from '../atoms/LayoutStyles';
+import { Flex, FlexColumn } from '../atoms/LayoutStyles';
 import { Button } from '../atoms/ClickableStyles';
 // import { Heading } from '../atoms/TextStyles';
 
@@ -28,41 +28,32 @@ import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
 } from "../../util/constants/typeNameConstants";
 
-// class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
+class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
 
-//   public render() {
-//     return (
-//       <FlexColumn>
-//         <Heading is='h3'>{this.props.title}</Heading>
-//         {convertValuesIntoButtonArray(this.props.values).map(value => (
-//           <Button key={value.value} /* onClick={this.props.onClickCallback} */ >
-//             {capitalise(value.value)}
-//           </Button>
-//         ))}
-//       </FlexColumn>
-//     );
-//   };
-// };
+  public render() {
+    return (
+      <FlexColumn>
+        <Heading is='h3'>{this.props.title}</Heading>
+        {convertValuesIntoButtonArray(this.props.values).map(value => (
+          <Button key={value.value} /* onClick={this.props.onClickCallback} */ >
+            {capitalise(value.value)}
+          </Button>
+        ))}
+      </FlexColumn>
+    );
+  };
+};
 
-class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
+class SentenceControlPanel extends React.Component<PropTypes.IControlPanelProps, {}> {
   public render() {
     const { client, route, sentenceDisplayOptions } = this.props;
     return (
       <Flex>
-        <Button p={1} onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.toggleSentenceStats)}>
+        {/* <Button p={1} onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.toggleSentenceStats)}>
           Toggle sentence stats
         </Button>
-        <Button p={1} onClick={() => this.randomiseExerices(client, route.path)}>
-          Randomise exercises
-        </Button>
-        <Button p={1} onClick={() => this.toggleSentenceOrder(client, sentenceDisplayOptions.toggleSentenceOrder)}>
-          Toggle Language Order
-        </Button>
-        <Button p={1} onClick={() => this.toggleSentenceHide(client, sentenceDisplayOptions.toggleSentenceHide)}>
-          Toggle Sentence Hide
-        </Button>
-
-        {/* <Buttons
+   */}
+        <Buttons
           title={"Sentence Politeness"}
           values={[convertPolitenessIntoValue(POLITENESS_CASUAL), convertPolitenessIntoValue(POLITENESS_FORMAL)]}
           onClickCallback={this.politenessCallback}
@@ -71,7 +62,7 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
           title={"Question Variation"}
           values={[convertPolarityIntoValue(POLARITY_POSITIVE), convertPolarityIntoValue(POLARITY_NEGATIVE)]}
           onClickCallback={this.variationCallback}
-        /> */}
+        />
       </Flex>
     );
   }
@@ -108,4 +99,4 @@ class SentenceToggle extends React.Component<PropTypes.IControlPanelProps, {}> {
 
 }
 
-export default SentenceToggle;
+export default SentenceControlPanel;

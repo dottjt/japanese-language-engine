@@ -18,7 +18,7 @@ A highly sophisticated Japanese language engine.
 - Database: postgres
 - Authentication: auth0
 - CI: buildkite
-- Infrastructure: Terraform, Docker, AWS
+- Infrastructure: terraform, docker, AWS
 
 ## TODO
 - Unit Testing

@@ -1,9 +1,24 @@
 import * as React from 'react';
-import { Flex as RebassFlex } from 'rebass';
-import { borders, minWidth, space, width, height, position, zIndex, color } from 'styled-system';
+import { Flex as RebassFlex, Box as RebassBox } from 'rebass';
+import { borders, minWidth, space, width, height, position, zIndex, color, overflow, bottom, left, right, top } from 'styled-system';
 
 import styled from 'styled-components';
 import system from 'system-components';
+
+export const Box = styled(RebassBox)`
+  ${space}
+  ${borders}
+  ${width}
+  ${height}
+  ${position}
+  ${zIndex}
+  ${color}
+  ${overflow}
+  ${bottom}
+  ${left}
+  ${right}
+  ${top}
+`;
 
 export const Flex = styled(RebassFlex)`
   display: flex;
@@ -14,6 +29,11 @@ export const Flex = styled(RebassFlex)`
   ${position}
   ${zIndex}
   ${color}
+  ${overflow}
+  ${bottom}
+  ${left}
+  ${right}
+  ${top}
 `;
 
 export const FlexColumn = styled(RebassFlex)`
@@ -28,11 +48,19 @@ export const FlexColumn = styled(RebassFlex)`
   ${position}
   ${zIndex}
   ${color}
+  ${overflow}
+  ${bottom}
+  ${left}
+  ${right}
+  ${top}
 `;
 
 
 export const PageWrapper = (props) => (
-  <FlexColumn ml={5} mt={5} mb={5} mr={5}>
+  <FlexColumn ml={5} mt={5} mb={5} mr={5}
+    position='relative' 
+    top={60}
+    >
     {props.children}
   </FlexColumn>
 );
