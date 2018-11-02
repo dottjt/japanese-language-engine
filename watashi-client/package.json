@@ -52,6 +52,12 @@
     "not op_mini all"
   ],
   "reactSnap": {
-    "fixWebpackChunksIssue": false
-  }  
+    "puppeteerArgs": [
+      "--disable-setuid-sandbox", "--no-sandbox"
+    ],
+    "concurrency": 1,
+    "inlineCss": false,
+    "fixWebpackChunksIssue": false,
+    "puppeteerExecutablePath": "/usr/bin/chromium-browser"
+  }
 }

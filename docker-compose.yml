@@ -1,13 +1,5 @@
 version: '3'
 services:
-
-  nginx-server: 
-    image: nginx:alpine
-    ports:
-      - 5000:80
-    volumes:
-    - ./nginx.conf:/etc/nginx/nginx.conf:rw
-
   postgres:
     image: postgres:alpine
     expose: 
@@ -15,21 +7,55 @@ services:
     volumes:
       - ./watashi-postgres:/var/lib/postgresql/data:rw
     restart: always
-  
+
+  nginxproxy:
+    build:
+      context: ./watashi-nginx
+      dockerfile: ./infrastructure/docker/DockerfileNginx
+    volumes:
+      - ./nginxproxy/nginx.conf:/etc/nginx/nginx.conf:rw
+    ports:
+      - 8080:8080
+    restart: always
+
+  nginx: 
+    build:
+      context: ./watashi-nginx
+      dockerfile: ./infrastructure/docker/DockerfileNginx
+    ports:
+      - 5000:80
+      - 4000:80
+    expose: 
+      - 80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:rw
+    depends_on:
+      - nginxproxy
+    restart: always
+
   api:
-    build: .
+    build:
+      context: ./watashi-api
+      dockerfile: ./infrastructure/docker/DockerfileAPI
     volumes:
       - ./watashi-api:/usr/src/app/api:rw
     ports:
-      - 3030:3030
+      - 4000:4000
+    expose: 
+      - 4000
     depends_on:
+      - nginx
       - postgres
 
   client:
-    build: client
+    build:
+      context: ./watashi-client
+      dockerfile: ./infrastructure/docker/DockerfileClient
     volumes:
       - ./watashi-client:/usr/src/app/client:rw
     ports:
       - 5000:5000
+    expose: 
+      - 5000      
     depends_on:
-      - server      
+      - nginx
