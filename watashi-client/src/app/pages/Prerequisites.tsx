@@ -17,7 +17,6 @@ class Prerequistes extends React.Component<{}, {}> {
         <PageHeading>{ROUTE_TITLE.PREREQ}</PageHeading>
 
         <FlexColumn>
-          <Heading is='h2' fontSize={3}>Prerequisites</Heading>
           <Text>Before you can begin this course you must have a basic understanding of the Japanese language, including:</Text>
           <List>
             <ListItem>The ability to read and recognise Hiragana, Katakana and some basic Kanji.</ListItem>
@@ -25,9 +24,6 @@ class Prerequistes extends React.Component<{}, {}> {
         </FlexColumn>
 
         <FlexColumn>
-          <Heading is='h3' fontSize={3}>
-            My number one recommendation
-          </Heading>
           <Text>
             Having learnt Japanese to a sufficient degree, there is one single point I can recommend for your future progress.
           </Text>

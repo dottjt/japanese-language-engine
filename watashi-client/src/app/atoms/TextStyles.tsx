@@ -1,3 +1,4 @@
+import * as React from 'react';
 // import { Text as RebassText } from 'rebass';
 import system from 'system-components';
 
@@ -12,6 +13,7 @@ export const Text = system(
   },
   'space',
   'width',
+  'color',
   'textAlign',
   'lineHeight',
   'fontWeight',
@@ -29,6 +31,7 @@ export const Heading = system(
   },
   'space',
   'width',
+  'color',
   'textAlign',
   'lineHeight',
   'fontWeight',

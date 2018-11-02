@@ -10,16 +10,29 @@ services:
       - ./watashi-postgres:/var/lib/postgresql/data:rw
     restart: always
 
-  nginxproxy:
-    build:
-      context: ./watashi-haproxy
-      dockerfile: ./infrastructure/docker/DockerfileHaproxy
+  haproxy:
+  # image: dockercloud/haproxy
+  # build:
+    # context: ./watashi-haproxy
+    # dockerfile: ./infrastructure/docker/DockerfileHaproxy
+    depends_on:
+      - nginx
+    environment:
+      - BALANCE=leastconn
+      - ADDITIONAL_SERVICES=project_dir:app
     volumes:
-      - ./my-haproxy.cfg:/etc/haproxy/haproxy.cfg:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+      # - /etc/haproxy:/usr/local/etc/haproxy:ro
     ports:
-      - 80:80
+      - 12001:80
+  #   - 80:80
     restart: always
 
+    networks:
+      - web
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 
   nginx: 
     build:
@@ -62,3 +75,16 @@ services:
       - 5000      
     depends_on:
       - nginx
+    # deploy:
+    #   replicas: 3
+    #   restart_policy:
+    #    condition: on-failure
+    #    max_attempts: 3
+    #    window: 120s
+    # networks:
+    #   - web
+
+# Overlay network that the services and the HAProxy exists in.
+# networks:
+#   web:
+#     driver: overlay

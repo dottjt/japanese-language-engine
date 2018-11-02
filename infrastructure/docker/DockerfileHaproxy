@@ -1,3 +1,5 @@
-million12/haproxy:latest
+FROM million12/haproxy:latest
+
+FROM dockercloud/haproxy:latest
 
 COPY

@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import styled from 'styled-components';
 import { Flex, FlexColumn } from '../atoms/LayoutStyles';
 import { Heading } from '../atoms/TextStyles';
 import { Link } from '../atoms/ClickableStyles';
@@ -12,7 +12,12 @@ import {
   LESSON_TITLE,
 } from '../../util/constants/lessonConstants';
 
-const Item = (props) => <Flex alignItems='center' width={[1]} height='3rem' borderBottom={1}>{props.children}</Flex>
+const Item = (props) => 
+  <Flex 
+    alignItems='center' 
+    width={[1]} 
+    height='3rem' 
+    borderBottom={1}>{props.children}</Flex>
 
 const SidebarItem = (props) => (
   <Item>
@@ -26,10 +31,15 @@ const HeadingItem = (props) => (
   </Item>
 );
 
+const SidebarWrapper = styled(FlexColumn)`
+  /* background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(66,9,121,1) 0%, rgba(0,212,255,1) 100%); */
+`;
+
 class Sidebar extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn 
+      <SidebarWrapper 
         width={282}
         minWidth={282}
         borderRight={1} 
@@ -85,7 +95,7 @@ class Sidebar extends React.Component<{}, {}> {
           <SidebarItem routeName={LESSON_TITLE.L019} routeOptions={{reload: true}}>{LESSON_TITLE.L019}</SidebarItem>
           <SidebarItem routeName={LESSON_TITLE.L020} routeOptions={{reload: true}}>{LESSON_TITLE.L020}</SidebarItem>
         </FlexColumn>
-      </FlexColumn>
+      </SidebarWrapper>
     );
   };
 };
