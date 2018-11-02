@@ -21,19 +21,6 @@ export const endOfArray = (sentenceLength: number, index: number): boolean => (s
 export const emptyWordElement = (): Util.WordElement => ({ wordArray: [''], wordType: 'NA', __typename: 'NA' });
 export const determineSentenceCover = (toggleSentenceOrder: boolean, hoverState: boolean, toggleSentenceHide: boolean): string => toggleSentenceOrder || hoverState || toggleSentenceHide ? 'none' : 'black'; 
 
-interface IValues {
-  value: string,
-  selected: boolean,
-};
-
-export const convertValuesIntoButtonArray = (values: string[]): IValues[] =>
-  values.map((value, index) => {
-    if (index === 0) {
-      return { value, selected: true }
-    }
-    return { value, selected: false }
-  });
-
 export const createError = (fileLocation: string, functionName: string, errorMessage: string): string => {
   return `Error. file: ${fileLocation}, function: ${functionName}, ${errorMessage}`;
 };

@@ -65,7 +65,7 @@ const determinePolarityTense = (polarity: string, tense: string): string | undef
   }
 };
 
-const convertPolitenessIntoValue = (politeness: string): string | undefined => {
+export const convertPolitenessIntoValue = (politeness: string): string | undefined => {
   switch(politeness) {
     case POLITENESS_CASUAL: return 'Casual Politeness';
     case POLITENESS_FORMAL: return 'Formal Politeness';

@@ -99,6 +99,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L001.LESSON_DESCRIPTION}                  
                   explanation={L001.LESSON_EXPLANATION}
                   resources={L001.LESSON_RESOURCES}
+                  options={L001.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -113,6 +114,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L002.LESSON_DESCRIPTION}                  
                   explanation={L002.LESSON_EXPLANATION}
                   resources={L002.LESSON_RESOURCES}
+                  options={L002.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -127,6 +129,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L003.LESSON_DESCRIPTION}                  
                   explanation={L003.LESSON_EXPLANATION}
                   resources={L003.LESSON_RESOURCES}
+                  options={L003.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -141,6 +144,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L004.LESSON_DESCRIPTION}                  
                   explanation={L004.LESSON_EXPLANATION}
                   resources={L004.LESSON_RESOURCES}
+                  options={L004.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -155,6 +159,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L005.LESSON_DESCRIPTION}                  
                   explanation={L005.LESSON_EXPLANATION}
                   resources={L005.LESSON_RESOURCES}
+                  options={L005.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -169,6 +174,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L006.LESSON_DESCRIPTION}                  
                   explanation={L006.LESSON_EXPLANATION}
                   resources={L006.LESSON_RESOURCES}
+                  options={L006.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -183,6 +189,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L007.LESSON_DESCRIPTION}                  
                   explanation={L007.LESSON_EXPLANATION}
                   resources={L007.LESSON_RESOURCES}
+                  options={L007.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -197,6 +204,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L008.LESSON_DESCRIPTION}                  
                   explanation={L008.LESSON_EXPLANATION}
                   resources={L008.LESSON_RESOURCES}
+                  options={L008.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -211,6 +219,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L009.LESSON_DESCRIPTION}                  
                   explanation={L009.LESSON_EXPLANATION}
                   resources={L009.LESSON_RESOURCES}
+                  options={L009.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -225,6 +234,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L010.LESSON_DESCRIPTION}                  
                   explanation={L010.LESSON_EXPLANATION}
                   resources={L010.LESSON_RESOURCES}
+                  options={L010.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -239,6 +249,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L011.LESSON_DESCRIPTION}                  
                   explanation={L011.LESSON_EXPLANATION}
                   resources={L011.LESSON_RESOURCES}
+                  options={L011.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -253,6 +264,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L012.LESSON_DESCRIPTION}                  
                   explanation={L012.LESSON_EXPLANATION}
                   resources={L012.LESSON_RESOURCES}
+                  options={L012.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -267,6 +279,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L013.LESSON_DESCRIPTION}                  
                   explanation={L013.LESSON_EXPLANATION}
                   resources={L013.LESSON_RESOURCES}
+                  options={L013.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -281,6 +294,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L014.LESSON_DESCRIPTION}                  
                   explanation={L014.LESSON_EXPLANATION}
                   resources={L014.LESSON_RESOURCES}
+                  options={L014.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -295,6 +309,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L015.LESSON_DESCRIPTION}                  
                   explanation={L015.LESSON_EXPLANATION}
                   resources={L015.LESSON_RESOURCES}
+                  options={L015.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -309,6 +324,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L016.LESSON_DESCRIPTION}                  
                   explanation={L016.LESSON_EXPLANATION}
                   resources={L016.LESSON_RESOURCES}
+                  options={L016.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -323,6 +339,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L017.LESSON_DESCRIPTION}                  
                   explanation={L017.LESSON_EXPLANATION}
                   resources={L017.LESSON_RESOURCES}
+                  options={L017.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -337,6 +354,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L018.LESSON_DESCRIPTION}                  
                   explanation={L018.LESSON_EXPLANATION}
                   resources={L018.LESSON_RESOURCES}
+                  options={L018.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -351,6 +369,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L019.LESSON_DESCRIPTION}                  
                   explanation={L019.LESSON_EXPLANATION}
                   resources={L019.LESSON_RESOURCES}
+                  options={L019.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
@@ -365,6 +384,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   description={L020.LESSON_DESCRIPTION}                  
                   explanation={L020.LESSON_EXPLANATION}
                   resources={L020.LESSON_RESOURCES}
+                  options={L020.LESSON_OPTIONS}
                   exercises={data.exercises}
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}

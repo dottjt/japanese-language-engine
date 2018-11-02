@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import { WEBSITE_NAME } from '../../util/constants/generalConstants';
 
 class HelmetComponent extends React.Component<{ title: string, description: string }, {}> {

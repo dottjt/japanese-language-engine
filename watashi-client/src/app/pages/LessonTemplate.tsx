@@ -6,7 +6,8 @@ import { PageHeading, Heading, /*Text*/ } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
 
-import SentenceOptions from '../modules/SentenceOptions';
+import SentenceControlPanel from '../modules/SentenceModule/SentenceControlPanel';
+import SentenceOptions from '../modules/SentenceModule/SentenceOptions';
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
 // import ResourceModule from '../modules/ResourceModule';
 // import ExplanationModule from '../modules/ExplanationModule';
@@ -37,6 +38,12 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
 
         <FlexColumn mt={5}>
           <Heading is='h2' fontSize={3}>Lesson Exercises</Heading>
+          <SentenceControlPanel
+            sentenceDisplayOptions={this.props.sentenceDisplayOptions}
+            options={exercise.options}
+            client={client}
+            route={route}
+          />
           <SentenceOptions
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={client}

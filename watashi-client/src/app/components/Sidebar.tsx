@@ -15,12 +15,15 @@ import {
   LESSON_TITLE,
 } from '../../util/constants/lessonConstants';
 
-
 const Item = styled(Flex)`
   align-items: center;
   width: ${themeGet([1])};
   height: 3rem;
   border-bottom: ${themeGet('borders.1')};
+  &:hover {
+    background: green;
+  };
+  transition: background 1s;
 `;
 
 const SidebarItem = (props) => (

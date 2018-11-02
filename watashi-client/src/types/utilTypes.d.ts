@@ -163,4 +163,12 @@ declare namespace Util {
     no2?: WordModifier;
     no3?: WordModifier;
   };
+
+
+  // MISC
+
+  export interface IValues {
+    value: string,
+    selected: boolean,
+  };
 }

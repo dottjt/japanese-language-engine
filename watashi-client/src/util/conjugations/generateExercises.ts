@@ -84,11 +84,11 @@ import {
 
 
 
-import nounConjugationJapanese from "./noun/nounConjugationJapanese";
-import nounConjugationEnglish from "./noun/nounConjugationEnglish";
+import nounConjugationJapanese from './noun/nounConjugationJapanese';
+import nounConjugationEnglish from './noun/nounConjugationEnglish';
 
-import verbConjugationJapanese from "./verb/verbConjugationJapanese";
-import verbConjugationEnglish from "./verb/verbConjugationEnglish";
+import verbConjugationJapanese from './verb/verbConjugationJapanese';
+import verbConjugationEnglish from './verb/verbConjugationEnglish';
 
 
 const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord | Util.ConjugatedEnglishWord => {

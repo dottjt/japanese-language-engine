@@ -28,6 +28,7 @@ declare module PropTypes {
   // Component props 
   export type IControlPanelProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    options: Util.Options,
     client: any, // NOTE: Will need to get proper type. 
     route: any, // NOTE: Will need to get proper type. 
   }
@@ -45,6 +46,7 @@ declare module PropTypes {
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
     explanation: string[], 
+    options: Util.Options,
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
     client: any,
