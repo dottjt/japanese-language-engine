@@ -2,6 +2,8 @@ version: '3'
 services:
   postgres:
     image: postgres:alpine
+    ports:
+      - 5432:5432
     expose: 
       - 5432
     volumes:
@@ -10,8 +12,8 @@ services:
 
   nginxproxy:
     build:
-      context: ./watashi-nginx
-      dockerfile: ./infrastructure/docker/DockerfileNginx
+      context: ./watashi-nginxproxy
+      dockerfile: ./infrastructure/docker/DockerfileNginxProxy
     volumes:
       - ./nginxproxy/nginx.conf:/etc/nginx/nginx.conf:rw
     ports:
