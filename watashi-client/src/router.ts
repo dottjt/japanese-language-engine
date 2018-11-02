@@ -54,10 +54,21 @@ const routes = [
   { name: LESSON_TITLE.L018, path: `${ROUTE_PATH.APP}${LESSON_PATH.L018}` },
   { name: LESSON_TITLE.L019, path: `${ROUTE_PATH.APP}${LESSON_PATH.L019}` },
   { name: LESSON_TITLE.L020, path: `${ROUTE_PATH.APP}${LESSON_PATH.L020}` },
-
 ];
 
-const router = createRouter(routes).usePlugin(browserPlugin());
+const moveToTopOfThePagePlugin = (router: any, dependencies: any) => ({
+  onTransitionSuccess: (toState: any, fromState: any) => {
+    window.scroll(0,0);
+    window.scrollTo(0, 0);
+  }
+});
+
+moveToTopOfThePagePlugin.pluginName = 'MOVE_TO_THE_TOP_OF_THE_PAGE';
+  
+const router = createRouter(routes)
+  .usePlugin(browserPlugin())
+  .usePlugin(moveToTopOfThePagePlugin);;
+
 router.start()
 
 export default router;

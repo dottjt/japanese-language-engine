@@ -8,6 +8,7 @@
     "@types/graphql": "^14.0.3",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
+    "@types/react-helmet": "^5.0.7",
     "@types/rebass": "^0.3.1",
     "@types/styled-components": "^4.0.3",
     "apollo-boost": "^0.1.19",
@@ -53,7 +54,8 @@
   ],
   "reactSnap": {
     "puppeteerArgs": [
-      "--disable-setuid-sandbox", "--no-sandbox"
+      "--disable-setuid-sandbox",
+      "--no-sandbox"
     ],
     "concurrency": 1,
     "inlineCss": false,
