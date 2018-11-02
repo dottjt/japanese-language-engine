@@ -8,12 +8,13 @@ import { Link } from '../atoms/ClickableStyles';
 import { ROUTE_TITLE } from '../../util/constants/generalConstants';
 
 const Dropdown = styled(Flex)<any>`
+  position: absolute;
+  margin-top: 6px;
+  width: 300px;
+  justify-content: space-between;
+  margin-right: 1rem;
   visibility: ${props => props.togglevisibility ? 'visible' : 'hidden'};
 `;
-Dropdown.defaultProps = {
-  togglevisibility: 'visible',
-};
-
 
 class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
   constructor() {
@@ -33,15 +34,13 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
           >
           Watashi Engine</Heading>
         <Dropdown
-          position='absolute'
-          ml={4}
+          ml={7}
           togglevisibility={this.state.dropdownOpenState}
           >
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</Link>
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>
         </Dropdown>
       </Flex>
     );

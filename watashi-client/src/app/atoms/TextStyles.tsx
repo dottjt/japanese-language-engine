@@ -35,3 +35,9 @@ export const Heading = system(
   'letterSpacing',
 );
 Heading.displayName = 'Heading';
+
+export const PageHeading = (props) => (
+  <Heading fontSize={5} mb={3}>
+    {props.children}
+  </Heading>
+);

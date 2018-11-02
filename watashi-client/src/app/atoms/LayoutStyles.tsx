@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Flex as RebassFlex } from 'rebass';
 import { borders, minWidth, space, width, height, position, zIndex } from 'styled-system';
 
@@ -26,6 +27,12 @@ export const FlexColumn = styled(RebassFlex)`
   ${position}
   ${zIndex}
 `;
+
+export const PageWrapper = (props) => (
+  <FlexColumn ml={5} mt={5} mb={5} mr={5}>
+    {props.children}
+  </FlexColumn>
+);
 
 export const List = system(
   {

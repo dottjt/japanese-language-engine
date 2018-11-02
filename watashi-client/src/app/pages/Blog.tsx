@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FlexColumn } from '../atoms/LayoutStyles';
-import { Heading } from '../atoms/TextStyles';
+import { PageWrapper } from '../atoms/LayoutStyles';
+import { PageHeading } from '../atoms/TextStyles';
 
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
 
@@ -12,14 +12,14 @@ import Helmet from '../components/Helmet';
 class Blog extends React.Component {
   public render() {
     return (
-      <FlexColumn ml={4} mt={5}>
+      <PageWrapper>
         <Helmet
           title={ROUTE_TITLE.BLOG}
           description={ROUTE_DESCRIPTION.BLOG}
         />
-        <Heading is='h2' fontSize={5}>{ROUTE_TITLE.BLOG}</Heading>
+        <PageHeading>{ROUTE_TITLE.BLOG}</PageHeading>
         
-      </FlexColumn>
+      </PageWrapper>
     );
   }
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FlexColumn, List, ListItem } from '../atoms/LayoutStyles';
-import { Heading, Text } from '../atoms/TextStyles';
+import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
+import { PageHeading, Heading, Text } from '../atoms/TextStyles';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
 
 import Helmet from '../components/Helmet';
@@ -9,12 +9,12 @@ import Helmet from '../components/Helmet';
 class Prerequistes extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn ml={4} mt={5}>
+      <PageWrapper>
         <Helmet
           title={ROUTE_TITLE.PREREQ}
           description={ROUTE_DESCRIPTION.PREREQ}
         />
-        <Heading is='h2' fontSize={5}>{ROUTE_TITLE.PREREQ}</Heading>
+        <PageHeading>{ROUTE_TITLE.PREREQ}</PageHeading>
 
         <FlexColumn>
           <Heading is='h2' fontSize={3}>Prerequisites</Heading>
@@ -69,7 +69,7 @@ class Prerequistes extends React.Component<{}, {}> {
             What this application essentially provides is the active practice aspect of this equation. 
           </Text>
         </FlexColumn> 
-    </FlexColumn> 
+      </PageWrapper> 
     );
   };
 };

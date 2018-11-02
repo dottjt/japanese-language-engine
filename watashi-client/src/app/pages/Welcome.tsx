@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FlexColumn } from '../atoms/LayoutStyles';
-import { Heading, Text } from '../atoms/TextStyles';
+import { FlexColumn, PageWrapper } from '../atoms/LayoutStyles';
+import { PageHeading, Heading, Text } from '../atoms/TextStyles';
 import { ExternalLink } from '../atoms/ClickableStyles';
 
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
@@ -11,13 +11,13 @@ import Helmet from '../components/Helmet';
 class WelcomePage extends React.Component<{}, {}> {
   public render() {
     return (
-      <FlexColumn ml={4} mt={5}>
+      <PageWrapper>
         <Helmet
           title={ROUTE_TITLE.WELCOME}
           description={ROUTE_DESCRIPTION.WELCOME}
         />
 
-        <Heading is='h2' fontSize={5} mb={3}>Welcome to Watashi Engine!</Heading>
+        <PageHeading>Welcome to Watashi Engine!</PageHeading>
         <FlexColumn width={600}>
           <Text>Hello!</Text>
           <Text>Allow me to introduce myself.</Text>
@@ -33,7 +33,7 @@ class WelcomePage extends React.Component<{}, {}> {
           <Text>In particular, it allows you full access to Watashi Engine in order to create your own exercises.</Text>
         </FlexColumn>
 
-      </FlexColumn> 
+      </PageWrapper> 
     );
   };
 };

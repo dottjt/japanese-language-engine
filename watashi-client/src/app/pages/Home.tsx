@@ -12,9 +12,9 @@ import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import Helmet from '../components/Helmet';
 
-import { Heading, Text } from '../atoms/TextStyles';
+import { PageHeading, Heading, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
-import { Flex, FlexColumn, List, ListItem, 
+import { Flex, FlexColumn, PageWrapper, List, ListItem, 
   Card,
   PricingButtonStyles,
  } from '../atoms/LayoutStyles';
@@ -30,12 +30,12 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
         {({ data, client }) => {
 
           return (
-            <FlexColumn mt={5} ml={5} mb={6} mr={4}>
+            <PageWrapper>
               <Helmet
                 title={ROUTE_TITLE.HOME}
                 description={ROUTE_DESCRIPTION.HOME}
               />
-              <Heading mb={5}>Watashi Engine.</Heading>
+              <PageHeading mb={5}>Watashi Engine.</PageHeading>
               
               <FlexColumn width={600} mb={5}>
                 <Heading is='h2' fontSize={4}>What is it?</Heading>
@@ -150,7 +150,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
               </FlexColumn>
 
-            </FlexColumn>
+            </PageWrapper>
           )      
         }
       }

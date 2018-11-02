@@ -1,8 +1,8 @@
 
 import * as React from 'react';
 
-import { FlexColumn } from '../atoms/LayoutStyles';
-import { Heading, /*Text*/ } from '../atoms/TextStyles';
+import { FlexColumn, PageWrapper } from '../atoms/LayoutStyles';
+import { PageHeading, Heading, /*Text*/ } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
 
@@ -16,13 +16,13 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
     const { title, description, client, route, sentenceDisplayOptions, sentenceStats, exercises, /*explanation, resources*/ } = this.props; 
 
     return (
-      <FlexColumn m={4} width={[1]}>
+      <PageWrapper>
         <Helmet
           title={title}
           description={description}
         />
 
-        <Heading is='h2' fontSize={5}>{title}</Heading>
+        <PageHeading>{title}</PageHeading>
         
         {/* <FlexColumn mt={5}>
           <Heading is='h2' fontSize={3}>Grammatical Resources</Heading>
@@ -57,7 +57,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             />
           ))}
         </FlexColumn>
-      </FlexColumn>
+      </PageWrapper>
     );
   };
 };
