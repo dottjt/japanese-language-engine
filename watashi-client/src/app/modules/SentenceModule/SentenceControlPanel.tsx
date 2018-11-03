@@ -30,10 +30,10 @@ import {
   POLARITY_NEGATIVE,
   POLARITY_RANDOM,
 
-  SENTENCE_ENDING_NE,
-  SENTENCE_ENDING_YO,
-  SENTENCE_ENDING_YO_NE,
-  SENTENCE_ENDING_RANDOM,
+  // SENTENCE_ENDING_NE,
+  // SENTENCE_ENDING_YO,
+  // SENTENCE_ENDING_YO_NE,
+  // SENTENCE_ENDING_RANDOM,
 
   HAS_QUESTION,
   NOT_QUESTION,
@@ -48,6 +48,7 @@ import {
 
 const ControlPanelButton = styled(Button)<any>`
   background: ${props => props.selected ? 'red' : 'white'};
+  width: 80px;
 `;
 
 class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
@@ -55,15 +56,18 @@ class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
     const { values, onClickCallback, title, client } = this.props;
 
     return (
-      <Flex width={600}>
+      <Flex
+        mb={1}
+        mt={1}
+        >
         <Heading 
           is='h3' 
           fontSize={3}
-          width={200}
+          css={{ minWidth: '120px' }}
         >{title}</Heading>
-        <Flex width={600} flexWrap='wrap'>
+        <Flex flexWrap='wrap'>
           {values.map((value: Util.IButtonValues) => (
-            <ControlPanelButton key={value.value} selected={value.selected} onClick={() => onClickCallback(client, value.value)} >
+            <ControlPanelButton key={value.value} mr={2} selected={value.selected} onClick={() => onClickCallback(client, value.value)} >
               {capitalise(value.value)}
             </ControlPanelButton>
           ))}
@@ -93,7 +97,7 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
         />
         <Buttons
           title='Politeness'
-          values={this.convertValues([POLITENESS_CASUAL, POLITENESS_FORMAL, POLITENESS_HUMBLE, POLITENESS_HONORIFIC, POLITENESS_RANDOM], POLITENESS_CONTROL_PANEL_TYPE, preOptions)}
+          values={this.convertValues([POLITENESS_CASUAL, POLITENESS_FORMAL, /* POLITENESS_HUMBLE, POLITENESS_HONORIFIC, */ POLITENESS_RANDOM], POLITENESS_CONTROL_PANEL_TYPE, preOptions)}
           onClickCallback={this.politenessCallback}
           client={client}
         />
@@ -115,12 +119,12 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
           onClickCallback={this.genderCallback}
           client={client}
         />
-        <Buttons
-          title='Gender'
+        {/* <Buttons
+          title='Sentence Ending'
           values={this.convertValues([SENTENCE_ENDING_NE, SENTENCE_ENDING_YO, SENTENCE_ENDING_YO_NE, SENTENCE_ENDING_RANDOM], GENDER_CONTROL_PANEL_TYPE, preOptions)}
           onClickCallback={this.genderCallback}
           client={client}
-        />
+        /> */}
       </FlexColumn>
     );
   }
@@ -136,13 +140,13 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
           const polarityReadable = this.polarityReadable(value);
           return value === polarity ? { value: polarityReadable, selected: true } : { value: polarityReadable, selected: false };
         case TENSE_CONTROL_PANEL_TYPE:    
-          const tenseReadable = this.polarityReadable(value);
+          const tenseReadable = this.tenseReadable(value);
           return value === tense ? { value: tenseReadable, selected: true } : { value: tenseReadable, selected: false };
         case GENDER_CONTROL_PANEL_TYPE:     
-          const genderReadable = this.polarityReadable(value);
+          const genderReadable = this.genderReadable(value);
           return value === gender ? { value: genderReadable, selected: true } : { value: genderReadable, selected: false };
         case QUESTION_CONTROL_PANEL_TYPE:   
-          const questionReadable = this.polarityReadable(value);
+          const questionReadable = this.questionReadable(value);
           return value === question ? { value: questionReadable, selected: true } : { value: questionReadable, selected: false };
       }
       throw new Error(createError('SentenceControlPanel.tsx', 'convertValues', `${controlPanelType} does not exist.`));    
@@ -159,37 +163,40 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
     throw new Error();
   }
   
-  private tenseReadable = (value: string) => {
+  private tenseReadable = (value: string): string => {
     switch(value) {
       case TENSE_PRESENT: return 'Present';
       case TENSE_PAST: return 'Past';
       case TENSE_RANDOM: return 'Random';
     };
-    throw new Error();
+    throw new Error(createError('SentenceControlPanel.tsx', 'tenseReadable', `${value} not recognised.`));
   }
 
-  private polarityReadable = (value: string) => {
+  private polarityReadable = (value: string): string => {
     switch(value) {
       case POLARITY_POSITIVE: return 'Positive';
       case POLARITY_NEGATIVE: return 'Negative';
       case POLARITY_RANDOM: return 'Random';
     };
+    throw new Error(createError('SentenceControlPanel.tsx', 'polarityReadable', `${value} not recognised.`));
   }
   
-  private genderReadable = (value: string) => {
+  private genderReadable = (value: string): string => {
     switch(value) {
       case GENDER_MASCULINE: return 'Masculine';
       case GENDER_FEMININE: return 'Feminine';
       case GENDER_RANDOM: return 'Random';
     };
+    throw new Error(createError('SentenceControlPanel.tsx', 'genderReadable', `${value} not recognised.`));
   }
   
-  private questionReadable = (value: string) => {
+  private questionReadable = (value: string): string => {
     switch(value) {
-      case HAS_QUESTION: return 'Is question';
-      case NOT_QUESTION: return 'Is not question';
+      case HAS_QUESTION: return 'Yes';
+      case NOT_QUESTION: return 'No';
       case RANDOM_QUESTION: return 'Random';
     };
+    throw new Error(createError('SentenceControlPanel.tsx', 'questionReadable', `${value} not recognised.`));
   }
 
   // private sentenceEndingReadable = (value: string) => {
@@ -199,6 +206,7 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
   //     case SENTENCE_ENDING_YO_NE: return 'よね';
   //     case SENTENCE_ENDING_RANDOM: return 'Random';
   //   };
+  // throw new Error(createError('SentenceControlPanel.tsx', 'sentenceEndingReadable', `${value} not recognised.`));
   // }
 
   private politenessCallback = (client: any, value: string): void => this.updateControlPanelOptions(client, { controlPanelPoliteness: value }); 

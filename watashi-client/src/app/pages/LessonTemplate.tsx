@@ -37,18 +37,20 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
         </FlexColumn> */}
 
         <FlexColumn mt={5}>
-          <Heading is='h2' fontSize={3}>Lesson Exercises</Heading>
+          <Heading is='h2' fontSize={4} mt={4} mb={4}>Refined Sentence Options</Heading>
           <SentenceControlPanel
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             preOptions={preOptions}
             client={client}
             path={path}
           />
+          <Heading is='h2' fontSize={4} mt={4} mb={4}>Sentence Analysis Options</Heading>
           <SentenceOptions
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={client}
             path={path}
           />
+          <Heading is='h2' fontSize={4} mt={4} mb={4}>Lesson Exercises</Heading>
           {exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => (
             <SentenceModule
               key={exerciseIndex}
