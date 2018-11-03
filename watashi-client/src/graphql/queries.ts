@@ -110,14 +110,14 @@ export const GET_EXERCISES = gql`{
       }
     }
     
-    # options @client {
-    #   politeness
-    #   variation
-    #   polarity
-    #   tense
-    #   gender
-    #   question
-    # }
+    options @client {
+      politeness
+      variation
+      polarity
+      tense
+      gender
+      question
+    }
 
     modifiers @client {
       topicNo
@@ -271,23 +271,13 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
       }
     }
     
-    # options @client {
-    #   politeness
-    #   variation
-    #   polarity
-    #   tense
-    #   gender
-    #   question
-    # }
-
-    controlPanelOptions @client {
-      controlPanelPoliteness
-      controlPanelVariation
-      controlPanelPolarity
-      controlPanelTense
-      controlPanelGender
-      controlPanelQuestion
-      controlPanelSentenceEnding
+    options @client {
+      politeness
+      variation
+      polarity
+      tense
+      gender
+      question
     }
 
     modifiers @client {

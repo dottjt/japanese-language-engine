@@ -10,6 +10,7 @@ import {
 
 import {
   GET_NOUNS_AND_CONTROL_PANEL_OPTIONS,
+  GET_ALL_WORDS_AND_OPTIONS,
 } from '../graphql/queries';
 
 import {
@@ -92,8 +93,6 @@ const recalculateOptions = (options: Util.PreOptions, controlPanelOptions: Util.
 }
 
 export const determineGetExercise = (nouns: Util.Word[], path: string, controlPanelOptions: Util.ControlPanelOptions, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
-  console.log(createLessonOptions(recalculateOptions(LESSON_OPTIONS.L001, controlPanelOptions)));
-
   switch(path) {
     case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return generateExercises(nouns, LESSON_MODIFIERS.L001, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L001, controlPanelOptions)), numberOfExercices);
     case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return generateExercises(nouns, LESSON_MODIFIERS.L002, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L002, controlPanelOptions)), numberOfExercices);
@@ -122,7 +121,13 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
   try {
     // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
     const data = client.readQuery({ query: GET_NOUNS_AND_CONTROL_PANEL_OPTIONS }) as any;
+    console.log('getExercisesApollo', data);
+    console.log('exercisesBeforeTheTHing', determineGetExercise(data.nouns, path, data.controlPanelOptions, numberOfExercices));
     client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.controlPanelOptions, numberOfExercices) } });
+
+    const datars = client.readQuery({ query: GET_ALL_WORDS_AND_OPTIONS }) as any;
+    console.log('here', datars);
+
   } catch(error) {
     throw new Error(createError('functions.tsx', 'getExercisesApollo', `Error: ${error}. Unable to access graphql and pull down nouns.`));
   } 

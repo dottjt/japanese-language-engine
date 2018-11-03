@@ -258,6 +258,7 @@ const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): U
 
 const generateExercises = (words: Util.Word[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
+
     const options = optionsLambda();
     const modifiers = modifiersLambda();
     
@@ -270,8 +271,8 @@ const generateExercises = (words: Util.Word[], modifiersLambda: () => Util.Modif
       options,
       modifiers,
       englishSentence, 
-      japaneseSentence,
-      __typename: __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE
+      japaneseSentence, 
+      __typename: __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,
     }  
   })
 
