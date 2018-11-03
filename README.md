@@ -10,7 +10,7 @@ A highly sophisticated Japanese language engine.
 - Students who benefit from a macro approach towards language.
 
 ## Tech
-- Frontend: create-react-app, typescript, react, apollo-boost, react-router5
+- Frontend: create-react-app, typescript, react, apollo, react-router5
 - SSR: react-snap
 - CSS: styled-components, styled-system, rebass
 - Testing: jest
@@ -40,6 +40,7 @@ A highly sophisticated Japanese language engine.
 - You could think of it as a 'did do' relationship.
 - Instead of navbar fixed, you have 
 - Control Panel
+- Will need to reset controlPanelOptions per view)
 
 ## Build Steps 
 
@@ -53,7 +54,6 @@ A highly sophisticated Japanese language engine.
 ## Notes: 
 
 - React Snap has quite particular configurations. 
-
 
 ### ATTEMPTING
 - の possesive

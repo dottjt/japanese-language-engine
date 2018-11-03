@@ -29,13 +29,13 @@ import {
 
   GENDER_MASCULINE,
   // GENDER_FEMININE,
-  GENDER_RANDOM,
+  // GENDER_RANDOM,
 
   POLITENESS_CASUAL,
   // POLITENESS_FORMAL,
   // POLITENESS_HUMBLE,
   // POLITENESS_HONORIFIC,
-  POLITENESS_RANDOM,
+  // POLITENESS_RANDOM,
 
   // TENSE_PRESENT,
   // TENSE_PAST,
@@ -52,7 +52,7 @@ import {
 
   // HAS_QUESTION,
   NOT_QUESTION,
-  RANDOM_QUESTION,
+  // RANDOM_QUESTION,
   // RANDOM_QUESTION,
 
 } from './optionsConstants';
@@ -60,19 +60,6 @@ import {
 import {
 } from './wordConstants';
 
-import { 
-  politenessArray,
-  polarityArray,
-  tenseArray,
-  genderArray,
-  questionArray,
-
-  politenessArrayLength,
-  polarityArrayLength,
-  tenseArrayLength,
-  genderArrayLength,
-  questionArrayLength,
-} from './optionsConstants';
 
 import {
   topicNoArray,
@@ -300,46 +287,27 @@ const LESSON_RESOURCES = {
   // L027: 
 }
 
-const randomVariationValue = (variationArray: string[]): string => variationArray[randomArrayElement(variationArray.length)];
-const randomPolitenessValue = (): string => politenessArray[randomArrayElement(politenessArrayLength)];
-const randomPolarityValue = (): string =>  polarityArray[randomArrayElement(polarityArrayLength)];
-const randomTenseValue = (): string => tenseArray[randomArrayElement(tenseArrayLength)];
-const randomQuestionValue = (): string => questionArray[randomArrayElement(questionArrayLength)];
-const randomGenderValue = (): string => genderArray[randomArrayElement(genderArrayLength)];
-
-const createLessonOptions = ( variation: string | string[], politeness?: string, polarity?: string, tense?: string, question?: string, gender?: string): Util.Options => {
-  return {
-    __typename: __TYPENAME_OPTIONS,
-    variation: typeof variation === 'string' ? variation : randomVariationValue(variation),
-    question: question === RANDOM_QUESTION ? randomQuestionValue() : question,
-    politeness: politeness === POLITENESS_RANDOM ? randomPolitenessValue() : politeness,
-    polarity: polarity === POLARITY_RANDOM ? randomPolarityValue() : polarity,
-    tense: tense === TENSE_RANDOM ? randomTenseValue() : tense,
-    gender: gender === GENDER_RANDOM ? genderArray[0] : gender,  
-  }
-};
-
 export const LESSON_OPTIONS = {
-  L001: () => createLessonOptions(LESSON_VARIATION.L001, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // T
-  L002: () => createLessonOptions(LESSON_VARIATION.L002, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // WA_TS, MO_TS
-  L003: () => createLessonOptions(LESSON_VARIATION.L003, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // GA_TS
-  L004: () => createLessonOptions(LESSON_VARIATION.L003, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // WA_TS, GA_TS
-  L005: () => createLessonOptions(LESSON_VARIATION.L004, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // WA_TS, MO_TS, GA_TS
-  L006: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // V
-  L007: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // V
-  L008: () => createLessonOptions(LESSON_VARIATION.L005, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // V
-  L009: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // WO_SV
-  L010: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // NI_SV
-  L011: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // DE_SV
-  L012: () => createLessonOptions(LESSON_VARIATION.L006, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // WO_SV, NI_SV
-  L013: () => createLessonOptions(LESSON_VARIATION.L007, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // NI_SV, DE_SV
-  L014: () => createLessonOptions(LESSON_VARIATION.L008, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // DE_SV, WO_SV
-  L015: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // WO_SV, NI_SV, DE_SV
-  L016: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // KARA_SV
-  L017: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // MADE_SV
-  L018: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // NA - T_NO
-  L019: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // T - T_ADJ
-  L020: () => createLessonOptions(LESSON_VARIATION.L009, POLITENESS_CASUAL, POLARITY_RANDOM, TENSE_RANDOM, NOT_QUESTION, GENDER_MASCULINE ), // T - T_ADV
+  L001: { variation: LESSON_VARIATION.L001, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // T
+  L002: { variation: LESSON_VARIATION.L002, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // WA_TS, MO_TS
+  L003: { variation: LESSON_VARIATION.L003, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // GA_TS
+  L004: { variation: LESSON_VARIATION.L003, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // WA_TS, GA_TS
+  L005: { variation: LESSON_VARIATION.L004, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // WA_TS, MO_TS, GA_TS
+  L006: { variation: LESSON_VARIATION.L005, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // V
+  L007: { variation: LESSON_VARIATION.L005, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // V
+  L008: { variation: LESSON_VARIATION.L005, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // V
+  L009: { variation: LESSON_VARIATION.L006, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // WO_SV
+  L010: { variation: LESSON_VARIATION.L007, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // NI_SV
+  L011: { variation: LESSON_VARIATION.L008, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // DE_SV
+  L012: { variation: LESSON_VARIATION.L006, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // WO_SV, NI_SV
+  L013: { variation: LESSON_VARIATION.L007, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // NI_SV, DE_SV
+  L014: { variation: LESSON_VARIATION.L008, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // DE_SV, WO_SV
+  L015: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // WO_SV, NI_SV, DE_SV
+  L016: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // KARA_SV
+  L017: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // MADE_SV
+  L018: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // NA - T_NO
+  L019: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // T - T_ADJ
+  L020: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE }, // T - T_ADV
   // L021:
   // L022: 
   // L023: 

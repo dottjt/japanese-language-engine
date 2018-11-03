@@ -9,8 +9,12 @@ import {
 } from './constants/generalConstants';
 
 import {
-  GET_NOUNS,
+  GET_NOUNS_AND_CONTROL_PANEL_OPTIONS,
 } from '../graphql/queries';
+
+import {
+  __TYPENAME_OPTIONS,
+} from './constants/typeNameConstants';
 
 import generateExercises from './conjugations/generateExercises';
 
@@ -25,25 +29,85 @@ export const createError = (fileLocation: string, functionName: string, errorMes
   return `Error. file: ${fileLocation}, function: ${functionName}, ${errorMessage}`;
 };
 
-export const determineGetExercise = (nouns: Util.Word[], path: string, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
+
+// SENTENCE CREATION
+
+import { 
+  politenessArray,
+  polarityArray,
+  tenseArray,
+  genderArray,
+  questionArray,
+
+  politenessArrayLength,
+  polarityArrayLength,
+  tenseArrayLength,
+  genderArrayLength,
+  questionArrayLength,
+} from './constants/optionsConstants';
+
+import {
+  GENDER_RANDOM,
+  POLITENESS_RANDOM,
+  TENSE_RANDOM,
+  POLARITY_RANDOM,
+  RANDOM_QUESTION,
+} from './constants/optionsConstants';
+
+const randomVariationValue = (variationArray: string[]): string => variationArray[randomArrayElement(variationArray.length)];
+const randomPolitenessValue = (): string => politenessArray[randomArrayElement(politenessArrayLength)];
+const randomPolarityValue = (): string =>  polarityArray[randomArrayElement(polarityArrayLength)];
+const randomTenseValue = (): string => tenseArray[randomArrayElement(tenseArrayLength)];
+const randomQuestionValue = (): string => questionArray[randomArrayElement(questionArrayLength)];
+const randomGenderValue = (): string => genderArray[randomArrayElement(genderArrayLength)];
+
+const createLessonOptions = (options: { variation: string | string[], politeness: string, polarity: string, tense: string, question: string, gender: string }): Util.Options => {
+  const { variation, politeness, polarity, tense, question, gender } = options;
+  return {
+    __typename: __TYPENAME_OPTIONS,
+    variation: typeof variation === 'string' ? variation : randomVariationValue(variation),
+    question: question === RANDOM_QUESTION ? randomQuestionValue() : question,
+    politeness: politeness === POLITENESS_RANDOM ? randomPolitenessValue() : politeness,
+    polarity: polarity === POLARITY_RANDOM ? randomPolarityValue() : polarity,
+    tense: tense === TENSE_RANDOM ? randomTenseValue() : tense,
+    gender: gender === GENDER_RANDOM ? randomGenderValue() : gender,  
+  }
+};
+
+const recalculateOptions = (options: Util.Options, ) => {
+  
+}
+
+export const determineGetExercise = (nouns: Util.Word[], path: string, controlPanelOptions: Util.ControlPanelOptions, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
   switch(path) {
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return generateExercises(nouns, LESSON_MODIFIERS.L001, LESSON_OPTIONS.L001, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return generateExercises(nouns, LESSON_MODIFIERS.L002, LESSON_OPTIONS.L002, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L003}`: return generateExercises(nouns, LESSON_MODIFIERS.L003, LESSON_OPTIONS.L003, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L004}`: return generateExercises(nouns, LESSON_MODIFIERS.L004, LESSON_OPTIONS.L004, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L005}`: return generateExercises(nouns, LESSON_MODIFIERS.L005, LESSON_OPTIONS.L005, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L006}`: return generateExercises(nouns, LESSON_MODIFIERS.L006, LESSON_OPTIONS.L006, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L007}`: return generateExercises(nouns, LESSON_MODIFIERS.L007, LESSON_OPTIONS.L007, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L008}`: return generateExercises(nouns, LESSON_MODIFIERS.L008, LESSON_OPTIONS.L008, numberOfExercices);
-    case `${ROUTE_PATH.APP}${LESSON_PATH.L009}`: return generateExercises(nouns, LESSON_MODIFIERS.L009, LESSON_OPTIONS.L009, numberOfExercices);
-    default: return generateExercises(nouns, LESSON_MODIFIERS.L001, LESSON_OPTIONS.L001, numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return generateExercises(nouns, LESSON_MODIFIERS.L001, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L001, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return generateExercises(nouns, LESSON_MODIFIERS.L002, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L002, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L003}`: return generateExercises(nouns, LESSON_MODIFIERS.L003, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L003, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L004}`: return generateExercises(nouns, LESSON_MODIFIERS.L004, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L004, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L005}`: return generateExercises(nouns, LESSON_MODIFIERS.L005, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L005, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L006}`: return generateExercises(nouns, LESSON_MODIFIERS.L006, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L006, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L007}`: return generateExercises(nouns, LESSON_MODIFIERS.L007, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L007, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L008}`: return generateExercises(nouns, LESSON_MODIFIERS.L008, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L008, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L009}`: return generateExercises(nouns, LESSON_MODIFIERS.L009, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L009, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L010}`: return generateExercises(nouns, LESSON_MODIFIERS.L010, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L010, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L011}`: return generateExercises(nouns, LESSON_MODIFIERS.L011, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L011, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L012}`: return generateExercises(nouns, LESSON_MODIFIERS.L012, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L012, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L013}`: return generateExercises(nouns, LESSON_MODIFIERS.L013, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L013, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L014}`: return generateExercises(nouns, LESSON_MODIFIERS.L014, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L014, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L015}`: return generateExercises(nouns, LESSON_MODIFIERS.L015, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L015, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L016}`: return generateExercises(nouns, LESSON_MODIFIERS.L016, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L016, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L017}`: return generateExercises(nouns, LESSON_MODIFIERS.L017, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L017, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L018}`: return generateExercises(nouns, LESSON_MODIFIERS.L018, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L018, controlPanelOptions)), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L019}`: return generateExercises(nouns, LESSON_MODIFIERS.L019, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L019, controlPanelOptions)), numberOfExercices);
+    default: return generateExercises(nouns, LESSON_MODIFIERS.L001, () => createLessonOptions(LESSON_OPTIONS.L001), numberOfExercices);
   };
 };
 
 export const getExercisesApollo = (client: any, path: string, numberOfExercices: number): void => {
   try {
-    const data = client.readQuery({ query: GET_NOUNS }) as any;
-    client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, numberOfExercices) } });
+    // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
+    const data = client.readQuery({ query: GET_NOUNS_AND_CONTROL_PANEL_OPTIONS }) as any;
+    client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.controlPanelOptions, numberOfExercices) } });
   } catch(error) {
     throw new Error(createError('functions.tsx', 'getExercisesApollo', `Error: ${error}. Unable to access graphql and pull down nouns.`));
   } 

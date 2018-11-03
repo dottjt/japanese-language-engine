@@ -106,28 +106,32 @@ private convertValues = (values: string[], controlPanelType: string, options: Ut
   });
 
   private politenessCallback = (value: string): void => {
-    this.updateControlPanelOptions(this.props.client, {}); 
-
-    this.props.client.writeData({
-      data: { controlPanelOptions: { controlPanelPoliteness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS } }
-    });
-    getExercisesApollo()
-  }
-
-  private variationCallback = (value: string): void => {
-    this.props.client.writeData({
-      data: {
-        exercises: { variation: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
-      }
-    });
+    this.updateControlPanelOptions({ controlPanelPoliteness: value }); 
   };
 
-  private updateControlPanelOptions = (client: any, controlPanelObject: Util.ControlPanelOptions): void => {
+  private polarityCallback = (value: string): void => {
+    this.updateControlPanelOptions({ controlPanelPolarity: value });
+  };
+
+  private questionCallback = (value: string): void => {
+    this.updateControlPanelOptions({ controlPanelQuestion: value });
+  };
+
+  private tenseCallback = (value: string): void => {
+    this.updateControlPanelOptions({ controlPanelTense: value });
+  };
+
+  private genderCallback = (value: string): void => {
+    this.updateControlPanelOptions({ controlPanelGender: value });
+  };
+
+  private updateControlPanelOptions = (controlPanelObject: Util.ControlPanelOptions): void => {
     this.props.client.writeData({
       data: { controlPanelOptions: { ...controlPanelObject, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS } }
     });
+    getExercisesApollo(this.props.client, this.props.path, 10);
   }
-  
+ 
 }
 
 export default SentenceControlPanel;
