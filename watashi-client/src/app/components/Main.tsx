@@ -104,7 +104,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               );
             case L002.LESSON_TITLE:
@@ -119,7 +119,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               );
             case L003.LESSON_TITLE:
@@ -134,7 +134,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               );
             case L004.LESSON_TITLE:
@@ -149,7 +149,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               );
             case L005.LESSON_TITLE:
@@ -164,7 +164,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               );
             case L006.LESSON_TITLE:
@@ -179,7 +179,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               ); 
             case L007.LESSON_TITLE:
@@ -194,7 +194,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               );
             case L008.LESSON_TITLE:
@@ -209,7 +209,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}
+                  path={route.path}
                 />
               );
             case L009.LESSON_TITLE:
@@ -224,7 +224,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L010.LESSON_TITLE:
@@ -239,7 +239,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L011.LESSON_TITLE:
@@ -254,7 +254,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L012.LESSON_TITLE:
@@ -269,7 +269,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L013.LESSON_TITLE:
@@ -284,7 +284,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L014.LESSON_TITLE:
@@ -299,7 +299,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L015.LESSON_TITLE:
@@ -314,7 +314,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L016.LESSON_TITLE:
@@ -329,7 +329,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L017.LESSON_TITLE:
@@ -344,7 +344,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L018.LESSON_TITLE:
@@ -359,7 +359,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L019.LESSON_TITLE:
@@ -374,7 +374,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             case L020.LESSON_TITLE:
@@ -389,7 +389,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceDisplayOptions={data.sentenceDisplayOptions}
                   sentenceStats={data.sentenceStats}
                   client={client}
-                  route={route}                  
+                  path={route.path}                  
                 />
               );
             default:

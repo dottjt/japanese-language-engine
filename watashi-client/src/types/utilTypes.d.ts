@@ -92,6 +92,16 @@ declare namespace Util {
     question: string; // HAS_QUESTION, NOT_QUESTION
   };
 
+  export type ControlPanelOptions = {
+    controlPanelPoliteness?: string;
+    controlPanelVariation?: string;
+    controlPanelPolarity?: string;
+    controlPanelTense?: string;
+    controlPanelGender?: string;
+    controlPanelQuestion?: string;
+    controlPanelSentenceEnding?: string;
+  };
+
   export type Modifiers = {
     __typename: string;
     topicNo: string;

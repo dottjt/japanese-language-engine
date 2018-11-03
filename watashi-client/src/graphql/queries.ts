@@ -269,7 +269,17 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
       gender
       question
     }
-    
+
+    controlPanelOptions @client {
+      controlPanelPoliteness
+      controlPanelVariation
+      controlPanelPolarity
+      controlPanelTense
+      controlPanelGender
+      controlPanelQuestion
+      controlPanelSentenceEnding
+    }
+
     modifiers @client {
       topicNo
       subjectNo

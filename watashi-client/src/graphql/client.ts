@@ -17,6 +17,16 @@ import allWords from '../util/words/collection';
 
 const defaults = {
   nouns: allWords,
+  exercises: null,
+  controlPanelOptions: {
+    controlPanelPoliteness: undefined,
+    controlPanelVariation: undefined,
+    controlPanelPolarity: undefined,
+    controlPanelTense: undefined,
+    controlPanelGender: undefined,
+    controlPanelQuestion: undefined,
+    controlPanelSentenceEnding: undefined,
+  },
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
     toggleSentenceOrder: false, 

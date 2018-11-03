@@ -14,7 +14,7 @@ import SentenceModule from '../modules/SentenceModule/SentenceModule';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { title, description, client, route, sentenceDisplayOptions, sentenceStats, exercises, /*explanation, resources*/ } = this.props; 
+    const { title, description, client, path, sentenceDisplayOptions, options, sentenceStats, exercises, /*explanation, resources*/ } = this.props; 
 
     return (
       <PageWrapper>
@@ -40,14 +40,14 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           <Heading is='h2' fontSize={3}>Lesson Exercises</Heading>
           <SentenceControlPanel
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
-            options={this.props.options}
+            options={options}
             client={client}
-            route={route}
+            path={path}
           />
           <SentenceOptions
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={client}
-            route={route}
+            path={path}
           />
           {exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => (
             <SentenceModule

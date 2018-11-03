@@ -29,13 +29,13 @@ declare module PropTypes {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     options: Util.Options,
     client: any, // NOTE: Will need to get proper type. 
-    route: any, // NOTE: Will need to get proper type. 
+    path: string,
   }
 
   export type ISentenceOptionsProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     client: any, // NOTE: Will need to get proper type. 
-    route: any, // NOTE: Will need to get proper type. 
+    path: string, // NOTE: Will need to get proper type. 
   }
 
 
@@ -56,7 +56,7 @@ declare module PropTypes {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
     client: any,
-    route: any,
+    path: string,
   }
   
   // Sentence props

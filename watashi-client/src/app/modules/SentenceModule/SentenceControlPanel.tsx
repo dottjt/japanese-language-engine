@@ -6,7 +6,7 @@ import { Heading } from '../../atoms/TextStyles';
 
 import {
   capitalise,
-  // getExercisesApollo,
+  getExercisesApollo,
 } from '../../../util/functions';
 
 import {
@@ -46,39 +46,40 @@ const POLITENESS_CONTROL_PANEL_TYPE = 'POLITENESS_CONTROL_PANEL_TYPE';
 const TENSE_CONTROL_PANEL_TYPE = 'TENSE_CONTROL_PANEL_TYPE';
 const GENDER_CONTROL_PANEL_TYPE = 'GENDER_CONTROL_PANEL_TYPE';
 const QUESTION_CONTROL_PANEL_TYPE = 'QUESTION_CONTROL_PANEL_TYPE';
+const OFF = 'OFF';
 
 class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPanelProps, {}> {
   public render() {
     
     // NOTE: I think this needs to take the options array in order to determine what is actually selected. 
 
-    const { options } = this.props;
+    const { client, path, options } = this.props;
     return (
       <Flex>
         <Buttons
-          title='Sentence Politeness'
-          values={this.convertValues([POLITENESS_CASUAL, POLITENESS_FORMAL], POLARITY_CONTROL_PANEL_TYPE)}
+          title='Polarity'
+          values={this.convertValues([OFF, POLARITY_POSITIVE, POLARITY_NEGATIVE, POLARITY_RANDOM], POLARITY_CONTROL_PANEL_TYPE)}
+          onClickCallback={this.polarityCallback}
+        />
+        <Buttons
+          title='Politeness'
+          values={this.convertValues([OFF, POLITENESS_CASUAL, POLITENESS_FORMAL, POLITENESS_HUMBLE, POLITENESS_HONORIFIC, POLITENESS_RANDOM], POLITENESS_CONTROL_PANEL_TYPE)}
           onClickCallback={this.politenessCallback}
         />
         <Buttons
-          title='Sentence Politeness'
-          values={this.convertValues([POLITENESS_CASUAL, POLITENESS_FORMAL], POLITENESS_CONTROL_PANEL_TYPE)}
-          onClickCallback={this.politenessCallback}
+          title='Question'
+          values={this.convertValues([OFF, HAS_QUESTION, NOT_QUESTION, RANDOM_QUESTION], QUESTION_CONTROL_PANEL_TYPE)}
+          onClickCallback={this.questionCallback}
         />
         <Buttons
-          title='Question Variation'
-          values={this.convertValues([POLARITY_POSITIVE, POLARITY_NEGATIVE], QUESTION_CONTROL_PANEL_TYPE)}
-          onClickCallback={this.variationCallback}
+          title='Tense'
+          values={this.convertValues([OFF, POLARITY_POSITIVE, POLARITY_NEGATIVE], TENSE_CONTROL_PANEL_TYPE)}
+          onClickCallback={this.tenseCallback}
         />
         <Buttons
-          title='Sentence Tense'
-          values={this.convertValues([POLARITY_POSITIVE, POLARITY_NEGATIVE], TENSE_CONTROL_PANEL_TYPE)}
-          onClickCallback={this.variationCallback}
-        />
-        <Buttons
-          title='Sentence Gender'
-          values={this.convertValues([POLARITY_POSITIVE, POLARITY_NEGATIVE], GENDER_CONTROL_PANEL_TYPE)}
-          onClickCallback={this.variationCallback}
+          title='Gender'
+          values={this.convertValues([OFF, POLARITY_POSITIVE, POLARITY_NEGATIVE], GENDER_CONTROL_PANEL_TYPE)}
+          onClickCallback={this.genderCallback}
         />
       </Flex>
     );
@@ -87,8 +88,8 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
 private convertValues = (values: string[], controlPanelType: string, options: Util.Options): Util.IValues[] =>
   values.map((value: string, index) => {
     switch(controlPanelType) {
-      case POLARITY_CONTROL_PANEL_TYPE: 
-        return { value, selected: options() }
+      case POLARITY_CONTROL_PANEL_TYPE:
+        return { value, selected: true }
       case POLITENESS_CONTROL_PANEL_TYPE:
 
       case TENSE_CONTROL_PANEL_TYPE:
@@ -104,12 +105,14 @@ private convertValues = (values: string[], controlPanelType: string, options: Ut
     return { value, selected: false }
   });
 
-  private politenessCallback = (value: string): void =>
+  private politenessCallback = (value: string): void => {
+    this.updateControlPanelOptions(this.props.client, {}); 
+
     this.props.client.writeData({
-      data: {
-        exercises: { politeness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }
-      }
+      data: { controlPanelOptions: { controlPanelPoliteness: value, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS } }
     });
+    getExercisesApollo()
+  }
 
   private variationCallback = (value: string): void => {
     this.props.client.writeData({
@@ -119,6 +122,12 @@ private convertValues = (values: string[], controlPanelType: string, options: Ut
     });
   };
 
+  private updateControlPanelOptions = (client: any, controlPanelObject: Util.ControlPanelOptions): void => {
+    this.props.client.writeData({
+      data: { controlPanelOptions: { ...controlPanelObject, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS } }
+    });
+  }
+  
 }
 
 export default SentenceControlPanel;

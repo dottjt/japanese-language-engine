@@ -69,6 +69,16 @@ export const optionTypes = `
     subjectAdverb: String
   }
 
+  type ControlPanelOptions {
+    controlPanelPoliteness?: String
+    controlPanelVariation?: String
+    controlPanelPolarity?: String
+    controlPanelTense?: String
+    controlPanelGender?: String
+    controlPanelQuestion?: String
+    controlPanelSentenceEnding?: String
+  }
+
   type Options {
     politeness: String
     variation: String
@@ -89,6 +99,7 @@ export const index = `
     exercises?: [ EnglishJapaneseOptionsSentence ]
     sentenceStats: SentenceStats
     sentenceDisplayOptions: SentenceDisplayOptions
+    controlPanelOptions: ControlPanelOptions
     nouns: [ Word ]
   }
 `;
