@@ -1,6 +1,20 @@
 import * as React from 'react';
 import { Flex as RebassFlex, Box as RebassBox } from 'rebass';
-import { borders, minWidth, space, width, height, position, zIndex, color, overflow, bottom, left, right, top } from 'styled-system';
+import { 
+  borders,
+  minWidth,
+  space,
+  width,
+  height,
+  position,
+  zIndex,
+  color,
+  overflow,
+  bottom,
+  left,
+  right,
+  top,
+  flexWrap } from 'styled-system';
 
 import styled from 'styled-components';
 import system from 'system-components';
@@ -18,6 +32,7 @@ export const Box = styled(RebassBox)`
   ${left}
   ${right}
   ${top}
+  ${flexWrap}
 `;
 
 export const Flex = styled(RebassFlex)`
@@ -34,6 +49,7 @@ export const Flex = styled(RebassFlex)`
   ${left}
   ${right}
   ${top}
+  ${flexWrap}
 `;
 
 export const FlexColumn = styled(RebassFlex)`
@@ -53,6 +69,7 @@ export const FlexColumn = styled(RebassFlex)`
   ${left}
   ${right}
   ${top}
+  ${flexWrap}
 `;
 
 
