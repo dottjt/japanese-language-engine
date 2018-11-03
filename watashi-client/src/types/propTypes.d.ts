@@ -42,7 +42,8 @@ declare module PropTypes {
   export type IButtonsProps = {
     title: string,
     values: Util.IButtonValues[],
-    onClickCallback: (n: string) => void,
+    client: any,
+    onClickCallback: (client: any, n: string) => void,
   }
 
   // Lesson props

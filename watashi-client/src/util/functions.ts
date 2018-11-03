@@ -10,7 +10,6 @@ import {
 
 import {
   GET_NOUNS_AND_CONTROL_PANEL_OPTIONS,
-  GET_ALL_WORDS_AND_OPTIONS,
 } from '../graphql/queries';
 
 import {
@@ -121,13 +120,8 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
   try {
     // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
     const data = client.readQuery({ query: GET_NOUNS_AND_CONTROL_PANEL_OPTIONS }) as any;
-    console.log('getExercisesApollo', data);
-    console.log('exercisesBeforeTheTHing', determineGetExercise(data.nouns, path, data.controlPanelOptions, numberOfExercices));
+    console.log('getExercisesApollo run', data);
     client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.controlPanelOptions, numberOfExercices) } });
-
-    const datars = client.readQuery({ query: GET_ALL_WORDS_AND_OPTIONS }) as any;
-    console.log('here', datars);
-
   } catch(error) {
     throw new Error(createError('functions.tsx', 'getExercisesApollo', `Error: ${error}. Unable to access graphql and pull down nouns.`));
   } 

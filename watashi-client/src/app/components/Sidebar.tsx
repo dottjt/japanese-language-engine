@@ -21,9 +21,9 @@ const Item = styled(Flex)`
   height: 3rem;
   border-bottom: ${themeGet('borders.1')};
   &:hover {
-    background: green;
+    background: lightgrey;
   };
-  transition: background 1s;
+  transition: background .2s;
 `;
 
 const SidebarItem = (props) => (

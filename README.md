@@ -42,6 +42,12 @@ A highly sophisticated Japanese language engine.
 - Control Panel
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
 
+## Blog Ideas
+
+- The perfect Watashi Engine Workout. 
+- The 
+
+
 ## Build Steps 
 
 - yarn add @types/react @types/react-dom @types/auth0-js @types/graphql @types/rebass @types/styled-components @types/react-helmet 
