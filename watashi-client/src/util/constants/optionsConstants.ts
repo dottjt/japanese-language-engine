@@ -86,6 +86,7 @@ export const variationArray = [
 
 export const HAS_QUESTION = 'HAS_QUESTION';
 export const NOT_QUESTION = 'NOT_QUESTION';
+export const RANDOM_QUESTION = 'RANDOM_QUESTION';
 
 export const questionArray = [
   HAS_QUESTION,
@@ -98,6 +99,7 @@ export const questionArrayLength = questionArray.length;
 
 export const POLARITY_POSITIVE = 'POLARITY_POSITIVE';
 export const POLARITY_NEGATIVE = 'POLARITY_NEGATIVE';
+export const POLARITY_RANDOM = 'POLARITY_RANDOM';
 
 export const polarityArray = [ 
   POLARITY_POSITIVE,
@@ -110,6 +112,7 @@ export const polarityArrayLength = polarityArray.length;
 
 export const TENSE_PRESENT = 'TENSE_PRESENT';
 export const TENSE_PAST = 'TENSE_PAST';
+export const TENSE_RANDOM = 'TENSE_RANDOM';
 
 export const tenseArray = [ 
   TENSE_PRESENT,
@@ -125,6 +128,7 @@ export const POLITENESS_CASUAL = 'POLITENESS_CASUAL';
 export const POLITENESS_FORMAL = 'POLITENESS_FORMAL';
 export const POLITENESS_HUMBLE = 'POLITENESS_HUMBLE';
 export const POLITENESS_HONORIFIC = 'POLITENESS_HONORIFIC';
+export const POLITENESS_RANDOM = 'POLITENESS_RANDOM';
 
 export const politenessArray = [ 
   POLITENESS_CASUAL,
@@ -139,6 +143,7 @@ export const politenessArrayLength = politenessArray.length;
 
 export const GENDER_MASCULINE = 'GENDER_MASCULINE';
 export const GENDER_FEMININE = 'GENDER_FEMININE';
+export const GENDER_RANDOM = 'GENDER_RANDOM';
 
 export const genderArray = [ 
   GENDER_MASCULINE,
@@ -152,6 +157,7 @@ export const genderArrayLength = genderArray.length;
 export const SENTENCE_ENDING_NE = 'SENTENCE_ENDING_NE';
 export const SENTENCE_ENDING_YO = 'SENTENCE_ENDING_YO';
 export const SENTENCE_ENDING_YO_NE = 'SENTENCE_ENDING_YO_NE';
+export const SENTENCE_ENDING_RANDOM = 'SENTENCE_ENDING_RANDOM';
 
 export const sentenceEndingArray = [ 
   SENTENCE_ENDING_NE,

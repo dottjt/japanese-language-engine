@@ -47,7 +47,7 @@ const TENSE_CONTROL_PANEL_TYPE = 'TENSE_CONTROL_PANEL_TYPE';
 const GENDER_CONTROL_PANEL_TYPE = 'GENDER_CONTROL_PANEL_TYPE';
 const QUESTION_CONTROL_PANEL_TYPE = 'QUESTION_CONTROL_PANEL_TYPE';
 
-class SentenceControlPanel extends React.Component<PropTypes.IControlPanelProps, {}> {
+class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPanelProps, {}> {
   public render() {
     
     // NOTE: I think this needs to take the options array in order to determine what is actually selected. 

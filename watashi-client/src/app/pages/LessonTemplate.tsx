@@ -40,7 +40,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           <Heading is='h2' fontSize={3}>Lesson Exercises</Heading>
           <SentenceControlPanel
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
-            options={exercise.options}
+            options={this.props.options}
             client={client}
             route={route}
           />

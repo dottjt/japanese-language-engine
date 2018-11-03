@@ -44,7 +44,7 @@ import {
 //   };
 // };
 
-class SentenceOptions extends React.Component<PropTypes.IControlPanelProps, {}> {
+class SentenceOptions extends React.Component<PropTypes.ISentenceOptionsProps, {}> {
   public render() {
     const { client, route, sentenceDisplayOptions } = this.props;
     return (

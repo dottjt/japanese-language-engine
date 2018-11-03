@@ -25,13 +25,19 @@ declare module PropTypes {
     route: any, // NOTE: Will need to get proper type. 
   }
   
-  // Component props 
-  export type IControlPanelProps = {
+  export type ISentenceControlPanelProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     options: Util.Options,
     client: any, // NOTE: Will need to get proper type. 
     route: any, // NOTE: Will need to get proper type. 
   }
+
+  export type ISentenceOptionsProps = {
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    client: any, // NOTE: Will need to get proper type. 
+    route: any, // NOTE: Will need to get proper type. 
+  }
+
 
   export type IButtonsProps = {
     title: string,
