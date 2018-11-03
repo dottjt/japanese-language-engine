@@ -189,7 +189,7 @@ declare namespace Util {
 
   // MISC
 
-  export interface IValues {
+  export type IButtonValues = {
     value: string,
     selected: boolean,
   };

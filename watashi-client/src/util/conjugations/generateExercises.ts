@@ -80,6 +80,7 @@ import {
 
 import {
   __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+  __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,
 } from '../constants/typeNameConstants';
 
 
@@ -257,18 +258,21 @@ const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): U
 
 const generateExercises = (words: Util.Word[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
-
     const options = optionsLambda();
     const modifiers = modifiersLambda();
     
     const variationWords = generateWords(words, options.variation);
     const modifierWords = generateWordModifiers(words, modifiers);
 
+    const { englishSentence, japaneseSentence } = generateSentences(variationWords(), modifierWords, options);
+
     return {
       options,
       modifiers,
-      ...generateSentences(variationWords(), modifierWords, options)  
-    }
+      englishSentence, 
+      japaneseSentence,
+      __typename: __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE
+    }  
   })
 
 export default generateExercises;

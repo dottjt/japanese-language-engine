@@ -6,15 +6,37 @@ import { Heading } from '../../atoms/TextStyles';
 
 import {
   capitalise,
+  createError,
   getExercisesApollo,
 } from '../../../util/functions';
 
 import {
-  POLARITY_NEGATIVE,
-  POLARITY_POSITIVE,
-  
+  GENDER_MASCULINE,
+  GENDER_FEMININE,
+  GENDER_RANDOM,
+
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
+  POLITENESS_HUMBLE,
+  POLITENESS_HONORIFIC,
+  POLITENESS_RANDOM,
+
+  TENSE_PRESENT,
+  TENSE_PAST,
+  TENSE_RANDOM,
+
+  POLARITY_POSITIVE,
+  POLARITY_NEGATIVE,
+  POLARITY_RANDOM,
+
+  SENTENCE_ENDING_NE,
+  SENTENCE_ENDING_YO,
+  SENTENCE_ENDING_YO_NE,
+  SENTENCE_ENDING_RANDOM,
+
+  HAS_QUESTION,
+  NOT_QUESTION,
+  RANDOM_QUESTION,
 } from '../../../util/constants/optionsConstants';
 
 import {
@@ -23,13 +45,14 @@ import {
 } from '../../../util/constants/typeNameConstants';
 
 class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
-
   public render() {
+    const {values } = this.props;
+
     return (
       <FlexColumn>
         <Heading is='h3'>{this.props.title}</Heading>
-        {this.props.values.map(value => (
-          <Button key={value.value} /* onClick={this.props.onClickCallback} */ >
+        {values.map((value: Util.IButtonValues) => (
+          <Button key={value.value} onClick={this.props.onClickCallback} >
             {capitalise(value.value)}
           </Button>
         ))}
@@ -50,61 +73,61 @@ const OFF = 'OFF';
 
 class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPanelProps, {}> {
   public render() {
-    
-    // NOTE: I think this needs to take the options array in order to determine what is actually selected. 
-
-    const { client, path, preOptions } = this.props;
+    const { preOptions } = this.props;
     return (
       <Flex>
         <Buttons
           title='Polarity'
-          values={this.convertValues([OFF, POLARITY_POSITIVE, POLARITY_NEGATIVE, POLARITY_RANDOM], POLARITY_CONTROL_PANEL_TYPE)}
+          values={this.convertValues([OFF, POLARITY_POSITIVE, POLARITY_NEGATIVE, POLARITY_RANDOM], POLARITY_CONTROL_PANEL_TYPE, preOptions)}
           onClickCallback={this.polarityCallback}
         />
         <Buttons
           title='Politeness'
-          values={this.convertValues([OFF, POLITENESS_CASUAL, POLITENESS_FORMAL, POLITENESS_HUMBLE, POLITENESS_HONORIFIC, POLITENESS_RANDOM], POLITENESS_CONTROL_PANEL_TYPE)}
+          values={this.convertValues([OFF, POLITENESS_CASUAL, POLITENESS_FORMAL, POLITENESS_HUMBLE, POLITENESS_HONORIFIC, POLITENESS_RANDOM], POLITENESS_CONTROL_PANEL_TYPE, preOptions)}
           onClickCallback={this.politenessCallback}
         />
         <Buttons
           title='Question'
-          values={this.convertValues([OFF, HAS_QUESTION, NOT_QUESTION, RANDOM_QUESTION], QUESTION_CONTROL_PANEL_TYPE)}
+          values={this.convertValues([OFF, HAS_QUESTION, NOT_QUESTION, RANDOM_QUESTION], QUESTION_CONTROL_PANEL_TYPE, preOptions)}
           onClickCallback={this.questionCallback}
         />
         <Buttons
           title='Tense'
-          values={this.convertValues([OFF, POLARITY_POSITIVE, POLARITY_NEGATIVE], TENSE_CONTROL_PANEL_TYPE)}
+          values={this.convertValues([OFF, TENSE_PRESENT, TENSE_PAST, TENSE_RANDOM], TENSE_CONTROL_PANEL_TYPE, preOptions)}
           onClickCallback={this.tenseCallback}
         />
         <Buttons
           title='Gender'
-          values={this.convertValues([OFF, POLARITY_POSITIVE, POLARITY_NEGATIVE], GENDER_CONTROL_PANEL_TYPE)}
+          values={this.convertValues([OFF, GENDER_MASCULINE, GENDER_FEMININE, GENDER_RANDOM], GENDER_CONTROL_PANEL_TYPE, preOptions)}
+          onClickCallback={this.genderCallback}
+        />
+        <Buttons
+          title='Gender'
+          values={this.convertValues([OFF, SENTENCE_ENDING_NE, SENTENCE_ENDING_YO, SENTENCE_ENDING_YO_NE, SENTENCE_ENDING_RANDOM], GENDER_CONTROL_PANEL_TYPE, preOptions)}
           onClickCallback={this.genderCallback}
         />
       </Flex>
     );
   }
 
-private convertValues = (values: string[], controlPanelType: string, options: Util.Options): Util.IValues[] =>
-  values.map((value: string, index) => {
-    switch(controlPanelType) {
-      case POLARITY_CONTROL_PANEL_TYPE:
-        return { value, selected: true }
-      case POLITENESS_CONTROL_PANEL_TYPE:
-
-      case TENSE_CONTROL_PANEL_TYPE:
-
-      case GENDER_CONTROL_PANEL_TYPE:
-
-      case QUESTION_CONTROL_PANEL_TYPE:
-
-    }
-    // if (index === 0) {
-    //   return { value, selected: true }
-    // }
-    return { value, selected: false }
-  });
-
+  private convertValues = (values: string[], controlPanelType: string, preOptions: Util.PreOptions): Util.IButtonValues[] =>
+    values.map((value: string, index: number) => {
+      const { politeness, polarity, tense, gender, question } = preOptions;
+      switch(controlPanelType) {
+        case POLITENESS_CONTROL_PANEL_TYPE: 
+          return value === politeness || value === OFF ? { value, selected: true } : { value, selected: false };
+        case POLARITY_CONTROL_PANEL_TYPE:   
+          return value === polarity || value === OFF ? { value, selected: true } : { value, selected: false };
+        case TENSE_CONTROL_PANEL_TYPE:      
+          return value === tense || value === OFF ? { value, selected: true } : { value, selected: false };
+        case GENDER_CONTROL_PANEL_TYPE:     
+          return value === gender || value === OFF ? { value, selected: true } : { value, selected: false };
+        case QUESTION_CONTROL_PANEL_TYPE:   
+          return value === question || value === OFF ? { value, selected: true } : { value, selected: false };
+      }
+      throw new Error(createError('SentenceControlPanel.tsx', 'convertValues', `${controlPanelType} does not exist.`));    
+    });
+  
   private politenessCallback = (value: string): void => {
     this.updateControlPanelOptions({ controlPanelPoliteness: value }); 
   };
@@ -127,11 +150,10 @@ private convertValues = (values: string[], controlPanelType: string, options: Ut
 
   private updateControlPanelOptions = (controlPanelObject: Util.ControlPanelOptions): void => {
     this.props.client.writeData({
-      data: { controlPanelOptions: { ...controlPanelObject, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS } }
+      data: { controlPanelOptions: { ...controlPanelObject, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS } },
     });
     getExercisesApollo(this.props.client, this.props.path, 10);
-  }
- 
-}
+  };
+};
 
 export default SentenceControlPanel;

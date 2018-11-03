@@ -6,6 +6,7 @@ import { HttpLink } from 'apollo-link-http';
 import { withClientState } from 'apollo-link-state';
 
 import {
+  __TYPENAME_CONTROL_PANEL_OPTIONS,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   __TYPENAME_SENTENCE_STATS,
 } from '../util/constants/typeNameConstants';
@@ -19,13 +20,14 @@ const defaults = {
   nouns: allWords,
   exercises: null,
   controlPanelOptions: {
-    controlPanelPoliteness: undefined,
-    controlPanelVariation: undefined,
-    controlPanelPolarity: undefined,
-    controlPanelTense: undefined,
-    controlPanelGender: undefined,
-    controlPanelQuestion: undefined,
-    controlPanelSentenceEnding: undefined,
+    controlPanelPoliteness: null,
+    controlPanelVariation: null,
+    controlPanelPolarity: null,
+    controlPanelTense: null,
+    controlPanelGender: null,
+    controlPanelQuestion: null,
+    controlPanelSentenceEnding: null,
+    __typename: __TYPENAME_CONTROL_PANEL_OPTIONS,
   },
   sentenceDisplayOptions: {
     toggleSentenceStats: true,

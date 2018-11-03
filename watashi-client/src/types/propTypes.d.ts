@@ -41,7 +41,7 @@ declare module PropTypes {
 
   export type IButtonsProps = {
     title: string,
-    values: string[],
+    values: Util.IButtonValues[],
     onClickCallback: (n: string) => void,
   }
 

@@ -40,7 +40,7 @@ A highly sophisticated Japanese language engine.
 - You could think of it as a 'did do' relationship.
 - Instead of navbar fixed, you have 
 - Control Panel
-- Will need to reset controlPanelOptions per view)
+- Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
 
 ## Build Steps 
 
@@ -54,6 +54,7 @@ A highly sophisticated Japanese language engine.
 ## Notes: 
 
 - React Snap has quite particular configurations. 
+- Apollo only works with null, not with undefined
 
 ### ATTEMPTING
 - の possesive

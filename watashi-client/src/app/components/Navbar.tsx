@@ -11,9 +11,13 @@ const Dropdown = styled(Flex)<any>`
   visibility: ${props => props.togglevisibility ? 'visible' : 'hidden'};
 `;
 
+Dropdown.defaultProps = {
+  visibility: 'hidden',
+};
+
 class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       dropdownOpenState: false,
     }
@@ -46,7 +50,7 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
             justifyContent: 'space-between',
             marginRight: '1rem',          
           }}
-          togglevisibility={this.state.dropdownOpenState}
+          togglevisibility={this.state.dropdownOpenState.toString()}
           >
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>

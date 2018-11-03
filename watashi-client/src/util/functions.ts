@@ -29,7 +29,6 @@ export const createError = (fileLocation: string, functionName: string, errorMes
   return `Error. file: ${fileLocation}, function: ${functionName}, ${errorMessage}`;
 };
 
-
 // SENTENCE CREATION
 
 import { 
@@ -93,6 +92,8 @@ const recalculateOptions = (options: Util.PreOptions, controlPanelOptions: Util.
 }
 
 export const determineGetExercise = (nouns: Util.Word[], path: string, controlPanelOptions: Util.ControlPanelOptions, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
+  console.log(createLessonOptions(recalculateOptions(LESSON_OPTIONS.L001, controlPanelOptions)));
+
   switch(path) {
     case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return generateExercises(nouns, LESSON_MODIFIERS.L001, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L001, controlPanelOptions)), numberOfExercices);
     case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return generateExercises(nouns, LESSON_MODIFIERS.L002, () => createLessonOptions(recalculateOptions(LESSON_OPTIONS.L002, controlPanelOptions)), numberOfExercices);
