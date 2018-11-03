@@ -38,21 +38,23 @@ import {
   tenseArray,
   genderArray,
   questionArray,
+  // sentenceEndingArray,
 
   politenessArrayLength,
   polarityArrayLength,
   tenseArrayLength,
   genderArrayLength,
   questionArrayLength,
-} from './constants/optionsConstants';
+  // sentenceEndingArrayLength,
 
-import {
   GENDER_RANDOM,
   POLITENESS_RANDOM,
   TENSE_RANDOM,
   POLARITY_RANDOM,
   RANDOM_QUESTION,
+  // SENTENCE_ENDING_RANDOM,
 } from './constants/optionsConstants';
+
 
 const randomVariationValue = (variationArray: string[]): string => variationArray[randomArrayElement(variationArray.length)];
 const randomPolitenessValue = (): string => politenessArray[randomArrayElement(politenessArrayLength)];
@@ -60,9 +62,10 @@ const randomPolarityValue = (): string =>  polarityArray[randomArrayElement(pola
 const randomTenseValue = (): string => tenseArray[randomArrayElement(tenseArrayLength)];
 const randomQuestionValue = (): string => questionArray[randomArrayElement(questionArrayLength)];
 const randomGenderValue = (): string => genderArray[randomArrayElement(genderArrayLength)];
+// const randomSentenceEndingValue = (): string => sentenceEndingArray[randomArrayElement(sentenceEndingArrayLength)];
 
-const createLessonOptions = (options: { variation: string | string[], politeness: string, polarity: string, tense: string, question: string, gender: string }): Util.Options => {
-  const { variation, politeness, polarity, tense, question, gender } = options;
+const createLessonOptions = (options: Util.PreOptions): Util.Options => {
+  const { variation, politeness, polarity, tense, question, gender, /* sentenceEnding */ } = options;
   return {
     __typename: __TYPENAME_OPTIONS,
     variation: typeof variation === 'string' ? variation : randomVariationValue(variation),
@@ -71,11 +74,22 @@ const createLessonOptions = (options: { variation: string | string[], politeness
     polarity: polarity === POLARITY_RANDOM ? randomPolarityValue() : polarity,
     tense: tense === TENSE_RANDOM ? randomTenseValue() : tense,
     gender: gender === GENDER_RANDOM ? randomGenderValue() : gender,  
+    // sentenceEnding: sentenceEnding === SENTENCE_ENDING_RANDOM ? randomSentenceEndingValue() : sentenceEnding,
   }
 };
 
-const recalculateOptions = (options: Util.Options, ) => {
-  
+const recalculateOptions = (options: Util.PreOptions, controlPanelOptions: Util.ControlPanelOptions): Util.PreOptions => {
+  const { controlPanelPoliteness, controlPanelVariation, controlPanelPolarity, controlPanelTense, controlPanelGender, controlPanelQuestion, /* controlPanelSentenceEnding */ } = controlPanelOptions;
+  return {
+    __typename: __TYPENAME_OPTIONS,
+    politeness: controlPanelPoliteness ? controlPanelPoliteness : options.politeness,
+    variation: controlPanelVariation ? controlPanelVariation : options.variation,
+    polarity: controlPanelPolarity ? controlPanelPolarity : options.polarity,
+    tense: controlPanelTense ? controlPanelTense : options.tense,
+    gender: controlPanelGender ? controlPanelGender : options.gender,
+    question: controlPanelQuestion ? controlPanelQuestion : options.question,
+    // controlPanelSentenceEnding: controlPanelSentenceEnding ? controlPanelSentenceEnding : options.sentenceEnding 
+  }
 }
 
 export const determineGetExercise = (nouns: Util.Word[], path: string, controlPanelOptions: Util.ControlPanelOptions, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {

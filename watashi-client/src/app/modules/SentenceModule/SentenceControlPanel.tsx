@@ -53,7 +53,7 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
     
     // NOTE: I think this needs to take the options array in order to determine what is actually selected. 
 
-    const { client, path, options } = this.props;
+    const { client, path, preOptions } = this.props;
     return (
       <Flex>
         <Buttons

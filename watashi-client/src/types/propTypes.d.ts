@@ -27,7 +27,7 @@ declare module PropTypes {
   
   export type ISentenceControlPanelProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
-    options: Util.Options,
+    preOptions: Util.PreOptions,
     client: any, // NOTE: Will need to get proper type. 
     path: string,
   }
@@ -52,7 +52,7 @@ declare module PropTypes {
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
     explanation: string[], 
-    options: Util.Options,
+    preOptions: Util.PreOptions,
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
     client: any,
