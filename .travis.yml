@@ -3,7 +3,7 @@ sudo: enabled
 
 branches:
   only:
-  - production
+    - production
 
 services:
   - docker
@@ -19,8 +19,7 @@ before_script:
   - docker pull dottjt/watashi-client || true
 
 script:
-  - docker build --pull --cache-from dottjt/watashi-client --t watashi-client ./watashi-client
-  # - docker build -t watashi-client ./watashi-client
+  - docker build --pull --cache-from dottjt/watashi-client -t watashi-client ./watashi-client
   - docker run --rm -d -p 80:80 watashi-client
   - docker ps -a
 
@@ -28,7 +27,7 @@ after_script:
   - docker images
 
 before_deploy:
-  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 deploy:
   provider: script

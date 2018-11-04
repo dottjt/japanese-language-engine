@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:latest
+FROM mhart/alpine-node:latest as build-deps
 
 # Setup yarn
 # RUN yarn config set registry https://registry.npm.taobao.org
@@ -47,11 +47,9 @@ RUN yarn build
 
 FROM nginx:alpine
 
-# COPY /usr/src/app/client/build /var/www
-COPY ./build /var/www
-# COPY --from=build-deps /usr/src/app/client/build /var/www
+COPY --from=build-deps /usr/src/app/client/build /var/www
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 ENTRYPOINT ["nginx","-g","daemon off;"]
 
