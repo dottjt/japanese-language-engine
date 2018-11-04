@@ -37,12 +37,13 @@ import Home from '../pages/Home';
 import Redirect from '../pages/Redirect';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
+import Logout from '../pages/Logout';
 import SignUp from '../pages/SignUp';
 import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
 import Welcome from '../pages/Welcome';
 import Blog from '../pages/Blog';
-import Tools from '../pages/About';
+import About from '../pages/About';
 
 
 class Main extends React.Component<PropTypes.IMainProps, {}> {
@@ -61,20 +62,22 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
               return <Blog/>
 
             case ROUTE_TITLE.PROFILE:
-              return <Profile/>
+              return <Profile client={client} auth={auth}/>
 
             case ROUTE_TITLE.LOGIN:
               return <Login auth={auth}/>
             
+            case ROUTE_TITLE.LOGOUT:
+              return <Logout auth={auth}/>
+
             case ROUTE_TITLE.SIGN_UP:
               return <SignUp auth={auth}/>
 
             case ROUTE_TITLE.REDIRECT:
-              return <Redirect/>
+              return <Redirect auth={auth}/>
               
             case ROUTE_TITLE.ABOUT:
-              return <Tools/>
-
+              return <About/>
 
             case ROUTE_TITLE.APP:
               return (

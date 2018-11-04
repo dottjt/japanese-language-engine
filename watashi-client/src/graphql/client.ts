@@ -51,6 +51,7 @@ const defaults = {
   user: {
     username: null,
     email: null, 
+    
     access_token: null,
     expires_in: null,
     state: null,

@@ -12,8 +12,8 @@ export default class Auth {
     domain: 'watashiengine.auth0.com',
     clientID: 'V0hH273tSo7Ci3qdtU0l0eSEyOaiAf2U',
     redirectUri: 'http://localhost:3000/callback',
-    responseType: 'token id_token',
-    scope: 'openid'
+    responseType: 'token id_token', 
+    scope: 'openid profile email user_metadata',
   });
 
   constructor() {
@@ -28,7 +28,10 @@ export default class Auth {
   }
 
   public handleAuthentication() {
+    console.log('you not run?')
     this.auth0.parseHash((err, authResult) => {
+      console.log(authResult);
+
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         router.navigate(ROUTE_TITLE.HOME);

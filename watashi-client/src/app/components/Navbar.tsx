@@ -92,11 +92,14 @@ class Navbar extends React.Component<{ auth: any }, {}> {
 
         <Flex width={200} justifyContent='space-around'>
           {!auth.isAuthenticated() && (
-            <Link onClick={auth.login} routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
+            <React.Fragment>
+              <Link routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
+              <Link routeName={ROUTE_TITLE.REDIRECT} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGOUT}</Link>
+            </React.Fragment>
           )}
           {auth.isAuthenticated() && (
             <React.Fragment>
-              <Link routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>
+              <Link routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>
             </React.Fragment>
           )}
         </Flex>
