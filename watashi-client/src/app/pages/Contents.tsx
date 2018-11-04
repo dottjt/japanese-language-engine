@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PageWrapper } from '../atoms/LayoutStyles';
 import { PageHeading, Text } from '../atoms/TextStyles';
 
-import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
+import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 import { LESSON_SECTIONS } from '../../util/constants/lessonConstants';
 
 import Helmet from '../components/Helmet';

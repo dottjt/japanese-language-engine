@@ -2,9 +2,7 @@ import * as auth0 from 'auth0-js';
 import client from '../graphql/client';
 import router from '../router';
 
-import {
-  ROUTE_TITLE
-} from '../util/constants/generalConstants';
+import { ROUTE_TITLE } from '../util/constants/routeConstants';
 
 import { __TYPENAME_USER } from '../util/constants/typeNameConstants';
 

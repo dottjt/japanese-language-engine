@@ -9,7 +9,7 @@ import { Link } from '../atoms/ClickableStyles';
 
 import {
   ROUTE_TITLE,
-} from '../../util/constants/generalConstants';
+} from '../../util/constants/routeConstants';
 
 import {
   LESSON_TITLE,

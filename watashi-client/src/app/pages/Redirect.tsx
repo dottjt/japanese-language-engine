@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { PageWrapper } from '../atoms/LayoutStyles';
 import { Text } from '../atoms/TextStyles';
-import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
+import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 
 import Helmet from '../components/Helmet';
 

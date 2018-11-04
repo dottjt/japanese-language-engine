@@ -4,7 +4,7 @@ import { FlexColumn, PageWrapper } from '../atoms/LayoutStyles';
 import { PageHeading, Heading, Text } from '../atoms/TextStyles';
 import { ExternalLink } from '../atoms/ClickableStyles';
 
-import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
+import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 
 import Helmet from '../components/Helmet';
 

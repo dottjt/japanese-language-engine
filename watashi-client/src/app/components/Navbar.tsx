@@ -5,7 +5,7 @@ import { Flex } from '../atoms/LayoutStyles';
 import { Heading } from '../atoms/TextStyles';
 import { Link } from '../atoms/ClickableStyles';
 
-import { ROUTE_TITLE } from '../../util/constants/generalConstants';
+import { ROUTE_TITLE } from '../../util/constants/routeConstants';
 
 const Dropdown = styled(Flex)<any>`
   visibility: ${props => props.togglevisibility ? 'visible' : 'hidden'};

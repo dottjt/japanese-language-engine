@@ -7,7 +7,7 @@ import {
 
 import {
   ROUTE_TITLE,
-} from '../../util/constants/generalConstants';
+} from '../../util/constants/routeConstants';
 
 import {
   L001,
@@ -78,16 +78,16 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
 
             case ROUTE_TITLE.APP:
               return <Contents/>
-              
+
             case ROUTE_TITLE.WELCOME:
               return <Welcome/>
-              
+
             case ROUTE_TITLE.CONTENTS:
               return <Contents/>
-              
+
             case ROUTE_TITLE.PREREQ:
               return <Prerequisites/>
-              
+
             case L001.LESSON_TITLE:
               return (
                 <LessonTemplate

@@ -9,7 +9,7 @@ import {
 import {
   ROUTE_TITLE,
   ROUTE_PATH,
-} from './util/constants/generalConstants';
+} from './util/constants/routeConstants';
 
 const routes = [
   // Main pages

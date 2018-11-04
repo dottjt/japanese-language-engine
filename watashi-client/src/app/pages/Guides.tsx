@@ -11,7 +11,7 @@ import Helmet from '../components/Helmet';
 
 // using MDX. Oh man, there really is a world of content that is required to build this thing. 
 
-class Blog extends React.Component<{}, {}> {
+class Guides extends React.Component<{}, {}> {
   public render() {
     return (
       <PageWrapper>
@@ -21,22 +21,28 @@ class Blog extends React.Component<{}, {}> {
         />
         <PageHeading>{ROUTE_TITLE.BLOG}</PageHeading>
         
-        <ArticleLink title='How to use Watashi Engine' description='How to use Watashi Engine'/>
-        <ArticleLink title='' description=''/>
+        <Guide title='How to use Watashi Engine' description='How to use Watashi Engine'/>
+        <Guide title='' description=''/>
 
       </PageWrapper>
     );
   }
 }
 
-class ArticleLink extends React.Component<{ title: string, description: string }, {}> {
+class Guide extends React.Component<{ title: string, description: string }, {}> {
   public render() {
     const { title, description } = this.props;
     return (
-      <
-      
+      <PageWrapper>
+        <Helmet
+          title={title}
+          description={description}
+        />
+        <PageHeading>{title}</PageHeading>
+        
+      </PageWrapper>
     );
   }
 }
 
-export default Blog;
+export default Guides;

@@ -4,7 +4,7 @@ import { Link } from 'react-router5';
 import { GET_ALL_WORDS_AND_OPTIONS } from '../../graphql/queries';
 
 import { LESSON_TITLE, lessonPathArray } from '../../util/constants/lessonConstants';
-import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
+import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 
 import { randomArrayElement, getExercisesApollo } from '../../util/functions'
 

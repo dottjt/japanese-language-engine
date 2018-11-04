@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ROUTE_TITLE } from '../../util/constants/generalConstants';
+import { ROUTE_TITLE } from '../../util/constants/routeConstants';
 
 import { Flex, FlexColumn, PageWrapper, List, ListItem, 
   Card,
