@@ -2,22 +2,22 @@
 - Docker build
 - Implement Stripe
 - 0Auth setup (proper) + Users
-- Markdown-to-jsx
-- SSR
-- Amazon SES
-- Verb basics
-- Conjugation exercises / modules
-- Premium permissions on certain features. 
-- Profile page
-- Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
 
 ## TODO BACKLOG 
+- Verb basics
+- Conjugation exercises / modules
+- Premium permissions on certain features.  
+- Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
+- Profile page
+- Amazon SES
+
 - Unit Testing
 - Code splitting
 - Figure out appropiate words to use with different sentence types.
 - Consider separate sidebar and lesson titles.
 - Optimise getExercisesApollo     // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
 - SidebarItem highlights a specific colour if selected. 
+- Markdown-to-jsx https://auth0.com/blog/how-to-build-an-app-with-react-and-mdx/
 
 ## ADDITIONAL APPS
 - Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)
@@ -54,15 +54,6 @@
 - Transitive and Intransitive Verbs
 - Adjectives
 - Where/What/Who/
-
-### Docker things 
-
-- docker swarm init
-- docker stack deploy --compose-file docker-compose.yml haproxy
-
-Docker Swarm - Docker Machine - Docker Engine 
-
-$ docker build -t dottjt/watashi-client-nginx .
 
 ### MISC
 

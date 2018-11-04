@@ -28,3 +28,8 @@ A highly sophisticated Japanese language engine.
 - yarn add --dev react-app-rewired react-app-rewire-styled-components react-snap react
 
 - npm install --save-dev babel-plugin-styled-components typescript-plugin-styled-components
+
+## Other .md files
+
+- NOTES.md
+- DOCKER.md

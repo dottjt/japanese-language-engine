@@ -1,4 +1,3 @@
-# Dockerfile.alpine
 FROM mhart/alpine-node:latest
 
 # Setup yarn
@@ -13,7 +12,7 @@ RUN apk update && apk upgrade && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories
 RUN apk add --no-cache nss@edge
-RUN apk add --no-cache chromium@edge`
+RUN apk add --no-cache chromium@edge
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
