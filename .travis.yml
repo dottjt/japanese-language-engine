@@ -1,6 +1,10 @@
 language: node_js
 sudo: enabled
 
+branches:
+  only:
+    - production
+
 services:
   - docker
 
@@ -15,7 +19,7 @@ before_script:
   - docker pull dottjt/watashi-client || true
 
 script:
-  - docker build --pull --cache-from dottjt/watashi-client --t watashi-client ./watashi-client
+  - docker build --pull --cache-from dottjt/watashi-client -t watashi-client ./watashi-client
   # - docker build -t watashi-client ./watashi-client
   - docker run --rm -d -p 80:80 watashi-client
   - docker ps -a
