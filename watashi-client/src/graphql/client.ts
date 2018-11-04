@@ -6,9 +6,11 @@ import { HttpLink } from 'apollo-link-http';
 import { withClientState } from 'apollo-link-state';
 
 import {
+  __TYPENAME_USER,
   __TYPENAME_CONTROL_PANEL_OPTIONS,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   __TYPENAME_SENTENCE_STATS,
+  __TYPENAME_CONJUGATED_ENGLISH_VERB,
 } from '../util/constants/typeNameConstants';
 
 import { index, sentenceTypes, optionTypes } from './types';
@@ -48,15 +50,7 @@ const defaults = {
     selectedExerciseNumber: 0,
     __typename: __TYPENAME_SENTENCE_STATS,
   },
-  user: {
-    username: null,
-    email: null, 
-    
-    access_token: null,
-    expires_in: null,
-    state: null,
-    id_token: null,
-  }
+  user: null,
 };
 
 const preloadedState = (<any>window).__APOLLO_STATE__;

@@ -73,7 +73,6 @@ class Navbar extends React.Component<{ auth: any }, {}> {
   public render() {
     const { auth } = this.props;
     
-    console.log(auth);
     return (
       <Flex
         justifyContent='space-between'
@@ -94,7 +93,6 @@ class Navbar extends React.Component<{ auth: any }, {}> {
           {!auth.isAuthenticated() && (
             <React.Fragment>
               <Link routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
-              <Link routeName={ROUTE_TITLE.REDIRECT} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGOUT}</Link>
             </React.Fragment>
           )}
           {auth.isAuthenticated() && (

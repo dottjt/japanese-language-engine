@@ -22,8 +22,6 @@ const Index = () => (
     <ApolloProvider client={client}>
       <RouteProvider router={router}>
         <Route>{({ route }) => {
-          console.log('isAuthenticated', auth.isAuthenticated());
-
           if (route !== null) {
             return <App client={client} route={route} auth={auth}/>
           } else {

@@ -16,7 +16,6 @@ const routes = [
   { name: ROUTE_TITLE.REDIRECT, path: ROUTE_PATH.REDIRECT },
   { name: ROUTE_TITLE.PROFILE, path: ROUTE_PATH.PROFILE },
   { name: ROUTE_TITLE.LOGIN, path: ROUTE_PATH.LOGIN },
-  { name: ROUTE_TITLE.LOGOUT, path: ROUTE_PATH.LOGOUT },
   { name: ROUTE_TITLE.SIGN_UP, path: ROUTE_PATH.SIGN_UP },
   { name: ROUTE_TITLE.HOME, path: ROUTE_PATH.HOME },
   { name: ROUTE_TITLE.APP, path: ROUTE_PATH.APP },

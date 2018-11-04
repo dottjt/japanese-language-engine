@@ -160,7 +160,12 @@ export const GET_NOUNS_AND_PRE_OPTIONS = gql`{
 }`
 
 export const GET_ALL_WORDS_AND_OPTIONS = gql`{
-  
+  user @client {
+    accessToken
+    idToken
+    expiresAt
+  }
+
   sentenceDisplayOptions @client {
     toggleSentenceStats
     toggleSentenceOrder

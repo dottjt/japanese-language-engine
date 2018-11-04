@@ -79,6 +79,12 @@ export const optionTypes = `
     question: String
     sentenceEnding: String
   }
+
+  type User {
+    accessToken: String
+    idToken: String
+    expiresAt: String
+  }
 `;
 
 export const index = `
@@ -87,10 +93,12 @@ export const index = `
   }
 
   type Query {
-    exercises?: [ EnglishJapaneseOptionsSentence ]
     sentenceStats: SentenceStats
     sentenceDisplayOptions: SentenceDisplayOptions
-    preOptions?: Options
     nouns: [ Word ]
+
+    exercises?: [ EnglishJapaneseOptionsSentence ]
+    preOptions?: Options
+    user?: User
   }
 `;

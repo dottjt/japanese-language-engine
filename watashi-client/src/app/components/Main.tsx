@@ -37,7 +37,6 @@ import Home from '../pages/Home';
 import Redirect from '../pages/Redirect';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
-import Logout from '../pages/Logout';
 import SignUp from '../pages/SignUp';
 import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
@@ -53,7 +52,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
-          console.log('main', data.exercises);
           switch (route.name) {
             case ROUTE_TITLE.HOME: 
               return <Home client={client} route={route}/>
@@ -62,19 +60,16 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
               return <Blog/>
 
             case ROUTE_TITLE.PROFILE:
-              return <Profile client={client} auth={auth}/>
+              return <Profile user={data.user} client={client} auth={auth}/>
 
             case ROUTE_TITLE.LOGIN:
               return <Login auth={auth}/>
             
-            case ROUTE_TITLE.LOGOUT:
-              return <Logout auth={auth}/>
-
             case ROUTE_TITLE.SIGN_UP:
               return <SignUp auth={auth}/>
 
             case ROUTE_TITLE.REDIRECT:
-              return <Redirect auth={auth}/>
+              return <Redirect client={client} auth={auth}/>
               
             case ROUTE_TITLE.ABOUT:
               return <About/>

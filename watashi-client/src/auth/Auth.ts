@@ -1,10 +1,13 @@
 import * as auth0 from 'auth0-js';
+import client from '../graphql/client';
+import router from '../router';
 
 import {
   ROUTE_TITLE
 } from '../util/constants/generalConstants';
 
-import router from '../router';
+import { __TYPENAME_USER } from '../util/constants/typeNameConstants';
+
 
 export default class Auth {
 
@@ -28,17 +31,15 @@ export default class Auth {
   }
 
   public handleAuthentication() {
-    console.log('you not run?')
     this.auth0.parseHash((err, authResult) => {
       console.log(authResult);
 
-      if (authResult && authResult.accessToken && authResult.idToken) {
+      if (authResult && authResult.accessToken && authResult.idToken) {        
         this.setSession(authResult);
         router.navigate(ROUTE_TITLE.HOME);
       } else if (err) {
         router.navigate(ROUTE_TITLE.HOME);
         console.log(err);
-        alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
   }
@@ -46,9 +47,25 @@ export default class Auth {
   public setSession(authResult: any) {
     // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+
+    client.writeData({ data: { 
+      user: {
+        username: authResult.idTokenPayload.nickname,
+        email: authResult.idTokenPayload.email,
+        thumbUrl: authResult.idTokenPayload.picture,
+        
+        accessToken: authResult.accessToken,
+        idToken: authResult.idToken,
+        expiresAt,
+
+        __typename: __TYPENAME_USER,
+      } 
+    }});
+
     // navigate to the home route
     router.navigate(ROUTE_TITLE.HOME);
   }
@@ -58,6 +75,11 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+
+    client.writeData({ data: { 
+      user: null,
+    }});
+
     // navigate to the home route
     router.navigate(ROUTE_TITLE.HOME);
   }
@@ -69,4 +91,3 @@ export default class Auth {
     return new Date().getTime() < expiresAt;
   }
 }
-

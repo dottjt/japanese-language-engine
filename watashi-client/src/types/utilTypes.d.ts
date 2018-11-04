@@ -1,6 +1,14 @@
 declare namespace Util {
-  // ui types
 
+  export type User = {
+    username: string;
+    email: string;
+    thumbUrl: string;
+    accessToken: string;
+    idToken: string;
+    expiresAt: string;
+  };
+  
   export type WordArrayElement = {
     word: string;
     tag: string;

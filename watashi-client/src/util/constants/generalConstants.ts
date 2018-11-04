@@ -7,7 +7,6 @@ export const ROUTE_TITLE = {
 
   REDIRECT: 'Redirect',
   LOGIN: 'Login',
-  LOGOUT: 'Logout',
   HOME: 'Home',  
   APP: 'Exercises',
   ABOUT: 'About',
@@ -23,7 +22,6 @@ export const ROUTE_PATH = {
 
   REDIRECT: '/callback',
   LOGIN: '/login',
-  LOGOUT: '/logout',
   HOME: '/',
   APP: '/exercises',
   ABOUT: '/about',
@@ -39,7 +37,6 @@ export const ROUTE_DESCRIPTION = {
 
   REDIRECT: '',
   LOGIN: '',
-  LOGOUT: '',
   HOME: '',
   APP: '',
   ABOUT: '',

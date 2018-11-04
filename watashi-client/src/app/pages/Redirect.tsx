@@ -6,12 +6,12 @@ import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalCons
 
 import Helmet from '../components/Helmet';
 
-class Redirect extends React.Component<{ auth: any }, {}> {
+class Redirect extends React.Component<{ client: any, auth: any }, {}> {
   public render() {
     const { auth } = this.props;
 
-    console.log('here')
     auth.handleAuthentication();
+
     return (
       <PageWrapper>
         <Helmet
