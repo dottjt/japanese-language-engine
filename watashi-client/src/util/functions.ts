@@ -4,9 +4,7 @@ import {
   LESSON_MODIFIERS,
 } from './constants/lessonConstants';
 
-import { 
-  ROUTE_PATH,
-} from './constants/generalConstants';
+import { ROUTE_PATH } from './constants/routeConstants';
 
 import {
   GET_NOUNS_AND_PRE_OPTIONS,

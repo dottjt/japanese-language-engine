@@ -1,4 +1,4 @@
-## On VPS
+****## On VPS
 - sudo curl -sS https://get.docker.com/ | sh
 
 To test:
@@ -28,8 +28,9 @@ This is where we have to do all the
 - docker ps
 
 ## Client
-- docker build -f ./infrastructure/docker/DockerfileClient -t watashi-client ./watashi-client
-- docker run -it -p 5000 watashi-client
+- docker build -t watashi-client ./watashi-client
+- docker run --rm -d -p 80:80 watashi-client
+<!-- - docker run -it -p 5000 watashi-client -->
 
 ## Nginx
 - docker build -f ./infrastructure/docker/DockerfileNginx -t watashi-nginx ./watashi-nginx

@@ -7,6 +7,8 @@ import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConsta
 
 import Helmet from '../components/Helmet';
 
+// NOTE: Maybe the idea is to load all the markdownfiles here (at least the names) and then load the appropiate one based on the route. 
+
 class Article extends React.Component<{}, {}> {
   public render() {
     // const { mdx } = this.props;
@@ -18,9 +20,7 @@ class Article extends React.Component<{}, {}> {
         />
         <PageHeading>{ROUTE_TITLE.BLOG}</PageHeading>
         
-        <Article title='How to use Watashi Engine' description='How to use Watashi Engine'/>
-        <Article title='' description=''/>
-
+        
       </PageWrapper>
     );
   }

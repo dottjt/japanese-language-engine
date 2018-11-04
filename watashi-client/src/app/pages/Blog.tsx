@@ -31,10 +31,9 @@ class Blog extends React.Component<{}, {}> {
 
 class ArticleLink extends React.Component<{ title: string, description: string }, {}> {
   public render() {
-    const { title, description } = this.props;
+    // const { title, description } = this.props;
     return (
-      <
-      
+      <div></div>
     );
   }
 }

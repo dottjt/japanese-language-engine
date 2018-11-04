@@ -8,8 +8,8 @@ import Helmet from '../components/Helmet';
 
 class Login extends React.Component<PropTypes.ILoginProps, {}> {
   public render() {
-    const { auth } = this.props;
-    auth.login();
+    // const { auth } = this.props;
+    // auth.login();
 
     return (
       <PageWrapper>

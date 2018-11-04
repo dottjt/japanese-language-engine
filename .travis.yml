@@ -3,3 +3,31 @@ sudo: enabled
 
 services:
   - docker
+
+env:
+  global:
+  - secret: 4JtQSj0ehCD6B5BwyW6diVcaQA2c7bovI23GyeTTTgfkuKRkzDcoY51ZsMDdsflJ94zV7TEIS31eCeq4awftawft2IBYdHZeVZQlEQlUOfwD4B2XrAYXFIq1PAEiccakeskeriatwfuyoawfntarosenfwyoudmcUCykGm4bUZ3CaW6AxrIMFzuAYjA98VIz6YmYTmM0rst4gdh3y24rstrst
+  - DOCKER_USERNAME=dottjt
+  - secure: YydLAtHHczrVrZi7Pihf29ibPpLasX2pKXFVjS3alq30hIFjCclRB2KXXZdWFXuHnZY2xc8m6cRG/3bMpwM+RoOvWEPQfMXXPSj4Porez/iPjJ2bhlK48PVu5mB50iFt7QqF2IpV9HoC6yYIPvKzjTPCfrq9WhIyCxUiAi+PDiNGaKjeE8EvxgkAhIyUVjPAdyCoP1as8BezBzWWsIbOx2Ko1zBc4F3cAuo/McTUBFZCXZktlAVqov+6SwVNvsgcIINlyQ/BwJRum4IX+wCtQUkI6JTi03RcnaSv+z/aQsjZXf0B+gsvRKDFJifEyYW5VpZeb8Ab4zRjlYLyAtPBDqKpRydrnAeNNxUWVrr3x2NThnGd4YM0E7SJ+RCi4Cje2T/AOTlYkM+YCyyvMBlPdMBWCeIeC7nLUgcJBSmo89rskQBuTDEtXyVpvpXdpE4yCy6ipX1CysxzC1QrmeopYNYxtGAcl34RQXXiHZia09WR0kDX42394FJqvIK3gJWE2hk0s4OaDyTCovLCINDFW/2fPaSMXCAhKYYa63wecFFylyTYCuquUU0mxt9QejGrx0Ty7BYqu754sJdBwmVEu3yGb2jyMGE85dJWcqlkMDlFd6zAXTTnz3VyoSUoWBamAjRy/IHUaDEgPJYlxky0MAHZZbmRAoNutnDieU6Dpt8=
+# travis encrypt DOCKER_PASSWORD="secretvalue" 
+
+before_script:
+  - docker pull dottjt/watashi-client || true
+
+script:
+  - docker build --pull --cache-from dottjt/watashi-client --t watashi-client ./watashi-client
+  # - docker build -t watashi-client ./watashi-client
+  - docker run --rm -d -p 80:80 watashi-client
+  - docker ps -a
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+
+deploy:
+  provider: script
+  script: docker push dottjt/watashi-client
+  on:
+    branch: prod

@@ -44,34 +44,14 @@ WORKDIR /usr/src/app/client
 COPY . /usr/src/app/client
 
 RUN yarn build
-# Expose port
-EXPOSE 5000
 
-CMD [ "http-server", "./build", "-g", "-p", "5000", "-P" ]
+FROM nginx:alpine
 
+# COPY /usr/src/app/client/build /var/www
+COPY ./build /var/www
+# COPY --from=build-deps /usr/src/app/client/build /var/www
 
-# FROM node:10.12.0-alpine as build-deps
-
-# ENV NODE_ENV=production
-# ENV NODE_PATH=/usr/src/app/client/node_modules
-# ENV PATH=/usr/src/app/client/node_modules/.bin:$PATH
-
-# WORKDIR /usr/src/app/client
-# COPY package.json yarn.lock /tmp/client/
-# RUN cd /tmp/client && yarn
-# RUN cp -a /tmp/client/node_modules /usr/src/app/client
-
-# COPY . .
-
-# RUN yarn build
-
-# FROM nginx:1.13.9-alpine
-# COPY --from=build-deps /usr/src/app/client/build /usr/share/nginx/html
-
-# EXPOSE 80
-# CMD ["nginx", "-g", "daemon off;"]
-
-
-# # docker image build -t dottjt:watashi-client-nginx .    // probably need an f function. 
-# # docker run -it -p 80:80 --rm dottjt:watashi-client-nginx
+COPY ./nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
+ENTRYPOINT ["nginx","-g","daemon off;"]
 

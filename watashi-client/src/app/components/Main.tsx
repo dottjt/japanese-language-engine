@@ -36,7 +36,7 @@ import LessonTemplate from '../pages/LessonTemplate';
 import Home from '../pages/Home';
 import Redirect from '../pages/Redirect';
 import Profile from '../pages/Profile';
-import Login from '../pages/Login';
+// import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
@@ -64,8 +64,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             case ROUTE_TITLE.PROFILE:
               return <Profile user={data.user} client={client} auth={auth}/>
 
-            case ROUTE_TITLE.LOGIN:
-              return <Login auth={auth}/>
+            // case ROUTE_TITLE.LOGIN:
+            //   return <Login auth={auth}/>
             
             case ROUTE_TITLE.SIGN_UP:
               return <SignUp auth={auth}/>
