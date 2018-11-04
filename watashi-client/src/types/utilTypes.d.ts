@@ -4,6 +4,7 @@ declare namespace Util {
     username: string;
     email: string;
     thumbUrl: string;
+    
     accessToken: string;
     idToken: string;
     expiresAt: string;

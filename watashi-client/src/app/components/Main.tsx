@@ -49,9 +49,11 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
   public render() {
     const { route, auth } = this.props; 
 
+    const isAuthenticated = auth.isAuthenticated();
     return (
       <Query query={GET_ALL_WORDS_AND_OPTIONS}>
         {({ data, client }) => {
+          console.log(data.user);
           switch (route.name) {
             case ROUTE_TITLE.HOME: 
               return <Home client={client} route={route}/>
@@ -103,6 +105,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L002.LESSON_TITLE:
@@ -118,6 +121,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L003.LESSON_TITLE:
@@ -133,6 +137,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L004.LESSON_TITLE:
@@ -148,6 +153,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L005.LESSON_TITLE:
@@ -163,6 +169,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L006.LESSON_TITLE:
@@ -178,6 +185,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               ); 
             case L007.LESSON_TITLE:
@@ -193,6 +201,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L008.LESSON_TITLE:
@@ -208,6 +217,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L009.LESSON_TITLE:
@@ -223,6 +233,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L010.LESSON_TITLE:
@@ -238,6 +249,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L011.LESSON_TITLE:
@@ -253,6 +265,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L012.LESSON_TITLE:
@@ -268,6 +281,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L013.LESSON_TITLE:
@@ -283,6 +297,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L014.LESSON_TITLE:
@@ -298,6 +313,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L015.LESSON_TITLE:
@@ -313,6 +329,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L016.LESSON_TITLE:
@@ -328,6 +345,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L017.LESSON_TITLE:
@@ -343,6 +361,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L018.LESSON_TITLE:
@@ -358,6 +377,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L019.LESSON_TITLE:
@@ -373,6 +393,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             case L020.LESSON_TITLE:
@@ -388,6 +409,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   sentenceStats={data.sentenceStats}
                   client={client}
                   path={route.path}                  
+                  isAuthenticated={isAuthenticated}
                 />
               );
             default:

@@ -91,6 +91,17 @@ const createRes = (resourceType: string, urlString: string): Util.Resource => {
   };
 };
 
+export const LESSON_SECTIONS = {
+  S00: '00 - Introduction',
+  S01: '01 - Noun Conjugation Basics',
+  S02: '02 - Noun Basics',
+  S03: '03 - Verb Conjugation Basics',
+  S04: '04 - Verb Basics',
+  S05: '05 - From / Until statements',
+  S06: '06 - Modifier Basics',
+  // S07: '07',
+}
+
 export const LESSON_PATH = {  
   L001: '/japanese-noun-congjuations',
   L002: '/japanese-wa-and-mo-noun-statements',

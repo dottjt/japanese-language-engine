@@ -59,6 +59,7 @@ declare module PropTypes {
     sentenceStats: Util.SentenceStats,
     client: any,
     path: string,
+    isAuthenticated: string,
   }
   
   // Sentence props

@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { FlexColumn, PageWrapper } from '../atoms/LayoutStyles';
+import { FlexColumn, Flex, PageWrapper } from '../atoms/LayoutStyles';
 import { PageHeading, Heading } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
@@ -14,7 +14,18 @@ import ExplanationModule from '../modules/ExplanationModule';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { title, description, client, path, sentenceDisplayOptions, preOptions, sentenceStats, exercises, explanation, resources } = this.props; 
+    const { 
+      title,
+      description,
+      client,
+      path,
+      sentenceDisplayOptions,
+      preOptions,
+      sentenceStats,
+      exercises,
+      explanation,
+      resources,        
+      isAuthenticated } = this.props; 
 
     return (
       <PageWrapper>
@@ -33,12 +44,18 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           <FlexColumn mb={2}><ExplanationModule explanation={explanation}/></FlexColumn>
 
           <Heading is='h2' fontSize={4} mt={4} mb={4}>Refined Sentence Options</Heading>
-          <FlexColumn mb={2}><SentenceControlPanel
-            sentenceDisplayOptions={this.props.sentenceDisplayOptions}
-            preOptions={preOptions}
-            client={client}
-            path={path}
-          /></FlexColumn>
+          
+          <FlexColumn mb={2}>
+            {!isAuthenticated && 
+              <Flex bgColor={'black'}>This is a premium feature. Sorry!</Flex>
+            }
+            <SentenceControlPanel
+              sentenceDisplayOptions={this.props.sentenceDisplayOptions}
+              preOptions={preOptions}
+              client={client}
+              path={path}
+            />
+          </FlexColumn>
 
           <Heading is='h2' fontSize={4} mt={4} mb={4}>Sentence Analysis Options</Heading>
           <FlexColumn mb={2}><SentenceOptions

@@ -10,16 +10,16 @@ import Helmet from '../components/Helmet';
 class Profile extends React.Component<{ client: any, auth: any, user: Util.User }, { usernameInput: string, passwordInput: string }> {
   constructor(props) {
     super(props);
-
+    console.log('profile', props);
     this.state = {
-      usernameInput: props.user.username,
+      usernameInput: '',
       passwordInput: '',
     };
   }
 
   public render() {
     const { auth } = this.props;
-
+    
     return (
       <PageWrapper>
         <Helmet
@@ -29,17 +29,17 @@ class Profile extends React.Component<{ client: any, auth: any, user: Util.User 
         <PageHeading>Profile</PageHeading>
 
         <Heading is='h3'>Username:</Heading>
-        <input value={this.state.usernameInput} onChange={this.changeUsernameField}/>
+        {/* <input value={user.username} onChange={this.changeUsernameField}/> */}
 
         <Text>Change Password</Text>
-        <Heading is='h3'>Username:</Heading>
-        <input value={this.state.passwordInput} onChange={this.changePasswordField}/>
+        <Heading is='h3'>Password:</Heading>
+        {/* <input value={this.state.passwordInput} onChange={this.changePasswordField}/> */}
 
         <Text>Update Subscription</Text>
 
         <Button onClick={this.saveProfileChanges}> </Button>
-
-        <Link onClick={auth.logout()}routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
+       
+        <Link onClick={auth.logout()}routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>Logout</Link>
 
       </PageWrapper>
     );
@@ -55,17 +55,17 @@ class Profile extends React.Component<{ client: any, auth: any, user: Util.User 
     })
   }
   
-  private changePasswordField = (event) => {
-    this.setState({
-      passwordInput: event.target.value,
-    });
-  }
+  // private changePasswordField = (event) => {
+  //   this.setState({
+  //     passwordInput: event.target.value,
+  //   });
+  // }
 
-  private changeUsernameField = (event) => {
-    this.setState({
-      usernameInput: event.target.value,
-    });
-  }
+  // private changeUsernameField = (event) => {
+  //   this.setState({
+  //     usernameInput: event.target.value,
+  //   });
+  // }
 }
 
 export default Profile;

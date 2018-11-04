@@ -13,6 +13,7 @@ import {
 
 import {
   LESSON_TITLE,
+  LESSON_SECTIONS,
 } from '../../util/constants/lessonConstants';
 
 const Item = styled(Flex)`
@@ -46,8 +47,6 @@ const SidebarWrapper = styled(FlexColumn)`
   width: 282px;
   min-width: 282px;
   font-size: ${themeGet(5)};
-  /* background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(66,9,121,1) 0%, rgba(0,212,255,1) 100%); */
 `;
 
 const BoxScroll = styled(Box)`
@@ -64,19 +63,19 @@ class Sidebar extends React.Component<{}, {}> {
       <SidebarWrapper>
         <BoxScroll>
           <FlexColumn>
-            <HeadingItem>00 - Introduction</HeadingItem>
+            <HeadingItem>{LESSON_SECTIONS.S00}</HeadingItem>
             <SidebarItem routeName={ROUTE_TITLE.WELCOME} routeOptions={{reload: true}}>{ROUTE_TITLE.WELCOME}</SidebarItem>
             <SidebarItem routeName={ROUTE_TITLE.CONTENTS} routeOptions={{reload: true}}>{ROUTE_TITLE.CONTENTS}</SidebarItem>
             <SidebarItem routeName={ROUTE_TITLE.PREREQ} routeOptions={{reload: true}}>{ROUTE_TITLE.PREREQ}</SidebarItem>
           </FlexColumn>
 
           <FlexColumn>
-            <HeadingItem>01 - Noun Conjugation Basics</HeadingItem>
+            <HeadingItem>{LESSON_SECTIONS.S01}</HeadingItem>
             <SidebarItem routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>{LESSON_TITLE.L001}</SidebarItem>
           </FlexColumn>
 
           <FlexColumn>
-            <HeadingItem>02 - Noun Basics</HeadingItem>
+            <HeadingItem>{LESSON_SECTIONS.S02}</HeadingItem>
             <SidebarItem routeName={LESSON_TITLE.L002} routeOptions={{reload: true}}>{LESSON_TITLE.L002}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L003} routeOptions={{reload: true}}>{LESSON_TITLE.L003}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L004} routeOptions={{reload: true}}>{LESSON_TITLE.L004}</SidebarItem>
@@ -84,14 +83,14 @@ class Sidebar extends React.Component<{}, {}> {
           </FlexColumn>
 
           <FlexColumn>
-            <HeadingItem>03 - Verb Conjugation Basics</HeadingItem>
+            <HeadingItem>{LESSON_SECTIONS.S03}</HeadingItem>
             <SidebarItem routeName={LESSON_TITLE.L006} routeOptions={{reload: true}}>{LESSON_TITLE.L006}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L007} routeOptions={{reload: true}}>{LESSON_TITLE.L007}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L008} routeOptions={{reload: true}}>{LESSON_TITLE.L008}</SidebarItem>
           </FlexColumn>
 
           <FlexColumn>
-            <HeadingItem>04 - Verb Basics</HeadingItem>
+            <HeadingItem>{LESSON_SECTIONS.S04}</HeadingItem>
             <SidebarItem routeName={LESSON_TITLE.L009} routeOptions={{reload: true}}>{LESSON_TITLE.L009}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L010} routeOptions={{reload: true}}>{LESSON_TITLE.L010}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L011} routeOptions={{reload: true}}>{LESSON_TITLE.L011}</SidebarItem>
@@ -102,13 +101,13 @@ class Sidebar extends React.Component<{}, {}> {
           </FlexColumn>
 
           {/* <FlexColumn>
-            <HeadingItem>05 - From / Until statements</HeadingItem>
+            <HeadingItem>{LESSON_SECTIONS.S05}</HeadingItem>
             <SidebarItem routeName={LESSON_TITLE.L016} routeOptions={{reload: true}}>{LESSON_TITLE.L016}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L017} routeOptions={{reload: true}}>{LESSON_TITLE.L017}</SidebarItem>
           </FlexColumn>
 
           <FlexColumn>
-            <HeadingItem>06 - Modifier Basics</HeadingItem>
+            <HeadingItem>{LESSON_SECTIONS.S06}</HeadingItem>
             <SidebarItem routeName={LESSON_TITLE.L018} routeOptions={{reload: true}}>{LESSON_TITLE.L018}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L019} routeOptions={{reload: true}}>{LESSON_TITLE.L019}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L020} routeOptions={{reload: true}}>{LESSON_TITLE.L020}</SidebarItem>

@@ -81,6 +81,9 @@ export const optionTypes = `
   }
 
   type User {
+    username: String
+    email: String
+    thumbUrl: String
     accessToken: String
     idToken: String
     expiresAt: String
