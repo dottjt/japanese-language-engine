@@ -30,4 +30,4 @@ deploy:
   provider: script
   script: docker push dottjt/watashi-client
   on:
-    branch: prod
+    branch: production
