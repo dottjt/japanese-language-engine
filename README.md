@@ -20,31 +20,31 @@ A highly sophisticated Japanese language engine.
 - CI: buildkite
 - Infrastructure: terraform, docker, AWS
 
-## TODO
-- Unit Testing
+## MVP REQUIREMENTS
+- Docker build
 - Implement Stripe
-- 0Auth setup (proper)
+- 0Auth setup (proper) + Users
 - Markdown-to-jsx
-- SSR and code splitting
-- Link hover states with the actual words.
-- Figure out appropiate words to use with different sentence types.
-- Break down sentence structure even more so that it's ever-more accurate.
+- SSR
 - Amazon SES
-- Save the Sentence Stats transformations inside the apollo cache, rather than dynamically generate it.
-- Consider separate sidebar and lesson titles.
-- Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)
-- Write an article on the instanteous composition method.
-- Interactive Kanji Chart
-- Interactive Katakana Chart
-- In each exercise, show which parameters have been set for the exercises, and demonstrate that you can change them with a premium subscription.
-- You could think of it as a 'did do' relationship.
-- Instead of navbar fixed, you have 
-- Control Panel
+- Verb basics
+- Conjugation exercises / modules
+- Premium permissions on certain features. 
+- Profile page
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
-- Instead of controlPanelOptions, perhaps there should just be an options object which is directly manipulated. 
+
+## TODO BACKLOG 
+- Unit Testing
+- Code splitting
+- Figure out appropiate words to use with different sentence types.
+- Consider separate sidebar and lesson titles.
 - Optimise getExercisesApollo     // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
 - SidebarItem highlights a specific colour if selected. 
 
+## ADDITIONAL APPS
+- Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)
+- Interactive Kanji Chart
+- Interactive Katakana Chart
 
 ## Blog Ideas
 

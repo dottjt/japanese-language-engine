@@ -101,7 +101,7 @@ class Sidebar extends React.Component<{}, {}> {
             <SidebarItem routeName={LESSON_TITLE.L015} routeOptions={{reload: true}}>{LESSON_TITLE.L015}</SidebarItem>
           </FlexColumn>
 
-          <FlexColumn>
+          {/* <FlexColumn>
             <HeadingItem>05 - From / Until statements</HeadingItem>
             <SidebarItem routeName={LESSON_TITLE.L016} routeOptions={{reload: true}}>{LESSON_TITLE.L016}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L017} routeOptions={{reload: true}}>{LESSON_TITLE.L017}</SidebarItem>
@@ -112,7 +112,7 @@ class Sidebar extends React.Component<{}, {}> {
             <SidebarItem routeName={LESSON_TITLE.L018} routeOptions={{reload: true}}>{LESSON_TITLE.L018}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L019} routeOptions={{reload: true}}>{LESSON_TITLE.L019}</SidebarItem>
             <SidebarItem routeName={LESSON_TITLE.L020} routeOptions={{reload: true}}>{LESSON_TITLE.L020}</SidebarItem>
-          </FlexColumn>
+          </FlexColumn> */}
         </BoxScroll>
       </SidebarWrapper>
     );
