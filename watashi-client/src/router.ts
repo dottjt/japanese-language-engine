@@ -23,9 +23,9 @@ const routes = [
   { name: ROUTE_TITLE.ABOUT, path: ROUTE_PATH.ABOUT },
 
   // Other lesson pages
-  { name: ROUTE_TITLE.WELCOME, path: `${ROUTE_PATH.APP}${ROUTE_PATH.WELCOME}` },
-  { name: ROUTE_TITLE.CONTENTS, path: `${ROUTE_PATH.APP}${ROUTE_PATH.CONTENTS}` },
-  { name: ROUTE_TITLE.PREREQ, path: `${ROUTE_PATH.APP}${ROUTE_PATH.PREREQ}` },
+  { name: ROUTE_TITLE.WELCOME, path: `${ROUTE_PATH.WELCOME}` },
+  { name: ROUTE_TITLE.CONTENTS, path: `${ROUTE_PATH.CONTENTS}` },
+  { name: ROUTE_TITLE.PREREQ, path: `${ROUTE_PATH.PREREQ}` },
   
   // Noun - Basic
   { name: LESSON_TITLE.L001, path: `${ROUTE_PATH.APP}${LESSON_PATH.L001}` },

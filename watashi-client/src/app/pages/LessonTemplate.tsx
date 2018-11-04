@@ -25,7 +25,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
       exercises,
       explanation,
       resources,        
-      isAuthenticated } = this.props; 
+      isAuthenticated } = this.props;
 
     return (
       <PageWrapper>

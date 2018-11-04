@@ -29,8 +29,7 @@ class WelcomePage extends React.Component<{}, {}> {
 
         <Heading fontSize={5} mb={4} mt={3}> Free vs Premium differences</Heading>
         <FlexColumn width={600} mb={4}>
-          <Text>Paying for a Watashi Engine subscription allows you greater access to the engine and the grammar exercises available on this website.</Text>
-          <Text>In particular, it allows you full access to Watashi Engine in order to create your own exercises.</Text>
+          <Text>Essentially, paying for a Watashi Engine subscription allows you greater access to the engine and the grammar exercises available on this website.</Text>
         </FlexColumn>
 
       </PageWrapper> 

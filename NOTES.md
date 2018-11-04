@@ -1,9 +1,9 @@
 ## MVP REQUIREMENTS
 - Docker build
-- Implement Stripe
 - 0Auth setup (proper) + Users
+- Get a 
 
-## TODO BACKLOG 
+## TODO BACKLOG
 - Verb basics
 - Conjugation exercises / modules
 - Premium permissions on certain features.  
@@ -18,6 +18,7 @@
 - Optimise getExercisesApollo     // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
 - SidebarItem highlights a specific colour if selected. 
 - Markdown-to-jsx https://auth0.com/blog/how-to-build-an-app-with-react-and-mdx/
+- Implement Stripe
 
 ## ADDITIONAL APPS
 - Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)
