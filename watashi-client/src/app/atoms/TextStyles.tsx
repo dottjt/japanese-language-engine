@@ -18,6 +18,7 @@ export const Text = system(
   'textAlign',
   'lineHeight',
   'fontWeight',
+  'fontSize',
   'letterSpacing',
 );
 Text.displayName = 'Text';
@@ -35,6 +36,7 @@ export const Heading = system(
   'color',
   'textAlign',
   'lineHeight',
+  'fontSize',
   'fontWeight',
   'letterSpacing',
 );

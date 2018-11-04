@@ -1,7 +1,7 @@
 ## MVP REQUIREMENTS
 - Docker build
 - 0Auth setup (proper) + Users
-- Get a 
+- Travis CI
 
 ## TODO BACKLOG
 - Verb basics
@@ -31,7 +31,7 @@
 - Understanding the technical details behind Watashi Engine.
 - What is the instanteous composition method.
 - Understanding the instantaeous composition method.
-
+- How to master N1 JLPT in 2 months
 
 ## Notes: 
 

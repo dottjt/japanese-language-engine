@@ -72,26 +72,22 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
 
             case ROUTE_TITLE.REDIRECT:
               return <Redirect client={client} auth={auth}/>
-              
+            
             case ROUTE_TITLE.ABOUT:
               return <About/>
 
             case ROUTE_TITLE.APP:
-              return (
-                <Contents/>
-              );
+              return <Contents/>
+              
             case ROUTE_TITLE.WELCOME:
-              return (
-                <Welcome/>
-              );
+              return <Welcome/>
+              
             case ROUTE_TITLE.CONTENTS:
-              return (
-                <Contents/>
-              );
+              return <Contents/>
+              
             case ROUTE_TITLE.PREREQ:
-              return (
-                <Prerequisites/>
-              );
+              return <Prerequisites/>
+              
             case L001.LESSON_TITLE:
               return (
                 <LessonTemplate
@@ -106,6 +102,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L002.LESSON_TITLE:
@@ -122,6 +119,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L003.LESSON_TITLE:
@@ -138,6 +136,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L004.LESSON_TITLE:
@@ -154,6 +153,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L005.LESSON_TITLE:
@@ -170,6 +170,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L006.LESSON_TITLE:
@@ -186,6 +187,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               ); 
             case L007.LESSON_TITLE:
@@ -202,6 +204,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L008.LESSON_TITLE:
@@ -218,6 +221,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L009.LESSON_TITLE:
@@ -234,6 +238,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L010.LESSON_TITLE:
@@ -250,6 +255,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L011.LESSON_TITLE:
@@ -266,6 +272,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L012.LESSON_TITLE:
@@ -282,6 +289,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L013.LESSON_TITLE:
@@ -298,6 +306,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L014.LESSON_TITLE:
@@ -314,6 +323,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
             case L015.LESSON_TITLE:
@@ -330,8 +340,10 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={false}
                 />
               );
+
             case L016.LESSON_TITLE:
               return (
                 <LessonTemplate
@@ -346,7 +358,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
-                />
+                  premiumLesson={true}
+                  />
               );
             case L017.LESSON_TITLE:
               return (
@@ -362,6 +375,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={true}
                 />
               );
             case L018.LESSON_TITLE:
@@ -378,6 +392,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={true}
                 />
               );
             case L019.LESSON_TITLE:
@@ -394,6 +409,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={true}
                 />
               );
             case L020.LESSON_TITLE:
@@ -410,6 +426,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
                   client={client}
                   path={route.path}                  
                   isAuthenticated={isAuthenticated}
+                  premiumLesson={true}
                 />
               );
             default:

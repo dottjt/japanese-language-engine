@@ -91,6 +91,16 @@ const createRes = (resourceType: string, urlString: string): Util.Resource => {
   };
 };
 
+export const LESSON_SECTIONS_PREMIUM = {
+  S00: false,
+  S01: false,
+  S02: false,
+  S03: false,
+  S04: false,
+  S05: true,
+  S06: true,
+};
+
 export const LESSON_SECTIONS = {
   S00: '00 - Introduction',
   S01: '01 - Noun Conjugation Basics',
@@ -119,6 +129,7 @@ export const LESSON_PATH = {
   L013: '/japanese-ni-vs-de-verb-statements',
   L014: '/japanese-de-vs-wo-verb-statements',
   L015: '/japanese-wo-vs-ni-vs-de-verb-statements',
+
 
   L016: '/japanese-location-from',
   L017: '/japanese-location-up-until', // NOTE: Will probably want a kara-made combination. Will have to introduce clause types. 

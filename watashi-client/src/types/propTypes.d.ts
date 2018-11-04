@@ -60,6 +60,7 @@ declare module PropTypes {
     client: any,
     path: string,
     isAuthenticated: string,
+    premiumLesson: boolean,
   }
   
   // Sentence props

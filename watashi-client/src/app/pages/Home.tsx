@@ -14,10 +14,7 @@ import Helmet from '../components/Helmet';
 
 import { PageHeading, Heading, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
-import { Flex, FlexColumn, PageWrapper, List, ListItem, 
-  Card,
-  PricingButtonStyles,
- } from '../atoms/LayoutStyles';
+import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
 
 
 class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }> {
@@ -79,44 +76,6 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 </List>
               </FlexColumn>
 
-
-              <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>Pricing</Heading>
-              </FlexColumn>
-
-              <Flex justifyContent='space-around' mb={4}>
-
-                <Card borderColor="blacks.3">
-                  <Heading is='h3'>Free</Heading>
-                  <Heading is='h2' fontSize={4}>$0</Heading>
-                  <List>
-                    <ListItem mb={2}>Limited access to basic grammar exercises.</ListItem>
-                  </List>
-                  <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
-                </Card>
-
-                <Card borderColor="blacks.3">
-                  <Heading is='h3'>Monthly</Heading>
-                  <Heading is='h2' fontSize={4}>$7.95</Heading>
-                  <List>
-                    <ListItem mb={2}>Full access to the Watashi Engine.</ListItem>
-                    <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
-                  </List>
-                  <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
-                </Card>
-
-                <Card borderColor="blacks.3">
-                  <Heading is='h3'>Yearly</Heading>
-                  <Heading is='h2' fontSize={4}>$59.95</Heading>
-                  <List>
-                    <ListItem mb={2}>Full access to the Watashi Engine at a discounted Heading.</ListItem>
-                    <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
-                  </List>
-                  <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</Link>
-                </Card>
-
-              </Flex>
-
               <FlexColumn width={600} mb={5}>
                 <Heading is='h2' fontSize={4}>Strong use cases</Heading>
                 <List>
@@ -161,7 +120,6 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
   private randomiseExerices = (client: any): void => {
     getExercisesApollo(client, lessonPathArray[randomArrayElement(lessonPathArray.length)], 1);
   };
-
 };
 
 export default Home;

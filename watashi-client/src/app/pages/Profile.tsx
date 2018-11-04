@@ -39,7 +39,7 @@ class Profile extends React.Component<{ client: any, auth: any, user: Util.User 
 
         <Button onClick={this.saveProfileChanges}> </Button>
        
-        <Link onClick={auth.logout()}routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>Logout</Link>
+        <Link onClick={auth.logout}routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>Logout</Link>
 
       </PageWrapper>
     );
