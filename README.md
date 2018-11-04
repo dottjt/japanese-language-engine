@@ -43,11 +43,15 @@ A highly sophisticated Japanese language engine.
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
 - Instead of controlPanelOptions, perhaps there should just be an options object which is directly manipulated. 
 - Optimise getExercisesApollo     // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
+- SidebarItem highlights a specific colour if selected. 
 
 
 ## Blog Ideas
 
 - The perfect Watashi Engine Workout.
+- Understanding the technical details behind Watashi Engine.
+- What is the instanteous composition method.
+- Understanding the instantaeous composition method.
 
 ## Build Steps 
 

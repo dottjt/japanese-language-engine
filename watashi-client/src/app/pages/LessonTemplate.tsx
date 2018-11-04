@@ -29,7 +29,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           <Heading is='h2' fontSize={4} mt={4} mb={4}>Grammatical Resources</Heading>
           <FlexColumn mb={2}><ResourceModule resources={resources}/></FlexColumn>
 
-          <Heading is='h2' fontSize={4} mt={4} mb={4}>Additional Notes</Heading>
+          <Heading is='h2' fontSize={4} mt={4} mb={4}>Grammatical Notes</Heading>
           <FlexColumn mb={2}><ExplanationModule explanation={explanation}/></FlexColumn>
 
           <Heading is='h2' fontSize={4} mt={4} mb={4}>Refined Sentence Options</Heading>

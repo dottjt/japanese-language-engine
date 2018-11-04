@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Flex, FlexColumn } from '../../atoms/LayoutStyles';
+import { Flex } from '../../atoms/LayoutStyles';
 import { Button } from '../../atoms/ClickableStyles';
 import { Heading } from '../../atoms/TextStyles';
 
