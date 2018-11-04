@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { Flex } from '../../atoms/LayoutStyles';
 import { Button } from '../../atoms/ClickableStyles';
 
 import {
@@ -17,20 +16,20 @@ class SentenceOptions extends React.Component<PropTypes.ISentenceOptionsProps, {
   public render() {
     const { client, path, sentenceDisplayOptions } = this.props;
     return (
-      <Flex>
+      <React.Fragment>
         <Button p={1} onClick={() => this.toggleSentenceStats(client, sentenceDisplayOptions.toggleSentenceStats)}>
-          Toggle sentence stats
+          Toggle Sentence Analysis
         </Button>
         <Button p={1} onClick={() => this.randomiseExerices(client, path)}>
-          Randomise exercises
+          Regenerate Exercises
         </Button>
         <Button p={1} onClick={() => this.toggleSentenceOrder(client, sentenceDisplayOptions.toggleSentenceOrder)}>
-          Toggle Language Order
+          English/Japanese Order
         </Button>
         <Button p={1} onClick={() => this.toggleSentenceHide(client, sentenceDisplayOptions.toggleSentenceHide)}>
-          Toggle Sentence Hide
+          Hide/Reveal Sentence
         </Button>
-      </Flex>
+      </React.Fragment>
     );
   }
   private toggleSentenceHide = (client: any, toggleSentenceHide: boolean): void => {

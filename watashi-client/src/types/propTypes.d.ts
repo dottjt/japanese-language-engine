@@ -27,7 +27,7 @@ declare module PropTypes {
   
   export type ISentenceControlPanelProps = {
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
-    preOptions: Util.PreOptions,
+    preOptions: Util.Options,
     client: any, // NOTE: Will need to get proper type. 
     path: string,
   }
@@ -41,6 +41,7 @@ declare module PropTypes {
 
   export type IButtonsProps = {
     title: string,
+    type: string,
     values: Util.IButtonValues[],
     client: any,
     onClickCallback: (client: any, n: string) => void,
@@ -53,7 +54,7 @@ declare module PropTypes {
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
     explanation: string[], 
-    preOptions: Util.PreOptions,
+    preOptions: Util.Options,
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
     client: any,

@@ -113,6 +113,7 @@ export const GET_EXERCISES = gql`{
     options @client {
       politeness
       variation
+      selectedVariation
       polarity
       tense
       gender
@@ -130,7 +131,7 @@ export const GET_EXERCISES = gql`{
   }
 }`;
 
-export const GET_NOUNS_AND_CONTROL_PANEL_OPTIONS = gql`{
+export const GET_NOUNS_AND_PRE_OPTIONS = gql`{
   nouns @client {
     japanese @client {
       kanji
@@ -148,14 +149,13 @@ export const GET_NOUNS_AND_CONTROL_PANEL_OPTIONS = gql`{
     }
   }
 
-  controlPanelOptions @client {
-    controlPanelPoliteness
-    controlPanelVariation
-    controlPanelPolarity
-    controlPanelTense
-    controlPanelGender
-    controlPanelQuestion
-    controlPanelSentenceEnding
+  preOptions @client {
+    politeness
+    variation
+    polarity
+    tense
+    gender
+    question
   }
 }`
 
@@ -179,6 +179,15 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
     selectedExerciseNumber
   }
 
+  preOptions @client {
+    politeness
+    variation
+    polarity
+    tense
+    gender
+    question
+  }
+  
   nouns @client {
     japanese @client {
       kanji
@@ -274,6 +283,7 @@ export const GET_ALL_WORDS_AND_OPTIONS = gql`{
     options @client {
       politeness
       variation
+      selectedVariation
       polarity
       tense
       gender

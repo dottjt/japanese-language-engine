@@ -71,7 +71,7 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
   const permissions = nounParticlePermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
-    switch (options.variation) {
+    switch (options.selectedVariation) {
       case T:     return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
       case WA_TS: return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
       case MO_TS: return createWord(['も'], JAPANESE_TOPIC_PARTICLE);

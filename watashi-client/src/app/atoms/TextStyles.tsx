@@ -9,6 +9,7 @@ export const Text = system(
     color: 'dark-gray',
     fontFamily: 'sansSerif',
     lineHeight: 2,
+    m: 0,
     mb: 2,
   },
   'space',

@@ -2,19 +2,19 @@
 import * as React from 'react';
 
 import { FlexColumn, PageWrapper } from '../atoms/LayoutStyles';
-import { PageHeading, Heading, /*Text*/ } from '../atoms/TextStyles';
+import { PageHeading, Heading } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
 
 import SentenceControlPanel from '../modules/SentenceModule/SentenceControlPanel';
 import SentenceOptions from '../modules/SentenceModule/SentenceOptions';
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
-// import ResourceModule from '../modules/ResourceModule';
-// import ExplanationModule from '../modules/ExplanationModule';
+import ResourceModule from '../modules/ResourceModule';
+import ExplanationModule from '../modules/ExplanationModule';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { title, description, client, path, sentenceDisplayOptions, preOptions, sentenceStats, exercises, /*explanation, resources*/ } = this.props; 
+    const { title, description, client, path, sentenceDisplayOptions, preOptions, sentenceStats, exercises, explanation, resources } = this.props; 
 
     return (
       <PageWrapper>
@@ -25,33 +25,30 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
 
         <PageHeading>{title}</PageHeading>
         
-        {/* <FlexColumn mt={5}>
-          <Heading is='h2' fontSize={3}>Grammatical Resources</Heading>
-          <Text>Please have a read of these resources in order to understand the grammar.</Text>
-          <ResourceModule resources={resources}/>
-        </FlexColumn>
+        <FlexColumn>
+          <Heading is='h2' fontSize={4} mt={4} mb={4}>Grammatical Resources</Heading>
+          <FlexColumn mb={2}><ResourceModule resources={resources}/></FlexColumn>
 
-        <FlexColumn mt={5}>
-          <Heading is='h2' fontSize={3}>Additional Notes</Heading>
-          <ExplanationModule explanation={explanation}/>
-        </FlexColumn> */}
+          <Heading is='h2' fontSize={4} mt={4} mb={4}>Additional Notes</Heading>
+          <FlexColumn mb={2}><ExplanationModule explanation={explanation}/></FlexColumn>
 
-        <FlexColumn mt={5}>
           <Heading is='h2' fontSize={4} mt={4} mb={4}>Refined Sentence Options</Heading>
-          <SentenceControlPanel
+          <FlexColumn mb={2}><SentenceControlPanel
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             preOptions={preOptions}
             client={client}
             path={path}
-          />
+          /></FlexColumn>
+
           <Heading is='h2' fontSize={4} mt={4} mb={4}>Sentence Analysis Options</Heading>
-          <SentenceOptions
+          <FlexColumn mb={2}><SentenceOptions
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={client}
             path={path}
-          />
+          /></FlexColumn>
+
           <Heading is='h2' fontSize={4} mt={4} mb={4}>Lesson Exercises</Heading>
-          {exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => (
+          <FlexColumn mb={2}>{exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => (
             <SentenceModule
               key={exerciseIndex}
               exerciseIndex={exerciseIndex}
@@ -64,7 +61,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
               sentenceDisplayOptions={sentenceDisplayOptions}
               sentenceStats={sentenceStats}
             />
-          ))}
+          ))}</FlexColumn>
         </FlexColumn>
       </PageWrapper>
     );

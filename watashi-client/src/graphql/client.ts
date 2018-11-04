@@ -18,17 +18,18 @@ import allWords from '../util/words/collection';
 
 const defaults = {
   nouns: allWords,
-  exercises: null,
-  controlPanelOptions: {
-    controlPanelPoliteness: null,
-    controlPanelVariation: null,
-    controlPanelPolarity: null,
-    controlPanelTense: null,
-    controlPanelGender: null,
-    controlPanelQuestion: null,
-    controlPanelSentenceEnding: null,
-    __typename: __TYPENAME_CONTROL_PANEL_OPTIONS,
-  },
+  // exercises: null, // is nothing yet. 
+  // controlPanelOptions: {
+  //   controlPanelPoliteness: null,
+  //   controlPanelVariation: null,
+  //   controlPanelPolarity: null,
+  //   controlPanelTense: null,
+  //   controlPanelGender: null,
+  //   controlPanelQuestion: null,
+  //   controlPanelSentenceEnding: null,
+  //   __typename: __TYPENAME_CONTROL_PANEL_OPTIONS,
+  // },
+  // preOptions, // exists 
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
     toggleSentenceOrder: false, 

@@ -17,7 +17,7 @@ class About extends React.Component {
         />
         <PageHeading>About Watashi Engine</PageHeading>
         <FlexColumn width={600} mt={3}>
-          <Text>Watashi Engine is a (rediculously over-engineered) Japanese language engine. It can do all sorts of stuff like compose randomly generated Japanese sentences with English mappings, provide accurate word analysis, along with conjugate a variety Japanese words and phrases.</Text>
+          <Text>Watashi Engine is a (hilariously over-engineered) Japanese language engine. It can do all sorts of stuff like compose randomly generated Japanese sentences with English mappings, provide accurate word analysis, along with conjugate a variety Japanese words and phrases.</Text>
           <Text>I decided to create the Watashi Engine because I felt like there were no tools out there to effectively practice the Instanteous Composition Method.</Text>
           <Text>The Instanteous Composition Method is the most effective way to learn Japanese Grammar. It utilises active practice in order to consolidate our understanding.</Text>
           <Text>In order to make full use of the Watashi Engine, I have designed a grammar course which runs through all the different grammar and conjugation variances of the Japanese language.</Text>

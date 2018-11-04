@@ -262,7 +262,7 @@ const generateExercises = (words: Util.Word[], modifiersLambda: () => Util.Modif
     const options = optionsLambda();
     const modifiers = modifiersLambda();
     
-    const variationWords = generateWords(words, options.variation);
+    const variationWords = generateWords(words, options.selectedVariation);
     const modifierWords = generateWordModifiers(words, modifiers);
 
     const { englishSentence, japaneseSentence } = generateSentences(variationWords(), modifierWords, options);

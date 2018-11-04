@@ -80,7 +80,7 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
   const permissions = nounConjugationPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 
   if (permissions) {
-    if (options.variation === WA_TS || options.variation === T) {
+    if (options.selectedVariation === WA_TS || options.selectedVariation === T) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return createWord(['is'], ENGLISH_TENSE);
         case `${TENSE_PAST}`: return createWord(['was'], ENGLISH_TENSE);
@@ -88,7 +88,7 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
       throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - WA_TS', `${options.polarity}${options.tense} unknown`));
     }
   
-    if (options.variation === MO_TS) {
+    if (options.selectedVariation === MO_TS) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return createWord(['is', 'also'], ENGLISH_TENSE);
         case `${TENSE_PAST}`: return createWord(['was', 'also'], ENGLISH_TENSE);
@@ -96,7 +96,7 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
       throw new Error(createError('conjugations/noun', 'determineNounConjugationEnglish - MO_TS', `${options.tense} unknown`));
     }
     
-    if (options.variation === GA_TS) {
+    if (options.selectedVariation === GA_TS) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return createWord(['is', 'the', 'one', 'that', 'is'], ENGLISH_TENSE);
         case `${TENSE_PAST}`: return createWord(['is', 'the', 'one', 'that', 'was'], ENGLISH_TENSE);

@@ -41,12 +41,13 @@ A highly sophisticated Japanese language engine.
 - Instead of navbar fixed, you have 
 - Control Panel
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
+- Instead of controlPanelOptions, perhaps there should just be an options object which is directly manipulated. 
+- Optimise getExercisesApollo     // NOTE: Can probably optimise so it only gets nouns once, although it also may cache the results anyway, so no biggie.
+
 
 ## Blog Ideas
 
-- The perfect Watashi Engine Workout. 
-- The 
-
+- The perfect Watashi Engine Workout.
 
 ## Build Steps 
 

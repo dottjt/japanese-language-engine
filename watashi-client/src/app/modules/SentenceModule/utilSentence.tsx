@@ -93,12 +93,12 @@ const convertQuestionIntoValue = (question: string): string | undefined =>
   question === HAS_QUESTION ? 'Question' : undefined;
 
 export const determineStatTypes = (options: Util.Options) => {
-  const { politeness, polarity, tense, question, variation, /* gender */ } = options;
+  const { politeness, polarity, tense, question, selectedVariation, /* variation, gender */ } = options;
     
   const politenessValue = convertPolitenessIntoValue(politeness);
   const polarityTenseValue = determinePolarityTense(polarity, tense);
   const questionValue = convertQuestionIntoValue(question);
-  const { topic, subject, verb } = determineTopicSubjectVerb(variation);
+  const { topic, subject, verb } = determineTopicSubjectVerb(selectedVariation);
 
   return {
     polarityTenseValue,

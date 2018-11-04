@@ -85,18 +85,8 @@ declare namespace Util {
   export type Options = {
     __typename: string;
     politeness: string; // POLITENESS_CASUAL, POLITENESS_FORMAL
-    variation: string; // wa-sob,
-    polarity: string; // POLARITY_POSITIVE, POLARITY_NEGATIVE
-    tense: string; // TENSE_PRESENT, TENSE_PAST
-    gender: string; // GENDER_MASCULINE, GENDER_FEMININE
-    question: string; // HAS_QUESTION, NOT_QUESTION
-    // sentenceEnding: string;
-  };
-
-  export type PreOptions = {
-    __typename: string;
-    politeness: string; // POLITENESS_CASUAL, POLITENESS_FORMAL
-    variation: string | string[]; // wa-sob,
+    variation: string[]; // wa-sob,
+    selectedVariation?: string; // wa-sob,
     polarity: string; // POLARITY_POSITIVE, POLARITY_NEGATIVE
     tense: string; // TENSE_PRESENT, TENSE_PAST
     gender: string; // GENDER_MASCULINE, GENDER_FEMININE
