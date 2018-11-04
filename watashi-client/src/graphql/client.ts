@@ -48,6 +48,14 @@ const defaults = {
     selectedExerciseNumber: 0,
     __typename: __TYPENAME_SENTENCE_STATS,
   },
+  user: {
+    username: null,
+    email: null, 
+    access_token: null,
+    expires_in: null,
+    state: null,
+    id_token: null,
+  }
 };
 
 const preloadedState = (<any>window).__APOLLO_STATE__;

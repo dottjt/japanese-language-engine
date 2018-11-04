@@ -6,13 +6,13 @@ import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalCons
 
 import Helmet from '../components/Helmet';
 
-class Callback extends React.Component {
+class Redirect extends React.Component {
   public render() {
     return (
       <PageWrapper>
         <Helmet
-          title={ROUTE_TITLE.CALLBACK}
-          description={ROUTE_DESCRIPTION.CALLBACK}
+          title={ROUTE_TITLE.REDIRECT}
+          description={ROUTE_DESCRIPTION.REDIRECT}
         />
         <Text>Loading</Text>
       </PageWrapper>
@@ -20,4 +20,4 @@ class Callback extends React.Component {
   }
 }
 
-export default Callback;
+export default Redirect;

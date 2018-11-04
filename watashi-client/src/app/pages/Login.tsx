@@ -1,24 +1,13 @@
 import * as React from 'react';
 
 import { PageWrapper } from '../atoms/LayoutStyles';
-import { PageHeading } from '../atoms/TextStyles';
-import { Button } from '../atoms/ClickableStyles';
+import { PageHeading, Text } from '../atoms/TextStyles';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/generalConstants';
 
 import Helmet from '../components/Helmet';
 
 class Login extends React.Component<PropTypes.ILoginProps, {}> {
-
-  public login() {
-    this.props.auth.login();
-  }
-
-  public logout() {
-    this.props.auth.logout();
-  }
-
   public render() {
-    const { isAuthenticated } = this.props.auth;
     return (
       <PageWrapper>
         <Helmet
@@ -27,23 +16,8 @@ class Login extends React.Component<PropTypes.ILoginProps, {}> {
         />
         <PageHeading>{ROUTE_TITLE.LOGIN}</PageHeading>
 
+        <Text>Redirecting to auth0 Login platform</Text>
 
-        {!isAuthenticated() && (
-          <Button
-            className="btn-margin"
-            onClick={this.login}
-          >
-            Log In
-          </Button>
-        )}
-        {isAuthenticated() && (
-          <Button
-            className="btn-margin"
-            onClick={this.logout}
-          >
-            Log Out
-          </Button>
-        )}
       </PageWrapper> 
     );
   };

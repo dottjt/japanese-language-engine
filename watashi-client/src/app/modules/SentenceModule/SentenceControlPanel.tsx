@@ -53,7 +53,7 @@ const ControlPanelButton = styled(Button)<any>`
 
 class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
   public render() {
-    const { values, onClickCallback, title, type, client } = this.props;
+    const { values, onClickRedirect, title, type, client } = this.props;
 
     return (
       <Flex>
@@ -65,7 +65,7 @@ class Buttons extends React.Component<PropTypes.IButtonsProps, {}> {
         >{title}</Heading>
         <Flex flexWrap='wrap'>
           {values.map((value: Util.IButtonValues) => (
-            <ControlPanelButton key={value.value} p={1} mr={2} selected={value.selected} onClick={() => onClickCallback(client, value.value)} >
+            <ControlPanelButton key={value.value} p={1} mr={2} selected={value.selected} onClick={() => onClickRedirect(client, value.value)} >
               {capitalise(this.convertToReadableString(value.value, type))}
             </ControlPanelButton>
           ))}
@@ -164,42 +164,42 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
           title='Polarity'
           values={this.convertValues([POLARITY_POSITIVE, POLARITY_NEGATIVE, POLARITY_RANDOM], POLARITY_CONTROL_PANEL_TYPE, preOptions)}
           type={POLARITY_CONTROL_PANEL_TYPE}
-          onClickCallback={this.polarityCallback}
+          onClickRedirect={this.polarityRedirect}
           client={client}
         />
         <Buttons
           title='Politeness'
           values={this.convertValues([POLITENESS_CASUAL, POLITENESS_FORMAL, /* POLITENESS_HUMBLE, POLITENESS_HONORIFIC, */ POLITENESS_RANDOM], POLITENESS_CONTROL_PANEL_TYPE, preOptions)}
           type={POLITENESS_CONTROL_PANEL_TYPE}
-          onClickCallback={this.politenessCallback}
+          onClickRedirect={this.politenessRedirect}
           client={client}
         />
         <Buttons
           title='Question'
           values={this.convertValues([HAS_QUESTION, NOT_QUESTION, RANDOM_QUESTION], QUESTION_CONTROL_PANEL_TYPE, preOptions)}
           type={QUESTION_CONTROL_PANEL_TYPE}
-          onClickCallback={this.questionCallback}
+          onClickRedirect={this.questionRedirect}
           client={client}
         />
         <Buttons
           title='Tense'
           values={this.convertValues([TENSE_PRESENT, TENSE_PAST, TENSE_RANDOM], TENSE_CONTROL_PANEL_TYPE, preOptions)}
           type={TENSE_CONTROL_PANEL_TYPE}
-          onClickCallback={this.tenseCallback}
+          onClickRedirect={this.tenseRedirect}
           client={client}
         />
         <Buttons
           title='Gender'
           values={this.convertValues([GENDER_MASCULINE, GENDER_FEMININE, GENDER_RANDOM], GENDER_CONTROL_PANEL_TYPE, preOptions)}
           type={GENDER_CONTROL_PANEL_TYPE}
-          onClickCallback={this.genderCallback}
+          onClickRedirect={this.genderRedirect}
           client={client}
         />
         {/* <Buttons
           title='Sentence Ending'
           values={this.convertValues([SENTENCE_ENDING_NE, SENTENCE_ENDING_YO, SENTENCE_ENDING_YO_NE, SENTENCE_ENDING_RANDOM], GENDER_CONTROL_PANEL_TYPE, preOptions)}
           type={GENDER_CONTROL_PANEL_TYPE}
-          onClickCallback={this.genderCallback}
+          onClickRedirect={this.genderRedirect}
           client={client}
         /> */}
       </React.Fragment>
@@ -224,11 +224,11 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
       throw new Error(createError('SentenceControlPanel.tsx', 'convertValues', `${controlPanelType} does not exist.`));    
     });
 
-  private politenessCallback = (client: any, value: string): void => this.updateControlPanelOptions(client, { politeness: value }); 
-  private polarityCallback = (client: any, value: string): void => this.updateControlPanelOptions(client, { polarity: value });
-  private questionCallback = (client: any, value: string): void => this.updateControlPanelOptions(client, { question: value });
-  private tenseCallback = (client: any, value: string): void => this.updateControlPanelOptions(client, { tense: value });
-  private genderCallback = (client: any, value: string): void => this.updateControlPanelOptions(client, { gender: value });
+  private politenessRedirect = (client: any, value: string): void => this.updateControlPanelOptions(client, { politeness: value }); 
+  private polarityRedirect = (client: any, value: string): void => this.updateControlPanelOptions(client, { polarity: value });
+  private questionRedirect = (client: any, value: string): void => this.updateControlPanelOptions(client, { question: value });
+  private tenseRedirect = (client: any, value: string): void => this.updateControlPanelOptions(client, { tense: value });
+  private genderRedirect = (client: any, value: string): void => this.updateControlPanelOptions(client, { gender: value });
 
   private updateControlPanelOptions = (client: any, options: { politeness?: string, polarity?: string, question?: string, tense?: string, gender?: string }): void => {
     client.writeData({

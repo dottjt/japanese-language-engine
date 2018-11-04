@@ -34,7 +34,7 @@ import {
 
 import LessonTemplate from '../pages/LessonTemplate';
 import Home from '../pages/Home';
-import Callback from '../pages/Callback';
+import Redirect from '../pages/Redirect';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
@@ -69,8 +69,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             case ROUTE_TITLE.SIGN_UP:
               return <SignUp auth={auth}/>
 
-            case ROUTE_TITLE.CALLBACK:
-              return <Callback/>
+            case ROUTE_TITLE.REDIRECT:
+              return <Redirect/>
               
             case ROUTE_TITLE.ABOUT:
               return <Tools/>

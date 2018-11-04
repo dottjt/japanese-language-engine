@@ -29,15 +29,16 @@ This is where we have to do all the
 
 ## Client
 - docker build -f ./infrastructure/docker/DockerfileClient -t watashi-client ./watashi-client
-- docker run -it -p 5000:5000 watashi-client
+- docker run -it -p 5000 watashi-client
 
 ## Nginx
 - docker build -f ./infrastructure/docker/DockerfileNginx -t watashi-nginx ./watashi-nginx
-- docker run -it -p 5000:80 watashi-nginx
+- docker run -it -p 80 watashi-nginx
 
 ## NOTES:
 - Digital Ocean will do docker things 
 https://medium.com/@jmarhee/create-a-docker-based-service-on-digitalocean-with-docker-compose-44fa6e8f31a9
+- It appears that 
 
 ### Docker Swarm (won't be needed because I'm not using multiple hosts)
 

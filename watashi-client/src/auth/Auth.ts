@@ -9,8 +9,8 @@ import router from '../router';
 export default class Auth {
 
   private auth0 = new auth0.WebAuth({
-    domain: 'grammarsensei.auth0.com',
-    clientID: 'RmOt6CxT4a0OFKgnECeHqhFWhPHtFmOX',
+    domain: 'watashiengine.auth0.com',
+    clientID: 'V0hH273tSo7Ci3qdtU0l0eSEyOaiAf2U',
     redirectUri: 'http://localhost:3000/callback',
     responseType: 'token id_token',
     scope: 'openid'
@@ -35,6 +35,7 @@ export default class Auth {
       } else if (err) {
         router.navigate(ROUTE_TITLE.HOME);
         console.log(err);
+        alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
   }

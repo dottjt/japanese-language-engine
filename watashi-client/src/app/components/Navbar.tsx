@@ -69,8 +69,11 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
 };
 
 
-class Navbar extends React.Component<{}, {}> {
+class Navbar extends React.Component<{ auth: any }, {}> {
   public render() {
+    const { auth } = this.props;
+    
+    console.log(auth);
     return (
       <Flex
         justifyContent='space-between'
@@ -88,8 +91,14 @@ class Navbar extends React.Component<{}, {}> {
         <LogoDropdown/>
 
         <Flex width={200} justifyContent='space-around'>
-          <Link routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>{ROUTE_TITLE.SIGN_UP}</Link>
-          <Link routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
+          {!auth.isAuthenticated() && (
+            <Link onClick={auth.login} routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
+          )}
+          {auth.isAuthenticated() && (
+            <React.Fragment>
+              <Link routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>
+            </React.Fragment>
+          )}
         </Flex>
       </Flex>
     )

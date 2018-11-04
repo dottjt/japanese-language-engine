@@ -5,7 +5,7 @@ export const ROUTE_TITLE = {
   CONTENTS: 'Contents',
   PREREQ: 'Prerequisites',
 
-  CALLBACK: 'Callback',
+  REDIRECT: 'Redirect',
   LOGIN: 'Login',
   HOME: 'Home',  
   APP: 'Exercises',
@@ -20,7 +20,7 @@ export const ROUTE_PATH = {
   CONTENTS: '/contents',
   PREREQ: '/prerequisites',
 
-  CALLBACK: '/callback',
+  REDIRECT: '/callback',
   LOGIN: '/login',
   HOME: '/',
   APP: '/exercises',
@@ -35,7 +35,7 @@ export const ROUTE_DESCRIPTION = {
   CONTENTS: '',
   PREREQ: '',
 
-  CALLBACK: '',
+  REDIRECT: '',
   LOGIN: '',
   HOME: '',
   APP: '',

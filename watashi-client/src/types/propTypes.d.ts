@@ -44,7 +44,7 @@ declare module PropTypes {
     type: string,
     values: Util.IButtonValues[],
     client: any,
-    onClickCallback: (client: any, n: string) => void,
+    onClickRedirect: (client: any, n: string) => void,
   }
 
   // Lesson props
