@@ -4,9 +4,9 @@ sudo: enabled
 addons:
   ssh_known_hosts: 178.128.54.4
 
-branches:
-  only:
-  - production
+# branches:
+#   only:
+#   - production
 
 services:
   - docker
