@@ -1,78 +1,16 @@
 import * as React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import { Flex } from '../atoms/LayoutStyles';
-import { Heading } from '../atoms/TextStyles';
+// import { Heading } from '../atoms/TextStyles';
 import { Link } from '../atoms/ClickableStyles';
 
 import { ROUTE_TITLE } from '../../util/constants/routeConstants';
 
-const Dropdown = styled(Flex)<any>`
-  visibility: ${props => props.togglevisibility ? 'visible' : 'hidden'};
-`;
-
-Dropdown.defaultProps = {
-  visibility: 'hidden',
-};
-
-class LogoDropdown extends React.Component<{}, { dropdownOpenState: boolean }> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      dropdownOpenState: false,
-    }
-  }
-
-  public render() {
-    return (
-      <Flex 
-        css={{
-          position: 'relative',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          height: '100%',
-          width: '260px',
-          minWidth: '260px',        
-        }}
-        >
-        <Heading 
-          fontSize={4} 
-          ml={4} 
-          onClick={this.clickDropdown}
-          >
-          Watashi Engine</Heading>
-        <Dropdown
-          ml={7}
-          css={{
-            position: 'absolute',
-            marginTop: '2px',
-            width: '300px',
-            justifyContent: 'space-between',
-            marginRight: '1rem',          
-          }}
-          togglevisibility={this.state.dropdownOpenState.toString()}
-          >
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</Link>
-        </Dropdown>
-      </Flex>
-    );
-  };
-
-  private clickDropdown = () => {
-    this.setState({
-      dropdownOpenState: !this.state.dropdownOpenState,
-    });
-  }
-};
-
-
-class Navbar extends React.Component<{ auth: any }, {}> {
+class Navbar extends React.Component<{ auth: any, user: any }, {}> {
   public render() {
     const { auth } = this.props;
-    
+
     return (
       <Flex
         justifyContent='space-between'
@@ -84,20 +22,24 @@ class Navbar extends React.Component<{ auth: any }, {}> {
         right={0}
         borderBottom={1}
         height={64}
-        width={[1]}
+        css={{
+          boxShadow: '4px 6px grey',
+        }}
         >
-
-        <LogoDropdown/>
-
         <Flex width={200} justifyContent='space-around'>
           {!auth.isAuthenticated() && (
             <React.Fragment>
-              <Link routeName={ROUTE_TITLE.LOGIN} routeOptions={{reload: true}}>{ROUTE_TITLE.LOGIN}</Link>
+              <Link is='a' onClick={auth.login}>{ROUTE_TITLE.LOGIN}</Link>
             </React.Fragment>
           )}
           {auth.isAuthenticated() && (
             <React.Fragment>
-              <Link routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>
+              <Flex>
+                {/* first need to get this from the 'database', I think. */}
+                {/* if authenticated, then need to go to database and get the user information :) */}
+                {/* <img src={user.thumbUrl}/> */}
+                <Link routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>                
+              </Flex>
             </React.Fragment>
           )}
         </Flex>

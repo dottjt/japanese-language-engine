@@ -23,6 +23,11 @@ declare module PropTypes {
   export type IMainProps = {
     auth: any,
     route: any, // NOTE: Will need to get proper type. 
+    client: any,
+    user: Util.User,
+    exercises: Util.EnglishJapaneseOptionsSentence[],
+    sentenceDisplayOptions: Util.SentenceDisplayOptions,
+    sentenceStats: Util.SentenceStats,
   }
   
   export type ISentenceControlPanelProps = {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router5';
-import { GET_ALL_WORDS_AND_OPTIONS } from '../../graphql/queries';
+import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
 import { LESSON_TITLE, lessonPathArray } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
@@ -23,7 +23,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
     getExercisesApollo(this.props.client, this.props.route.path, 1);
 
     return (
-      <Query query={GET_ALL_WORDS_AND_OPTIONS}>
+      <Query query={GET_EVERYTHING}>
         {({ data, client }) => {
 
           return (

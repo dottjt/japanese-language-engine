@@ -54,17 +54,20 @@ const SidebarWrapper = styled(FlexColumn)`
 
 const BoxScroll = styled(Box)`
   position: fixed;
-  top: 60px;
+  /* top: 60px; */
   height: 100%;
   overflow-y: scroll;
   border-right: ${themeGet('borders.1')};
+  box-shadow: 4px 6px grey;
 `;
 
-class Sidebar extends React.Component<{}, {}> {
+class Sidebar extends React.Component<{ route: any }, {}> {
   public render() {
     return (
       <SidebarWrapper>
         <BoxScroll>
+          <LogoDropdown/>
+
           <FlexColumn>
             <HeadingItem>{LESSON_SECTIONS.S00}</HeadingItem>
             <SidebarItem isPremium={LESSON_SECTIONS_PREMIUM.S00} routeName={ROUTE_TITLE.WELCOME} routeOptions={{reload: true}}>{ROUTE_TITLE.WELCOME}</SidebarItem>
@@ -120,5 +123,70 @@ class Sidebar extends React.Component<{}, {}> {
     );
   };
 };
+
+
+const Dropdown = styled(Flex)<any>`
+  visibility: ${props => props.togglevisibility};
+`;
+
+Dropdown.defaultProps = {
+  togglevisibility: 'hidden',
+};
+
+class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      dropdownOpenState: 'hidden',
+    }
+  }
+
+  public render() {
+    return (
+      <Flex 
+        css={{
+          position: 'relative',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          height: '64px',
+          width: '260px',
+          minWidth: '260px', 
+        }}
+        >
+        <Heading 
+          fontSize={4} 
+          ml={3} 
+          onClick={this.clickDropdown}
+          >
+          Watashi Engine</Heading>
+        <Dropdown
+          ml={7}
+          css={{
+            position: 'absolute',
+            marginTop: '2px',
+            width: '300px',
+            justifyContent: 'space-between',
+            marginRight: '1rem',          
+          }}
+          togglevisibility={this.state.dropdownOpenState}
+          >
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</Link>
+          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</Link>
+        </Dropdown>
+      </Flex>
+    );
+  };
+
+  private clickDropdown = () => {
+    this.setState({
+      dropdownOpenState: this.state.dropdownOpenState === 'hidden' ? 'visible' : 'hidden',
+    });
+  }
+};
+
+
 
 export default Sidebar;

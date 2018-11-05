@@ -20,6 +20,7 @@ const routes = [
   { name: ROUTE_TITLE.HOME, path: ROUTE_PATH.HOME },
   { name: ROUTE_TITLE.APP, path: ROUTE_PATH.APP },
   { name: ROUTE_TITLE.BLOG, path: ROUTE_PATH.BLOG },
+  { name: ROUTE_TITLE.GUIDES, path: ROUTE_PATH.GUIDES },
   { name: ROUTE_TITLE.ABOUT, path: ROUTE_PATH.ABOUT },
 
   // Other lesson pages

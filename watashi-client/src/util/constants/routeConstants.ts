@@ -10,6 +10,7 @@ export const ROUTE_TITLE = {
   APP: 'Exercises',
   ABOUT: 'About',
   BLOG: 'Blog',
+  GUIDES: 'Guides',
   SIGN_UP: 'Sign Up',
   PROFILE: 'Profile',
 };
@@ -25,6 +26,7 @@ export const ROUTE_PATH = {
   APP: '/exercises',
   ABOUT: '/about',
   BLOG: '/blog',
+  GUIDES: '/guides',
   SIGN_UP: '/sign-up',
   PROFILE: '/profile',
 };
@@ -40,6 +42,7 @@ export const ROUTE_DESCRIPTION = {
   APP: '',
   ABOUT: '',
   BLOG: '',
+  GUIDES: '',
   SIGN_UP: '',
   PROFILE: '',
 };
