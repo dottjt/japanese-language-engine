@@ -7,7 +7,8 @@ ssh-add /tmp/deploy_rsa
 ssh root@178.128.54.4 <<EOF
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   docker pull dottjt/watashi-client
-  docker run -d -p 80:80 dottjt/watashi-client    
+  docker stop watashi-client
+  docker run --name watashi-client -d -p 80:80 dottjt/watashi-client
   exit
 EOF
 echo 'all done!'

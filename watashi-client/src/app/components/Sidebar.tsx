@@ -1,11 +1,11 @@
 import * as React from 'react'
 
 import styled from 'styled-components';
-import { themeGet } from 'styled-system';
+import system from '@rebass/components';
 
 import { Box, Flex, FlexColumn } from '../atoms/LayoutStyles';
 import { Heading, Text } from '../atoms/TextStyles';
-import { Link } from '../atoms/ClickableStyles';
+import { InternalLink } from '../atoms/ClickableStyles';
 
 import {
   ROUTE_TITLE,
@@ -19,7 +19,7 @@ import {
 
 const SidebarItem = (props) => (
   <Item>
-    <Link ml={3} css={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%', height: '100%', }} routeName={props.routeName} routeOptions={props.routeOptions}>{props.children}</Link>
+    <InternalLink ml={3} css={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%', height: '100%', }} routeName={props.routeName} routeOptions={props.routeOptions}>{props.children}</InternalLink>
     {props.isPremium && <Text fontSize={1} m={1}>Premium</Text>}
   </Item>
 );
@@ -30,12 +30,12 @@ const HeadingItem = (props) => (
   </Item>
 );
 
-const Item = styled(Flex)`
-  align-items: center;
-  width: ${themeGet([1])};
-  height: 3rem;
-  border-bottom: ${themeGet('borders.1')};
-`;
+export const Item = system({
+  width: [1],
+  bb: 1,
+  alignItems: 'center',
+  height: '3rem',
+})
 
 
 class Sidebar extends React.Component<{ route: any }, {}> {
@@ -165,11 +165,11 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
             marginRight: '1rem',          
           }}
           >
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</Link>
-          <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</Link>
+          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</InternalLink>
+          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</InternalLink>
+          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</InternalLink>
+          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</InternalLink>
+          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</InternalLink>
         </Dropdown>
       </Flex>
     );

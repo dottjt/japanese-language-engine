@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
-import { Link } from 'react-router5';
 import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
 import { LESSON_TITLE, lessonPathArray } from '../../util/constants/lessonConstants';
@@ -13,7 +12,7 @@ import SentenceModule from '../modules/SentenceModule/SentenceModule'
 import Helmet from '../components/Helmet';
 
 import { PageHeading, PageHeadingSecondary, Text } from '../atoms/TextStyles';
-import { Button } from '../atoms/ClickableStyles';
+import { InternalLink, Button } from '../atoms/ClickableStyles';
 import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
 
 
@@ -106,7 +105,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               <FlexColumn width={600} mb={5}>
                 <PageHeadingSecondary>Try Watashi Engine Today</PageHeadingSecondary>
                   <Text>Decide before you buy.</Text>
-                  <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
+                  <InternalLink routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</InternalLink>
               </FlexColumn>
 
             </PageWrapper>

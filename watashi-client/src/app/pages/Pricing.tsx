@@ -7,7 +7,7 @@ import { Flex, FlexColumn, PageWrapper, List, ListItem,
   PricingButtonStyles,
  } from '../atoms/LayoutStyles';
  import { Heading } from '../atoms/TextStyles';
- import { Link } from '../atoms/ClickableStyles';
+ import { InternalLink } from '../atoms/ClickableStyles';
 
 class Pricing extends React.Component<{}, {}> {
 
@@ -38,7 +38,7 @@ class PricingModule extends React.Component<{}, {}> {
           <List>
             <ListItem mb={2}>Limited access to basic grammar exercises.</ListItem>
           </List>
-          <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
+          <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</InternalLink>                      
         </Card>
 
         <Card borderColor="blacks.3">
@@ -48,7 +48,7 @@ class PricingModule extends React.Component<{}, {}> {
             <ListItem mb={2}>Full access to the Watashi Engine.</ListItem>
             <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
           </List>
-          <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</Link>                      
+          <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</InternalLink>                      
         </Card>
 
         <Card borderColor="blacks.3">
@@ -58,7 +58,7 @@ class PricingModule extends React.Component<{}, {}> {
             <ListItem mb={2}>Full access to the Watashi Engine at a discounted Heading.</ListItem>
             <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
           </List>
-          <Link style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</Link>
+          <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</InternalLink>
         </Card>
 
       </Flex>

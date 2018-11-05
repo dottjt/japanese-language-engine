@@ -1,9 +1,7 @@
 import { Flex } from './LayoutStyles';
 import { Text } from './TextStyles';
-// import { borders, minWidth } from 'styled-system';
 
 import styled from 'styled-components';
-// import system from 'system-components';
 
 export const ToggleSentenceStats = styled(Flex)<any>`
   visibility: ${props => props.togglevisibility};

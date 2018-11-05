@@ -14,53 +14,39 @@ import ExplanationModule from '../modules/ExplanationModule';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { 
-      title,
-      description,
-      client,
-      path,
-      sentenceDisplayOptions,
-      preOptions,
-      sentenceStats,
-      exercises,
-      explanation,
-      resources,        
-      isAuthenticated,
-      premiumLesson, } = this.props;
+    const { title, description, client, path, sentenceDisplayOptions, preOptions, sentenceStats, exercises, explanation, resources, isAuthenticated, premiumLesson, } = this.props;
 
-      console.log(isAuthenticated)
     return (
       <PageWrapper>
-        <Helmet
-          title={title}
-          description={description}
-        />
+        
+        <Helmet title={title} description={description}/>
+
         <Flex>
           <PageHeading>{title}</PageHeading>
-          {premiumLesson ? (
-            <Text ml={3}>Premium lesson</Text>
-          ) : (
-            <Text ml={3}>Free lesson :D</Text>
-          )}
+          <Text ml={3}>{premiumLesson ? 'Premium lesson' : 'Free lesson'}</Text>
         </Flex>
-        
         
         <FlexColumn>
           <PageHeadingSecondary>Grammar Resources</PageHeadingSecondary>
-          <FlexColumn mb={2}><ResourceModule resources={resources}/></FlexColumn>
+          <FlexColumn mb={2}>
+            <ResourceModule resources={resources}/>
+          </FlexColumn>
 
           <PageHeadingSecondary>Grammar Notes</PageHeadingSecondary>
-          <FlexColumn mb={2}><ExplanationModule explanation={explanation}/></FlexColumn>
+          <FlexColumn mb={2}>
+            <ExplanationModule explanation={explanation}/>
+          </FlexColumn>
 
           <PageHeadingSecondary>Refined Sentence Options</PageHeadingSecondary>
-          
-          <FlexColumn 
+          <FlexColumn
+            mb={2}
             css={{
               position: 'relative',
             }}
-            mb={2}>
+            >
             {!isAuthenticated && 
               <FlexColumn
+                p={3}
                 css={{
                   position: 'absolute',
                   width: '100%',
@@ -68,16 +54,19 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
                   zIndex: 9,
                   background: 'rgba(26,26,26, 0.8)',
                 }}
-                p={3}
                 >
-                <Flex 
+                <Flex
                   bg='grey'
                   css={{
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}
                   >
-                  <Text fontSize={5} mb={0} color='white'>This is a premium feature. Sorry!</Text>
+                  <Text 
+                    fontSize={5} 
+                    mb={0} 
+                    color='white'
+                    >This is a premium feature. Sorry!</Text>
                 </Flex>
               </FlexColumn>
             }
@@ -107,8 +96,10 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             {exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => {
             return (
               <React.Fragment>
+
                 {!isAuthenticated && premiumLesson && (
                   <FlexColumn
+                    p={3}
                     css={{
                       position: 'absolute',
                       width: '100%',
@@ -116,29 +107,27 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
                       zIndex: 9,
                       background: 'rgba(26,26,26, 0.8)',
                     }}
-                    p={3}
                     >
                     <Flex bg='grey'>
                       <Text fontSize={5} color='white'>You must create an account in order to access these exercises.</Text>
                       <Text fontSize={5} color='white'>The first 6 modules do not require an account.</Text>
                       <Text fontSize={5} color='white'>Please click on this link to create an account. It will take you to our secure login platform.</Text>
                     </Flex>
-
-
                   </FlexColumn>
                 )}
+
                 <SentenceModule
-                key={exerciseIndex}
-                exerciseIndex={exerciseIndex}
+                  key={exerciseIndex}
+                  exerciseIndex={exerciseIndex}
 
-                options={exercise.options}
-                englishSentence={exercise.englishSentence}
-                japaneseSentence={exercise.japaneseSentence}
+                  options={exercise.options}
+                  englishSentence={exercise.englishSentence}
+                  japaneseSentence={exercise.japaneseSentence}
 
-                client={client}
-                sentenceDisplayOptions={sentenceDisplayOptions}
-                sentenceStats={sentenceStats}
-              />
+                  client={client}
+                  sentenceDisplayOptions={sentenceDisplayOptions}
+                  sentenceStats={sentenceStats}
+                />
               </React.Fragment>
             )
           })}</FlexColumn>
@@ -146,8 +135,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           <PageHeadingSecondary>Premium Account</PageHeadingSecondary>
           
           <FlexColumn mb={2}>
-            <Text >The first six modules </Text>
-
+            <Text>The first six modules are free</Text>
           </FlexColumn>
 
         </FlexColumn>

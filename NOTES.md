@@ -1,8 +1,5 @@
 ## MVP REQUIREMENTS
-- Docker build
-- 0Auth setup (proper) + Users
-- Travis CI
-- Buy domain. name 
+- Buy domain. watashi.com name 
 
 ## TODO BACKLOG
 - Verb basics

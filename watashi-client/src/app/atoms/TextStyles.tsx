@@ -1,8 +1,8 @@
-import { Text as RebassText } from 'rebass';
+import { Text as BaseText } from 'rebass';
 import system from '@rebass/components';
 
 export const Text = system({
-  extend: RebassText,
+  extend: BaseText,
   is: 'p',
   fontSize: 2,
   color: 'dark-gray',
@@ -12,23 +12,26 @@ export const Text = system({
   mb: 4,
 });
 
+
 export const Heading = system({
-  is: 'h1',
-  fontSize: 6,
+  extend: BaseText,
   color: 'dark-gray',
   fontFamily: 'sansSerif',
-  m: 0,
 });
 
 export const PageHeading = system({
   extend: Heading,
+  is: 'h1',
   fontSize: 5, 
+  m: 0,
   mb: 4,
 });
 
 export const PageHeadingSecondary = system({
   extend: Heading,
+  is: 'h2',
   fontSize: 4, 
+  m: 0,
   mt: 4,
   mb: 4,
 });

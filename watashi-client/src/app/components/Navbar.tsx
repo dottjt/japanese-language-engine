@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Flex } from '../atoms/LayoutStyles';
 // import { Heading } from '../atoms/TextStyles';
-import { Link } from '../atoms/ClickableStyles';
+import { InternalLink } from '../atoms/ClickableStyles';
 
 import { ROUTE_TITLE } from '../../util/constants/routeConstants';
 
@@ -30,7 +30,7 @@ class Navbar extends React.Component<{ auth: any, user: any }, {}> {
         <Flex width={200} justifyContent='space-around'>
           {isAuthenticated && (
             <React.Fragment>
-              <Link is='a' onClick={auth.login}>{ROUTE_TITLE.LOGIN}</Link>
+              <InternalLink is='a' onClick={auth.login}>{ROUTE_TITLE.LOGIN}</InternalLink>
             </React.Fragment>
           )}
           {auth.isAuthenticated() && (
@@ -39,7 +39,7 @@ class Navbar extends React.Component<{ auth: any, user: any }, {}> {
                 {/* first need to get this from the 'database', I think. */}
                 {/* if authenticated, then need to go to database and get the user information :) */}
                 {/* <img src={user.thumbUrl}/> */}
-                <Link routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</Link>                
+                <InternalLink routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</InternalLink>                
               </Flex>
             </React.Fragment>
           )}

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { PageWrapper } from '../atoms/LayoutStyles';
 import { PageHeading, Heading, Text } from '../atoms/TextStyles';
-import { Link, Button } from '../atoms/ClickableStyles';
+import { InternalLink, Button } from '../atoms/ClickableStyles';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 
 import Helmet from '../components/Helmet';
@@ -28,18 +28,18 @@ class Profile extends React.Component<{ client: any, auth: any, user: Util.User 
         />
         <PageHeading>Profile</PageHeading>
 
-        <Heading is='h3'>Username:</Heading>
+        <Heading>Username:</Heading>
         {/* <input value={user.username} onChange={this.changeUsernameField}/> */}
 
         <Text>Change Password</Text>
-        <Heading is='h3'>Password:</Heading>
+        <Heading>Password:</Heading>
         {/* <input value={this.state.passwordInput} onChange={this.changePasswordField}/> */}
 
         <Text>Update Subscription</Text>
 
         <Button onClick={this.saveProfileChanges}> </Button>
        
-        <Link onClick={auth.logout}routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>Logout</Link>
+        <InternalLink onClick={auth.logout}routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>Logout</InternalLink>
 
       </PageWrapper>
     );

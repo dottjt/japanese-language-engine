@@ -1,57 +1,70 @@
 import * as React from 'react';
-import { Flex as RebassFlex, Box as RebassBox } from 'rebass';
-import { 
-  borders,
-  minWidth } from 'styled-system';
+import { Flex as FlexBase, Box as BoxBase } from 'rebass';
 
 import styled from 'styled-components';
 import system from '@rebass/components';
 
-export const Box = styled(RebassBox)`
-  ${borders}
-  ${minWidth}
-`;
 
-export const Flex = styled(RebassFlex)`
-  display: flex;
-  ${borders}
-  ${minWidth}
-`;
-
-export const FlexColumn = styled(RebassFlex)`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  ${borders}
-  ${minWidth}
-`;
-
-
-export const PageWrapper = (props) => (
-  <FlexColumn ml={6} mt={5} mb={5} mr={3}
-    position='relative' 
-    top={60}
-    >
-    {props.children}
-  </FlexColumn>
-);
-
-export const List = system(
-  {
-    is: 'ul',
+export const Box = system({
+    extend: BoxBase
   },
-  'space',
+  'borders',
+  'minWidth',
   'width',
 );
 
-export const ListItem = system(
-  {
-    is: 'li',
-    lineHeight: 2,
+// ---------------------------------------- // 
+
+export const Flex = system({
+    extend: FlexBase,
+    display: 'flex',
   },
-  'space',
+  'borders',
+  'minWidth',
   'width',
 );
+
+export const FlexColumn = system({
+  extend: Flex,
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+});
+
+export const FlexCenter = system({
+  extend: Flex,
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+// ---------------------------------------- // 
+
+export const PageWrapper = system({
+  extend: FlexColumn,
+  
+  position: 'relative',
+  top: '60px',
+
+  ml: 6,
+  mt: 5,
+  mb: 5,
+  mr: 3,
+});
+
+// ---------------------------------------- // 
+
+export const List = system({
+  extend: Box,
+  is: 'ul',
+});
+
+export const ListItem = system({
+  extend: Box,
+  is: 'li',
+  lineHeight: 2,
+});
+
+// ---------------------------------------- // 
+
 
 
 // MISC
