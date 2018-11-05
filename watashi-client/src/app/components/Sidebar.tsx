@@ -17,17 +17,6 @@ import {
   LESSON_SECTIONS_PREMIUM,
 } from '../../util/constants/lessonConstants';
 
-const Item = styled(Flex)`
-  align-items: center;
-  width: ${themeGet([1])};
-  height: 3rem;
-  border-bottom: ${themeGet('borders.1')};
-  &:hover {
-    background: lightgrey;
-  };
-  transition: background .2s;
-`;
-
 const SidebarItem = (props) => (
   <Item>
     <Link ml={3} css={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%', height: '100%', }} routeName={props.routeName} routeOptions={props.routeOptions}>{props.children}</Link>
@@ -40,6 +29,18 @@ const HeadingItem = (props) => (
     <Heading is='h3' ml={3} fontSize={2}>{props.children}</Heading>
   </Item>
 );
+
+const Item = styled(Flex)`
+  align-items: center;
+  width: ${themeGet([1])};
+  height: 3rem;
+  border-bottom: ${themeGet('borders.1')};
+  /* border-bottom: '1px solid white'; */
+  /* transition: background .2s;
+  &:hover {
+    background: lightgrey;
+  }; */
+`;
 
 const SidebarWrapper = styled(FlexColumn)`
   position: relative;
@@ -56,7 +57,7 @@ const BoxScroll = styled(Box)`
   top: 60px;
   height: 100%;
   overflow-y: scroll;
-  border-right: 1px solid black;
+  border-right: ${themeGet('borders.1')};
 `;
 
 class Sidebar extends React.Component<{}, {}> {

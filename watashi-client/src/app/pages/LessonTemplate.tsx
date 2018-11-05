@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import { FlexColumn, Flex, PageWrapper } from '../atoms/LayoutStyles';
-import { PageHeading, Heading, Text } from '../atoms/TextStyles';
+import { PageHeading, PageHeadingSecondary, Text } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
 
@@ -46,13 +46,13 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
         
         
         <FlexColumn>
-          <Heading is='h2' fontSize={4} mt={4} mb={4}>Grammatical Resources</Heading>
+          <PageHeadingSecondary>Grammatical Resources</PageHeadingSecondary>
           <FlexColumn mb={2}><ResourceModule resources={resources}/></FlexColumn>
 
-          <Heading is='h2' fontSize={4} mt={4} mb={4}>Grammatical Notes</Heading>
+          <PageHeadingSecondary>Grammatical Notes</PageHeadingSecondary>
           <FlexColumn mb={2}><ExplanationModule explanation={explanation}/></FlexColumn>
 
-          <Heading is='h2' fontSize={4} mt={4} mb={4}>Refined Sentence Options</Heading>
+          <PageHeadingSecondary>Refined Sentence Options</PageHeadingSecondary>
           
           <FlexColumn 
             css={{
@@ -67,6 +67,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
                   height: '100%',
                   zIndex: 9,
                   background: 'grey',
+                  opacity: 0.5,
                 }}
                 p={3}
                 >This is a premium feature. Sorry!</FlexColumn>
@@ -79,14 +80,14 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             />
           </FlexColumn>
 
-          <Heading is='h2' fontSize={4} mt={4} mb={4}>Sentence Analysis Options</Heading>
+          <PageHeadingSecondary>Sentence Analysis Options</PageHeadingSecondary>
           <FlexColumn mb={2}><SentenceOptions
             sentenceDisplayOptions={this.props.sentenceDisplayOptions}
             client={client}
             path={path}
           /></FlexColumn>
 
-          <Heading is='h2' fontSize={4} mt={4} mb={4}>Lesson Exercises</Heading>
+          <PageHeadingSecondary>Lesson Exercises</PageHeadingSecondary>
 
           <FlexColumn 
             css={{
@@ -104,6 +105,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
                       height: '100%',
                       zIndex: 9,
                       background: 'grey',
+                      opacity: 0.5,
                     }}
                     p={3}
                     >
@@ -130,7 +132,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             )
           })}</FlexColumn>
 
-          <Heading is='h2' fontSize={4} mt={4} mb={4}>Premium Account</Heading>
+          <PageHeadingSecondary>Premium Account</PageHeadingSecondary>
           
           <FlexColumn mb={2}>
             <Text>The first six modules </Text>

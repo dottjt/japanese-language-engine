@@ -72,9 +72,8 @@ export const FlexColumn = styled(RebassFlex)`
   ${flexWrap}
 `;
 
-
 export const PageWrapper = (props) => (
-  <FlexColumn ml={5} mt={5} mb={5} mr={5}
+  <FlexColumn ml={6} mt={5} mb={5} mr={3}
     position='relative' 
     top={60}
     >

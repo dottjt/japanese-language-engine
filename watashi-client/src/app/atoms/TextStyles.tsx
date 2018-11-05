@@ -43,7 +43,13 @@ export const Heading = system(
 Heading.displayName = 'Heading';
 
 export const PageHeading = (props) => (
-  <Heading fontSize={5} mb={3}>
+  <Heading fontSize={5} mb={5}>
     {props.children}
   </Heading>
+);
+
+export const PageHeadingSecondary = (props) => (
+  <PageHeadingSecondary mt={4} mb={4}>
+    {props.children}
+  </PageHeadingSecondary>
 );

@@ -12,7 +12,7 @@ import SentenceModule from '../modules/SentenceModule/SentenceModule'
 
 import Helmet from '../components/Helmet';
 
-import { PageHeading, Heading, Text } from '../atoms/TextStyles';
+import { PageHeading, PageHeadingSecondary, Text } from '../atoms/TextStyles';
 import { Button } from '../atoms/ClickableStyles';
 import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
 
@@ -32,10 +32,10 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 title={ROUTE_TITLE.HOME}
                 description={ROUTE_DESCRIPTION.HOME}
               />
-              <PageHeading mb={5}>Watashi Engine.</PageHeading>
+              <PageHeading>Watashi Engine.</PageHeading>
               
               <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>What is it?</Heading>
+                <PageHeadingSecondary>What is it?</PageHeadingSecondary>
                 <Text>A highly sophisticated Japanese language engine.</Text>
                 <Button onClick={() => this.randomiseExerices(client)}>Random</Button>
                 
@@ -56,7 +56,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               </FlexColumn>
               
               <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>Features</Heading>
+                <PageHeadingSecondary>Features</PageHeadingSecondary>
                 <List>
                   <ListItem>Allows you to create a variety of accurate Japanese sentences using random Kanji.</ListItem>
                   <ListItem>Provides in-depth analysis of Japanese word and sentence structure. </ListItem>
@@ -68,7 +68,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>What it doesn't do</Heading>
+                <PageHeadingSecondary>What it doesn't do</PageHeadingSecondary>
                 <List>
                   <ListItem>Translate arbitrary Japanese text into English.</ListItem>
                   <ListItem>Focus on enhancing your vocabulary or speaking skills.</ListItem>
@@ -77,7 +77,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>Strong use cases</Heading>
+                <PageHeadingSecondary>Strong use cases</PageHeadingSecondary>
                 <List>
                   <ListItem>Students aiming to take the isntantaneous composition method seriously.</ListItem>
                   <ListItem>Students who benefit from a micro approach towards language.</ListItem>
@@ -87,7 +87,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>Free features</Heading>
+                <PageHeadingSecondary>Free features</PageHeadingSecondary>
                 <List>
                   <ListItem>Limited access to the basic grammar course.</ListItem>
                   <ListItem>Limited access the grammar engine.</ListItem>
@@ -95,7 +95,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               </FlexColumn>
           
               <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>Premium features</Heading>
+                <PageHeadingSecondary>Premium features</PageHeadingSecondary>
                 <List>
                   <ListItem>Full Access to all 100 pre-defined grammar exercises.</ListItem>
                   <ListItem>Exercises ranging from N1 to N5 JLPT levels.</ListItem>
@@ -104,7 +104,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
-                <Heading is='h2' fontSize={4}>Try Watashi Engine Today</Heading>
+                <PageHeadingSecondary>Try Watashi Engine Today</PageHeadingSecondary>
                   <Text>Decide before you buy.</Text>
                   <Link routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</Link>
               </FlexColumn>

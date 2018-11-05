@@ -15,7 +15,7 @@ class Pricing extends React.Component<{}, {}> {
     return (
       <PageWrapper>
         <FlexColumn width={600} mb={5}>
-          <Heading is='h2' fontSize={4}>Pricing</Heading>
+
         </FlexColumn>
 
         <PricingModule />
@@ -34,7 +34,7 @@ class PricingModule extends React.Component<{}, {}> {
 
         <Card borderColor="blacks.3">
           <Heading is='h3'>Free</Heading>
-          <Heading is='h2' fontSize={4}>$0</Heading>
+          <Heading>$0</Heading>
           <List>
             <ListItem mb={2}>Limited access to basic grammar exercises.</ListItem>
           </List>
@@ -43,7 +43,7 @@ class PricingModule extends React.Component<{}, {}> {
 
         <Card borderColor="blacks.3">
           <Heading is='h3'>Monthly</Heading>
-          <Heading is='h2' fontSize={4}>$7.95</Heading>
+          <Heading>$7.95</Heading>
           <List>
             <ListItem mb={2}>Full access to the Watashi Engine.</ListItem>
             <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
@@ -53,7 +53,7 @@ class PricingModule extends React.Component<{}, {}> {
 
         <Card borderColor="blacks.3">
           <Heading is='h3'>Yearly</Heading>
-          <Heading is='h2' fontSize={4}>$59.95</Heading>
+          <Heading>$59.95</Heading>
           <List>
             <ListItem mb={2}>Full access to the Watashi Engine at a discounted Heading.</ListItem>
             <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
