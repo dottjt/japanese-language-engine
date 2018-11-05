@@ -69,3 +69,8 @@ Possibile optimisations: Limit constant length. May be unnecessary.
 
 http://astronautweb.co/react-static-sites/
 https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
+
+
+### GOOD TUTORIALS 
+
+- Setting up SSH with Travis CI oncletom.io/2016/travis-ssh-deploy

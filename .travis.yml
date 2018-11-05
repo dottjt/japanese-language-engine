@@ -23,8 +23,8 @@ before_script:
 script:
 - docker build --pull --cache-from dottjt/watashi-client -t dottjt/watashi-client
   ./watashi-client
-- docker run --rm -d -p 80:80 dottjt/watashi-client
-- docker ps -a
+# - docker run --rm -d -p 80:80 dottjt/watashi-client
+# - docker ps -a
 
 after_script:
 - docker images
