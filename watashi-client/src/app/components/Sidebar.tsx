@@ -1,11 +1,10 @@
 import * as React from 'react'
-
 import styled from 'styled-components';
-import system from '@rebass/components';
 
 import { Box, Flex, FlexColumn } from '../atoms/LayoutStyles';
-import { Heading, Text } from '../atoms/TextStyles';
+import { Heading } from '../atoms/TextStyles';
 import { InternalLink } from '../atoms/ClickableStyles';
+import { SidebarItem, HeadingItem } from '../atoms/ComponentStyles';
 
 import {
   ROUTE_TITLE,
@@ -16,27 +15,6 @@ import {
   LESSON_SECTIONS,
   LESSON_SECTIONS_PREMIUM,
 } from '../../util/constants/lessonConstants';
-
-const SidebarItem = (props) => (
-  <Item>
-    <InternalLink ml={3} css={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%', height: '100%', }} routeName={props.routeName} routeOptions={props.routeOptions}>{props.children}</InternalLink>
-    {props.isPremium && <Text fontSize={1} m={1}>Premium</Text>}
-  </Item>
-);
-
-const HeadingItem = (props) => (
-  <Item>
-    <Heading is='h3' ml={3} fontSize={2}>{props.children}</Heading>
-  </Item>
-);
-
-export const Item = system({
-  width: [1],
-  bb: 1,
-  alignItems: 'center',
-  height: '3rem',
-})
-
 
 class Sidebar extends React.Component<{ route: any }, {}> {
   public render() {
@@ -57,6 +35,8 @@ class Sidebar extends React.Component<{ route: any }, {}> {
           css={{
             position: 'fixed',
             height: '100%',
+            width: '282px',
+            minWidth: '282px',  
             overflowY: 'scroll',
             boxShadow: '4px 6px grey',
           }}
@@ -139,7 +119,7 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
   public render() {
     return (
       <Flex 
-        css={{
+        css={{          
           position: 'relative',
           alignItems: 'center',
           justifyContent: 'flex-start',

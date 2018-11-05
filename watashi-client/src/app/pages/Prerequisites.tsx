@@ -10,10 +10,7 @@ class Prerequistes extends React.Component<{}, {}> {
   public render() {
     return (
       <PageWrapper>
-        <Helmet
-          title={ROUTE_TITLE.PREREQ}
-          description={ROUTE_DESCRIPTION.PREREQ}
-        />
+        <Helmet title={ROUTE_TITLE.PREREQ} description={ROUTE_DESCRIPTION.PREREQ}/>
         <PageHeading>{ROUTE_TITLE.PREREQ}</PageHeading>
 
         <FlexColumn>

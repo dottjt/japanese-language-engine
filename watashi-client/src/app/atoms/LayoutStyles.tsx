@@ -11,6 +11,7 @@ export const Box = system({
   'borders',
   'minWidth',
   'width',
+  'height',
 );
 
 // ---------------------------------------- // 
@@ -22,6 +23,7 @@ export const Flex = system({
   'borders',
   'minWidth',
   'width',
+  'height',
 );
 
 export const FlexColumn = system({

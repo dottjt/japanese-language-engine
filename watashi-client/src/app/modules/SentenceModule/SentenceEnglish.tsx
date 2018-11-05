@@ -29,7 +29,6 @@ const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], opt
   return sentenceArray;
 };
 
-
 const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, options: Util.Options, wordArrayLength: number, wordIndex: number, sentenceLength: number, sentencePartIndex: number): string => {
 
   if (startOfArray(wordArrayLength, wordIndex) && startOfArray(sentenceLength, sentencePartIndex)) {
@@ -60,10 +59,10 @@ class SentenceEnglish extends React.PureComponent<PropTypes.IEnglishSentenceProp
       <FlexColumn>
         <Heading is='h5' fontSize={2}>English</Heading>
         <SentenceCover
+          m={2} ml={0} p={3} pl={3} border={1}
           background={determineSentenceCover(!toggleSentenceOrder, hoverState, toggleSentenceHide)}
           onMouseEnter={this.onHoverEnter}
           onMouseLeave={this.onHoverExit}
-          m={2} ml={0} p={3} pl={3} border={1}
           >
           {sentenceComplete.map((sentencePart: Util.ConjugatedEnglishWord, sentencePartIndex: number) => {
             const sentencePartWordArray = createTaggedArrayEnglish(sentencePart);

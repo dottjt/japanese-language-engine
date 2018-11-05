@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import { FlexColumn } from '../../atoms/LayoutStyles';
 import { ToggleSentenceOrder } from '../../atoms/CustomStyles';
 
 import SentenceStats from './SentenceStats';
@@ -14,7 +13,7 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
     const { client, sentenceDisplayOptions, sentenceStats, options, exerciseIndex, englishSentence, japaneseSentence } = this.props;
 
     return (
-      <FlexColumn mb={2}>
+      <React.Fragment>
         <SentenceStats
           client={client}
           sentenceDisplayOptions={sentenceDisplayOptions}
@@ -40,7 +39,7 @@ class SentenceModule extends React.Component<PropTypes.ISentencesProps, {}> {
             exerciseIndex={exerciseIndex}
           />
         </ToggleSentenceOrder>
-      </FlexColumn>
+      </React.Fragment>
     );
   };
 };

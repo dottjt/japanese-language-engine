@@ -1,6 +1,5 @@
 import { Button as BaseButton, Link as BaseLink } from 'rebass';
-// import styled from 'styled-components';
-import system from '@rebass/components'
+import system from '@rebass/components';
 
 import { Link as ReactRouterLink } from 'react-router5';
 
@@ -14,23 +13,22 @@ export const Button = system({
 });
 
 export const Link = system({
-    extend: BaseLink,
-    color: 'red',
-    fontSize: 2,
-    m: 0,
-  },
-  'space',
-  'width',
-  'fontWeight',
-);
+  extend: BaseLink,
+  color: 'red',
+  fontSize: 2,
+  m: 0,
+});
+
+// ---------------------------------------- // 
 
 export const InternalLink = system({
-  extend: ReactRouterLink,
+  extend: Link,
+  is: ReactRouterLink,
   props: (props) => ({
     routeName: props.routeName,
     routeOptions: props.routeOptions,
   }),
-}) 
+});
 
 export const ExternalLink = system({
   extend: BaseLink,

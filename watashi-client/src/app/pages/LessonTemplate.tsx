@@ -116,18 +116,21 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
                   </FlexColumn>
                 )}
 
-                <SentenceModule
-                  key={exerciseIndex}
-                  exerciseIndex={exerciseIndex}
+                <FlexColumn mb={2}>
+                  <SentenceModule
+                    key={exerciseIndex}
+                    exerciseIndex={exerciseIndex}
 
-                  options={exercise.options}
-                  englishSentence={exercise.englishSentence}
-                  japaneseSentence={exercise.japaneseSentence}
+                    options={exercise.options}
+                    englishSentence={exercise.englishSentence}
+                    japaneseSentence={exercise.japaneseSentence}
 
-                  client={client}
-                  sentenceDisplayOptions={sentenceDisplayOptions}
-                  sentenceStats={sentenceStats}
-                />
+                    client={client}
+                    sentenceDisplayOptions={sentenceDisplayOptions}
+                    sentenceStats={sentenceStats}
+                  />
+                </FlexColumn>
+                
               </React.Fragment>
             )
           })}</FlexColumn>

@@ -9,10 +9,7 @@ class Page404 extends React.Component<{}, {}> {
   public render() {
     return (
       <PageWrapper>
-        <Helmet
-          title={'404'}
-          description={'404'}
-        />
+        <Helmet title={'404'} description={'404'} />
       </PageWrapper> 
     );
   };

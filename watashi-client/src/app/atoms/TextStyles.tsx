@@ -12,12 +12,13 @@ export const Text = system({
   mb: 4,
 });
 
-
 export const Heading = system({
   extend: BaseText,
   color: 'dark-gray',
   fontFamily: 'sansSerif',
 });
+
+// ---------------------------------------- // 
 
 export const PageHeading = system({
   extend: Heading,
