@@ -38,6 +38,13 @@ export const FlexCenter = system({
   alignItems: 'center',
 });
 
+export const FlexColumnCenter = system({
+  extend: Flex,
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
 // ---------------------------------------- // 
 
 export const PageWrapper = system({

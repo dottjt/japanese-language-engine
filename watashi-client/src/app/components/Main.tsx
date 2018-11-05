@@ -105,6 +105,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -122,6 +123,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -139,6 +141,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -156,6 +159,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -173,6 +177,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -190,6 +195,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -207,6 +213,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -224,6 +231,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -241,6 +249,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -258,6 +267,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -275,6 +285,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -292,6 +303,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -309,6 +321,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -326,6 +339,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -343,6 +357,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={false}
           />
@@ -361,6 +376,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={true}
             />
@@ -378,6 +394,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={true}
           />
@@ -395,6 +412,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={true}
           />
@@ -412,6 +430,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={true}
           />
@@ -429,6 +448,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             sentenceStats={sentenceStats}
             client={client}
             path={route.path}                  
+            auth={auth}
             isAuthenticated={isAuthenticated}
             premiumLesson={true}
           />

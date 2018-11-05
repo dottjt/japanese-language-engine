@@ -22,7 +22,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
           >
           <Flex justifyContent='flex-end'>
             {statTypes.topic &&
-              <Text mr={4} p={2} color='lightgreen'
+              <Text mr={4} p={2} color='sentenceStat'
                 onMouseEnter={() => this.onTopicEnter(exerciseIndex)}
                 onMouseLeave={this.onTopicExit}
               >
@@ -30,7 +30,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
               </Text>
             }
             {statTypes.subject &&
-              <Text mr={4} p={2} color='lightgreen'
+              <Text mr={4} p={2} color='sentenceStat'
                 onMouseEnter={() => this.onSubjectEnter(exerciseIndex)}
                 onMouseLeave={this.onSubjectExit}
               >
@@ -38,7 +38,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
               </Text>
             }
             {statTypes.verb &&
-              <Text mr={4} p={2} color='lightgreen'
+              <Text mr={4} p={2} color='sentenceStat'
                 onMouseEnter={() => this.onVerbEnter(exerciseIndex)}
                 onMouseLeave={this.onVerbExit}
               >
@@ -46,7 +46,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
               </Text>
             }
             {statTypes.questionValue &&
-              <Text mr={4} p={2} color='lightgreen'
+              <Text mr={4} p={2} color='sentenceStat'
                 onMouseEnter={() => this.onQuestionEnter(exerciseIndex)}
                 onMouseLeave={this.onQuestionExit}
               >
@@ -54,7 +54,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
               </Text>
             }
             {statTypes.politenessValue &&
-              <Text mr={4} p={2} color='lightgreen'
+              <Text mr={4} p={2} color='sentenceStat'
                 onMouseEnter={() => this.onPolitenessEnter(exerciseIndex)}
                 onMouseLeave={this.onPolitenessExit}
               >
@@ -62,7 +62,7 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
               </Text>
             }
             {statTypes.polarityTenseValue &&
-              <Text mr={4} p={2} color='lightgreen'
+              <Text mr={4} p={2} color='sentenceStat'
                 onMouseEnter={() => this.onPolarityTenseEnter(exerciseIndex)}
                 onMouseLeave={this.onPolarityTenseExit}
               >

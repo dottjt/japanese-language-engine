@@ -17,9 +17,7 @@ class Pricing extends React.Component<{}, {}> {
         <FlexColumn width={600} mb={5}>
 
         </FlexColumn>
-
         <PricingModule />
-
       </PageWrapper>
     );
   }
@@ -32,7 +30,7 @@ class PricingModule extends React.Component<{}, {}> {
     return (
       <Flex justifyContent='space-around' mb={4}>
 
-        <Card borderColor="blacks.3">
+        <Card borderColor="black">
           <Heading is='h3'>Free</Heading>
           <Heading>$0</Heading>
           <List>
@@ -41,7 +39,7 @@ class PricingModule extends React.Component<{}, {}> {
           <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</InternalLink>                      
         </Card>
 
-        <Card borderColor="blacks.3">
+        <Card borderColor="black">
           <Heading is='h3'>Monthly</Heading>
           <Heading>$7.95</Heading>
           <List>
@@ -51,7 +49,7 @@ class PricingModule extends React.Component<{}, {}> {
           <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</InternalLink>                      
         </Card>
 
-        <Card borderColor="blacks.3">
+        <Card borderColor="black">
           <Heading is='h3'>Yearly</Heading>
           <Heading>$59.95</Heading>
           <List>

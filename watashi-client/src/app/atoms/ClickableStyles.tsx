@@ -7,7 +7,8 @@ export const Button = system({
     extend: BaseButton,
     borderRadius: 1,
     border: 2,
-    color: 'purple',
+    color: 'button',
+    bg: 'black',
     fontSize: 2,
     m: 0,
   },
@@ -17,7 +18,7 @@ export const Button = system({
 export const Link = system({
     extend: BaseLink,
     is: 'a',
-    color: 'red',
+    color: 'link',
     fontSize: 2,
     m: 0,
   },
@@ -36,8 +37,7 @@ export const InternalLink = system({
 });
 
 export const ExternalLink = system({
-  extend: BaseLink,
-  fontSize: 2,
+  extend: Link,
 });
 
 

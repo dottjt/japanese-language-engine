@@ -5,7 +5,7 @@ export const Text = system({
   extend: BaseText,
   is: 'p',
   fontSize: 2,
-  color: 'dark-gray',
+  color: 'text',
   fontFamily: 'sansSerif',
   lineHeight: 'copy',
   m: 0,
@@ -14,7 +14,7 @@ export const Text = system({
 
 export const Heading = system({
   extend: BaseText,
-  color: 'dark-gray',
+  color: 'heading',
   fontFamily: 'sansSerif',
 });
 

@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { PageWrapper, FlexColumn, Flex } from '../atoms/LayoutStyles';
+import { PageWrapper, FlexColumn, FlexColumnCenter, Flex } from '../atoms/LayoutStyles';
 import { PageHeading, PageHeadingSecondary, Text } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
@@ -11,10 +11,11 @@ import SentenceOptions from '../modules/SentenceModule/SentenceOptions';
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
 import ResourceModule from '../modules/ResourceModule';
 import ExplanationModule from '../modules/ExplanationModule';
+import { ExternalLink } from '../atoms/ClickableStyles';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { title, description, client, path, sentenceDisplayOptions, preOptions, sentenceStats, exercises, explanation, resources, isAuthenticated, premiumLesson, } = this.props;
+    const { title, description, client, path, sentenceDisplayOptions, preOptions, sentenceStats, exercises, explanation, resources, auth, isAuthenticated, premiumLesson, } = this.props;
 
     return (
       <PageWrapper>
@@ -45,7 +46,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             }}
             >
             <PremiumFilter isAuthenticated={isAuthenticated}>
-              <Text fontSize={5} mb={0} color='white'>This is a premium feature. Sorry!</Text>
+              <Text fontSize={4} mb={0} color='white'>You must <ExternalLink onClick={auth.login} fontSize={4} mb={0}>login</ExternalLink> or <ExternalLink onClick={auth.login} fontSize={4} mb={0}>create an account</ExternalLink> in order to use this feature.</Text>
             </PremiumFilter>
 
             <SentenceControlPanel
@@ -118,18 +119,18 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
 
 const PremiumFilter = ({ isAuthenticated, children }) => (
   !isAuthenticated ?
-    <FlexColumn
-      p={3}
+    <FlexColumnCenter
+      bg='transparentGrey'
       css={{
         position: 'absolute',
         width: '100%',
         height: '100%',
         zIndex: 9,
-        background: 'rgba(26,26,26, 0.8)',
       }}
       >
       <Flex
         bg='grey'
+        p={2}
         css={{
           justifyContent: 'center',
           alignItems: 'center',
@@ -137,7 +138,7 @@ const PremiumFilter = ({ isAuthenticated, children }) => (
         >
         {children}
       </Flex>
-    </FlexColumn> : null
+    </FlexColumnCenter> : null
 );
 
 export default LessonTemplate;

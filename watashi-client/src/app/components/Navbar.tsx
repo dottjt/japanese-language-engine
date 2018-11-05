@@ -2,8 +2,7 @@ import * as React from 'react';
 // import styled from 'styled-components';
 
 import { Flex } from '../atoms/LayoutStyles';
-// import { Heading } from '../atoms/TextStyles';
-import { InternalLink } from '../atoms/ClickableStyles';
+import { InternalLink, ExternalLink } from '../atoms/ClickableStyles';
 
 import { ROUTE_TITLE } from '../../util/constants/routeConstants';
 
@@ -29,22 +28,23 @@ class Navbar extends React.Component<{ auth: any, user: any }, {}> {
           zIndex: 10,
         }}
         >
-        <Flex width={200} justifyContent='space-around'>
-          {isAuthenticated && (
-            <React.Fragment>
-              <InternalLink onClick={auth.login}>{ROUTE_TITLE.LOGIN}</InternalLink>
-            </React.Fragment>
-          )}
-          {isAuthenticated && (
-            <React.Fragment>
-              <Flex>
-                {/* first need to get this from the 'database', I think. */}
-                {/* if authenticated, then need to go to database and get the user information :) */}
-                {/* <img src={user.thumbUrl}/> */}
-                <InternalLink routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</InternalLink>                
-              </Flex>
-            </React.Fragment>
-          )}
+        <Flex
+          css={{
+            width: '200px',
+            justifyContent: 'space-around',
+          }}
+          >
+          {!isAuthenticated && 
+            <ExternalLink onClick={auth.login}>{ROUTE_TITLE.LOGIN}</ExternalLink>
+          }
+          {isAuthenticated && 
+            <Flex>
+              {/* first need to get this from the 'database', I think. */}
+              {/* if authenticated, then need to go to database and get the user information :) */}
+              {/* <img src={user.thumbUrl}/> */}
+              <InternalLink routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</InternalLink>                
+            </Flex>
+          }
         </Flex>
       </Flex>
     )

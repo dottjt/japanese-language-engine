@@ -65,6 +65,7 @@ declare module PropTypes {
     client: any,
     path: string,
     isAuthenticated: string,
+    auth: any,
     premiumLesson: boolean,
   }
   
