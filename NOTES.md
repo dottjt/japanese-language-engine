@@ -2,7 +2,7 @@
 - Docker build
 - 0Auth setup (proper) + Users
 - Travis CI
-- Buy domain.
+- Buy domain. name 
 
 ## TODO BACKLOG
 - Verb basics
