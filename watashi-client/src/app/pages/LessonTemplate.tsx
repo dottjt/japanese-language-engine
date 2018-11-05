@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { FlexColumn, Flex, PageWrapper } from '../atoms/LayoutStyles';
+import { PageWrapper, FlexColumn, Flex } from '../atoms/LayoutStyles';
 import { PageHeading, PageHeadingSecondary, Text } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
@@ -46,10 +46,10 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
         
         
         <FlexColumn>
-          <PageHeadingSecondary>Grammatical Resources</PageHeadingSecondary>
+          <PageHeadingSecondary>Grammar Resources</PageHeadingSecondary>
           <FlexColumn mb={2}><ResourceModule resources={resources}/></FlexColumn>
 
-          <PageHeadingSecondary>Grammatical Notes</PageHeadingSecondary>
+          <PageHeadingSecondary>Grammar Notes</PageHeadingSecondary>
           <FlexColumn mb={2}><ExplanationModule explanation={explanation}/></FlexColumn>
 
           <PageHeadingSecondary>Refined Sentence Options</PageHeadingSecondary>
@@ -66,11 +66,20 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
                   width: '100%',
                   height: '100%',
                   zIndex: 9,
-                  background: 'grey',
-                  opacity: 0.5,
+                  background: 'rgba(26,26,26, 0.8)',
                 }}
                 p={3}
-                >This is a premium feature. Sorry!</FlexColumn>
+                >
+                <Flex 
+                  bg='grey'
+                  css={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  >
+                  <Text fontSize={5} mb={0} color='white'>This is a premium feature. Sorry!</Text>
+                </Flex>
+              </FlexColumn>
             }
             <SentenceControlPanel
               sentenceDisplayOptions={this.props.sentenceDisplayOptions}
@@ -90,10 +99,11 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           <PageHeadingSecondary>Lesson Exercises</PageHeadingSecondary>
 
           <FlexColumn 
+            mb={2}
             css={{
               position: 'relative',
             }}
-            mb={2}>
+            >
             {exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => {
             return (
               <React.Fragment>
@@ -104,14 +114,15 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
                       width: '100%',
                       height: '100%',
                       zIndex: 9,
-                      background: 'grey',
-                      opacity: 0.5,
+                      background: 'rgba(26,26,26, 0.8)',
                     }}
                     p={3}
                     >
-                    <Text>You must create an account in order to access these exercises.</Text>
-                    <Text>The first 6 modules do not require an account.</Text>
-                    <Text>Please click on this link to create an account. It will take you to our secure login platform.</Text>
+                    <Flex bg='grey'>
+                      <Text fontSize={5} color='white'>You must create an account in order to access these exercises.</Text>
+                      <Text fontSize={5} color='white'>The first 6 modules do not require an account.</Text>
+                      <Text fontSize={5} color='white'>Please click on this link to create an account. It will take you to our secure login platform.</Text>
+                    </Flex>
 
 
                   </FlexColumn>
@@ -135,7 +146,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           <PageHeadingSecondary>Premium Account</PageHeadingSecondary>
           
           <FlexColumn mb={2}>
-            <Text>The first six modules </Text>
+            <Text >The first six modules </Text>
 
           </FlexColumn>
 

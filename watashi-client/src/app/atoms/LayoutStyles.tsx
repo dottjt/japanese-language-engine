@@ -2,75 +2,30 @@ import * as React from 'react';
 import { Flex as RebassFlex, Box as RebassBox } from 'rebass';
 import { 
   borders,
-  minWidth,
-  space,
-  width,
-  height,
-  position,
-  zIndex,
-  color,
-  overflow,
-  bottom,
-  left,
-  right,
-  top,
-  flexWrap } from 'styled-system';
+  minWidth } from 'styled-system';
 
 import styled from 'styled-components';
-import system from 'system-components';
+import system from '@rebass/components';
 
 export const Box = styled(RebassBox)`
-  ${space}
   ${borders}
-  ${width}
-  ${height}
-  ${position}
-  ${zIndex}
-  ${color}
-  ${overflow}
-  ${bottom}
-  ${left}
-  ${right}
-  ${top}
-  ${flexWrap}
+  ${minWidth}
 `;
 
 export const Flex = styled(RebassFlex)`
   display: flex;
-  ${space}
   ${borders}
-  ${width}
-  ${height}
-  ${position}
-  ${zIndex}
-  ${color}
-  ${overflow}
-  ${bottom}
-  ${left}
-  ${right}
-  ${top}
-  ${flexWrap}
+  ${minWidth}
 `;
 
 export const FlexColumn = styled(RebassFlex)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  ${space}
   ${borders}
-  ${width}
   ${minWidth}
-  ${height}
-  ${position}
-  ${zIndex}
-  ${color}
-  ${overflow}
-  ${bottom}
-  ${left}
-  ${right}
-  ${top}
-  ${flexWrap}
 `;
+
 
 export const PageWrapper = (props) => (
   <FlexColumn ml={6} mt={5} mb={5} mr={3}

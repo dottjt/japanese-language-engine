@@ -10,24 +10,25 @@ import { ROUTE_TITLE } from '../../util/constants/routeConstants';
 class Navbar extends React.Component<{ auth: any, user: any }, {}> {
   public render() {
     const { auth } = this.props;
-
+    const isAuthenticated = auth.isAuthenticated();
+    
     return (
       <Flex
-        justifyContent='space-between'
-        alignItems='center'
-        zIndex={10}
         bg='white'
-        position='fixed'
-        top={0}
-        right={0}
         borderBottom={1}
-        height={64}
         css={{
           boxShadow: '4px 6px grey',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          zIndex: 10,
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          height:'64px',
         }}
         >
         <Flex width={200} justifyContent='space-around'>
-          {!auth.isAuthenticated() && (
+          {isAuthenticated && (
             <React.Fragment>
               <Link is='a' onClick={auth.login}>{ROUTE_TITLE.LOGIN}</Link>
             </React.Fragment>

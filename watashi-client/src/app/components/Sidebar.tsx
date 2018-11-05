@@ -35,37 +35,32 @@ const Item = styled(Flex)`
   width: ${themeGet([1])};
   height: 3rem;
   border-bottom: ${themeGet('borders.1')};
-  /* border-bottom: '1px solid white'; */
-  /* transition: background .2s;
-  &:hover {
-    background: lightgrey;
-  }; */
 `;
 
-const SidebarWrapper = styled(FlexColumn)`
-  position: relative;
-  bottom: 0;
-  top: 0;
-  height: 100vh;
-  width: 282px;
-  min-width: 282px;
-  font-size: ${themeGet(5)};
-`;
-
-const BoxScroll = styled(Box)`
-  position: fixed;
-  /* top: 60px; */
-  height: 100%;
-  overflow-y: scroll;
-  border-right: ${themeGet('borders.1')};
-  box-shadow: 4px 6px grey;
-`;
 
 class Sidebar extends React.Component<{ route: any }, {}> {
   public render() {
     return (
-      <SidebarWrapper>
-        <BoxScroll>
+      <FlexColumn
+        fontSize={5}
+        css={{
+          position: 'relative',
+          bottom: 0,
+          top: 0,
+          height: '100vh',
+          width: '282px',
+          minWidth: '282px',
+        }}
+        >
+        <Box
+          borderRight={1}
+          css={{
+            position: 'fixed',
+            height: '100%',
+            overflowY: 'scroll',
+            boxShadow: '4px 6px grey',
+          }}
+          >
           <LogoDropdown/>
 
           <FlexColumn>
@@ -118,8 +113,8 @@ class Sidebar extends React.Component<{ route: any }, {}> {
             <SidebarItem isPremium={LESSON_SECTIONS_PREMIUM.S06} routeName={LESSON_TITLE.L019} routeOptions={{reload: true}}>{LESSON_TITLE.L019}</SidebarItem>
             <SidebarItem isPremium={LESSON_SECTIONS_PREMIUM.S06} routeName={LESSON_TITLE.L020} routeOptions={{reload: true}}>{LESSON_TITLE.L020}</SidebarItem>
           </FlexColumn>
-        </BoxScroll>
-      </SidebarWrapper>
+        </Box>
+      </FlexColumn>
     );
   };
 };
@@ -161,6 +156,7 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
           Watashi Engine</Heading>
         <Dropdown
           ml={7}
+          togglevisibility={this.state.dropdownOpenState}
           css={{
             position: 'absolute',
             marginTop: '2px',
@@ -168,7 +164,6 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
             justifyContent: 'space-between',
             marginRight: '1rem',          
           }}
-          togglevisibility={this.state.dropdownOpenState}
           >
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</Link>
           <Link onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</Link>

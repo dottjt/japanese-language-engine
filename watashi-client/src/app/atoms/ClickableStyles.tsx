@@ -1,7 +1,8 @@
 // import { Button as RebassButton, /* Link as RebassLink */ } from 'rebass';
 import styled from 'styled-components';
+import system from '@rebass/components'
+
 import { Link as ReactRouterLink } from 'react-router5';
-import system from 'system-components';
 
 export const Button = system(
   {

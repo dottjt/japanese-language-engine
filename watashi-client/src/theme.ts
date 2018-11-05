@@ -37,6 +37,7 @@ const theme = {
     purple: 'purple',
     lightgreen: 'lightgreen',
     black: '#000',
+    grey: 'grey',
     text: '#676767',
     transparentLightGrey: 'rgb(211,211,211, 0.5)'
   },
