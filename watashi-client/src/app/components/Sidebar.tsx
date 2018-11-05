@@ -2,8 +2,8 @@ import * as React from 'react'
 
 import { Box, Flex, FlexColumn } from '../atoms/LayoutStyles';
 import { Heading } from '../atoms/TextStyles';
-import { ExternalLink, InternalLink } from '../atoms/ClickableStyles';
-import { SidebarItem, HeadingItem } from '../atoms/ComponentStyles';
+// import { ExternalLink, InternalLink } from '../atoms/ClickableStyles';
+import { SidebarItemExternal, SidebarItem, HeadingItem } from '../atoms/ComponentStyles';
 
 import {
   ROUTE_TITLE,
@@ -49,18 +49,21 @@ class Sidebar extends React.Component<{ user: any, auth: any, route: any }, {}> 
             mb={3}
             >
             Watashi Engine</Heading>
-
-          {!isAuthenticated && 
-            <ExternalLink onClick={auth.login}>{ROUTE_TITLE.LOGIN}</ExternalLink>
-          }
-          {isAuthenticated && 
-            <Flex>
-              {/* first need to get this from the 'database', I think. */}
-              {/* if authenticated, then need to go to database and get the user information :) */}
-              {/* <img src={user.thumbUrl}/> */}
-              <InternalLink routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</InternalLink>                
-            </Flex>
-          }
+          <Flex
+            css={{
+              borderBottom: '1px solid grey',
+            }}
+            >
+            {!isAuthenticated && 
+              <SidebarItemExternal onClick={auth.login}>{ROUTE_TITLE.LOGIN} / {ROUTE_TITLE.SIGN_UP}</SidebarItemExternal>
+            }
+            {/* first need to get this from the 'database', I think. */}
+            {/* if authenticated, then need to go to database and get the user information :) */}
+            {/* <img src={user.thumbUrl}/> */}
+            {isAuthenticated && 
+              <SidebarItem routeName={ROUTE_TITLE.PROFILE} routeOptions={{reload: true}}>{ROUTE_TITLE.PROFILE}</SidebarItem>                
+            }
+          </Flex>
 
           <FlexColumn>
             <SidebarItem routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</SidebarItem>

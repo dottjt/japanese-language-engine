@@ -5,51 +5,56 @@ import GET_EVERYTHING from '../../graphql/queries/getEverything';
 import { LESSON_TITLE, lessonPathArray } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 
-import { randomArrayElement, getExercisesApollo } from '../../util/functions'
+import { randomArrayElement, getExercisesApollo } from '../../util/functions';
 
-import SentenceModule from '../modules/SentenceModule/SentenceModule'
+import SentenceModule from '../modules/SentenceModule/SentenceModule';
 
 import Helmet from '../components/Helmet';
 
 import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
-import { InternalLink, Button } from '../atoms/ClickableStyles';
+import { InternalLink } from '../atoms/ClickableStyles';
 import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
 
 
 class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }> {
+  constructor(props) {
+    super(props);
+    getExercisesApollo(this.props.client, this.props.route.path, 1);
+  };
 
   public render() {
-    getExercisesApollo(this.props.client, this.props.route.path, 1);
+
+    // setTimeout(() => {
+      this.randomiseExerices(this.props.client);
+    // }, 1500);
 
     return (
       <Query query={GET_EVERYTHING}>
         {({ data, client }) => {
-
+            
           return (
             <PageWrapper>
-              <Helmet
-                title={ROUTE_TITLE.HOME}
-                description={ROUTE_DESCRIPTION.HOME}
-              />
+              
+              <Helmet title={ROUTE_TITLE.HOME} description={ROUTE_DESCRIPTION.HOME}/>
+
               <PageHeading>Watashi Engine.</PageHeading>
               
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>What is it?</SecondaryPageHeading>
                 <Text>A highly sophisticated Japanese language engine.</Text>
-                <Button onClick={() => this.randomiseExerices(client)}>Random</Button>
                 
                 {data.exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => (
                   <SentenceModule
                     key={exerciseIndex}
                     exerciseIndex={exerciseIndex}
 
-                    sentenceDisplayOptions={data.sentenceDisplayOptions}
-                    sentenceStats={data.sentenceStats}
-                    client={client}
-                    
                     options={exercise.options}
                     englishSentence={exercise.englishSentence}
                     japaneseSentence={exercise.japaneseSentence}
+
+                    client={client}
+                    sentenceDisplayOptions={data.sentenceDisplayOptions}
+                    sentenceStats={data.sentenceStats}
                   />
                 ))}
               </FlexColumn>

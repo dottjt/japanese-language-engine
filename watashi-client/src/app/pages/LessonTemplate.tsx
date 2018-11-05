@@ -24,7 +24,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
 
         <Flex>
           <PageHeading>{title}</PageHeading>
-          <Text ml={3}>{premiumLesson ? 'Premium' : 'Free'}</Text>
+          <Text ml={3}>{premiumLesson ? 'Premium module' : 'Free :D'}</Text>
         </Flex>
         
         <FlexColumn>

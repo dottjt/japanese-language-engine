@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Flex } from './LayoutStyles';
 import { Heading, Text } from './TextStyles';
-import { InternalLink } from './ClickableStyles';
+import { ExternalLink, InternalLink } from './ClickableStyles';
 
 import system from '@rebass/components';
-
 
 const Item = system({
   extend: Flex,
@@ -13,6 +12,28 @@ const Item = system({
   borderBottom: 1,
   alignItems: 'center',
 });
+
+export const SidebarItemExternal = (props) => (
+  <Item>
+    <ExternalLink 
+      ml={3}
+      fontSize={1}
+      css={{
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'flex-start', 
+        width: '100%', 
+        height: '100%', 
+      }}
+      onClick={props.onClick}
+      >
+        {props.children}
+      </ExternalLink>  
+        {props.isPremium && (
+          <Text fontSize={1} m={1}>Premium</Text>
+        )}
+  </Item>
+);
 
 export const SidebarItem = (props) => (
   <Item>
