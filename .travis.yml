@@ -38,7 +38,7 @@ deploy:
     on:
       branch: production
   - provider: script
-    script: ./deploy.sh
+    script: bash infrastructure/scripts/deploy.sh
     on:
       branch: production
 
