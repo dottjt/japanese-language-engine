@@ -61,5 +61,6 @@
     "inlineCss": false,
     "fixWebpackChunksIssue": false,
     "puppeteerExecutablePath": "/usr/bin/chromium-browser"
-  }
+  },
+  "//": "puppeteerExecutablePath must be removed when building locally in watashi-client"
 }
