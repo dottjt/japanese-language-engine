@@ -32,6 +32,8 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
               <Flex>
                 <Sidebar
                   route={route}
+                  auth={auth}
+                  user={data.user}
                 />
                 <Main 
                   auth={auth}
