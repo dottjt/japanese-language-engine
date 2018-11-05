@@ -1,7 +1,8 @@
 import * as React from 'react'
 
+import { Flex } from '../../atoms/LayoutStyles';
 import { Text } from '../../atoms/TextStyles';
-import { ToggleSentenceStats } from '../../atoms/CustomStyles';
+import { ToggleVisibility } from '../../atoms/CustomStyles';
 
 import {
   determineStatTypes,
@@ -16,58 +17,60 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
     const statTypes = determineStatTypes(this.props.options);
 
     return (
-        <ToggleSentenceStats togglevisibility={toggleSentenceStats(sentenceDisplayOptions.toggleSentenceStats)} justifyContent='flex-end'>
-
-          {statTypes.topic &&
-            <Text mr={4} p={2} color='lightgreen'
-              onMouseEnter={() => this.onTopicEnter(exerciseIndex)}
-              onMouseLeave={this.onTopicExit}
-            >
-              Topic
-            </Text>
-          }
-          {statTypes.subject &&
-            <Text mr={4} p={2} color='lightgreen'
-              onMouseEnter={() => this.onSubjectEnter(exerciseIndex)}
-              onMouseLeave={this.onSubjectExit}
-            >
-              Subject
-            </Text>
-          }
-          {statTypes.verb &&
-            <Text mr={4} p={2} color='lightgreen'
-              onMouseEnter={() => this.onVerbEnter(exerciseIndex)}
-              onMouseLeave={this.onVerbExit}
-            >
-              Verb
-            </Text>
-          }
-          
-          {statTypes.questionValue &&
-            <Text mr={4} p={2} color='lightgreen'
-              onMouseEnter={() => this.onQuestionEnter(exerciseIndex)}
-              onMouseLeave={this.onQuestionExit}
-            >
-              {statTypes.questionValue}
-            </Text>
-          }
-          {statTypes.politenessValue &&
-            <Text mr={4} p={2} color='lightgreen'
-              onMouseEnter={() => this.onPolitenessEnter(exerciseIndex)}
-              onMouseLeave={this.onPolitenessExit}
-            >
-              {statTypes.politenessValue}
-            </Text>
-          }
-          {statTypes.polarityTenseValue &&
-            <Text mr={4} p={2} color='lightgreen'
-              onMouseEnter={() => this.onPolarityTenseEnter(exerciseIndex)}
-              onMouseLeave={this.onPolarityTenseExit}
-            >
-              {statTypes.polarityTenseValue}
-            </Text>
-          }
-        </ToggleSentenceStats>
+        <ToggleVisibility 
+          togglevisibility={toggleSentenceStats(sentenceDisplayOptions.toggleSentenceStats)} 
+          >
+          <Flex justifyContent='flex-end'>
+            {statTypes.topic &&
+              <Text mr={4} p={2} color='lightgreen'
+                onMouseEnter={() => this.onTopicEnter(exerciseIndex)}
+                onMouseLeave={this.onTopicExit}
+              >
+                Topic
+              </Text>
+            }
+            {statTypes.subject &&
+              <Text mr={4} p={2} color='lightgreen'
+                onMouseEnter={() => this.onSubjectEnter(exerciseIndex)}
+                onMouseLeave={this.onSubjectExit}
+              >
+                Subject
+              </Text>
+            }
+            {statTypes.verb &&
+              <Text mr={4} p={2} color='lightgreen'
+                onMouseEnter={() => this.onVerbEnter(exerciseIndex)}
+                onMouseLeave={this.onVerbExit}
+              >
+                Verb
+              </Text>
+            }
+            {statTypes.questionValue &&
+              <Text mr={4} p={2} color='lightgreen'
+                onMouseEnter={() => this.onQuestionEnter(exerciseIndex)}
+                onMouseLeave={this.onQuestionExit}
+              >
+                {statTypes.questionValue}
+              </Text>
+            }
+            {statTypes.politenessValue &&
+              <Text mr={4} p={2} color='lightgreen'
+                onMouseEnter={() => this.onPolitenessEnter(exerciseIndex)}
+                onMouseLeave={this.onPolitenessExit}
+              >
+                {statTypes.politenessValue}
+              </Text>
+            }
+            {statTypes.polarityTenseValue &&
+              <Text mr={4} p={2} color='lightgreen'
+                onMouseEnter={() => this.onPolarityTenseEnter(exerciseIndex)}
+                onMouseLeave={this.onPolarityTenseExit}
+              >
+                {statTypes.polarityTenseValue}
+              </Text>
+            }
+          </Flex>
+        </ToggleVisibility>
     );
   }
 

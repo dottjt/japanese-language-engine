@@ -44,32 +44,10 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
               position: 'relative',
             }}
             >
-            {!isAuthenticated && 
-              <FlexColumn
-                p={3}
-                css={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  zIndex: 9,
-                  background: 'rgba(26,26,26, 0.8)',
-                }}
-                >
-                <Flex
-                  bg='grey'
-                  css={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                  >
-                  <Text 
-                    fontSize={5} 
-                    mb={0} 
-                    color='white'
-                    >This is a premium feature. Sorry!</Text>
-                </Flex>
-              </FlexColumn>
-            }
+            <PremiumFilter isAuthenticated={isAuthenticated}>
+              <Text fontSize={5} mb={0} color='white'>This is a premium feature. Sorry!</Text>
+            </PremiumFilter>
+
             <SentenceControlPanel
               sentenceDisplayOptions={this.props.sentenceDisplayOptions}
               preOptions={preOptions}
@@ -79,11 +57,13 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
           </FlexColumn>
 
           <PageHeadingSecondary>Sentence Analysis Options</PageHeadingSecondary>
-          <FlexColumn mb={2}><SentenceOptions
-            sentenceDisplayOptions={this.props.sentenceDisplayOptions}
-            client={client}
-            path={path}
-          /></FlexColumn>
+          <FlexColumn mb={2}>
+            <SentenceOptions
+              sentenceDisplayOptions={this.props.sentenceDisplayOptions}
+              client={client}
+              path={path}
+            />
+          </FlexColumn>
 
           <PageHeadingSecondary>Lesson Exercises</PageHeadingSecondary>
 
@@ -97,24 +77,13 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             return (
               <React.Fragment>
 
-                {!isAuthenticated && premiumLesson && (
-                  <FlexColumn
-                    p={3}
-                    css={{
-                      position: 'absolute',
-                      width: '100%',
-                      height: '100%',
-                      zIndex: 9,
-                      background: 'rgba(26,26,26, 0.8)',
-                    }}
-                    >
-                    <Flex bg='grey'>
-                      <Text fontSize={5} color='white'>You must create an account in order to access these exercises.</Text>
-                      <Text fontSize={5} color='white'>The first 6 modules do not require an account.</Text>
-                      <Text fontSize={5} color='white'>Please click on this link to create an account. It will take you to our secure login platform.</Text>
-                    </Flex>
-                  </FlexColumn>
-                )}
+                {premiumLesson &&
+                  <PremiumFilter isAuthenticated={isAuthenticated}>
+                    <Text fontSize={5} color='white'>You must create an account in order to access these exercises.</Text>
+                    <Text fontSize={5} color='white'>The first 6 modules do not require an account.</Text>
+                    <Text fontSize={5} color='white'>Please click on this link to create an account. It will take you to our secure login platform.</Text>
+                  </PremiumFilter>
+                }
 
                 <FlexColumn mb={2}>
                   <SentenceModule
@@ -146,5 +115,29 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
     );
   };
 };
+
+const PremiumFilter = ({ isAuthenticated, children }) => (
+  !isAuthenticated ?
+    <FlexColumn
+      p={3}
+      css={{
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        zIndex: 9,
+        background: 'rgba(26,26,26, 0.8)',
+      }}
+      >
+      <Flex
+        bg='grey'
+        css={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        >
+        {children}
+      </Flex>
+    </FlexColumn> : null
+);
 
 export default LessonTemplate;

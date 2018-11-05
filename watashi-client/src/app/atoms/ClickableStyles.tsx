@@ -4,20 +4,25 @@ import system from '@rebass/components';
 import { Link as ReactRouterLink } from 'react-router5';
 
 export const Button = system({
-  extend: BaseButton,
-  borderRadius: 1,
-  border: 2,
-  color: 'purple',
-  fontSize: 2,
-  m: 0,
-});
+    extend: BaseButton,
+    borderRadius: 1,
+    border: 2,
+    color: 'purple',
+    fontSize: 2,
+    m: 0,
+  },
+  'fontSize',
+);
 
 export const Link = system({
-  extend: BaseLink,
-  color: 'red',
-  fontSize: 2,
-  m: 0,
-});
+    extend: BaseLink,
+    is: 'a',
+    color: 'red',
+    fontSize: 2,
+    m: 0,
+  },
+  'fontSize',
+);
 
 // ---------------------------------------- // 
 

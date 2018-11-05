@@ -17,23 +17,25 @@ class Navbar extends React.Component<{ auth: any, user: any }, {}> {
         bg='white'
         borderBottom={1}
         css={{
-          boxShadow: '4px 6px grey',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          zIndex: 10,
           position: 'fixed',
           top: 0,
           right: 0,
           height:'64px',
+
+          boxShadow: '4px 6px grey',
+          
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          zIndex: 10,
         }}
         >
         <Flex width={200} justifyContent='space-around'>
           {isAuthenticated && (
             <React.Fragment>
-              <InternalLink is='a' onClick={auth.login}>{ROUTE_TITLE.LOGIN}</InternalLink>
+              <InternalLink onClick={auth.login}>{ROUTE_TITLE.LOGIN}</InternalLink>
             </React.Fragment>
           )}
-          {auth.isAuthenticated() && (
+          {isAuthenticated && (
             <React.Fragment>
               <Flex>
                 {/* first need to get this from the 'database', I think. */}

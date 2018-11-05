@@ -2,12 +2,12 @@ import * as React from 'react'
 
 import { Flex, FlexColumn } from '../../atoms/LayoutStyles';
 import { Heading } from '../../atoms/TextStyles';
-import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
+import { TextHover, ToggleBackground } from '../../atoms/CustomStyles';
 
 import {
   // startOfArray,
   endOfArray,
-  determineSentenceCover,
+  determineToggleBackground,
 } from '../../../util/functions';
 
 import {
@@ -58,32 +58,32 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
     return (
       <FlexColumn>
         <Heading is='h5' fontSize={2}>Japanese</Heading>
-
-        <SentenceCover
-          background={determineSentenceCover(toggleSentenceOrder, hoverState, toggleSentenceHide)}
+        <ToggleBackground
+          background={determineToggleBackground(toggleSentenceOrder, hoverState, toggleSentenceHide)}
           onMouseEnter={this.onHoverEnter}
           onMouseLeave={this.onHoverExit}
-          m={2} ml={0} p={3} pl={3} border={1}
           >
-          {sentenceComplete.map((sentencePart, sentencePartIndex: number) => {
-            const sentencePartWordArray = createTaggedArrayJapanese(sentencePart);
-            const sentencePartWordArrayComplete = phraseOptionsJapanese(sentencePartWordArray, options, sentencePartIndex);
+          <Flex m={2} ml={0} p={3} pl={3} border={1}>
+            {sentenceComplete.map((sentencePart, sentencePartIndex: number) => {
+              const sentencePartWordArray = createTaggedArrayJapanese(sentencePart);
+              const sentencePartWordArrayComplete = phraseOptionsJapanese(sentencePartWordArray, options, sentencePartIndex);
 
-            return (
-              <Flex key={sentencePartIndex}>
-                {sentencePartWordArrayComplete.map((word: Util.WordArrayElement, wordIndex: number) => {
-                  const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
-                  const wordComplete = wordArrayOptionsJapanese(word, options, sentencePartWordArrayComplete.length, wordIndex, sentenceComplete.length, sentencePartIndex);
-                  return (
-                    <TextHover hovercolour={hoverColour} key={wordIndex}>
-                      {wordComplete}
-                    </TextHover>
-                  );
-                })}
-              </Flex>
-            );
-          })}
-        </SentenceCover>
+              return (
+                <Flex key={sentencePartIndex}>
+                  {sentencePartWordArrayComplete.map((word: Util.WordArrayElement, wordIndex: number) => {
+                    const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
+                    const wordComplete = wordArrayOptionsJapanese(word, options, sentencePartWordArrayComplete.length, wordIndex, sentenceComplete.length, sentencePartIndex);
+                    return (
+                      <TextHover hovercolour={hoverColour} key={wordIndex}>
+                        {wordComplete}
+                      </TextHover>
+                    );
+                  })}
+                </Flex>
+              );
+            })}
+          </Flex>
+        </ToggleBackground>
       </FlexColumn>
     );
   };

@@ -1,10 +1,10 @@
 import * as React from 'react'
-import styled from 'styled-components';
 
 import { Box, Flex, FlexColumn } from '../atoms/LayoutStyles';
 import { Heading } from '../atoms/TextStyles';
 import { InternalLink } from '../atoms/ClickableStyles';
 import { SidebarItem, HeadingItem } from '../atoms/ComponentStyles';
+import { ToggleVisibility } from '../atoms/CustomStyles';
 
 import {
   ROUTE_TITLE,
@@ -99,15 +99,6 @@ class Sidebar extends React.Component<{ route: any }, {}> {
   };
 };
 
-
-const Dropdown = styled(Flex)<any>`
-  visibility: ${props => props.togglevisibility};
-`;
-
-Dropdown.defaultProps = {
-  togglevisibility: 'hidden',
-};
-
 class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
   constructor(props: {}) {
     super(props);
@@ -134,23 +125,26 @@ class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
           onClick={this.clickDropdown}
           >
           Watashi Engine</Heading>
-        <Dropdown
-          ml={7}
+        <ToggleVisibility
           togglevisibility={this.state.dropdownOpenState}
-          css={{
-            position: 'absolute',
-            marginTop: '2px',
-            width: '300px',
-            justifyContent: 'space-between',
-            marginRight: '1rem',          
-          }}
           >
-          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</InternalLink>
-          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</InternalLink>
-          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</InternalLink>
-          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</InternalLink>
-          <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</InternalLink>
-        </Dropdown>
+          <Flex
+            ml={7}
+            css={{
+              position: 'absolute',
+              marginTop: '2px',
+              width: '300px',
+              justifyContent: 'space-between',
+              marginRight: '1rem',          
+            }}
+            >
+            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</InternalLink>
+            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</InternalLink>
+            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</InternalLink>
+            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</InternalLink>
+            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</InternalLink>
+          </Flex>
+        </ToggleVisibility>
       </Flex>
     );
   };

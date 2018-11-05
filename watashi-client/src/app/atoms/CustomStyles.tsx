@@ -3,11 +3,11 @@ import { Text } from './TextStyles';
 
 import styled from 'styled-components';
 
-export const ToggleSentenceStats = styled(Flex)<any>`
+export const ToggleVisibility = styled(Flex)<any>`
   visibility: ${props => props.togglevisibility};
 `;
 
-ToggleSentenceStats.defaultProps = {
+ToggleVisibility.defaultProps = {
   togglevisibility: 'visible',
 };
 
@@ -29,11 +29,10 @@ ToggleSentenceOrder.defaultProps = {
   sentenceorder: 'column',
 };
 
-
-export const SentenceCover = styled(Flex)<any>`
+export const ToggleBackground = styled(Flex)<any>`
   background: ${props => props.background};
 `;
 
-SentenceCover.defaultProps = {
+ToggleBackground.defaultProps = {
   background: 'white',
 };

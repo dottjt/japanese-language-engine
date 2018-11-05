@@ -2,12 +2,12 @@ import * as React from 'react'
 
 import { Flex, FlexColumn } from '../../atoms/LayoutStyles';
 import { Heading } from '../../atoms/TextStyles';
-import { TextHover, SentenceCover } from '../../atoms/CustomStyles';
+import { TextHover, ToggleBackground } from '../../atoms/CustomStyles';
 import {
   capitalise,
   startOfArray,
   endOfArray,
-  determineSentenceCover,
+  determineToggleBackground,
 } from '../../../util/functions';
 
 import {
@@ -58,31 +58,32 @@ class SentenceEnglish extends React.PureComponent<PropTypes.IEnglishSentenceProp
     return (
       <FlexColumn>
         <Heading is='h5' fontSize={2}>English</Heading>
-        <SentenceCover
-          m={2} ml={0} p={3} pl={3} border={1}
-          background={determineSentenceCover(!toggleSentenceOrder, hoverState, toggleSentenceHide)}
+        <ToggleBackground
+          background={determineToggleBackground(!toggleSentenceOrder, hoverState, toggleSentenceHide)}
           onMouseEnter={this.onHoverEnter}
           onMouseLeave={this.onHoverExit}
           >
-          {sentenceComplete.map((sentencePart: Util.ConjugatedEnglishWord, sentencePartIndex: number) => {
-            const sentencePartWordArray = createTaggedArrayEnglish(sentencePart);
-            const sentencePartWordArrayComplete = phraseOptionsEnglish(sentencePartWordArray, options, sentencePartIndex);
+          <Flex m={2} ml={0} p={3} pl={3} border={1}>
+            {sentenceComplete.map((sentencePart: Util.ConjugatedEnglishWord, sentencePartIndex: number) => {
+              const sentencePartWordArray = createTaggedArrayEnglish(sentencePart);
+              const sentencePartWordArrayComplete = phraseOptionsEnglish(sentencePartWordArray, options, sentencePartIndex);
 
-            return (
-              <Flex key={sentencePartIndex}>
-                {sentencePartWordArrayComplete.map((word: Util.WordArrayElement, wordIndex: number) => {
-                  const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
-                  const wordComplete = wordOptionsEnglish(word, options, sentencePartWordArrayComplete.length, wordIndex, sentenceComplete.length, sentencePartIndex);
-                  return (
-                    <TextHover mr={1} hovercolour={hoverColour} key={wordIndex}>
-                      {wordComplete}
-                    </TextHover>
-                  );
-                })}
-              </Flex>
-            );
-          })}
-        </SentenceCover>
+              return (
+                <Flex key={sentencePartIndex}>
+                  {sentencePartWordArrayComplete.map((word: Util.WordArrayElement, wordIndex: number) => {
+                    const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
+                    const wordComplete = wordOptionsEnglish(word, options, sentencePartWordArrayComplete.length, wordIndex, sentenceComplete.length, sentencePartIndex);
+                    return (
+                      <TextHover mr={1} hovercolour={hoverColour} key={wordIndex}>
+                        {wordComplete}
+                      </TextHover>
+                    );
+                  })}
+                </Flex>
+              );
+            })}
+          </Flex>
+        </ToggleBackground>
       </FlexColumn>
     );
   };
