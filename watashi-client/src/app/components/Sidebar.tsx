@@ -1,10 +1,9 @@
 import * as React from 'react'
 
-import { Box, Flex, FlexColumn } from '../atoms/LayoutStyles';
+import { Box, FlexColumn } from '../atoms/LayoutStyles';
 import { Heading } from '../atoms/TextStyles';
-import { InternalLink } from '../atoms/ClickableStyles';
+// import { InternalLink } from '../atoms/ClickableStyles';
 import { SidebarItem, HeadingItem } from '../atoms/ComponentStyles';
-import { ToggleVisibility } from '../atoms/CustomStyles';
 
 import {
   ROUTE_TITLE,
@@ -24,7 +23,7 @@ class Sidebar extends React.Component<{ route: any }, {}> {
         css={{
           position: 'relative',
           bottom: 0,
-          top: 0,
+          top: '53px',
           height: '100vh',
           width: '282px',
           minWidth: '282px',
@@ -41,7 +40,19 @@ class Sidebar extends React.Component<{ route: any }, {}> {
             boxShadow: '4px 6px grey',
           }}
           >
-          <LogoDropdown/>
+          <Heading 
+            fontSize={4} 
+            ml={3} 
+            >
+            Watashi Engine</Heading>
+
+          <FlexColumn>
+            <SidebarItem routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</SidebarItem>
+            <SidebarItem routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</SidebarItem>
+            <SidebarItem routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</SidebarItem>
+            <SidebarItem routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</SidebarItem>
+            <SidebarItem routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</SidebarItem>
+          </FlexColumn>
 
           <FlexColumn>
             <HeadingItem>{LESSON_SECTIONS.S00}</HeadingItem>
@@ -98,64 +109,5 @@ class Sidebar extends React.Component<{ route: any }, {}> {
     );
   };
 };
-
-class LogoDropdown extends React.Component<{}, { dropdownOpenState: string }> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      dropdownOpenState: 'hidden',
-    }
-  }
-
-  public render() {
-    return (
-      <Flex 
-        css={{          
-          position: 'relative',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          height: '64px',
-          width: '260px',
-          minWidth: '260px', 
-        }}
-        >
-        <Heading 
-          fontSize={4} 
-          ml={3} 
-          onClick={this.clickDropdown}
-          >
-          Watashi Engine</Heading>
-        <ToggleVisibility
-          togglevisibility={this.state.dropdownOpenState}
-          >
-          <Flex
-            ml={7}
-            css={{
-              position: 'absolute',
-              marginTop: '2px',
-              width: '300px',
-              justifyContent: 'space-between',
-              marginRight: '1rem',          
-            }}
-            >
-            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</InternalLink>
-            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</InternalLink>
-            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</InternalLink>
-            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</InternalLink>
-            <InternalLink onClick={this.clickDropdown} routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</InternalLink>
-          </Flex>
-        </ToggleVisibility>
-      </Flex>
-    );
-  };
-
-  private clickDropdown = () => {
-    this.setState({
-      dropdownOpenState: this.state.dropdownOpenState === 'hidden' ? 'visible' : 'hidden',
-    });
-  }
-};
-
-
 
 export default Sidebar;

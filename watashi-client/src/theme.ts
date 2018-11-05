@@ -21,8 +21,7 @@ const theme = {
   },
   fonts: {
     serif: 'athelas, georgia, times, serif',
-    sansSerif:
-      '-apple-system, BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif',
+    sansSerif: '-apple-system, BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif',
   },
 
   // colors
@@ -31,8 +30,9 @@ const theme = {
     sentenceStat: 'lightgreen',
     button: 'purple',
 
+    background: '#fefefe',
     heading: '#000',
-    text: '#676767',
+    text: '#454545',
 
     black: '#000',
     white: '#FFF',
@@ -47,7 +47,7 @@ const theme = {
 
   //   }
   // }
-  
+
   // borders
   borders: [
     0,

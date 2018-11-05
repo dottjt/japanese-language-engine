@@ -7,8 +7,8 @@ import GET_EVERYTHING from '../graphql/queries/getEverything'
 
 import { Flex, FlexColumn } from './atoms/LayoutStyles';
 
+// import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar';
 import Main from './components/Main';
 
 import './reset.css';
@@ -26,9 +26,9 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
         <Query query={GET_EVERYTHING}>
           {({ data, client }) => (
             <React.Fragment>
-              <Navbar
+              {/* <Navbar
                 user={data.user}
-                auth={auth}/>
+                auth={auth}/> */}
               <Flex>
                 <Sidebar
                   route={route}

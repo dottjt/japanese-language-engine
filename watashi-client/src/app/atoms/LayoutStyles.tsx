@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex as FlexBase, Box as BoxBase } from 'rebass';
+import { Flex as FlexBase, Box as BoxBase, Text as TextBase } from 'rebass';
 
 import styled from 'styled-components';
 import system from '@rebass/components';
@@ -12,9 +12,13 @@ export const Box = system({
   'minWidth',
   'width',
   'height',
+  'lineHeight',
 );
+Box.displayName = 'Box';
+
 
 // ---------------------------------------- // 
+
 
 export const Flex = system({
     extend: FlexBase,
@@ -24,19 +28,23 @@ export const Flex = system({
   'minWidth',
   'width',
   'height',
+  'lineHeight',
 );
+Flex.displayName = 'Flex';
 
 export const FlexColumn = system({
   extend: Flex,
   flexDirection: 'column',
   justifyContent: 'flex-start',
 });
+FlexColumn.displayName = 'FlexColumn';
 
 export const FlexCenter = system({
   extend: Flex,
   justifyContent: 'center',
   alignItems: 'center',
 });
+FlexCenter.displayName = 'FlexCenter';
 
 export const FlexColumnCenter = system({
   extend: Flex,
@@ -44,39 +52,48 @@ export const FlexColumnCenter = system({
   justifyContent: 'center',
   alignItems: 'center',
 });
+FlexColumnCenter.displayName = 'FlexColumnCenter';
+
 
 // ---------------------------------------- // 
+
 
 export const PageWrapper = system({
   extend: FlexColumn,
   
   position: 'relative',
   top: '60px',
+  bg: 'background',
 
   ml: 6,
   mt: 5,
   mb: 5,
   mr: 3,
 });
+PageWrapper.displayName = 'PageWrapper';
+
 
 // ---------------------------------------- // 
+
 
 export const List = system({
   extend: Box,
   is: 'ul',
 });
+List.displayName = 'List';
 
 export const ListItem = system({
-  extend: Box,
+  extend: TextBase,
   is: 'li',
   lineHeight: 2,
+  // mb: 2,
 });
+ListItem.displayName = 'ListItem';
+
 
 // ---------------------------------------- // 
 
 
-
-// MISC
 import { Card as RebassCard } from 'rebass';
 
 export const Card = styled(RebassCard)`
@@ -89,6 +106,7 @@ export const Card = styled(RebassCard)`
   flex-wrap: wrap;
   max-width: 300px;
 `;
+Card.displayName = 'Card';
 
 export const PricingButtonStyles: React.CSSProperties = {
   position: 'absolute', 

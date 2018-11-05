@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import { PageWrapper, FlexColumn, FlexColumnCenter, Flex } from '../atoms/LayoutStyles';
-import { PageHeading, PageHeadingSecondary, Text } from '../atoms/TextStyles';
+import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
 
@@ -28,17 +28,17 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
         </Flex>
         
         <FlexColumn>
-          <PageHeadingSecondary>Grammar Resources</PageHeadingSecondary>
+          <SecondaryPageHeading>Grammar Resources</SecondaryPageHeading>
           <FlexColumn mb={2}>
             <ResourceModule resources={resources}/>
           </FlexColumn>
 
-          <PageHeadingSecondary>Grammar Notes</PageHeadingSecondary>
+          <SecondaryPageHeading>Grammar Notes</SecondaryPageHeading>
           <FlexColumn mb={2}>
             <ExplanationModule explanation={explanation}/>
           </FlexColumn>
 
-          <PageHeadingSecondary>Refined Sentence Options</PageHeadingSecondary>
+          <SecondaryPageHeading>Refined Sentence Options</SecondaryPageHeading>
           <FlexColumn
             mb={2}
             css={{
@@ -57,16 +57,16 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             />
           </FlexColumn>
 
-          <PageHeadingSecondary>Sentence Analysis Options</PageHeadingSecondary>
-          <FlexColumn mb={2}>
+          <SecondaryPageHeading>Sentence Analysis Options</SecondaryPageHeading>
+          <Flex mb={2}>
             <SentenceOptions
               sentenceDisplayOptions={this.props.sentenceDisplayOptions}
               client={client}
               path={path}
             />
-          </FlexColumn>
+          </Flex>
 
-          <PageHeadingSecondary>Lesson Exercises</PageHeadingSecondary>
+          <SecondaryPageHeading>Lesson Exercises</SecondaryPageHeading>
 
           <FlexColumn 
             mb={2}
@@ -105,7 +105,7 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
             )
           })}</FlexColumn>
 
-          <PageHeadingSecondary>Premium Account</PageHeadingSecondary>
+          <SecondaryPageHeading>Premium Account</SecondaryPageHeading>
           
           <FlexColumn mb={2}>
             <Text>The first six modules are free</Text>

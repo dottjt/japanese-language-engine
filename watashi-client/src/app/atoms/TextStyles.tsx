@@ -11,12 +11,14 @@ export const Text = system({
   m: 0,
   mb: 4,
 });
+Text.displayName = 'Text';
 
 export const Heading = system({
   extend: BaseText,
   color: 'heading',
   fontFamily: 'sansSerif',
 });
+Heading.displayName = 'Heading';
 
 // ---------------------------------------- // 
 
@@ -27,8 +29,9 @@ export const PageHeading = system({
   m: 0,
   mb: 4,
 });
+PageHeading.displayName = 'PageHeading';
 
-export const PageHeadingSecondary = system({
+export const SecondaryPageHeading = system({
   extend: Heading,
   is: 'h2',
   fontSize: 4, 
@@ -36,3 +39,4 @@ export const PageHeadingSecondary = system({
   mt: 4,
   mb: 4,
 });
+SecondaryPageHeading.displayName = 'SecondaryPageHeading';

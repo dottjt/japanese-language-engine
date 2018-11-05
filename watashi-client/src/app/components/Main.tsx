@@ -54,7 +54,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
      } = this.props; 
 
     const isAuthenticated = auth.isAuthenticated();
-
+          
     switch (route.name) {
       case ROUTE_TITLE.HOME: 
         return <Home client={client} route={route}/>

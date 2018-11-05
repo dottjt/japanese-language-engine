@@ -5,15 +5,16 @@ import { Link as ReactRouterLink } from 'react-router5';
 
 export const Button = system({
     extend: BaseButton,
-    borderRadius: 1,
     border: 2,
     color: 'button',
-    bg: 'black',
+    bg: 'white',
+    borderRadius: 2,
     fontSize: 2,
     m: 0,
   },
   'fontSize',
 );
+Button.displayName = 'Button';
 
 export const Link = system({
     extend: BaseLink,
@@ -24,6 +25,7 @@ export const Link = system({
   },
   'fontSize',
 );
+Link.displayName = 'Link';
 
 // ---------------------------------------- // 
 
@@ -35,9 +37,11 @@ export const InternalLink = system({
     routeOptions: props.routeOptions,
   }),
 });
+InternalLink.displayName = 'InternalLink';
 
 export const ExternalLink = system({
   extend: Link,
 });
+ExternalLink.displayName = 'ExternalLink';
 
 
