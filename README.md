@@ -13,6 +13,8 @@ A highly sophisticated Japanese language engine.
   - Teachers wanting the ability to easily create grammar exercises for their students.
   - Developers wanting to study a super modern React, Typescript and Apollo project with Styled-Components (ka ching). 
 
+
+
 ## Tech
 - Frontend: create-react-app, typescript, react, apollo, react-router5
 - SSR: react-snap
