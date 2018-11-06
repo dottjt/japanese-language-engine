@@ -1,19 +1,21 @@
-# Introducing the Watashi Engine.
+# Watashi Engine.
+
 
 ## What is it?
 
-A highly sophisticated Japanese language engine.
+Watashi Engine is a Japanese language engine.
+
+This project is open-source under the GNU GPLv3 licence. 
+
+Basically, it means that you are free to contribute towards this project, however you are forbidden to distribute closed source versions unless otherwise stated.
 
 ## Use cases
 
-  - Students wanting to study a language engine.
   - Students wanting to study a japanese language engine.
   - Students wanting to study via the isntantaneous composition method.
   - Students who benefit from a macro approach towards language learning.
   - Teachers wanting the ability to easily create grammar exercises for their students.
   - Developers wanting to study a super modern React, Typescript and Apollo project with Styled-Components (ka ching). 
-
-
 
 ## Tech
 - Frontend: create-react-app, typescript, react, apollo, react-router5

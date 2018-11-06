@@ -68,12 +68,12 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 <Text>Watashi Engine can.</Text>
               </FlexColumn>
 
-              <FlexColumn width={600} mb={5}>
-                <Text>02 - Watashi Engine provides you with tools for analysis.</Text>
-                <Text>Aside from generating accurate Japanese sentences in a variety of forms, Watashi Engine also .</Text>
-                {/* Then here, actually insert that configuration. */}
-                <Text>Watashi Engine can.</Text>
-              </FlexColumn>
+              // <FlexColumn width={600} mb={5}>
+              //   <Text>02 - Watashi Engine provides you with tools for analysis.</Text>
+              //   <Text>Aside from generating accurate Japanese sentences in a variety of forms.</Text>
+              //   {/* Then here, actually insert that configuration. */}
+              //   <Text>Watashi Engine can.</Text>
+              // </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>Features</SecondaryPageHeading>
