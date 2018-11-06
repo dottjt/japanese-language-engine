@@ -1,10 +1,12 @@
-# Introducing the Watashi Engine.
+# Watashi Engine.
 
-watashiengine.com/ 
+Homepage: https://watashiengine.com/ 
 
 ## What is it?
 
-A highly sophisticated Japanese language engine.
+Watashi Engine is a Japanese language engine.
+
+It is open-source under the GNU GPLv3 licence. 
 
 ## Use cases
 
@@ -41,6 +43,12 @@ A highly sophisticated Japanese language engine.
 - yarn add --dev react-app-rewired react-app-rewire-styled-components react-snap react
 
 - npm install --save-dev babel-plugin-styled-components typescript-plugin-styled-components
+
+## Licence Permissions
+
+This project is open-source under the GNU GPLv3 licence. 
+
+Basically, it means that you are free to contribute towards this project, however you are forbidden to distribute closed source versions unless otherwise stated.
 
 ## Other .md files
 

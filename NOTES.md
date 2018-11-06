@@ -1,13 +1,14 @@
-## MVP REQUIREMENTS
-- Buy domain. watashi.com name 
-
 ## TODO BACKLOG
 - Verb basics
 - Conjugation exercises / modules
 - Premium permissions on certain features.  
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered. 
 - Profile page
+- Get scripts going. 
 - Amazon SES
+- Create Social Media accounts. 
+- Get a logo/font. 
+- 
 
 - Unit Testing
 - Code splitting
