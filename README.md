@@ -5,20 +5,29 @@
 A highly sophisticated Japanese language engine.
 
 ## Use cases
-- Teachers wanting the ability to easily create grammar exercises for their students.
+- Students wanting to study a language engine.
 - Students wanting to study via the isntantaneous composition method.
 - Students who benefit from a macro approach towards language.
+- Teachers wanting the ability to easily create grammar exercises for their students.
 
 ## Tech
 - Frontend: create-react-app, typescript, react, apollo, react-router5
 - SSR: react-snap
 - CSS: styled-components, styled-system, rebass
 - Testing: jest
-- Backend: node.js, graphql, graphql-yoga, typeorm
+- Backend: node.js, graphql-yoga, typeorm
 - Database: postgres
 - Authentication: auth0
 - CI: buildkite
 - Infrastructure: terraform, docker, AWS
+
+## TODO
+
+- Get a domain. 
+- Find open contributors. 
+- An actual API.
+- Actual functioning terraform. 
+- Be that guy.
 
 ## Build Steps 
 
