@@ -25,6 +25,7 @@
 
 ## Blog Ideas
 
+- Free Exercises List
 - The perfect Watashi Engine Workout.
 - Understanding the technical details behind Watashi Engine.
 - What is the instanteous composition method.

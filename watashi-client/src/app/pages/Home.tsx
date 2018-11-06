@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
-import { LESSON_TITLE, lessonPathArray } from '../../util/constants/lessonConstants';
+import { lessonPathArray } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 
 import { randomArrayElement, getExercisesApollo } from '../../util/functions';
@@ -12,7 +12,6 @@ import SentenceModule from '../modules/SentenceModule/SentenceModule';
 import Helmet from '../components/Helmet';
 
 import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
-import { InternalLink } from '../atoms/ClickableStyles';
 import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
 
 
@@ -37,8 +36,10 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               
               <Helmet title={ROUTE_TITLE.HOME} description={ROUTE_DESCRIPTION.HOME}/>
 
-              <PageHeading>Watashi Engine.</PageHeading>
+              <PageHeading>Watashi Engine beta.</PageHeading>
               
+              <Text>Disclaimer: This project is constantly being worked on and is currently in very early alpha. Like, so alpha it can't even speak yet alpha. So that's something to think about.</Text>
+
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>What is it?</SecondaryPageHeading>
                 <Text>A highly sophisticated Japanese language engine.</Text>
@@ -58,7 +59,22 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   />
                 ))}
               </FlexColumn>
-              
+
+              <SecondaryPageHeading>Why Watashi Engine?</SecondaryPageHeading>
+              <FlexColumn width={600} mb={4}>
+                <Text>01 - Watashi Engine is highly focused on what you want to achieve.</Text>
+                <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, all completely randomly generated?</Text>
+                {/* Then here, actually insert that configuration. */}
+                <Text>Watashi Engine can.</Text>
+              </FlexColumn>
+
+              <FlexColumn width={600} mb={5}>
+                <Text>02 - Watashi Engine provides you with tools for analysis.</Text>
+                <Text>Aside from generating accurate Japanese sentences in a variety of forms, Watashi Engine also .</Text>
+                {/* Then here, actually insert that configuration. */}
+                <Text>Watashi Engine can.</Text>
+              </FlexColumn>
+
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>Features</SecondaryPageHeading>
                 <List>
@@ -91,26 +107,8 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
-                <SecondaryPageHeading>Free features</SecondaryPageHeading>
-                <List>
-                  <ListItem>Limited access to the basic grammar course.</ListItem>
-                  <ListItem>Limited access the grammar engine.</ListItem>
-                </List>
-              </FlexColumn>
-          
-              <FlexColumn width={600} mb={5}>
-                <SecondaryPageHeading>Premium features</SecondaryPageHeading>
-                <List>
-                  <ListItem>Full Access to all 100 pre-defined grammar exercises.</ListItem>
-                  <ListItem>Exercises ranging from N1 to N5 JLPT levels.</ListItem>
-                  <ListItem>Full access of the grammar engine in order to create your own exercises.</ListItem>
-                </List>
-              </FlexColumn>
-
-              <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>Try Watashi Engine Today</SecondaryPageHeading>
-                  <Text>Decide before you buy.</Text>
-                  <InternalLink routeName={LESSON_TITLE.L001} routeOptions={{reload: true}}>N1 JLPT grammar module free</InternalLink>
+                <Text>Select a module from the sidebar to begin practicing your Japanese grammar with the Instantaneous Composition Method.</Text>
               </FlexColumn>
 
             </PageWrapper>
