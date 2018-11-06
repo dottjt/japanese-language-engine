@@ -1,5 +1,7 @@
 # Introducing the Watashi Engine.
 
+watashiengine.com/ 
+
 ## What is it?
 
 A highly sophisticated Japanese language engine.
@@ -11,8 +13,6 @@ A highly sophisticated Japanese language engine.
   - Teachers wanting the ability to easily create grammar exercises for their students.
   - Developers wanting to study a japanese language engine.
   - Developers wanting to study a super modern React, Typescript and Apollo project with Styled-Components (ka ching). 
-
-
 
 ## Tech
 - Frontend: create-react-app, typescript, react, apollo, react-router5
@@ -27,7 +27,6 @@ A highly sophisticated Japanese language engine.
 
 ## TODO
 
-- Get a domain.
 - Figure out versioning lol. 
 - Find open contributors. 
 - An actual API.
