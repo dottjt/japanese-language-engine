@@ -4,11 +4,13 @@
 
 A highly sophisticated Japanese language engine.
 
-## Use cases
+## Strong Use Cases
 - Students wanting to study a language engine.
 - Students wanting to study via the isntantaneous composition method.
-- Students who benefit from a macro approach towards language.
+- Students who benefit from a micro approach towards language.
 - Teachers wanting the ability to easily create grammar exercises for their students.
+
+
 
 ## Tech
 - Frontend: create-react-app, typescript, react, apollo, react-router5
