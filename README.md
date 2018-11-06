@@ -6,11 +6,10 @@ A highly sophisticated Japanese language engine.
 
 ## Use cases
 
-  - Students wanting to study a language engine.
-  - Students wanting to study a japanese language engine.
   - Students wanting to study via the isntantaneous composition method.
-  - Students who benefit from a macro approach towards language learning.
+  - Students who benefit from a micro approach towards language learning.
   - Teachers wanting the ability to easily create grammar exercises for their students.
+  - Developers wanting to study a japanese language engine.
   - Developers wanting to study a super modern React, Typescript and Apollo project with Styled-Components (ka ching). 
 
 
