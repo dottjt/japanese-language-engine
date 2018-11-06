@@ -39,7 +39,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               <PageHeading>Watashi Engine beta.</PageHeading>
               
               <Text>Disclaimer: This project is constantly being worked on and is currently in very early alpha. Like, so alpha it can't even speak yet alpha. So that's something to think about.</Text>
-
+              
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>What is it?</SecondaryPageHeading>
                 <Text>A highly sophisticated Japanese language engine.</Text>
