@@ -24,6 +24,9 @@ ssh root@178.128.54.4 <<EOF
   exit
 EOF
 
+# docker run -it -p 80:80 dottjt/watashi-client
+# to test container nginx file. 
+
 echo 'all done!'
 
   # docker run --name=watashi-client \

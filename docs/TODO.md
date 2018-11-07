@@ -11,6 +11,7 @@
 
 # TODO NICE HAVES 
 - Find open contributors. 
+- put docker-compose.yml on server in the repo and copy it over :)
 - Nice resource links.
 - Get a logo/font. 
 - Profile page
