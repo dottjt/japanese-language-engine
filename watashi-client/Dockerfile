@@ -51,5 +51,7 @@ COPY --from=build-deps /usr/src/app/client/build/. /usr/share/nginx/html
 # COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+RUN nginx -t 
+
 EXPOSE 80
 ENTRYPOINT ["nginx","-g","daemon off;"]
