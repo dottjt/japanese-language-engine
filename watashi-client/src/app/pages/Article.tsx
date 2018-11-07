@@ -11,14 +11,14 @@ import Helmet from '../components/Helmet';
 
 class Article extends React.Component<{}, {}> {
 
-  constructor(props){
-    super(props);
+  // constructor(props){
+  //   super(props);
 
-    this.state = {
-      Component: '',
-      page: this.props.match.params.page
-    }
-  }
+  //   this.state = {
+  //     Component: '',
+  //     page: this.props.match.params.page
+  //   }
+  // }
 
   public render() {
     // const { mdx } = this.props;
