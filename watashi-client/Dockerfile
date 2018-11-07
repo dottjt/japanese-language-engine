@@ -43,7 +43,7 @@ RUN yarn global add http-server
 WORKDIR /usr/src/app/client
 COPY . /usr/src/app/client
 
-RUN yarn build
+CMD [ "yarn", "build" ]
 
 
 

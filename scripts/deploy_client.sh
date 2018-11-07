@@ -14,7 +14,7 @@ ssh root@178.128.54.4 <<EOF
   docker rm watashi-client
 
   docker run --name=watashi-client -d dottjt/watashi-client
-  docker cp $(docker ps -aqf "name=watashi-client"):/usr/src/app/client/build/. /docker/letsencrypt-docker-nginx/src/production/production-site
+  docker cp watashi-client:/usr/src/app/client/build/. /docker/letsencrypt-docker-nginx/src/production/production-site
 
   exit
 EOF
