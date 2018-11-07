@@ -5,8 +5,6 @@
 # docker cp "${CONTAINER_ID}":/usr/src/app/client/build /tmp
 # rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/tmp root@178.128.54.4:/usr/share/nginx/html
 
-
-
 ssh root@178.128.54.4 <<EOF
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   docker pull dottjt/watashi-client
