@@ -32,10 +32,11 @@ script:
   - docker run --rm -d -p 80:80 dottjt/watashi-nginx
   - docker ps -a
 
+  - docker push dottjt/watashi-client
+  - docker push dottjt/watashi-nginx
+
 after_script:
 - docker images
-- docker push dottjt/watashi-client
-- docker push dottjt/watashi-nginx
 
 before_deploy:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

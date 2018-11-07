@@ -5,6 +5,7 @@
 # docker cp "${CONTAINER_ID}":/usr/src/app/client/build /tmp
 # rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/tmp root@178.128.54.4:/usr/share/nginx/html
 
+
 ssh root@178.128.54.4 <<EOF
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   docker pull dottjt/watashi-client
@@ -12,10 +13,7 @@ ssh root@178.128.54.4 <<EOF
   docker rm watashi-client
 
   docker run -d dottjt/watashi-client --name=watashi-client
-
-  CONTAINER_ID="$(docker ps -aqf "name=watashi-client")"
-  echo "This is the container id: ${CONTAINER_ID}"
-  docker cp "${CONTAINER_ID}":/usr/src/app/client/build /docker/letsencrypt-docker-nginx/src/production
+  docker cp "$(docker ps -aqf "name=watashi-client")":/usr/src/app/client/build /docker/letsencrypt-docker-nginx/src/production
 
   exit
 EOF
