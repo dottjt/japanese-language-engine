@@ -50,7 +50,7 @@ export const SidebarItem = (props) => (
       routeName={props.routeName} 
       routeOptions={props.routeOptions}>
         {props.children}
-      </InternalLink>  
+      </InternalLink> 
         {props.isPremium && (
           <Text fontSize={1} m={1}>Premium</Text>
         )}

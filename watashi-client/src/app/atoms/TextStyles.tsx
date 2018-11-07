@@ -10,6 +10,9 @@ export const Text = system({
   lineHeight: 'copy',
   m: 0,
   mb: 4,
+  props: (props) => ({
+    background: props.hovercolour,
+  }),
 });
 Text.displayName = 'Text';
 

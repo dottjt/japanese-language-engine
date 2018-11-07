@@ -1,9 +1,8 @@
-import { Flex } from './LayoutStyles';
-import { Text } from './TextStyles';
+import { Box } from './LayoutStyles';
 
 import styled from 'styled-components';
 
-export const ToggleVisibility = styled(Flex)<any>`
+export const ToggleVisibility = styled(Box)<any>`
   visibility: ${props => props.togglevisibility};
 `;
 
@@ -11,7 +10,7 @@ ToggleVisibility.defaultProps = {
   togglevisibility: 'visible',
 };
 
-export const ToggleBackground = styled(Flex)<any>`
+export const ToggleBackground = styled(Box)<any>`
   background: ${props => props.background};
 `;
 
@@ -19,7 +18,7 @@ ToggleBackground.defaultProps = {
   background: 'white',
 };
 
-export const TextHover = styled(Text)<any>`
+export const TextHover = styled(Box)<any>`
   background: ${props => props.hovercolour};
 `;
 
@@ -28,7 +27,7 @@ TextHover.defaultProps = {
 };
 
 
-export const ToggleSentenceOrder = styled(Flex)<any>`
+export const ToggleSentenceOrder = styled(Box)<any>`
   flex-direction: ${props => props.sentenceorder};
 `;
 

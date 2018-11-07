@@ -45,11 +45,14 @@ COPY . /usr/src/app/client
 
 RUN yarn build
 
-FROM nginx:alpine
 
-COPY --from=build-deps /usr/src/app/client/build /var/www
-COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 80
-ENTRYPOINT ["nginx","-g","daemon off;"]
 
+
+# FROM nginx:alpine
+
+# COPY --from=build-deps /usr/src/app/client/build /usr/share/nginx/html
+# COPY nginx.conf /etc/nginx/nginx.conf
+
+# EXPOSE 80
+# ENTRYPOINT ["nginx","-g","daemon off;"]

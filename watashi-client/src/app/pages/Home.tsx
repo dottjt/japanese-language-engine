@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
-import { lessonPathArray } from '../../util/constants/lessonConstants';
+// import { lessonPathArray } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 
-import { randomArrayElement, getExercisesApollo } from '../../util/functions';
+// import { randomArrayElement, getExercisesApollo } from '../../util/functions';
 
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
 
@@ -13,18 +13,20 @@ import Helmet from '../components/Helmet';
 
 import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
 import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
+import { ExternalLink } from '../atoms/ClickableStyles';
 
 
 class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }> {
   constructor(props) {
     super(props);
-    getExercisesApollo(this.props.client, this.props.route.path, 1);
+    // getExercisesApollo(this.props.client, this.props.route.path, 1);
   };
 
   public render() {
 
     // setTimeout(() => {
-      this.randomiseExerices(this.props.client);
+    //   console.log('hi')
+    //   this.randomiseExerices(this.props.client);
     // }, 1500);
 
     return (
@@ -62,18 +64,23 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
 
               <SecondaryPageHeading>Why Watashi Engine?</SecondaryPageHeading>
               <FlexColumn width={600} mb={4}>
-                <Text>01 - Watashi Engine is highly focused on what you want to achieve.</Text>
+                <Text>01 - Watashi Engine is entirely focused on what you want to achieve.</Text>
                 <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, all completely randomly generated?</Text>
                 {/* Then here, actually insert that configuration. */}
-                <Text>Watashi Engine can.</Text>
+                <Text>In essence, Watashi Engine is highly configurable.</Text>
               </FlexColumn>
 
-              // <FlexColumn width={600} mb={5}>
-              //   <Text>02 - Watashi Engine provides you with tools for analysis.</Text>
-              //   <Text>Aside from generating accurate Japanese sentences in a variety of forms.</Text>
-              //   {/* Then here, actually insert that configuration. */}
-              //   <Text>Watashi Engine can.</Text>
-              // </FlexColumn>
+              <FlexColumn width={600} mb={4}>
+                <Text>02 - Watashi Engine provides you with tools for analysis.</Text>
+                <Text>Aside from generating accurate Japanese sentences in a variety of forms, provides both visual and analytical tools for you to completely understand sentence structure.</Text>
+              </FlexColumn>
+
+              <FlexColumn width={600} mb={5}>
+                <Text>03 - Watashi Engine facilitates the Instantaneous Composition Method.</Text>
+                <Text>The grammar course behind Watashi Engine has been designed solely to facility the <ExternalLink href='https:// '>Instantaneous Composition Method</ExternalLink> which in my opinion, is the most effective way to learn Japanese grammar.</Text>
+                <Text>It is one of the few ways to accurately, (and most importantly, actively) practice your Japanese grammar.</Text>
+                <Text>It is essentially what professional translators do enmass.</Text>
+              </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>Features</SecondaryPageHeading>
@@ -91,8 +98,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 <SecondaryPageHeading>What it doesn't do</SecondaryPageHeading>
                 <List>
                   <ListItem>Translate arbitrary Japanese text into English.</ListItem>
-                  <ListItem>Focus on enhancing your vocabulary or speaking skills.</ListItem>
-                  <ListItem>Provide in-depth knowledge of Japanese grammar (we use Kim Tae and Watashi as excellent references).</ListItem>
+                  <ListItem>Provide in-depth knowledge of Japanese grammar (instead we use <ExternalLink href='http://www.guidetojapanese.org/'>Kim Tae</ExternalLink> and <ExternalLink href='https://www.wasabi-jpn.com/'>Watashi</ExternalLink> as excellent references).</ListItem>
                 </List>
               </FlexColumn>
 
@@ -119,9 +125,9 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
   )
   };
 
-  private randomiseExerices = (client: any): void => {
-    getExercisesApollo(client, lessonPathArray[randomArrayElement(lessonPathArray.length)], 1);
-  };
+  // private randomiseExerices = (client: any) => {
+  //   getExercisesApollo(client, lessonPathArray[randomArrayElement(lessonPathArray.length)], 1);
+  // };
 };
 
 export default Home;

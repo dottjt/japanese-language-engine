@@ -17,6 +17,7 @@ import {
 
 class Sidebar extends React.Component<{ user: any, auth: any, route: any }, {}> {
   public render() {
+    
     const { auth } = this.props;
 
     const isAuthenticated = auth.isAuthenticated();
@@ -45,10 +46,11 @@ class Sidebar extends React.Component<{ user: any, auth: any, route: any }, {}> 
           >
           <Heading 
             fontSize={4} 
-            ml={3} 
+            fontFamily='Vidaloka'
+            ml={3}
             mb={3}
             >
-            Watashi Engine</Heading>
+            WATAShi Engine</Heading>
           <Flex
             css={{
               borderBottom: '1px solid grey',

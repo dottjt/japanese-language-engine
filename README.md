@@ -10,13 +10,14 @@ It is open-source under the GNU GPLv3 licence.
 
 ## Use cases
 
-  - Students wanting to study via the isntantaneous composition method.
+  - Students wanting to study Japanese via the isntantaneous composition method.
   - Students who benefit from a micro approach towards language learning.
   - Teachers wanting the ability to easily create grammar exercises for their students.
   - Developers wanting to study a japanese language engine.
   - Developers wanting to study a super modern React, Typescript and Apollo project with Styled-Components (ka ching). 
 
 ## Tech
+
 - Frontend: create-react-app, typescript, react, apollo, react-router5
 - SSR: react-snap
 - CSS: styled-components, styled-system, rebass
@@ -27,30 +28,30 @@ It is open-source under the GNU GPLv3 licence.
 - CI: buildkite
 - Infrastructure: terraform, docker, AWS
 
-## TODO
+## Contributions
 
-- Figure out versioning lol. 
-- Find open contributors. 
-- An actual API.
-- Actual functioning terraform. 
-- Be that guy.
+We are actively looking for people to help build Watashi Engine!
 
-## Build Steps 
+- Building the vocabulary lists.
+- Writing Unit Tests.
+- 
 
-- yarn add @types/react @types/react-dom @types/auth0-js @types/graphql @types/rebass @types/styled-components @types/react-helmet 
-- yarn add typescript graphql router5 react-router5 react-apollo apollo-cache-inmemory apollo-client apollo-link-http apollo-link-state apollo-link auth0-js react-app-rewired react-helmet @loadable/component react-markdown 
-- yarn add react-flexbox-grid rebass styled-components system-components 
-- yarn add --dev react-app-rewired react-app-rewire-styled-components react-snap react
+If you're interested, please get in touch~!
 
-- npm install --save-dev babel-plugin-styled-components typescript-plugin-styled-components
+julius . reade @ gmail dot com. 
 
-## Licence Permissions
+## Licence
 
 This project is open-source under the GNU GPLv3 licence. 
 
 Basically, it means that you are free to contribute towards this project, however you are forbidden to distribute closed source versions unless otherwise stated.
 
+https://choosealicense.com/licenses/gpl-3.0/
+
 ## Other .md files
 
-- NOTES.md
+There are more files in the `docs` folder.
+
+- TODO.md
 - DOCKER.md
+- BUILD.md

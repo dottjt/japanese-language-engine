@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import { Flex, FlexColumn } from '../../atoms/LayoutStyles';
-import { Heading } from '../../atoms/TextStyles';
-import { TextHover, ToggleBackground } from '../../atoms/CustomStyles';
+import { Heading, Text } from '../../atoms/TextStyles';
+import { ToggleBackground } from '../../atoms/CustomStyles';
 import {
   capitalise,
   startOfArray,
@@ -74,9 +74,9 @@ class SentenceEnglish extends React.PureComponent<PropTypes.IEnglishSentenceProp
                     const hoverColour = convertSentenceStatsEnglish(sentenceStats, exerciseIndex, word.tag);
                     const wordComplete = wordOptionsEnglish(word, options, sentencePartWordArrayComplete.length, wordIndex, sentenceComplete.length, sentencePartIndex);
                     return (
-                      <TextHover mr={1} hovercolour={hoverColour} key={wordIndex}>
+                      <Text mr={1} mb={0} hovercolour={hoverColour} key={wordIndex}>
                         {wordComplete}
-                      </TextHover>
+                      </Text>
                     );
                   })}
                 </Flex>
