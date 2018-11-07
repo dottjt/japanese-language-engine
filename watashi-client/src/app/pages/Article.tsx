@@ -10,6 +10,16 @@ import Helmet from '../components/Helmet';
 // NOTE: Maybe the idea is to load all the markdownfiles here (at least the names) and then load the appropiate one based on the route. 
 
 class Article extends React.Component<{}, {}> {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      Component: '',
+      page: this.props.match.params.page
+    }
+  }
+
   public render() {
     // const { mdx } = this.props;
     return (
@@ -24,6 +34,8 @@ class Article extends React.Component<{}, {}> {
       </PageWrapper>
     );
   }
+
+
 }
 
 export default Article;
