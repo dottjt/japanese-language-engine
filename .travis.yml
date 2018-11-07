@@ -18,6 +18,7 @@ env:
   - secure: YydLAtHHczrVrZi7Pihf29ibPpLasX2pKXFVjS3alq30hIFjCclRB2KXXZdWFXuHnZY2xc8m6cRG/3bMpwM+RoOvWEPQfMXXPSj4Porez/iPjJ2bhlK48PVu5mB50iFt7QqF2IpV9HoC6yYIPvKzjTPCfrq9WhIyCxUiAi+PDiNGaKjeE8EvxgkAhIyUVjPAdyCoP1as8BezBzWWsIbOx2Ko1zBc4F3cAuo/McTUBFZCXZktlAVqov+6SwVNvsgcIINlyQ/BwJRum4IX+wCtQUkI6JTi03RcnaSv+z/aQsjZXf0B+gsvRKDFJifEyYW5VpZeb8Ab4zRjlYLyAtPBDqKpRydrnAeNNxUWVrr3x2NThnGd4YM0E7SJ+RCi4Cje2T/AOTlYkM+YCyyvMBlPdMBWCeIeC7nLUgcJBSmo89rskQBuTDEtXyVpvpXdpE4yCy6ipX1CysxzC1QrmeopYNYxtGAcl34RQXXiHZia09WR0kDX42394FJqvIK3gJWE2hk0s4OaDyTCovLCINDFW/2fPaSMXCAhKYYa63wecFFylyTYCuquUU0mxt9QejGrx0Ty7BYqu754sJdBwmVEu3yGb2jyMGE85dJWcqlkMDlFd6zAXTTnz3VyoSUoWBamAjRy/IHUaDEgPJYlxky0MAHZZbmRAoNutnDieU6Dpt8=
 
 before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker pull dottjt/watashi-client || true
   - docker pull dottjt/watashi-nginx || true
 
@@ -39,7 +40,6 @@ after_script:
 - docker images
 
 before_deploy:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 - openssl aes-256-cbc -K $encrypted_0aaf8c57bbc0_key -iv $encrypted_0aaf8c57bbc0_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
