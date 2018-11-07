@@ -11,6 +11,9 @@ export const Button = system({
     borderRadius: 2,
     fontSize: 2,
     m: 0,
+    // '&:hover': {
+    //   bg: 'grey',
+    // }
   },
   'fontSize',
 );

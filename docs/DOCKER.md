@@ -53,3 +53,5 @@ $ docker build -t dottjt/watashi-client-nginx .
 # Good article for load balancing with Nginx
 - https://auth0.com/blog/load-balancing-nodejs-applications-with-nginx-and-docker/
 
+https://blog.manifold.co/building-a-production-grade-container-for-your-static-javascript-application-b2b2eff83fbd
+

@@ -1,45 +1,37 @@
 version: '3'
 services:
 
-  production-nginx-client:
-    container_name: 'production-nginx-client'
-    image: nginx:alpine # nginx:latest
+  watashi-nginx-client:
+    container_name: 'watashi-nginx-client'
+    image: nginx:alpine
+    build:
+      context: ./watashi-client
+      dockerfile: ./watashi-client/Dockerfile
     ports:
       - "80:80"
       - "443:443"
+    expose: 
+      - 80
+      - 443
     volumes:
-      - ./production.conf:/etc/nginx/conf.d/default.conf
+      # - ./production.conf:/etc/nginx/conf.d/default.conf
       - ./production-site:/usr/share/nginx/html
       - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
       - /docker-volumes/etc/letsencrypt/live/ohhaithere.com/fullchain.pem:/etc/letsencrypt/live/ohhaithere.com/fullchain.pem
       - /docker-volumes/etc/letsencrypt/live/ohhaithere.com/privkey.pem:/etc/letsencrypt/live/ohhaithere.com/privkey.pem
     networks:
       - docker-network
+    restart: always
+    depends_on:
+      - client
+      - postgres
 
 networks:
   docker-network:
     driver: bridge
 
 
-  # nginx:
-  #   build:
-  #     context: ./watashi-nginx
-  #     dockerfile: ${PWD}/infrastructure/docker/DockerfileNginx
-  #   ports:
-  #     - 80
-  #     - 443
-  #   restart: always
-  #   depends_on:
-  #     - client
-
-  # client:
-  #   build:
-  #     context: ./watashi-client
-  #     dockerfile: ${PWD}/infrastructure/docker/DockerfileClient
-  #   ports:
-  #     - 5000
-
-  # postgres:
+  # watashi-postgres:
   #   image: postgres:alpine
   #   ports:
   #     - 5432:5432
@@ -49,7 +41,7 @@ networks:
   #     - ./watashi-postgres:/var/lib/postgresql/data:rw
   #   restart: always
 
-  # api:
+  # watashi-api:
   #   build:
   #     context: ./watashi-api
   #     dockerfile: ./infrastructure/docker/DockerfileAPI

@@ -38,10 +38,12 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               
               <Helmet title={ROUTE_TITLE.HOME} description={ROUTE_DESCRIPTION.HOME}/>
 
-              <PageHeading>Watashi Engine beta.</PageHeading>
+              <PageHeading>Watashi Engine.</PageHeading>
               
-              <Text>Disclaimer: This project is constantly being worked on and is currently in very early alpha. Like, so alpha it can't even speak yet alpha. So that's something to think about.</Text>
-              
+              <FlexColumn width={600} mb={5}>
+                <Text>Disclaimer: This project is in super early alpha and is unusable, and will be unusable for probably a year until this message is removed :).</Text>
+              </FlexColumn>
+
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>What is it?</SecondaryPageHeading>
                 <Text>A highly sophisticated Japanese language engine.</Text>

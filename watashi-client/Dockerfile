@@ -43,16 +43,13 @@ RUN yarn global add http-server
 WORKDIR /usr/src/app/client
 COPY . /usr/src/app/client
 
-CMD [ "yarn", "build" ]
+RUN yarn build
 
+FROM nginx:alpine
 
+COPY --from=build-deps /usr/src/app/client/build/ /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-
-
-# FROM nginx:alpine
-
-# COPY --from=build-deps /usr/src/app/client/build /usr/share/nginx/html
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# EXPOSE 80
-# ENTRYPOINT ["nginx","-g","daemon off;"]
+EXPOSE 80
+ENTRYPOINT ["nginx","-g","daemon off;"]
