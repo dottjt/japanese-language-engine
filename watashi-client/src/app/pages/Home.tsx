@@ -41,7 +41,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               <PageHeading>Watashi Engine.</PageHeading>
               
               <FlexColumn width={600} mb={5}>
-                <Text>Disclaimer: This project is in super early alpha and is unusable, and will be unusable for probably a year until this message is removed :).</Text>
+                <Text>Disclaimer: This project is in super early alpha and is currently unusable, and will be unusable for probably about a year until this message is removed :).</Text>
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>

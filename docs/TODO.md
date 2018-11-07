@@ -11,6 +11,7 @@
 
 # TODO NICE HAVES 
 - Find open contributors. 
+- Nice resource links.
 - Get a logo/font. 
 - Profile page
 - Figure out versioning.

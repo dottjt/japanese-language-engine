@@ -11,18 +11,28 @@ import {
   ROUTE_PATH,
 } from './util/constants/routeConstants';
 
+import {
+  BLOG_TITLE,
+  BLOG_PATH,
+} from './util/constants/blogConstants';
+
 const routes = [
   // Main pages
   { name: ROUTE_TITLE.REDIRECT, path: ROUTE_PATH.REDIRECT },
   { name: ROUTE_TITLE.PROFILE, path: ROUTE_PATH.PROFILE },
+
   // { name: ROUTE_TITLE.LOGIN, path: ROUTE_PATH.LOGIN },
   { name: ROUTE_TITLE.SIGN_UP, path: ROUTE_PATH.SIGN_UP },
   { name: ROUTE_TITLE.HOME, path: ROUTE_PATH.HOME },
   { name: ROUTE_TITLE.APP, path: ROUTE_PATH.APP },
-  { name: ROUTE_TITLE.BLOG, path: ROUTE_PATH.BLOG },
-  { name: ROUTE_TITLE.GUIDES, path: ROUTE_PATH.GUIDES },
-  { name: ROUTE_TITLE.TOOLS, path: ROUTE_PATH.TOOLS },
+  // { name: ROUTE_TITLE.GUIDES, path: ROUTE_PATH.GUIDES },
+  // { name: ROUTE_TITLE.TOOLS, path: ROUTE_PATH.TOOLS },
   { name: ROUTE_TITLE.ABOUT, path: ROUTE_PATH.ABOUT },
+
+  // blog pages
+  { name: ROUTE_TITLE.BLOG, path: ROUTE_PATH.BLOG },
+  { name: BLOG_TITLE.B01, path: `${ROUTE_PATH.BLOG}${BLOG_PATH.B01}` },
+  { name: BLOG_TITLE.B02, path: `${ROUTE_PATH.BLOG}${BLOG_PATH.B02}` },
 
   // Other lesson pages
   { name: ROUTE_TITLE.WELCOME, path: `${ROUTE_PATH.WELCOME}` },
