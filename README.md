@@ -32,9 +32,10 @@ It is open-source under the GNU GPLv3 licence.
 
 We are actively looking for people to help build Watashi Engine!
 
-- Building the vocabulary lists.
-- Writing Unit Tests.
-- 
+- Build vocabulary lists.
+- Write Unit Tests.
+- Write Documentation.
+
 
 If you're interested, please get in touch~!
 
