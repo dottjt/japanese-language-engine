@@ -56,13 +56,19 @@ const genTSV = ({ topic, subject, verb }: { topic?: Util.Topic, subject?: Util.S
   throw new Error(createError('conjugations/generateExercises.tsx', 'genTSV', `Your sentence variation does not exist`));
 };
 
+
+// const generateTTopicWord = (theme) => {
+  
+// };
+
 const generateWords = (nouns: Util.Word[], variation: string): () => Util.SentenceWords => {
   const wordPerson = filterSpecifcWord(nouns, 'person');
   const randomHumanName = getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME);
   const randomLocationWord = getRandomWordViaCategory(nouns, CATEGORY_LOCATION);
   const randomVerb = getRandomWordViaPrimaryType(nouns, PRIMARY_TYPE_VERB);
 
-  // const random
+  // const randomUVerb
+  // const randomRuVerb
 
   switch(variation) {
     case NA:    return () =>   genTSV({ topic: undefined,       subject: undefined,          verb: undefined })
