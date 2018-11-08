@@ -2,7 +2,7 @@
 
 export const BLOG_TITLE = {
   B01: 'How to use Watashi Engine',
-  B02: 'What is the Instantaneous Composition Metho',
+  B02: 'What is the Instantaneous Composition Method',
   B03: 'Building Watashi Engine',
 };
 

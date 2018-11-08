@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@loadable/component": "^4.0.2",
+    "@mdx-js/loader": "^0.16.0",
+    "@mdx-js/mdx": "^0.16.0",
     "@types/auth0-js": "^8.11.7",
     "@types/graphql": "^14.0.3",
     "@types/react": "^16.4.18",

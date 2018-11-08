@@ -5,6 +5,10 @@ import {
 } from '../../util/constants/routeConstants';
 
 import {
+  BLOG_TITLE,
+} from '../../util/constants/blogConstants';
+
+import {
   L001,
   L002,
   L003,
@@ -56,6 +60,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
 
     const isAuthenticated = auth.isAuthenticated();
           
+    console.log(route.name)
     switch (route.name) {
       case ROUTE_TITLE.HOME: 
         return <Home client={client} route={route}/>
@@ -63,7 +68,10 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       case ROUTE_TITLE.BLOG:
         return <Blog/>
 
-      case ROUTE_TITLE.ARTICLE:
+      case BLOG_TITLE.B01:
+        return <Article path={route.path}/>
+      
+      case BLOG_TITLE.B02:
         return <Article path={route.path}/>
 
       case ROUTE_TITLE.GUIDES:
