@@ -7,20 +7,37 @@
 
 ssh root@178.128.54.4 <<EOF
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  echo "pull dottjt/watashi-client"
   docker pull dottjt/watashi-client
+
+  echo "stop watashi-client"
   docker stop watashi-client
+
+  echo "rm watashi-client"
   docker rm watashi-client
   
+  echo "docker run --name=watashi-client -d dottjt/watashi-client"
   docker run --name=watashi-client -d dottjt/watashi-client
+
+  echo "docker cp watashi-client:/usr/share/nginx/html/. /docker/letsencrypt-docker-nginx/src/production/production-site"
   docker cp watashi-client:/usr/share/nginx/html/. /docker/letsencrypt-docker-nginx/src/production/production-site
+
+  echo "docker cp watashi-client:/usr/share/nginx/html/. /docker/letsencrypt-docker-nginx/src/production/production-site"
   docker cp watashi-client:/usr/share/nginx/prod.conf /docker/letsencrypt-docker-nginx/src/production/production.conf
 
+  echo "docker stop watashi-client"
   docker stop watashi-client
+
+  echo "docker rm watashi-client"
   docker rm watashi-client
 
+  echo "cd /docker/letsencrypt-docker-nginx/src/production/"
   cd /docker/letsencrypt-docker-nginx/src/production/
+
+  echo "docker-compose up -d"
   docker-compose up -d
 
+  echo "exit"
   exit
 EOF
 
