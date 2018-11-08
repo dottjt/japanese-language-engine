@@ -37,6 +37,7 @@ import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
 import Welcome from '../pages/Welcome';
 import Blog from '../pages/Blog';
+import Article from '../pages/Article';
 import Guides from '../pages/Guides';
 import About from '../pages/About';
 
@@ -61,6 +62,9 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       
       case ROUTE_TITLE.BLOG:
         return <Blog/>
+
+      case ROUTE_TITLE.ARTICLE:
+        return <Article path={route.path}/>
 
       case ROUTE_TITLE.GUIDES:
         return <Guides/>
