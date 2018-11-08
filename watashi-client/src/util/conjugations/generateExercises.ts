@@ -11,7 +11,7 @@ import {
 import { ROUTE_PATH } from '../constants/routeConstants';
 
 import GET_NOUNS_AND_PRE_OPTIONS from '../../graphql/queries/getNounsAndPreOptionsQuery';
-import GET_EVERYTHING from '../../graphql/queries/getEverything';
+// import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
 import {
   __TYPENAME_OPTIONS,
@@ -107,9 +107,9 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
 
     client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.preOptions, data.preModifiers, numberOfExercices) } });
 
-    const data2 = client.readQuery({ query: GET_EVERYTHING }) as any;
+    // const data2 = client.readQuery({ query: GET_EVERYTHING }) as any;
 
-    console.log('data2', data2);
+    // console.log('data2', data2);
 
   } catch(error) {
     throw new Error(createError('generateExercises.ts', 'getExercisesApollo', `Error: ${error}.`));

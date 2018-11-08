@@ -1,12 +1,11 @@
 version: '3'
 services:
-
-  watashi-nginx-client:
-    container_name: 'watashi-nginx-client'
-    image: nginx:alpine
+  watashi-nginx:
+    container_name: 'watashi-nginx'
+    # image: nginx:alpine
     build:
-      context: ./watashi-client
-      dockerfile: ./watashi-client/Dockerfile
+      context: ./watashi-nginx
+      dockerfile: ./watashi-nginx/Dockerfile
     ports:
       - "80:80"
       - "443:443"
@@ -16,15 +15,22 @@ services:
     volumes:
       - ./production-site:/usr/share/nginx/html
       - ./dh-param:/etc/ssl/certs
-      - /docker-volumes/etc/letsencrypt/live/ohhaithere.com/fullchain.pem:/etc/letsencrypt/live/ohhaithere.com/fullchain.pem
-      - /docker-volumes/etc/letsencrypt/live/ohhaithere.com/privkey.pem:/etc/letsencrypt/live/ohhaithere.com/privkey.pem
+      - /docker-volumes/etc/letsencrypt/live/watashiengine.com/fullchain.pem:/etc/letsencrypt/live/watashiengine.com/fullchain.pem
+      - /docker-volumes/etc/letsencrypt/live/watashiengine.com/privkey.pem:/etc/letsencrypt/live/watashiengine.com/privkey.pem
       - /docker-volumes/data/letsencrypt:/data/letsencrypt
     networks:
       - docker-network
     restart: always
-    depends_on:
-      - client
-      - postgres
+    # depends_on:
+    #   - watashi-client
+    #   - watashi-postgres
+
+  watashi-client:
+    container_name: 'watashi-client'
+    build:
+      context: ./watashi-client
+      dockerfile: ./watashi-client/Dockerfile
+
 
 networks:
   docker-network:
