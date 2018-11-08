@@ -74,7 +74,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
 
               <FlexColumn width={600} mb={4}>
                 <Text>02 - Watashi Engine provides you with tools for analysis.</Text>
-                <Text>Aside from generating accurate Japanese sentences in a variety of forms, provides both visual and analytical tools for you to completely understand sentence structure.</Text>
+                <Text>Aside from generating accurate Japanese sentences in a variety of forms, Watashi Engineprovides both visual and analytical tools for you to completely understand sentence structure.</Text>
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>
