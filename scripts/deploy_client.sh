@@ -22,6 +22,9 @@ ssh root@178.128.54.4 <<EOF
   echo "docker cp watashi-client:/usr/share/nginx/html/. /docker/letsencrypt-docker-nginx/src/production/production-site"
   docker cp watashi-client:/usr/share/nginx/html/. /docker/letsencrypt-docker-nginx/src/production/production-site
 
+  echo "rm /docker/letsencrypt-docker-nginx/src/production/production.conf"
+  rm /docker/letsencrypt-docker-nginx/src/production/production.conf
+
   echo "docker cp watashi-client:/usr/share/nginx/production.conf /docker/letsencrypt-docker-nginx/src/production"
   docker cp watashi-client:/usr/share/nginx/production.conf /docker/letsencrypt-docker-nginx/src/production/production.conf
 
