@@ -6,7 +6,7 @@ Homepage: https://watashiengine.com/
 
 Watashi Engine is a Japanese language engine.
 
-It is open-source under the GNU GPLv3 licence. 
+It is open-source under the GNU GPLv3 licence, so we're very interested in having people help build this thing!
 
 ## Use cases
 
@@ -35,7 +35,8 @@ We are actively looking for people to help build Watashi Engine!
 - Build vocabulary lists.
 - Write Unit Tests.
 - Write Documentation.
-
+- Dicuss what you want built. 
+- Style it. 
 
 If you're interested, please get in touch~!
 
@@ -56,3 +57,4 @@ There are more files in the `docs` folder.
 - TODO.md
 - DOCKER.md
 - BUILD.md
+- OTHER.md
