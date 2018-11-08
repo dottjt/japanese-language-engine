@@ -4,6 +4,7 @@
 - Sort out verb conjugation algorithms.
 - Sort out verb conjugation words.
 - Create Watashi API with basic user information.
+- Find way to fetch user data from server.
 - Create Watashi API Docker setup.
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered.
 - Write Blog Articles.
@@ -90,6 +91,7 @@ Possibile optimisations: Limit constant length. May be unnecessary.
 http://astronautweb.co/react-static-sites/
 https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
 
+https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx
 
 ### GOOD TUTORIALS 
 

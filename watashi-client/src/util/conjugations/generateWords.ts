@@ -53,7 +53,7 @@ const genTSV = ({ topic, subject, verb }: { topic?: Util.Topic, subject?: Util.S
     return { topic, predicate: { subject, verb } };
   }
 
-  throw new Error(createError('conjugations/generateExercises.tsx', 'genTSV', `Your sentence variation does not exist`));
+  throw new Error(createError('conjugations/generateSentences.tsx', 'genTSV', `Your sentence variation does not exist`));
 };
 
 
@@ -83,7 +83,7 @@ const generateWords = (nouns: Util.Word[], variation: string): () => Util.Senten
     case KARA_TS: return () => genTSV({ topic: undefined,       subject: randomLocationWord, verb: randomVerb });   // KARA_TS
     case MADE_TS: return () => genTSV({ topic: undefined,       subject: randomLocationWord, verb: randomVerb });   // MADE_TS
   }
-  throw new Error(createError('conjugations/generateExercises.tsx', 'generateWords', `${variation} does not exist`));
+  throw new Error(createError('conjugations/generateSentences.tsx', 'generateWords', `${variation} does not exist`));
 };
 
 export default generateWords;

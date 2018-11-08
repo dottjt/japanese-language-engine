@@ -2,10 +2,7 @@ import * as React from "react";
 
 import { Button } from '../../atoms/ClickableStyles';
 
-import {
-
-  getExercisesApollo,
-} from '../../../util/functions';
+import { getExercisesApollo } from '../../../util/conjugations/generateExercises';
 
 import {
   __TYPENAME_SENTENCE_STATS,

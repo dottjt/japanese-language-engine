@@ -8,8 +8,9 @@ import { Heading } from '../../atoms/TextStyles';
 import {
   capitalise,
   createError,
-  getExercisesApollo,
 } from '../../../util/functions';
+
+import { getExercisesApollo } from '../../../util/conjugations/generateExercises';
 
 import {
   GENDER_MASCULINE,

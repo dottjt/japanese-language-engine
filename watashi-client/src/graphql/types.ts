@@ -78,6 +78,7 @@ export const optionTypes = `
     gender: String
     question: String
     sentenceEnding: String
+    themes: String[]
   }
 
   type User {
@@ -101,6 +102,7 @@ export const index = `
     nouns: [ Word ]
 
     exercises?: [ EnglishJapaneseOptionsSentence ]
+    preModifiers?: Modifiers
     preOptions?: Options
     user?: User
   }

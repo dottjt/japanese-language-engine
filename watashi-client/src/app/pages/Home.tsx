@@ -67,14 +67,14 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
               <SecondaryPageHeading>Why Watashi Engine?</SecondaryPageHeading>
               <FlexColumn width={600} mb={4}>
                 <Text>01 - Watashi Engine is entirely focused on what you want to achieve.</Text>
-                <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, all completely randomly generated?</Text>
+                <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, randomly generated to an accurate degree?</Text>
                 {/* Then here, actually insert that configuration. */}
-                <Text>In essence, Watashi Engine is highly configurable.</Text>
+                <Text>Then you'll absolutely love Watashi Engine.</Text>
               </FlexColumn>
 
               <FlexColumn width={600} mb={4}>
                 <Text>02 - Watashi Engine provides you with tools for analysis.</Text>
-                <Text>Aside from generating accurate Japanese sentences in a variety of forms, Watashi Engineprovides both visual and analytical tools for you to completely understand sentence structure.</Text>
+                <Text>Aside from generating accurate Japanese sentences in a variety of forms, Watashi Engine provides both visual and analytical tools for you to completely understand sentence structure.</Text>
               </FlexColumn>
 
               <FlexColumn width={600} mb={5}>

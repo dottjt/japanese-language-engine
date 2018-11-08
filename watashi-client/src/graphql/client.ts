@@ -20,7 +20,6 @@ import allWords from '../util/words/collection';
 
 const defaults = {
   nouns: allWords,
-  // exercises: null, // is nothing yet. 
   // controlPanelOptions: {
   //   controlPanelPoliteness: null,
   //   controlPanelVariation: null,
@@ -31,7 +30,6 @@ const defaults = {
   //   controlPanelSentenceEnding: null,
   //   __typename: __TYPENAME_CONTROL_PANEL_OPTIONS,
   // },
-  // preOptions, // exists 
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
     toggleSentenceOrder: false, 
@@ -50,7 +48,10 @@ const defaults = {
     selectedExerciseNumber: 0,
     __typename: __TYPENAME_SENTENCE_STATS,
   },
-  user: null,
+  // exercises, // exists 
+  // preOptions, // exists 
+  // preModifiers, // exists
+  // user, // exists
 };
 
 const preloadedState = (<any>window).__APOLLO_STATE__;

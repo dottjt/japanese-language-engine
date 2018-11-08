@@ -1,122 +1,135 @@
-import { 
+import {
   createError,
-  // capitalise,
 } from '../functions';
 
 import {
-  returnSentenceParts,
-  generateSentenceTypes,
-} from '../utilConjugation';
+  LESSON_PATH,
+  LESSON_OPTIONS,
+  LESSON_MODIFIERS,
+} from '../constants/lessonConstants';
 
-import { 
-  LANG_JAPANESE,
-  LANG_ENGLISH,
-} from '../constants/generalConstants';
+import { ROUTE_PATH } from '../constants/routeConstants';
 
-import {
-  // POLITENESS_CASUAL,
-  
-  // HAS_QUESTION,
-
-  SENTENCE_TYPE_VERB,
-  SENTENCE_TYPE_SUBJECT,
-  SENTENCE_TYPE_TOPIC,
-} from '../constants/optionsConstants';
+import GET_NOUNS_AND_PRE_OPTIONS from '../../graphql/queries/getNounsAndPreOptionsQuery';
+import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
 import {
-  __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-  __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,
+  __TYPENAME_OPTIONS,
+  __TYPENAME_MODIFIERS,
 } from '../constants/typeNameConstants';
 
-import nounConjugationJapanese from './noun/nounConjugationJapanese';
-import nounConjugationEnglish from './noun/nounConjugationEnglish';
+import createLessonModifiers from './createLessonModifiers';
+import createLessonOptions from './createLessonOptions';
+import generateSentences from './generateSentences';
 
-import verbConjugationJapanese from './verb/verbConjugationJapanese';
-import verbConjugationEnglish from './verb/verbConjugationEnglish';
-
-import generateWordModifiers from './generateWordModifiers';
-import generateWords from './generateWords';
-
-const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord | Util.ConjugatedEnglishWord => {
-  switch (sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_VERB: return verbConjugationEnglish(words, modifiers, options, sentenceType);
-  }
-
-  throw new Error(createError('conjugations/generateExercises.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
+export const determinePreOptions = (path: string): Util.Options => {
+  switch(path) {
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return LESSON_OPTIONS.L001;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return LESSON_OPTIONS.L002;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L003}`: return LESSON_OPTIONS.L003;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L004}`: return LESSON_OPTIONS.L004;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L005}`: return LESSON_OPTIONS.L005;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L006}`: return LESSON_OPTIONS.L006;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L007}`: return LESSON_OPTIONS.L007;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L008}`: return LESSON_OPTIONS.L008;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L009}`: return LESSON_OPTIONS.L009;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L010}`: return LESSON_OPTIONS.L010;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L011}`: return LESSON_OPTIONS.L011;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L012}`: return LESSON_OPTIONS.L012;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L013}`: return LESSON_OPTIONS.L013;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L014}`: return LESSON_OPTIONS.L014;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L015}`: return LESSON_OPTIONS.L015;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L016}`: return LESSON_OPTIONS.L016;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L017}`: return LESSON_OPTIONS.L017;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L018}`: return LESSON_OPTIONS.L018;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L019}`: return LESSON_OPTIONS.L019;
+    default: return LESSON_OPTIONS.L001;
+  };
 };
 
-const generateJapaneseWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedJapaneseWord | Util.ConjugatedJapaneseWord => {
-  switch (sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_VERB: return verbConjugationJapanese(words, modifiers, options, sentenceType);
-  }
-
-  throw new Error(createError('conjugations/generateExercises.tsx', 'generateJapaneseWord', 'sentenceType does not exist'));
+export const determinePreModifiers = (path: string): Util.Modifiers => {
+  switch(path) {
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return LESSON_MODIFIERS.L001;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return LESSON_MODIFIERS.L002;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L003}`: return LESSON_MODIFIERS.L003;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L004}`: return LESSON_MODIFIERS.L004;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L005}`: return LESSON_MODIFIERS.L005;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L006}`: return LESSON_MODIFIERS.L006;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L007}`: return LESSON_MODIFIERS.L007;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L008}`: return LESSON_MODIFIERS.L008;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L009}`: return LESSON_MODIFIERS.L009;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L010}`: return LESSON_MODIFIERS.L010;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L011}`: return LESSON_MODIFIERS.L011;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L012}`: return LESSON_MODIFIERS.L012;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L013}`: return LESSON_MODIFIERS.L013;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L014}`: return LESSON_MODIFIERS.L014;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L015}`: return LESSON_MODIFIERS.L015;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L016}`: return LESSON_MODIFIERS.L016;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L017}`: return LESSON_MODIFIERS.L017;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L018}`: return LESSON_MODIFIERS.L018;
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L019}`: return LESSON_MODIFIERS.L019;
+    default: return LESSON_MODIFIERS.L001;
+  };
 };
 
-const generateSentences = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options): Util.EnglishJapaneseSentence => {
-  const { topic, subject, verb } = returnSentenceParts(words);
-  const { onlyTopic, onlySubject, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
-
-  if (onlyTopic) {
-    return {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ],
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };
+export const determineGetExercise = (nouns: Util.Word[], path: string, preOptions: Util.Options, preModifiers: Util.Modifiers, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
+  switch(path) {
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L001}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L002}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L003}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L004}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L005}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L006}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L007}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L008}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L009}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L010}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L011}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L012}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L013}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L014}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L015}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L016}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L017}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L018}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.APP}${LESSON_PATH.L019}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    default: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
   };
-  if (onlySubject) {
-    return {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    }
-  };
-  if (onlyVerb) {
-    return  {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH) ],
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };
-  };
-  if (onlyTopicAndSubject) {
-    return  {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE), generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH), generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };  
-  };
-  if (onlySubjectAndVerb) {
-    return  {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE), generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH), generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };  
-  };
-  throw new Error(createError('conjugations/generateExercises.tsx', 'generateSentences', 'sentenceType does not exist'));
 };
 
-const generateExercises = (words: Util.Word[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
-  Array.from(Array(numberOfExercises)).map(() => {
+export const getExercisesApollo = (client: any, path: string, numberOfExercices: number): void => {
+  try {
+    // I need to figure out how to get this 
+    // NOTE: user should not be null, it should be gotten from the server, if at all possible. 
+    client.writeData({ data: { user: null, preOptions: determinePreOptions(path), preModifiers: determinePreModifiers(path) } });
 
-    const options = optionsLambda();
-    const modifiers = modifiersLambda();
-    
-    const variationWords = generateWords(words, options.selectedVariation);
-    const modifierWords = generateWordModifiers(words, modifiers);
+    const data = client.readQuery({ query: GET_NOUNS_AND_PRE_OPTIONS }) as any;
 
-    const { englishSentence, japaneseSentence } = generateSentences(variationWords(), modifierWords, options);
+    client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.preOptions, data.preModifiers, numberOfExercices) } });
 
-    return {
-      options,
-      modifiers,
-      englishSentence, 
-      japaneseSentence, 
-      __typename: __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,
-    }  
-  })
+    const data2 = client.readQuery({ query: GET_EVERYTHING }) as any;
 
-export default generateExercises;
+    console.log('data2', data2);
+
+  } catch(error) {
+    throw new Error(createError('generateExercises.ts', 'getExercisesApollo', `Error: ${error}.`));
+  } 
+};
+
+
+
+
+
+// const recalculateOptions = (options: Util.Options, controlPanelOptions: Util.ControlPanelOptions): Util.Options => {
+//   const { controlPanelPoliteness, controlPanelVariation, controlPanelPolarity, controlPanelTense, controlPanelGender, controlPanelQuestion, /* controlPanelSentenceEnding */ } = controlPanelOptions;
+//   return {
+//     __typename: __TYPENAME_OPTIONS,
+//     politeness: controlPanelPoliteness ? controlPanelPoliteness : options.politeness,
+//     variation: controlPanelVariation ? controlPanelVariation : options.variation,
+//     polarity: controlPanelPolarity ? controlPanelPolarity : options.polarity,
+//     tense: controlPanelTense ? controlPanelTense : options.tense,
+//     gender: controlPanelGender ? controlPanelGender : options.gender,
+//     question: controlPanelQuestion ? controlPanelQuestion : options.question,
+//     // controlPanelSentenceEnding: controlPanelSentenceEnding ? controlPanelSentenceEnding : options.sentenceEnding 
+//   }
+// }

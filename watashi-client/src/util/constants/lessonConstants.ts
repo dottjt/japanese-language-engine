@@ -6,10 +6,6 @@ export const RESOURCE_TAE_KIM_WEBSITE = 'http://www.guidetojapanese.org';
 export const RESOURCE_WASABI_WEBSITE = 'https://www.wasabi-jpn.com';
 
 import {
-  randomArrayElement,
-} from '../functions';
-
-import {
   NA,
 
   T,
@@ -57,18 +53,7 @@ import {
 
 } from './optionsConstants';
 
-import {
-} from './wordConstants';
-
-
-import {
-  topicNoArray,
-  subjectNoArray,
-  topicAdjectiveArray,
-  topicAdverbArray,
-  subjectAdjectiveArray,
-  subjectAdverbArray,
-  
+import {  
   MODIFIERS_NA,
 } from './modifiersConstants';
 
@@ -310,26 +295,26 @@ const LESSON_RESOURCES = {
 }
 
 export const LESSON_OPTIONS = {
-  L001: { variation: LESSON_VARIATION.L001, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // T
-  L002: { variation: LESSON_VARIATION.L002, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // WA_TS, MO_TS
-  L003: { variation: LESSON_VARIATION.L003, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // GA_TS
-  L004: { variation: LESSON_VARIATION.L004, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // WA_TS, GA_TS
-  L005: { variation: LESSON_VARIATION.L005, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // WA_TS, MO_TS, GA_TS
-  L006: { variation: LESSON_VARIATION.L006, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // V
-  L007: { variation: LESSON_VARIATION.L007, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // V
-  L008: { variation: LESSON_VARIATION.L008, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // V
-  L009: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // WO_SV
-  L010: { variation: LESSON_VARIATION.L010, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // NI_SV
-  L011: { variation: LESSON_VARIATION.L011, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // DE_SV
-  L012: { variation: LESSON_VARIATION.L012, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // WO_SV, NI_SV
-  L013: { variation: LESSON_VARIATION.L013, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // NI_SV, DE_SV
-  L014: { variation: LESSON_VARIATION.L014, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // DE_SV, WO_SV
-  L015: { variation: LESSON_VARIATION.L015, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // WO_SV, NI_SV, DE_SV
-  L016: { variation: LESSON_VARIATION.L016, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // KARA_SV
-  L017: { variation: LESSON_VARIATION.L017, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // MADE_SV
-  L018: { variation: LESSON_VARIATION.L018, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // NA - T_NO
-  L019: { variation: LESSON_VARIATION.L019, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // T - T_ADJ
-  L020: { variation: LESSON_VARIATION.L020, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS }, // T - T_ADV
+  L001: { variation: LESSON_VARIATION.L001, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // T
+  L002: { variation: LESSON_VARIATION.L002, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // WA_TS, MO_TS
+  L003: { variation: LESSON_VARIATION.L003, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // GA_TS
+  L004: { variation: LESSON_VARIATION.L004, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // WA_TS, GA_TS
+  L005: { variation: LESSON_VARIATION.L005, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // WA_TS, MO_TS, GA_TS
+  L006: { variation: LESSON_VARIATION.L006, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // V
+  L007: { variation: LESSON_VARIATION.L007, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // V
+  L008: { variation: LESSON_VARIATION.L008, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // V
+  L009: { variation: LESSON_VARIATION.L009, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // WO_SV
+  L010: { variation: LESSON_VARIATION.L010, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // NI_SV
+  L011: { variation: LESSON_VARIATION.L011, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // DE_SV
+  L012: { variation: LESSON_VARIATION.L012, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // WO_SV, NI_SV
+  L013: { variation: LESSON_VARIATION.L013, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // NI_SV, DE_SV
+  L014: { variation: LESSON_VARIATION.L014, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // DE_SV, WO_SV
+  L015: { variation: LESSON_VARIATION.L015, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // WO_SV, NI_SV, DE_SV
+  L016: { variation: LESSON_VARIATION.L016, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // KARA_SV
+  L017: { variation: LESSON_VARIATION.L017, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // MADE_SV
+  L018: { variation: LESSON_VARIATION.L018, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // NA - T_NO
+  L019: { variation: LESSON_VARIATION.L019, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // T - T_ADJ
+  L020: { variation: LESSON_VARIATION.L020, politeness: POLITENESS_CASUAL, polarity: POLARITY_RANDOM, tense: TENSE_RANDOM, question: NOT_QUESTION, gender: GENDER_MASCULINE, __typename: __TYPENAME_OPTIONS, themes: [] }, // T - T_ADV
   // L021:
   // L022: 
   // L023: 
@@ -339,47 +324,34 @@ export const LESSON_OPTIONS = {
   // L027: 
 };
 
-const randomTopicNo = (): string => topicNoArray[randomArrayElement(topicNoArray.length)];
-const randomSubjectNoValue = (): string => subjectNoArray[randomArrayElement(subjectNoArray.length)];
-const randomTopicAdjectiveValue = (): string =>  topicAdjectiveArray[randomArrayElement(topicAdjectiveArray.length)];
-const randomTopicAdverbValue = (): string => topicAdverbArray[randomArrayElement(topicAdverbArray.length)];
-const randomSubjectAdjectiveValue = (): string => subjectAdjectiveArray[randomArrayElement(subjectAdjectiveArray.length)];
-const randomSubjectAdverbValue = (): string => subjectAdverbArray[randomArrayElement(subjectAdverbArray.length)];
-
-const createLessonModifiers = ( topicNo?: string, subjectNo?: string, topicAdjective?: string, topicAdverb?: string, subjectAdjective?: string, subjectAdverb?: string): Util.Modifiers => {
-  return {
-    __typename: __TYPENAME_MODIFIERS,
-    topicNo: topicNo ? topicNo : randomTopicNo(),
-    subjectNo: subjectNo ? subjectNo : randomSubjectNoValue(),
-    topicAdjective: topicAdjective ? topicAdjective : randomTopicAdjectiveValue(),
-    topicAdverb: topicAdverb ? topicAdverb : randomTopicAdverbValue(),
-    subjectAdjective: subjectAdjective ? subjectAdjective : randomSubjectAdjectiveValue(),
-    subjectAdverb: subjectAdverb ? subjectAdverb : randomSubjectAdverbValue(),  
-  }
-};
-
 export const LESSON_MODIFIERS = {
-  L001: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T
-  L002: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS
-  L003: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // GA_TS
-  L004: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, GA_TS
-  L005: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WA_TS, MO_TS, GA_TS
-  L006: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
-  L007: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
-  L008: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // V
-  L009: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV
-  L010: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV
-  L011: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV
-  L012: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV
-  L013: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NI_SV, DE_SV
-  L014: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // DE_SV, WO_SV
-  L015: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // WO_SV, NI_SV, DE_SV
-  L016: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // KARA_SV
-  L017: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // MADE_SV
-  L018: () => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // NA - T_NO
-  L019:() => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADJ
-  L020:() => createLessonModifiers(MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA, MODIFIERS_NA), // T - T_ADV
+  L001: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // T
+  L002: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // WA_TS, MO_TS
+  L003: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // GA_TS
+  L004: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // WA_TS, GA_TS
+  L005: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // WA_TS, MO_TS, GA_TS
+  L006: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // V
+  L007: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // V
+  L008: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // V
+  L009: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // WO_SV
+  L010: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // NI_SV
+  L011: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // DE_SV
+  L012: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // WO_SV, NI_SV
+  L013: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // NI_SV, DE_SV
+  L014: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // DE_SV, WO_SV
+  L015: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // WO_SV, NI_SV, DE_SV
+  L016: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // KARA_SV
+  L017: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // MADE_SV
+  L018: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // NA - T_NO
+  L019: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // T - T_ADJ
+  L020: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // T - T_ADV
   // L021:
+  // L022: 
+  // L023: 
+  // L024: 
+  // L025: 
+  // L026: 
+  // L027: 
 };
 
 export const L001 = {

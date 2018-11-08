@@ -36,8 +36,18 @@ const GET_EVERYTHING = gql`{
     tense
     gender
     question
+    themes
   }
   
+  preModifiers @client {
+    topicNo
+    subjectNo
+    topicAdjective
+    topicAdverb
+    subjectAdjective
+    subjectAdverb
+  }
+
   nouns @client {
     japanese @client {
       kanji
@@ -138,6 +148,7 @@ const GET_EVERYTHING = gql`{
       tense
       gender
       question
+      themes
     }
 
     modifiers @client {

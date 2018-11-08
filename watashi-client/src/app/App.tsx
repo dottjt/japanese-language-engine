@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { Helmet } from 'react-helmet';
-import { getExercisesApollo } from '../util/functions';
+import { getExercisesApollo } from '../util/conjugations/generateExercises';
 
 import GET_EVERYTHING from '../graphql/queries/getEverything'
 
@@ -24,26 +24,29 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
       <FlexColumn>
         <AppHelmet/>
         <Query query={GET_EVERYTHING}>
-          {({ data, client }) => (
-            <React.Fragment>
-              {/* <Navbar
-                user={data.user}
-                auth={auth}/> */}
-              <Flex>
-                <Sidebar
-                  route={route}
-                  auth={auth}
+          {({ data, client }) => {
+            console.log(data);
+            return (
+              <React.Fragment>
+                {/* <Navbar
                   user={data.user}
-                />
-                <Main 
-                  auth={auth}
-                  route={route}
-                  client={client}
-                  {...data}
-                />
-              </Flex>
-            </React.Fragment>
-          )}
+                  auth={auth}/> */}
+                <Flex>
+                  <Sidebar
+                    route={route}
+                    auth={auth}
+                    user={data.user}
+                  />
+                  <Main 
+                    auth={auth}
+                    route={route}
+                    client={client}
+                    {...data}
+                  />
+                </Flex>
+              </React.Fragment>
+            )
+          }}
         </Query>
       </FlexColumn>
     );

@@ -100,6 +100,7 @@ declare namespace Util {
     tense: string; // TENSE_PRESENT, TENSE_PAST
     gender: string; // GENDER_MASCULINE, GENDER_FEMININE
     question: string; // HAS_QUESTION, NOT_QUESTION
+    themes: string[];
     // sentenceEnding: string;
   };
 
@@ -122,6 +123,8 @@ declare namespace Util {
     subjectAdjective: string;
     subjectAdverb: string;
   };
+
+  export type Themes = string[];
 
   export type EnglishJapaneseSentence = {
     englishSentence: ConjugatedEnglishWord[];

@@ -163,3 +163,15 @@ export const sentenceEndingArray = [
   SENTENCE_ENDING_YO,
   SENTENCE_ENDING_YO_NE,
 ];
+
+export const sentenceEndingArrayLength = sentenceEndingArray.length;
+
+// options.themes
+
+export const THEMES_RANDOM = 'THEMES_RANDOM';
+
+export const themesArray = [
+
+];
+
+export const themesArrayLength = themesArray.length;

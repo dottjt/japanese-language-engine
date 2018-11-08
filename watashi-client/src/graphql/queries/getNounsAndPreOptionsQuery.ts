@@ -25,6 +25,16 @@ const GET_NOUNS_AND_PRE_OPTIONS = gql`{
     tense
     gender
     question
+    themes
+  }
+
+  preModifiers @client {
+    topicNo
+    subjectNo
+    topicAdjective
+    topicAdverb
+    subjectAdjective
+    subjectAdverb
   }
 }`
 
