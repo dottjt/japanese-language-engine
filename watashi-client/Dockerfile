@@ -48,7 +48,7 @@ RUN yarn build
 FROM nginx:alpine
 
 COPY --from=build-deps /usr/src/app/client/build/. /usr/share/nginx/html
-COPY prod.conf /usr/share/nginx
+COPY production.conf /usr/share/nginx/production.conf
 
 # COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
