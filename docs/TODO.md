@@ -11,6 +11,8 @@
 
 # TODO NICE HAVES 
 - Find open contributors. 
+  https://github.com/smooth-code/loadable-components // to use with react-snap
+
 - put docker-compose.yml on server in the repo and copy it over :)
 - Nice resource links.
 - Get a logo/font. 

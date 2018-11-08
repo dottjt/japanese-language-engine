@@ -1,50 +1,6 @@
-# Brief description
-
-Introducing the Watashi Engine.
-
-What it is:
-
-- A highly sophisticated Japanese language engine. 
-
-Use cases:
-- Teachers wanting the ability to easily create grammar exercises for their students.
-- Students wanting to study via the isntantaneous composition method.
-- Students who benefit from a macro approach towards language.  
-
-What it isn't:
-
-- A language translator (although it may become one in the distant future)
-
-# Tech
-
-- Frontend: Create-React-App, Typescript, React, apollo-boost, react-router5
-- CSS: Styled-Components, Rebass
-- Testing: Jest
-- Backend: Node.js, feathersjs, GraphQL, apollo-server, typeorm
-- Database: Postgres
-- Authentication: Auth0
-- CI: Buildkite
-- Server: AWS Lightsail
-- Infrastructure: Docker, AWS
-
-## Setup
-
-create-react-app watashi-client
-
-touch .env  // SKIP_PREFLIGHT_CHECK=true
-
-yarn add @types/react @types/react-dom @types/auth0-js @types/graphql @types/rebass @types/styled-components @types/react-helmet
-yarn add typescript graphql router5 react-router5 react-apollo apollo-cache-inmemory apollo-client apollo-link-http apollo-link-state apollo-link auth0-js react-app-rewired react-helmet @loadable/component react-markdown
-yarn add react-flexbox-grid rebass styled-components system-components
-yarn add --dev react-app-rewired react-app-rewire-styled-components react-snap react
-
-npm install --save-dev babel-plugin-styled-components typescript-plugin-styled-components
 
 
 
-https://github.com/nfl/react-helmet
-https://github.com/stereobooster/react-snap // seems to be a few caveats
-https://github.com/smooth-code/loadable-components // to use with react-snap
 
 http://astronautweb.co/react-static-sites/ - wow, really good guide.
 https://medium.com/yld-engineering-blog/a-tale-of-react-server-side-rendering-cb95a441ca01 // server side render with razzle.
