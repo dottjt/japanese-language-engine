@@ -57,13 +57,13 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
 
     return (
       <FlexColumn>
-        <Heading is='h5' fontSize={2}>Japanese</Heading>
+        <Heading mt={3} mb={2} is='h5' fontSize={2}>Japanese</Heading>
         <ToggleBackground
           background={determineToggleBackground(toggleSentenceOrder, hoverState, toggleSentenceHide)}
           onMouseEnter={this.onHoverEnter}
           onMouseLeave={this.onHoverExit}
           >
-          <Flex m={2} ml={0} p={3} pl={3} border={1}>
+          <Flex p={3} pl={3} border={1}>
             {sentenceComplete.map((sentencePart, sentencePartIndex: number) => {
               const sentencePartWordArray = createTaggedArrayJapanese(sentencePart);
               const sentencePartWordArrayComplete = phraseOptionsJapanese(sentencePartWordArray, options, sentencePartIndex);

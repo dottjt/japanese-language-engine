@@ -1,4 +1,4 @@
-import { Box } from './LayoutStyles';
+import { Flex, Box } from './LayoutStyles';
 
 import styled from 'styled-components';
 
@@ -27,7 +27,7 @@ TextHover.defaultProps = {
 };
 
 
-export const ToggleSentenceOrder = styled(Box)<any>`
+export const ToggleSentenceOrder = styled(Flex)<any>`
   flex-direction: ${props => props.sentenceorder};
 `;
 
