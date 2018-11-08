@@ -57,15 +57,15 @@ const routes = [
   { name: LESSON_TITLE.L013, path: `${ROUTE_PATH.APP}${LESSON_PATH.L013}` },
 
   // From / Until statements
-  { name: LESSON_TITLE.L014, path: `${ROUTE_PATH.APP}${LESSON_PATH.L014}` },
-  { name: LESSON_TITLE.L015, path: `${ROUTE_PATH.APP}${LESSON_PATH.L015}` },
+  // { name: LESSON_TITLE.L014, path: `${ROUTE_PATH.APP}${LESSON_PATH.L014}` },
+  // { name: LESSON_TITLE.L015, path: `${ROUTE_PATH.APP}${LESSON_PATH.L015}` },
 
-  // modifier statements
-  { name: LESSON_TITLE.L016, path: `${ROUTE_PATH.APP}${LESSON_PATH.L016}` },
-  { name: LESSON_TITLE.L017, path: `${ROUTE_PATH.APP}${LESSON_PATH.L017}` },
-  { name: LESSON_TITLE.L018, path: `${ROUTE_PATH.APP}${LESSON_PATH.L018}` },
-  { name: LESSON_TITLE.L019, path: `${ROUTE_PATH.APP}${LESSON_PATH.L019}` },
-  { name: LESSON_TITLE.L020, path: `${ROUTE_PATH.APP}${LESSON_PATH.L020}` },
+  // // modifier statements
+  // { name: LESSON_TITLE.L016, path: `${ROUTE_PATH.APP}${LESSON_PATH.L016}` },
+  // { name: LESSON_TITLE.L017, path: `${ROUTE_PATH.APP}${LESSON_PATH.L017}` },
+  // { name: LESSON_TITLE.L018, path: `${ROUTE_PATH.APP}${LESSON_PATH.L018}` },
+  // { name: LESSON_TITLE.L019, path: `${ROUTE_PATH.APP}${LESSON_PATH.L019}` },
+  // { name: LESSON_TITLE.L020, path: `${ROUTE_PATH.APP}${LESSON_PATH.L020}` },
 ];
 
 const moveToTopOfThePagePlugin = (router: any, dependencies: any) => ({
