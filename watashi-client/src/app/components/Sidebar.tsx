@@ -33,7 +33,6 @@ class Sidebar extends React.Component<{ user: any, auth: any, route: any }, {}> 
           // height: '53px',
           width: '282px',
           minWidth: '282px',
-          boxShadow: '6px 6px grey',
         }}      
         >
         <InternalLink routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>
@@ -46,9 +45,9 @@ class Sidebar extends React.Component<{ user: any, auth: any, route: any }, {}> 
             Watashi Engine</Heading>
         </InternalLink>
         <Flex
-          css={{
-            borderBottom: '1px solid #ececec',
-          }}
+          // css={{
+          //   borderBottom: '1px solid #ececec',
+          // }}
           >
           {!isAuthenticated && 
             <SidebarItemExternal onClick={auth.login}>{ROUTE_TITLE.LOGIN} / {ROUTE_TITLE.SIGN_UP}</SidebarItemExternal>

@@ -9,8 +9,8 @@ const Item = system({
   extend: Flex,
   width: 1,
   height: '3rem',
-  borderBottom: 1,
   alignItems: 'center',
+  borderBottom: 1,
 });
 
 export const SidebarItemExternal = (props) => (
@@ -20,7 +20,7 @@ export const SidebarItemExternal = (props) => (
       transition: 'background .1s',
       '&:hover': {
         background: 'lightgrey',
-      }    
+      }
     }}
     >
     <ExternalLink 

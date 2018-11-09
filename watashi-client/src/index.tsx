@@ -30,7 +30,7 @@ const Index = () => (
       <RouteProvider router={router}>
         <Route>{({ route }) => {
           
-          // I need to manually get the user information and authenticate that. perhaps from database, not 100% sure at this stage. 
+          // I need to manually get the user information and authenticate that. perhaps from database, not 100% sure at this stage.
 
           if (route !== null) {
             return <App client={client} route={route} auth={auth}/>
