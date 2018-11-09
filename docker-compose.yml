@@ -2,6 +2,7 @@ version: '3'
 services:
   watashi-client:
     container_name: 'watashi-client'
+    image: 'watashi-client'
     build:
       context: ./watashi-client
 
