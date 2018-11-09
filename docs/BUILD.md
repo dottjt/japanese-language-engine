@@ -28,7 +28,7 @@ Personally I use docker on a VPS, along with Travis CI in order to deploy this p
 - create-react-app watashi-client 
 
 - yarn add @types/react @types/react-dom @types/auth0-js @types/graphql @types/rebass @types/styled-components @types/react-helmet 
-- yarn add typescript graphql router5 react-router5 react-apollo apollo-cache-inmemory apollo-client apollo-link-http apollo-link-state apollo-link auth0-js react-app-rewired react-helmet @loadable/component react-markdown rebass styled-components system-components @mdx-js/loader @mdx-js/mdx 
+- yarn add typescript graphql router5 react-router5 react-apollo apollo-cache-inmemory apollo-client apollo-link-http apollo-link-state apollo-link auth0-js react-app-rewired react-helmet @loadable/component react-markdown rebass styled-components system-components @mdx-js/loader @mdx-js/mdx react-microlink
 - yarn add --dev react-app-rewired react-app-rewire-styled-components react-snap react babel-plugin-styled-components typescript-plugin-styled-components
 
 ## API BUILD 

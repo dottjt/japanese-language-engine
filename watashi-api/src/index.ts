@@ -1,8 +1,10 @@
-import 'reflect-metadata';
-import { GraphQLServer } from 'graphql-yoga';
+require('reflect-metadata');
+const requireGraphQLFile = require('require-graphql-file');
+const typeDefs = requireGraphQLFile('./graphql/typeDefs/schema.graphql');
+const { GraphQLServer } = require('graphql-yoga');
 
 // resolvers
-import { userQuery, userMutation } from './resolvers/userResolvers';
+const { userQuery, userMutation } = require('./resolvers/userResolvers');
 
 const resolvers = {
   Query: {
@@ -13,5 +15,5 @@ const resolvers = {
   }
 };
 
-const server = new GraphQLServer({ typeDefs: './graphql/typeDefs/schema.graphql', resolvers })
-server.start(() => console.log('Server is running on localhost:4000'))
+const server = new GraphQLServer({ typeDefs, resolvers });
+server.start(() => console.log('Server is running on localhost:4000'));

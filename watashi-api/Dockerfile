@@ -13,6 +13,3 @@ COPY . .
 
 EXPOSE 4000
 CMD ["yarn", "start"]
-
-# docker image build -t dottjt:watashi-client-nginx .    // probably need an f function. 
-# docker run -it -p 80:80 --rm dottjt:watashi-client-nginx

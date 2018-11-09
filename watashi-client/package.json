@@ -25,6 +25,7 @@
     "react-flexbox-grid": "^2.1.2",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.3",
+    "react-microlink": "^2.3.0",
     "react-router5": "^6.5.3",
     "react-scripts": "2.1.0",
     "rebass": "^2.3.4",

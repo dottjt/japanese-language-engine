@@ -1,6 +1,7 @@
 import * as React from 'react';
+import MicrolinkCard from 'react-microlink'
 
-import { ExternalLink } from '../atoms/ClickableStyles';
+import { Flex } from '../atoms/LayoutStyles';
 
 class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
   public render() {
@@ -8,9 +9,13 @@ class Resources extends React.Component<PropTypes.IResourcesProps, {}> {
     return (
       <React.Fragment>
         {resources.map((resource: Util.Resource, index: number): any => (
-          <ExternalLink key={index} href={resource.url}>
-            {resource.url}
-          </ExternalLink>
+          <Flex mb={2}>
+            <MicrolinkCard 
+              key={index} 
+              url={resource.url} 
+              target='_blank' 
+            />
+          </Flex>
         ))}
       </React.Fragment>
     );

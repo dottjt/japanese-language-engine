@@ -1,7 +1,7 @@
-import { User } from '../entity/User';
-import { createConnection } from 'typeorm';
+const { User } = require('../entity/User');
+const { createConnection } = require('typeorm');
 
-export const userQuery = {
+const userQuery = {
   getUser: (_, { accessToken }) => {
     createConnection().then(async connection => {
   
@@ -12,7 +12,7 @@ export const userQuery = {
   },
 };
 
-export const userMutation = {
+const userMutation = {
   createUser: async (_, { username, email, thumbUrl, accessToken, idToken, expiresAt }) => {
     createConnection().then(async connection => {
 
@@ -53,4 +53,10 @@ export const userMutation = {
 
     }).catch(error => console.log(error));      
   },
-}
+};
+
+module.exports = {
+  userQuery,
+  userMutation,
+};
+export {};

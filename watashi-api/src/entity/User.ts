@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+const { Entity, PrimaryGeneratedColumn, Column, BaseEntity } = require('typeorm');
 
 @Entity()
-export class User extends BaseEntity {
+class User extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -23,5 +23,9 @@ export class User extends BaseEntity {
 
     @Column()
     expiresAt: string;
+};
 
-}
+module.exports = {
+  User,
+};
+export {};
