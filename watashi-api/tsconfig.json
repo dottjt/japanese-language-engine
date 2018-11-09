@@ -4,9 +4,7 @@
     "module": "esnext",
     "target": "es5",
     "lib": [
-      "es7",
-      "dom",
-      "esnext.asynciterable"
+      "es6",
     ],
     "sourceMap": true,
     "allowJs": true,
@@ -17,7 +15,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false, // was true
-    "importHelpers": true,
+    // "importHelpers": true,
     "strictNullChecks": false, // was true
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,

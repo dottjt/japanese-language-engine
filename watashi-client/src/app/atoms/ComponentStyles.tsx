@@ -14,7 +14,15 @@ const Item = system({
 });
 
 export const SidebarItemExternal = (props) => (
-  <Item>
+  <Item
+    css={{
+      cursor: 'pointer',
+      transition: 'background .1s',
+      '&:hover': {
+        background: 'lightgrey',
+      }    
+    }}
+    >
     <ExternalLink 
       ml={3}
       fontSize={1}
@@ -36,7 +44,15 @@ export const SidebarItemExternal = (props) => (
 );
 
 export const SidebarItem = (props) => (
-  <Item>
+  <Item
+    css={{
+      cursor: 'pointer',
+      transition: 'background .1s',
+      '&:hover': {
+        background: 'lightgrey',
+      }    
+    }}
+    >
     <InternalLink 
       ml={3}
       fontSize={1}

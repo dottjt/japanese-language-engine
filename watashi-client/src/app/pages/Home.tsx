@@ -69,7 +69,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 <Text>01 - Watashi Engine is entirely focused on what you want to achieve.</Text>
                 <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, randomly generated to an accurate degree?</Text>
                 {/* Then here, actually insert that configuration. */}
-                <Text>Then you'll absolutely love Watashi Engine.</Text>
+                <Text>Watashi Engine can.</Text>
               </FlexColumn>
 
               <FlexColumn width={600} mb={4}>
