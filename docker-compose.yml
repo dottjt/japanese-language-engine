@@ -4,7 +4,7 @@ services:
     container_name: 'watashi-client'
     build:
       context: ./watashi-client
-      dockerfile: ./watashi-client/DockerfileV2
+      dockerfile: ./watashi-client/Dockerfile
 
   # watashi-postgres:
   #   image: postgres:alpine
