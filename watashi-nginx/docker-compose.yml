@@ -1,0 +1,25 @@
+version: '3'
+services:
+  watashi-nginx:
+    container_name: 'watashi-nginx'
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - 80
+      - 443
+    volumes:
+      - /docker/letsencrypt-docker-nginx/src/production/production-site:/usr/share/nginx/html
+      - /docker/letsencrypt-docker-nginx/src/production/dh-param:/etc/ssl/certs
+      - /docker/letsencrypt-docker-nginx/src/production/nginx.conf:/etc/nginx/nginx.conf
+      - /docker-volumes/etc/letsencrypt/live/watashiengine.com/fullchain.pem:/etc/letsencrypt/live/watashiengine.com/fullchain.pem
+      - /docker-volumes/etc/letsencrypt/live/watashiengine.com/privkey.pem:/etc/letsencrypt/live/watashiengine.com/privkey.pem
+      - /docker-volumes/data/letsencrypt:/data/letsencrypt
+    networks:
+      - docker-network
+    restart: always
+
+networks:
+  docker-network:
+    driver: bridge

@@ -19,10 +19,19 @@ env:
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker pull dottjt/watashi-client || true
+  # - docker pull dottjt/watashi-nginx || true
 
 script:
-  - docker-compose build
-  - docker-compose up -d
+  - docker build --pull --cache-from dottjt/watashi-client -t dottjt/watashi-client
+    ./watashi-client
+  - docker run --rm -d dottjt/watashi-client
+  - docker ps -a
+
+  # - docker build --pull --cache-from dottjt/watashi-nginx -t dottjt/watashi-nginx
+  #   ./watashi-nginx
+  # - docker run --rm -d -p 80:80 dottjt/watashi-nginx
+  # - docker ps -a
 
 after_script:
   - docker images
@@ -34,12 +43,16 @@ before_deploy:
   - ssh-add /tmp/deploy_rsa
 
 deploy:
-  # - provider: script
-  #   script: docker push dottjt/watashi-client
-  #   on:
-  #     branch: production
   - provider: script
-    script: bash deploy.sh
+    script: docker push dottjt/watashi-client
     on:
       branch: production
+  - provider: script
+    script: bash scripts/deploy_client.sh
+    on:
+      branch: production
+  # - provider: script
+  #   script: bash scripts/deploy_nginx.sh
+  #   on:
+  #     branch: production
 
