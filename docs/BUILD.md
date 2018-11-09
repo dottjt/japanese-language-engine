@@ -33,7 +33,7 @@ Personally I use docker on a VPS, along with Travis CI in order to deploy this p
 
 ## API BUILD 
 
-yarn add @types/express @types/node
+yarn add @types/express @types/node @types/es6-shim
 yarn add typeorm typescript graphql-yoga pg reflect-metadata
 yarn add --dev node-ts
 

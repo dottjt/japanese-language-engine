@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MicrolinkCard from 'react-microlink'
+import MicrolinkCard from 'react-microlink';
 
 import { Flex } from '../atoms/LayoutStyles';
 
