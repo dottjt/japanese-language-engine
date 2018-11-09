@@ -69,10 +69,10 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return <Blog/>
 
       case BLOG_TITLE.B01:
-        return <Article path={route.path}/>
+        return <Article path={route.path} />
       
       case BLOG_TITLE.B02:
-        return <Article path={route.path}/>
+        return <Article path={route.path} />
 
       case ROUTE_TITLE.GUIDES:
         return <Guides/>

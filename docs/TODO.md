@@ -1,11 +1,8 @@
 ## TODO PRIORITY 
-- Figure out SSL / Current docker build.
-- Google Search Console. 
 - Sort out verb conjugation algorithms.
 - Sort out verb conjugation words.
 - Create Watashi API with basic user information.
 - Find way to fetch user data from server.
-- Create Watashi API Docker setup.
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered.
 - Write Blog Articles.
 - Markdown-to-jsx https://auth0.com/blog/how-to-build-an-app-with-react-and-mdx/
@@ -13,10 +10,8 @@
 # TODO NICE HAVES 
 - Find open contributors. 
   https://github.com/smooth-code/loadable-components // to use with react-snap
-
-- put docker-compose.yml on server in the repo and copy it over :)
-- Nice resource links.
 - Get a logo/font. 
+- Sitemap (wait for React-Snap)
 - Profile page
 - Figure out versioning.
 - Implement Stripe
@@ -28,19 +23,6 @@
 - Unit Testing
 - Code splitting
 - Consider separate sidebar and lesson titles.
-
-
-npm install webfontloader --save
-
-// index.js
-
-import WebFont from 'webfontloader';
-
-WebFont.load({
-  google: {
-    families: ['Titillium Web:300,400,700', 'sans-serif']
-  }
-});
 
 ## ADDITIONAL APPS
 - Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)

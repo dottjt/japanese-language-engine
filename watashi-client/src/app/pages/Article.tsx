@@ -3,80 +3,45 @@ import * as React from 'react';
 import { PageWrapper } from '../atoms/LayoutStyles';
 import { PageHeading } from '../atoms/TextStyles';
 
-import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
+import { createError } from '../../util/functions';
+import { BLOG_TITLE, BLOG_PATH, BLOG_DESCRIPTION } from '../../util/constants/blogConstants';
+import { ROUTE_PATH } from '../../util/constants/routeConstants';
 
 import Helmet from '../components/Helmet';
+import B01 from '../../blog/the-perfect-watashi-engine-workout.mdx';
+import B02 from '../../blog/what-is-the-instantaneous-composition-method.mdx';
+import B03 from '../../blog/the-strengths-and-weaknesses-of-watashi-engine.mdx';
 
-// import example from '../../blog/example.md';
-
-// NOTE: Maybe the idea is to load all the markdownfiles here (at least the names) and then load the appropiate one based on the route. 
-
-class Article extends React.Component<{ path: string }, { Component: any, path: string }> {
-
-  constructor(props){
-    super(props);
-
-    this.state = {
-      Component: '',
-      path: this.props.path
-    }
-  }
-
-  async addComponent(name){
-    import(`../../blog${name}.mdx`)
-      .then(component =>
-        this.setState({
-          Component: component.default
-        })
-      )
-      .catch(() => {
-        this.setState({
-          Component: ''
-        })
-      });
-  }
-
-  async componentDidMount() {
-    await this.addComponent(this.state.path);
-  }
-
-  async componentDidUpdate(prevProps, prevState) {
-    if(prevState.path !== this.state.path) {
-       await this.addComponent(this.state.path);
-    }
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if(nextProps.path !== prevState.path) {
-      return {
-        path: nextProps.path
-      }
-    }
-
-    else return null;
-  }
+class Article extends React.Component<{ path: string }, { Component: any }> {
 
   public render() {
-    const { Component } = this.state;
+    console.log(this.props.path);
+    const { title, description, Component } = this.getArticleParameters(this.props.path);
 
-    // const { mdx } = this.props;
     return (
       <PageWrapper>
         <Helmet
-          title={ROUTE_TITLE.BLOG}
-          description={ROUTE_DESCRIPTION.BLOG}
+          title={title}
+          description={description}
         />
-        <PageHeading>{ROUTE_TITLE.BLOG}</PageHeading>
+        <PageHeading>{title}</PageHeading>
         
         <div className="content">
-            { Component ? <Component /> : null }
+          <Component/>
         </div>
-
         
       </PageWrapper>
     );
   }
 
+  private getArticleParameters = (path: string): { title: string, description: string, Component: any } => {
+    switch(path) {
+      case `${ROUTE_PATH.BLOG}${BLOG_PATH.B01}`: return { title: BLOG_TITLE.B01, description: BLOG_DESCRIPTION.B01, Component: B01 }
+      case `${ROUTE_PATH.BLOG}${BLOG_PATH.B02}`: return { title: BLOG_TITLE.B02, description: BLOG_DESCRIPTION.B02, Component: B02 }
+      case `${ROUTE_PATH.BLOG}${BLOG_PATH.B03}`: return { title: BLOG_TITLE.B03, description: BLOG_DESCRIPTION.B03, Component: B03 }
+    }
+    throw new Error(createError('Article.tsx', 'getArticleParameters', `${path} not recognised.`));
+  }
 
 }
 

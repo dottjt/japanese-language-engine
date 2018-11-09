@@ -12,6 +12,13 @@ import Auth from './auth/Auth';
 
 import * as serviceWorker from './serviceWorker';
 
+// import WebFont from 'webfontloader';
+// WebFont.load({
+//   google: {
+//     families: ['Titillium Web:300,400,700', 'sans-serif']
+//   }
+// });
+
 import App from './app/App';
 import Page404 from './app/pages/Page404';
 

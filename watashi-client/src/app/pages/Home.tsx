@@ -46,7 +46,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
 
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>What is it?</SecondaryPageHeading>
-                <Text>A highly sophisticated Japanese language engine.</Text>
+                <Text>A highly configurable Japanese language engine.</Text>
                 
                 {data.exercises.map((exercise: Util.EnglishJapaneseOptionsSentence, exerciseIndex: number) => (
                   <SentenceModule

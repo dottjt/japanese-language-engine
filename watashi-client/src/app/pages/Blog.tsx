@@ -4,7 +4,7 @@ import { PageWrapper, FlexColumn } from '../atoms/LayoutStyles';
 import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
 import { InternalLink } from '../atoms/ClickableStyles';
 
-import { ROUTE_TITLE, ROUTE_DESCRIPTION, ROUTE_PATH } from '../../util/constants/routeConstants';
+import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 import { BLOG_TITLE, BLOG_DESCRIPTION, BLOG_PATH } from '../../util/constants/blogConstants';
 
 import Helmet from '../components/Helmet';
@@ -31,11 +31,13 @@ class Blog extends React.Component<{}, {}> {
 class ArticleLink extends React.Component<{ title: string, description: string, path: string }, {}> {
   public render() {
     const { title, description } = this.props;
+
+    console.log(`${ROUTE_TITLE.BLOG}${title}`)
     return (
       <FlexColumn>
         <SecondaryPageHeading>{title}</SecondaryPageHeading>
         <Text>{description}</Text>
-        <InternalLink routeName={`${ROUTE_PATH.BLOG}${title}`} routeOptions={{reload: true}}>read more...</InternalLink>                
+        <InternalLink routeName={title} routeOptions={{reload: true}}>read more...</InternalLink>                
       </FlexColumn>
     );
   }
