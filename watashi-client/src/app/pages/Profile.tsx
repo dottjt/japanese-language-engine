@@ -10,7 +10,7 @@ import Helmet from '../components/Helmet';
 class Profile extends React.Component<{ client: any, auth: any, user: Util.User }, { usernameInput: string, passwordInput: string }> {
   constructor(props) {
     super(props);
-    console.log('profile', props);
+    // console.log('profile', props);
     this.state = {
       usernameInput: '',
       passwordInput: '',

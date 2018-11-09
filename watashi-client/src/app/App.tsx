@@ -25,7 +25,7 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
         <AppHelmet/>
         <Query query={GET_EVERYTHING}>
           {({ data, client }) => {
-            console.log(data);
+            // console.log(data);
             return (
               <React.Fragment>
                 {/* <Navbar
