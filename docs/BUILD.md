@@ -35,6 +35,4 @@ Personally I use docker on a VPS, along with Travis CI in order to deploy this p
 
 yarn add @types/express @types/node @types/es6-shim
 yarn add typeorm typescript graphql-yoga pg reflect-metadata
-yarn add --dev node-ts
-
-
+yarn add --dev node-ts ts-node-dev

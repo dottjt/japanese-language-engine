@@ -5,12 +5,11 @@
 - Find way to fetch user data from server.
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered.
 - Write Blog Articles.
-- Markdown-to-jsx https://auth0.com/blog/how-to-build-an-app-with-react-and-mdx/
 
 # TODO NICE HAVES 
 - Find open contributors. 
   https://github.com/smooth-code/loadable-components // to use with react-snap
-- Get a logo/font. 
+- Get a logo/font.
 - Sitemap (wait for React-Snap)
 - Profile page
 - Figure out versioning.

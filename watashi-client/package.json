@@ -64,7 +64,7 @@
     "concurrency": 1,
     "inlineCss": false,
     "fixWebpackChunksIssue": false,
-    "puppeteerExecutablePathComment": "/usr/bin/chromium-browser",
+    "puppeteerExecutablePath": "/usr/bin/chromium-browser",
     "sitemap": true
   },
   "//": "puppeteerExecutablePath must be removed when building locally in watashi-client"
