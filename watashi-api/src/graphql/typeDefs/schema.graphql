@@ -1,11 +1,12 @@
 type Query {
   hello(name: String): String!
-
-  getCurrentUser(accessToken: String): User
+  getUser(accessToken: String): User
 }
 
 type Mutation {
-
+  createUser(username: String, email: String, thumbUrl: String, accessToken: String, idToken: String, expiresAt: String): User
+  updateUser(id: ID, username: String, email: String, thumbUrl: String, accessToken: String, idToken: String, expiresAt: String): User
+  removeUser(id: ID): User
 }
 
 type User {

@@ -1,16 +1,16 @@
 import 'reflect-metadata';
-
 import { GraphQLServer } from 'graphql-yoga';
+
+// resolvers
+import { userQuery, userMutation } from './resolvers/userResolvers';
 
 const resolvers = {
   Query: {
-    hello: (_, { name }) => `Hello ${name || 'World'}`,
-    getCurrentUser: (_, { accessToken }) => {
-      
-      return '';
-      // go to the database and get the current user.
-    },
+    ...userQuery,
   },
+  Mutation: {
+    ...userMutation,
+  }
 };
 
 const server = new GraphQLServer({ typeDefs: './graphql/typeDefs/schema.graphql', resolvers })
