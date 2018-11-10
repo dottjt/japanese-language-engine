@@ -29,6 +29,7 @@ class SentenceOptions extends React.Component<PropTypes.ISentenceOptionsProps, {
       </React.Fragment>
     );
   }
+  
   private toggleSentenceHide = (client: any, toggleSentenceHide: boolean): void => {
     client.writeData({ data: { sentenceDisplayOptions: { __typename: __TYPENAME_SENTENCE_STATS, toggleSentenceHide: !toggleSentenceHide }, __typename: __TYPENAME_SENTENCE_DISPLAY_OPTIONS }})
   };

@@ -24,6 +24,7 @@
 - Code splitting
 - Consider separate sidebar and lesson titles.
 - Figure out community strategy.
+- Discourse.
 
 ## ADDITIONAL APPS
 - Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)
@@ -33,10 +34,10 @@
 ## Blog Ideas
 
 - Free Exercises List
-- The perfect Watashi Engine Workout.
 - Understanding the technical details behind Watashi Engine.
 - Understanding the instantaeous composition method.
 - How to master N1 JLPT in 2 months
+- Understanding the Watashi Engine Docker strategy
 
 ## Notes: 
 

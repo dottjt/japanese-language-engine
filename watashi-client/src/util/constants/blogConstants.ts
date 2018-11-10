@@ -3,17 +3,17 @@
 export const BLOG_TITLE = {
   B01: 'How to use Watashi Engine',
   B02: 'What is the Instantaneous Composition Method',
-  B03: 'Building Watashi Engine',
+  B03: 'The Strengths and Weaknesses of Watashi Engine',
 };
 
 export const BLOG_PATH = {
   B01: '/how-to-use-watashi-engine',
   B02: '/what-is-the-instantaneous-composition-method',
-  B03: '/building-watashi-engine',
+  B03: '/the-strengths-and-weaknesses-of-watashi-engine',
 };
 
 export const BLOG_DESCRIPTION = {
-  B01: 'This is how to eat a candy.',
-  B02: 'This is how to eat a candy.',
-  B03: 'What is Watashi Engine and what technologies were used to build it?',
+  B01: 'How to use Watashi Engine.',
+  B02: 'What is the Instantaneous Composition Method.',
+  B03: 'The strengths and weaknesses of Watashi Engine.',
 };

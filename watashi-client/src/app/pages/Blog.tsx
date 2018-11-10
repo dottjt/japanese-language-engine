@@ -23,6 +23,7 @@ class Blog extends React.Component<{}, {}> {
         
         <ArticleLink title={BLOG_TITLE.B01} description={BLOG_DESCRIPTION.B01} path={BLOG_PATH.B01}/>
         <ArticleLink title={BLOG_TITLE.B02} description={BLOG_DESCRIPTION.B02} path={BLOG_PATH.B02}/>
+        <ArticleLink title={BLOG_TITLE.B03} description={BLOG_DESCRIPTION.B03} path={BLOG_PATH.B03}/>
       </PageWrapper>
     );
   }

@@ -2,6 +2,9 @@ import * as auth0 from 'auth0-js';
 import client from '../graphql/client';
 import router from '../router';
 
+import { DOES_USER_EXIST } from '../graphql/queries/userQueries';
+import { CREATE_USER } from '../graphql/mutations/userMutations';
+
 import { ROUTE_TITLE } from '../util/constants/routeConstants';
 
 import { __TYPENAME_USER } from '../util/constants/typeNameConstants';
@@ -32,17 +35,6 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       console.log(authResult);
 
-      // if () {
-      //   client.mutate({
-      //     // mutation: ,
-            // variables:
-
-      //   })
-      // }
-      // username: authResult.idTokenPayload.nickname,
-      // email: authResult.idTokenPayload.email,
-      // thumbUrl: authResult.idTokenPayload.picture,
-
       // set accessToken, idToken and expiresAt fields.
       if (authResult && authResult.accessToken && authResult.idToken) {        
         this.setSession(authResult);
@@ -54,7 +46,7 @@ export default class Auth {
     });
   }
 
-  public setSession(authResult: any) {
+  public async setSession(authResult: any) {
     // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
 
@@ -62,7 +54,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
 
-    client.writeData({ data: { 
+    await client.writeData({ data: { 
       user: {        
         accessToken: authResult.accessToken,
         idToken: authResult.idToken,
@@ -70,6 +62,30 @@ export default class Auth {
         __typename: __TYPENAME_USER,
       } 
     }});
+
+    // check to see if user exists 
+    const { data } = await client.query({ 
+      query: DOES_USER_EXIST, 
+      variables: { 
+        email: authResult.email 
+      },
+    });
+    
+    // if user does not exist, create user
+    if (data !== true) {
+      await client.mutate({
+        mutation: CREATE_USER,
+        variables: {
+          username: authResult.idTokenPayload.nickname,
+          email: authResult.idTokenPayload.email,
+          thumbUrl: authResult.idTokenPayload.picture,
+          accessToken: authResult.accessToken,
+          idToken: authResult.idToken,
+          expiresAt,
+          __typename: __TYPENAME_USER,
+        },
+      });
+    }
 
     // navigate to the home route
     router.navigate(ROUTE_TITLE.HOME);

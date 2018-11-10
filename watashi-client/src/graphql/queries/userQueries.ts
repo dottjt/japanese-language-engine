@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const GET_USER = gql`
+export const GET_USER = gql`
   query getUser($email: String!) {
     getUser(email: $email) {
       id
@@ -15,6 +15,8 @@ const GET_USER = gql`
 }
 `;
 
-export default {
-  GET_USER,
-};
+export const DOES_USER_EXIST = gql`
+  query doesUserExist($email: String!) {
+    doesUserExist(email: $email)
+  }
+`;

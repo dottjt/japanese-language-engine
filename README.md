@@ -10,11 +10,11 @@ Released under the [GNU GPLv3 licence](https://github.com/dottjt/watashi-engine/
 
 ## Use cases
 
-  - Students wanting to study Japanese via the isntantaneous composition method.
+  - Students wanting to study Japanese via the [Isntantaneous Composition Method](https://watashiengine.com/blog/what-is-the-instantaneous-composition-method).
   - Students who benefit from a micro approach towards language learning.
   - Teachers wanting the ability to easily create grammar exercises for their students.
-  - Developers wanting to study a japanese language engine.
-  - Developers wanting to study a super modern React, Typescript and Apollo project with Styled-Components (ka ching). 
+  - Developers wanting to study a Japanese language engine.
+  - Developers wanting to study a super modern React, Typescript and Apollo project with Styled-Components.
 
 ## Tech
 
@@ -40,7 +40,7 @@ julius . reade @ gmail dot com.
 
 ## Other .md files
 
-There are more files in the `docs` folder.
+More documentation exists in the `docs` folder:
 
 - TODO.md
 - DOCKER.md

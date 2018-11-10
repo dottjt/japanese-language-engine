@@ -1,5 +1,6 @@
 type Query {
-  getUser(accessToken: String): User
+  getUser(email: String): User
+  doesUserExist(email: String): Boolean
 }
 
 type Mutation {
