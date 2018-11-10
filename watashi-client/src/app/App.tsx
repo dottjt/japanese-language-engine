@@ -25,7 +25,11 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
         <AppHelmet/>
         <Query query={GET_EVERYTHING}>
           {({ data, client }) => {
-            // console.log(data);
+            
+            // if(auth.isAuthenticated()) {
+            //   // client.getData()
+            // }
+
             return (
               <React.Fragment>
                 {/* <Navbar

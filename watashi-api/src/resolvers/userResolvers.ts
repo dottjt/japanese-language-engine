@@ -1,21 +1,27 @@
 const { User } = require('../entity/User');
-const { createConnection } = require('typeorm');
 
 const userQuery = {
-  getUser: (_, { accessToken }) => {
-    createConnection().then(async connection => {
-  
-      await User.findOne({ accessToken });
-      // await connection.manager.findOne({ accessToken });
-  
-    }).catch(error => console.log(error));
+  getUser: async (_, { accessToken }) => {
+    await User.findOne({ accessToken });
+  },
+  doesUserExist: async (_, { email }) => {
+    const userObject = await User.findOne({ email });
+
+    if (userObject) {
+      return true
+    };
+
+    return false;
   },
 };
 
+
 const userMutation = {
   createUser: async (_, { username, email, thumbUrl, accessToken, idToken, expiresAt }) => {
-    createConnection().then(async connection => {
+    // check if user exists first. 
+    const userObject = await User.findOne({ email });
 
+    if (!userObject) {
       const user = new User();
 
       user.username = username;
@@ -26,32 +32,27 @@ const userMutation = {
       user.expiresAt = expiresAt;
   
       await user.save();
-      
-    }).catch(error => console.log(error));
+
+      return user;
+    };
+
+    return userObject;
   },
   updateUser: async (_, { id, username, email, thumbUrl, accessToken, idToken, expiresAt }) => {
-    createConnection().then(async connection => {
+    const user = await User.findOne(id);
+    
+    user.username = username;
+    user.email = email;
+    user.thumbUrl = thumbUrl;
+    user.accessToken = accessToken;
+    user.idToken = idToken;
+    user.expiresAt = expiresAt;
 
-      const user = await User.findOne(id);
-      
-      user.username = username;
-      user.email = email;
-      user.thumbUrl = thumbUrl;
-      user.accessToken = accessToken;
-      user.idToken = idToken;
-      user.expiresAt = expiresAt;
-
-      await user.save();
-
-    }).catch(error => console.log(error));
+    await user.save();
   },
   removeUser: async (_, { id }) => {
-    createConnection().then(async connection => {
-
-      const user = await User.findOne(id);
-      await user.remove();
-
-    }).catch(error => console.log(error));      
+    const user = await User.findOne(id);
+    await user.remove();
   },
 };
 

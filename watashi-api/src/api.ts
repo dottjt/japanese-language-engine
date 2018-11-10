@@ -1,7 +1,10 @@
 require('reflect-metadata');
+
 const requireGraphQLFile = require('require-graphql-file');
 const typeDefs = requireGraphQLFile('./graphql/typeDefs/schema.graphql');
+
 const { GraphQLServer } = require('graphql-yoga');
+const { createConnection } = require('typeorm');
 
 // resolvers
 const { userQuery, userMutation } = require('./resolvers/userResolvers');
@@ -22,10 +25,15 @@ const options = {
   playground: '/playground',
 };
 
+
 const server = new GraphQLServer({ typeDefs, resolvers });
 
-server.start(options, ({ port }) =>
-  console.log(
-    `Server started, listening on port ${port} for incoming requests.`,
-  ),
-);
+createConnection().then(async connection => {
+
+  server.start(options, ({ port }) =>
+    console.log(
+      `Server started, listening on port ${port} for incoming requests.`,
+    ),
+  );
+
+}).catch(error => console.log(error));
