@@ -4,6 +4,7 @@ import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
 // import { lessonPathArray } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
+import { BLOG_TITLE } from '../../util/constants/blogConstants';
 
 // import { randomArrayElement, getExercisesApollo } from '../../util/functions';
 
@@ -13,7 +14,7 @@ import Helmet from '../components/Helmet';
 
 import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
 import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
-import { ExternalLink } from '../atoms/ClickableStyles';
+import { ExternalLink, InternalLink } from '../atoms/ClickableStyles';
 
 
 class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }> {
@@ -64,10 +65,10 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                 ))}
               </FlexColumn>
 
-              <SecondaryPageHeading>Why Watashi Engine?</SecondaryPageHeading>
+              <SecondaryPageHeading>What makes Watashi Engine effective?</SecondaryPageHeading>
               <FlexColumn width={600} mb={4}>
                 <Text>01 - Watashi Engine is entirely focused on what you want to achieve.</Text>
-                <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, randomly generated to an accurate degree?</Text>
+                <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, randomly generated without thought?</Text>
                 {/* Then here, actually insert that configuration. */}
                 <Text>Watashi Engine can.</Text>
               </FlexColumn>
@@ -79,7 +80,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
 
               <FlexColumn width={600} mb={5}>
                 <Text>03 - Watashi Engine facilitates the Instantaneous Composition Method.</Text>
-                <Text>The grammar course behind Watashi Engine has been designed solely to facility the <ExternalLink href='https:// '>Instantaneous Composition Method</ExternalLink> which in my opinion, is the most effective way to learn Japanese grammar.</Text>
+                <Text>The grammar course behind Watashi Engine has been designed solely to facility the <InternalLink routeName={BLOG_TITLE.B02} routeOptions={{reload: true}}>Instantaneous Composition Method</InternalLink> which in my opinion, is the most effective way to learn Japanese grammar.</Text>
                 <Text>It is one of the few ways to accurately, (and most importantly, actively) practice your Japanese grammar.</Text>
                 <Text>It is essentially what professional translators do enmass.</Text>
               </FlexColumn>

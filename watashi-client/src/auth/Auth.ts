@@ -12,7 +12,7 @@ export default class Auth {
   private auth0 = new auth0.WebAuth({
     domain: 'watashiengine.auth0.com',
     clientID: 'V0hH273tSo7Ci3qdtU0l0eSEyOaiAf2U',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'http://localhost:3000/redirect',
     responseType: 'token id_token', 
     scope: 'openid profile email user_metadata',
   });
@@ -32,6 +32,18 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       console.log(authResult);
 
+      // if () {
+      //   client.mutate({
+      //     // mutation: ,
+            // variables:
+
+      //   })
+      // }
+      // username: authResult.idTokenPayload.nickname,
+      // email: authResult.idTokenPayload.email,
+      // thumbUrl: authResult.idTokenPayload.picture,
+
+      // set accessToken, idToken and expiresAt fields.
       if (authResult && authResult.accessToken && authResult.idToken) {        
         this.setSession(authResult);
         router.navigate(ROUTE_TITLE.HOME);
@@ -51,15 +63,10 @@ export default class Auth {
     localStorage.setItem('expires_at', expiresAt);
 
     client.writeData({ data: { 
-      user: {
-        username: authResult.idTokenPayload.nickname,
-        email: authResult.idTokenPayload.email,
-        thumbUrl: authResult.idTokenPayload.picture,
-        
+      user: {        
         accessToken: authResult.accessToken,
         idToken: authResult.idToken,
         expiresAt,
-
         __typename: __TYPENAME_USER,
       } 
     }});

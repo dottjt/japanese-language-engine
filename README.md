@@ -6,7 +6,7 @@ Homepage: https://watashiengine.com/
 
 Watashi Engine is a Japanese language engine.
 
-It is open-source under the GNU GPLv3 licence, so we're very interested in having people help build this thing!
+Released under the [GNU GPLv3 licence](https://github.com/dottjt/watashi-engine/blob/master/LICENSE).
 
 ## Use cases
 
@@ -22,15 +22,13 @@ It is open-source under the GNU GPLv3 licence, so we're very interested in havin
 - SSR: react-snap
 - CSS: styled-components, styled-system, rebass
 - Testing: jest
-- Backend: node.js, graphql-yoga, typeorm
-- Database: postgres
+- Backend: node.js, graphql-yoga, typeorm, postgres
 - Authentication: auth0
-- CI: buildkite
-- Infrastructure: terraform, docker, AWS
+- Deployment: travis, docker, digital ocean
 
 ## Contributions
 
-We are actively looking for people to help build Watashi Engine!
+We are actively looking for people to help build Watashi Engine! If you're interested, please get in touch~!
 
 - Build vocabulary lists.
 - Write Unit Tests.
@@ -38,17 +36,7 @@ We are actively looking for people to help build Watashi Engine!
 - Dicuss what you want built. 
 - Style it. 
 
-If you're interested, please get in touch~!
-
 julius . reade @ gmail dot com. 
-
-## Licence
-
-This project is open-source under the GNU GPLv3 licence. 
-
-Basically, it means that you are free to contribute towards this project, however you are forbidden to distribute closed source versions unless otherwise stated.
-
-https://choosealicense.com/licenses/gpl-3.0/
 
 ## Other .md files
 

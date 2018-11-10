@@ -5,7 +5,7 @@ import { PageHeading, Text } from '../atoms/TextStyles'
 import { ExternalLink, InternalLink } from '../atoms/ClickableStyles';
 
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
-import { BLOG_PATH } from '../../util/constants/blogConstants';
+import { BLOG_TITLE } from '../../util/constants/blogConstants';
 
 import Helmet from '../components/Helmet';
 
@@ -20,7 +20,7 @@ class About extends React.Component {
 
         <FlexColumn width={600} mt={3}>
           <Text>Watashi Engine is an online Japanese language engine. It can do all sorts of stuff like compose randomly generated Japanese sentences with English mappings, provide accurate word analysis, along with conjugate a variety Japanese words and phrases.</Text>
-          <Text>I decided to create the Watashi Engine because I felt like there were no tools out there to effectively practice the <InternalLink routeName={`${ROUTE_TITLE.BLOG}${BLOG_PATH.B02}`} routeOptions={{reload: true}}>Instanteous Composition Method</InternalLink>.</Text>
+          <Text>I decided to create the Watashi Engine because I felt like there were no tools out there to effectively practice the <InternalLink routeName={BLOG_TITLE.B02} routeOptions={{reload: true}}>Instanteous Composition Method</InternalLink>.</Text>
           <Text>The Instanteous Composition Method is the most effective way to learn Japanese Grammar. It utilises active practice in order to consolidate our understanding.</Text>
           <Text>In order to make full use of the Watashi Engine, I have designed a grammar course which runs through all the different grammar and conjugation variances of the Japanese language.</Text>
           <Text>The first six modules (20+ exercises) are free, with more of the advanced material requiring a <ExternalLink href='/sign-up'>premium subscription</ExternalLink>.</Text>
@@ -32,7 +32,7 @@ class About extends React.Component {
 
         <FlexColumn width={600} mt={3}>
           <Text>Watashi Engine was designed around one very simple philosophy: <b>Do one thing and do it well</b>.</Text>
-          <Text>As a result, we rely on <ExternalLink href='/sign-up'>Kim Tae Japanese Grammar Guide</ExternalLink> and <ExternalLink href='/sign-up'>Watashi</ExternalLink> as excellent grammar guides. There's no point us trying to rewrite what others have already said quite well.</Text>
+          <Text>As a result, we rely on <ExternalLink href='http://www.guidetojapanese.org/learn/'>Kim Tae Japanese Grammar Guide</ExternalLink> and <ExternalLink href='https://www.wasabi-jpn.com/'>Watashi</ExternalLink> as excellent grammar guides. There's no point us trying to rewrite what others have already said quite well.</Text>
           <Text>What Watashi Engine provides instead, is a sorely needed platform to be able to actually practice your Japanese grammar with.</Text>
         </FlexColumn>
 

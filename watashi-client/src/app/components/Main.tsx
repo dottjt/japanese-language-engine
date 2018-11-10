@@ -36,13 +36,15 @@ import Home from '../pages/Home';
 import Redirect from '../pages/Redirect';
 import Profile from '../pages/Profile';
 // import Login from '../pages/Login';
-import SignUp from '../pages/SignUp';
+// import SignUp from '../pages/SignUp';
+import Guides from '../pages/Guides';
+import Tools from '../pages/Tools';
+
 import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
 import Welcome from '../pages/Welcome';
 import Blog from '../pages/Blog';
 import Article from '../pages/Article';
-import Guides from '../pages/Guides';
 import About from '../pages/About';
 
 
@@ -68,23 +70,11 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       case ROUTE_TITLE.BLOG:
         return <Blog/>
 
-      case BLOG_TITLE.B01:
+      case BLOG_TITLE.B01 || BLOG_TITLE.B02:
         return <Article path={route.path} />
       
-      case BLOG_TITLE.B02:
-        return <Article path={route.path} />
-
-      case ROUTE_TITLE.GUIDES:
-        return <Guides/>
-
       case ROUTE_TITLE.PROFILE:
         return <Profile user={user} client={client} auth={auth}/>
-
-      // case ROUTE_TITLE.LOGIN:
-      //   return <Login auth={auth}/>
-      
-      case ROUTE_TITLE.SIGN_UP:
-        return <SignUp auth={auth}/>
 
       case ROUTE_TITLE.REDIRECT:
         return <Redirect client={client} auth={auth}/>
@@ -92,8 +82,8 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       case ROUTE_TITLE.ABOUT:
         return <About/>
 
-      case ROUTE_TITLE.APP:
-        return <Contents/>
+      case ROUTE_TITLE.EXERCISES:
+        return <Welcome/>
 
       case ROUTE_TITLE.WELCOME:
         return <Welcome/>
@@ -103,6 +93,15 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
 
       case ROUTE_TITLE.PREREQ:
         return <Prerequisites/>
+
+      // case ROUTE_TITLE.LOGIN:
+      //   return <Login auth={auth}/>
+      
+      // case ROUTE_TITLE.SIGN_UP:
+      //   return <SignUp auth={auth}/>
+
+      // case ROUTE_TITLE.GUIDES:
+      //   return <Guides/>
 
       case L001.LESSON_TITLE:
         return (

@@ -14,7 +14,6 @@ import {
 } from '../util/constants/typeNameConstants';
 
 import { index, sentenceTypes, optionTypes } from './types';
-import mutations from './mutations';
 
 import allWords from '../util/words/collection';
 
@@ -63,7 +62,10 @@ const cache = new InMemoryCache().restore(preloadedState);
 const stateLink = withClientState({
   cache,
   defaults,
-  resolvers: { Mutation: { ...mutations, } },
+  resolvers: { 
+    Query: {}, 
+    Mutation: {} 
+  },
   typeDefs: [ index, sentenceTypes, optionTypes ],
 });
 

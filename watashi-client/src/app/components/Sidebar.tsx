@@ -90,7 +90,7 @@ class Sidebar extends React.Component<{ user: any, auth: any, route: any }, {}> 
             <SidebarItem routeName={ROUTE_TITLE.HOME} routeOptions={{reload: true}}>{ROUTE_TITLE.HOME}</SidebarItem>
             <SidebarItem routeName={ROUTE_TITLE.BLOG} routeOptions={{reload: true}}>{ROUTE_TITLE.BLOG}</SidebarItem>
             {/* <SidebarItem routeName={ROUTE_TITLE.GUIDES} routeOptions={{reload: true}}>{ROUTE_TITLE.GUIDES}</SidebarItem> */}
-            <SidebarItem routeName={ROUTE_TITLE.APP} routeOptions={{reload: true}}>{ROUTE_TITLE.APP}</SidebarItem>
+            <SidebarItem routeName={ROUTE_TITLE.EXERCISES} routeOptions={{reload: true}}>{ROUTE_TITLE.EXERCISES}</SidebarItem>
             <SidebarItem routeName={ROUTE_TITLE.ABOUT} routeOptions={{reload: true}}>{ROUTE_TITLE.ABOUT}</SidebarItem>
           </FlexColumn>
 

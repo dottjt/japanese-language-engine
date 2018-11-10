@@ -1,5 +1,4 @@
 type Query {
-  hello(name: String): String!
   getUser(accessToken: String): User
 }
 
