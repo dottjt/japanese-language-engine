@@ -6,6 +6,8 @@ services:
     build:
       context: ./watashi-client
 
-  # watashi-api:
-  #   build:
-  #     context: ./watashi-api
+  watashi-api:
+    container_name: 'watashi-api'
+    image: 'watashi-api'
+    build:
+      context: ./watashi-api

@@ -36,10 +36,10 @@ before_deploy:
   - ssh-add /tmp/deploy_rsa
 
 deploy:
-  # - provider: script
-  #   script: docker push dottjt/watashi-api
-  #   on:
-  #     branch: production
+  - provider: script
+    script: docker push dottjt/watashi-api
+    on:
+      branch: production
   - provider: script
     script: bash deploy.sh
     on:

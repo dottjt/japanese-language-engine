@@ -1,8 +1,8 @@
 version: '3'
 services:
   watashi-nginx:
-    container_name: 'watashi-nginx'
     image: nginx:alpine
+    container_name: 'watashi-nginx'
     ports:
       - "80:80"
       - "443:443"
@@ -19,29 +19,44 @@ services:
     networks:
       - docker-network
     restart: always
-    # depends_on:
-    #   - watashi-postgres
-    #   - watashi-api
+    depends_on:
+      - watashi-postgres
+      - watashi-api
 
-  # watashi-api:
-  #   build:
-  #     context: ./watashi-api
-  #   volumes:
-  #     - ./watashi-api:/usr/src/app/api:rw
-  #   ports:
-  #     - 4000:4000
-  #   networks: 
-  #     - docker-network
+  watashi-api:
+    image: dottjt/watashi-api
+    container_name: 'watashi-api'
+    ports:
+      - 4000:4000
+    networks:
+      - docker-network
+    depends_on:
+      - watashi-postgres
+    environment:
+      - TYPEORM_CONNECTION = postgres
+      - TYPEORM_HOST = localhost
+      - TYPEORM_USERNAME = deploy
+      - TYPEORM_PASSWORD = deploy
+      - TYPEORM_DATABASE = watashi_api
+      - TYPEORM_PORT = 5432
+      - TYPEORM_SYNCHRONIZE = true
+      - TYPEORM_LOGGING = false
+      - TYPEORM_ENTITIES = src/entity/**/*.ts
+      - TYPEORM_MIGRATIONS = src/migration/**/*.ts
+      - TYPEORM_SUBSCRIBERS = src/subscriber/**/*.ts
 
-  # watashi-postgres:
-  #   image: postgres:alpine
-  #   ports:
-  #     - 5432:5432
-  #   volumes:
-  #     - ./watashi-postgres:/var/lib/postgresql/data:rw
-  #   restart: always
-  #   networks: 
-  #     - docker-network
+  watashi-postgres:
+    image: postgres:alpine
+    container_name: 'watashi-postgres'
+    ports:
+      - 5432:5432
+    volumes:
+      - ./watashi-postgres:/var/lib/postgresql/data:rw
+    restart: always
+    environment:
+      - POSTGRES_USER=deploy
+      - POSTGRES_PASSWORD=deploy
+      - POSTGRES_DB=watashi_api
 
 networks:
   docker-network:

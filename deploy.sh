@@ -16,7 +16,9 @@ echo 'echo rsync watashi-nginx/nginx.conf'
 rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/watashi-nginx/nginx.conf root@178.128.54.4:/docker/letsencrypt-docker-nginx/src/production
 
 ssh root@178.128.54.4 <<EOF
-  
+  echo "docker pull dottjt/watashi-api"
+  docker pull dottjt/watashi-api
+
   echo "echo cd /docker/letsencrypt-docker-nginx/src/production/" 
   cd /docker/letsencrypt-docker-nginx/src/production/ 
   
