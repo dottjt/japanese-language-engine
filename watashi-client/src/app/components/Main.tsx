@@ -37,8 +37,8 @@ import Redirect from '../pages/Redirect';
 import Profile from '../pages/Profile';
 // import Login from '../pages/Login';
 // import SignUp from '../pages/SignUp';
-import Guides from '../pages/Guides';
-import Tools from '../pages/Tools';
+// import Guides from '../pages/Guides';
+// import Tools from '../pages/Tools';
 
 import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
