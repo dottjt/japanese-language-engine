@@ -13,6 +13,8 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+.DS_Store
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

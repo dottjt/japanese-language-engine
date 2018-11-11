@@ -10,7 +10,7 @@ Released under the [GNU GPLv3 licence](https://github.com/dottjt/watashi-engine/
 
 ## Use cases
 
-  - Students wanting to study Japanese via the [Isntantaneous Composition Method](https://watashiengine.com/blog/what-is-the-instantaneous-composition-method).
+  - Students wanting to study Japanese via the [Instantaneous Composition Method](https://watashiengine.com/blog/what-is-the-instantaneous-composition-method).
   - Students who benefit from a micro approach towards language learning.
   - Teachers wanting the ability to easily create grammar exercises for their students.
   - Developers wanting to study a Japanese language engine.

@@ -6,6 +6,8 @@ const typeDefs = requireGraphQLFile('./graphql/typeDefs/schema.graphql');
 const { GraphQLServer } = require('graphql-yoga');
 const { createConnection } = require('typeorm');
 
+console.log('yolo');
+
 // resolvers
 const { userQuery, userMutation } = require('./resolvers/userResolvers');
 
