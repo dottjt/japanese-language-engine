@@ -12,7 +12,6 @@ export const GET_USER = gql`
       expiresAt
     }
   }
-}
 `;
 
 export const DOES_USER_EXIST = gql`

@@ -24,6 +24,8 @@ import Page404 from './app/pages/Page404';
 
 const auth = new Auth();
 
+auth.handleAuthentication();
+
 const Index = () => (
   <ThemeProvider theme={theme}>
     <ApolloProvider client={client}>

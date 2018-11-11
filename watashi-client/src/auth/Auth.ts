@@ -2,12 +2,12 @@ import * as auth0 from 'auth0-js';
 import client from '../graphql/client';
 import router from '../router';
 
+// import { DOES_USER_EXIST } from '../graphql/queries/userQueries';
 // import { CREATE_USER } from '../graphql/mutations/userMutations';
 
 import { ROUTE_TITLE } from '../util/constants/routeConstants';
 
 import { __TYPENAME_USER } from '../util/constants/typeNameConstants';
-
 
 export default class Auth {
 
@@ -32,15 +32,15 @@ export default class Auth {
 
   public handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
-      console.log(authResult);
+      console.log('handleAuthentication', authResult);
 
       // set accessToken, idToken and expiresAt fields.
       if (authResult && authResult.accessToken && authResult.idToken) {        
         this.setSession(authResult);
         router.navigate(ROUTE_TITLE.HOME);
       } else if (err) {
-        router.navigate(ROUTE_TITLE.HOME);
         console.log(err);
+        router.navigate(ROUTE_TITLE.HOME);
       }
     });
   }
@@ -49,6 +49,7 @@ export default class Auth {
     // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
 
+    // set tokens. 
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
@@ -62,6 +63,17 @@ export default class Auth {
       } 
     }});
 
+    // const { data } = await client.query({
+    //   query: DOES_USER_EXIST,
+    //   variables: {
+    //     email: authResult.idTokenPayload.email,
+    //   }
+    // });
+
+    // if (data && data.doesUserExist) {
+    //   console.log(data);
+    //   console.log('user exists');
+    // }
     // check to see if user exists, if not, create user or return existing user.
     // await client.mutate({
     //   mutation: CREATE_USER,
@@ -73,6 +85,15 @@ export default class Auth {
     //     idToken: authResult.idToken,
     //     expiresAt,
     //     __typename: __TYPENAME_USER,
+    //   },
+
+    //   update: (cache, { data: { createUser } }) => {
+    //     if (createUser) {
+    //       console.log('New user created or user already exists.');
+
+    //       cache.writeData({ data: { user: createUser } });
+    //     }
+
     //   },
     // });
     
@@ -86,7 +107,7 @@ export default class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
 
-    client.writeData({ data: { 
+    client.writeData({ data: {
       user: null,
     }});
 
@@ -100,4 +121,5 @@ export default class Auth {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') as string);
     return new Date().getTime() < expiresAt;
   }
+
 }

@@ -1,4 +1,5 @@
-import { Flex, Box } from './LayoutStyles';
+import { Box } from './LayoutStyles';
+import { Flex } from 'rebass';
 
 import styled from 'styled-components';
 

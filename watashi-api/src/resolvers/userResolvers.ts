@@ -8,7 +8,7 @@ const userQuery = {
     const userObject = await User.findOne({ email });
 
     if (userObject) {
-      return true
+      return true;
     };
 
     return false;
@@ -33,10 +33,10 @@ const userMutation = {
   
       await user.save();
 
-      return user;
+      return true;
     };
 
-    return userObject;
+    return false;
   },
   updateUser: async (_, { id, username, email, thumbUrl, accessToken, idToken, expiresAt }) => {
     const user = await User.findOne(id);
