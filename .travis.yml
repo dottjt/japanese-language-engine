@@ -22,7 +22,7 @@ before_script:
   - docker pull dottjt/watashi-api || true
 
 script:
-  - ls -a 
+  - ls -a
   - docker-compose build
   - docker-compose up -d
 

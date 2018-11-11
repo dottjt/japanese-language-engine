@@ -2,12 +2,12 @@ version: '3'
 services:
   watashi-client:
     container_name: 'watashi-client'
-    image: 'watashi-client'
+    image: 'dottjt/watashi-client'
     build:
       context: ./watashi-client
 
   watashi-api:
     container_name: 'watashi-api'
-    image: 'watashi-api'
+    image: 'dottjt/watashi-api'
     build:
       context: ./watashi-api
