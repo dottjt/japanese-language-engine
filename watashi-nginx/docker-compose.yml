@@ -32,18 +32,6 @@ services:
       - docker-network
     depends_on:
       - watashi-postgres
-    environment:
-      - TYPEORM_CONNECTION = postgres
-      - TYPEORM_HOST = localhost
-      - TYPEORM_USERNAME = deploy
-      - TYPEORM_PASSWORD = deploy
-      - TYPEORM_DATABASE = watashi_api
-      - TYPEORM_PORT = 5432
-      - TYPEORM_SYNCHRONIZE = true
-      - TYPEORM_LOGGING = false
-      - TYPEORM_ENTITIES = src/entity/**/*.ts
-      - TYPEORM_MIGRATIONS = src/migration/**/*.ts
-      - TYPEORM_SUBSCRIBERS = src/subscriber/**/*.ts
 
   watashi-postgres:
     image: postgres:alpine
