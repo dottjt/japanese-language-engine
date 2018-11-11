@@ -33,6 +33,8 @@ This is where we have to do all the
 <!-- - docker run -it -p 5000 watashi-client -->
 docker run --name=watashi-client -p 80:80 -d dottjt/watashi-client
 
+docker run --name=watashi-api -p 4000:4000 -d dottjt/watashi-api
+
 // check file system
 docker exec -it watashi-client ls /usr/share/nginx/html
 
