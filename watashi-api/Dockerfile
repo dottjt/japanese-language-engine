@@ -3,7 +3,8 @@ FROM node:10.12.0-alpine as build-deps
 ENV NODE_ENV=production
 ENV NODE_PATH=/usr/src/app/api/node_modules
 ENV TYPEORM_CONNECTION=postgres
-ENV TYPEORM_HOST=172.26.0.2
+# ENV TYPEORM_HOST=172.26.0.2
+ENV TYPEORM_HOST=watashi-api
 ENV TYPEORM_USERNAME=deploy
 ENV TYPEORM_PASSWORD=deploy
 ENV TYPEORM_DATABASE=watashi_api

@@ -30,12 +30,10 @@ const options = {
 
 const server = new GraphQLServer({ typeDefs, resolvers });
 
-createConnection().then(async connection => {
-
-  server.start(options, ({ port }) =>
-    console.log(
-      `Server started, listening on port ${port} for incoming requests.`,
-    ),
+server.start(options, ({ port }) => {
+  console.log(
+    `Server started, listening on port ${port} for incoming requests.`,
   );
 
-}).catch(error => console.log(error));
+  createConnection().then(async connection => {}).catch(error => console.log(error));
+});
