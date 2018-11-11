@@ -20,6 +20,8 @@ services:
       - /docker-volumes/data/letsencrypt:/data/letsencrypt
     networks:
       - docker-network
+    links:
+      - watashi-api
     restart: always
     depends_on:
       - watashi-postgres
