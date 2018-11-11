@@ -22,7 +22,7 @@ The static files should then be output in `/watashi-client/build`
 Personally I use docker on a VPS, along with Travis CI in order to deploy this project to https://watashiengine.com, however there are a million different ways to serve static files, and this is certainly not the easiest (although it's super scalable).
 
 
-## CLIENT BUILD  
+## CLIENT BUILD LIBRARIES
 
 - yarn add create-react-app
 - create-react-app watashi-client 
@@ -31,12 +31,10 @@ Personally I use docker on a VPS, along with Travis CI in order to deploy this p
 - yarn add typescript graphql router5 react-router5 react-apollo apollo-cache-inmemory apollo-client apollo-link-http apollo-link-state apollo-link auth0-js react-app-rewired react-helmet @loadable/component react-markdown rebass styled-components system-components @mdx-js/loader @mdx-js/mdx react-microlink webfontloader
 - yarn add --dev react-app-rewired react-app-rewire-styled-components react-snap react babel-plugin-styled-components typescript-plugin-styled-components
 
-## API BUILD 
+## API BUILD LIBRARIES
 
 yarn add @types/express @types/node @types/es6-shim
 yarn add typeorm typescript graphql-yoga pg reflect-metadata
 yarn add --dev node-ts ts-node-dev
 
 
-
-https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx

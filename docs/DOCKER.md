@@ -44,7 +44,6 @@ docker exec -it watashi-client ls /usr/share/nginx/html
 
 ## NOTES:
 - Digital Ocean will do docker things 
-https://medium.com/@jmarhee/create-a-docker-based-service-on-digitalocean-with-docker-compose-44fa6e8f31a9
 - It appears that 
 
 ### Docker Swarm (won't be needed because I'm not using multiple hosts)
@@ -55,9 +54,3 @@ https://medium.com/@jmarhee/create-a-docker-based-service-on-digitalocean-with-d
 Docker Swarm - Docker Machine - Docker Engine 
 
 $ docker build -t dottjt/watashi-client-nginx .
-
-# Good article for load balancing with Nginx
-- https://auth0.com/blog/load-balancing-nodejs-applications-with-nginx-and-docker/
-
-https://blog.manifold.co/building-a-production-grade-container-for-your-static-javascript-application-b2b2eff83fbd
-

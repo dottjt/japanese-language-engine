@@ -1,3 +1,5 @@
+## Watashi API
+
 TYPEORM_CONNECTION=postgres
 TYPEORM_HOST=localhost
 TYPEORM_USERNAME=deploy
@@ -9,3 +11,8 @@ TYPEORM_LOGGING=false
 TYPEORM_ENTITIES=src/entity/**/*.ts
 TYPEORM_MIGRATIONS=src/migration/**/*.ts
 TYPEORM_SUBSCRIBERS=src/subscriber/**/*.ts
+
+
+## Watashi Client 
+
+SKIP_PREFLIGHT_CHECK=true

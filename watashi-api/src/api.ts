@@ -30,10 +30,12 @@ const options = {
 
 const server = new GraphQLServer({ typeDefs, resolvers });
 
-server.start(options, ({ port }) => {
+createConnection().then(async connection => {
+  console.log('Successfully connected to postgres');
+}).catch(error => console.log(error));
+
+server.start(options, ({ port }) =>
   console.log(
     `Server started, listening on port ${port} for incoming requests.`,
-  );
-
-  createConnection().then(async connection => {}).catch(error => console.log(error));
-});
+  ),
+);

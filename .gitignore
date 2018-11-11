@@ -57,12 +57,14 @@ watashi-client/yarn-error.log*
 # WATASHI API 
 watashi-api/node_modules
 watashi-api/ormconfig.json
+watashi-api/ormconfig.env
 
 # misc
 watashi-api/.DS_Store
 watashi-api/.env
+watashi-api/.env
 
-watashi-client/npm-debug.log*
-watashi-client/yarn-debug.log*
-watashi-client/yarn-error.log*
+watashi-api/npm-debug.log*
+watashi-api/yarn-debug.log*
+watashi-api/yarn-error.log*
 
