@@ -12,15 +12,17 @@ export const primaryTypeArray = [
 
 // word.category[]
 
-export const CATEGORY_HUMAN_NAME = 'human name';
-export const CATEGORY_HUMAN = 'human';
-export const CATEGORY_ANIMAL = 'animal';
+export const CATEGORY_HUMAN_NAME = 'CATEGORY_HUMAN_NAME';
+export const CATEGORY_HUMAN = 'CATEGORY_HUMAN';
+export const CATEGORY_ANIMAL = 'CATEGORY_ANIMAL';
 
-export const CATEGORY_RESPONSE = 'response';
-export const CATEGORY_FOOD = 'food';
-export const CATEGORY_DRINK = 'drink';
+// human related
+export const CATEGORY_RESPONSE = 'CATEGORY_RESPONSE';
+export const CATEGORY_FOOD = 'CATEGORY_FOOD';
+export const CATEGORY_DRINK = 'CATEGORY_DRINK';
+export const CATEGORY_HUMAN_ACTION = 'CATEGORY_HUMAN_ACTION'
 
-export const CATEGORY_LOCATION = 'location';
+export const CATEGORY_LOCATION = 'CATEGORY_LOCATION';
 
 export const categoryArray = [
   CATEGORY_HUMAN_NAME,

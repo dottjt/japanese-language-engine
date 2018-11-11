@@ -2,7 +2,12 @@ const { User } = require('../entity/User');
 
 const userQuery = {
   getUser: async (_, { accessToken }) => {
-    await User.findOne({ accessToken });
+    const user = await User.findOne({ accessToken });
+    return user;
+  },
+  getUserViaAccessToken: async (_, { accessToken }) => {
+    const user = await User.findOne({ accessToken });
+    return user;
   },
   doesUserExist: async (_, { email }) => {
     const userObject = await User.findOne({ email });

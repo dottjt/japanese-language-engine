@@ -25,6 +25,7 @@
 - Consider separate sidebar and lesson titles.
 - Figure out community strategy.
 - Discourse.
+- try/catch around every single call to database .
 
 ## ADDITIONAL APPS
 - Japanese verb conjugation tester. (Basically, you are given an english word and you need to conjugate it into Japanese.)

@@ -1,5 +1,6 @@
 type Query {
   getUser(email: String): User
+  getUserViaAccessToken(accessToken: String): User
   doesUserExist(email: String): Boolean
 }
 

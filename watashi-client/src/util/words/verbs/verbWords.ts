@@ -2,6 +2,7 @@ import {
   PRIMARY_TYPE_VERB,
   CATEGORY_FOOD,
   CATEGORY_DRINK,
+  CATEGORY_HUMAN_ACTION,
 
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
@@ -27,7 +28,7 @@ export const wordEat = {
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_VERB,
-  category: [ CATEGORY_FOOD ],
+  category: [ CATEGORY_FOOD, CATEGORY_HUMAN_ACTION ],
   meta: {
     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
     __typename: __TYPENAME_META,
@@ -35,6 +36,29 @@ export const wordEat = {
   __typename: __TYPENAME_WORD,
 };
 
+// sleep on 
+export const wordSleep = {
+  japanese: {
+    kanji: '寝る',
+    // hiragana: 'ねる',
+    // furigana: 'neru',
+    __typename: __TYPENAME_JAPANESE,
+  },
+  english: {
+    present: 'sleep',
+    past: 'slept',
+    __typename: __TYPENAME_ENGLISH,
+  },
+  primaryType: PRIMARY_TYPE_VERB,
+  category: [ CATEGORY_HUMAN_ACTION ],
+  meta: {
+    verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+    __typename: __TYPENAME_META,
+  },
+  __typename: __TYPENAME_WORD,
+};
+
+// drink the
 export const wordDrink = {
   japanese: { 
     kanji: '飲む',
@@ -48,7 +72,7 @@ export const wordDrink = {
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_VERB,
-  category: [ CATEGORY_DRINK ],
+  category: [ CATEGORY_DRINK, CATEGORY_HUMAN_ACTION ],
   meta: {
     verbType: SENTENCE_TYPE_VERB_TYPE_U,
     __typename: __TYPENAME_META,
@@ -56,52 +80,100 @@ export const wordDrink = {
   __typename: __TYPENAME_WORD,
 };
 
-export const wordDo = {
+// see the
+export const wordSee = {
   japanese: { 
-    kanji: 'する',
-    // hiragana: 'する',
-    // furigana: 'suru',
+    kanji: '見る',
+    // hiragana: 'みる',
+    // furigana: 'miru',
     __typename: __TYPENAME_JAPANESE,
   },
   english: {
-    present: 'do',
-    past: 'did',
+    present: 'see',
+    past: 'saw',
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_VERB,
-  category: [ CATEGORY_FOOD ],
+  category: [ CATEGORY_HUMAN_ACTION ],
   meta: {
-    verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+    verbType: SENTENCE_TYPE_VERB_TYPE_U,
     __typename: __TYPENAME_META,
   },
   __typename: __TYPENAME_WORD,
 };
 
-export const wordCome = {
+// look at 
+export const wordLook = {
   japanese: { 
-    kanji: '来る',
-    // hiragana: 'くる',
-    // furigana: 'suru',
+    kanji: '見る',
+    // hiragana: 'みる',
+    // furigana: 'miru',
     __typename: __TYPENAME_JAPANESE,
   },
   english: {
-    present: 'come',
-    past: 'came',
+    present: 'look at',
+    past: 'looked at',
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_VERB,
-  category: [ CATEGORY_FOOD ],
+  category: [ CATEGORY_HUMAN_ACTION ],
   meta: {
-    verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+    verbType: SENTENCE_TYPE_VERB_TYPE_U,
     __typename: __TYPENAME_META,
   },
   __typename: __TYPENAME_WORD,
 };
+
+// you have transitive, and intransitive.
+
+// export const wordDo = {
+//   japanese: { 
+//     kanji: 'する',
+//     // hiragana: 'する',
+//     // furigana: 'suru',
+//     __typename: __TYPENAME_JAPANESE,
+//   },
+//   english: {
+//     present: 'do',
+//     past: 'did',
+//     __typename: __TYPENAME_ENGLISH,
+//   },
+//   primaryType: PRIMARY_TYPE_VERB,
+//   category: [ CATEGORY_FOOD ],
+//   meta: {
+//     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+//     __typename: __TYPENAME_META,
+//   },
+//   __typename: __TYPENAME_WORD,
+// };
+
+// export const wordCome = {
+//   japanese: { 
+//     kanji: '来る',
+//     // hiragana: 'くる',
+//     // furigana: 'suru',
+//     __typename: __TYPENAME_JAPANESE,
+//   },
+//   english: {
+//     present: 'come',
+//     past: 'came',
+//     __typename: __TYPENAME_ENGLISH,
+//   },
+//   primaryType: PRIMARY_TYPE_VERB,
+//   category: [ CATEGORY_FOOD ],
+//   meta: {
+//     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+//     __typename: __TYPENAME_META,
+//   },
+//   __typename: __TYPENAME_WORD,
+// };
 
 
 
 export const verbArray = [
   wordEat,
   wordDrink,
-  wordDo,
+  wordSee,
+  wordLook,
+  // wordDo,
 ];
