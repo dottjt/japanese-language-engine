@@ -9,10 +9,6 @@ import { BLOG_TITLE, BLOG_DESCRIPTION, BLOG_PATH } from '../../util/constants/bl
 
 import Helmet from '../components/Helmet';
 
-// import example from '../../blog/example.md';
-
-// using MDX. Oh man, there really is a world of content that is required to build this thing. 
-
 class Blog extends React.Component<{}, {}> {
   public render() {
     return (
@@ -33,7 +29,6 @@ class ArticleLink extends React.Component<{ title: string, description: string, 
   public render() {
     const { title, description } = this.props;
 
-    console.log(`${ROUTE_TITLE.BLOG}${title}`)
     return (
       <FlexColumn>
         <SecondaryPageHeading>{title}</SecondaryPageHeading>

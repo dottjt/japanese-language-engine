@@ -8,14 +8,14 @@ import { BLOG_TITLE, BLOG_PATH, BLOG_DESCRIPTION } from '../../util/constants/bl
 import { ROUTE_PATH } from '../../util/constants/routeConstants';
 
 import Helmet from '../components/Helmet';
-import B01 from '../../blog/the-perfect-watashi-engine-workout.mdx';
-import B02 from '../../blog/what-is-the-instantaneous-composition-method.mdx';
-import B03 from '../../blog/the-strengths-and-weaknesses-of-watashi-engine.mdx';
+import B01 from '../../blog/01-the-perfect-watashi-engine-workout.mdx';
+import B02 from '../../blog/02-what-is-the-instantaneous-composition-method.mdx';
+import B03 from '../../blog/03-the-strengths-and-weaknesses-of-watashi-engine.mdx';
 
 class Article extends React.Component<{ path: string }, { Component: any }> {
 
   public render() {
-    console.log(this.props.path);
+    // console.log(ROUTE_PATH.BLOG + BLOG_PATH.B02)
     const { title, description, Component } = this.getArticleParameters(this.props.path);
 
     return (

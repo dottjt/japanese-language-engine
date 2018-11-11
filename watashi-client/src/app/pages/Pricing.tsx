@@ -46,7 +46,7 @@ class PricingModule extends React.Component<{}, {}> {
             <ListItem mb={2}>Full access to the Watashi Engine.</ListItem>
             <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
           </List>
-          <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</InternalLink>                      
+          {/* <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try me</InternalLink>                       */}
         </Card>
 
         <Card borderColor="black">
@@ -56,7 +56,7 @@ class PricingModule extends React.Component<{}, {}> {
             <ListItem mb={2}>Full access to the Watashi Engine at a discounted Heading.</ListItem>
             <ListItem mb={2}>Full access to all 100+ grammar exercises.</ListItem>
           </List>
-          <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</InternalLink>
+          {/* <InternalLink style={PricingButtonStyles} routeName={ROUTE_TITLE.SIGN_UP} routeOptions={{reload: true}}>Try Me</InternalLink> */}
         </Card>
 
       </Flex>

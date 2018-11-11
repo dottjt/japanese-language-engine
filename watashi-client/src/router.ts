@@ -33,6 +33,7 @@ const routes = [
   { name: ROUTE_TITLE.BLOG, path: ROUTE_PATH.BLOG },
   { name: BLOG_TITLE.B01, path: `${ROUTE_PATH.BLOG}${BLOG_PATH.B01}` },
   { name: BLOG_TITLE.B02, path: `${ROUTE_PATH.BLOG}${BLOG_PATH.B02}` },
+  { name: BLOG_TITLE.B03, path: `${ROUTE_PATH.BLOG}${BLOG_PATH.B03}` },
 
   // Other lesson pages
   { name: ROUTE_TITLE.WELCOME, path: `${ROUTE_PATH.WELCOME}` },

@@ -70,7 +70,9 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       case ROUTE_TITLE.BLOG:
         return <Blog/>
 
-      case BLOG_TITLE.B01 || BLOG_TITLE.B02:
+      case BLOG_TITLE.B01:
+      case BLOG_TITLE.B02:
+      case BLOG_TITLE.B03:
         return <Article path={route.path} />
       
       case ROUTE_TITLE.PROFILE:
@@ -83,8 +85,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return <About/>
 
       case ROUTE_TITLE.EXERCISES:
-        return <Welcome/>
-
       case ROUTE_TITLE.WELCOME:
         return <Welcome/>
 
