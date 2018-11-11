@@ -4,6 +4,8 @@ ENV NODE_ENV=production
 ENV NODE_PATH=/usr/src/app/api/node_modules
 ENV PATH=/usr/src/app/api/node_modules/.bin:$PATH
 
+RUN npm install -g typescript
+
 WORKDIR /usr/src/app/api
 COPY package.json yarn.lock /tmp/api/
 RUN cd /tmp/api && yarn
