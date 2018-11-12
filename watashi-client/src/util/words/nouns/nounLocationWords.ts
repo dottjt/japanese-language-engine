@@ -1,26 +1,25 @@
 import {
   PRIMARY_TYPE_NOUN,
-
-  CATEGORY_HUMAN,
+  CATEGORY_LOCATION,
 } from '../../constants/wordConstants';
 
 import { createWord } from '../utilWord';
 
-// HUMAN
+// LOCATION
 
-const wordPerson = createWord({
+const wordHome = createWord({
   primaryType: PRIMARY_TYPE_NOUN,
   verbType: 'NA',
-  category: [ CATEGORY_HUMAN ],
-  kanji: '人',
-  hiragana: 'ひと',
-  furigana: 'hito',
-  present: 'person',
+  category: [ CATEGORY_LOCATION ],
+  kanji: '家',
+  hiragana: 'いえ',
+  furigana: 'ie',
+  present: 'home',
   past: 'NA',
 });
 
 const nounArray = [
-  wordPerson,
+  wordHome,
 ];
 
 export default nounArray;

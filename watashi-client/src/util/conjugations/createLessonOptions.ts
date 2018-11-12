@@ -29,7 +29,6 @@ import {
   POLARITY_RANDOM,
   RANDOM_QUESTION,
   // SENTENCE_ENDING_RANDOM,
-  THEMES_RANDOM,
 } from '../constants/optionsConstants';
 
 const randomVariationValue = (variationArray: string[]): string => variationArray[randomArrayElement(variationArray.length)];
@@ -39,7 +38,7 @@ const randomTenseValue = (): string => tenseArray[randomArrayElement(tenseArrayL
 const randomQuestionValue = (): string => questionArray[randomArrayElement(questionArrayLength)];
 const randomGenderValue = (): string => genderArray[randomArrayElement(genderArrayLength)];
 // const randomSentenceEndingValue = (): string => sentenceEndingArray[randomArrayElement(sentenceEndingArrayLength)];
-const randomThemesValue = (): string[] => [ themesArray[randomArrayElement(themesArrayLength)] ];
+const randomThemesValue = (): string => themesArray[randomArrayElement(themesArrayLength)];
 
 const createLessonOptions = (options: Util.Options): Util.Options => {
   const { variation, politeness, polarity, tense, question, gender, /* sentenceEnding, */ themes } = options;
@@ -54,7 +53,8 @@ const createLessonOptions = (options: Util.Options): Util.Options => {
     tense: tense === TENSE_RANDOM ? randomTenseValue() : tense,
     gender: gender === GENDER_RANDOM ? randomGenderValue() : gender,  
     // sentenceEnding: sentenceEnding === SENTENCE_ENDING_RANDOM ? randomSentenceEndingValue() : sentenceEnding,
-    themes: themes[0] === THEMES_RANDOM ? randomThemesValue() : themes,
+    themes,
+    selectedTheme: themes.length === 1 ? themes[0] : randomThemesValue(),
   }
 };
 

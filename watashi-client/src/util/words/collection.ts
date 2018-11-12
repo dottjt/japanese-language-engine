@@ -1,14 +1,12 @@
-import { adjectiveArray } from './adjectives/adjectiveWords';
-import { humanNameArray } from './nouns/humanNameWords';
-import { nounArray } from './nouns/nounWords';
-import { responseArray } from './misc/responseWords';
-import { verbArray } from './verbs/verbWords';
+import adjectiveCollection from './adjectives/adjectiveCollection';
+import nounCollection from './nouns/nounCollection';
+import miscCollection from './misc/miscCollection';
+import verbCollection from './verbs/verbCollection';
 
 const allWords: Util.Word[] =
-  adjectiveArray
-    .concat(humanNameArray)
-    .concat(nounArray)
-    .concat(responseArray)
-    .concat(verbArray);
+  adjectiveCollection
+    .concat(nounCollection)
+    .concat(miscCollection)
+    .concat(verbCollection);
 
 export default allWords;

@@ -21,6 +21,7 @@ import {
   SENTENCE_TYPE_VERB,
   SENTENCE_TYPE_SUBJECT,
   SENTENCE_TYPE_TOPIC,
+  SENTENCE_TYPE_PREPOSITION,
 } from '../constants/optionsConstants';
 
 import {
@@ -33,15 +34,17 @@ import nounConjugationEnglish from './noun/nounConjugationEnglish';
 
 import verbConjugationJapanese from './verb/verbConjugationJapanese';
 import verbConjugationEnglish from './verb/verbConjugationEnglish';
+// import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
 
 import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
 
-const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord | Util.ConjugatedEnglishWord => {
+const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord => {
   switch (sentenceType) {
     case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, modifiers, options, sentenceType);
     case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, modifiers, options, sentenceType);
     case SENTENCE_TYPE_VERB: return verbConjugationEnglish(words, modifiers, options, sentenceType);
+    // case SENTENCE_TYPE_PREPOSITION: return prepositionConjugationEnglish(words, modifiers, options, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
@@ -59,40 +62,57 @@ const generateJapaneseWord = (words: Util.SentenceWords, modifiers: Util.Sentenc
 
 const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options): Util.EnglishJapaneseSentence => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const { onlyTopic, onlySubject, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
-
+  const { onlyTopic, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
+  
   if (onlyTopic) {
+
+    const topicJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE);
+    const topicEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)
+  
     return {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH) ],
+      japaneseSentence: [ topicJapanese ],
+      englishSentence: [ topicEnglish ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
-  if (onlySubject) {
-    return {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    }
-  };
   if (onlyVerb) {
+
+    const verbJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE);
+    const verbEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH)
+
     return  {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH) ],
+      japaneseSentence: [ verbJapanese ],
+      englishSentence: [ verbEnglish ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
   if (onlyTopicAndSubject) {
+
+    const topicJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE);
+    const topicEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH);
+
+    const subjectJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE);
+    const subjectEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH);
+
     return  {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE), generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH), generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      japaneseSentence: [ topicJapanese, subjectJapanese ],
+      englishSentence: [ topicEnglish, subjectEnglish ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };
   if (onlySubjectAndVerb) {
+
+    const subjectJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE);
+    const subjectEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH);
+
+    const verbJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE);
+    const verbEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH);
+
+    const prepositionEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_PREPOSITION, LANG_ENGLISH);
+
     return  {
-      japaneseSentence: [ generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE), generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE) ],
-      englishSentence: [ generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH), generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH) ],
+      japaneseSentence: [ subjectJapanese, verbJapanese ],
+      englishSentence: [ verbEnglish, prepositionEnglish, subjectEnglish ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };
@@ -105,7 +125,7 @@ const generateSentences = (words: Util.Word[], modifiersLambda: () => Util.Modif
     const options = optionsLambda();
     const modifiers = modifiersLambda();
 
-    const variationWords = generateWords(words, options.selectedVariation);
+    const variationWords = generateWords(words, options);
     const modifierWords = generateWordModifiers(words, modifiers);
 
     const { englishSentence, japaneseSentence } = generatePhrases(variationWords(), modifierWords, options);

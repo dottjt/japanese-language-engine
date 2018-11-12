@@ -90,10 +90,10 @@ const getVerbStem = (verb: Util.Word, options: Util.Options): string[] => {
 const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): { verbStem: Util.WordElement, polarity: Util.WordElement } => {
   const verbStem = getVerbStem(verb, options);
   switch(`${options.politeness}${options.polarity}`) {
-    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verb.japanese.kanji.split(''), JAPANESE_POLARITY)  };
-    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verbStem.concat(['な','い']), JAPANESE_POLARITY)  };
-    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verbStem.concat(['ま','す']), JAPANESE_POLARITY)  };
-    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(verbStem.concat(['ま','せ','ん']), JAPANESE_POLARITY)  };
+    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verb.japanese.kanji.split(''), JAPANESE_VERB_STEM), polarity: createWord([''], JAPANESE_POLARITY)  };
+    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(['な','い'], JAPANESE_POLARITY)  };
+    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(['ま','す'], JAPANESE_POLARITY)  };
+    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(['ま','せ','ん'], JAPANESE_POLARITY)  };
   }
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };

@@ -192,7 +192,6 @@ export const createTaggedArrayEnglish = (phrase: Util.ConjugatedEnglishWord): Ut
 
 export const createTaggedArrayJapanese = (phrase: Util.ConjugatedJapaneseWord): Util.WordArrayElement[] => {
   const polarity = tagArray(phrase.polarity.wordArray, phrase.polarity.wordType);
-
   switch(phrase.type) {
     case CONJUGATION_TYPE_NOUN_JAPANESE: 
       const noun = phrase.sentenceType === SENTENCE_TYPE_TOPIC ? tagArray([phrase.word.japanese.kanji], JAPANESE_TOPIC) : tagArray([phrase.word.japanese.kanji], JAPANESE_SUBJECT);
@@ -203,6 +202,7 @@ export const createTaggedArrayJapanese = (phrase: Util.ConjugatedJapaneseWord): 
 
     case CONJUGATION_TYPE_VERB_JAPANESE: 
       const verbStem = tagArray(phrase.verbStem.wordArray, phrase.verbStem.wordType);
+      console.log(verbStem.concat(polarity));
       return verbStem.concat(polarity);
   }
   throw new Error(createError('utilSentence.tsx', 'createTaggedArrayJapanese', `${phrase.type} does not exist.`));    

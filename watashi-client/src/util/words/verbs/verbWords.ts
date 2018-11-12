@@ -5,124 +5,54 @@ import {
   CATEGORY_HUMAN_ACTION,
 
   SENTENCE_TYPE_VERB_TYPE_RU,
-  SENTENCE_TYPE_VERB_TYPE_U,
+  // SENTENCE_TYPE_VERB_TYPE_U,
 } from '../../constants/wordConstants';
 
-import {
-  __TYPENAME_WORD,
-  __TYPENAME_META,
-  __TYPENAME_ENGLISH,
-  __TYPENAME_JAPANESE,
-} from '../../constants/typeNameConstants';
+import { createWord } from '../utilWord';
 
-export const wordEat = {
-  japanese: { 
-    kanji: '食べる',
-    // hiragana: 'たべる',
-    // furigana: 'taberu',
-    __typename: __TYPENAME_JAPANESE,
-  },
-  english: { 
-    present: 'eat',
-    past: 'ate',
-    __typename: __TYPENAME_ENGLISH,
-  },
+export const wordEat = createWord({
   primaryType: PRIMARY_TYPE_VERB,
+  verbType: SENTENCE_TYPE_VERB_TYPE_RU,
   category: [ CATEGORY_FOOD, CATEGORY_HUMAN_ACTION ],
-  meta: {
-    verbType: SENTENCE_TYPE_VERB_TYPE_RU,
-    __typename: __TYPENAME_META,
-  },
-  __typename: __TYPENAME_WORD,
-};
+  kanji: '食べる',
+  hiragana: 'たべる',
+  furigana: 'taberu',
+  present: 'eat',
+  past: 'ate',
+});
 
-// sleep on 
-export const wordSleep = {
-  japanese: {
-    kanji: '寝る',
-    // hiragana: 'ねる',
-    // furigana: 'neru',
-    __typename: __TYPENAME_JAPANESE,
-  },
-  english: {
-    present: 'sleep',
-    past: 'slept',
-    __typename: __TYPENAME_ENGLISH,
-  },
+export const wordSleep = createWord({
   primaryType: PRIMARY_TYPE_VERB,
+  verbType: SENTENCE_TYPE_VERB_TYPE_RU,
   category: [ CATEGORY_HUMAN_ACTION ],
-  meta: {
-    verbType: SENTENCE_TYPE_VERB_TYPE_RU,
-    __typename: __TYPENAME_META,
-  },
-  __typename: __TYPENAME_WORD,
-};
+  kanji: '寝る',
+  hiragana: 'ねる',
+  furigana: 'neru',
+  present: 'sleep',
+  past: 'slept',
+});
 
-// drink the
-export const wordDrink = {
-  japanese: { 
-    kanji: '飲む',
-    // hiragana: 'のむ',
-    // furigana: 'nomu',
-    __typename: __TYPENAME_JAPANESE,
-  },
-  english: {
-    present: 'drink',
-    past: 'drank',
-    __typename: __TYPENAME_ENGLISH,
-  },
+export const wordDrink = createWord({
   primaryType: PRIMARY_TYPE_VERB,
+  verbType: SENTENCE_TYPE_VERB_TYPE_RU,
   category: [ CATEGORY_DRINK, CATEGORY_HUMAN_ACTION ],
-  meta: {
-    verbType: SENTENCE_TYPE_VERB_TYPE_U,
-    __typename: __TYPENAME_META,
-  },
-  __typename: __TYPENAME_WORD,
-};
+  kanji: '飲む',
+  hiragana: 'のむ',
+  furigana: 'nomu',
+  present: 'drink',
+  past: 'drank',
+});
 
-// see the
-export const wordSee = {
-  japanese: { 
-    kanji: '見る',
-    // hiragana: 'みる',
-    // furigana: 'miru',
-    __typename: __TYPENAME_JAPANESE,
-  },
-  english: {
-    present: 'see',
-    past: 'saw',
-    __typename: __TYPENAME_ENGLISH,
-  },
+export const wordSee = createWord({
   primaryType: PRIMARY_TYPE_VERB,
+  verbType: SENTENCE_TYPE_VERB_TYPE_RU,
   category: [ CATEGORY_HUMAN_ACTION ],
-  meta: {
-    verbType: SENTENCE_TYPE_VERB_TYPE_U,
-    __typename: __TYPENAME_META,
-  },
-  __typename: __TYPENAME_WORD,
-};
-
-// look at 
-export const wordLook = {
-  japanese: { 
-    kanji: '見る',
-    // hiragana: 'みる',
-    // furigana: 'miru',
-    __typename: __TYPENAME_JAPANESE,
-  },
-  english: {
-    present: 'look at',
-    past: 'looked at',
-    __typename: __TYPENAME_ENGLISH,
-  },
-  primaryType: PRIMARY_TYPE_VERB,
-  category: [ CATEGORY_HUMAN_ACTION ],
-  meta: {
-    verbType: SENTENCE_TYPE_VERB_TYPE_U,
-    __typename: __TYPENAME_META,
-  },
-  __typename: __TYPENAME_WORD,
-};
+  kanji: '見る',
+  hiragana: 'みる',
+  furigana: 'miru',
+  present: 'see',
+  past: 'saw',
+});
 
 // you have transitive, and intransitive.
 
@@ -170,10 +100,13 @@ export const wordLook = {
 
 
 
-export const verbArray = [
+const verbArray = [
   wordEat,
   wordDrink,
+  wordSleep,
   wordSee,
-  wordLook,
+  // wordLook,
   // wordDo,
 ];
+
+export default verbArray;

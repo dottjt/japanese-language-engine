@@ -101,6 +101,7 @@ declare namespace Util {
     gender: string; // GENDER_MASCULINE, GENDER_FEMININE
     question: string; // HAS_QUESTION, NOT_QUESTION
     themes: string[];
+    selectedTheme?: string;
     // sentenceEnding: string;
   };
 

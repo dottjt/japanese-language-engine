@@ -52,7 +52,9 @@ export const wordLike = {
   __typename: __TYPENAME_WORD,
 };
 
-export const adjectiveArray = [
+const adjectiveArray = [
   wordDelicious,
   wordLike,
 ];
+
+export default adjectiveArray;

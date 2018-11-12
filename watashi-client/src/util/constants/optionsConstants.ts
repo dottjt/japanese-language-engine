@@ -37,11 +37,13 @@ export const conjugationTypeArray = [
 export const SENTENCE_TYPE_VERB = 'SENTENCE_TYPE_VERB';
 export const SENTENCE_TYPE_SUBJECT = 'SENTENCE_TYPE_SUBJECT';
 export const SENTENCE_TYPE_TOPIC = 'SENTENCE_TYPE_TOPIC';
+export const SENTENCE_TYPE_PREPOSITION = 'SENTENCE_TYPE_PREPOSITION';
 
 export const primaryTypeArray = [
   SENTENCE_TYPE_VERB,
   SENTENCE_TYPE_SUBJECT,
   SENTENCE_TYPE_TOPIC,
+  SENTENCE_TYPE_PREPOSITION,
 ];
 
 // options.variation
@@ -168,10 +170,11 @@ export const sentenceEndingArrayLength = sentenceEndingArray.length;
 
 // options.themes
 
-export const THEMES_RANDOM = 'THEMES_RANDOM';
+export const THEMES_DEFAULT = 'THEMES_DEFAULT';
 
 export const themesArray = [
-
+  THEMES_DEFAULT,
 ];
 
 export const themesArrayLength = themesArray.length;
+

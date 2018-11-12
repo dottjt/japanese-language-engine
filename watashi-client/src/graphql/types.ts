@@ -79,6 +79,7 @@ export const optionTypes = `
     question: String
     sentenceEnding: String
     themes: String[]
+    selectedTheme?: String;
   }
 
   type User {

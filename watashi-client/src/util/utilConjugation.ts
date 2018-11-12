@@ -71,7 +71,7 @@ export const createCommonPermissions = (topic: Util.Word, subject: Util.Word, ve
 
 export const generateSentenceTypes = (topic?: Util.Word, subject?: Util.Word, verb?: Util.Word) => {
   const onlyTopic = (topic && !subject && !verb);
-  const onlySubject = (!topic && subject && !verb);
+  // const onlySubject = (!topic && subject && !verb);
   const onlyVerb = (!topic && !subject && verb);
 
   const onlyTopicAndSubject =  (topic && subject && !verb);
@@ -79,7 +79,7 @@ export const generateSentenceTypes = (topic?: Util.Word, subject?: Util.Word, ve
 
   return {
     onlyTopic,
-    onlySubject,
+    // onlySubject,
     onlyVerb,
     onlyTopicAndSubject,
     onlySubjectAndVerb,

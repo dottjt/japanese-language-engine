@@ -31,6 +31,8 @@ export const wordYes = {
   __typename: __TYPENAME_WORD,
 };
 
-export const responseArray = [
+const responseArray = [
   wordYes,
 ];
+
+export default responseArray;

@@ -149,6 +149,7 @@ const GET_EVERYTHING = gql`{
       gender
       question
       themes
+      selectedTheme
     }
 
     modifiers @client {
