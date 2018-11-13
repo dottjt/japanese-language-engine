@@ -67,6 +67,7 @@ export const WORD_TYPE_CLOCK_DATE = 'WORD_TYPE_CLOCK_DATE';
 // year, day, week, month
 export const WORD_TYPE_PERIOD_DESCRIPTOR = 'WORD_TYPE_PERIOD_DESCRIPTOR';
 
-
+// 1, 3, 5, 7,
+export const WORD_TYPE_NUMBER = 'WORD_TYPE_NUMBER';
 
 export const WORD_TYPE = 'WORD_TYPE';

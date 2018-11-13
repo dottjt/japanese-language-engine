@@ -30,7 +30,7 @@ import {
   CONTEXT_TIME_PERIOD,
   CONTEXT_TIME_FUTURE,
   CONTEXT_TIME_PAST,
-
+  CONTEXT_TIME_TELLING_TIME,
 } from '../../constants/contextConstants';
 
 import {
@@ -41,6 +41,7 @@ import {
   WORD_TYPE_YEAR_DATE, 
   WORD_TYPE_CLOCK_DATE,
   WORD_TYPE_PERIOD_DESCRIPTOR,
+  WORD_TYPE_NUMBER,
 } from '../../constants/wordConstants';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
@@ -86,23 +87,24 @@ const determineTimePreposition = () => {
     return 'ago';
   }
 
-  // before 2004 / before spring / before 
-  if () {
+  // before 2004 / before spring / before night / before tuesday / before half past nine
+  if ((WORD_TYPE_DAY_OF_WEEK || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE) && CONTEXT_TIME_PAST) {
     return 'before';
   }
-  
+
+  // I have no idea how this should really work. 
   // ten to six (5:50)
-  if () {
+  if (WORD_TYPE_NUMBER || CONTEXT_TIME_TELLING_TIME) {
     return 'to';
   }
 
   // ten past six (6:10)
-  if () {
+  if (WORD_TYPE_NUMBER || CONTEXT_TIME_TELLING_TIME) {
     return 'past';
   }
 
   // from Monday to/till Friday
-  if () {
+  if ( CONTEXT_TIME_PERIOD) {
     return 'to'; // till // until
   }
 
