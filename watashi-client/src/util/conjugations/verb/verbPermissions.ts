@@ -1,6 +1,6 @@
 import {
   createCommonPermissions,
-} from '../../utilConjugation';
+} from '../utilConjugation';
 
 // Japanese
 

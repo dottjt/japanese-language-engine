@@ -14,8 +14,10 @@ const wordCat = createWord({
   kanji: '猫',
   hiragana: 'ねこ',
   furigana: 'neko',
-  present: 'cat',
-  past: 'NA',
+  presentTense: 'cat',
+  presentParticiple: 'NA',
+  simplePast: 'NA',
+  pastParticiple: '',
 });
 
 const wordDog = createWord({
@@ -25,8 +27,10 @@ const wordDog = createWord({
   kanji: '犬',
   hiragana: 'いぬ',
   furigana: 'inu',
-  present: 'dog',
-  past: 'NA',
+  presentTense: 'dog',
+  presentParticiple: 'NA',
+  simplePast: 'NA',
+  pastParticiple: '',
 });
 
 const nounArray = [

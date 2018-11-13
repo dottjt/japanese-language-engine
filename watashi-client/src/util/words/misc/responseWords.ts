@@ -18,8 +18,10 @@ export const wordYes = {
     __typename: __TYPENAME_JAPANESE,
   },
   english: {
-    present: 'yes',
-    past: 'NA',
+    presentTense: 'yes',
+    presentParticiple: 'NA',
+    simplePast: 'NA',
+    pastParticiple: 'NA',
     __typename: __TYPENAME_ENGLISH,
   },
   primaryType: PRIMARY_TYPE_NOUN,

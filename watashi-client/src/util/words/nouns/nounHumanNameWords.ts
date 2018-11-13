@@ -12,8 +12,10 @@ const wordSasaki = createWord({
   kanji: '佐々木',
   hiragana: 'ささき',
   furigana: 'Sasaki',
-  present: 'Sasaki',
-  past: 'NA',
+  presentTense: 'Sasaki',
+  presentParticiple: '',
+  simplePast: 'NA',
+  pastParticiple: '',
 });
 
 const wordNomura = createWord({
@@ -23,8 +25,10 @@ const wordNomura = createWord({
   kanji: '野村',
   hiragana: 'のむら',
   furigana: 'Nomura',
-  present: 'Nomura',
-  past: 'NA',
+  presentTense: 'Nomura',
+  presentParticiple: '',
+  simplePast: 'NA',
+  pastParticiple: '',
 });
 
 const wordKato = createWord({
@@ -34,8 +38,10 @@ const wordKato = createWord({
   kanji: '加藤',
   hiragana: 'かと',
   furigana: 'Kato',
-  present: 'Nomura',
-  past: 'NA',
+  presentTense: 'Nomura',
+  presentParticiple: '',
+  simplePast: 'NA',
+  pastParticiple: '',
 });
 
 const wordKobayashi = createWord({
@@ -45,8 +51,10 @@ const wordKobayashi = createWord({
   kanji: '小林',
   hiragana: 'こばやし',
   furigana: 'Kobayashi',
-  present: 'Nomura',
-  past: 'NA',
+  presentTense: 'Nomura',
+  presentParticiple: '',
+  simplePast: 'NA',
+  pastParticiple: '',
 });
 
 const nounArray = [

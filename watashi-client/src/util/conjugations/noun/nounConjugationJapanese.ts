@@ -7,7 +7,7 @@ import {
   returnSentenceParts,
   filtersentenceType,
   createWord,
-} from '../../utilConjugation';
+} from '../utilConjugation';
 
 import {
   nounParticlePermissions,

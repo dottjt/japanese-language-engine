@@ -14,8 +14,10 @@ const wordHome = createWord({
   kanji: '家',
   hiragana: 'いえ',
   furigana: 'ie',
-  present: 'home',
-  past: 'NA',
+  presentTense: 'home',
+  presentParticiple: 'NA',
+  simplePast: 'NA',
+  pastParticiple: 'NA',
 });
 
 const nounArray = [

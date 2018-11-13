@@ -43,3 +43,8 @@ export const verbTypeArray = [
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
 ];
+
+// // word.verbType
+
+// export const DIRECTION_VERB = 'DIRECTION_VERB';
+

@@ -7,7 +7,7 @@ import {
   filtersentenceType,
   returnSentenceParts,
   createWord,
-} from '../../utilConjugation';
+} from '../utilConjugation';
 
 import {
   POLARITY_POSITIVE,

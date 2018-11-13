@@ -15,8 +15,10 @@ const wordPerson = createWord({
   kanji: '人',
   hiragana: 'ひと',
   furigana: 'hito',
-  present: 'person',
-  past: 'NA',
+  presentTense: 'person',
+  presentParticiple: 'NA',
+  simplePast: 'NA',
+  pastParticiple: 'NA',
 });
 
 const nounArray = [

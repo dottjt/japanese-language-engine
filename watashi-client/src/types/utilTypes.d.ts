@@ -44,12 +44,15 @@ declare namespace Util {
 
   export type MetaType = {
     verbType?: string;
+    // verbPrepositionType?: string;
     __typename: string;
   };
 
   export type English = {
-    present: string;
-    past: string;
+    presentTense: string;
+    presentParticiple: string;
+    simplePast: string;
+    pastParticiple: string;
     __typename: string;
   }
 
@@ -123,6 +126,15 @@ declare namespace Util {
     topicAdverb: string;
     subjectAdjective: string;
     subjectAdverb: string;
+  };
+
+  export type SubjectContext = {
+    internalState: string;
+    positionRelative: string;
+    quantity: string;
+    time: string;
+    direction: string;
+    __typename: string;
   };
 
   export type Themes = string[];

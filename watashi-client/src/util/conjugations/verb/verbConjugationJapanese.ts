@@ -8,7 +8,7 @@ import {
   createWord,
   getInitialVerbStem,
   getLastLetterVerb,
-} from '../../utilConjugation';
+} from '../utilConjugation';
 
 import {
   SENTENCE_TYPE_VERB_TYPE_RU,

@@ -6,7 +6,7 @@ import {
 import {
   returnSentenceParts,
   generateSentenceTypes,
-} from '../utilConjugation';
+} from './utilConjugation';
 
 import { 
   LANG_JAPANESE,
