@@ -22,43 +22,71 @@ import {
   PREPOSITION_TYPE_DIRECTION,
   PREPOSITION_TYPE_AGENCY,
   PREPOSITION_TYPE_PURPOSE,
-  
-  CONTEXT_TIME_PRESENT,
+  PREPOSITION_TYPE_REASON,
+  PREPOSITION_TYPE_CONNECTION,
+  PREPOSITION_TYPE_ORIGIN,
+
+  CONTEXT_TIME_VARIABLE_POINT_IN_TIME,
   CONTEXT_TIME_PERIOD,
+  CONTEXT_TIME_FUTURE,
+  CONTEXT_TIME_PAST,
+
 } from '../../constants/contextConstants';
 
+import {
+  WORD_TYPE_DAY_OF_WEEK,
+  WORD_TYPE_POINT_OF_DAY,
+  WORD_TYPE_MONTH,
+  WORD_TYPE_SEASON,
+  WORD_TYPE_YEAR_DATE, 
+  WORD_TYPE_CLOCK_DATE,
+  WORD_TYPE_PERIOD_DESCRIPTOR,
+} from '../../constants/wordConstants';
+
+// I think I need to keep in count sentence structure as well to determine what these things mean.
+
 const determineTimePreposition = () => {
+  /* Generic Point In Time */
   // on Monday
-  if (WORD_TYPE_DAY_OF_WEEK && CONTEXT_TIME_PRESENT) {
+  if (WORD_TYPE_DAY_OF_WEEK && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
     return 'on';
   }
 
-  // in the morning / in August / in the morning / in an hour
-  if ((WORD_TYPE_TIME_OF_DAY || WORD_TYPE_MONTH_OR_SEASON || WORD_TYPE_YEAR || WORD_TYPE_PERIOD_OF_TIME) && CONTEXT_TIME_PERIOD ) {
+  /* Generic Point In Time */
+  // in the morning / in August / in Spring / in 2006
+  if ((WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME)  {
+    return 'in';
+  }
+  
+  /* After Period of Time */
+  // in an hour
+  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_FUTURE) {
     return 'in';
   }
 
+  /* Generic Point In Time */
   // at night / at half past nine
-  if (WORD_TYPE_NIGHT || WORD_TYPE_POINT_OF_TIME) {
+  if ((WORD_TYPE_POINT_OF_DAY || WORD_TYPE_CLOCK_DATE) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
     return 'at';
   }
 
-  // since 1980
-  if () {
+  // NOTE: Since "last year" not covered.
+  // since 1980 / since half past nine / since Spring / since March / since Monday
+  if ((WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE || WORD_TYPE_SEASON || WORD_TYPE_MONTH || WORD_TYPE_DAY_OF_WEEK) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
     return 'since';
   }
   
-  // for 2 years
-  if () {
+  // for 2 years / for 1 year
+  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PERIOD) {
     return 'for';
   }
 
-  // 2 years ago
-  if () {
+  // 2 years ago / 1 year ago
+  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PAST) {
     return 'ago';
   }
 
-  // before 2004
+  // before 2004 / before spring / before 
   if () {
     return 'before';
   }
@@ -179,9 +207,83 @@ const determineDirectionPreposition = () => {
   throw new Error(createError('prepositionConjugationEnglish.ts', '', ''))
 };
 
-const determineDirectionPreposition = () => {
-  
+const determineAgencyPreposition = () => {
+  if () { 
+    return 'by';
+  };
+
+  if () {
+    return 'on'
+  };
 };
+
+const determinePurposePreposition = () => {
+  if () { 
+    return 'by';
+  };
+
+  if () {
+    return 'with';
+  };
+
+  if () {
+    return 'on';
+  };
+};
+
+const determineReasonPreposition = () => {
+
+  if () {
+    return 'for';
+  }
+
+  if () {
+    return 'through';
+  }
+
+  if () {
+    return 'because of';
+  }
+
+  if () {
+    return 'on account of';
+  }
+
+  if () {
+    return 'from';
+  }
+
+};
+
+const determineConnectionPreposition = () => {
+
+  if () { 
+    return 'of';
+  }
+
+  if () { 
+    return 'to';
+  }
+
+  if () { 
+    return 'with';
+  }
+
+};
+
+const determineOriginPreposition = () => {
+
+  if () {
+    return 'from';
+  }
+
+  if () {
+    return 'of';
+  }
+
+};
+
+
 
 const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
   // maybe themes are the bridge between subject and context. 
@@ -199,6 +301,8 @@ const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
     time: "CONTEXT_TIME_PRESENT",
     possession: "him, her etc. "
   };
+
+
 
 
   // I ran inside the house // CONTEXT
@@ -219,8 +323,11 @@ const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
     case PREPOSITION_TYPE_TIME: return determineTimePreposition();
     case PREPOSITION_TYPE_PLACE: return determinePlacePreposition();
     case PREPOSITION_TYPE_DIRECTION: return determineDirectionPreposition();
-    case PREPOSITION_TYPE_AGENCY: return 
-    case PREPOSITION_TYPE_PURPOSE: return 
+    case PREPOSITION_TYPE_AGENCY: return determineAgencyPreposition();
+    case PREPOSITION_TYPE_PURPOSE: return determinePurposePreposition();
+    case PREPOSITION_TYPE_REASON: return determineReasonPreposition();
+    case PREPOSITION_TYPE_CONNECTION: return determineConnectionPreposition();
+    case PREPOSITION_TYPE_ORIGIN: return determineOriginPreposition();
   }
 
   const outcome = "run to the house"; // CONTEXT_TOPIC_RELATIVE_POSITION_NEAR

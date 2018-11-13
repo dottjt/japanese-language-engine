@@ -44,6 +44,29 @@ export const verbTypeArray = [
   SENTENCE_TYPE_VERB_TYPE_U,
 ];
 
-// // word.type
+// word.type
+
+// Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+export const WORD_TYPE_DAY_OF_WEEK = 'WORD_TYPE_DAY_OF_WEEK';
+
+// Night, Morning, Afternoon, Evening
+export const WORD_TYPE_POINT_OF_DAY = 'WORD_TYPE_POINT_OF_DAY';
+
+// January, February, March, April, May, June, July, August, September, October, November, December
+export const WORD_TYPE_MONTH = 'WORD_TYPE_MONTH';
+
+// Spring, Summer, Autumn, Winter 
+export const WORD_TYPE_SEASON = 'WORD_TYPE_SEASON';
+
+// 1980, 170
+export const WORD_TYPE_YEAR_DATE = 'WORD_TYPE_YEAR_DATE';
+
+// half past nine, 5th of August
+export const WORD_TYPE_CLOCK_DATE = 'WORD_TYPE_CLOCK_DATE';
+
+// year, day, week, month
+export const WORD_TYPE_PERIOD_DESCRIPTOR = 'WORD_TYPE_PERIOD_DESCRIPTOR';
 
 
+
+export const WORD_TYPE = 'WORD_TYPE';
