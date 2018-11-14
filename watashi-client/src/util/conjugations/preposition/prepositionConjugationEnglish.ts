@@ -25,266 +25,21 @@ import {
   PREPOSITION_TYPE_REASON,
   PREPOSITION_TYPE_CONNECTION,
   PREPOSITION_TYPE_ORIGIN,
-
-  CONTEXT_TIME_VARIABLE_POINT_IN_TIME,
-  CONTEXT_TIME_PERIOD,
-  CONTEXT_TIME_FUTURE,
-  CONTEXT_TIME_PAST,
-  CONTEXT_TIME_TELLING_TIME,
 } from '../../constants/contextConstants';
 
+import determineTimePreposition from './determineTimePreposition';
+import determinePlacePreposition from './determinePlacePreposition';
+import determineDirectionPreposition from './determineDirectionPreposition';
+
 import {
-  WORD_TYPE_DAY_OF_WEEK,
-  WORD_TYPE_POINT_OF_DAY,
-  WORD_TYPE_MONTH,
-  WORD_TYPE_SEASON,
-  WORD_TYPE_YEAR_DATE, 
-  WORD_TYPE_CLOCK_DATE,
-  WORD_TYPE_PERIOD_DESCRIPTOR,
-  WORD_TYPE_NUMBER,
-} from '../../constants/wordConstants';
+  determineAgencyPreposition,
+  determinePurposePreposition,
+  determineReasonPreposition,
+  determineConnectionPreposition,
+  determineOriginPreposition,  
+} from './determineOtherPreposition';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
-
-const determineTimePreposition = () => {
-  /* Generic Point In Time */
-  // on Monday
-  if (WORD_TYPE_DAY_OF_WEEK && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
-    return 'on';
-  }
-
-  /* Generic Point In Time */
-  // in the morning / in August / in Spring / in 2006
-  if ((WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME)  {
-    return 'in';
-  }
-  
-  /* After Period of Time */
-  // in an hour
-  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_FUTURE) {
-    return 'in';
-  }
-
-  /* Generic Point In Time */
-  // at night / at half past nine
-  if ((WORD_TYPE_POINT_OF_DAY || WORD_TYPE_CLOCK_DATE) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
-    return 'at';
-  }
-
-  // NOTE: Since "last year" not covered.
-  // since 1980 / since half past nine / since Spring / since March / since Monday
-  if ((WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE || WORD_TYPE_SEASON || WORD_TYPE_MONTH || WORD_TYPE_DAY_OF_WEEK) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
-    return 'since';
-  }
-  
-  // for 2 years / for 1 year
-  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PERIOD) {
-    return 'for';
-  }
-
-  // 2 years ago / 1 year ago
-  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PAST) {
-    return 'ago';
-  }
-
-  // before 2004 / before spring / before night / before tuesday / before half past nine
-  if ((WORD_TYPE_DAY_OF_WEEK || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE) && CONTEXT_TIME_PAST) {
-    return 'before';
-  }
-
-  // I have no idea how this should really work. 
-  // ten to six (5:50)
-  if (WORD_TYPE_NUMBER || CONTEXT_TIME_TELLING_TIME) {
-    return 'to';
-  }
-
-  // ten past six (6:10)
-  if (WORD_TYPE_NUMBER || CONTEXT_TIME_TELLING_TIME) {
-    return 'past';
-  }
-
-  // from Monday to/till Friday
-  if ( CONTEXT_TIME_PERIOD) {
-    return 'to'; // till // until
-  }
-
-  // He is on holiday until Friday.
-  if () {
-    return 'till'; // until
-  }
-
-  // I will be back by 6 o’clock. - By 11 o'clock, I had read five pages.
-  if () {
-    return 'by';
-  }
-
-  throw new Error(createError('prepositionConjugationEnglish.ts', '', ''))
-}
-
-const determinePlacePreposition = () => {
-  // in the kitchen, in London
-  // in the book
-  // in the car, in a taxi
-  // in the picture, in the world
-  if () {
-    return 'in';
-  }
-  // at the door, at the station
-  // at the table
-  // at a concert, at the party
-  // at the cinema, at school, at work
-  if () {
-    return 'at';
-  }
-  // the picture on the wall
-  // London lies on the Thames.
-  // on the table
-  // on the left
-  // on the first floor
-  // on the bus, on a plane
-  // on TV, on the radio
-  if () {
-    return 'on';
-  }
-  // Jane is standing by / next to / beside the car.
-  if () {
-    return 'by'; // next // to // beside
-  }
-  // the bag is under the table
-  if () {
-    return 'under';
-  }
-  // the fish are below the surface
-  if () {
-    return 'below';
-  }
-  // put a jacket over your shirt
-  // over 16 years of age
-  // walk over the bridge
-  // climb over the wall
-  if () {
-    return 'over';
-  }
-  // a path above the lake
-  if () {
-    return 'above';
-  }
-
-  throw new Error(createError('prepositionConjugationEnglish.ts', '', ''))
-}
-
-const determineDirectionPreposition = () => {
-  // walk across the bridge
-  // swim across the lake
-  if () {
-    return 'across';
-  }
-  // drive through the tunnel
-  if () {
-    return 'through';
-  }
-  // go to the cinema
-  // go to London / Ireland
-  // go to bed
-  if () {
-    return 'to';
-  }
-  // go into the kitchen / the house
-  if () {
-    return 'into';
-  }
-  // go 5 steps towards the house
-  if () {
-    return 'towards';
-  }
-  // jump onto the table
-  if () {
-    return 'onto';
-  }
-  // a flower from the garden
-  if () {
-    return 'from';
-  }
-
-  throw new Error(createError('prepositionConjugationEnglish.ts', '', ''))
-};
-
-const determineAgencyPreposition = () => {
-  if () { 
-    return 'by';
-  };
-
-  if () {
-    return 'on'
-  };
-};
-
-const determinePurposePreposition = () => {
-  if () { 
-    return 'by';
-  };
-
-  if () {
-    return 'with';
-  };
-
-  if () {
-    return 'on';
-  };
-};
-
-const determineReasonPreposition = () => {
-
-  if () {
-    return 'for';
-  }
-
-  if () {
-    return 'through';
-  }
-
-  if () {
-    return 'because of';
-  }
-
-  if () {
-    return 'on account of';
-  }
-
-  if () {
-    return 'from';
-  }
-
-};
-
-const determineConnectionPreposition = () => {
-
-  if () { 
-    return 'of';
-  }
-
-  if () { 
-    return 'to';
-  }
-
-  if () { 
-    return 'with';
-  }
-
-};
-
-const determineOriginPreposition = () => {
-
-  if () {
-    return 'from';
-  }
-
-  if () {
-    return 'of';
-  }
-
-};
-
 
 
 const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
@@ -296,26 +51,24 @@ const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
   // Monday // what is the subjectContext of this?
   const subjectContext = {
     wordType: 'Date',
-    internalState: "CONTEXT_INTERNAL_STATE_ALIVE",
-    positionRelative: "CONTEXT_TOPIC_RELATIVE_POSITION_INSIDE",
+    // internalState: "CONTEXT_INTERNAL_STATE_WORKING",
+    positionRelative: "CONTEXT_TOPIC_RELATIVE_DESTINATION_INSIDE",
     direction: "CONTEXT_DIRECTION_TOWARD",
     quantity: "CONTEXT_QUANTITY_SINGLE",
     time: "CONTEXT_TIME_PRESENT",
-    possession: "him, her etc. "
+    // possession: "him, her etc. "
+    physicalContact: '' // yes, no.
   };
+  // Car // what is the subjectContext of this?
 
+
+  type: CONTEXT_TYPE_TIME
 
 
 
   // I ran inside the house // CONTEXT
   // run towards the house
   // run after the house
-
-
-  const verbContext = {
-    type: CONTEXT_TYPE_TIME
-  };
-  // ah, so these context options are also to helpa
 
   const verbWord = "run";
 
@@ -332,7 +85,7 @@ const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
     case PREPOSITION_TYPE_ORIGIN: return determineOriginPreposition();
   }
 
-  const outcome = "run to the house"; // CONTEXT_TOPIC_RELATIVE_POSITION_NEAR
+  const outcome = "run to the house"; // CONTEXT_TOPIC_RELATIVE_DESTINATION_NEAR
 };
 
 //   // a function that figures out which preposition it is, based on both the verb and the subject

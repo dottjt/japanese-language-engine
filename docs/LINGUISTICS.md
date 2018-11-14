@@ -58,3 +58,8 @@ Students have gone to the library often. (-en ending)
   // noActionVerb
   // linkingVerb
   // auxiliaryVerb
+
+
+
+https://www.fluentu.com/blog/english/english-adjectives/
+

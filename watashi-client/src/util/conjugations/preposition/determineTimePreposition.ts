@@ -25,10 +25,13 @@ import {
 
 
 const determineTimePreposition = () => {
-  /* Generic Point In Time */
-  // on Monday
-  if (WORD_TYPE_DAY_OF_WEEK && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
-    return 'on';
+
+  if (CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
+    // on Monday
+    if (WORD_TYPE_DAY_OF_WEEK) {
+      return 'on';
+    }
+  
   }
 
   /* Generic Point In Time */
