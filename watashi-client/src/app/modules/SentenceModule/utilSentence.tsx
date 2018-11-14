@@ -179,11 +179,11 @@ export const createTaggedArrayEnglish = (phrase: Util.ConjugatedEnglishWord): Ut
   switch(phrase.type) {
     case CONJUGATION_TYPE_NOUN_ENGLISH: 
       const indefiniteArticle = tagArray(phrase.indefiniteArticle.wordArray, phrase.indefiniteArticle.wordType);
-      const noun = phrase.sentenceType === SENTENCE_TYPE_TOPIC ? tagArray([phrase.word.english.present], ENGLISH_TOPIC) : tagArray([phrase.word.english.present], ENGLISH_SUBJECT);
+      const noun = phrase.sentenceType === SENTENCE_TYPE_TOPIC ? tagArray([phrase.word.english.presentTense], ENGLISH_TOPIC) : tagArray([phrase.word.english.presentTense], ENGLISH_SUBJECT);
       return tense.concat(polarity).concat(indefiniteArticle).concat(noun); 
 
     case CONJUGATION_TYPE_VERB_ENGLISH: 
-      const verb = tagArray([phrase.word.english.present], ENGLISH_VERB);
+      const verb = tagArray([phrase.word.english.presentTense], ENGLISH_VERB);
       return tense.concat(polarity).concat(verb);
   }
   throw new Error(createError('SentenceModule/sentenceUtil', 'createTaggedArrayEnglish', `${phrase.type} does not exist.`));    

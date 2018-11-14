@@ -93,17 +93,23 @@ const determineNounGeneral = (noun) => {
   throw new Error(createError('pluralNounConjugation.ts', 'determineNounGeneral', `${lastLetter} or ${lastTwoLetters} values not recognised.`));
 };
 
-const pluralNounConjugation = (noun: Util.Word) => {
+const pluralNounConjugationSwitch = (noun: Util.Word) => {
   const nounString = noun.english.presentTense;
 
-  switch(noun.english.nounPluralType) {
+  switch(noun.english.metaType.nounPluralType) {
     case NOUN_PLURAL_ONLY: return determineNounPluralOnly(nounString);
     case NOUN_PLURAL_SINGLE_ONLY: return determineNounSingleOnly(nounString);
     case NOUN_PLURAL_IRREGULAR: return determineNounIrregular(nounString);
     case NOUN_PLURAL_EXCEPTION: return determineNounException(nounString);
     case NOUN_PLURAL_GENERAL: return determineNounGeneral(nounString);
   }
+
   throw new Error(createError('pluralNounConjugation.ts', 'determineNoun', `${noun.english.nounPluralType} not recognised on noun.`));
 }
 
-export default pluralNounConjugation;
+const determineNounPlural = (noun: Util.Word) => {
+  noun.english.presentTense = pluralNounConjugationSwitch(noun);
+  return noun;
+}
+
+export default determineNounPlural;
