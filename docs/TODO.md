@@ -6,6 +6,7 @@
 - Will need to reset controlPanelOptions when switch between URL routes, so that exercises are left unhampered.
 - Write Blog Articles.
 - TypeORM with graphql - tutorial.
+- Numbers module.
 
 # TODO NICE HAVES 
 - Find open contributors. 

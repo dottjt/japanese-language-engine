@@ -3,7 +3,7 @@ import {
 } from '../../functions';
 
 import {
-  // CONTEXT_TIME_VARIABLE_POINT_IN_TIME,
+  // CONTEXT_POINT_IN_TIME,
   // CONTEXT_TIME_PERIOD,
   // CONTEXT_TIME_FUTURE,
   // CONTEXT_TIME_PAST,

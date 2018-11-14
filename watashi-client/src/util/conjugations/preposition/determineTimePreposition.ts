@@ -3,10 +3,11 @@ import {
 } from '../../functions';
 
 import {
-  CONTEXT_TIME_VARIABLE_POINT_IN_TIME,
+  CONTEXT_POINT_IN_TIME,
   CONTEXT_TIME_PERIOD,
-  CONTEXT_TIME_FUTURE,
+  CONTEXT_TIME_PRESENT,
   CONTEXT_TIME_PAST,
+  CONTEXT_TIME_FUTURE,
   CONTEXT_TIME_TELLING_TIME,
 } from '../../constants/contextConstants';
 
@@ -18,70 +19,81 @@ import {
   WORD_TYPE_YEAR_DATE, 
   WORD_TYPE_CLOCK_DATE,
   WORD_TYPE_PERIOD_DESCRIPTOR,
-  WORD_TYPE_NUMBER,
+  WORD_TYPE_NUMBER_MINUTE,
+  WORD_TYPE_NUMBER_HOUR,
 } from '../../constants/wordConstants';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
 
-
 const determineTimePreposition = () => {
 
-  if (CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
+  // 01 - CONTEXT_POINT_IN_TIME
+  if (CONTEXT_POINT_IN_TIME) {
     // on Monday
     if (WORD_TYPE_DAY_OF_WEEK) {
       return 'on';
     }
-  
-  }
 
-  /* Generic Point In Time */
-  // in the morning / in August / in Spring / in 2006
-  if ((WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME)  {
-    return 'in';
-  }
-  
-  /* After Period of Time */
-  // in an hour
-  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_FUTURE) {
-    return 'in';
-  }
+    // in an hour / in the morning / in August / in Spring / in 2006
+    if (WORD_TYPE_PERIOD_DESCRIPTOR || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE) {
+      return 'in';
+    }
 
-  /* Generic Point In Time */
-  // at night / at half past nine
-  if ((WORD_TYPE_POINT_OF_DAY || WORD_TYPE_CLOCK_DATE) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
-    return 'at';
-  }
+    // at night / at half past nine
+    if (WORD_TYPE_POINT_OF_DAY || WORD_TYPE_CLOCK_DATE) {
+      return 'at';
+    }
 
-  // NOTE: Since "last year" not covered.
-  // since 1980 / since half past nine / since Spring / since March / since Monday
-  if ((WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE || WORD_TYPE_SEASON || WORD_TYPE_MONTH || WORD_TYPE_DAY_OF_WEEK) && CONTEXT_TIME_VARIABLE_POINT_IN_TIME) {
-    return 'since';
+    // NOTE: Since "last year" not covered.
+    // since 1980 / since half past nine / since Spring / since March / since Monday
+    if (WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE || WORD_TYPE_SEASON || WORD_TYPE_MONTH || WORD_TYPE_DAY_OF_WEEK) {
+      return 'since';
+    }
   }
   
-  // for 2 years / for 1 year
-  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PERIOD) {
-    return 'for';
+  // 02 - CONTEXT_TIME_PERIOD
+  if (CONTEXT_TIME_PERIOD) {
+    // for 2 years / for 1 year
+    if (WORD_TYPE_PERIOD_DESCRIPTOR) {
+      return 'for';
+    }
+
+    // 2 years ago / 1 year ago
+    if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PAST) {
+      return 'ago';
+    }
   }
 
-  // 2 years ago / 1 year ago
-  if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PAST) {
-    return 'ago';
+  // 03 - CONTEXT_TIME_PAST
+  if (CONTEXT_TIME_PAST) {
+    // before 2004 / before spring / before night / before tuesday / before half past nine
+    if (WORD_TYPE_DAY_OF_WEEK || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE) {
+      return 'before';
+    }
   }
 
-  // before 2004 / before spring / before night / before tuesday / before half past nine
-  if ((WORD_TYPE_DAY_OF_WEEK || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE) && CONTEXT_TIME_PAST) {
-    return 'before';
+  // 04 - CONTEXT_TIME_TELLING_TIME
+  // if (CONTEXT_TIME_TELLING_TIME) {
+  //   // I have no idea how this should really work. 
+  //   // ten to six (5:50)
+  //   if (WORD_TYPE_NUMBER_MINUTE) {
+  //     return 'to';
+  //   }
+
+  //   // ten past six (6:10)
+  //   if (WORD_TYPE_NUMBER_HOUR) {
+  //     return 'past';
+  //   }
+  // }
+
+  // 05 - CONTEXT_TIME_PRESENT
+  if (CONTEXT_TIME_PRESENT) {
+
   }
 
-  // I have no idea how this should really work. 
-  // ten to six (5:50)
-  if (WORD_TYPE_NUMBER || CONTEXT_TIME_TELLING_TIME) {
-    return 'to';
-  }
+  // 06 - CONTEXT_TIME_FUTURE
+  if (CONTEXT_TIME_FUTURE) {
 
-  // ten past six (6:10)
-  if (WORD_TYPE_NUMBER || CONTEXT_TIME_TELLING_TIME) {
-    return 'past';
   }
 
   // from Monday to/till Friday

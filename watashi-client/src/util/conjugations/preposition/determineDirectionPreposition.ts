@@ -18,6 +18,8 @@ import {
 } from '../../constants/wordConstants';
 
 const determineDirectionPreposition = () => {
+  // NOTE: Need to add certain word types to make this complete. 
+
 
   if (CONTEXT_X_DIRECTION_ACROSS) {
     // walk across the bridge
