@@ -46,6 +46,9 @@ export const verbTypeArray = [
 
 // word.type
 
+
+// WORD TYPE TIME 
+
 // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 export const WORD_TYPE_DAY_OF_WEEK = 'WORD_TYPE_DAY_OF_WEEK';
 
@@ -76,4 +79,12 @@ export const WORD_TYPE_NUMBER_HOUR = 'WORD_TYPE_NUMBER_HOUR';
 // 1 - 60
 export const WORD_TYPE_NUMBER_MINUTE = 'WORD_TYPE_NUMBER_MINUTE';
 
-export const WORD_TYPE = 'WORD_TYPE';
+
+// WORD TYPE DIRECTION
+
+// bridge, lake, road
+export const WORD_TYPE_TRAVERSE_OPEN = 'WORD_TYPE_TRAVERSE_OPEN';
+
+// tunnel
+export const WORD_TYPE_TRAVERSE_CLOSE = 'WORD_TYPE_TRAVERSE_CLOSE';
+

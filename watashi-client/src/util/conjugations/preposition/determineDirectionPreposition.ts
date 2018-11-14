@@ -4,32 +4,32 @@ import {
 
 import {
   CONTEXT_X_DIRECTION_ACROSS,
-  CONTEXT_DESTINATION_OUTSIDE,
-  CONTEXT_DESTINATION_INSIDE,
   CONTEXT_DIRECTION_TOWARD,
   CONTEXT_DIRECTION_AWAY,
+
   CONTEXT_STATUS_CURRENTLY_DOING,
+
   CONTEXT_Y_DESTINATION_ABOVE,
+  CONTEXT_DESTINATION_INSIDE,
 } from '../../constants/contextConstants';
 
 import {
-
-  
+  WORD_TYPE_TRAVERSE_OPEN,
+  WORD_TYPE_TRAVERSE_CLOSE,
 } from '../../constants/wordConstants';
 
 const determineDirectionPreposition = () => {
   // NOTE: Need to add certain word types to make this complete. 
 
-
   if (CONTEXT_X_DIRECTION_ACROSS) {
     // walk across the bridge
     // swim across the lake
-    if (CONTEXT_DESTINATION_OUTSIDE) {
+    if (WORD_TYPE_TRAVERSE_OPEN) {
       return 'across';
     }
 
     // drive through the tunnel
-    if (CONTEXT_DESTINATION_INSIDE) {
+    if (WORD_TYPE_TRAVERSE_CLOSE) {
       return 'through';
     }
   }
@@ -40,7 +40,7 @@ const determineDirectionPreposition = () => {
       return 'into';
     };
 
-        // jump onto the table
+    // jump onto the table
     if (CONTEXT_Y_DESTINATION_ABOVE) {
       return 'onto';
     }
