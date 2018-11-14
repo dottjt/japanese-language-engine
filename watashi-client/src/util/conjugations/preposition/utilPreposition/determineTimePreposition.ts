@@ -1,15 +1,15 @@
 import {
   createError,
-} from '../../functions';
+} from '../../../functions';
 
 import {
   CONTEXT_POINT_IN_TIME,
-  CONTEXT_TIME_PERIOD,
-  CONTEXT_TIME_PRESENT,
-  CONTEXT_TIME_PAST,
-  CONTEXT_TIME_FUTURE,
-  CONTEXT_TIME_TELLING_TIME,
-} from '../../constants/contextConstants';
+  CONTEXT_EVENT_PERIOD,
+  CONTEXT_EVENT_PRESENT,
+  CONTEXT_EVENT_PAST,
+  CONTEXT_EVENT_FUTURE,
+  CONTEXT_EVENT_TELLING_TIME,
+} from '../../../constants/contextConstants';
 
 import {
   WORD_TYPE_DAY_OF_WEEK,
@@ -21,7 +21,7 @@ import {
   WORD_TYPE_PERIOD_DESCRIPTOR,
   WORD_TYPE_NUMBER_MINUTE,
   WORD_TYPE_NUMBER_HOUR,
-} from '../../constants/wordConstants';
+} from '../../../constants/wordConstants';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
 
@@ -51,29 +51,29 @@ const determineTimePreposition = () => {
     }
   }
   
-  // 02 - CONTEXT_TIME_PERIOD
-  if (CONTEXT_TIME_PERIOD) {
+  // 02 - CONTEXT_EVENT_PERIOD
+  if (CONTEXT_EVENT_PERIOD) {
     // for 2 years / for 1 year
     if (WORD_TYPE_PERIOD_DESCRIPTOR) {
       return 'for';
     }
 
     // 2 years ago / 1 year ago
-    if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_TIME_PAST) {
+    if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_EVENT_PAST) {
       return 'ago';
     }
   }
 
-  // 03 - CONTEXT_TIME_PAST
-  if (CONTEXT_TIME_PAST) {
+  // 03 - CONTEXT_EVENT_PAST
+  if (CONTEXT_EVENT_PAST) {
     // before 2004 / before spring / before night / before tuesday / before half past nine
     if (WORD_TYPE_DAY_OF_WEEK || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE) {
       return 'before';
     }
   }
 
-  // 04 - CONTEXT_TIME_TELLING_TIME
-  // if (CONTEXT_TIME_TELLING_TIME) {
+  // 04 - CONTEXT_EVENT_TELLING_TIME
+  // if (CONTEXT_EVENT_TELLING_TIME) {
   //   // I have no idea how this should really work. 
   //   // ten to six (5:50)
   //   if (WORD_TYPE_NUMBER_MINUTE) {
@@ -86,13 +86,13 @@ const determineTimePreposition = () => {
   //   }
   // }
 
-  // 05 - CONTEXT_TIME_PRESENT
-  if (CONTEXT_TIME_PRESENT) {
+  // 05 - CONTEXT_EVENT_PRESENT
+  if (CONTEXT_EVENT_PRESENT) {
 
   }
 
-  // 06 - CONTEXT_TIME_FUTURE
-  if (CONTEXT_TIME_FUTURE) {
+  // 06 - CONTEXT_EVENT_FUTURE
+  if (CONTEXT_EVENT_FUTURE) {
 
   }
 

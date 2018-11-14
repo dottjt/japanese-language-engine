@@ -1,5 +1,5 @@
 import {
-  createError,
+  // createError,
   emptyWordElement,
 } from '../../functions';
 
@@ -27,9 +27,9 @@ import {
   PREPOSITION_TYPE_ORIGIN,
 } from '../../constants/contextConstants';
 
-import determineTimePreposition from './determineTimePreposition';
-import determinePlacePreposition from './determinePlacePreposition';
-import determineDirectionPreposition from './determineDirectionPreposition';
+import determineTimePreposition from './utilPreposition/determineTimePreposition';
+import determinePlacePreposition from './utilPreposition/determinePlacePreposition';
+import determineDirectionPreposition from './utilPreposition/determineDirectionPreposition';
 
 import {
   determineAgencyPreposition,
@@ -37,7 +37,7 @@ import {
   determineReasonPreposition,
   determineConnectionPreposition,
   determineOriginPreposition,  
-} from './determineOtherPreposition';
+} from './utilPreposition/determineOtherPreposition';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
 
@@ -55,7 +55,7 @@ const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
     positionRelative: "CONTEXT_TOPIC_RELATIVE_DESTINATION_INSIDE",
     direction: "CONTEXT_DIRECTION_TOWARD",
     quantity: "CONTEXT_QUANTITY_SINGLE",
-    time: "CONTEXT_TIME_PRESENT",
+    time: "CONTEXT_EVENT_PRESENT",
     // possession: "him, her etc. "
     physicalContact: '' // yes, no.
   };

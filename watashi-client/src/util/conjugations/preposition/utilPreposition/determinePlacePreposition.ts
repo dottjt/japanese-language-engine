@@ -1,11 +1,12 @@
 import {
   createError,
-} from '../../functions';
+} from '../../../functions';
 
 import {
-  CONTEXT_DESTINATION_INSIDE,
-  CONTEXT_DESTINATION_OUTSIDE,
   CONTEXT_DESTINATION_BESIDE,
+
+  CONTEXT_SITUATION_INSIDE,
+  CONTEXT_SITUATION_OUTSIDE,
 
   CONTEXT_DISTANCE_NEAR,
   // CONTEXT_DISTANCE_FAR,
@@ -16,59 +17,44 @@ import {
   CONTEXT_Y_DESTINATION_BEHIND,
   CONTEXT_Y_DESTINATION_IN_FRONT,
 
-} from '../../constants/contextConstants';
+} from '../../../constants/contextConstants';
 
 import {
 
   
-} from '../../constants/wordConstants';
+} from '../../../constants/wordConstants';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
 
 
 const determinePlacePreposition = () => {
-  // in the kitchen, in London
-  // in the book
-  // in the car, in a taxi
-  // in the picture, in the world
-  if (CONTEXT_DESTINATION_INSIDE) { // NOTE: I don't think DESTINATION_INSIDE IS CORRECT
+  // in the kitchen, in London - in the book - in the car, in a taxi - in the picture, in the world
+  if (CONTEXT_SITUATION_INSIDE) {
     return 'in'; // inside, within
   }
 
-  if (CONTEXT_DESTINATION_OUTSIDE) {
+  // outside the house
+  if (CONTEXT_SITUATION_OUTSIDE) {
     return 'out of'; // outside of
   }
 
-    // the bag is under the table
-  // the fish are below the surface
+  // the fish are below the surface - the bag is under the table
   if (CONTEXT_Y_DESTINATION_BELOW) {
-    return 'below'; // under, underneath, beneath, down
+    return 'below'; // under, underneath, beneath
   }
-  // put a jacket over your shirt
-  // over 16 years of age
-  // walk over the bridge
-  // climb over the wall
-  // a path above the lake
+
+  // put a jacket over your shirt - over 16 years of age - walk over the bridge - climb over the wall - a path above the lake
   if (CONTEXT_Y_DESTINATION_ABOVE) {
-    return 'above'; // over, up 
+    return 'above'; // over
   }
 
   if (CONTEXT_DISTANCE_AT) {
-    // the picture on the wall
-    // London lies on the Thames.
-    // on the left
-    // on the table
-    // on the first floor
-    // on the bus, on a plane
-    // on TV, on the radio
+    // the picture on the wall - London lies on the Thames. - on the left - on the table - on the first floor - on the bus, on a plane - on TV, on the radio
     if (CONTEXT_Y_DESTINATION_ABOVE) {
       return 'on';
     }
 
-    // at the door, at the station
-    // at the table
-    // at a concert, at the party
-    // at the cinema, at school, at work
+    // at the door, at the station - at the table - at a concert, at the party - at the cinema, at school, at work
     return 'at';
   }
 

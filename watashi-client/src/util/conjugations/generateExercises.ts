@@ -18,8 +18,8 @@ import {
   __TYPENAME_MODIFIERS,
 } from '../constants/typeNameConstants';
 
-import createLessonModifiers from './createLessonModifiers';
-import createLessonOptions from './createLessonOptions';
+import createLessonModifiers from './generateLessonModifiers';
+import createLessonOptions from './generateLessonOptions';
 import generateSentences from './generateSentences';
 
 export const determinePreOptions = (path: string): Util.Options => {

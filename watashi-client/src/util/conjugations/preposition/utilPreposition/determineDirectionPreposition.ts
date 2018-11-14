@@ -1,22 +1,20 @@
 import {
   createError,
-} from '../../functions';
+} from '../../../functions';
 
 import {
   CONTEXT_X_DIRECTION_ACROSS,
   CONTEXT_DIRECTION_TOWARD,
   CONTEXT_DIRECTION_AWAY,
-
-  CONTEXT_STATUS_CURRENTLY_DOING,
-
+  
   CONTEXT_Y_DESTINATION_ABOVE,
   CONTEXT_DESTINATION_INSIDE,
-} from '../../constants/contextConstants';
+} from '../../../constants/contextConstants';
 
 import {
   WORD_TYPE_TRAVERSE_OPEN,
   WORD_TYPE_TRAVERSE_CLOSE,
-} from '../../constants/wordConstants';
+} from '../../../constants/wordConstants';
 
 const determineDirectionPreposition = () => {
   // NOTE: Need to add certain word types to make this complete. 
@@ -46,14 +44,10 @@ const determineDirectionPreposition = () => {
     }
 
     // go 5 steps towards the house
-    if (CONTEXT_STATUS_CURRENTLY_DOING) {
-      return 'towards';
-    }
-
     // go to the cinema
     // go to London / Ireland
     // go to bed
-    return 'to';
+    return 'to'; // towards
   };
 
   // a flower from the garden

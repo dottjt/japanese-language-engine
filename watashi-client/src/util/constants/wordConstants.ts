@@ -39,10 +39,24 @@ export const categoryArray = [
 export const SENTENCE_TYPE_VERB_TYPE_RU = 'ru verb';
 export const SENTENCE_TYPE_VERB_TYPE_U = 'u verb';
 
+export const NOUN_PLURAL_EXCEPTION = "NOUN_PLURAL_EXCEPTION";
+export const NOUN_PLURAL_ONLY = "NOUN_PLURAL_ONLY";
+export const NOUN_PLURAL_SINGLE_ONLY = "NOUN_PLURAL_SINGLE_ONLY";
+export const NOUN_PLURAL_IRREGULAR = "NOUN_PLURAL_IRREGULAR";
+export const NOUN_PLURAL_GENERAL = "NOUN_PLURAL_GENERAL";
+
 export const verbTypeArray = [
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
+
+  NOUN_PLURAL_EXCEPTION,
+  NOUN_PLURAL_ONLY,
+  NOUN_PLURAL_SINGLE_ONLY,
+  NOUN_PLURAL_IRREGULAR,
+  NOUN_PLURAL_GENERAL,
 ];
+
+
 
 // word.type
 
@@ -85,6 +99,6 @@ export const WORD_TYPE_NUMBER_MINUTE = 'WORD_TYPE_NUMBER_MINUTE';
 // bridge, lake, road
 export const WORD_TYPE_TRAVERSE_OPEN = 'WORD_TYPE_TRAVERSE_OPEN';
 
-// tunnel
+// tunnel, room, 
 export const WORD_TYPE_TRAVERSE_CLOSE = 'WORD_TYPE_TRAVERSE_CLOSE';
 

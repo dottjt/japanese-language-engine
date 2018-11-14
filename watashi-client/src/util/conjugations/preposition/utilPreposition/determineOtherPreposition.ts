@@ -1,14 +1,14 @@
 import {
   createError,
-} from '../../functions';
+} from '../../../functions';
 
 import {
   // CONTEXT_POINT_IN_TIME,
-  // CONTEXT_TIME_PERIOD,
-  // CONTEXT_TIME_FUTURE,
-  // CONTEXT_TIME_PAST,
-  // CONTEXT_TIME_TELLING_TIME,
-} from '../../constants/contextConstants';
+  // CONTEXT_EVENT_PERIOD,
+  // CONTEXT_EVENT_FUTURE,
+  // CONTEXT_EVENT_PAST,
+  // CONTEXT_EVENT_TELLING_TIME,
+} from '../../../constants/contextConstants';
 
 import {
   // WORD_TYPE_DAY_OF_WEEK,
@@ -19,7 +19,7 @@ import {
   // WORD_TYPE_CLOCK_DATE,
   // WORD_TYPE_PERIOD_DESCRIPTOR,
   // WORD_TYPE_NUMBER,
-} from '../../constants/wordConstants';
+} from '../../../constants/wordConstants';
 
 export const determineAgencyPreposition = () => {
   // written by John Keats
