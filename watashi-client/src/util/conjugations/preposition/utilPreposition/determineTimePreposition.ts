@@ -3,96 +3,144 @@ import {
 } from '../../../functions';
 
 import {
-  CONTEXT_POINT_IN_TIME,
-  CONTEXT_EVENT_PERIOD,
-  CONTEXT_EVENT_PRESENT,
-  CONTEXT_EVENT_PAST,
-  CONTEXT_EVENT_FUTURE,
-  CONTEXT_EVENT_TELLING_TIME,
+  CONTEXT_WHEN_PRESENT,
+  CONTEXT_WHEN_PAST,
+  CONTEXT_WHEN_FUTURE,
+  CONTEXT_DURATION_CONTINUOUS,
+  CONTEXT_DURATION_DEFINITE_CONTINUOUS,
+  CONTEXT_DURATION_DEFINITE,
 } from '../../../constants/contextConstants';
 
 import {
-  WORD_TYPE_DAY_OF_WEEK,
-  WORD_TYPE_POINT_OF_DAY,
-  WORD_TYPE_MONTH,
-  WORD_TYPE_SEASON,
-  WORD_TYPE_YEAR_DATE, 
-  WORD_TYPE_CLOCK_DATE,
-  WORD_TYPE_PERIOD_DESCRIPTOR,
-  WORD_TYPE_NUMBER_MINUTE,
-  WORD_TYPE_NUMBER_HOUR,
+  NOUN_TYPE_DAY_OF_WEEK,
+  NOUN_TYPE_POINT_OF_DAY,
+  NOUN_TYPE_MONTH,
+  NOUN_TYPE_SEASON,
+  NOUN_TYPE_YEAR_DATE, 
+  NOUN_TYPE_CLOCK_DATE,
+  NOUN_TYPE_PERIOD_DESCRIPTOR,
+  NOUN_TYPE_NUMBER_MINUTE,
+  NOUN_TYPE_NUMBER_HOUR,
 } from '../../../constants/wordConstants';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
+
+
+export const determineTimePrepositionDayOfWeek = (eventContext): string => {
+  const contextWhen = eventContext.eventWhen;
+  const contextDuration = eventContext.eventDuration;
+
+  // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+  switch(`${contextWhen}${contextDuration}`) {
+    // NOTE: Continuous: Leaving on monday. Definite: Leave on Monday.
+    case `${CONTEXT_WHEN_PRESENT}${CONTEXT_DURATION_CONTINUOUS}`:
+    case `${CONTEXT_WHEN_PRESENT}${CONTEXT_DURATION_DEFINITE}`: 
+      return 'on';
+
+    // NOTE: Continuous: Left on monday. Definite: Leaving since Monday.
+    case `${CONTEXT_WHEN_PAST}${CONTEXT_DURATION_CONTINUOUS}`:
+      return 'since';
+    case `${CONTEXT_WHEN_PAST}${CONTEXT_DURATION_DEFINITE}`: 
+      return 'last';
+
+    // NOTE: Continuous: Will be leaving next Monday. Definite: Will leave next Monday.
+    case `${CONTEXT_WHEN_FUTURE}${CONTEXT_DURATION_CONTINUOUS}`:
+    case `${CONTEXT_WHEN_FUTURE}${CONTEXT_DURATION_DEFINITE}`: 
+      return 'next';
+  };
+};
+
+export const determineTimePrepositionPeriodDescriptor = (eventContext): string => {
+  const contextWhen = eventContext.eventWhen;
+  const contextDuration = eventContext.eventDuration;
+
+  // year, day, week, month
+  switch(`${contextWhen}${contextDuration}`) {
+    // Eat in an hour 
+
+
+    case `${CONTEXT_WHEN_PRESENT}${CONTEXT_DURATION_CONTINUOUS}`:
+    case `${CONTEXT_WHEN_PRESENT}${CONTEXT_DURATION_DEFINITE}`:
+
+    case `${CONTEXT_WHEN_PAST}${CONTEXT_DURATION_CONTINUOUS}`:
+    case `${CONTEXT_WHEN_PAST}${CONTEXT_DURATION_DEFINITE}`: 
+
+    // NOTE: Continuous: Eat for an hour. Definite: Eat in an hour.
+    case `${CONTEXT_WHEN_FUTURE}${CONTEXT_DURATION_CONTINUOUS}`:
+    case `${CONTEXT_WHEN_FUTURE}${CONTEXT_DURATION_DEFINITE}`: 
+      return 'in';
+  };
+};
+
 
 const determineTimePreposition = () => {
 
   // 01 - CONTEXT_POINT_IN_TIME
   if (CONTEXT_POINT_IN_TIME) {
     // on Monday
-    if (WORD_TYPE_DAY_OF_WEEK) {
+    if (NOUN_TYPE_DAY_OF_WEEK) {
       return 'on';
     }
 
     // in an hour / in the morning / in August / in Spring / in 2006
-    if (WORD_TYPE_PERIOD_DESCRIPTOR || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE) {
+    if (NOUN_TYPE_PERIOD_DESCRIPTOR || NOUN_TYPE_POINT_OF_DAY || NOUN_TYPE_MONTH || NOUN_TYPE_SEASON || NOUN_TYPE_YEAR_DATE) {
       return 'in';
     }
 
     // at night / at half past nine
-    if (WORD_TYPE_POINT_OF_DAY || WORD_TYPE_CLOCK_DATE) {
+    if (NOUN_TYPE_POINT_OF_DAY || NOUN_TYPE_CLOCK_DATE) {
       return 'at';
     }
 
     // NOTE: Since "last year" not covered.
     // since 1980 / since half past nine / since Spring / since March / since Monday
-    if (WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE || WORD_TYPE_SEASON || WORD_TYPE_MONTH || WORD_TYPE_DAY_OF_WEEK) {
+    if (NOUN_TYPE_YEAR_DATE || NOUN_TYPE_CLOCK_DATE || NOUN_TYPE_SEASON || NOUN_TYPE_MONTH || NOUN_TYPE_DAY_OF_WEEK) {
       return 'since';
     }
   }
   
-  // 02 - CONTEXT_EVENT_PERIOD
-  if (CONTEXT_EVENT_PERIOD) {
+  // 02 - CONTEXT_WHEN_PERIOD
+  if (CONTEXT_WHEN_PERIOD) {
     // for 2 years / for 1 year
-    if (WORD_TYPE_PERIOD_DESCRIPTOR) {
+    if (NOUN_TYPE_PERIOD_DESCRIPTOR) {
       return 'for';
     }
 
     // 2 years ago / 1 year ago
-    if (WORD_TYPE_PERIOD_DESCRIPTOR && CONTEXT_EVENT_PAST) {
+    if (NOUN_TYPE_PERIOD_DESCRIPTOR && CONTEXT_WHEN_PAST) {
       return 'ago';
     }
   }
 
-  // 03 - CONTEXT_EVENT_PAST
-  if (CONTEXT_EVENT_PAST) {
+  // 03 - CONTEXT_WHEN_PAST
+  if (CONTEXT_WHEN_PAST) {
     // before 2004 / before spring / before night / before tuesday / before half past nine
-    if (WORD_TYPE_DAY_OF_WEEK || WORD_TYPE_POINT_OF_DAY || WORD_TYPE_MONTH || WORD_TYPE_SEASON || WORD_TYPE_YEAR_DATE || WORD_TYPE_CLOCK_DATE) {
+    if (NOUN_TYPE_DAY_OF_WEEK || NOUN_TYPE_POINT_OF_DAY || NOUN_TYPE_MONTH || NOUN_TYPE_SEASON || NOUN_TYPE_YEAR_DATE || NOUN_TYPE_CLOCK_DATE) {
       return 'before';
     }
   }
 
-  // 04 - CONTEXT_EVENT_TELLING_TIME
-  // if (CONTEXT_EVENT_TELLING_TIME) {
+  // 04 - CONTEXT_WHEN_TELLING_TIME
+  // if (CONTEXT_WHEN_TELLING_TIME) {
   //   // I have no idea how this should really work. 
   //   // ten to six (5:50)
-  //   if (WORD_TYPE_NUMBER_MINUTE) {
+  //   if (NOUN_TYPE_NUMBER_MINUTE) {
   //     return 'to';
   //   }
 
   //   // ten past six (6:10)
-  //   if (WORD_TYPE_NUMBER_HOUR) {
+  //   if (NOUN_TYPE_NUMBER_HOUR) {
   //     return 'past';
   //   }
   // }
 
-  // 05 - CONTEXT_EVENT_PRESENT
-  if (CONTEXT_EVENT_PRESENT) {
+  // 05 - CONTEXT_WHEN_PRESENT
+  if (CONTEXT_WHEN_PRESENT) {
 
   }
 
-  // 06 - CONTEXT_EVENT_FUTURE
-  if (CONTEXT_EVENT_FUTURE) {
+  // 06 - CONTEXT_WHEN_FUTURE
+  if (CONTEXT_WHEN_FUTURE) {
 
   }
 

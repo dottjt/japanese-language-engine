@@ -7,13 +7,13 @@ import {
   CONTEXT_DIRECTION_TOWARD,
   CONTEXT_DIRECTION_AWAY,
   
-  CONTEXT_Y_DESTINATION_ABOVE,
-  CONTEXT_DESTINATION_INSIDE,
+  CONTEXT_Y_TOPIC_DESTINATION_ABOVE,
+  CONTEXT_TOPIC_DESTINATION_INSIDE,
 } from '../../../constants/contextConstants';
 
 import {
-  WORD_TYPE_TRAVERSE_OPEN,
-  WORD_TYPE_TRAVERSE_CLOSE,
+  NOUN_TYPE_TRAVERSE_OPEN,
+  NOUN_TYPE_TRAVERSE_CLOSE,
 } from '../../../constants/wordConstants';
 
 const determineDirectionPreposition = () => {
@@ -22,24 +22,24 @@ const determineDirectionPreposition = () => {
   if (CONTEXT_X_DIRECTION_ACROSS) {
     // walk across the bridge
     // swim across the lake
-    if (WORD_TYPE_TRAVERSE_OPEN) {
+    if (NOUN_TYPE_TRAVERSE_OPEN) {
       return 'across';
     }
 
     // drive through the tunnel
-    if (WORD_TYPE_TRAVERSE_CLOSE) {
+    if (NOUN_TYPE_TRAVERSE_CLOSE) {
       return 'through';
     }
   }
   
   if (CONTEXT_DIRECTION_TOWARD) {
     // go into the kitchen
-    if (CONTEXT_DESTINATION_INSIDE) {
+    if (CONTEXT_TOPIC_DESTINATION_INSIDE) {
       return 'into';
     };
 
     // jump onto the table
-    if (CONTEXT_Y_DESTINATION_ABOVE) {
+    if (CONTEXT_Y_TOPIC_DESTINATION_ABOVE) {
       return 'onto';
     }
 

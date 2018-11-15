@@ -5,6 +5,7 @@ import {
 
 import {
   filtersentenceType,
+  returnSentenceParts,
 } from '../utilConjugation';
 
 
@@ -17,17 +18,20 @@ import {
 } from '../../constants/optionsConstants';
 
 import {
-  PREPOSITION_TYPE_TIME,
-  PREPOSITION_TYPE_PLACE,
-  PREPOSITION_TYPE_DIRECTION,
-  PREPOSITION_TYPE_AGENCY,
-  PREPOSITION_TYPE_PURPOSE,
-  PREPOSITION_TYPE_REASON,
-  PREPOSITION_TYPE_CONNECTION,
-  PREPOSITION_TYPE_ORIGIN,
-} from '../../constants/contextConstants';
+  NOUN_TYPE_DAY_OF_WEEK,
+  NOUN_TYPE_PERIOD_DESCRIPTOR,
+  NOUN_TYPE_POINT_OF_DAY,
+  NOUN_TYPE_MONTH,
+  NOUN_TYPE_SEASON,
+  NOUN_TYPE_YEAR_DATE,
+  NOUN_TYPE_CLOCK_DATE,
+} from '../../constants/wordConstants';
 
-import determineTimePreposition from './utilPreposition/determineTimePreposition';
+import {
+  determineTimePrepositionDayOfWeek,
+  determineTimePrepositionPeriodDescriptor,
+} from './utilPreposition/determineTimePreposition';
+
 import determinePlacePreposition from './utilPreposition/determinePlacePreposition';
 import determineDirectionPreposition from './utilPreposition/determineDirectionPreposition';
 
@@ -39,43 +43,31 @@ import {
   determineOriginPreposition,  
 } from './utilPreposition/determineOtherPreposition';
 
-// I think I need to keep in count sentence structure as well to determine what these things mean.
 
-
-const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
+const determinePreposition = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   // maybe themes are the bridge between subject and context. 
-  // So, nouns can only have certain traits. And if they fulfil them, then they are selected. 
+  const { topic, subject, verb } = returnSentenceParts(words);
 
-
-  // different types of subjectContext as well
-  // Monday // what is the subjectContext of this?
-  const subjectContext = {
-    wordType: 'Date',
-    // internalState: "CONTEXT_INTERNAL_STATE_WORKING",
-    positionRelative: "CONTEXT_TOPIC_RELATIVE_DESTINATION_INSIDE",
-    direction: "CONTEXT_DIRECTION_TOWARD",
-    quantity: "CONTEXT_QUANTITY_SINGLE",
-    time: "CONTEXT_EVENT_PRESENT",
-    // possession: "him, her etc. "
-    physicalContact: '' // yes, no.
+  // figure out monday.
+  const eventContext = {
+    topicPosition: 'CONTEXT_TOPIC_POSITION_NEAR',
+    topicDestination: "CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_INSIDE",
+    eventDirection: "CONTEXT_DIRECTION_TOWARD",  
+    eventWhen: 'CONTEXT_WHEN_PRESENT',
+    eventDuration: 'CONTEXT_DURATION_DEFINITE',
+    subjectConnection: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
   };
-  // Car // what is the subjectContext of this?
 
-
-  type: CONTEXT_TYPE_TIME
-
-
-
-  // I ran inside the house // CONTEXT
-  // run towards the house
-  // run after the house
-
-  const verbWord = "run";
-
-  const subjectWord = "house"; 
-  
-  switch(verbContext.type) {
-    case PREPOSITION_TYPE_TIME: return determineTimePreposition();
+  switch(subjectWord.metaType.nounType) {
+    case NOUN_TYPE_DAY_OF_WEEK: return determineTimePrepositionDayOfWeek(eventContext);
+    case NOUN_TYPE_PERIOD_DESCRIPTOR: return determineTimePrepositionPeriodDescriptor(eventContext);
+    case NOUN_TYPE_POINT_OF_DAY: 
+    case NOUN_TYPE_MONTH: 
+    case NOUN_TYPE_SEASON: 
+    case NOUN_TYPE_YEAR_DATE:  
+    case NOUN_TYPE_CLOCK_DATE:   
+      return determineTimePreposition();
+    
     case PREPOSITION_TYPE_PLACE: return determinePlacePreposition();
     case PREPOSITION_TYPE_DIRECTION: return determineDirectionPreposition();
     case PREPOSITION_TYPE_AGENCY: return determineAgencyPreposition();
@@ -85,7 +77,7 @@ const determinePreposition = (verb: Util.Word, subject: Util.Word) => {
     case PREPOSITION_TYPE_ORIGIN: return determineOriginPreposition();
   }
 
-  const outcome = "run to the house"; // CONTEXT_TOPIC_RELATIVE_DESTINATION_NEAR
+  const outcome = "run to the house"; // CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_NEAR
 };
 
 //   // a function that figures out which preposition it is, based on both the verb and the subject
