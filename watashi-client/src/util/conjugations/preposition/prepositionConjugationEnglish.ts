@@ -18,6 +18,7 @@ import {
 } from '../../constants/optionsConstants';
 
 import {
+  // 
   NOUN_TYPE_DAY_OF_WEEK,
   NOUN_TYPE_PERIOD_DESCRIPTOR,
   NOUN_TYPE_POINT_OF_DAY,
@@ -25,6 +26,10 @@ import {
   NOUN_TYPE_SEASON,
   NOUN_TYPE_YEAR_DATE,
   NOUN_TYPE_CLOCK_DATE,
+
+  // place
+  NOUN_TYPE_SPACE,
+  NOUN_TYPE_ABSTRACT,
 } from '../../constants/wordConstants';
 
 import {
@@ -47,7 +52,7 @@ import {
 
 const determinePreposition = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   // maybe themes are the bridge between subject and context. 
-  const { topic, subject, verb } = returnSentenceParts(words);
+  // const { topic, subject, verb } = returnSentenceParts(words);
 
   // figure out monday.
   const eventContext = {
@@ -75,8 +80,13 @@ const determinePreposition = (words: Util.SentenceWords, options: Util.Options, 
     
     case NOUN_TYPE_CLOCK_DATE:   
 
+    // Place Prepositions
+    case NOUN_TYPE_SPACE:
+      return determinePlacePreposition(eventContext);
 
-    case PREPOSITION_TYPE_PLACE: return determinePlacePreposition();
+    // case NOUN_TYPE_ABSTRACT:
+
+    case PREPOSITION_TYPE_PLACE: return 
     case PREPOSITION_TYPE_DIRECTION: return determineDirectionPreposition();
     case PREPOSITION_TYPE_AGENCY: return determineAgencyPreposition();
     case PREPOSITION_TYPE_PURPOSE: return determinePurposePreposition();
