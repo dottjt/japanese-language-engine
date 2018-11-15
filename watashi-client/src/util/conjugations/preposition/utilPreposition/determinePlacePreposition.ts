@@ -7,6 +7,7 @@ import {
   CONTEXT_TOPIC_POSITION_FAR,
   CONTEXT_TOPIC_POSITION_AT,
   CONTEXT_TOPIC_POSITION_INSIDE,
+
   CONTEXT_TOPIC_DESTINATION_NONE,
   CONTEXT_Y_TOPIC_DESTINATION_ABOVE,
   CONTEXT_Y_TOPIC_DESTINATION_BELOW,
@@ -19,6 +20,7 @@ import {
   CONTEXT_TOPIC_DESTINATION_THROUGH,
   CONTEXT_TOPIC_DESTINATION_INSIDE,
   CONTEXT_TOPIC_DESTINATION_OUTSIDE,
+  
   CONTEXT_DIRECTION_NONE,
   CONTEXT_DIRECTION_TOWARD,
   CONTEXT_DIRECTION_AWAY,
@@ -40,81 +42,102 @@ export const determineTimePrepositionDayOfWeek = (eventContext): string => {
   const contextTopicDestination = eventContext.topicDestination;
   const contextEventDirection = eventContext.eventDirection;
 
+  
+  CONTEXT_TOPIC_POSITION_FAR
+  CONTEXT_TOPIC_POSITION_AT
+  CONTEXT_TOPIC_POSITION_INSIDE
+
   // Car, London
-
-  if(CONTEXT_DIRECTION_NONE) {
-    if (CONTEXT_TOPIC_POSITION_NEAR) {
-      switch(`${contextTopicDestination}`) {
-        case `${CONTEXT_TOPIC_DESTINATION_NONE}`: return 'right near';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'right above';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'right below';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'right behind';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT}`: return 'right in front';
-        case `${CONTEXT_TOPIC_DESTINATION_ALONG}`: return 'right along';
-        case `${CONTEXT_TOPIC_DESTINATION_BESIDE}`: return 'right beside';
-        case `${CONTEXT_TOPIC_DESTINATION_WITH}`: return 'right with';
-        case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'right between';
-        case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'right throughout';
-        case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'right inside';
-        case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'right outside';
+  // I am right near London.
+  if (contextTopicDestination === CONTEXT_TOPIC_DESTINATION_NONE) {
+    if (contextTopicPosition === CONTEXT_TOPIC_POSITION_NEAR) {
+      switch(contextEventDirection) {
+        case CONTEXT_DIRECTION_NONE: return '';
+        case CONTEXT_DIRECTION_TOWARD: return '';
+        case CONTEXT_DIRECTION_AWAY: return '';
+        case CONTEXT_Y_DIRECTION_UP: return '';
+        case CONTEXT_Y_DIRECTION_DOWN: return '';
+        case CONTEXT_X_DIRECTION_LEFT: return '';
+        case CONTEXT_X_DIRECTION_RIGHT: return '';
+        case CONTEXT_X_DIRECTION_ACROSS: return '';
       }
     }
 
-    if (CONTEXT_TOPIC_POSITION_FAR) {
-      switch(`${contextTopicDestination}`) {
-        case `${CONTEXT_TOPIC_DESTINATION_NONE}`: return 'far from';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'far above';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'far below';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'far behind';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT}`: return 'far in front';
-        case `${CONTEXT_TOPIC_DESTINATION_ALONG}`: return 'far along';
-        case `${CONTEXT_TOPIC_DESTINATION_BESIDE}`: return 'far beside';
-        case `${CONTEXT_TOPIC_DESTINATION_WITH}`: return 'far with';
-        case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'far between';
-        case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'far throughout';
-        case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'far inside';
-        case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'far outside';
+    if (contextTopicPosition === CONTEXT_TOPIC_POSITION_FAR) {
+      switch(contextEventDirection) {
+        case CONTEXT_DIRECTION_NONE: return '';
+        case CONTEXT_DIRECTION_TOWARD: return '';
+        case CONTEXT_DIRECTION_AWAY: return '';
+        case CONTEXT_Y_DIRECTION_UP: return '';
+        case CONTEXT_Y_DIRECTION_DOWN: return '';
+        case CONTEXT_X_DIRECTION_LEFT: return '';
+        case CONTEXT_X_DIRECTION_RIGHT: return '';
+        case CONTEXT_X_DIRECTION_ACROSS: return '';
       }
     }
 
-    if (CONTEXT_TOPIC_POSITION_AT) {
-      switch(`${contextTopicDestination}`) {
-        case `${CONTEXT_TOPIC_DESTINATION_NONE}`: return 'at';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'above';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'below';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'behind';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT}`: return 'in front';
-        case `${CONTEXT_TOPIC_DESTINATION_ALONG}`: return 'along';
-        case `${CONTEXT_TOPIC_DESTINATION_BESIDE}`: return 'beside';
-        case `${CONTEXT_TOPIC_DESTINATION_WITH}`: return 'with';
-        case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'between';
-        case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'throughout';
-        case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'inside';
-        case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'outside';  
+    if (contextTopicPosition === CONTEXT_TOPIC_POSITION_AT) {
+      switch(contextEventDirection) {
+        case CONTEXT_DIRECTION_NONE: return '';
+        case CONTEXT_DIRECTION_TOWARD: return '';
+        case CONTEXT_DIRECTION_AWAY: return '';
+        case CONTEXT_Y_DIRECTION_UP: return '';
+        case CONTEXT_Y_DIRECTION_DOWN: return '';
+        case CONTEXT_X_DIRECTION_LEFT: return '';
+        case CONTEXT_X_DIRECTION_RIGHT: return '';
+        case CONTEXT_X_DIRECTION_ACROSS: return '';
       }
     }
 
-    if (CONTEXT_TOPIC_POSITION_INSIDE) {
-      switch(`${contextTopicDestination}`) {
-        case `${CONTEXT_TOPIC_DESTINATION_NONE}`: return 'inside London';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'from inside above';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'from inside below';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'from inside behind';
-        case `${CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT}`: return 'from inside in front';
-        case `${CONTEXT_TOPIC_DESTINATION_ALONG}`: return 'from inside along';
-        case `${CONTEXT_TOPIC_DESTINATION_BESIDE}`: return 'from inside beside';
-        case `${CONTEXT_TOPIC_DESTINATION_WITH}`: return 'from inside with';
-        case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'from inside between';
-        case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'from inside throughout';
-        case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'from inside inside';
-        case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'from inside outside';
+    if (contextTopicPosition === CONTEXT_TOPIC_POSITION_INSIDE) {
+      switch(contextEventDirection) {
+        case CONTEXT_DIRECTION_NONE: return '';
+        case CONTEXT_DIRECTION_TOWARD: return '';
+        case CONTEXT_DIRECTION_AWAY: return '';
+        case CONTEXT_Y_DIRECTION_UP: return '';
+        case CONTEXT_Y_DIRECTION_DOWN: return '';
+        case CONTEXT_X_DIRECTION_LEFT: return '';
+        case CONTEXT_X_DIRECTION_RIGHT: return '';
+        case CONTEXT_X_DIRECTION_ACROSS: return '';
       }
     }
+  }
 
-  // anything other than CONTEXT_DIRECTION_NONE
-  } else if (CONTEXT_DIRECTION_TOWARD) {
+  // 
+  if (CONTEXT_TOPIC_POSITION_NEAR) {
     switch(`${contextTopicDestination}`) {
-      case `${CONTEXT_TOPIC_DESTINATION_NONE}`: return 'to';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'right above';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'right below';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'right behind';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT}`: return 'right in front';
+      case `${CONTEXT_TOPIC_DESTINATION_ALONG}`: return 'right along';
+      case `${CONTEXT_TOPIC_DESTINATION_BESIDE}`: return 'right beside';
+      case `${CONTEXT_TOPIC_DESTINATION_WITH}`: return 'right with';
+      case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'right between';
+      case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'right throughout';
+      case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'right inside';
+      case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'right outside of';  // out of 
+    }
+  }
+
+  if (CONTEXT_TOPIC_POSITION_FAR) {
+    switch(`${contextTopicDestination}`) {
+      case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'far above';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'far below';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'far behind';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT}`: return 'far in front';
+      case `${CONTEXT_TOPIC_DESTINATION_ALONG}`: return 'far along';
+      case `${CONTEXT_TOPIC_DESTINATION_BESIDE}`: return 'far beside';
+      case `${CONTEXT_TOPIC_DESTINATION_WITH}`: return 'far with';
+      case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'far between';
+      case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'far throughout';
+      case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'far inside';
+      case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'far outside of'; // out of 
+    }
+  }
+
+  if (CONTEXT_TOPIC_POSITION_AT) {
+    switch(`${contextTopicDestination}`) {
       case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'above';
       case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'below';
       case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'behind';
@@ -125,37 +148,25 @@ export const determineTimePrepositionDayOfWeek = (eventContext): string => {
       case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'between';
       case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'throughout';
       case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'inside';
-      case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'outside';
+      case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'outside of'; // out of 
     }
-  } else if () {
-
   }
 
-    // DIRECTION TOWARDS
-
-    // run above London
-  
-    // topic direction
-    CONTEXT_DIRECTION_NONE
-    CONTEXT_DIRECTION_TOWARD
-    CONTEXT_DIRECTION_AWAY
-    CONTEXT_Y_DIRECTION_UP
-    CONTEXT_Y_DIRECTION_DOWN
-    CONTEXT_X_DIRECTION_LEFT
-    CONTEXT_X_DIRECTION_RIGHT
-    CONTEXT_X_DIRECTION_ACROSS
-
-    // in London. 
-    case `${CONTEXT_WHEN_PRESENT}${CONTEXT_DURATION_CONTINUOUS}`:
-
-
-
-
-    case `${CONTEXT_WHEN_PAST}${CONTEXT_DURATION_CONTINUOUS}`:
-    case `${CONTEXT_WHEN_PAST}${CONTEXT_DURATION_DEFINITE}`: 
-    case `${CONTEXT_WHEN_FUTURE}${CONTEXT_DURATION_CONTINUOUS}`:
-    case `${CONTEXT_WHEN_FUTURE}${CONTEXT_DURATION_DEFINITE}`: 
-  };
+  if (CONTEXT_TOPIC_POSITION_INSIDE) {
+    switch(`${contextTopicDestination}`) {
+      case `${CONTEXT_Y_TOPIC_DESTINATION_ABOVE}`: return 'from inside above';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_BELOW}`: return 'from inside below';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_BEHIND}`: return 'from inside behind';
+      case `${CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT}`: return 'from inside in front';
+      case `${CONTEXT_TOPIC_DESTINATION_ALONG}`: return 'from inside along';
+      case `${CONTEXT_TOPIC_DESTINATION_BESIDE}`: return 'from inside beside';
+      case `${CONTEXT_TOPIC_DESTINATION_WITH}`: return 'from inside with';
+      case `${CONTEXT_TOPIC_DESTINATION_BETWEEN}`: return 'from inside between';
+      case `${CONTEXT_TOPIC_DESTINATION_THROUGH}`: return 'from inside throughout';
+      case `${CONTEXT_TOPIC_DESTINATION_INSIDE}`: return 'from inside inside';
+      case `${CONTEXT_TOPIC_DESTINATION_OUTSIDE}`: return 'from inside outside';
+    }
+  }
 };
 
 
@@ -166,10 +177,6 @@ const determinePlacePreposition = () => {
     return 'in'; // inside, within
   }
 
-  // outside the house
-  if (CONTEXT_TOPIC_POSITION_NEAR || CONTEXT_TOPIC_POSITION_FAR || CONTEXT_TOPIC_POSITION_AT) {
-    return 'out of'; // outside of
-  }
 
   // the fish are below the surface - the bag is under the table
   if (CONTEXT_Y_TOPIC_DESTINATION_BELOW) {
