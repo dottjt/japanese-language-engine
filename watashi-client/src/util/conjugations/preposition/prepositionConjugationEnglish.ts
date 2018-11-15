@@ -29,6 +29,7 @@ import {
 
 import {
   determineTimePrepositionDayOfWeek,
+  determineTimePrepositionMonthSeasonDate,
   determineTimePrepositionPeriodDescriptor,
 } from './utilPreposition/determineTimePreposition';
 
@@ -59,15 +60,22 @@ const determinePreposition = (words: Util.SentenceWords, options: Util.Options, 
   };
 
   switch(subjectWord.metaType.nounType) {
-    case NOUN_TYPE_DAY_OF_WEEK: return determineTimePrepositionDayOfWeek(eventContext);
-    case NOUN_TYPE_PERIOD_DESCRIPTOR: return determineTimePrepositionPeriodDescriptor(eventContext);
+    // Time Prepositions
+    case NOUN_TYPE_DAY_OF_WEEK: 
+      return determineTimePrepositionDayOfWeek(eventContext);
+
+    case NOUN_TYPE_PERIOD_DESCRIPTOR:
     case NOUN_TYPE_POINT_OF_DAY: 
+      return determineTimePrepositionPeriodDescriptor(eventContext);
+   
     case NOUN_TYPE_MONTH: 
     case NOUN_TYPE_SEASON: 
     case NOUN_TYPE_YEAR_DATE:  
-    case NOUN_TYPE_CLOCK_DATE:   
-      return determineTimePreposition();
+      return determineTimePrepositionMonthSeasonDate(eventContext);
     
+    case NOUN_TYPE_CLOCK_DATE:   
+
+
     case PREPOSITION_TYPE_PLACE: return determinePlacePreposition();
     case PREPOSITION_TYPE_DIRECTION: return determineDirectionPreposition();
     case PREPOSITION_TYPE_AGENCY: return determineAgencyPreposition();

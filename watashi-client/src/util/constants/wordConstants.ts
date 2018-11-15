@@ -79,8 +79,11 @@ export const ADJECTIVE_ARTICLE_DISTRIBUTIVE = 'ADJECTIVE_ARTICLE_DISTRIBUTIVE';
 // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 export const NOUN_TYPE_DAY_OF_WEEK = 'NOUN_TYPE_DAY_OF_WEEK';
 
-// Night, Morning, Afternoon, Evening
+// Morning, Afternoon, Evening
 export const NOUN_TYPE_POINT_OF_DAY = 'NOUN_TYPE_POINT_OF_DAY';
+
+// Night
+export const NOUN_TYPE_POINT_OF_DAY_NIGHT = 'NOUN_TYPE_POINT_OF_DAY_NIGHT';
 
 // January, February, March, April, May, June, July, August, September, October, November, December
 export const NOUN_TYPE_MONTH = 'NOUN_TYPE_MONTH';
