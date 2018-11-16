@@ -15,25 +15,28 @@ import {
 
 import {
   CONJUGATION_TYPE_PREPOSITION_ENGLISH,
-
   ENGLISH_PREPOSITION,
 } from '../../constants/optionsConstants';
 
+import {
+  CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,
+  CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION,
+} from '../../constants/contextConstants';
 
 
 import {
-  // 
   NOUN_TYPE_DAY_OF_WEEK,
   NOUN_TYPE_PERIOD_DESCRIPTOR,
   NOUN_TYPE_POINT_OF_DAY,
   NOUN_TYPE_MONTH,
   NOUN_TYPE_SEASON,
   NOUN_TYPE_YEAR_DATE,
-  NOUN_TYPE_CLOCK_DATE,
+  // NOUN_TYPE_CLOCK_DATE,
 
   // place
   NOUN_TYPE_SPACE,
-  NOUN_TYPE_ABSTRACT,
+  // NOUN_TYPE_ABSTRACT,
+
 } from '../../constants/wordConstants';
 
 import {
@@ -43,12 +46,11 @@ import {
 } from './utilPreposition/determineTimePreposition';
 
 import determinePlacePreposition from './utilPreposition/determinePlacePreposition';
+
 import {
-  determineAgencyPreposition,
-  determinePurposePreposition,
-  determineReasonPreposition,
-  determineConnectionPreposition,
-  determineOriginPreposition,  
+  determineAgencyPurposeReasonPreposition,
+  // determineConnectionPreposition,
+  // determineOriginPreposition,  
 } from './utilPreposition/determineOtherPreposition';
 
 
@@ -64,6 +66,7 @@ const determinePreposition = (words: Util.SentenceWords, options: Util.Options, 
     eventWhen: 'CONTEXT_WHEN_PRESENT',
     eventDuration: 'CONTEXT_DURATION_DEFINITE',
     subjectConnection: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
+    subjectRole: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
   };
 
   switch(subjectWord.metaType.nounType) {
@@ -79,26 +82,18 @@ const determinePreposition = (words: Util.SentenceWords, options: Util.Options, 
     case NOUN_TYPE_SEASON: 
     case NOUN_TYPE_YEAR_DATE:  
       return createWord(determineTimePrepositionMonthSeasonDate(eventContext), ENGLISH_PREPOSITION);
-    
 
     // Place Prepositions
     case NOUN_TYPE_SPACE:
-      return createWord(determinePlacePreposition(eventContext), ENGLISH_PREPOSITION);
-    
-    // case NOUN_TYPE_CLOCK_DATE:   
-      // NOTE: This requires attention yo.
-
+      if (eventContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_INDEPENDENT) {
+        return createWord(determinePlacePreposition(eventContext), ENGLISH_PREPOSITION);
+      }
+      if (eventContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION) {
+        return createWord(determineAgencyPurposeReasonPreposition(eventContext), ENGLISH_PREPOSITION);
+      }
     // case NOUN_TYPE_ABSTRACT:
-    // NOTE: Maybe I can treat time as if it's an abstract concept? Yes motherfucker.
-
-    case PREPOSITION_TYPE_AGENCY: return createWord(determineAgencyPreposition(eventContext), ENGLISH_PREPOSITION);
-    case PREPOSITION_TYPE_PURPOSE: return createWord(determinePurposePreposition(eventContext), ENGLISH_PREPOSITION);
-    case PREPOSITION_TYPE_REASON: return createWord(determineReasonPreposition(eventContext), ENGLISH_PREPOSITION);
-    case PREPOSITION_TYPE_CONNECTION: return createWord(determineConnectionPreposition(eventContext), ENGLISH_PREPOSITION);
-    case PREPOSITION_TYPE_ORIGIN: return createWord(determineOriginPreposition(eventContext), ENGLISH_PREPOSITION);
+    // NOTE: Maybe I can treat time/CLOCK_TYPE as if it's an abstract concept? Yes motherfucker.
   }
-
-  const outcome = "run to the house"; // CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_NEAR
 };
 
 //   // a function that figures out which preposition it is, based on both the verb and the subject

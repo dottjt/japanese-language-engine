@@ -6,6 +6,7 @@ export const sentenceTypes = `
 
   type TypeMeta {
     verbType?: String
+    nounType?: String
   }
 
   type Word {

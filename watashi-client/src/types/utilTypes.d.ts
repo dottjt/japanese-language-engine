@@ -44,7 +44,7 @@ declare namespace Util {
 
   export type MetaType = {
     verbType?: string;
-    // verbPrepositionType?: string;
+    nounType?: string;
     __typename: string;
   };
 
@@ -202,6 +202,17 @@ declare namespace Util {
   };
 
 
+  export type SentenceContext = {
+    topicPosition: string,
+    topicDestination: string,
+    eventDirection: string,
+    eventWhen: string,
+    eventDuration: string,
+    subjectConnection: string,
+    subjectRole: string,
+  }
+
+
   // MISC
 
   export type IButtonValues = {
@@ -209,3 +220,5 @@ declare namespace Util {
     selected: boolean,
   };
 }
+
+

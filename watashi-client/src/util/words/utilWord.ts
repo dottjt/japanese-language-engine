@@ -5,7 +5,7 @@ import {
   __TYPENAME_JAPANESE,
 } from '../constants/typeNameConstants';
 
-export const createWord = ({ primaryType, verbType, category, kanji, hiragana, furigana, presentTense, presentParticiple, simplePast, pastParticiple }: any) => ({
+export const createWord = ({ primaryType, verbType, nounType, category, kanji, hiragana, furigana, presentTense, presentParticiple, simplePast, pastParticiple }: any) => ({
   japanese: { 
     kanji,
     hiragana,
@@ -21,10 +21,9 @@ export const createWord = ({ primaryType, verbType, category, kanji, hiragana, f
   },
   primaryType,
   category,
-  
   meta: {
     verbType,
-    // verbPrepositionType,
+    nounType,
     __typename: __TYPENAME_META,
   },
   __typename: __TYPENAME_WORD,
