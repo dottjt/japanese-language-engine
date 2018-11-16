@@ -5,9 +5,9 @@ import {
 
 import {
   filtersentenceType,
-  returnSentenceParts,
+  // returnSentenceParts,
+  createWord,
 } from '../utilConjugation';
-
 
 import {
   __TYPENAME_CONJUGATED_ENGLISH_PREPOSITION,
@@ -15,7 +15,11 @@ import {
 
 import {
   CONJUGATION_TYPE_PREPOSITION_ENGLISH,
+
+  ENGLISH_PREPOSITION,
 } from '../../constants/optionsConstants';
+
+
 
 import {
   // 
@@ -39,8 +43,6 @@ import {
 } from './utilPreposition/determineTimePreposition';
 
 import determinePlacePreposition from './utilPreposition/determinePlacePreposition';
-import determineDirectionPreposition from './utilPreposition/determineDirectionPreposition';
-
 import {
   determineAgencyPreposition,
   determinePurposePreposition,
@@ -67,32 +69,33 @@ const determinePreposition = (words: Util.SentenceWords, options: Util.Options, 
   switch(subjectWord.metaType.nounType) {
     // Time Prepositions
     case NOUN_TYPE_DAY_OF_WEEK: 
-      return determineTimePrepositionDayOfWeek(eventContext);
+      return createWord(determineTimePrepositionDayOfWeek(eventContext), ENGLISH_PREPOSITION);
 
     case NOUN_TYPE_PERIOD_DESCRIPTOR:
     case NOUN_TYPE_POINT_OF_DAY: 
-      return determineTimePrepositionPeriodDescriptor(eventContext);
+      return createWord(determineTimePrepositionPeriodDescriptor(eventContext), ENGLISH_PREPOSITION);
    
     case NOUN_TYPE_MONTH: 
     case NOUN_TYPE_SEASON: 
     case NOUN_TYPE_YEAR_DATE:  
-      return determineTimePrepositionMonthSeasonDate(eventContext);
+      return createWord(determineTimePrepositionMonthSeasonDate(eventContext), ENGLISH_PREPOSITION);
     
-    case NOUN_TYPE_CLOCK_DATE:   
 
     // Place Prepositions
     case NOUN_TYPE_SPACE:
-      return determinePlacePreposition(eventContext);
+      return createWord(determinePlacePreposition(eventContext), ENGLISH_PREPOSITION);
+    
+    // case NOUN_TYPE_CLOCK_DATE:   
+      // NOTE: This requires attention yo.
 
     // case NOUN_TYPE_ABSTRACT:
+    // NOTE: Maybe I can treat time as if it's an abstract concept? Yes motherfucker.
 
-    case PREPOSITION_TYPE_PLACE: return 
-    case PREPOSITION_TYPE_DIRECTION: return determineDirectionPreposition();
-    case PREPOSITION_TYPE_AGENCY: return determineAgencyPreposition();
-    case PREPOSITION_TYPE_PURPOSE: return determinePurposePreposition();
-    case PREPOSITION_TYPE_REASON: return determineReasonPreposition();
-    case PREPOSITION_TYPE_CONNECTION: return determineConnectionPreposition();
-    case PREPOSITION_TYPE_ORIGIN: return determineOriginPreposition();
+    case PREPOSITION_TYPE_AGENCY: return createWord(determineAgencyPreposition(eventContext), ENGLISH_PREPOSITION);
+    case PREPOSITION_TYPE_PURPOSE: return createWord(determinePurposePreposition(eventContext), ENGLISH_PREPOSITION);
+    case PREPOSITION_TYPE_REASON: return createWord(determineReasonPreposition(eventContext), ENGLISH_PREPOSITION);
+    case PREPOSITION_TYPE_CONNECTION: return createWord(determineConnectionPreposition(eventContext), ENGLISH_PREPOSITION);
+    case PREPOSITION_TYPE_ORIGIN: return createWord(determineOriginPreposition(eventContext), ENGLISH_PREPOSITION);
   }
 
   const outcome = "run to the house"; // CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_NEAR
