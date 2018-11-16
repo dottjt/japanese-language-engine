@@ -38,16 +38,6 @@ const GET_EVERYTHING = gql`{
     question
     themes
   }
-
-  sentenceContext @client {
-    topicPosition
-    topicDestination
-    eventDirection
-    eventWhen
-    eventDuration
-    subjectConnection
-    subjectRole
-  }
   
   preModifiers @client {
     topicNo
@@ -56,6 +46,16 @@ const GET_EVERYTHING = gql`{
     topicAdverb
     subjectAdjective
     subjectAdverb
+  }
+  
+  preSentenceContext @client {
+    topicPosition
+    topicDestination
+    eventDirection
+    eventWhen
+    eventDuration
+    subjectConnection
+    subjectRole
   }
 
   nouns @client {
@@ -72,6 +72,8 @@ const GET_EVERYTHING = gql`{
     category
     meta @client {
       verbType
+      nounType
+      nounPluralType
     }
   }
 
@@ -105,6 +107,8 @@ const GET_EVERYTHING = gql`{
         category
         meta @client {
           verbType
+          nounType
+          nounPluralType
         }
       }
     }
@@ -146,6 +150,8 @@ const GET_EVERYTHING = gql`{
         category
         meta @client {
           verbType
+          nounType
+          nounPluralType
         }
       }
     }

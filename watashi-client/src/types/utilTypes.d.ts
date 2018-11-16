@@ -45,6 +45,7 @@ declare namespace Util {
   export type MetaType = {
     verbType?: string;
     nounType?: string;
+    nounPluralType: string;
     __typename: string;
   };
 
@@ -209,7 +210,6 @@ declare namespace Util {
     eventDuration: string,
     subjectConnection: string,
     subjectRole: string,
-    sentenceContext: string,
     __typename: string,
   }
 

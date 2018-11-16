@@ -60,7 +60,7 @@ const generateJapaneseWord = (words: Util.SentenceWords, modifiers: Util.Sentenc
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateJapaneseWord', 'sentenceType does not exist'));
 };
 
-const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options): Util.EnglishJapaneseSentence => {
+const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, sentenceContext: Util.SentenceContext, options: Util.Options): Util.EnglishJapaneseSentence => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const { onlyTopic, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
   
@@ -119,16 +119,19 @@ const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWord
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateSentences', 'sentenceType does not exist'));
 };
 
-const generateSentences = (words: Util.Word[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
+const generateSentences = (words: Util.Word[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, sentenceContextLambda: () => Util.SentenceContext, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
 
     const options = optionsLambda();
     const modifiers = modifiersLambda();
+    const sentenceContext = sentenceContextLambda();
+
+    console.log(sentenceContext);
 
     const variationWords = generateWords(words, options);
     const modifierWords = generateWordModifiers(words, modifiers);
 
-    const { englishSentence, japaneseSentence } = generatePhrases(variationWords(), modifierWords, options);
+    const { englishSentence, japaneseSentence } = generatePhrases(variationWords(), modifierWords, sentenceContext, options);
 
     return {
       options,

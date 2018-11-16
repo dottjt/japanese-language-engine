@@ -15,8 +15,11 @@ import { createWord } from '../utilWord';
 export const wordEat = createWord({
   primaryType: PRIMARY_TYPE_VERB,
   verbType: SENTENCE_TYPE_VERB_TYPE_RU, // action, transitive
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   // verbPrepositionType: 'NA',
   category: [ CATEGORY_FOOD, CATEGORY_HUMAN_ACTION ],
+  
   kanji: '食べる',
   hiragana: 'たべる',
   furigana: 'taberu',
@@ -29,6 +32,8 @@ export const wordEat = createWord({
 export const wordSleep = createWord({
   primaryType: PRIMARY_TYPE_VERB,
   verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   // verbPrepositionType: 'NA',
   category: [ CATEGORY_HUMAN_ACTION ],
   kanji: '寝る',
@@ -44,6 +49,8 @@ export const wordSleep = createWord({
 export const wordDrink = createWord({
   primaryType: PRIMARY_TYPE_VERB,
   verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   // verbPrepositionType: 'NA',
   category: [ CATEGORY_DRINK, CATEGORY_HUMAN_ACTION ],
   kanji: '飲む',
@@ -58,6 +65,8 @@ export const wordDrink = createWord({
 export const wordSee = createWord({
   primaryType: PRIMARY_TYPE_VERB,
   verbType: SENTENCE_TYPE_VERB_TYPE_RU,
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   // verbPrepositionType: DIRECTION_VERB,
   category: [ CATEGORY_HUMAN_ACTION ],
   kanji: '見る',

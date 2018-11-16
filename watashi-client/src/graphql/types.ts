@@ -7,6 +7,7 @@ export const sentenceTypes = `
   type TypeMeta {
     verbType?: String
     nounType?: String
+    nounPluralType?: String
   }
 
   type Word {
@@ -117,7 +118,7 @@ export const index = `
     exercises?: [ EnglishJapaneseOptionsSentence ]
     preModifiers?: Modifiers
     preOptions?: Options
-    sentenceContext?: SentenceContext
+    preSentenceContext?: SentenceContext
     user?: User
   }
 `;

@@ -10,6 +10,8 @@ import { createWord } from '../utilWord';
 const wordCat = createWord({
   primaryType: PRIMARY_TYPE_NOUN,
   verbType: 'NA',
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   category: [ CATEGORY_ANIMAL ],
   kanji: '猫',
   hiragana: 'ねこ',
@@ -23,6 +25,8 @@ const wordCat = createWord({
 const wordDog = createWord({
   primaryType: PRIMARY_TYPE_NOUN,
   verbType: 'NA',
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   category: [ CATEGORY_ANIMAL ],
   kanji: '犬',
   hiragana: 'いぬ',

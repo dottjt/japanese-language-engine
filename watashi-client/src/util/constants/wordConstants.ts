@@ -57,9 +57,6 @@ export const verbTypeArray = [
 ];
 
 
-
-
-
 // word.type
 
 // ADJECTIVE TYPES

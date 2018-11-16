@@ -10,6 +10,8 @@ import { createWord } from '../utilWord';
 const wordHome = createWord({
   primaryType: PRIMARY_TYPE_NOUN,
   verbType: 'NA',
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   category: [ CATEGORY_LOCATION ],
   kanji: '家',
   hiragana: 'いえ',

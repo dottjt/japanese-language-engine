@@ -7,6 +7,7 @@
 - Write Blog Articles.
 - TypeORM with graphql - tutorial.
 - Numbers module.
+- Separate words into different types. Verbs. Nouns. 
 
 # TODO NICE HAVES 
 - Find open contributors. 

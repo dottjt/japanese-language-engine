@@ -40,8 +40,8 @@ const defaults = {
   // exercises, // exists 
   // preOptions, // exists 
   // preModifiers, // exists
+  // preSentenceContext, // exists
   // user, // exists
-  // sentenceContext, // exists
 };
 
 const preloadedState = (<any>window).__APOLLO_STATE__;

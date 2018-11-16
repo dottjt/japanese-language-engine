@@ -11,6 +11,8 @@ import { createWord } from '../utilWord';
 const wordPerson = createWord({
   primaryType: PRIMARY_TYPE_NOUN,
   verbType: 'NA',
+  nounType: 'TODO',
+  nounPluralType: 'TODO',
   category: [ CATEGORY_HUMAN ],
   kanji: '人',
   hiragana: 'ひと',

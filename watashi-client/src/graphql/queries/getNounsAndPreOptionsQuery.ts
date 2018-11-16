@@ -15,6 +15,8 @@ const GET_NOUNS_AND_PRE_OPTIONS = gql`{
     category
     meta @client {
       verbType
+      nounType
+      nounPluralType
     }
   }
 
@@ -37,7 +39,7 @@ const GET_NOUNS_AND_PRE_OPTIONS = gql`{
     subjectAdverb
   }
 
-  sentenceContext @client {
+  preSentenceContext @client {
     topicPosition
     topicDestination
     eventDirection

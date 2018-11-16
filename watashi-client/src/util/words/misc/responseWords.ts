@@ -28,6 +28,8 @@ export const wordYes = {
   category: [ CATEGORY_RESPONSE ],
   meta: {
     verbType: 'NA',  
+    nounType: 'TODO',
+    nounPluralType: 'TODO',  
     __typename: __TYPENAME_META,
   },
   __typename: __TYPENAME_WORD,

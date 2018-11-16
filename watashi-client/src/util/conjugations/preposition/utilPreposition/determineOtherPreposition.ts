@@ -5,6 +5,8 @@ import {
 import {
   CONTEXT_SUBJECT_ROLE_SECOND_HAND,
   CONTEXT_SUBJECT_ROLE_DIRECT,
+  CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF,
+  CONTEXT_SUBJECT_ROLE_BECAUSE_OF,
 } from '../../../constants/contextConstants';
 
 

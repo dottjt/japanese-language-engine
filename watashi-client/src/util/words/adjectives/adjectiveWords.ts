@@ -28,6 +28,8 @@ export const wordDelicious = {
   category: [ CATEGORY_FOOD ],
   meta: {
     verbType: 'NA',
+    nounType: 'TODO',
+    nounPluralType: 'TODO',  
     __typename: __TYPENAME_META,
   },
   __typename: __TYPENAME_WORD,

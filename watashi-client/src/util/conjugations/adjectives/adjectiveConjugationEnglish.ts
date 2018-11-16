@@ -3,7 +3,15 @@ import {
 } from '../../functions';
 
 import {
-
+  // ADJECTIVE_DESCRIPTIVE_POSITIVE,
+  // ADJECTIVE_DESCRIPTIVE_COMPARATIVE,
+  // ADJECTIVE_DESCRIPTIVE_SUPERLATIVE,
+  // ADJECTIVE_QUANTITATIVE,
+  // ADJECTIVE_DEMONSTRATIVE,
+  // ADJECTIVE_POSSESSIVE,
+  // ADJECTIVE_INTERROGATIVE,
+  // ADJECTIVE_DISTRIBUTIVE,
+  // ADJECTIVE_ARTICLE_DISTRIBUTIVE,
 } from '../../constants/wordConstants';
 
 export const determineSentenceIdentifierEndingEnglish = (identifier: string): string => {
@@ -25,6 +33,7 @@ export const adjectiveConjugationEnglish = (adjective: Util.Word, options: Util.
 // A superlative adjective is an adjective that’s used to compare three or more things, or to state that something is the most. For example: “This is the best soup in the whole world” or “I am the funniest out of all the other bloggers.”
 
   // return `${adjective.japanese}${adjectiveCategoryEnding}${adjectiveEnding}${sentenceIdentifierEnding}`;
+  return '';
 };
 
 // DESCRIPTIVE 

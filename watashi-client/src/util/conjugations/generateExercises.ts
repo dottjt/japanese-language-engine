@@ -6,6 +6,7 @@ import {
   LESSON_PATH,
   LESSON_OPTIONS,
   LESSON_MODIFIERS,
+  LESSON_SENTENCE_CONTEXT,
 } from '../constants/lessonConstants';
 
 import { ROUTE_PATH } from '../constants/routeConstants';
@@ -20,6 +21,8 @@ import {
 
 import createLessonModifiers from './createLessonModifiers';
 import createLessonOptions from './createLessonOptions';
+import createSentenceContext from './createSentenceContext';
+
 import generateSentences from './generateSentences';
 
 export const determinePreOptions = (path: string): Util.Options => {
@@ -72,7 +75,7 @@ export const determinePreModifiers = (path: string): Util.Modifiers => {
   };
 };
 
-export const determineSentenceContext = (path: string): Util.Options => {
+export const determineSentenceContext = (path: string): Util.SentenceContext => {
   switch(path) {
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L001}`: return LESSON_SENTENCE_CONTEXT.L001;
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L002}`: return LESSON_SENTENCE_CONTEXT.L002;
@@ -93,11 +96,11 @@ export const determineSentenceContext = (path: string): Util.Options => {
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L017}`: return LESSON_SENTENCE_CONTEXT.L017;
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L018}`: return LESSON_SENTENCE_CONTEXT.L018;
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L019}`: return LESSON_SENTENCE_CONTEXT.L019;
-    default: return LESSON_OPTIONS.L001;
+    default: return LESSON_SENTENCE_CONTEXT.L001;
   };
 };
 
-export const determineGetExercise = (nouns: Util.Word[], path: string, preOptions: Util.Options, preModifiers: Util.Modifiers, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
+export const determineGetExercise = (nouns: Util.Word[], path: string, preOptions: Util.Options, preModifiers: Util.Modifiers, preSentenceContext: Util.SentenceContext, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
   switch(path) {
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L001}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L002}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
@@ -118,7 +121,7 @@ export const determineGetExercise = (nouns: Util.Word[], path: string, preOption
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L017}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L018}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
     case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L019}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    default: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    default: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
   };
 };
 
@@ -131,7 +134,7 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
         user: null, 
         preOptions: determinePreOptions(path), 
         preModifiers: determinePreModifiers(path),
-        sentenceContext: {
+        preSentenceContext: {
           topicPosition: null,
           topicDestination: null,
           eventDirection: null,
@@ -145,7 +148,7 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
 
     const data = client.readQuery({ query: GET_NOUNS_AND_PRE_OPTIONS }) as any;
 
-    client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.preOptions, data.preModifiers, numberOfExercices) } });
+    client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) } });
 
     // const data2 = client.readQuery({ query: GET_EVERYTHING }) as any;
 
