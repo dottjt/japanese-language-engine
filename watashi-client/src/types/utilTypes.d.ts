@@ -209,6 +209,8 @@ declare namespace Util {
     eventDuration: string,
     subjectConnection: string,
     subjectRole: string,
+    sentenceContext: string,
+    __typename: string,
   }
 
   // MISC

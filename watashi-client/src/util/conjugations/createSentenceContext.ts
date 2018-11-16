@@ -3,7 +3,7 @@ import {
 } from '../functions';
 
 import {
-  __TYPENAME_OPTIONS,
+  __TYPENAME_SENTENCE_CONTEXT,
 } from '../constants/typeNameConstants';
 
 import { 
@@ -30,7 +30,7 @@ import {
   CONTEXT_DIRECTION_RANDOM,
   CONTEXT_SUBJECT_CONNECTION_RANDOM,
   CONTEXT_SUBJECT_ROLE_RANDOM,
-} from '../constants/optionsConstants';
+} from '../constants/contextConstants';
 
 
 const randomContextWhenValue = () => contextWhenArray[randomArrayElement(contextWhenArrayLength)];
@@ -41,21 +41,18 @@ const randomContextDirectionValue = () => contextDirectionArray[randomArrayEleme
 const randomContextSubjectConnectionValue = () => contextSubjectConnectionArray[randomArrayElement(contextSubjectConnectionArrayLength)];
 const randomContextSubjectRoleValue = () => contextSubjectRoleArray[randomArrayElement(contextSubjectRoleArrayLength)];
 
-const createSentenceContextOptions = (options: Util.Options): Util.Options => {
-  const { variation, politeness, polarity, tense, question, gender, /* sentenceEnding, */ themes } = options;
+const createSentenceContextOptions = (sentenceContext: Util.SentenceContext): Util.SentenceContext => {
+  const { topicPosition, topicDestination, eventDirection, eventWhen, eventDuration, subjectConnection, subjectRole } = sentenceContext;
 
   return {
-    __typename: __TYPENAME_OPTIONS,
-    variation,
-    selectedVariation: variation.length === 1 ? variation[0] : randomVariationValue(variation),
-    question: question === RANDOM_QUESTION ? randomQuestionValue() : question,
-    politeness: politeness === POLITENESS_RANDOM ? randomPolitenessValue() : politeness,
-    polarity: polarity === POLARITY_RANDOM ? randomPolarityValue() : polarity,
-    tense: tense === TENSE_RANDOM ? randomTenseValue() : tense,
-    gender: gender === GENDER_RANDOM ? randomGenderValue() : gender,  
-    // sentenceEnding: sentenceEnding === SENTENCE_ENDING_RANDOM ? randomSentenceEndingValue() : sentenceEnding,
-    themes,
-    selectedTheme: themes.length === 1 ? themes[0] : randomThemesValue(),
+    __typename: __TYPENAME_SENTENCE_CONTEXT,
+    topicPosition: topicPosition === CONTEXT_WHEN_RANDOM ? randomContextWhenValue() : topicPosition,
+    topicDestination: topicDestination === CONTEXT_DURATION_RANDOM ? randomContextDurationValue() : topicDestination,
+    eventDirection: eventDirection === CONTEXT_TOPIC_POSITION_RANDOM ? randomContextTopicPositionValue() : eventDirection,
+    eventWhen: eventWhen === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : eventWhen,
+    eventDuration: eventDuration === CONTEXT_DIRECTION_RANDOM ? randomContextDirectionValue() : eventDuration,
+    subjectConnection: subjectConnection === CONTEXT_SUBJECT_CONNECTION_RANDOM ? randomContextSubjectConnectionValue() : subjectConnection,  
+    subjectRole: subjectRole === CONTEXT_SUBJECT_ROLE_RANDOM ? randomContextSubjectRoleValue() : subjectRole,
   }
 };
 
