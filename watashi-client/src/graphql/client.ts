@@ -19,16 +19,6 @@ import allWords from '../util/words/collection';
 
 const defaults = {
   nouns: allWords,
-  // controlPanelOptions: {
-  //   controlPanelPoliteness: null,
-  //   controlPanelVariation: null,
-  //   controlPanelPolarity: null,
-  //   controlPanelTense: null,
-  //   controlPanelGender: null,
-  //   controlPanelQuestion: null,
-  //   controlPanelSentenceEnding: null,
-  //   __typename: __TYPENAME_CONTROL_PANEL_OPTIONS,
-  // },
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
     toggleSentenceOrder: false, 
@@ -51,6 +41,7 @@ const defaults = {
   // preOptions, // exists 
   // preModifiers, // exists
   // user, // exists
+  // sentenceContext, // exists
 };
 
 const preloadedState = (<any>window).__APOLLO_STATE__;

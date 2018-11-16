@@ -18,8 +18,8 @@ import {
   __TYPENAME_MODIFIERS,
 } from '../constants/typeNameConstants';
 
-import createLessonModifiers from './generateLessonModifiers';
-import createLessonOptions from './generateLessonOptions';
+import createLessonModifiers from './createLessonModifiers';
+import createLessonOptions from './createLessonOptions';
 import generateSentences from './generateSentences';
 
 export const determinePreOptions = (path: string): Util.Options => {
@@ -72,27 +72,52 @@ export const determinePreModifiers = (path: string): Util.Modifiers => {
   };
 };
 
+export const determineSentenceContext = (path: string): Util.Options => {
+  switch(path) {
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L001}`: return LESSON_SENTENCE_CONTEXT.L001;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L002}`: return LESSON_SENTENCE_CONTEXT.L002;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L003}`: return LESSON_SENTENCE_CONTEXT.L003;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L004}`: return LESSON_SENTENCE_CONTEXT.L004;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L005}`: return LESSON_SENTENCE_CONTEXT.L005;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L006}`: return LESSON_SENTENCE_CONTEXT.L006;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L007}`: return LESSON_SENTENCE_CONTEXT.L007;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L008}`: return LESSON_SENTENCE_CONTEXT.L008;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L009}`: return LESSON_SENTENCE_CONTEXT.L009;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L010}`: return LESSON_SENTENCE_CONTEXT.L010;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L011}`: return LESSON_SENTENCE_CONTEXT.L011;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L012}`: return LESSON_SENTENCE_CONTEXT.L012;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L013}`: return LESSON_SENTENCE_CONTEXT.L013;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L014}`: return LESSON_SENTENCE_CONTEXT.L014;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L015}`: return LESSON_SENTENCE_CONTEXT.L015;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L016}`: return LESSON_SENTENCE_CONTEXT.L016;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L017}`: return LESSON_SENTENCE_CONTEXT.L017;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L018}`: return LESSON_SENTENCE_CONTEXT.L018;
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L019}`: return LESSON_SENTENCE_CONTEXT.L019;
+    default: return LESSON_OPTIONS.L001;
+  };
+};
+
 export const determineGetExercise = (nouns: Util.Word[], path: string, preOptions: Util.Options, preModifiers: Util.Modifiers, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
   switch(path) {
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L001}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L002}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L003}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L004}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L005}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L006}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L007}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L008}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L009}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L010}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L011}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L012}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L013}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L014}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L015}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L016}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L017}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L018}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L019}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L001}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L002}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L003}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L004}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L005}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L006}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L007}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L008}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L009}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L010}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L011}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L012}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L013}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L014}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L015}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L016}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L017}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L018}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L019}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
     default: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), numberOfExercices);
   };
 };
@@ -101,7 +126,22 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
   try {
     // I need to figure out how to get this 
     // NOTE: user should not be null, it should be gotten from the server, if at all possible. 
-    client.writeData({ data: { user: null, preOptions: determinePreOptions(path), preModifiers: determinePreModifiers(path) } });
+    client.writeData({ 
+      data: { 
+        user: null, 
+        preOptions: determinePreOptions(path), 
+        preModifiers: determinePreModifiers(path),
+        sentenceContext: {
+          topicPosition: null,
+          topicDestination: null,
+          eventDirection: null,
+          eventWhen: null,
+          eventDuration: null,
+          subjectConnection: null,
+          subjectRole: null,
+        }
+      } 
+    });
 
     const data = client.readQuery({ query: GET_NOUNS_AND_PRE_OPTIONS }) as any;
 

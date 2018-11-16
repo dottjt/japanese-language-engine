@@ -42,6 +42,7 @@ export const sentenceTypes = `
     japaneseSentence: [ ConjugatedJapaneseWord ] 
     modifiers: Modifiers
     options: Options
+    sentenceContext: SentenceContext
   }
 `;
 
@@ -91,6 +92,16 @@ export const optionTypes = `
     idToken: String
     expiresAt: String
   }
+
+  type SentenceContext {
+    topicPosition: String
+    topicDestination: String
+    eventDirection: String
+    eventWhen: String
+    eventDuration: String
+    subjectConnection: String
+    subjectRole: String
+  }
 `;
 
 export const index = `
@@ -106,6 +117,7 @@ export const index = `
     exercises?: [ EnglishJapaneseOptionsSentence ]
     preModifiers?: Modifiers
     preOptions?: Options
+    sentenceContext?: SentenceContext
     user?: User
   }
 `;

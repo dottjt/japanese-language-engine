@@ -36,6 +36,16 @@ const GET_NOUNS_AND_PRE_OPTIONS = gql`{
     subjectAdjective
     subjectAdverb
   }
+
+  sentenceContext @client {
+    topicPosition
+    topicDestination
+    eventDirection
+    eventWhen
+    eventDuration
+    subjectConnection
+    subjectRole
+  }
 }`
 
 export default GET_NOUNS_AND_PRE_OPTIONS;

@@ -201,7 +201,6 @@ declare namespace Util {
     no3?: WordModifier;
   };
 
-
   export type SentenceContext = {
     topicPosition: string,
     topicDestination: string,
@@ -211,7 +210,6 @@ declare namespace Util {
     subjectConnection: string,
     subjectRole: string,
   }
-
 
   // MISC
 

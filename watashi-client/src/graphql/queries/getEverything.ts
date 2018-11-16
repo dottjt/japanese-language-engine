@@ -38,6 +38,16 @@ const GET_EVERYTHING = gql`{
     question
     themes
   }
+
+  sentenceContext @client {
+    topicPosition
+    topicDestination
+    eventDirection
+    eventWhen
+    eventDuration
+    subjectConnection
+    subjectRole
+  }
   
   preModifiers @client {
     topicNo
