@@ -4,7 +4,7 @@ import {
   CATEGORY_HUMAN,
 } from '../../constants/wordConstants';
 
-import { createWord } from '../utilWord';
+import { createNounWord } from '../utilWord';
 
 // HUMAN
 

@@ -23,7 +23,7 @@ import {
   contextSubjectConnectionArrayLength,
   contextSubjectRoleArrayLength,
 
-  CONTEXT_WHEN_RANDOM,
+  CONTEXT_OCCURANCE_RANDOM,
   CONTEXT_DURATION_RANDOM,
   CONTEXT_TOPIC_POSITION_RANDOM,
   CONTEXT_TOPIC_DESTINATION_RANDOM,
@@ -46,7 +46,7 @@ const createSentenceContextOptions = (sentenceContext: Util.SentenceContext): Ut
 
   return {
     __typename: __TYPENAME_SENTENCE_CONTEXT,
-    topicPosition: topicPosition === CONTEXT_WHEN_RANDOM ? randomContextWhenValue() : topicPosition,
+    topicPosition: topicPosition === CONTEXT_OCCURANCE_RANDOM ? randomContextWhenValue() : topicPosition,
     topicDestination: topicDestination === CONTEXT_DURATION_RANDOM ? randomContextDurationValue() : topicDestination,
     eventDirection: eventDirection === CONTEXT_TOPIC_POSITION_RANDOM ? randomContextTopicPositionValue() : eventDirection,
     eventWhen: eventWhen === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : eventWhen,

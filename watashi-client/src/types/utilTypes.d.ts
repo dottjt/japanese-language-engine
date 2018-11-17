@@ -42,41 +42,50 @@ declare namespace Util {
     __typename: string;
   };
 
-  export type MetaType = {
-    verbType?: string;
-    nounType?: string;
-    nounPluralType: string;
-    __typename: string;
-  };
-
-  export type English = {
+  export type EnglishVerb = {
     presentTense: string;
     presentParticiple: string;
     simplePast: string;
     pastParticiple: string;
     __typename: string;
   }
-
-  export type Japanese = {
-    kanji: string;
-    // hiragana: string;
-    // furigana: string;
+  
+  export type EnglishNoun = {
+    present: string;
     __typename: string;
   }
 
-  export type Word = {
-    japanese: Japanese;
-    english: English;
-    primaryType: string;
-    category: string[];
-    meta: MetaType;
+  export type JapaneseNoun = {
+    kanji: string;
+    __typename: string;
+  }
+
+  export type JapaneseVerb = {
+    kanji: string;
+    __typename: string;
+  }
+
+  export type Noun = {
+    nounJapanese: JapaneseNoun;
+    nounEnglish: EnglishNoun;
+    nounCategory: string[];
+    nounWordType: string;
+    nounPluralType: string;
+    __typename: string;
+  };
+
+  export type Verb = {
+    verbJapanese: JapaneseVerb;
+    verbEnglish: EnglishVerb;
+    verbJapaneseType: string;
+    verbCategory: string[];
     __typename: string;
   };
 
   export type ConjugatedJapaneseWord = {
     type: string; // noun, verb
     sentenceType: string; // noun
-    word: Word; // noun, verb
+    word: JapaneseNoun | JapaneseVerb; // noun, verb
     categoryEnding: WordElement; // noun
     verbStem: WordElement; // verb
     tense: WordElement; // noun
@@ -88,7 +97,7 @@ declare namespace Util {
   export type ConjugatedEnglishWord = {
     type: string; // noun, verb
     sentenceType: string; // noun
-    word: Word; // noun, verb
+    word: EnglishNoun | EnglishVerb; // noun, verb
     tense: WordElement; // noun
     polarity: WordElement; // noun, verb
     indefiniteArticle: WordElement; // noun

@@ -1,33 +1,40 @@
 import {
-  __TYPENAME_WORD,
-  __TYPENAME_META,
-  __TYPENAME_ENGLISH,
-  __TYPENAME_JAPANESE,
+  __TYPENAME_NOUN,
+  __TYPENAME_VERB,
+  __TYPENAME_ENGLISH_NOUN,
+  __TYPENAME_JAPANESE_NOUN,
+  __TYPENAME_ENGLISH_VERB,
+  __TYPENAME_JAPANESE_VERB,
 } from '../constants/typeNameConstants';
 
-export const createWord = ({ primaryType, verbType, nounType, nounPluralType, category, kanji, hiragana, furigana, presentTense, presentParticiple, simplePast, pastParticiple }: any) => ({
-  japanese: { 
+export const createNounWord = ({ nounWordType, nounPluralType, nounCategory, kanji, present }: any): Util.Noun => ({
+  nounJapanese: { 
     kanji,
-    hiragana,
-    furigana,
-    __typename: __TYPENAME_JAPANESE,
+    __typename: __TYPENAME_JAPANESE_NOUN,
   },
-  english: { 
+  nounEnglish: { 
+    present,
+    __typename: __TYPENAME_ENGLISH_NOUN,
+  },
+  nounCategory,
+  nounWordType,
+  nounPluralType,
+  __typename: __TYPENAME_NOUN,
+});
+
+export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, presentTense, presentParticiple, simplePast, pastParticiple }: any): Util.Verb => ({
+  verbJapanese: {
+    kanji,
+    __typename: __TYPENAME_JAPANESE_VERB,
+  },
+  verbEnglish: {
     presentTense,
     presentParticiple,
     simplePast,
     pastParticiple,
-    __typename: __TYPENAME_ENGLISH,
+    __typename: __TYPENAME_ENGLISH_VERB,
   },
-  primaryType,
-  category,
-  meta: {
-    verbType,
-    nounType,
-    nounPluralType,
-    __typename: __TYPENAME_META,
-  },
-  __typename: __TYPENAME_WORD,
-
+  verbCategory,
+  verbJapaneseType,
+  __typename: __TYPENAME_VERB,
 });
-
