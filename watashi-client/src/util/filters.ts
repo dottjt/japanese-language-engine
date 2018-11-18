@@ -2,46 +2,63 @@ import {
   randomArrayElement
 } from './functions';
 
-export const filterSpecifcWord = (nouns: Util.Word[], englishName: string): Util.Word => (
-  nouns.filter((noun: Util.Word): boolean => (
-    noun.english.presentTense === englishName
+export const filterSpecifcWordNoun = (nouns: Util.Noun[], englishName: string): Util.Noun => (
+  nouns.filter((noun: Util.Noun): boolean => (
+    noun.nounEnglish.singular === englishName
   ))[0]
 );
 
-export const filterSpecifcCategory = (nouns: Util.Word[], category: string): Util.Word[] => (
-  nouns.filter((noun: Util.Word) => {
-    const checkIfCategoryExistsInCategoryArray = noun.category.filter(nounCategory => nounCategory === category).length > 0
+export const filterSpecifcCategoryNoun = (nouns: Util.Noun[], category: string): Util.Noun[] => (
+  nouns.filter((noun: Util.Noun) => {
+    const checkIfCategoryExistsInCategoryArray = noun.nounCategory.filter(nounCategory => nounCategory === category).length > 0
     return checkIfCategoryExistsInCategoryArray ? true : false 
   })
 );
 
-export const filterSpecifcPrimaryType = (nouns: Util.Word[], primaryType: string): Util.Word[] => (
-  nouns.filter((noun: Util.Word): boolean => (
-    noun.primaryType === primaryType
-  ))
-);
-
-export const filterSpecifcMeta = (nouns: Util.Word[], metaProperty: string): Util.Word[] => (
-  nouns.filter((noun: Util.Word): boolean => (
-    // noun.verbType !== undefined && noun.verbType === metaProperty
-    Object.keys(noun.meta).indexOf(metaProperty) > -1
-  ))
-);
-
-export const getRandomWord = (nouns: Util.Word[]): Util.Word => (
+export const getRandomWordNoun = (nouns: Util.Noun[]): Util.Noun => (
   nouns[randomArrayElement(nouns.length)]
 );
 
-export const getRandomWordViaCategory = (nouns: Util.Word[], category: string): Util.Word => {
-  const getCategoryWords = filterSpecifcCategory(nouns, category);
+export const getRandomWordViaCategoryNoun = (nouns: Util.Noun[], category: string): Util.Noun => {
+  const getCategoryWords = filterSpecifcCategoryNoun(nouns, category);
   return getCategoryWords[randomArrayElement(getCategoryWords.length)]
 }
 
-export const getRandomWordViaPrimaryType = (nouns: Util.Word[], primaryType: string): Util.Word => {
-  const getPrimaryWords = filterSpecifcPrimaryType(nouns, primaryType);
-  return getPrimaryWords[randomArrayElement(getPrimaryWords.length)]
-};
 
-export const getRandomWordViaMeta = (nouns: Util.Word[], metaProperty: string): Util.Word => (
-  filterSpecifcMeta(nouns, metaProperty)[randomArrayElement(nouns.length)]
+
+// ---------------
+// verb Methods
+
+export const filterSpecifcWordVerb = (verbs: Util.Verb[], englishName: string): Util.Verb => (
+  verbs.filter((noun: Util.Verb): boolean => (
+    noun.verbEnglish.infinitive === englishName
+  ))[0]
 );
+
+export const filterSpecifcCategoryVerb = (verbs: Util.Verb[], category: string): Util.Verb[] => (
+  verbs.filter((noun: Util.Verb) => {
+    const checkIfCategoryExistsInCategoryArray = noun.verbCategory.filter(nounCategory => nounCategory === category).length > 0
+    return checkIfCategoryExistsInCategoryArray ? true : false 
+  })
+);
+
+export const getRandomWordVerb = (verbs: Util.Verb[]): Util.Verb => (
+  verbs[randomArrayElement(verbs.length)]
+);
+
+export const getRandomWordViaCategoryVerb = (verbs: Util.Verb[], category: string): Util.Verb => {
+  const getCategoryWords = filterSpecifcCategoryVerb(verbs, category);
+  return getCategoryWords[randomArrayElement(getCategoryWords.length)]
+}
+
+// export const filterSpecifcMetaVerb = (nouns: Util.Verb[], metaProperty: string): Util.Verb[] => (
+//   nouns.filter((noun: Util.Verb): boolean => (
+//     // noun.verbType !== undefined && noun.verbType === metaProperty
+//     Object.keys(noun.meta).indexOf(metaProperty) > -1
+//   ))
+// );
+
+// export const getRandomWordViaMetaNoun = (nouns: Util.Noun[], metaProperty: string): Util.Noun => (
+//   filterSpecifcMeta(nouns, metaProperty)[randomArrayElement(nouns.length)]
+// );
+

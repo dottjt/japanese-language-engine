@@ -11,7 +11,7 @@ import {
 
 import { ROUTE_PATH } from '../constants/routeConstants';
 
-import GET_NOUNS_AND_PRE_OPTIONS from '../../graphql/queries/getNounsAndPreOptionsQuery';
+import GET_NOUNS_VERBS_AND_PRE_OPTIONS from '../../graphql/queries/getNounsVerbsAndPreOptionsQuery';
 // import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
 import {
@@ -100,28 +100,28 @@ export const determineSentenceContext = (path: string): Util.SentenceContext => 
   };
 };
 
-export const determineGetExercise = (nouns: Util.Word[], path: string, preOptions: Util.Options, preModifiers: Util.Modifiers, preSentenceContext: Util.SentenceContext, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
+export const determineGetExercise = (nouns: Util.Noun[], verbs: Util.Verb[], path: string, preOptions: Util.Options, preModifiers: Util.Modifiers, preSentenceContext: Util.SentenceContext, numberOfExercices: number): Util.EnglishJapaneseOptionsSentence[] => {
   switch(path) {
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L001}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L002}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L003}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L004}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L005}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L006}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L007}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L008}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L009}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L010}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L011}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L012}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L013}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L014}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L015}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L016}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L017}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L018}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L019}`: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
-    default: return generateSentences(nouns, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L001}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L002}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L003}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L004}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L005}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L006}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L007}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L008}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L009}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L010}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L011}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L012}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L013}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L014}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L015}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L016}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L017}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L018}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    case `${ROUTE_PATH.EXERCISES}${LESSON_PATH.L019}`: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
+    default: return generateSentences(nouns, verbs, () => createLessonModifiers(preModifiers), () => createLessonOptions(preOptions), () => createSentenceContext(preSentenceContext), numberOfExercices);
   };
 };
 
@@ -146,33 +146,11 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
       } 
     });
 
-    const data = client.readQuery({ query: GET_NOUNS_AND_PRE_OPTIONS }) as any;
+    const data = client.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;
 
-    client.writeData({ data: { exercises: determineGetExercise(data.nouns, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) } });
-
-    // const data2 = client.readQuery({ query: GET_EVERYTHING }) as any;
-
-    // console.log('data2', data2);
+    client.writeData({ data: { exercises: determineGetExercise(data.nouns, data.verbs, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) } });
 
   } catch(error) {
     throw new Error(createError('generateExercises.ts', 'getExercisesApollo', `Error: ${error}.`));
   } 
 };
-
-
-
-
-
-// const recalculateOptions = (options: Util.Options, controlPanelOptions: Util.ControlPanelOptions): Util.Options => {
-//   const { controlPanelPoliteness, controlPanelVariation, controlPanelPolarity, controlPanelTense, controlPanelGender, controlPanelQuestion, /* controlPanelSentenceEnding */ } = controlPanelOptions;
-//   return {
-//     __typename: __TYPENAME_OPTIONS,
-//     politeness: controlPanelPoliteness ? controlPanelPoliteness : options.politeness,
-//     variation: controlPanelVariation ? controlPanelVariation : options.variation,
-//     polarity: controlPanelPolarity ? controlPanelPolarity : options.polarity,
-//     tense: controlPanelTense ? controlPanelTense : options.tense,
-//     gender: controlPanelGender ? controlPanelGender : options.gender,
-//     question: controlPanelQuestion ? controlPanelQuestion : options.question,
-//     // controlPanelSentenceEnding: controlPanelSentenceEnding ? controlPanelSentenceEnding : options.sentenceEnding 
-//   }
-// }

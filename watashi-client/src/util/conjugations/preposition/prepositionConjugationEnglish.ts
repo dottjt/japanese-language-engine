@@ -5,7 +5,7 @@ import {
 
 import {
   filtersentenceType,
-  // returnSentenceParts,
+  returnSentenceParts,
   createWord,
 } from '../utilConjugation';
 
@@ -54,46 +54,31 @@ import {
 } from './utilPreposition/determineOtherPreposition';
 
 
-const determinePreposition = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
+const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.SentenceContext): Util.WordElement => {
   // maybe themes are the bridge between subject and context. 
-  const { topic, subject, verb } = returnSentenceParts(words);
+  const { subject, /* topic, verb */ } = returnSentenceParts(words);
 
-  // figure out monday.
-  const eventContext = {
-    eventPOV: '',
-
-    topicPosition: 'CONTEXT_TOPIC_POSITION_NEAR',
-    topicDestination: "CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_INSIDE",
-    eventDirection: "CONTEXT_DIRECTION_TOWARD",  
-    
-    eventOccurance: 'CONTEXT_OCCURANCE_NOW',
-    eventDuration: 'CONTEXT_DURATION_COMPLETE',
-
-    subjectConnection: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
-    subjectRole: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
-  };
-
-  switch(subjectWord.nounType) {
+  switch(subject.nounWordType) {
     // Time Prepositions
     case NOUN_TYPE_DAY_OF_WEEK: 
-      return createWord(determineTimePrepositionDayOfWeek(eventContext), ENGLISH_PREPOSITION);
+      return createWord(determineTimePrepositionDayOfWeek(sentenceContext), ENGLISH_PREPOSITION);
 
     case NOUN_TYPE_PERIOD_DESCRIPTOR:
     case NOUN_TYPE_POINT_OF_DAY: 
-      return createWord(determineTimePrepositionPeriodDescriptor(eventContext), ENGLISH_PREPOSITION);
+      return createWord(determineTimePrepositionPeriodDescriptor(sentenceContext), ENGLISH_PREPOSITION);
    
     case NOUN_TYPE_MONTH: 
     case NOUN_TYPE_SEASON: 
     case NOUN_TYPE_YEAR_DATE:  
-      return createWord(determineTimePrepositionMonthSeasonDate(eventContext), ENGLISH_PREPOSITION);
+      return createWord(determineTimePrepositionMonthSeasonDate(sentenceContext), ENGLISH_PREPOSITION);
 
     // Place Prepositions
     case NOUN_TYPE_SPACE:
-      if (eventContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_INDEPENDENT) {
-        return createWord(determinePlacePreposition(eventContext), ENGLISH_PREPOSITION);
+      if (sentenceContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_INDEPENDENT) {
+        return createWord(determinePlacePreposition(sentenceContext), ENGLISH_PREPOSITION);
       }
-      if (eventContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION) {
-        return createWord(determineAgencyPurposeReasonPreposition(eventContext), ENGLISH_PREPOSITION);
+      if (sentenceContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION) {
+        return createWord(determineAgencyPurposeReasonPreposition(sentenceContext), ENGLISH_PREPOSITION);
       }
     // case NOUN_TYPE_ABSTRACT:
     // NOTE: Maybe I can treat time/CLOCK_TYPE as if it's an abstract concept? Yes motherfucker.
@@ -104,11 +89,11 @@ const determinePreposition = (words: Util.SentenceWords, options: Util.Options, 
 
 
 
-const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
+const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_PREPOSITION_ENGLISH;
 
-  const preposition = determinePreposition(word, subject);
+  const preposition = determinePreposition(words, sentenceContext);
 
   // eat 
   // I think there needs to be another field for preposition:

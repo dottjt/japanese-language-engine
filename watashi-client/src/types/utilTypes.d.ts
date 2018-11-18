@@ -51,7 +51,7 @@ declare namespace Util {
   }
   
   export type EnglishNoun = {
-    present: string;
+    singular: string;
     __typename: string;
   }
 

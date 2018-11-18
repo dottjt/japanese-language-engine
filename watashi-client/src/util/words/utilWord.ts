@@ -7,13 +7,13 @@ import {
   __TYPENAME_JAPANESE_VERB,
 } from '../constants/typeNameConstants';
 
-export const createNounWord = ({ nounWordType, nounPluralType, nounCategory, kanji, present }: any): Util.Noun => ({
+export const createNounWord = ({ nounWordType, nounPluralType, nounCategory, kanji, singular }: any): Util.Noun => ({
   nounJapanese: { 
     kanji,
     __typename: __TYPENAME_JAPANESE_NOUN,
   },
   nounEnglish: { 
-    present,
+    singular,
     __typename: __TYPENAME_ENGLISH_NOUN,
   },
   nounCategory,

@@ -59,22 +59,15 @@ const GET_EVERYTHING = gql`{
   }
 
   nouns @client {
-    japanese @client {
+    nounJapanese @client {
       kanji
-      # hiragana
-      # furigana
     }
-    english @client {
-      present
-      past
+    nounEnglish @client {
+      singular
     }
-    primaryType
-    category
-    meta @client {
-      verbType
-      nounType
-      nounPluralType
-    }
+    nounCategory
+    nounWordType
+    nounPluralType
   }
 
   exercises @client {
@@ -96,12 +89,9 @@ const GET_EVERYTHING = gql`{
       word @client {
         japanese @client {
           kanji
-          # hiragana
-          # furigana
         }
         english @client {
-          present
-          past
+          singular
         }
         primaryType
         category
@@ -143,8 +133,7 @@ const GET_EVERYTHING = gql`{
           # furigana
         }
         english @client {
-          present
-          past
+          singular
         }
         primaryType
         category
@@ -175,6 +164,19 @@ const GET_EVERYTHING = gql`{
       topicAdverb
       subjectAdjective
       subjectAdverb
+    }
+
+    sentenceContext @client {
+      topicPosition
+      topicDestination
+      eventDirection
+
+      eventOccurance
+      eventDuration
+      eventPOV
+      
+      subjectConnection
+      subjectRole
     }
   }
 }`;

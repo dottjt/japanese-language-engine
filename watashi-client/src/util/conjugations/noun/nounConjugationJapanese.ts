@@ -68,7 +68,7 @@ const determinecategoryEnding = (noun: Util.Noun): Util.WordElement => {
 
 const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounParticlePermissions(topic as Util.JapaneseNoun, subject as Util.JapaneseNoun, verb as Util.JapaneseVerb, sentenceType);
+  const permissions = nounParticlePermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   if (permissions) {
     switch (options.selectedVariation) {
@@ -85,9 +85,9 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
   return createWord([''], JAPANESE_TOPIC_PARTICLE);
 };
 
-const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): { polarity: Util.WordElement, tense: Util.WordElement } => {
+const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { polarity: Util.WordElement, tense: Util.WordElement } => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounConjugationPermissions(topic as Util.JapaneseNoun, subject as Util.JapaneseNoun, verb as Util.JapaneseVerb, sentenceType);
+  const permissions = nounConjugationPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   const emptyWord = createWord([''], JAPANESE_CONJUGATION);
 
@@ -123,7 +123,7 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
   return { tense: emptyWord, polarity: emptyWord };
 };
 
-const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string): Util.ConjugatedJapaneseWord => {
+const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedJapaneseWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_NOUN_JAPANESE;
 

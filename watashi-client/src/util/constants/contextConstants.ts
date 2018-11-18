@@ -10,6 +10,24 @@
 // export const PREPOSITION_TYPE_ORIGIN = "PREPOSITION_TYPE_ORIGIN";
 
 
+
+
+  // figure out monday.
+  // const sentenceContext = {
+  //   eventPOV: '',
+
+  //   topicPosition: 'CONTEXT_TOPIC_POSITION_NEAR',
+  //   topicDestination: "CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_INSIDE",
+  //   eventDirection: "CONTEXT_DIRECTION_TOWARD",  
+    
+  //   eventOccurance: 'CONTEXT_OCCURANCE_NOW',
+  //   eventDuration: 'CONTEXT_DURATION_COMPLETE',
+
+  //   subjectConnection: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
+  //   subjectRole: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
+  // };
+
+
 // Different types of context. 
 // topic context.
 export const CONTEXT_TYPE_POV = "CONTEXT_TYPE_POV";

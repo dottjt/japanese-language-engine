@@ -328,26 +328,26 @@ export const LESSON_OPTIONS = {
 
 
 export const LESSON_SENTENCE_CONTEXT = {
-  L001: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // T
-  L002: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // WA_TS, MO_TS
-  L003: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // GA_TS
-  L004: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // WA_TS, GA_TS
-  L005: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // WA_TS, MO_TS, GA_TS
-  L006: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // V
-  L007: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // V
-  L008: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // V
-  L009: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // WO_SV
-  L010: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // NI_SV
-  L011: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // DE_SV
-  L012: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // WO_SV, NI_SV
-  L013: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // NI_SV, DE_SV
-  L014: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // DE_SV, WO_SV
-  L015: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // WO_SV, NI_SV, DE_SV
-  L016: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // KARA_SV
-  L017: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // MADE_SV
-  L018: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // NA - T_NO
-  L019: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // T - T_ADJ
-  L020: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', }, // T - T_ADV
+  L001: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // T
+  L002: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WA_TS, MO_TS
+  L003: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // GA_TS
+  L004: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WA_TS, GA_TS
+  L005: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WA_TS, MO_TS, GA_TS
+  L006: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // V
+  L007: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // V
+  L008: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // V
+  L009: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WO_SV
+  L010: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // NI_SV
+  L011: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // DE_SV
+  L012: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WO_SV, NI_SV
+  L013: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // NI_SV, DE_SV
+  L014: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // DE_SV, WO_SV
+  L015: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WO_SV, NI_SV, DE_SV
+  L016: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // KARA_SV
+  L017: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // MADE_SV
+  L018: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // NA - T_NO
+  L019: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // T - T_ADJ
+  L020: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // T - T_ADV
   // L021:
   // L022: 
   // L023: 

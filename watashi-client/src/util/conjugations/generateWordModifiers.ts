@@ -1,5 +1,5 @@
 import { 
-  filterSpecifcWord,
+  filterSpecifcWordNoun,
   // getRandomWordViaCategory,
   // getRandomWordViaPrimaryType,
 } from '../filters';
@@ -26,9 +26,9 @@ import {
   SUBJECT_ADVERB,
 } from '../constants/modifiersConstants';
 
-const createWordModifier = (type: string, word: Util.Word): Util.WordModifier => ({ type, word });
+const createWordModifier = (type: string, word: Util.Noun): Util.WordModifier => ({ type, word });
 
-const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): Util.SentenceWordModifiers => {
+const generateWordModifiers = (nouns: Util.Noun[], verbs: Util.Verb[], modifiers: Util.Modifiers): Util.SentenceWordModifiers => {
 
   const modifiersKeys = Object.keys(modifiers);
   const sentenceWordModifiers: Util.SentenceWordModifiers = {
@@ -50,7 +50,7 @@ const generateWordModifiers = (nouns: Util.Word[], modifiers: Util.Modifiers): U
     sAdv: undefined,
   };
 
-  const word = filterSpecifcWord(nouns, 'person');
+  const word = filterSpecifcWordNoun(nouns, 'person');
 
   modifiersKeys.forEach((modifierField: string): void => {
     if (modifiers[modifierField] !== undefined) {

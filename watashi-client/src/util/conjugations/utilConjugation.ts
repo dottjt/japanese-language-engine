@@ -37,17 +37,17 @@ export const returnSentenceParts = (words: Util.SentenceWords): Util.SentenceWor
   };
 };
 
-export const filtersentenceType = (words: Util.SentenceWords, sentenceType: string): Util.Word => {
+export const filtersentenceType = (words: Util.SentenceWords, sentenceType: string): Util.Noun | Util.Verb => {
   const { topic, subject, verb } = returnSentenceParts(words);
 
   switch(sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return topic as Util.Word;
-    case SENTENCE_TYPE_SUBJECT: return subject as Util.Word;
-    default: return verb as Util.Word;
+    case SENTENCE_TYPE_TOPIC: return topic as Util.Noun;
+    case SENTENCE_TYPE_SUBJECT: return subject as Util.Noun;
+    default: return verb as Util.Verb;
   }
 };
 
-export const createCommonPermissions = (topic: Util.Word, subject: Util.Word, verb: Util.Word, sentenceType: string) => {
+export const createCommonPermissions = (topic: Util.Noun, subject: Util.Noun, verb: Util.Verb, sentenceType: string) => {
   const onlyTopic = (topic && !subject && !verb);
   const onlySubject = (!topic && subject && !verb);
   const onlyVerb = (!topic && !subject && verb);
@@ -69,7 +69,7 @@ export const createCommonPermissions = (topic: Util.Word, subject: Util.Word, ve
   };
 };
 
-export const generateSentenceTypes = (topic?: Util.Word, subject?: Util.Word, verb?: Util.Word) => {
+export const generateSentenceTypes = (topic?: Util.Noun, subject?: Util.Noun, verb?: Util.Verb) => {
   const onlyTopic = (topic && !subject && !verb);
   // const onlySubject = (!topic && subject && !verb);
   const onlyVerb = (!topic && !subject && verb);

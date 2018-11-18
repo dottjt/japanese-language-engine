@@ -8,6 +8,7 @@
 - TypeORM with graphql - tutorial.
 - Numbers module.
 - Separate words into different types. Verbs. Nouns. 
+- Confirm verb tenses make sense. 
 
 # TODO NICE HAVES 
 - Find open contributors. 
