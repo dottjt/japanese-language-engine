@@ -44,7 +44,6 @@ import {
   CONTEXT_OCCURANCE_NOW,
   CONTEXT_OCCURANCE_NOW_FUTURE,
   CONTEXT_OCCURANCE_FUTURE,
-  CONTEXT_OCCURANCE_ALL_THE_TIME,
 
   CONTEXT_DURATION_PARTIAL_CONTINUOUS,
   CONTEXT_DURATION_COMPLETE,
@@ -144,35 +143,21 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
       return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
   
     //  Present Continuous - "Happening now, or unfinshed. Temporary actions."   
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "am", presentParticiple ], TENSE_PRESENT_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "are", presentParticiple ], TENSE_PRESENT_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "is", presentParticiple ], TENSE_PRESENT_CONTINUOUS); 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_PRESENT_CONTINUOUS); 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_PRESENT_CONTINUOUS); 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_PRESENT_CONTINUOUS); 
     
-   //  not sure. 
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    // Simple Present - "Happening all the time, or exist now"
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ infinitive + "s" ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
     
-   //  Present Continuous - "Happening now, or unfinshed. Temporary actions."   
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
- 
     // Future Continuous - The tense that is used for an unfinished action or event that will occur in future and continue for an expected length of time
     case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
     case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
@@ -226,7 +211,6 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
   }
 }
 
-
 const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { tense: Util.WordElement, polarity: Util.WordElement } => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = verbConjugationPermissionsEnglish(topic as Util.EnglishNoun, subject as Util.EnglishNoun, verb as Util.EnglishVerb, sentenceType);
@@ -263,13 +247,9 @@ const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.Sente
 export default verbConjugationEnglish;
 
 
-
-
-
-
-//   // Simple Present - "Happening all the time, or exist now"
-//   if (eventOccurance === CONTEXT_OCCURANCE_ALL_THE_TIME || 
-//     eventOccurance === CONTEXT_OCCURANCE_NOW) {
+// Simple Present - "Happening all the time, or exist now"
+//   
+//   if (eventOccurance === CONTEXT_OCCURANCE_NOW) {
 //       // if not be
 //       switch() {
 //         case CONTEXT_POV_SELF_SINGULAR: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
@@ -281,7 +261,6 @@ export default verbConjugationEnglish;
 //       }
       
 // }
-
 
 
 // // Present Continuous - "Happening now, or unfinshed. Temporary actions."
