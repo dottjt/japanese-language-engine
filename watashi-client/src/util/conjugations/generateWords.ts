@@ -3,9 +3,15 @@ import {
 } from '../functions';
 
 import { 
-  filterSpecifcWord,
-  getRandomWordViaCategory,
-  getRandomWordViaPrimaryType,
+  filterSpecifcWordNoun,
+  // filterSpecifcCategoryNoun,
+  // getRandomWordNoun,
+  getRandomWordViaCategoryNoun,
+
+  // filterSpecifcWordVerb,
+  // filterSpecifcCategoryVerb,
+  getRandomWordVerb,
+  // getRandomWordViaCategoryVerb,
 } from '../filters';
 
 import {
@@ -30,10 +36,6 @@ import {
 } from '../constants/optionsConstants';
 
 import {
-  // PRIMARY_TYPE_NOUN,
-  PRIMARY_TYPE_VERB,
-  // PRIMARY_TYPE_ADJECTIVE,
-
   CATEGORY_HUMAN_NAME,
   CATEGORY_LOCATION,
 } from '../constants/wordConstants';
@@ -70,8 +72,8 @@ const generateTopicWord = (nouns: Util.Noun[], selectedTheme: string, filteredVa
   // NO // VARIATION_V // VARIATION_SV
 
   switch(`${selectedTheme}${filteredVariation}`) {
-    case `${THEMES_DEFAULT}${VARIATION_T}`: return filterSpecifcWord(nouns, 'person');
-    case `${THEMES_DEFAULT}${VARIATION_TS}`: return getRandomWordViaCategory(nouns, CATEGORY_HUMAN_NAME);
+    case `${THEMES_DEFAULT}${VARIATION_T}`: return filterSpecifcWordNoun(nouns, 'person');
+    case `${THEMES_DEFAULT}${VARIATION_TS}`: return getRandomWordViaCategoryNoun(nouns, CATEGORY_HUMAN_NAME);
   };
   throw new Error(createError('conjugations/generateWords.tsx', 'generateTopicWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
 };
@@ -81,8 +83,8 @@ const generateSubjectWord = (nouns: Util.Noun[], selectedTheme: string, filtered
   // NO // VARIATION_T // VARIATION_V
 
   switch(`${selectedTheme}${filteredVariation}`) {
-    case `${THEMES_DEFAULT}${VARIATION_SV}`: return filterSpecifcWord(nouns, 'person');
-    case `${THEMES_DEFAULT}${VARIATION_TS}`: return getRandomWordViaCategory(nouns, CATEGORY_LOCATION);
+    case `${THEMES_DEFAULT}${VARIATION_SV}`: return filterSpecifcWordNoun(nouns, 'person');
+    case `${THEMES_DEFAULT}${VARIATION_TS}`: return getRandomWordViaCategoryNoun(nouns, CATEGORY_LOCATION);
   };
   throw new Error(createError('conjugations/generateWords.tsx', 'generateSubjectWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
 };
@@ -92,8 +94,8 @@ const generateVerbWord = (verbs: Util.Verb[], selectedTheme: string, filteredVar
   // NO // VARIATION_T // VARIATION_TS
 
   switch(`${selectedTheme}${filteredVariation}`) {
-    case `${THEMES_DEFAULT}${VARIATION_V}`: return getRandomWordViaPrimaryType(verbs, PRIMARY_TYPE_VERB);
-    case `${THEMES_DEFAULT}${VARIATION_SV}`: return getRandomWordViaPrimaryType(verbs, PRIMARY_TYPE_VERB);
+    case `${THEMES_DEFAULT}${VARIATION_V}`: return getRandomWordVerb(verbs);
+    case `${THEMES_DEFAULT}${VARIATION_SV}`: return getRandomWordVerb(verbs);
   };
   throw new Error(createError('conjugations/generateWords.tsx', 'generateSubjectWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
 

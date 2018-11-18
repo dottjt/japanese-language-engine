@@ -1,6 +1,5 @@
 import {
   createError, 
-  emptyWordElement,
 } from '../../functions';
 
 import {
@@ -70,13 +69,13 @@ const uVerbEndingToA = (verbEnding: string): string[] => {
   throw new Error(createError('conjugations/verb', 'uVerbEndingToA', `${verbEnding} does not exist.`));
 };
 
-const getVerbStem = (verb: Util.Word, options: Util.Options): string[] => {
-  const verbAsArray = verb.japanese.kanji.split('');
-  const initialStemArray = getInitialVerbStem(verb.japanese.kanji);
-  const verbLastLetter = getLastLetterVerb(verb.japanese.kanji);
+const getVerbStem = (verb: Util.Verb, options: Util.Options): string[] => {
+  const verbAsArray = verb.verbJapanese.kanji.split('');
+  const initialStemArray = getInitialVerbStem(verb.verbJapanese.kanji);
+  const verbLastLetter = getLastLetterVerb(verb.verbJapanese.kanji);
 
-  if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_RU) { return initialStemArray };
-  if (verb.meta.verbType === SENTENCE_TYPE_VERB_TYPE_U) {
+  if (verb.verbJapaneseType === SENTENCE_TYPE_VERB_TYPE_RU) { return initialStemArray };
+  if (verb.verbJapaneseType === SENTENCE_TYPE_VERB_TYPE_U) {
     switch(`${options.politeness}${options.polarity}`) {
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verbAsArray;
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
@@ -87,31 +86,27 @@ const getVerbStem = (verb: Util.Word, options: Util.Options): string[] => {
   throw new Error(createError('conjugations/verb', 'getVerbStem', `Verb meta.verbType does not exist.`));
 };
 
-const determineVerbConjugationJapanese = (verb: Util.Word, options: Util.Options): { verbStem: Util.WordElement, polarity: Util.WordElement } => {
+const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options): { verbStem: Util.WordElement, verbPolarity: Util.WordElement } => {
   const verbStem = getVerbStem(verb, options);
   switch(`${options.politeness}${options.polarity}`) {
-    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verb.japanese.kanji.split(''), JAPANESE_VERB_STEM), polarity: createWord([''], JAPANESE_POLARITY)  };
-    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(['な','い'], JAPANESE_POLARITY)  };
-    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(['ま','す'], JAPANESE_POLARITY)  };
-    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), polarity: createWord(['ま','せ','ん'], JAPANESE_POLARITY)  };
+    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verb.verbJapanese.kanji.split(''), JAPANESE_VERB_STEM), verbPolarity: createWord([''], JAPANESE_POLARITY)  };
+    case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), verbPolarity: createWord(['な','い'], JAPANESE_POLARITY)  };
+    case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), verbPolarity: createWord(['ま','す'], JAPANESE_POLARITY)  };
+    case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), verbPolarity: createWord(['ま','せ','ん'], JAPANESE_POLARITY)  };
   }
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };
 
-const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedJapaneseWord => {
-  const word = filtersentenceType(words, sentenceType);
+const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedJapaneseVerb => {
+  const verb = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_JAPANESE;
-  const { verbStem, polarity } = determineVerbConjugationJapanese(word, options);
+  const { verbStem, verbPolarity } = determineVerbConjugationJapanese(verb as Util.Verb, options);
 
   return {
     type,
     sentenceType,
-    word,
     verbStem, 
-    polarity,
-    categoryEnding: emptyWordElement(),
-    tense: emptyWordElement(),
-    topicParticle: emptyWordElement(),
+    verbPolarity,
     __typename: __TYPENAME_CONJUGATED_JAPANESE_VERB,
   }
 };

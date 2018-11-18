@@ -87,7 +87,7 @@ declare namespace Util {
     type: string;
     sentenceType: string;
     verbStem: WordElement;
-    polarity: WordElement;
+    verbPolarity: WordElement;
     __typename: string; 
   };
 

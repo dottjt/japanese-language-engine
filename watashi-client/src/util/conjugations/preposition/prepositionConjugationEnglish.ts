@@ -86,10 +86,6 @@ const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.S
 
 };
 
-//   // a function that figures out which preposition it is, based on both the verb and the subject
-
-
-
 const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishPreposition => {
   const type = CONJUGATION_TYPE_PREPOSITION_ENGLISH;
   const preposition = determinePreposition(words, sentenceContext);
@@ -100,7 +96,6 @@ const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Uti
     sentenceType,
     __typename: __TYPENAME_CONJUGATED_ENGLISH_PREPOSITION,
   }
-  // return `${prepositionPolarity} ${word.english}`;
 };
 
 export default prepositionConjugationEnglish;

@@ -1,15 +1,3 @@
-// word.primaryType
-
-export const PRIMARY_TYPE_NOUN = 'noun';
-export const PRIMARY_TYPE_VERB = 'verb';
-export const PRIMARY_TYPE_ADJECTIVE = 'adjective';
-
-export const primaryTypeArray = [
-  PRIMARY_TYPE_NOUN,
-  PRIMARY_TYPE_VERB,
-  PRIMARY_TYPE_ADJECTIVE,
-];
-
 // word.category[]
 
 export const CATEGORY_HUMAN_NAME = 'CATEGORY_HUMAN_NAME';

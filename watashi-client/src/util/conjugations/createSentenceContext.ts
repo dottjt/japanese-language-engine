@@ -7,25 +7,26 @@ import {
 } from '../constants/typeNameConstants';
 
 import { 
-  contextWhenArray,
+  contextEventOccuranceArray,
   contextDurationArray,
   contextTopicPositionArray,
   contextTopicDestinationArray,
+  contextEventPOVArray,
   contextDirectionArray,
   contextSubjectConnectionArray,
   contextSubjectRoleArray,
 
-  contextWhenArrayLength,
+  contextEventOccuranceArrayLength,
   contextDurationArrayLength,
   contextTopicPositionArrayLength,
   contextTopicDestinationArrayLength,
+  contextEventPOVArrayLength,
   contextDirectionArrayLength,
   contextSubjectConnectionArrayLength,
   contextSubjectRoleArrayLength,
 
-  CONTEXT_OCCURANCE_RANDOM,
-  CONTEXT_DURATION_RANDOM,
-  CONTEXT_TOPIC_POSITION_RANDOM,
+  CONTEXT_EVENT_OCCURANCE_RANDOM,
+  CONTEXT_EVENT_DURATION_RANDOM,
   CONTEXT_TOPIC_DESTINATION_RANDOM,
   CONTEXT_DIRECTION_RANDOM,
   CONTEXT_SUBJECT_CONNECTION_RANDOM,
@@ -33,27 +34,33 @@ import {
 } from '../constants/contextConstants';
 
 
-const randomContextWhenValue = () => contextWhenArray[randomArrayElement(contextWhenArrayLength)];
-const randomContextDurationValue = () => contextDurationArray[randomArrayElement(contextDurationArrayLength)];
 const randomContextTopicPositionValue = () => contextTopicPositionArray[randomArrayElement(contextTopicPositionArrayLength)];
 const randomContextTopicDestinationValue = () => contextTopicDestinationArray[randomArrayElement(contextTopicDestinationArrayLength)];
-const randomContextDirectionValue = () => contextDirectionArray[randomArrayElement(contextDirectionArrayLength)];
+const randomContextEventDirectionValue = () => contextDirectionArray[randomArrayElement(contextDirectionArrayLength)];
+
+const randomContextEventOccuranceValue = () => contextEventOccuranceArray[randomArrayElement(contextEventOccuranceArrayLength)];
+const randomContextDurationValue = () => contextDurationArray[randomArrayElement(contextDurationArrayLength)];
+const randomContextPOVValue = () => contextEventPOVArray[randomArrayElement(contextEventPOVArrayLength)];
+
 const randomContextSubjectConnectionValue = () => contextSubjectConnectionArray[randomArrayElement(contextSubjectConnectionArrayLength)];
 const randomContextSubjectRoleValue = () => contextSubjectRoleArray[randomArrayElement(contextSubjectRoleArrayLength)];
 
-const createSentenceContextOptions = (sentenceContext: Util.SentenceContext): Util.SentenceContext => {
-  const { topicPosition, topicDestination, eventDirection, eventOccurance, eventDuration, subjectConnection, subjectRole } = sentenceContext;
+const createSentenceContext = (sentenceContext: Util.SentenceContext): Util.SentenceContext => {
+  const { topicPosition, topicDestination, eventDirection, eventOccurance, eventDuration, subjectConnection, subjectRole, eventPOV } = sentenceContext;
 
   return {
     __typename: __TYPENAME_SENTENCE_CONTEXT,
-    topicPosition: topicPosition === CONTEXT_OCCURANCE_RANDOM ? randomContextWhenValue() : topicPosition,
-    topicDestination: topicDestination === CONTEXT_DURATION_RANDOM ? randomContextDurationValue() : topicDestination,
-    eventDirection: eventDirection === CONTEXT_TOPIC_POSITION_RANDOM ? randomContextTopicPositionValue() : eventDirection,
-    eventOccurance: eventOccurance === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : eventOccurance,
-    eventDuration: eventDuration === CONTEXT_DIRECTION_RANDOM ? randomContextDirectionValue() : eventDuration,
+    topicPosition: topicPosition === CONTEXT_EVENT_OCCURANCE_RANDOM ? randomContextTopicPositionValue() : topicPosition,
+    topicDestination: topicDestination === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : topicDestination,
+    eventDirection: eventDirection === CONTEXT_DIRECTION_RANDOM ? randomContextEventDirectionValue() : eventDirection,
+
+    eventOccurance: eventOccurance === CONTEXT_EVENT_OCCURANCE_RANDOM ? randomContextEventOccuranceValue() : eventOccurance,
+    eventDuration: eventDuration === CONTEXT_EVENT_DURATION_RANDOM ? randomContextDurationValue() : eventDuration,
+    eventPOV: eventPOV === CONTEXT_DIRECTION_RANDOM ? randomContextPOVValue() : eventDuration,
+
     subjectConnection: subjectConnection === CONTEXT_SUBJECT_CONNECTION_RANDOM ? randomContextSubjectConnectionValue() : subjectConnection,  
     subjectRole: subjectRole === CONTEXT_SUBJECT_ROLE_RANDOM ? randomContextSubjectRoleValue() : subjectRole,
   }
 };
 
-export default createSentenceContextOptions;
+export default createSentenceContext;
