@@ -13,7 +13,6 @@ import {
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
-  ENGLISH_TENSE,
   ENGLISH_POLARITY,
 
   CONJUGATION_TYPE_VERB_ENGLISH,
@@ -33,7 +32,7 @@ import {
   TENSE_SIMPLE_FUTURE,
   TENSE_FUTURE_CONTINUOUS,
   TENSE_FUTURE_PERFECT,
-  TENSE_FUTURE_PERFECT_CONTINUOUS,
+  // TENSE_FUTURE_PERFECT_CONTINUOUS,
 } from '../../constants/wordConstants';
 
 import {
@@ -65,7 +64,7 @@ import {
   verbConjugationPermissionsEnglish,
 } from './verbPermissions';
 
-const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement => {
+const determineVerbTenseConjugationEnglish = (verb: Util.EnglishVerb, context: Util.SentenceContext): Util.WordElement => {
 
   const eventOccurance = context.eventOccurance;
   const eventDuration = context.eventDuration;
@@ -74,11 +73,11 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
   const infinitive = verb.infinitive; // "to hack";
   const presentParticiple = verb.presentParticiple; // "hacking";
   const pastParticiple = verb.pastParticiple; //"hacked";
-  // const simplePresentContinuousHeSheIt = verb.simplePresentContinuousHeSheIt; // "hacks";
+  const simplePresentContinuousHeSheIt = verb.simplePresentContinuousHeSheIt; // "hacks";
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     
-    // Past Perfect
+    // Past Perfect - The tense that is used to make it clear that one event happened before another in the past
     case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
     case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`:
     case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`:
@@ -93,7 +92,7 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
     case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
       return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
 
-    // Past Continuous
+    // Past Continuous - A continuing action or event in a time which began or existed in the past. It can also be used to describe an unfinished action
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "was" ], TENSE_PAST_CONTINUOUS);
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "have" ], TENSE_PAST_CONTINUOUS);
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "was" ], TENSE_PAST_CONTINUOUS); 
@@ -101,7 +100,7 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ ], TENSE_PAST_CONTINUOUS);
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ ], TENSE_PAST_CONTINUOUS);
 
-    // Simple Past
+    // Simple Past - Event that describes an event or action that happened in the past.     
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
@@ -110,7 +109,7 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
     case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
       return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
 
-    // Present Perfect Continuous 
+    // Present Perfect Continuous - "Started in the past and continuing to present time".    
     case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
     case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`:
     case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`:
@@ -119,7 +118,7 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
     case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
       return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
 
-    // Present Perfect
+    // Present Perfect - "Started in the past and continued to present time".
     case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
     case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
     case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "has", pastParticiple ], TENSE_PRESENT_PERFECT); 
@@ -207,30 +206,34 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
     // Future Perfect Continuous - actions that will continue up until a point in the future
     //     case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will have been", presentParticiple ], TENSE_FUTURE_PERFECT_CONTINUOUS);
     // if (eventOccurance === CONTEXT_OCCURANCE_UNKNOWN_FUTURE) {
-
   }
+
+  throw new Error(createError('verbConjugationEnglish', 'determineVerbTenseConjugationEnglish', `${eventOccurance}${eventDuration}${eventPOV} unknown`));  
 }
 
-const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { tense: Util.WordElement, polarity: Util.WordElement } => {
+const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = verbConjugationPermissionsEnglish(topic as Util.EnglishNoun, subject as Util.EnglishNoun, verb as Util.EnglishVerb, sentenceType);
 
+  // tense: createWord([''], ENGLISH_TENSE), 
+  // tense: createWord(['do'], ENGLISH_TENSE)
+
   if (permissions) {
-      switch(`${options.polarity}`) {
-        case `${POLARITY_POSITIVE}`: return { tense: createWord([''], ENGLISH_TENSE), polarity: createWord([''], ENGLISH_POLARITY) };
-        case `${POLARITY_NEGATIVE}`: return { tense: createWord(['do'], ENGLISH_TENSE), polarity: createWord(['not'], ENGLISH_POLARITY) };
-      }
-      throw new Error(createError('conjugations/verb', 'determineVerbConjugationEnglish', `${options.polarity} unknown`));  
+    switch(`${options.polarity}`) {
+      case `${POLARITY_POSITIVE}`: return createWord([''], ENGLISH_POLARITY);
+      case `${POLARITY_NEGATIVE}`: return createWord(['not'], ENGLISH_POLARITY);
+    }
+    throw new Error(createError('verbConjugationEnglish', 'determineVerbConjugationEnglish', `${options.polarity} unknown`));  
   }
-  return { tense: createWord([''], ENGLISH_TENSE), polarity: createWord([''], ENGLISH_POLARITY) };
+  return createWord([''], ENGLISH_POLARITY);
 }; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishWord => {
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_ENGLISH;
 
-  const { polarity } = determineVerbConjugationEnglish(words, options, sentenceType);
-  const { tense } = determineVerbTenseConjugationEnglish(word, sentenceContext);
+  const polarity = determineVerbConjugationEnglish(words, options, sentenceType);
+  const tense = determineVerbTenseConjugationEnglish(word, sentenceContext);
 
   return {
     tense,

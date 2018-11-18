@@ -52,7 +52,7 @@ const GET_EVERYTHING = gql`{
     topicPosition
     topicDestination
     eventDirection
-    eventWhen
+    eventOccurance
     eventDuration
     subjectConnection
     subjectRole

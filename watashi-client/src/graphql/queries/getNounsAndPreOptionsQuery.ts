@@ -43,7 +43,7 @@ const GET_NOUNS_AND_PRE_OPTIONS = gql`{
     topicPosition
     topicDestination
     eventDirection
-    eventWhen
+    eventOccurance
     eventDuration
     subjectConnection
     subjectRole

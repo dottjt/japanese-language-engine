@@ -34,7 +34,7 @@ import nounConjugationEnglish from './noun/nounConjugationEnglish';
 
 import verbConjugationJapanese from './verb/verbConjugationJapanese';
 import verbConjugationEnglish from './verb/verbConjugationEnglish';
-// import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
+import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
 
 import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
@@ -44,7 +44,7 @@ const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.Sentence
     case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_VERB: return verbConjugationEnglish(words, modifiers, options, sentenceContext, sentenceType);
-    // case SENTENCE_TYPE_PREPOSITION: return prepositionConjugationEnglish(words, modifiers, options, sentenceType);
+    case SENTENCE_TYPE_PREPOSITION: return prepositionConjugationEnglish(words, modifiers, options, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateEnglishWord', 'sentenceType does not exist'));

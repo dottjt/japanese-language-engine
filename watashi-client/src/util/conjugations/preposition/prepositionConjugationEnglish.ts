@@ -56,20 +56,24 @@ import {
 
 const determinePreposition = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   // maybe themes are the bridge between subject and context. 
-  // const { topic, subject, verb } = returnSentenceParts(words);
+  const { topic, subject, verb } = returnSentenceParts(words);
 
   // figure out monday.
   const eventContext = {
+    eventPOV: '',
+
     topicPosition: 'CONTEXT_TOPIC_POSITION_NEAR',
     topicDestination: "CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_INSIDE",
     eventDirection: "CONTEXT_DIRECTION_TOWARD",  
-    eventWhen: 'CONTEXT_OCCURANCE_NOW',
+    
+    eventOccurance: 'CONTEXT_OCCURANCE_NOW',
     eventDuration: 'CONTEXT_DURATION_COMPLETE',
+
     subjectConnection: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
     subjectRole: 'CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION',
   };
 
-  switch(subjectWord.metaType.nounType) {
+  switch(subjectWord.nounType) {
     // Time Prepositions
     case NOUN_TYPE_DAY_OF_WEEK: 
       return createWord(determineTimePrepositionDayOfWeek(eventContext), ENGLISH_PREPOSITION);
@@ -104,7 +108,7 @@ const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Uti
   const word = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_PREPOSITION_ENGLISH;
 
-  const preposition = determinePreposition(verb, subject);
+  const preposition = determinePreposition(word, subject);
 
   // eat 
   // I think there needs to be another field for preposition:

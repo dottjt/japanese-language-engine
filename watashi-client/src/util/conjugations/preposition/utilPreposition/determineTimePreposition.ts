@@ -10,36 +10,44 @@ import {
   CONTEXT_OCCURANCE_NOW,
   CONTEXT_OCCURANCE_NOW_FUTURE,
   CONTEXT_OCCURANCE_FUTURE,
-  CONTEXT_OCCURANCE_ALL_THE_TIME,
 
   CONTEXT_DURATION_PARTIAL_CONTINUOUS,
-  // CONTEXT_DURATION_COMPLETE_CONTINUOUS,
   CONTEXT_DURATION_COMPLETE,
 } from '../../../constants/contextConstants';
 
 // I think I need to keep in count sentence structure as well to determine what these things mean.
 
 export const determineTimePrepositionDayOfWeek = (eventContext): string[] => {
-  const contextWhen = eventContext.eventWhen;
+  const contextWhen = eventContext.eventOccurance;
   const contextDuration = eventContext.eventDuration;
 
   // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
   switch(`${contextWhen}${contextDuration}`) {
-    // Continuous: Leaving on monday. Definite: Leave on Monday.
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}`: 
-      return ['on'];
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}`:  
 
-    // Continuous: Left on monday. Definite: Leaving since Monday.
-    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Left on monday.
       return ['since'];
-    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}`: 
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}`: // Definite: Leaving since Monday.
       return ['before'];
 
-    // Continuous: Will be leaving next Monday. Definite: Will leave next Monday.
-    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
-    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}`: 
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}`:  
+
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}`:  
+
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Leaving on monday.
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}`: // Definite: Leave on Monday.
+      return ['on'];
+
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}`:  
+
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Will be leaving next Monday.
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}`: // Definite: Will leave next Monday.
       return ['next'];
+
   };
 
   throw new Error(createError('determineTimePreposition.ts', 'determineTimePrepositionDayOfWeek', `${contextWhen}${contextDuration} combination does not exist in function.`));
@@ -49,26 +57,38 @@ export const determineTimePrepositionDayOfWeek = (eventContext): string[] => {
 // NOUN_TYPE_SEASON
 // NOUN_TYPE_YEAR_DATE
 export const determineTimePrepositionMonthSeasonDate = (eventContext): string[] => {
-  const contextWhen = eventContext.eventWhen;
+  const contextWhen = eventContext.eventOccurance;
   const contextDuration = eventContext.eventDuration;
 
-  // Spring
+  // January, February, March, April
+  // Spring, Autumn, Winter
+  // 2006, 2007, 2008
   switch(`${contextWhen}${contextDuration}`) {
-    // Continuous: Leaving in Spring. Definite: Leave in Spring.
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}`: 
-      return ['in'];
-
-    // Continuous: Leaving since Spring. Definite: Leaving since Spring.
-    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}`:  
+    
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Leaving since Spring.
       return ['since'];
-    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}`: 
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}`: // Definite: Leaving since Spring.
       return ['before']; // what about 
-
-    // Continuous: Will be leaving next Spring. Definite: Will leave next Spring.
-    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
-    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}`: 
+    
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}`:  
+    
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}`:  
+    
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Leaving in Spring.
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}`: // Definite: Leave in Spring.
+      return ['in'];
+    
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Will be leaving next Spring.
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}`: // Definite: Will leave next Spring. 
       return ['next'];
+    
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}`:  
+    
 
     // NOTE: Will need to think about 'before' and 'last'. What is the difference?
     // before Spring. before August.
@@ -85,25 +105,36 @@ export const determineTimePrepositionMonthSeasonDate = (eventContext): string[] 
 // NOUN_TYPE_POINT_OF_DAY
 // NOUN_TYPE_PERIOD_DESCRIPTOR
 export const determineTimePrepositionPeriodDescriptor = (eventContext): string[] => {
-  const contextWhen = eventContext.eventWhen;
+  const contextWhen = eventContext.eventOccurance;
   const contextDuration = eventContext.eventDuration;
 
   // year, day, week, month
   switch(`${contextWhen}${contextDuration}`) {
-    // Continuous: Eat for the hour.
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
-    // Continuous: Eat for an hour.
-    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
-    // Continuous: Ate for an hour.
-    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}`:  
+    
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Ate for an hour.
       return ['for'];
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}`: // Definite: Ate in an hour.
+      return ['in']
 
-    // Definite: Eat in the hour;
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}`:
-    //  Definite: Eat in an hour.
-    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}`: 
-    // Definite: Ate in an hour.
-    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}`: 
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}`:  
+    
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}`:  
+    
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Eat for the hour.
+      return ['for'];
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}`: // Definite: Eat in the hour;
+      return ['in'];
+
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`:
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}`:  
+    
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}`: // Continuous: Eat for an hour.
+      return ['for'];
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}`: // Definite: Eat in an hour.  
       return ['in'];
 
     // NOTE: Need to think about ago. (when preposition comes AFTER the subject)
@@ -149,3 +180,5 @@ export const determineTimePrepositionPeriodDescriptor = (eventContext): string[]
   // if (NOUN_TYPE_POINT_OF_DAY_NIGHT || NOUN_TYPE_CLOCK_DATE) {
   //   return 'at';
   // }
+
+  

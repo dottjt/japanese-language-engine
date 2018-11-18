@@ -43,10 +43,10 @@ declare namespace Util {
   };
 
   export type EnglishVerb = {
-    presentTense: string;
+    infinitive: string;
     presentParticiple: string;
-    simplePast: string;
     pastParticiple: string;
+    simplePresentContinuousHeSheIt: string;
     __typename: string;
   }
   
@@ -169,9 +169,9 @@ declare namespace Util {
   };
 
   // SENTENCE TYPE - SENTENCE_TYPE_TOPIC
-  export type Topic = Word;
-  export type Verb = Word;
-  export type Subject = Word;
+  export type Topic = Noun;
+  export type Verb = Verb;
+  export type Subject = Noun;
 
   export type Predicate = {
     subject?: Subject;
@@ -211,12 +211,15 @@ declare namespace Util {
     no3?: WordModifier;
   };
 
-  export type SentenceContext = {
+  export type SentenceContext = {    
     topicPosition: string,
     topicDestination: string,
     eventDirection: string,
-    eventWhen: string,
+
+    eventOccurance: string,
     eventDuration: string,
+    eventPOV: string,
+
     subjectConnection: string,
     subjectRole: string,
     __typename: string,

@@ -42,14 +42,14 @@ const randomContextSubjectConnectionValue = () => contextSubjectConnectionArray[
 const randomContextSubjectRoleValue = () => contextSubjectRoleArray[randomArrayElement(contextSubjectRoleArrayLength)];
 
 const createSentenceContextOptions = (sentenceContext: Util.SentenceContext): Util.SentenceContext => {
-  const { topicPosition, topicDestination, eventDirection, eventWhen, eventDuration, subjectConnection, subjectRole } = sentenceContext;
+  const { topicPosition, topicDestination, eventDirection, eventOccurance, eventDuration, subjectConnection, subjectRole } = sentenceContext;
 
   return {
     __typename: __TYPENAME_SENTENCE_CONTEXT,
     topicPosition: topicPosition === CONTEXT_OCCURANCE_RANDOM ? randomContextWhenValue() : topicPosition,
     topicDestination: topicDestination === CONTEXT_DURATION_RANDOM ? randomContextDurationValue() : topicDestination,
     eventDirection: eventDirection === CONTEXT_TOPIC_POSITION_RANDOM ? randomContextTopicPositionValue() : eventDirection,
-    eventWhen: eventWhen === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : eventWhen,
+    eventOccurance: eventOccurance === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : eventOccurance,
     eventDuration: eventDuration === CONTEXT_DIRECTION_RANDOM ? randomContextDirectionValue() : eventDuration,
     subjectConnection: subjectConnection === CONTEXT_SUBJECT_CONNECTION_RANDOM ? randomContextSubjectConnectionValue() : subjectConnection,  
     subjectRole: subjectRole === CONTEXT_SUBJECT_ROLE_RANDOM ? randomContextSubjectRoleValue() : subjectRole,

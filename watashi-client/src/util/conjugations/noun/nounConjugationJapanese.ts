@@ -55,8 +55,8 @@ import {
   JAPANESE_POLARITY,
 } from '../../constants/optionsConstants';
 
-const determinecategoryEnding = (noun: Util.Word): Util.WordElement => {
-  const endingsArray = noun.category.map(categoryString => {
+const determinecategoryEnding = (noun: Util.Noun): Util.WordElement => {
+  const endingsArray = noun.nounCategory.map(categoryString => {
     switch(categoryString) {
       case `${CATEGORY_HUMAN_NAME}`: return createWord(['さ','ん'], JAPANESE_CATEGORY_ENDING);
       default: return createWord([''], JAPANESE_CATEGORY_ENDING);
@@ -68,7 +68,7 @@ const determinecategoryEnding = (noun: Util.Word): Util.WordElement => {
 
 const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounParticlePermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
+  const permissions = nounParticlePermissions(topic as Util.JapaneseNoun, subject as Util.JapaneseNoun, verb as Util.JapaneseVerb, sentenceType);
 
   if (permissions) {
     switch (options.selectedVariation) {
@@ -87,7 +87,7 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
 
 const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): { polarity: Util.WordElement, tense: Util.WordElement } => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = nounConjugationPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
+  const permissions = nounConjugationPermissions(topic as Util.JapaneseNoun, subject as Util.JapaneseNoun, verb as Util.JapaneseVerb, sentenceType);
 
   const emptyWord = createWord([''], JAPANESE_CONJUGATION);
 

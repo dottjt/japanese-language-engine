@@ -138,7 +138,7 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
           topicPosition: null,
           topicDestination: null,
           eventDirection: null,
-          eventWhen: null,
+          eventOccurance: null,
           eventDuration: null,
           subjectConnection: null,
           subjectRole: null,

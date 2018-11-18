@@ -98,7 +98,7 @@ export const optionTypes = `
     topicPosition: String
     topicDestination: String
     eventDirection: String
-    eventWhen: String
+    eventOccurance: String
     eventDuration: String
     subjectConnection: String
     subjectRole: String
