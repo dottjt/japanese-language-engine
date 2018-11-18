@@ -74,74 +74,70 @@ const GET_EVERYTHING = gql`{
     englishSentence @client {
       type
       sentenceType
-      tense @client {
+
+      # for nouns
+      nounDeclension @client {
         wordArray
         wordType
       }
-      polarity @client {
+      nounTense @client {
         wordArray
         wordType
       }
-      indefiniteArticle @client {
+      nounPolarity @client {
         wordArray
         wordType
       }
-      word @client {
-        japanese @client {
-          kanji
-        }
-        english @client {
-          singular
-        }
-        primaryType
-        category
-        meta @client {
-          verbType
-          nounType
-          nounPluralType
-        }
+      nounIndefiniteArticle @client {
+        wordArray
+        wordType
+      }
+
+      # for verbs
+      verbConjugation @client {
+        wordArray
+        wordType
+      }
+      verbPolarity @client {
+        wordArray
+        wordType
       }
     }
 
     japaneseSentence @client {
       type
       sentenceType
-      categoryEnding @client {
+
+      # for nouns
+      nounDeclension @client {
         wordArray
         wordType
       }
+      nounTense @client {
+        wordArray
+        wordType
+      }
+      nounPolarity @client {
+        wordArray
+        wordType
+      }
+      nounCategoryEnding @client {
+        wordArray
+        wordType
+      }
+      nounTopicParticle @client {
+        wordArray
+        wordType
+      }
+
+      #  for verbs
       verbStem @client {
         wordArray
         wordType
       }
-      tense @client {
+      verbPolarity @client {
         wordArray
         wordType
-      }
-      polarity @client {
-        wordArray
-        wordType
-      }
-      topicParticle @client {
-        wordArray
-        wordType
-      }
-      word @client {
-        japanese @client {
-          kanji
-          # hiragana
-          # furigana
-        }
-        english @client {
-          singular
-        }
-        primaryType
-        category
-        meta @client {
-          verbType
-          nounType
-          nounPluralType
-        }
       }
     }
     

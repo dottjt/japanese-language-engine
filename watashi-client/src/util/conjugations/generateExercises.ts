@@ -134,16 +134,8 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
         user: null, 
         preOptions: determinePreOptions(path), 
         preModifiers: determinePreModifiers(path),
-        preSentenceContext: {
-          topicPosition: null,
-          topicDestination: null,
-          eventDirection: null,
-          eventOccurance: null,
-          eventDuration: null,
-          subjectConnection: null,
-          subjectRole: null,
-        }
-      } 
+        preSentenceContext: determineSentenceContext(path),
+      }
     });
 
     const data = client.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;

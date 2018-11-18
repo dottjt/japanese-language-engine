@@ -25,7 +25,7 @@ const phraseOptionsEnglish = (phraseArray: Util.WordArrayElement[], options: Uti
   return filteredArray;
 };
 
-const sentenceOptionsEnglish = (sentenceArray: Util.ConjugatedEnglishWord[], options: Util.Options): Util.ConjugatedEnglishWord[] => {
+const sentenceOptionsEnglish = (sentenceArray: (Util.ConjugatedEnglishNoun | Util.ConjugatedEnglishVerb | Util.ConjugatedEnglishPreposition)[], options: Util.Options): (Util.ConjugatedEnglishNoun | Util.ConjugatedEnglishVerb | Util.ConjugatedEnglishPreposition)[] => {
   return sentenceArray;
 };
 
@@ -64,7 +64,7 @@ class SentenceEnglish extends React.PureComponent<PropTypes.IEnglishSentenceProp
           onMouseLeave={this.onHoverExit}
           >
           <Flex p={3} pl={3} border={1}>
-            {sentenceComplete.map((sentencePart: Util.ConjugatedEnglishWord, sentencePartIndex: number) => {
+            {sentenceComplete.map((sentencePart: Util.ConjugatedEnglishNoun | Util.ConjugatedEnglishVerb | Util.ConjugatedEnglishPreposition, sentencePartIndex: number) => {
               const sentencePartWordArray = createTaggedArrayEnglish(sentencePart);
               const sentencePartWordArrayComplete = phraseOptionsEnglish(sentencePartWordArray, options, sentencePartIndex);
 

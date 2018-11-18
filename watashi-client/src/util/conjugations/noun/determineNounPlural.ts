@@ -3,12 +3,20 @@ import {
 } from '../../functions';
 
 import {
+  createWord,
+} from '../utilConjugation';
+
+import {
   NOUN_PLURAL_ONLY,
   NOUN_PLURAL_SINGLE_ONLY,
   NOUN_PLURAL_IRREGULAR,
   NOUN_PLURAL_EXCEPTION,
   NOUN_PLURAL_GENERAL,
 } from '../../constants/wordConstants';
+
+import {
+  ENGLISH_DECLENSION,
+} from '../../constants/optionsConstants'
 
 const determineNounPluralOnly = (noun: string): string => {
   switch(noun) {
@@ -93,18 +101,18 @@ const determineNounGeneral = (noun) => {
   throw new Error(createError('pluralNounConjugation.ts', 'determineNounGeneral', `${lastLetter} or ${lastTwoLetters} values not recognised.`));
 };
 
-const determineNounPlural = (noun: Util.Word) => {
-  const nounString = noun.english.presentTense;
+const determineNounPlural = (noun: Util.Noun): Util.WordElement => {
+  const nounString = noun.nounEnglish.singular;
 
-  switch(noun.english.meta.nounPluralType) {
-    case NOUN_PLURAL_ONLY: return noun.english.presentTense = determineNounPluralOnly(nounString);
-    case NOUN_PLURAL_SINGLE_ONLY: return noun.english.presentTense = determineNounSingleOnly(nounString);
-    case NOUN_PLURAL_IRREGULAR: return noun.english.presentTense = determineNounIrregular(nounString);
-    case NOUN_PLURAL_EXCEPTION: return noun.english.presentTense = determineNounException(nounString);
-    case NOUN_PLURAL_GENERAL: return noun.english.presentTense = determineNounGeneral(nounString);
+  switch(noun.nounPluralType) {
+    case NOUN_PLURAL_ONLY: return createWord([determineNounPluralOnly(nounString)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_SINGLE_ONLY: return createWord([determineNounSingleOnly(nounString)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_IRREGULAR: return createWord([determineNounIrregular(nounString)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_EXCEPTION: return createWord([determineNounException(nounString)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_GENERAL: return createWord([determineNounGeneral(nounString)], ENGLISH_DECLENSION);
   }
 
-  throw new Error(createError('pluralNounConjugation.ts', 'determineNoun', `${noun.english.nounPluralType} not recognised on noun.`));
+  throw new Error(createError('pluralNounConjugation.ts', 'determineNoun', `${noun.nounPluralType} not recognised on noun.`));
 }
 
 export default determineNounPlural;

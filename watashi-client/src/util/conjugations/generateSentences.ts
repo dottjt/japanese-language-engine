@@ -110,11 +110,11 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
 
     const prepositionEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION, LANG_ENGLISH);
 
-    return  {
+    return {
       japaneseSentence: [ subjectJapanese, verbJapanese ],
       englishSentence: [ verbEnglish, prepositionEnglish, subjectEnglish ],
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };  
+    };
   };
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateSentences', 'sentenceType does not exist'));
 };

@@ -1,21 +1,23 @@
-import {
-  CATEGORY_RESPONSE,
-} from '../../constants/wordConstants';
+// import {
+//   CATEGORY_RESPONSE,
 
-import {
-  createNounWord,
-} from '../utilWord';
+//   NOUN_PLURAL_GENERAL,
+// } from '../../constants/wordConstants';
 
-export const wordYes = createNounWord({
-  nounType: 'TODO',
-  nounPluralType: 'TODO',
-  category: [ CATEGORY_RESPONSE ],
-  kanji: 'はい',
-  singular: 'yes',
-});
+// import {
+//   createNounWord,
+// } from '../utilWord';
+
+// export const wordYes = createNounWord({
+//   nounWordType: 'TODO',
+//   nounPluralType: 'TODO',
+//   nounCategory: [ CATEGORY_RESPONSE ],
+//   kanji: 'はい',
+//   singular: 'yes',
+// });
 
 const responseArray = [
-  wordYes,
+  // wordYes,
 ];
 
 export default responseArray;

@@ -82,7 +82,6 @@ declare namespace Util {
     __typename: string;
   };
 
-
   export type ConjugatedJapaneseVerb = {
     type: string;
     sentenceType: string;
@@ -94,24 +93,18 @@ declare namespace Util {
   export type ConjugatedJapaneseNoun = {
     type: string; 
     sentenceType: string; 
-    categoryEnding: WordElement; 
-    tense: WordElement; 
-    polarity: WordElement;
-    topicParticle: WordElement; 
+    nounDeclension: WordElement;
+    nounTense: WordElement; 
+    nounPolarity: WordElement;
+    nounCategoryEnding: WordElement; 
+    nounTopicParticle: WordElement; 
     __typename: string; 
-  };
-
-
-  export type ConjugatedEnglishPreposition = {
-    type: string;
-    sentenceType: string;
-    preposition: WordElement;
-    __typename: string;
   };
 
   export type ConjugatedEnglishNoun = {
     type: string;
     sentenceType: string;
+    nounDeclension: WordElement;
     nounTense: WordElement;
     nounPolarity: WordElement;
     nounIndefiniteArticle: WordElement;
@@ -121,10 +114,17 @@ declare namespace Util {
   export type ConjugatedEnglishVerb = {
     type: string;
     sentenceType: string;
+    verbConjugation: WordElement;
     verbPolarity: WordElement;
-    verbTense: WordElement;
     __typename: string;
   }
+
+  export type ConjugatedEnglishPreposition = {
+    type: string;
+    sentenceType: string;
+    preposition: WordElement;
+    __typename: string;
+  };
 
   export type Options = {
     politeness: string; // POLITENESS_CASUAL, POLITENESS_FORMAL

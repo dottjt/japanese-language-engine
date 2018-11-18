@@ -1,37 +1,41 @@
 import {
   CATEGORY_HUMAN_NAME,
+
+  NOUN_PLURAL_GENERAL,
+
+  NOUN_TYPE_SPACE,
 } from '../../constants/wordConstants';
 
 import { createNounWord } from '../utilWord';
 
 const wordSasaki = createNounWord({
-  nounType: 'TODO',
-  nounPluralType: 'TODO',
-  category: [ CATEGORY_HUMAN_NAME ],
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_HUMAN_NAME ],
   kanji: '佐々木',
   singular: 'Sasaki',
 });
 
 const wordNomura = createNounWord({
-  nounType: 'TODO',
-  nounPluralType: 'TODO',
-  category: [ CATEGORY_HUMAN_NAME ],
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_HUMAN_NAME ],
   kanji: '野村',
   singular: 'Nomura',
 });
 
 const wordKato = createNounWord({
-  nounType: 'TODO',
-  nounPluralType: 'TODO',
-  category: [ CATEGORY_HUMAN_NAME ],
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_HUMAN_NAME ],
   kanji: '加藤',
   singular: 'Nomura',
 });
 
 const wordKobayashi = createNounWord({
-  nounType: 'TODO',
-  nounPluralType: 'TODO',
-  category: [ CATEGORY_HUMAN_NAME ],
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_HUMAN_NAME ],
   kanji: '小林',
   singular: 'Nomura',
 });

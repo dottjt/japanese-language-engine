@@ -1,51 +1,91 @@
 export const sentenceTypes = `
-  type WordElement = {
+  type WordElement {
     wordArray: [ String ]
     wordType: String
   }
 
-  type TypeMeta {
-    verbType?: String
-    nounType?: String
-    nounPluralType?: String
+  type EnglishVerb {
+    infinitive: String
+    presentParticiple: String
+    pastParticiple: String
+    simplePresentContinuousHeSheIt: String
+  }
+  
+  type EnglishNoun {
+    singular: String
   }
 
-  type Word {
-    japanese: String
-    english: String
-    primaryType: String
-    category: [ String ]
-    meta: TypeMeta
-  }  
-
-  type ConjugatedJapaneseWord {
-    type: String
-    sentenceType: String
-    word: Word
-    categoryEnding: WordElement
-    verbStem: WordElement
-    tense: WordElement
-    polarity: WordElement
-    topicParticle: WordElement
+  type JapaneseNoun {
+    kanji: String
   }
 
-  type ConjugatedEnglishWord {
+  type JapaneseVerb {
+    kanji: String
+  }
+
+  type Noun {
+    nounJapanese: JapaneseNoun
+    nounEnglish: EnglishNoun
+    nounCategory: string[]
+    nounWordType: String
+    nounPluralType: String
+    __typename: String
+  }
+
+  type Verb {
+    verbJapanese: JapaneseVerb
+    verbEnglish: EnglishVerb
+    verbJapaneseType: String
+    verbCategory: string[]
+    __typename: String
+  }
+
+  type ConjugatedJapaneseVerb {
     type: String
     sentenceType: String
-    tense: WordElement
-    polarity: WordElement
-    indefiniteArticle: WordElement
-    word: Word
+    verbStem: Word
+    verbPolarity: WordElement
+  }
+
+  type ConjugatedJapaneseNoun {
+    type: String
+    sentenceType: String
+    nounCategoryEnding: WordElement
+    nounTense: WordElement
+    nounPolarity: WordElement
+    nounTopicParticle: WordElement
+  }
+
+  type ConjugatedEnglishNoun {
+    type: String
+    sentenceType: String
+    nounDeclension: WordElement
+    nounTense: WordElement
+    nounPolarity: WordElement
+    nounIndefiniteArticle: WordElement
+  }
+
+  type ConjugatedEnglishVerb {
+    type: String
+    sentenceType: String
+    verbConjugation: WordElement
+    verbPolarity: WordElement
+  }
+
+  type ConjugatedEnglishPreposition {
+    type: String
+    sentenceType: String
+    preposition: WordElement
   }
 
   type EnglishJapaneseOptionsSentence {
-    englishSentence: [ ConjugatedEnglishWord ]
-    japaneseSentence: [ ConjugatedJapaneseWord ] 
+    englishSentence: [ ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition ]
+    japaneseSentence: [ ConjugatedJapaneseNoun | ConjugatedJapaneseVerb ] 
     modifiers: Modifiers
     options: Options
     sentenceContext: SentenceContext
   }
-`;
+`
 
 export const optionTypes = `
   type SentenceStats {
@@ -82,7 +122,7 @@ export const optionTypes = `
     question: String
     sentenceEnding: String
     themes: String[]
-    selectedTheme?: String;
+    selectedTheme?: String
   }
 
   type User {
@@ -103,7 +143,7 @@ export const optionTypes = `
     subjectConnection: String
     subjectRole: String
   }
-`;
+`
 
 export const index = `
   type Mutation {
@@ -113,7 +153,8 @@ export const index = `
   type Query {
     sentenceStats: SentenceStats
     sentenceDisplayOptions: SentenceDisplayOptions
-    nouns: [ Word ]
+    nouns: [ Noun ]
+    verbs: [ Verb ]
 
     exercises?: [ EnglishJapaneseOptionsSentence ]
     preModifiers?: Modifiers
@@ -121,4 +162,4 @@ export const index = `
     preSentenceContext?: SentenceContext
     user?: User
   }
-`;
+`

@@ -9,6 +9,7 @@
 - Numbers module.
 - Separate words into different types. Verbs. Nouns. 
 - Confirm verb tenses make sense. 
+- separate actual watashi engine from website and lesson config and all that which is specific to the engine only. 
 
 # TODO NICE HAVES 
 - Find open contributors. 

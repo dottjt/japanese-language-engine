@@ -5,8 +5,6 @@ import {
 
   SENTENCE_TYPE_VERB_TYPE_RU,
   // SENTENCE_TYPE_VERB_TYPE_U,
-
-  // DIRECTION_VERB,
 } from '../../constants/wordConstants';
 
 import { createVerbWord } from '../utilWord';

@@ -26,15 +26,15 @@ export const determineSentenceIdentifierEndingEnglish = (identifier: string): st
 };
 
 
-export const adjectiveConjugationEnglish = (adjective: Util.Word, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceIdentifier: string): string => {
+// export const adjectiveConjugationEnglish = (adjective: Util.Adjective, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceIdentifier: string): string => {
 
 // A positive adjective is a normal adjective that’s used to describe, not compare. For example: “This is good soup” and “I am funny.”
 // A comparative adjective is an adjective that’s used to compare two things (and is often followed by the word than). For example: “This soup is better than that salad” or “I am funnier than her.”
 // A superlative adjective is an adjective that’s used to compare three or more things, or to state that something is the most. For example: “This is the best soup in the whole world” or “I am the funniest out of all the other bloggers.”
 
-  // return `${adjective.japanese}${adjectiveCategoryEnding}${adjectiveEnding}${sentenceIdentifierEnding}`;
-  return '';
-};
+//   return `${adjective.japanese}${adjectiveCategoryEnding}${adjectiveEnding}${sentenceIdentifierEnding}`;
+//   return '';
+// };
 
 // DESCRIPTIVE 
 

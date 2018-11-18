@@ -57,7 +57,7 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
     
     subjectConnection
     subjectRole  
-  };
+  }
 }`
 
 export default GET_NOUNS_VERBS_AND_PRE_OPTIONS;

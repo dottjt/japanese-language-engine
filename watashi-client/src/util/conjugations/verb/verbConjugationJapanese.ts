@@ -98,9 +98,9 @@ const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options
 };
 
 const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedJapaneseVerb => {
-  const verb = filtersentenceType(words, sentenceType);
+  const verb = filtersentenceType(words, sentenceType) as Util.Verb;
   const type = CONJUGATION_TYPE_VERB_JAPANESE;
-  const { verbStem, verbPolarity } = determineVerbConjugationJapanese(verb as Util.Verb, options);
+  const { verbStem, verbPolarity } = determineVerbConjugationJapanese(verb, options);
 
   return {
     type,

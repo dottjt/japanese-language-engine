@@ -15,10 +15,11 @@ import {
 
 import { index, sentenceTypes, optionTypes } from './types';
 
-import allWords from '../util/words/collection';
+import { nounWords, verbWords } from '../util/words/collection';
 
 const defaults = {
-  nouns: allWords,
+  nouns: nounWords,
+  verbs: verbWords,
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
     toggleSentenceOrder: false, 
