@@ -15,13 +15,13 @@ import {
   ENGLISH_INDEFINITE_ARTICLE,
 } from '../../constants/optionsConstants';
 
-const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Word, sentenceType: string): Util.WordElement => {
+const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Noun, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = indefiniteArticlePermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
+  const permissions = indefiniteArticlePermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   if (permissions) {
     const vowels = 'aeiou';
-    const firstLetter = noun.english[0];
+    const firstLetter = noun.nounEnglish.singular[0];
 
     if (vowels.includes(firstLetter)) {
       return createWord(['an'], ENGLISH_INDEFINITE_ARTICLE);

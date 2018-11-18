@@ -4,7 +4,7 @@ import {
 
 // Japanese
 
-export const verbConjugationPermissionsEnglish = (topic: Util.Word, subject: Util.Word, verb: Util.Word, sentenceType: string): boolean => {
+export const verbConjugationPermissionsEnglish = (topic: Util.Noun, subject: Util.Noun, verb: Util.Verb, sentenceType: string): boolean => {
   const { onlyTopic, onlySubject, onlyVerb, onlySubjectAndVerb, onlyTopicAndSubjectTOPIC, onlyTopicAndSubjectSUBJECT } = createCommonPermissions(topic, subject, verb, sentenceType);
   
   if (onlyTopic) { return false }; // technically not possible.

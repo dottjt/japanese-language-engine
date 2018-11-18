@@ -1,5 +1,9 @@
 import {
-  // SENTENCE_TYPE_VERB,
+  createError,
+} from '../functions';
+
+import {
+  SENTENCE_TYPE_VERB,
   SENTENCE_TYPE_TOPIC,
   SENTENCE_TYPE_SUBJECT,
 } from '../constants/optionsConstants';
@@ -43,8 +47,9 @@ export const filtersentenceType = (words: Util.SentenceWords, sentenceType: stri
   switch(sentenceType) {
     case SENTENCE_TYPE_TOPIC: return topic as Util.Noun;
     case SENTENCE_TYPE_SUBJECT: return subject as Util.Noun;
-    default: return verb as Util.Verb;
+    case SENTENCE_TYPE_VERB: return verb as Util.Verb;
   }
+  throw new Error(createError('utilConjugation.tsx', 'filtersentenceType', `${sentenceType} does not exist.`));    
 };
 
 export const createCommonPermissions = (topic: Util.Noun, subject: Util.Noun, verb: Util.Verb, sentenceType: string) => {

@@ -82,30 +82,51 @@ declare namespace Util {
     __typename: string;
   };
 
-  export type ConjugatedJapaneseWord = {
-    type: string; // noun, verb
-    sentenceType: string; // noun
-    word: JapaneseNoun | JapaneseVerb; // noun, verb
-    categoryEnding: WordElement; // noun
-    verbStem: WordElement; // verb
-    tense: WordElement; // noun
-    polarity: WordElement;// noun, verb
-    topicParticle: WordElement; // noun
-    __typename: string; // noun, verb
+
+  export type ConjugatedJapaneseVerb = {
+    type: string;
+    sentenceType: string;
+    verbStem: WordElement;
+    polarity: WordElement;
+    __typename: string; 
   };
 
-  export type ConjugatedEnglishWord = {
-    type: string; // noun, verb
-    sentenceType: string; // noun
-    word: EnglishNoun | EnglishVerb; // noun, verb
-    tense: WordElement; // noun
-    polarity: WordElement; // noun, verb
-    indefiniteArticle: WordElement; // noun
-    __typename: string; // noun, verb
+  export type ConjugatedJapaneseNoun = {
+    type: string; 
+    sentenceType: string; 
+    categoryEnding: WordElement; 
+    tense: WordElement; 
+    polarity: WordElement;
+    topicParticle: WordElement; 
+    __typename: string; 
   };
+
+
+  export type ConjugatedEnglishPreposition = {
+    type: string;
+    sentenceType: string;
+    preposition: WordElement;
+    __typename: string;
+  };
+
+  export type ConjugatedEnglishNoun = {
+    type: string;
+    sentenceType: string;
+    nounTense: WordElement;
+    nounPolarity: WordElement;
+    nounIndefiniteArticle: WordElement;
+    __typename: string;
+  }
+
+  export type ConjugatedEnglishVerb = {
+    type: string;
+    sentenceType: string;
+    verbPolarity: WordElement;
+    verbTense: WordElement;
+    __typename: string;
+  }
 
   export type Options = {
-    __typename: string;
     politeness: string; // POLITENESS_CASUAL, POLITENESS_FORMAL
     variation: string[]; // wa-sob,
     selectedVariation?: string; // wa-sob,
@@ -116,6 +137,7 @@ declare namespace Util {
     themes: string[];
     selectedTheme?: string;
     // sentenceEnding: string;
+    __typename: string;
   };
 
   export type ControlPanelOptions = {
@@ -150,14 +172,14 @@ declare namespace Util {
   export type Themes = string[];
 
   export type EnglishJapaneseSentence = {
-    englishSentence: ConjugatedEnglishWord[];
-    japaneseSentence: ConjugatedJapaneseWord[];
+    englishSentence: (ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition)[];
+    japaneseSentence: (ConjugatedJapaneseNoun | ConjugatedJapaneseVerb)[];
     __typename: string;
   };
 
   export type EnglishJapaneseOptionsSentence = {
-    englishSentence: ConjugatedEnglishWord[];
-    japaneseSentence: ConjugatedJapaneseWord[];
+    englishSentence: (ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition)[];
+    japaneseSentence: (ConjugatedJapaneseNoun | ConjugatedJapaneseVerb)[];
     options: Options;
     modifiers: Modifiers;
     __typename: string;

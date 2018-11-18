@@ -1,10 +1,8 @@
 import {
-  // createError,
-  emptyWordElement,
+  createError,
 } from '../../functions';
 
 import {
-  filtersentenceType,
   returnSentenceParts,
   createWord,
 } from '../utilConjugation';
@@ -80,29 +78,24 @@ const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.S
       if (sentenceContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION) {
         return createWord(determineAgencyPurposeReasonPreposition(sentenceContext), ENGLISH_PREPOSITION);
       }
+    
     // case NOUN_TYPE_ABSTRACT:
     // NOTE: Maybe I can treat time/CLOCK_TYPE as if it's an abstract concept? Yes motherfucker.
   }
+  throw new Error(createError('prepositionConjugationEnglish.tsx', 'determinePreposition', `${subject.nounWordType} does not exist.`));    
+
 };
 
 //   // a function that figures out which preposition it is, based on both the verb and the subject
 
 
 
-const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishWord => {
-  const word = filtersentenceType(words, sentenceType);
+const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishPreposition => {
   const type = CONJUGATION_TYPE_PREPOSITION_ENGLISH;
-
   const preposition = determinePreposition(words, sentenceContext);
 
-  // eat 
-  // I think there needs to be another field for preposition:
-
   return {
-    tense: emptyWordElement(),
-    indefiniteArticle: emptyWordElement(),
-    polarity: emptyWordElement(),
-    word,
+    preposition,
     type,
     sentenceType,
     __typename: __TYPENAME_CONJUGATED_ENGLISH_PREPOSITION,

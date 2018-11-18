@@ -1,6 +1,5 @@
 import {
   createError,
-  emptyWordElement,
 } from '../../functions';
 
 import {
@@ -64,16 +63,16 @@ import {
   verbConjugationPermissionsEnglish,
 } from './verbPermissions';
 
-const determineVerbTenseConjugationEnglish = (verb: Util.EnglishVerb, context: Util.SentenceContext): Util.WordElement => {
+const determineVerbTenseConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext): Util.WordElement => {
 
   const eventOccurance = context.eventOccurance;
   const eventDuration = context.eventDuration;
   const eventPOV = context.eventPOV;
 
-  const infinitive = verb.infinitive; // "to hack";
-  const presentParticiple = verb.presentParticiple; // "hacking";
-  const pastParticiple = verb.pastParticiple; //"hacked";
-  const simplePresentContinuousHeSheIt = verb.simplePresentContinuousHeSheIt; // "hacks";
+  const infinitive = verb.verbEnglish.infinitive; // "to hack";
+  const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
+  const pastParticiple = verb.verbEnglish.pastParticiple; //"hacked";
+  const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     
@@ -152,7 +151,7 @@ const determineVerbTenseConjugationEnglish = (verb: Util.EnglishVerb, context: U
     // Simple Present - "Happening all the time, or exist now"
     case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
     case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ infinitive + "s" ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ simplePresentContinuousHeSheIt ], TENSE_SIMPLE_PRESENT);
     case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
     case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
     case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
@@ -213,7 +212,7 @@ const determineVerbTenseConjugationEnglish = (verb: Util.EnglishVerb, context: U
 
 const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = verbConjugationPermissionsEnglish(topic as Util.EnglishNoun, subject as Util.EnglishNoun, verb as Util.EnglishVerb, sentenceType);
+  const permissions = verbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   // tense: createWord([''], ENGLISH_TENSE), 
   // tense: createWord(['do'], ENGLISH_TENSE)
@@ -228,18 +227,16 @@ const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return createWord([''], ENGLISH_POLARITY);
 }; 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishWord => {
-  const word = filtersentenceType(words, sentenceType);
+const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishVerb => {
+  const verb = filtersentenceType(words, sentenceType);
   const type = CONJUGATION_TYPE_VERB_ENGLISH;
 
-  const polarity = determineVerbConjugationEnglish(words, options, sentenceType);
-  const tense = determineVerbTenseConjugationEnglish(word, sentenceContext);
+  const verbPolarity = determineVerbConjugationEnglish(words, options, sentenceType);
+  const verbTense = determineVerbTenseConjugationEnglish(verb as Util.Verb, sentenceContext);
 
   return {
-    tense,
-    indefiniteArticle: emptyWordElement(),
-    polarity,
-    word,
+    verbTense,
+    verbPolarity,
     type,
     sentenceType,
     __typename: __TYPENAME_CONJUGATED_ENGLISH_VERB,
