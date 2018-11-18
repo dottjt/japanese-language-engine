@@ -85,7 +85,7 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
   return createWord([''], JAPANESE_TOPIC_PARTICLE);
 };
 
-const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { polarity: Util.WordElement, tense: Util.WordElement } => {
+const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): { polarity: Util.WordElement, tense: Util.WordElement } => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounConjugationPermissions(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
 

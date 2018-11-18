@@ -93,7 +93,7 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return createWord([''], ENGLISH_TENSE);
 };
 
-const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string): Util.ConjugatedEnglishWord => {
+const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishWord => {
   const word = filtersentenceType(words, sentenceType);
   const pluralWord = determineNounPlural(word);
 

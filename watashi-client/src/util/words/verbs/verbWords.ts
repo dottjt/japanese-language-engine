@@ -26,60 +26,9 @@ export const wordEat = createVerbWord({
 
 // "eat"
 // "cry"
-// "of"
-
-    // "OCCURANCE_PAST_POINT" || 
-    // "OCCURANCE_NOW_POINT" || 
-    // "OCCURANCE_FUTURE_POINT" || 
-    
-    // "OCCURANCE_PAST_PERIOD" || 
-    // "OCCURANCE_NOW_PERIOD" || 
-    // "OCCURANCE_FUTURE_PERIOD" || 
-
-// events, actions, and conditions
-// happening vs existance. 
-
-// CONTEXT_EVENT_INITIAL_OCCURANCE = 
-    // "OCCURANCE_BEGINNING_OF_TIME" || 
-    
-    // "OCCURANCE_PAST" || 
-    // "OCCURANCE_NOW" || 
-    // "OCCURANCE_FUTURE" || 
-
-    // "OCCURANCE_PAST_NOW"
-    // "OCCURANCE_PAST_FUTURE"
-
-    // "OCCURANCE_NOW_FUTURE"
-
-    // "OCCURANCE_END_OF_TIME" || 
-    // "OCCURANCE_ALL_THE_TIME" || 
-    // "OCCURANCE_AT_TIMES";
-
-// CONTEXT_DURATION = 
-    // "DURATION_COMPLETE" || 
-    // "DURATION_PARTIAL_CONTINUOUS" || 
-    // "DURATION_NOT_BEGAN"
 
 
 const verbTenseConjugation = () => {
-  // or simplePresent - simplePresentContinuous
-  if ("SIMPLE_PRESENT_CONTINUOUS") {
-    if ("SELF_SINGULAR") {
-      return [ "am", presentParticiple ]; // "am hacking"
-    }
-    if ("YOU_SINGULAR") {
-      return [ "would", infinitive]; // "would hack"
-    }
-    if ("HESHEIT_SINGULAR") {
-      return ["is", simplePresentContinuousHeSheIt];
-    }
-    if ("WE_PLURAL" || "YOU_PLURAL" || "THEYTHOSE_PLURAL") {
-      return ["are", presentParticiple ]; 
-    }
-  };
-
-
-
 
 const subVerb = {
 

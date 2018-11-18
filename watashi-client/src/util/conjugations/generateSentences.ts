@@ -39,22 +39,22 @@ import verbConjugationEnglish from './verb/verbConjugationEnglish';
 import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
 
-const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedEnglishWord => {
+const generateEnglishWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, lang: string): Util.ConjugatedEnglishWord => {
   switch (sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_VERB: return verbConjugationEnglish(words, modifiers, options, sentenceType);
+    case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(words, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(words, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_VERB: return verbConjugationEnglish(words, modifiers, options, sentenceContext, sentenceType);
     // case SENTENCE_TYPE_PREPOSITION: return prepositionConjugationEnglish(words, modifiers, options, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
 };
 
-const generateJapaneseWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceType: string, lang: string): Util.ConjugatedJapaneseWord | Util.ConjugatedJapaneseWord => {
+const generateJapaneseWord = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, lang: string): Util.ConjugatedJapaneseWord | Util.ConjugatedJapaneseWord => {
   switch (sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(words, modifiers, options, sentenceType);
-    case SENTENCE_TYPE_VERB: return verbConjugationJapanese(words, modifiers, options, sentenceType);
+    case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(words, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(words, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_VERB: return verbConjugationJapanese(words, modifiers, options, sentenceContext, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateJapaneseWord', 'sentenceType does not exist'));
@@ -66,8 +66,8 @@ const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWord
   
   if (onlyTopic) {
 
-    const topicJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE);
-    const topicEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)
+    const topicJapanese = generateJapaneseWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_JAPANESE);
+    const topicEnglish = generateEnglishWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)
   
     return {
       japaneseSentence: [ topicJapanese ],
@@ -77,8 +77,8 @@ const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWord
   };
   if (onlyVerb) {
 
-    const verbJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE);
-    const verbEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH)
+    const verbJapanese = generateJapaneseWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_JAPANESE);
+    const verbEnglish = generateEnglishWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_ENGLISH)
 
     return  {
       japaneseSentence: [ verbJapanese ],
@@ -88,11 +88,11 @@ const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWord
   };
   if (onlyTopicAndSubject) {
 
-    const topicJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_JAPANESE);
-    const topicEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_TOPIC, LANG_ENGLISH);
+    const topicJapanese = generateJapaneseWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_JAPANESE);
+    const topicEnglish = generateEnglishWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_ENGLISH);
 
-    const subjectJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE);
-    const subjectEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH);
+    const subjectJapanese = generateJapaneseWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE);
+    const subjectEnglish = generateEnglishWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH);
 
     return  {
       japaneseSentence: [ topicJapanese, subjectJapanese ],
@@ -102,13 +102,13 @@ const generatePhrases = (words: Util.SentenceWords, modifiers: Util.SentenceWord
   };
   if (onlySubjectAndVerb) {
 
-    const subjectJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE);
-    const subjectEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH);
+    const subjectJapanese = generateJapaneseWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, LANG_JAPANESE);
+    const subjectEnglish = generateEnglishWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH);
 
-    const verbJapanese = generateJapaneseWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_JAPANESE);
-    const verbEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_VERB, LANG_ENGLISH);
+    const verbJapanese = generateJapaneseWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_JAPANESE);
+    const verbEnglish = generateEnglishWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_ENGLISH);
 
-    const prepositionEnglish = generateEnglishWord(words, modifiers, options, SENTENCE_TYPE_PREPOSITION, LANG_ENGLISH);
+    const prepositionEnglish = generateEnglishWord(words, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION, LANG_ENGLISH);
 
     return  {
       japaneseSentence: [ subjectJapanese, verbJapanese ],
