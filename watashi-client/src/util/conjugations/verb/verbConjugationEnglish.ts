@@ -37,21 +37,14 @@ import {
 } from '../../constants/wordConstants';
 
 import {
-  CONTEXT_OCCURANCE_BEGINNING_OF_TIME,
-
   CONTEXT_OCCURANCE_BEFORE_PAST,
   CONTEXT_OCCURANCE_PAST,
-  CONTEXT_OCCURANCE_PAST_FUTUREPAST,
   CONTEXT_OCCURANCE_PAST_NOW,
+  CONTEXT_OCCURANCE_PAST_FUTUREPAST,
   CONTEXT_OCCURANCE_NOW,
   CONTEXT_OCCURANCE_NOW_FUTURE,
-  CONTEXT_OCCURANCE_PAST_FUTURE,
-  CONTEXT_OCCURANCE_UNKNOWN_FUTURE,
   CONTEXT_OCCURANCE_FUTURE,
-  
-  CONTEXT_OCCURANCE_END_OF_TIME,
   CONTEXT_OCCURANCE_ALL_THE_TIME,
-  CONTEXT_OCCURANCE_AT_TIMES,
 
   CONTEXT_DURATION_PARTIAL_CONTINUOUS,
   CONTEXT_DURATION_COMPLETE,
@@ -63,7 +56,6 @@ import {
   CONTEXT_POV_YOU_PLURAL,
   CONTEXT_POV_THEYTHOSE_PLURAL,
 
-  // perhaps there can be unknown duration? 
 } from '../../constants/contextConstants';
 
 import {
@@ -83,191 +75,161 @@ const determineVerbTenseConjugationEnglish = (verb, context): Util.WordElement =
   const infinitive = verb.infinitive; // "to hack";
   const presentParticiple = verb.presentParticiple; // "hacking";
   const pastParticiple = verb.pastParticiple; //"hacked";
-  const simplePresentContinuousHeSheIt = verb.simplePresentContinuousHeSheIt; // "hacks";
+  // const simplePresentContinuousHeSheIt = verb.simplePresentContinuousHeSheIt; // "hacks";
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     
+    // Past Perfect
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_BEFORE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+      return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
 
-  }
+    // Past Continuous
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "was" ], TENSE_PAST_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "have" ], TENSE_PAST_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "was" ], TENSE_PAST_CONTINUOUS); 
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: return createWord([ ], TENSE_PAST_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ ], TENSE_PAST_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ ], TENSE_PAST_CONTINUOUS);
 
+    // Simple Past
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+      return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
 
-  // Simple Present - "Happening all the time, or exist now"
-  if (eventOccurance === CONTEXT_OCCURANCE_ALL_THE_TIME || 
-      eventOccurance === CONTEXT_OCCURANCE_NOW) {
-        // if not be
-        switch() {
-          case CONTEXT_POV_SELF_SINGULAR: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-          case CONTEXT_POV_YOU_SINGULAR: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-          case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ infinitive + "s" ], TENSE_SIMPLE_PRESENT); 
-          case CONTEXT_POV_WE_PLURAL: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-          case CONTEXT_POV_YOU_PLURAL: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-          case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-        }
-        
-  }
+    // Present Perfect Continuous 
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+      return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
 
+    // Present Perfect
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "has", pastParticiple ], TENSE_PRESENT_PERFECT); 
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+    case `${CONTEXT_OCCURANCE_PAST_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
 
+    // Past Perfect Continuous - started in the past and continued up until another time in the past
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_PAST_FUTUREPAST}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+      return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
+  
+    //  Present Continuous - "Happening now, or unfinshed. Temporary actions."   
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    
+   //  not sure. 
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    case `${CONTEXT_OCCURANCE_NOW}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    
+   //  Present Continuous - "Happening now, or unfinshed. Temporary actions."   
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+    case `${CONTEXT_OCCURANCE_ALL_THE_TIME}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+ 
+    // Future Continuous - The tense that is used for an unfinished action or event that will occur in future and continue for an expected length of time
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS); 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
 
-  // Present Continuous - "Happening now, or unfinshed. Temporary actions."
-  if (eventOccurance === CONTEXT_OCCURANCE_NOW || 
-      eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
+    // Simple Future - events which are expected, or likely to occur in the future.
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE); 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+    
+    // Future Perfect - actions that will be completed between now and some point in the future
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_NOW_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: 
+      return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
+       
+    // Simple Future - events which are expected, or likely to occur in the future.
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_HESHEIT_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_WE_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: 
+    case `${CONTEXT_OCCURANCE_FUTURE}${CONTEXT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: 
+      return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
 
-        switch() {
-          case CONTEXT_POV_SELF_SINGULAR: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
-          case CONTEXT_POV_YOU_SINGULAR: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
-          case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-          case CONTEXT_POV_WE_PLURAL: 
-          case CONTEXT_POV_YOU_PLURAL: 
-          case CONTEXT_POV_THEYTHOSE_PLURAL: 
-            return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
-        }
+    // Future Perfect Continuous - actions that will continue up until a point in the future
+    //     case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will have been", presentParticiple ], TENSE_FUTURE_PERFECT_CONTINUOUS);
+    // if (eventOccurance === CONTEXT_OCCURANCE_UNKNOWN_FUTURE) {
 
-}
-
-
-
-  // Present Perfect - "Started in the past and continued to present time".
-  if (eventOccurance === CONTEXT_OCCURANCE_PAST_NOW ||
-      eventDuration === CONTEXT_DURATION_COMPLETE) {
-
-      switch() {
-        case CONTEXT_POV_SELF_SINGULAR: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
-        case CONTEXT_POV_YOU_SINGULAR: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
-        case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "has", pastParticiple ], TENSE_PRESENT_PERFECT); 
-        case CONTEXT_POV_WE_PLURAL: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
-        case CONTEXT_POV_YOU_PLURAL: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
-        case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
-      }
-  }
-
-  // Present Perfect Continuous - "Started in the past and continuing to present time".
-  if (eventOccurance === CONTEXT_OCCURANCE_PAST_NOW ||
-      eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
-        
-      switch() {
-        case CONTEXT_POV_SELF_SINGULAR: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
-        case CONTEXT_POV_YOU_SINGULAR: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
-        case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "have been", pastParticiple], TENSE_PRESENT_PERFECT_CONTINUOUS); 
-        case CONTEXT_POV_WE_PLURAL: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
-        case CONTEXT_POV_YOU_PLURAL: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
-        case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
-      }
-  }
-
-
-  // Simple Past - Event that describes an event or action that happened in the past. 
-  if (eventOccurance === CONTEXT_OCCURANCE_PAST) {
-    // ALWAYS THE SAME
-
-    switch() {
-      case CONTEXT_POV_SELF_SINGULAR: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
-      case CONTEXT_POV_YOU_SINGULAR: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
-      case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST); 
-      case CONTEXT_POV_WE_PLURAL: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
-      case CONTEXT_POV_YOU_PLURAL: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
-      case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
-    }
-
-  }
-
-  // Past Continuous - a continuing action or event in a time which began or existed in the past. It can also be used to describe an unfinished action
-  if (eventOccurance === CONTEXT_OCCURANCE_PAST ||
-      eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
-        switch() {
-          case CONTEXT_POV_SELF_SINGULAR: return createWord([ "was" ], TENSE_PAST_CONTINUOUS);
-          case CONTEXT_POV_YOU_SINGULAR: return createWord([ "have" ], TENSE_PAST_CONTINUOUS);
-          case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "was" ], TENSE_PAST_CONTINUOUS); 
-          case CONTEXT_POV_WE_PLURAL: return createWord([ ], TENSE_PAST_CONTINUOUS);
-          case CONTEXT_POV_YOU_PLURAL: return createWord([ ], TENSE_PAST_CONTINUOUS);
-          case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ ], TENSE_PAST_CONTINUOUS);
-        }
-  }
-
-
-  // Past Perfect - The tense that is used to make it clear that one event happened before another in the past
-  if (eventOccurance === CONTEXT_OCCURANCE_BEFORE_PAST) { // could be more refined?
-        switch() {
-          case CONTEXT_POV_SELF_SINGULAR: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
-          case CONTEXT_POV_YOU_SINGULAR: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
-          case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT); 
-          case CONTEXT_POV_WE_PLURAL: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
-          case CONTEXT_POV_YOU_PLURAL: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
-          case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
-        }
-  }
-
-  // Past Perfect Continuous - started in the past and continued up until another time in the past
-  if (eventOccurance === CONTEXT_OCCURANCE_PAST_FUTUREPAST) {
-    switch() {
-      case CONTEXT_POV_SELF_SINGULAR: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_YOU_SINGULAR: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "had been", presentParticiple], TENSE_PAST_PERFECT_CONTINUOUS); 
-      case CONTEXT_POV_WE_PLURAL: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_YOU_PLURAL: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
-    }
-  }
-
-
-  // Simple Future - events which are expected, or likely to occur in the future.
-  if (eventOccurance === CONTEXT_OCCURANCE_FUTURE) {
-    // ALWAYS THE SAME
-
-    switch() {
-      case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
-      case CONTEXT_POV_YOU_SINGULAR: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
-      case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE); 
-      case CONTEXT_POV_WE_PLURAL: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
-      case CONTEXT_POV_YOU_PLURAL: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
-      case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
-    }
-    return createWord(['will', infinitive], ENGLISH_TENSE);
-  }
-
-  // Future Continuous - The tense that is used for an unfinished action or event that will occur in future and continue for an expected length of time
-  if (eventOccurance === CONTEXT_OCCURANCE_FUTURE && 
-      eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
-        switch() {
-          case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
-          case CONTEXT_POV_YOU_SINGULAR: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
-          case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS); 
-          case CONTEXT_POV_WE_PLURAL: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
-          case CONTEXT_POV_YOU_PLURAL: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
-          case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
-        }
-  }
-
-  // Future Perfect - actions that will be completed between now and some point in the future
-  if (eventOccurance === CONTEXT_OCCURANCE_NOW_FUTURE) {
-    // ALWAYS THE SAME
-
-    switch() {
-      case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
-      case CONTEXT_POV_YOU_SINGULAR: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
-      case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT); 
-      case CONTEXT_POV_WE_PLURAL: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
-      case CONTEXT_POV_YOU_PLURAL: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
-      case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
-    }
-  }
-
-  // Future Perfect Continuous - actions that will continue up until a point in the future
-  if (eventOccurance === CONTEXT_OCCURANCE_UNKNOWN_FUTURE) {
-    switch() {
-      case CONTEXT_POV_SELF_SINGULAR: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_YOU_SINGULAR: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([], TENSE_FUTURE_PERFECT_CONTINUOUS); 
-      case CONTEXT_POV_WE_PLURAL: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_YOU_PLURAL: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
-      case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
-    }
   }
 }
 
 
 const determineVerbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { tense: Util.WordElement, polarity: Util.WordElement } => {
   const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = verbConjugationPermissionsEnglish(topic as Util.Word, subject as Util.Word, verb as Util.Word, sentenceType);
+  const permissions = verbConjugationPermissionsEnglish(topic as Util.EnglishNoun, subject as Util.EnglishNoun, verb as Util.EnglishVerb, sentenceType);
 
   if (permissions) {
       switch(`${options.polarity}`) {
@@ -284,8 +246,7 @@ const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.Sente
   const type = CONJUGATION_TYPE_VERB_ENGLISH;
 
   const { polarity } = determineVerbConjugationEnglish(words, options, sentenceType);
-  const { tense } = determineVerbTenseConjugationEnglish(word, )
-
+  const { tense } = determineVerbTenseConjugationEnglish(word, sentenceContext);
 
   return {
     tense,
@@ -300,3 +261,181 @@ const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.Sente
 };
 
 export default verbConjugationEnglish;
+
+
+
+
+
+
+//   // Simple Present - "Happening all the time, or exist now"
+//   if (eventOccurance === CONTEXT_OCCURANCE_ALL_THE_TIME || 
+//     eventOccurance === CONTEXT_OCCURANCE_NOW) {
+//       // if not be
+//       switch() {
+//         case CONTEXT_POV_SELF_SINGULAR: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+//         case CONTEXT_POV_YOU_SINGULAR: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+//         case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ infinitive + "s" ], TENSE_SIMPLE_PRESENT); 
+//         case CONTEXT_POV_WE_PLURAL: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+//         case CONTEXT_POV_YOU_PLURAL: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+//         case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+//       }
+      
+// }
+
+
+
+// // Present Continuous - "Happening now, or unfinshed. Temporary actions."
+// if (eventOccurance === CONTEXT_OCCURANCE_NOW || 
+//     eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
+
+//       switch() {
+//         case CONTEXT_POV_SELF_SINGULAR: return createWord([ "am", presentParticiple ], TENSE_SIMPLE_PRESENT);
+//         case CONTEXT_POV_YOU_SINGULAR: return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT);
+//         case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "is", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+//         case CONTEXT_POV_WE_PLURAL: 
+//         case CONTEXT_POV_YOU_PLURAL: 
+//         case CONTEXT_POV_THEYTHOSE_PLURAL: 
+//           return createWord([ "are", presentParticiple ], TENSE_SIMPLE_PRESENT); 
+//       }
+
+// }
+
+
+
+// // Present Perfect - "Started in the past and continued to present time".
+// if (eventOccurance === CONTEXT_OCCURANCE_PAST_NOW ||
+//     eventDuration === CONTEXT_DURATION_COMPLETE) {
+
+//     switch() {
+//       case CONTEXT_POV_SELF_SINGULAR: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+//       case CONTEXT_POV_YOU_SINGULAR: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+//       case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "has", pastParticiple ], TENSE_PRESENT_PERFECT); 
+//       case CONTEXT_POV_WE_PLURAL: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+//       case CONTEXT_POV_YOU_PLURAL: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+//       case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "have", pastParticiple ], TENSE_PRESENT_PERFECT);
+//     }
+// }
+
+// // Present Perfect Continuous - "Started in the past and continuing to present time".
+// if (eventOccurance === CONTEXT_OCCURANCE_PAST_NOW ||
+//     eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
+      
+//     switch() {
+//       case CONTEXT_POV_SELF_SINGULAR: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
+//       case CONTEXT_POV_YOU_SINGULAR: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
+//       case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "have been", pastParticiple], TENSE_PRESENT_PERFECT_CONTINUOUS); 
+//       case CONTEXT_POV_WE_PLURAL: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
+//       case CONTEXT_POV_YOU_PLURAL: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
+//       case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "have been", pastParticiple ], TENSE_PRESENT_PERFECT_CONTINUOUS);
+//     }
+// }
+
+
+// // Simple Past - Event that describes an event or action that happened in the past. 
+// if (eventOccurance === CONTEXT_OCCURANCE_PAST) {
+//   // ALWAYS THE SAME
+
+//   switch() {
+//     case CONTEXT_POV_SELF_SINGULAR: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+//     case CONTEXT_POV_YOU_SINGULAR: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+//     case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST); 
+//     case CONTEXT_POV_WE_PLURAL: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+//     case CONTEXT_POV_YOU_PLURAL: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+//     case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+//   }
+
+// }
+
+// // Past Continuous - a continuing action or event in a time which began or existed in the past. It can also be used to describe an unfinished action
+// if (eventOccurance === CONTEXT_OCCURANCE_PAST ||
+//     eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
+//       switch() {
+//         case CONTEXT_POV_SELF_SINGULAR: 
+//         case CONTEXT_POV_YOU_SINGULAR: 
+//         case CONTEXT_POV_HESHEIT_SINGULAR: 
+//         case CONTEXT_POV_WE_PLURAL: 
+//         case CONTEXT_POV_YOU_PLURAL: 
+//         case CONTEXT_POV_THEYTHOSE_PLURAL: 
+//       }
+// }
+
+
+// // Past Perfect - The tense that is used to make it clear that one event happened before another in the past
+// if (eventOccurance === CONTEXT_OCCURANCE_BEFORE_PAST) { // could be more refined?
+//       switch() {
+//         case CONTEXT_POV_SELF_SINGULAR: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
+//         case CONTEXT_POV_YOU_SINGULAR: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
+//         case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT); 
+//         case CONTEXT_POV_WE_PLURAL: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
+//         case CONTEXT_POV_YOU_PLURAL: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
+//         case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "had", pastParticiple ], TENSE_PAST_PERFECT);
+//       }
+// }
+
+// // Past Perfect Continuous - started in the past and continued up until another time in the past
+// if (eventOccurance === CONTEXT_OCCURANCE_PAST_FUTUREPAST) {
+//   switch() {
+//     case CONTEXT_POV_SELF_SINGULAR: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_YOU_SINGULAR: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "had been", presentParticiple], TENSE_PAST_PERFECT_CONTINUOUS); 
+//     case CONTEXT_POV_WE_PLURAL: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_YOU_PLURAL: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "had been", presentParticiple ], TENSE_PAST_PERFECT_CONTINUOUS);
+//   }
+// }
+
+
+// // Simple Future - events which are expected, or likely to occur in the future.
+// if (eventOccurance === CONTEXT_OCCURANCE_FUTURE) {
+//   // ALWAYS THE SAME
+
+//   switch() {
+//     case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+//     case CONTEXT_POV_YOU_SINGULAR: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+//     case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE); 
+//     case CONTEXT_POV_WE_PLURAL: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+//     case CONTEXT_POV_YOU_PLURAL: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+//     case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "will", infinitive ], TENSE_SIMPLE_FUTURE);
+//   }
+//   return createWord(['will', infinitive], ENGLISH_TENSE);
+// }
+
+// // Future Continuous - The tense that is used for an unfinished action or event that will occur in future and continue for an expected length of time
+// if (eventOccurance === CONTEXT_OCCURANCE_FUTURE && 
+//     eventDuration === CONTEXT_DURATION_PARTIAL_CONTINUOUS) {
+//       switch() {
+//         case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+//         case CONTEXT_POV_YOU_SINGULAR: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+//         case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS); 
+//         case CONTEXT_POV_WE_PLURAL: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+//         case CONTEXT_POV_YOU_PLURAL: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+//         case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "will be", presentParticiple ], TENSE_FUTURE_CONTINUOUS);
+//       }
+// }
+
+// // Future Perfect - actions that will be completed between now and some point in the future
+// if (eventOccurance === CONTEXT_OCCURANCE_NOW_FUTURE) {
+//   // ALWAYS THE SAME
+
+//   switch() {
+//     case CONTEXT_POV_SELF_SINGULAR: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
+//     case CONTEXT_POV_YOU_SINGULAR: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
+//     case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT); 
+//     case CONTEXT_POV_WE_PLURAL: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
+//     case CONTEXT_POV_YOU_PLURAL: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
+//     case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ "will have", pastParticiple ], TENSE_FUTURE_PERFECT);
+//   }
+// }
+
+// // Future Perfect Continuous - actions that will continue up until a point in the future
+// if (eventOccurance === CONTEXT_OCCURANCE_UNKNOWN_FUTURE) {
+//   switch() {
+//     case CONTEXT_POV_SELF_SINGULAR: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_YOU_SINGULAR: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_HESHEIT_SINGULAR: return createWord([], TENSE_FUTURE_PERFECT_CONTINUOUS); 
+//     case CONTEXT_POV_WE_PLURAL: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_YOU_PLURAL: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
+//     case CONTEXT_POV_THEYTHOSE_PLURAL: return createWord([ ], TENSE_FUTURE_PERFECT_CONTINUOUS);
+//   }
+// }
+// }
