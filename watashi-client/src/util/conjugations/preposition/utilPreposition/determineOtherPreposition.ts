@@ -22,24 +22,24 @@ import {
 // “He knows from experience how to deal with them.”
 
 // determinePurposePreposition
-export const determineAgencyPurposeReasonPreposition = (eventContext): string[] => { // agency or instrument
+export const determineAgencyPurposeReasonPreposition = (sentenceContext): string[] => { // agency or instrument
   // This poem was written by Milton.
-  if (eventContext.subjectRole === CONTEXT_SUBJECT_ROLE_SECOND_HAND) { 
+  if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_SECOND_HAND) { 
     return ['by']; // on 
   }
 
   // I opened my closet with a key.
-  else if (eventContext.subjectRole === CONTEXT_SUBJECT_ROLE_DIRECT) {
+  else if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_DIRECT) {
     return ['with'];
   }
 
   // I opened my closet with a key.
-  else if (eventContext.subjectRole === CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF) {
+  else if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF) {
     return ['on']; // for, // through
   }
 
   // I opened my closet with a key.
-  else if (eventContext.subjectRole === CONTEXT_SUBJECT_ROLE_BECAUSE_OF) {
+  else if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_BECAUSE_OF) {
     return ['because of']; // on account of
   }
   // return 'from';

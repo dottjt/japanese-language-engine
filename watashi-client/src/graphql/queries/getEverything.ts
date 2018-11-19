@@ -1,180 +1,208 @@
 import gql from 'graphql-tag';
 
+// query GetEverythingQuery($path: String!) 
 const GET_EVERYTHING = gql`{
-  user @client {
-    username
-    email
-    thumbUrl
+    # user @client {
+    #   username
+    #   email
+    #   thumbUrl
 
-    accessToken
-    idToken
-    expiresAt
-  }
+    #   accessToken
+    #   idToken
+    #   expiresAt
+    # }
 
-  sentenceDisplayOptions @client {
-    toggleSentenceStats
-    toggleSentenceOrder
-    toggleSentenceHide
-  }
+    # sentenceDisplayOptions @client {
+    #   toggleSentenceStats
+    #   toggleSentenceOrder
+    #   toggleSentenceHide
+    # }
 
-  sentenceStats @client {
-    topicHover
-    subjectHover
-    verbHover
+    # sentenceStats @client {
+    #   topicHover
+    #   subjectHover
+    #   verbHover
 
-    politenessHover
-    polarityHover
-    tenseHover
-    questionHover    
-    selectedExerciseNumber
-  }
+    #   politenessHover
+    #   polarityHover
+    #   tenseHover
+    #   questionHover    
+    #   selectedExerciseNumber
+    # }
 
-  preOptions @client {
-    politeness
-    variation
-    polarity
-    tense
-    gender
-    question
-    themes
-  }
-  
-  preModifiers @client {
-    topicNo
-    subjectNo
-    topicAdjective
-    topicAdverb
-    subjectAdjective
-    subjectAdverb
-  }
-  
-  preSentenceContext @client {
-    topicPosition
-    topicDestination
-    eventDirection
-    eventOccurance
-    eventDuration
-    subjectConnection
-    subjectRole
-  }
-
-  nouns @client {
-    nounJapanese @client {
-      kanji
-    }
-    nounEnglish @client {
-      singular
-    }
-    nounCategory
-    nounWordType
-    nounPluralType
-  }
-
-  exercises @client {
-    englishSentence @client {
-      type
-      sentenceType
-
-      # for nouns
-      nounDeclension @client {
-        wordArray
-        wordType
-      }
-      nounTense @client {
-        wordArray
-        wordType
-      }
-      nounPolarity @client {
-        wordArray
-        wordType
-      }
-      nounIndefiniteArticle @client {
-        wordArray
-        wordType
-      }
-
-      # for verbs
-      verbConjugation @client {
-        wordArray
-        wordType
-      }
-      verbPolarity @client {
-        wordArray
-        wordType
-      }
-    }
-
-    japaneseSentence @client {
-      type
-      sentenceType
-
-      # for nouns
-      nounDeclension @client {
-        wordArray
-        wordType
-      }
-      nounTense @client {
-        wordArray
-        wordType
-      }
-      nounPolarity @client {
-        wordArray
-        wordType
-      }
-      nounCategoryEnding @client {
-        wordArray
-        wordType
-      }
-      nounTopicParticle @client {
-        wordArray
-        wordType
-      }
-
-      #  for verbs
-      verbStem @client {
-        wordArray
-        wordType
-      }
-      verbPolarity @client {
-        wordArray
-        wordType
-      }
-    }
+    # preOptions @client {
+    #   politeness
+    #   variation
+    #   polarity
+    #   tense
+    #   gender
+    #   question
+    #   themes
+    # }
     
-    options @client {
-      politeness
-      variation
-      selectedVariation
-      polarity
-      tense
-      gender
-      question
-      themes
-      selectedTheme
-    }
+    # preModifiers @client {
+    #   topicNo
+    #   subjectNo
+    #   topicAdjective
+    #   topicAdverb
+    #   subjectAdjective
+    #   subjectAdverb
+    # }
+    
+    # preSentenceContext @client {
+    #   topicPosition
+    #   topicDestination
+    #   eventDirection
+    #   eventOccurance
+    #   eventDuration
+    #   subjectConnection
+    #   subjectRole
+    # }
 
-    modifiers @client {
-      topicNo
-      subjectNo
-      topicAdjective
-      topicAdverb
-      subjectAdjective
-      subjectAdverb
-    }
+    # nouns @client {
+    #   nounJapanese @client {
+    #     kanji
+    #   }
+    #   nounEnglish @client {
+    #     singular
+    #   }
+    #   nounCategory
+    #   nounWordType
+    #   nounPluralType
+    # }
 
-    sentenceContext @client {
-      topicPosition
-      topicDestination
-      eventDirection
+    exercises @client {
+      englishSentence @client {
+        type
+        sentenceType
+        wordElementArray @client {
+          word
+          tag
+        }
+      }
 
-      eventOccurance
-      eventDuration
-      eventPOV
+      japaneseSentence @client {
+        type
+        sentenceType
+        wordElementArray @client {
+          word
+          tag
+        }
+      }
       
-      subjectConnection
-      subjectRole
+      options @client {
+        politeness
+        variation
+        selectedVariation
+        polarity
+        tense
+        gender
+        question
+        themes
+        selectedTheme
+      }
+
+      modifiers @client {
+        topicNo
+        subjectNo
+        topicAdjective
+        topicAdverb
+        subjectAdjective
+        subjectAdverb
+      }
+
+      sentenceContext @client {
+        topicPosition
+        topicDestination
+        eventDirection
+
+        eventOccurance
+        eventDuration
+        eventPOV
+        
+        subjectConnection
+        subjectRole
+      }
     }
   }
-}`;
+`;
 
 export default GET_EVERYTHING;
+
+
+
+
+// Japanese Union Types
+
+// ... on ConjugatedJapaneseNoun {
+//   nounTense @client {
+//     wordArray
+//     wordType
+//   }
+//   nounPolarity @client {
+//     wordArray
+//     wordType
+//   }
+//   nounCategoryEnding @client {
+//     wordArray
+//     wordType
+//   }
+//   nounTopicParticle @client {
+//     wordArray
+//     wordType
+//   }
+// }
+
+// ... on ConjugatedJapaneseVerb {
+//   verbStem @client {
+//     wordArray
+//     wordType
+//   }
+//   verbPolarity @client {
+//     wordArray
+//     wordType
+//   }
+// }
+
+// #   ... on ConjugatedEnglishNoun {
+//   #     type
+//   #     sentenceType
+//   #     nounDeclension @client {
+//   #       wordArray
+//   #       wordType
+//   #     }
+//   #     nounTense @client {
+//   #       wordArray
+//   #       wordType
+//   #     }
+//   #     nounPolarity @client {
+//   #       wordArray
+//   #       wordType
+//   #     }
+//   #     nounIndefiniteArticle @client {
+//   #       wordArray
+//   #       wordType
+//   #     }
+//   #   }
+
+//   #   ... on ConjugatedEnglishVerb {
+//   #     type
+//   #     sentenceType
+//   #     verbConjugation @client {
+//   #       wordArray
+//   #       wordType
+//   #     }
+//   #     verbPolarity @client {
+//   #       wordArray
+//   #       wordType
+//   #     }
+//   #   }
+
+//   #   ... on ConjugatedEnglishPreposition {
+//   #     type
+//   #     sentenceType
+//   #     preposition @client {
+//   #       wordArray
+//   #       wordType
+//   #     }
+//   #   }

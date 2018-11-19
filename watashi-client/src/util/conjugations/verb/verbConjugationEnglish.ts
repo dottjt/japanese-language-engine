@@ -63,7 +63,7 @@ import {
   verbConjugationPermissionsEnglish,
 } from './verbPermissions';
 
-const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext): Util.WordElement => {
+const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext): Util.WordArrayElement[] => {
 
   const eventOccurance = context.eventOccurance;
   const eventDuration = context.eventDuration;
@@ -210,7 +210,7 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
   throw new Error(createError('verbConjugationEnglish', 'determineVerbConjugationEnglish', `${eventOccurance}${eventDuration}${eventPOV} unknown`));  
 }
 
-const determineVerbPolarityEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
+const determineVerbPolarityEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = verbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
@@ -227,21 +227,23 @@ const determineVerbPolarityEnglish = (words: Util.SentenceWords, options: Util.O
   return createWord([''], ENGLISH_POLARITY);
 }; 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishVerb => {
+const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
 
-  const type = CONJUGATION_TYPE_VERB_ENGLISH;
+  // const type = CONJUGATION_TYPE_VERB_ENGLISH;
 
   const verbConjugation = determineVerbConjugationEnglish(verb, sentenceContext);
   const verbPolarity = determineVerbPolarityEnglish(words, options, sentenceType);
 
-  return {
-    type,
-    sentenceType,
-    verbConjugation,
-    verbPolarity,
-    __typename: __TYPENAME_CONJUGATED_ENGLISH_VERB,
-  }
+  return verbConjugation.concat(verbPolarity);
+
+  // return {
+  //   type,
+  //   sentenceType,
+  //   verbConjugation,
+  //   verbPolarity,
+  //   __typename: __TYPENAME_CONJUGATED_ENGLISH_VERB,
+  // }
   // return `${verbPolarity} ${word.english}`;
 };
 

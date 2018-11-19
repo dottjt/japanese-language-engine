@@ -26,6 +26,7 @@
 - Actual functioning terraform. 
 - Unit Testing
 - Code splitting
+- Fix up some of the CONSTANT names.
 - Consider separate sidebar and lesson titles.
 - Figure out community strategy.
 - Discourse.

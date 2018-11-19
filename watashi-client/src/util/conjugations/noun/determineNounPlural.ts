@@ -101,7 +101,7 @@ const determineNounGeneral = (noun) => {
   throw new Error(createError('pluralNounConjugation.ts', 'determineNounGeneral', `${lastLetter} or ${lastTwoLetters} values not recognised.`));
 };
 
-const determineNounPlural = (noun: Util.Noun): Util.WordElement => {
+const determineNounPlural = (noun: Util.Noun): Util.WordArrayElement[] => {
   const nounString = noun.nounEnglish.singular;
 
   switch(noun.nounPluralType) {

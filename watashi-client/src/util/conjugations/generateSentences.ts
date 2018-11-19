@@ -39,7 +39,7 @@ import prepositionConjugationEnglish from './preposition/prepositionConjugationE
 import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
 
-const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, lang: string): Util.ConjugatedEnglishNoun | Util.ConjugatedEnglishVerb | Util.ConjugatedEnglishPreposition  => {
+const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, lang: string): Util.WordArrayElement[]  => {
   switch (sentenceType) {
     case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
@@ -50,7 +50,7 @@ const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
 };
 
-const generateJapaneseWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, lang: string): Util.ConjugatedJapaneseNoun | Util.ConjugatedJapaneseVerb => {
+const generateJapaneseWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, lang: string): Util.WordArrayElement[] => {
   switch (sentenceType) {
     case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(sentenceWords, modifiers, options, sentenceContext, sentenceType);
@@ -79,7 +79,7 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
 
     const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_JAPANESE);
     const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_ENGLISH)
-
+    
     return  {
       japaneseSentence: [ verbJapanese ],
       englishSentence: [ verbEnglish ],
@@ -126,8 +126,6 @@ const generateSentences = (nouns: Util.Noun[], verbs: Util.Verb[], modifiersLamb
     const modifiers = modifiersLambda();
     const sentenceContext = sentenceContextLambda();
 
-    console.log(sentenceContext);
-
     const sentenceWords = generateWords(nouns, verbs, options);
     const modifierWords = generateWordModifiers(nouns, verbs, modifiers);
 
@@ -136,6 +134,7 @@ const generateSentences = (nouns: Util.Noun[], verbs: Util.Verb[], modifiersLamb
     return {
       options,
       modifiers,
+      sentenceContext,
       englishSentence, 
       japaneseSentence, 
       __typename: __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,

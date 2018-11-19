@@ -40,47 +40,14 @@ export const sentenceTypes = `
     __typename: String
   }
 
-  type ConjugatedJapaneseVerb {
-    type: String
-    sentenceType: String
-    verbStem: Word
-    verbPolarity: WordElement
-  }
-
-  type ConjugatedJapaneseNoun {
-    type: String
-    sentenceType: String
-    nounCategoryEnding: WordElement
-    nounTense: WordElement
-    nounPolarity: WordElement
-    nounTopicParticle: WordElement
-  }
-
-  type ConjugatedEnglishNoun {
-    type: String
-    sentenceType: String
-    nounDeclension: WordElement
-    nounTense: WordElement
-    nounPolarity: WordElement
-    nounIndefiniteArticle: WordElement
-  }
-
-  type ConjugatedEnglishVerb {
-    type: String
-    sentenceType: String
-    verbConjugation: WordElement
-    verbPolarity: WordElement
-  }
-
-  type ConjugatedEnglishPreposition {
-    type: String
-    sentenceType: String
-    preposition: WordElement
+  type WordArrayElement {
+    word: String
+    tag: String
   }
 
   type EnglishJapaneseOptionsSentence {
-    englishSentence: [ ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition ]
-    japaneseSentence: [ ConjugatedJapaneseNoun | ConjugatedJapaneseVerb ] 
+    englishSentence: [ WordArrayElement ]
+    japaneseSentence: [ WordArrayElement ] 
     modifiers: Modifiers
     options: Options
     sentenceContext: SentenceContext
@@ -101,6 +68,8 @@ export const optionTypes = `
 
   type SentenceDisplayOptions {
     toggleSentenceStats: Boolean
+    toggleSentenceOrder: Boolean
+    toggleSentenceHide: Boolean
   }
   
   type Modifiers {
@@ -146,10 +115,6 @@ export const optionTypes = `
 `
 
 export const index = `
-  type Mutation {
-    updateOptionsTone(value: String)
-  }
-
   type Query {
     sentenceStats: SentenceStats
     sentenceDisplayOptions: SentenceDisplayOptions
@@ -157,9 +122,52 @@ export const index = `
     verbs: [ Verb ]
 
     exercises?: [ EnglishJapaneseOptionsSentence ]
+    
     preModifiers?: Modifiers
     preOptions?: Options
     preSentenceContext?: SentenceContext
     user?: User
   }
 `
+// exercises(path: String, numberOfExercises: Int)?: [ EnglishJapaneseOptionsSentence ]
+
+// type ConjugatedJapaneseVerb {
+//   type: String
+//   sentenceType: String
+//   verbStem: WordElement
+//   verbPolarity: WordElement
+// }
+
+// type ConjugatedJapaneseNoun {
+//   type: String
+//   sentenceType: String
+//   nounCategoryEnding: WordElement
+//   nounTense: WordElement
+//   nounPolarity: WordElement
+//   nounTopicParticle: WordElement
+// }
+
+// type ConjugatedEnglishNoun {
+//   type: String
+//   sentenceType: String
+//   nounDeclension: WordElement
+//   nounTense: WordElement
+//   nounPolarity: WordElement
+//   nounIndefiniteArticle: WordElement
+// }
+
+// type ConjugatedEnglishVerb {
+//   type: String
+//   sentenceType: String
+//   verbConjugation: WordElement
+//   verbPolarity: WordElement
+// }
+
+// type ConjugatedEnglishPreposition {
+//   type: String
+//   sentenceType: String
+//   preposition: WordElement
+// }
+
+// union EnglishSentence = ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition
+// union JapaneseSentence = ConjugatedJapaneseNoun | ConjugatedJapaneseVerb

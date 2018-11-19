@@ -86,7 +86,7 @@ const getVerbStem = (verb: Util.Verb, options: Util.Options): string[] => {
   throw new Error(createError('conjugations/verb', 'getVerbStem', `Verb meta.verbType does not exist.`));
 };
 
-const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options): { verbStem: Util.WordElement, verbPolarity: Util.WordElement } => {
+const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options): { verbStem: Util.WordArrayElement[], verbPolarity: Util.WordArrayElement[] } => {
   const verbStem = getVerbStem(verb, options);
   switch(`${options.politeness}${options.polarity}`) {
     case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verb.verbJapanese.kanji.split(''), JAPANESE_VERB_STEM), verbPolarity: createWord([''], JAPANESE_POLARITY)  };
@@ -97,18 +97,22 @@ const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options
   throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.polarity}${options.politeness} unknown`));
 };
 
-const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedJapaneseVerb => {
+const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
-  const type = CONJUGATION_TYPE_VERB_JAPANESE;
+  
+  // const type = CONJUGATION_TYPE_VERB_JAPANESE;
+  
   const { verbStem, verbPolarity } = determineVerbConjugationJapanese(verb, options);
 
-  return {
-    type,
-    sentenceType,
-    verbStem, 
-    verbPolarity,
-    __typename: __TYPENAME_CONJUGATED_JAPANESE_VERB,
-  }
+  return verbStem.concat(verbPolarity);
+
+  // return {
+  //   type,
+  //   sentenceType,
+  //   verbStem, 
+  //   verbPolarity,
+  //   __typename: __TYPENAME_CONJUGATED_JAPANESE_VERB,
+  // }
 };
 
 export default verbConjugationJapanese;

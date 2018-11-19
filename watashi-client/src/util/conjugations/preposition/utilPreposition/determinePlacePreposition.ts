@@ -40,6 +40,8 @@ export const determinePlacePreposition = (sentenceContext: Util.SentenceContext)
   // NOTES: First we check if there is no destination, implying that we will be describing a relative position.
   // NOTES: Otherwise, if there is a destination then it implies we will be describing motion instead.
 
+  // I am not satisfied with this, should be one big CASE statement, I think.
+
   if (contextTopicDestination === CONTEXT_TOPIC_DESTINATION_NONE) {
     if (contextTopicPosition === CONTEXT_TOPIC_POSITION_NEAR) {
       switch(contextEventDirection) {

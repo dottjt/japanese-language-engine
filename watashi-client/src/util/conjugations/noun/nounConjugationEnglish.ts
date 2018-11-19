@@ -49,7 +49,7 @@ import determineNounPlural from './determineNounPlural';
 
 
 
-const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
+const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = polarityPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
@@ -61,7 +61,7 @@ const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options,
   return createWord([''], ENGLISH_POLARITY);
 };
 
-const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
+const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
@@ -93,25 +93,31 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return createWord([''], ENGLISH_TENSE);
 };
 
-const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishNoun => {
+// create Word formula change
+
+// WORD_ELEMENT to WORD_ARRAY_ELEMENT
+
+const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const noun = filtersentenceType(words, sentenceType) as Util.Noun;
 
-  const type = CONJUGATION_TYPE_NOUN_ENGLISH;
+  // const type = CONJUGATION_TYPE_NOUN_ENGLISH;
 
   const nounDeclension = determineNounPlural(noun);
   const nounIndefiniteArticle = determineNounIndefiniteArticle(words, noun, sentenceType);
   const nounPolarity = determineNounPolarity(words, options, sentenceType);
   const nounTense = determineNounConjugationEnglish(words, options, sentenceType);
 
-  return {
-    type,
-    sentenceType,
-    nounDeclension,
-    nounTense,
-    nounPolarity,
-    nounIndefiniteArticle,
-    __typename: __TYPENAME_CONJUGATED_ENGLISH_NOUN,
-  };
+  return nounTense.concat(nounPolarity).concat(nounIndefiniteArticle).concat(nounDeclension); 
+
+  // return {
+  //   type,
+  //   sentenceType,
+  //   nounDeclension,
+  //   nounTense,
+  //   nounPolarity,
+  //   nounIndefiniteArticle,
+  //   __typename: __TYPENAME_CONJUGATED_ENGLISH_NOUN,
+  // };
 };
 
 export default nounConjugationEnglish;

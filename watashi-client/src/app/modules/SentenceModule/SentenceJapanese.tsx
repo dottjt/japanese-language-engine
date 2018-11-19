@@ -64,9 +64,8 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
           onMouseLeave={this.onHoverExit}
           >
           <Flex p={3} pl={3} border={1}>
-            {sentenceComplete.map((sentencePart: Util.ConjugatedJapaneseNoun | Util.ConjugatedJapaneseVerb, sentencePartIndex: number) => {
-              const sentencePartWordArray = createTaggedArrayJapanese(sentencePart);
-              const sentencePartWordArrayComplete = phraseOptionsJapanese(sentencePartWordArray, options, sentencePartIndex);
+            {sentenceComplete.map((sentencePart: Util.WordArrayElement[], sentencePartIndex: number) => {
+              const sentencePartWordArrayComplete = phraseOptionsJapanese(sentencePart, options, sentencePartIndex);
 
               return (
                 <Flex key={sentencePartIndex}>

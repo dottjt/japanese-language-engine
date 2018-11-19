@@ -51,11 +51,15 @@ import {
   // determineOriginPreposition,  
 } from './utilPreposition/determineOtherPreposition';
 
+// Run with the cat.
+// Run at the cat. 
 
-const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.SentenceContext): Util.WordElement => {
-  // maybe themes are the bridge between subject and context. 
+
+const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.SentenceContext): Util.WordArrayElement[] => {
+  // NOTE: Maybe themes are the bridge between subject and context. 
   const { subject, /* topic, verb */ } = returnSentenceParts(words);
 
+  // Note: Maybe this needs to include topicWordType as well. That way we can have an extra level of interpretation.
   switch(subject.nounWordType) {
     // Time Prepositions
     case NOUN_TYPE_DAY_OF_WEEK: 
@@ -86,16 +90,19 @@ const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.S
 
 };
 
-const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedEnglishPreposition => {
-  const type = CONJUGATION_TYPE_PREPOSITION_ENGLISH;
+const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const preposition = determinePreposition(words, sentenceContext);
 
-  return {
-    preposition,
-    type,
-    sentenceType,
-    __typename: __TYPENAME_CONJUGATED_ENGLISH_PREPOSITION,
-  }
+  // const type = CONJUGATION_TYPE_PREPOSITION_ENGLISH;
+
+  return preposition;
+
+  // return {
+  //   preposition,
+  //   type,
+  //   sentenceType,
+  //   __typename: __TYPENAME_CONJUGATED_ENGLISH_PREPOSITION,
+  // }
 };
 
 export default prepositionConjugationEnglish;

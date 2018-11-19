@@ -15,7 +15,7 @@ import {
   ENGLISH_INDEFINITE_ARTICLE,
 } from '../../constants/optionsConstants';
 
-const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Noun, sentenceType: string): Util.WordElement => {
+const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Noun, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = indefiniteArticlePermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 

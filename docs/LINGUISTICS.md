@@ -63,3 +63,13 @@ Students have gone to the library often. (-en ending)
 
 https://www.fluentu.com/blog/english/english-adjectives/
 
+https://ielts.com.au/articles/grammar-101-understanding-verb-tenses/
+https://www.fluentu.com/blog/english/learn-english-grammar-tenses/
+
+
+/// prepositions
+https://www.thefreedictionary.com/Categories-of-Prepositions.htm
+http://www.writeawriting.com/grammar/prepositions-types-examples/
+https://webapps.towson.edu/ows/prepositions.htm
+https://webapps.towson.edu/ows/verbs.htm
+http://www.studyandexam.com/preposition2.html

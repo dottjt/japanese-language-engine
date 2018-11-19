@@ -55,7 +55,7 @@ import {
   JAPANESE_POLARITY,
 } from '../../constants/optionsConstants';
 
-const determinecategoryEnding = (noun: Util.Noun): Util.WordElement => {
+const determinecategoryEnding = (noun: Util.Noun): Util.WordArrayElement[] => {
   const endingsArray = noun.nounCategory.map(categoryString => {
     switch(categoryString) {
       case `${CATEGORY_HUMAN_NAME}`: return createWord(['さ','ん'], JAPANESE_CATEGORY_ENDING);
@@ -66,7 +66,7 @@ const determinecategoryEnding = (noun: Util.Noun): Util.WordElement => {
   return endingsArray.length > 0 ? endingsArray[0] : createWord([''], JAPANESE_CATEGORY_ENDING);
 };
 
-const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordElement => {
+const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounParticlePermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
@@ -85,7 +85,7 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
   return createWord([''], JAPANESE_TOPIC_PARTICLE);
 };
 
-const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { nounTense: Util.WordElement, nounPolarity: Util.WordElement } => {
+const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { nounTense: Util.WordArrayElement[], nounPolarity: Util.WordArrayElement[] } => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounConjugationPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
@@ -123,25 +123,29 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
   return { nounTense: emptyWord, nounPolarity: emptyWord };
 };
 
-const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.ConjugatedJapaneseNoun => {
+const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const noun = filtersentenceType(words, sentenceType) as Util.Noun;
-  const type = CONJUGATION_TYPE_NOUN_JAPANESE;
+  
+  // const type = CONJUGATION_TYPE_NOUN_JAPANESE;
 
   const nounDeclension = createWord([noun.nounJapanese.kanji], JAPANESE_NOUN_DECLENSION);
   const { nounTense, nounPolarity } = determineNounConjugationJapanese(words, options, sentenceType);
   const nounCategoryEnding = determinecategoryEnding(noun as Util.Noun);
   const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
 
-  return {
-    type,
-    sentenceType,
-    nounDeclension,
-    nounTense,
-    nounPolarity,
-    nounCategoryEnding,
-    nounTopicParticle,
-    __typename: __TYPENAME_CONJUGATED_JAPANESE_NOUN,
-  }
+  return nounDeclension.concat(nounCategoryEnding).concat(nounPolarity).concat(nounTense).concat(nounTopicParticle);
+
+
+  // return {
+  //   type,
+  //   sentenceType,
+  //   nounDeclension,
+  //   nounTense,
+  //   nounPolarity,
+  //   nounCategoryEnding,
+  //   nounTopicParticle,
+  //   __typename: __TYPENAME_CONJUGATED_JAPANESE_NOUN,
+  // }
 };
 
 export default nounConjugationJapanese;

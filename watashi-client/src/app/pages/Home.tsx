@@ -31,7 +31,7 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
     // }, 1500);
 
     return (
-      <Query query={GET_EVERYTHING}>
+      <Query query={GET_EVERYTHING} variables={{path: this.props.route.path}}>
         {({ data, client }) => {
             
           return (

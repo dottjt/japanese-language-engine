@@ -13,7 +13,9 @@ import {
   __TYPENAME_WORD_ELEMENT,
 } from "../constants/typeNameConstants";
 
-export const createWord = (wordArray: string[], wordType: string): Util.WordElement => ({ wordArray, wordType, __typename:__TYPENAME_WORD_ELEMENT });
+export const createWord = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag }));
+// export const createWord = (wordArray: string[], wordType: string): Util.WordArrayElement => ({ wordArray, wordType, __typename:__TYPENAME_WORD_ELEMENT });
+
 export const getInitialVerbStem = (word: string): string[] => word.slice(0, -1).split('');
 export const getLastLetterVerb = (word: string): string => word.slice(-1);
 

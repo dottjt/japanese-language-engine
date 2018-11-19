@@ -172,16 +172,17 @@ declare namespace Util {
   export type Themes = string[];
 
   export type EnglishJapaneseSentence = {
-    englishSentence: (ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition)[];
-    japaneseSentence: (ConjugatedJapaneseNoun | ConjugatedJapaneseVerb)[];
+    englishSentence: WordArrayElement; // (ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition)[];
+    japaneseSentence: WordArrayElement;  // (ConjugatedJapaneseNoun | ConjugatedJapaneseVerb)[];
     __typename: string;
   };
 
   export type EnglishJapaneseOptionsSentence = {
-    englishSentence: (ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition)[];
-    japaneseSentence: (ConjugatedJapaneseNoun | ConjugatedJapaneseVerb)[];
+    englishSentence: WordArrayElement; // (ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition)[];
+    japaneseSentence: WordArrayElement; // (ConjugatedJapaneseNoun | ConjugatedJapaneseVerb)[];
     options: Options;
     modifiers: Modifiers;
+    sentenceContext: SentenceContext;
     __typename: string;
   };
 

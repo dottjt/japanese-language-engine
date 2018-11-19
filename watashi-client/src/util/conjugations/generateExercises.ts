@@ -129,8 +129,9 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
   try {
     // I need to figure out how to get this 
     // NOTE: user should not be null, it should be gotten from the server, if at all possible. 
+    
     client.writeData({ 
-      data: { 
+      data: {
         user: null, 
         preOptions: determinePreOptions(path), 
         preModifiers: determinePreModifiers(path),
@@ -140,7 +141,14 @@ export const getExercisesApollo = (client: any, path: string, numberOfExercices:
 
     const data = client.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;
 
-    client.writeData({ data: { exercises: determineGetExercise(data.nouns, data.verbs, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) } });
+    client.writeData({ 
+      data: { 
+        exercises: determineGetExercise(data.nouns, data.verbs, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) 
+      } 
+    });
+
+    // const data2 = client.readQuery({ query: GET_EVERYTHING }) as any;
+    // console.log('data2', data2);
 
   } catch(error) {
     throw new Error(createError('generateExercises.ts', 'getExercisesApollo', `Error: ${error}.`));
