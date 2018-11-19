@@ -1,93 +1,84 @@
 import gql from 'graphql-tag';
 
-// query GetEverythingQuery($path: String!) 
 const GET_EVERYTHING = gql`{
-    # user @client {
-    #   username
-    #   email
-    #   thumbUrl
+    user @client {
+      username
+      email
+      thumbUrl
 
-    #   accessToken
-    #   idToken
-    #   expiresAt
-    # }
+      accessToken
+      idToken
+      expiresAt
+    }
 
-    # sentenceDisplayOptions @client {
-    #   toggleSentenceStats
-    #   toggleSentenceOrder
-    #   toggleSentenceHide
-    # }
+    sentenceDisplayOptions @client {
+      toggleSentenceStats
+      toggleSentenceOrder
+      toggleSentenceHide
+    }
 
-    # sentenceStats @client {
-    #   topicHover
-    #   subjectHover
-    #   verbHover
+    sentenceStats @client {
+      topicHover
+      subjectHover
+      verbHover
 
-    #   politenessHover
-    #   polarityHover
-    #   tenseHover
-    #   questionHover    
-    #   selectedExerciseNumber
-    # }
+      politenessHover
+      polarityHover
+      tenseHover
+      questionHover    
+      selectedExerciseNumber
+    }
 
-    # preOptions @client {
-    #   politeness
-    #   variation
-    #   polarity
-    #   tense
-    #   gender
-    #   question
-    #   themes
-    # }
+    preOptions @client {
+      politeness
+      variation
+      polarity
+      tense
+      gender
+      question
+      themes
+    }
     
-    # preModifiers @client {
-    #   topicNo
-    #   subjectNo
-    #   topicAdjective
-    #   topicAdverb
-    #   subjectAdjective
-    #   subjectAdverb
-    # }
+    preModifiers @client {
+      topicNo
+      subjectNo
+      topicAdjective
+      topicAdverb
+      subjectAdjective
+      subjectAdverb
+    }
     
-    # preSentenceContext @client {
-    #   topicPosition
-    #   topicDestination
-    #   eventDirection
-    #   eventOccurance
-    #   eventDuration
-    #   subjectConnection
-    #   subjectRole
-    # }
+    preSentenceContext @client {
+      topicPosition
+      topicDestination
+      eventDirection
+      eventOccurance
+      eventDuration
+      subjectConnection
+      subjectRole
+    }
 
-    # nouns @client {
-    #   nounJapanese @client {
-    #     kanji
-    #   }
-    #   nounEnglish @client {
-    #     singular
-    #   }
-    #   nounCategory
-    #   nounWordType
-    #   nounPluralType
-    # }
+    nouns @client {
+      nounJapanese @client {
+        kanji
+      }
+      nounEnglish @client {
+        singular
+      }
+      nounCategory
+      nounWordType
+      nounPluralType
+    }
 
     exercises @client {
       englishSentence @client {
-        # type
-        # sentenceType
-        wordArrayElement @client {
-          word
-          tag
-        }
+        word
+        tag
       }
 
       japaneseSentence @client {
-        # type
-        # sentenceType
-        wordArrayElement @client {
-          word
-          tag
-        }
+        word
+        tag
       }
       
       options @client {

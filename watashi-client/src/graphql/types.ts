@@ -130,6 +130,7 @@ export const index = `
     user?: User
   }
 `
+
 // exercises(path: String, numberOfExercises: Int)?: [ EnglishJapaneseOptionsSentence ]
 
 // type ConjugatedJapaneseVerb {
