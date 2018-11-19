@@ -45,7 +45,7 @@ import {
   TENSE_PRESENT,
   TENSE_PAST,
 
-  CONJUGATION_TYPE_NOUN_JAPANESE,
+  // CONJUGATION_TYPE_NOUN_JAPANESE,
 
   JAPANESE_CONJUGATION,
   JAPANESE_TOPIC_PARTICLE,
@@ -56,12 +56,13 @@ import {
 } from '../../constants/optionsConstants';
 
 const determinecategoryEnding = (noun: Util.Noun): Util.WordArrayElement[] => {
+  // NOTE: Not 100% sure if this is still working. 
   const endingsArray = noun.nounCategory.map(categoryString => {
     switch(categoryString) {
       case `${CATEGORY_HUMAN_NAME}`: return createWord(['さ','ん'], JAPANESE_CATEGORY_ENDING);
       default: return createWord([''], JAPANESE_CATEGORY_ENDING);
     } 
-  }).filter(categoryString => categoryString.wordArray[0] !== '');
+  }).filter(categoryString => categoryString[0].word !== '');
 
   return endingsArray.length > 0 ? endingsArray[0] : createWord([''], JAPANESE_CATEGORY_ENDING);
 };

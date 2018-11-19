@@ -70,8 +70,8 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)
   
     return {
-      japaneseSentence: [ topicJapanese ],
-      englishSentence: [ topicEnglish ],
+      japaneseSentence: topicJapanese,
+      englishSentence: topicEnglish,
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
@@ -81,8 +81,8 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_ENGLISH)
     
     return  {
-      japaneseSentence: [ verbJapanese ],
-      englishSentence: [ verbEnglish ],
+      japaneseSentence: verbJapanese,
+      englishSentence: verbEnglish,
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
@@ -95,8 +95,8 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, LANG_ENGLISH);
 
     return  {
-      japaneseSentence: [ topicJapanese, subjectJapanese ],
-      englishSentence: [ topicEnglish, subjectEnglish ],
+      japaneseSentence: topicJapanese.concat(subjectJapanese),
+      englishSentence: topicEnglish.concat(subjectEnglish),
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };
@@ -111,8 +111,8 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     const prepositionEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION, LANG_ENGLISH);
 
     return {
-      japaneseSentence: [ subjectJapanese, verbJapanese ],
-      englishSentence: [ verbEnglish, prepositionEnglish, subjectEnglish ],
+      japaneseSentence: subjectJapanese.concat(verbJapanese),
+      englishSentence: verbEnglish.concat(prepositionEnglish).concat(subjectEnglish),
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
@@ -135,7 +135,7 @@ const generateSentences = (nouns: Util.Noun[], verbs: Util.Verb[], modifiersLamb
       options,
       modifiers,
       sentenceContext,
-      englishSentence, 
+      englishSentence,
       japaneseSentence, 
       __typename: __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,
     }  

@@ -10,10 +10,10 @@ import {
 
 import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
-  __TYPENAME_WORD_ELEMENT,
+  __TYPENAME_WORD_ARRAY_ELEMENT,
 } from "../constants/typeNameConstants";
 
-export const createWord = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag }));
+export const createWord = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag, __typename: __TYPENAME_WORD_ARRAY_ELEMENT }));
 // export const createWord = (wordArray: string[], wordType: string): Util.WordArrayElement => ({ wordArray, wordType, __typename:__TYPENAME_WORD_ELEMENT });
 
 export const getInitialVerbStem = (word: string): string[] => word.slice(0, -1).split('');

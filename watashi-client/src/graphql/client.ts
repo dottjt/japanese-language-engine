@@ -1,5 +1,5 @@
 // import ApolloClient from 'apollo-boost';
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
@@ -50,33 +50,7 @@ const preloadedState = (<any>window).__APOLLO_STATE__;
 
 delete (<any>window).__APOLLO_STATE__;
 
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData: {
-    __schema: {
-      types: [
-        {
-          kind: "UNION",
-          name: "EnglishSentence",
-          possibleTypes: [
-            {name: "ConjugatedEnglishNoun"},
-            {name: "ConjugatedEnglishVerb"},
-            {name: "ConjugatedEnglishPreposition"}                    
-          ]
-        },
-        {
-          kind: "UNION",
-          name: "JapaneseSentence",
-          possibleTypes: [
-            {name: "ConjugatedJapaneseNoun"},
-            {name: "ConjugatedJapaneseVerb"}
-          ]
-        }
-      ]
-    }
-  }
-});
-
-const cache = new InMemoryCache({ fragmentMatcher }).restore(preloadedState);
+const cache = new InMemoryCache().restore(preloadedState);
 
 const stateLink = withClientState({
   cache,
@@ -84,31 +58,6 @@ const stateLink = withClientState({
   resolvers: {
     Query: {},
     Mutation: {},
-    // EnglishSentence: {
-    //   __resolveType(obj, context, info) {
-    //     if (obj.nounDeclension) {
-    //       return 'ConjugatedEnglishNoun';
-    //     }
-    //     if (obj.verbConjugation) {
-    //       return 'ConjugatedEnglishVerb';
-    //     }
-    //     if (obj.preposition) {
-    //       return 'ConjugatedEnglishPreposition'
-    //     }
-    //     return null;
-    //   }
-    // },
-    // JapaneseSentence: {
-    //   __resolveType(obj, context, info) {
-    //     if (obj.nounTopicParticle) {
-    //       return 'ConjugatedJapaneseNoun' 
-    //     }
-    //     if (obj.verbStem) {        
-    //       return 'ConjugatedJapaneseVerb'
-    //     }
-    //     return null;
-    //   }
-    // }
   },
   typeDefs: [ index, sentenceTypes, optionTypes ],
 });
@@ -123,3 +72,58 @@ const client = new ApolloClient({
 });
 
 export default client;
+
+
+
+// const fragmentMatcher = new IntrospectionFragmentMatcher({
+//   introspectionQueryResultData: {
+//     __schema: {
+//       types: [
+//         {
+//           kind: "UNION",
+//           name: "EnglishSentence",
+//           possibleTypes: [
+//             {name: "ConjugatedEnglishNoun"},
+//             {name: "ConjugatedEnglishVerb"},
+//             {name: "ConjugatedEnglishPreposition"}                    
+//           ]
+//         },
+//         {
+//           kind: "UNION",
+//           name: "JapaneseSentence",
+//           possibleTypes: [
+//             {name: "ConjugatedJapaneseNoun"},
+//             {name: "ConjugatedJapaneseVerb"}
+//           ]
+//         }
+//       ]
+//     }
+//   }
+// });
+
+
+// EnglishSentence: {
+//   __resolveType(obj, context, info) {
+//     if (obj.nounDeclension) {
+//       return 'ConjugatedEnglishNoun';
+//     }
+//     if (obj.verbConjugation) {
+//       return 'ConjugatedEnglishVerb';
+//     }
+//     if (obj.preposition) {
+//       return 'ConjugatedEnglishPreposition'
+//     }
+//     return null;
+//   }
+// },
+// JapaneseSentence: {
+//   __resolveType(obj, context, info) {
+//     if (obj.nounTopicParticle) {
+//       return 'ConjugatedJapaneseNoun' 
+//     }
+//     if (obj.verbStem) {        
+//       return 'ConjugatedJapaneseVerb'
+//     }
+//     return null;
+//   }
+// }

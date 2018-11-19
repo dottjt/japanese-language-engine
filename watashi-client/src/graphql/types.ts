@@ -43,6 +43,7 @@ export const sentenceTypes = `
   type WordArrayElement {
     word: String
     tag: String
+    __typename: String
   }
 
   type EnglishJapaneseOptionsSentence {

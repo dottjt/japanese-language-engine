@@ -41,7 +41,7 @@ import {
 
   ENGLISH_TENSE,
 
-  CONJUGATION_TYPE_NOUN_ENGLISH,
+  // CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
 
 import determineNounIndefiniteArticle from './determineNounIndefiniteArticle';

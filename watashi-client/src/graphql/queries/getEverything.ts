@@ -73,18 +73,18 @@ const GET_EVERYTHING = gql`{
 
     exercises @client {
       englishSentence @client {
-        type
-        sentenceType
-        wordElementArray @client {
+        # type
+        # sentenceType
+        wordArrayElement @client {
           word
           tag
         }
       }
 
       japaneseSentence @client {
-        type
-        sentenceType
-        wordElementArray @client {
+        # type
+        # sentenceType
+        wordArrayElement @client {
           word
           tag
         }

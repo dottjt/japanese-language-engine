@@ -6,12 +6,11 @@ import { TextHover, ToggleBackground } from '../../atoms/CustomStyles';
 
 import {
   // startOfArray,
-  endOfArray,
+  // endOfArray,
   determineToggleBackground,
 } from '../../../util/functions';
 
 import {
-  createTaggedArrayJapanese,
   convertSentenceStatsJapanese,
 } from './utilSentence';
 
@@ -20,24 +19,24 @@ import {
   POLITENESS_CASUAL,
 } from '../../../util/constants/optionsConstants';
 
-const phraseOptionsJapanese = (phraseArray: Util.WordArrayElement[], options: Util.Options, index: number): Util.WordArrayElement[] => {
-  // const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
+// const phraseOptionsJapanese = (phraseArray: Util.WordArrayElement[], options: Util.Options, index: number): Util.WordArrayElement[] => {
+//   // const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
 
-  // options.question === HAS_QUESTION ? 
-  //   phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}${japaneseQuestionEnding}` : 
-  //   phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}。`
+//   // options.question === HAS_QUESTION ? 
+//   //   phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}${japaneseQuestionEnding}` : 
+//   //   phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}。`
 
-  return phraseArray;
-};
+//   return phraseArray;
+// };
 
-const sentenceOptionsJapanese = (sentenceArray: (Util.ConjugatedJapaneseNoun | Util.ConjugatedJapaneseVerb)[], options: Util.Options): (Util.ConjugatedJapaneseNoun | Util.ConjugatedJapaneseVerb)[] => {
+const sentenceOptionsJapanese = (sentenceArray: Util.WordArrayElement[], options: Util.Options): Util.WordArrayElement[] => {
   return sentenceArray;
 };
 
-const wordArrayOptionsJapanese = (character: Util.WordArrayElement, options: Util.Options, wordArrayLength: number, wordIndex: number, sentenceLength: number, sentencePartIndex: number): string => {
+const wordOptionsJapanese = (character: Util.WordArrayElement, wordIndex: number, options: Util.Options, sentenceLength: number): string => {
   const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
 
-  if (endOfArray(wordArrayLength, wordIndex) && endOfArray(sentenceLength, sentencePartIndex)) {
+  if (wordIndex === sentenceLength - 1) {
     return options.question === HAS_QUESTION ? `${character.word}${japaneseQuestionEnding}` : `${character.word}。`
   };
   return character.word;
@@ -64,20 +63,15 @@ class JapaneseSentence extends React.Component<PropTypes.IJapaneseSentenceProps,
           onMouseLeave={this.onHoverExit}
           >
           <Flex p={3} pl={3} border={1}>
-            {sentenceComplete.map((sentencePart: Util.WordArrayElement[], sentencePartIndex: number) => {
-              const sentencePartWordArrayComplete = phraseOptionsJapanese(sentencePart, options, sentencePartIndex);
+            {sentenceComplete.map((wordArrayElement: Util.WordArrayElement, wordArrayElementIndex: number) => {
+              const wordComplete = wordOptionsJapanese(wordArrayElement, wordArrayElementIndex, options, sentenceComplete.length);
+              const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, wordArrayElement.tag);                    
 
               return (
-                <Flex key={sentencePartIndex}>
-                  {sentencePartWordArrayComplete.map((word: Util.WordArrayElement, wordIndex: number) => {
-                    const hoverColour = convertSentenceStatsJapanese(sentenceStats, exerciseIndex, word.tag);                    
-                    const wordComplete = wordArrayOptionsJapanese(word, options, sentencePartWordArrayComplete.length, wordIndex, sentenceComplete.length, sentencePartIndex);
-                    return (
-                      <TextHover hovercolour={hoverColour} key={wordIndex}>
-                        {wordComplete}
-                      </TextHover>
-                    );
-                  })}
+                <Flex key={wordArrayElementIndex}>
+                  <TextHover hovercolour={hoverColour} key={wordArrayElementIndex}>
+                    {wordComplete}
+                  </TextHover>
                 </Flex>
               );
             })}

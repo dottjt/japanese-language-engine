@@ -14,7 +14,7 @@ import {
 
   ENGLISH_POLARITY,
 
-  CONJUGATION_TYPE_VERB_ENGLISH,
+  // CONJUGATION_TYPE_VERB_ENGLISH,
 } from '../../constants/optionsConstants';
 
 import {
