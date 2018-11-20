@@ -10,6 +10,7 @@
 - Separate words into different types. Verbs. Nouns. 
 - Confirm verb tenses make sense. 
 - separate actual watashi engine from website and lesson config and all that which is specific to the engine only. 
+- Properly figure out nouns and how to do them nicely. 
 
 # TODO NICE HAVES 
 - Find open contributors. 

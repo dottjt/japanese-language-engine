@@ -93,16 +93,11 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
   return createWord([''], ENGLISH_TENSE);
 };
 
-// create Word formula change
-
-// WORD_ELEMENT to WORD_ARRAY_ELEMENT
 
 const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const noun = filtersentenceType(words, sentenceType) as Util.Noun;
 
-  // const type = CONJUGATION_TYPE_NOUN_ENGLISH;
-
-  const nounDeclension = determineNounPlural(noun);
+  const nounDeclension = determineNounPlural(noun, sentenceContext);
   const nounIndefiniteArticle = determineNounIndefiniteArticle(words, noun, sentenceType);
   const nounPolarity = determineNounPolarity(words, options, sentenceType);
   const nounTense = determineNounConjugationEnglish(words, options, sentenceType);

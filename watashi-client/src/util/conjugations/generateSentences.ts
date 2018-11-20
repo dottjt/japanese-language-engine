@@ -67,7 +67,7 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   if (onlyTopic) {
 
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_JAPANESE);
-    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_ENGLISH)
+    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, LANG_ENGLISH);
   
     return {
       japaneseSentence: topicJapanese,
@@ -78,7 +78,7 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   if (onlyVerb) {
 
     const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_JAPANESE);
-    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_ENGLISH)
+    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, LANG_ENGLISH);
     
     return  {
       japaneseSentence: verbJapanese,
@@ -129,7 +129,10 @@ const generateSentences = (nouns: Util.Noun[], verbs: Util.Verb[], modifiersLamb
     const sentenceWords = generateWords(nouns, verbs, options);
     const modifierWords = generateWordModifiers(nouns, verbs, modifiers);
 
-    const { englishSentence, japaneseSentence } = generatePhrases(sentenceWords(), modifierWords, sentenceContext, options);
+    const phrases = generatePhrases(sentenceWords(), modifierWords, sentenceContext, options);
+
+    const englishSentence = phrases.englishSentence.filter(wordArrayElement => wordArrayElement.word !== '');
+    const japaneseSentence = phrases.japaneseSentence.filter(wordArrayElement => wordArrayElement.word !== '');
 
     return {
       options,

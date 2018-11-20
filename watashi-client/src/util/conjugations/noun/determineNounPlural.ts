@@ -9,9 +9,10 @@ import {
 import {
   NOUN_PLURAL_ONLY,
   NOUN_PLURAL_SINGLE_ONLY,
-  NOUN_PLURAL_IRREGULAR,
+  NOUN_PLURAL_IRREGULAR, 
   NOUN_PLURAL_EXCEPTION,
   NOUN_PLURAL_GENERAL,
+  NOUN_PLURAL_NAME,
 } from '../../constants/wordConstants';
 
 import {
@@ -19,18 +20,21 @@ import {
 } from '../../constants/optionsConstants'
 
 const determineNounPluralOnly = (noun: string): string => {
-  switch(noun) {
-    case 'yolo': return 'yolo'; 
-  }
-  throw new Error(createError('pluralNounConjugation.ts', 'determineNounPluralOnly', `${noun} value not recognised.`));
+  return noun; 
+  // throw new Error(createError('pluralNounConjugation.ts', 'determineNounPluralOnly', `${noun} value not recognised.`));
 };
 
 const determineNounSingleOnly = (noun: string): string => {
-  switch(noun) {
-    case 'yolo': return 'yolo'; 
-  }
-  throw new Error(createError('pluralNounConjugation.ts', 'determineNounSingleOnly', `${noun} value not recognised.`));
+  return noun; 
+  // throw new Error(createError('pluralNounConjugation.ts', 'determineNounSingleOnly', `${noun} value not recognised.`));
 };
+
+
+const determineNounNameOnly = (noun: string): string => {
+  return noun; 
+  // throw new Error(createError('pluralNounConjugation.ts', 'determineNounSingleOnly', `${noun} value not recognised.`));
+};
+
 
 const determineNounIrregular = (noun: string): string => {
   switch(noun) {
@@ -58,11 +62,11 @@ const determineNounException = (noun: string): string => {
   if (lastTwoLetters === 'on') {
     return `${noun.slice(0, -2)}a`;
   }
-  throw new Error(createError('pluralNounConjugation.ts', 'determineNounException', `${lastLetter} or ${lastTwoLetters} values not recognised.`));
+  throw new Error(createError('pluralNounConjugation.ts', 'determineNounException', `${noun} values not recognised.`));
 };
 
 
-const determineNounGeneral = (noun) => {
+const determineNounGeneral = (noun: string): string => {
   const lastLetter = noun.slice(-1);
   const lastTwoLetters = noun.slice(-2);
 
@@ -98,11 +102,15 @@ const determineNounGeneral = (noun) => {
   if (lastTwoLetters === 'us') {
     return `${noun.slice(0, -2)}i`;
   }
-  throw new Error(createError('pluralNounConjugation.ts', 'determineNounGeneral', `${lastLetter} or ${lastTwoLetters} values not recognised.`));
+
+  return `${noun}s`;
+
 };
 
-const determineNounPlural = (noun: Util.Noun): Util.WordArrayElement[] => {
+const determineNounPlural = (noun: Util.Noun, sentenceContext: Util.SentenceContext): Util.WordArrayElement[] => {
   const nounString = noun.nounEnglish.singular;
+
+  console.log('determineNounPlural', noun)
 
   switch(noun.nounPluralType) {
     case NOUN_PLURAL_ONLY: return createWord([determineNounPluralOnly(nounString)], ENGLISH_DECLENSION);
@@ -110,9 +118,10 @@ const determineNounPlural = (noun: Util.Noun): Util.WordArrayElement[] => {
     case NOUN_PLURAL_IRREGULAR: return createWord([determineNounIrregular(nounString)], ENGLISH_DECLENSION);
     case NOUN_PLURAL_EXCEPTION: return createWord([determineNounException(nounString)], ENGLISH_DECLENSION);
     case NOUN_PLURAL_GENERAL: return createWord([determineNounGeneral(nounString)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_NAME: return createWord([determineNounNameOnly(nounString)], ENGLISH_DECLENSION);
   }
 
-  throw new Error(createError('pluralNounConjugation.ts', 'determineNoun', `${noun.nounPluralType} not recognised on noun.`));
+  throw new Error(createError('determineNounPlural.ts', 'determineNounPlural', `${noun.nounPluralType} not recognised on noun.`));
 }
 
 export default determineNounPlural;
