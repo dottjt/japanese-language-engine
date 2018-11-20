@@ -85,12 +85,12 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     // const prepositionBeforeTopic = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION);
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);  
 
-    const prepositionBeforeSubjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION);
+    // const prepositionBeforeSubjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION);
     const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
 
     return  {
       japaneseSentence: topicJapanese.concat(subjectJapanese),
-      englishSentence: topicEnglish.concat(prepositionBeforeSubjectEnglish).concat(subjectEnglish),
+      englishSentence: topicEnglish.concat(subjectEnglish),
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };

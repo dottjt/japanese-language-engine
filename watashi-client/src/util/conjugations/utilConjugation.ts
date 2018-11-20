@@ -14,10 +14,30 @@ import {
 } from "../constants/typeNameConstants";
 
 export const createWord = (array: string[], tag: string): Util.WordArrayElement[] => array.map(word => ({ word, tag, __typename: __TYPENAME_WORD_ARRAY_ELEMENT }));
-// export const createWord = (wordArray: string[], wordType: string): Util.WordArrayElement => ({ wordArray, wordType, __typename:__TYPENAME_WORD_ELEMENT });
+export const createEmptyWord = (tag: string) => createWord([''], tag);
 
 export const getInitialVerbStem = (word: string): string[] => word.slice(0, -1).split('');
 export const getLastLetterVerb = (word: string): string => word.slice(-1);
+
+export const genTSV = ({ topic, subject, verb }: { topic?: Util.Topic, subject?: Util.Subject, verb?: Util.Verb } ): Util.SentenceWords => {
+  if (topic && !subject && !verb) {
+    return { topic };
+  }
+  if (topic && subject && !verb) {
+    return { topic, predicate: { subject } };
+  }
+  if (!topic && subject && verb) {
+    return { predicate: { subject, verb } };
+  }
+  if (!topic && !subject && verb) {
+    return { predicate: { verb }};
+  }
+  if (topic && subject && verb) {
+    return { topic, predicate: { subject, verb } };
+  }
+
+  throw new Error(createError('conjugations/generateWords.tsx', 'genTSV', `Your sentence variation does not exist`));
+};
 
 export const returnSentenceParts = (words: Util.SentenceWords): Util.SentenceWordsOrganised => {
   let topic;

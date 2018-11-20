@@ -4,6 +4,7 @@ import {
 
 import {
   returnSentenceParts,
+  createEmptyWord,
   createWord,
 } from '../utilConjugation';
 
@@ -20,6 +21,19 @@ import {
   CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION,
 } from '../../constants/contextConstants';
 
+import {
+  NA,
+  T,
+  WA_TS,
+  MO_TS,
+  GA_TS,
+  V,
+  WO_SV,
+  NI_SV,
+  DE_SV,
+  KARA_TS,
+  MADE_TS,
+} from '../../constants/optionsConstants';
 
 import {
   NOUN_TYPE_DAY_OF_WEEK,
@@ -30,7 +44,6 @@ import {
   NOUN_TYPE_YEAR_DATE,
   // NOUN_TYPE_CLOCK_DATE,
 
-  // place
   NOUN_TYPE_SPACE,
   // NOUN_TYPE_ABSTRACT,
 
@@ -54,9 +67,25 @@ import {
 // Run at the cat. 
 
 
-const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.SentenceContext): Util.WordArrayElement[] => {
+const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   // NOTE: Maybe themes are the bridge between subject and context. 
   const { subject, /* topic, verb */ } = returnSentenceParts(words);
+
+  // filter when to use prepositions.
+  switch (options.selectedVariation) {
+    case NA: return createEmptyWord(ENGLISH_PREPOSITION);
+    case T: return createEmptyWord(ENGLISH_PREPOSITION);
+    case WA_TS: return createEmptyWord(ENGLISH_PREPOSITION);
+    case MO_TS: return createEmptyWord(ENGLISH_PREPOSITION);
+    case GA_TS: return createEmptyWord(ENGLISH_PREPOSITION);
+    case V: return createEmptyWord(ENGLISH_PREPOSITION);
+    case WO_SV: return createEmptyWord(ENGLISH_PREPOSITION);
+    
+    case NI_SV:
+    case DE_SV:
+    case KARA_TS:
+    case MADE_TS:
+  };
 
   // Note: Maybe this needs to include topicWordType as well. That way we can have an extra level of interpretation.
   switch(subject.nounWordType) {
@@ -87,14 +116,6 @@ const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.S
   }
   throw new Error(createError('prepositionConjugationEnglish.tsx', 'determinePreposition', `${subject.nounWordType} does not exist.`));    
 
-};
-
-const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
-  
-  // if options 
-  const preposition = determinePreposition(words, sentenceContext);
-
-  return preposition;
 };
 
 export default prepositionConjugationEnglish;

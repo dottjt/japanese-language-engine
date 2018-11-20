@@ -3,6 +3,8 @@ import {
   CATEGORY_DRINK,
   CATEGORY_HUMAN_ACTION,
 
+  CATEGORY_LOCATION,
+
   SENTENCE_TYPE_VERB_TYPE_RU,
   // SENTENCE_TYPE_VERB_TYPE_U,
 } from '../../constants/wordConstants';
@@ -49,6 +51,18 @@ export const wordSee = createVerbWord({
   pastParticiple: 'saw',
   simplePresentContinuousHeSheIt: 'sees', 
 });
+
+export const wordGo = createVerbWord({
+  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
+  verbCategory: [ CATEGORY_LOCATION ],
+  kanji: '行く',
+  infinitive: 'go',
+  presentParticiple: 'going',
+  pastParticiple: 'gone',
+  simplePresentContinuousHeSheIt: 'goes', 
+});
+
+
 
 // you have transitive, and intransitive.
 

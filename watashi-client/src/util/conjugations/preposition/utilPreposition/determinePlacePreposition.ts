@@ -69,15 +69,17 @@ export const determinePlacePreposition = (sentenceContext: Util.SentenceContext)
     throw new Error(createError('determinePlacePreposition.ts', 'determinePlacePreposition', `If destination is ${contextEventDirection} then contextEventDirection must be CONTEXT_TOPIC_DESTINATION_NONE`));
   }
 
+  console.log(`${contextProximity}${contextTopicDestination}${contextEventDirection}`)
+
   switch(`${contextProximity}${contextTopicDestination}${contextEventDirection}`) {
-    case `${CONTEXT_PROXIMITY_NEAR}${CONTEXT_TOPIC_DESTINATION_NONE}${CONTEXT_DIRECTION_NONE}`: [ 'at' ]; // on
-    case `${CONTEXT_PROXIMITY_FAR}${CONTEXT_TOPIC_DESTINATION_NONE}${CONTEXT_DIRECTION_NONE}`: [ 'far', 'from' ];
+    case `${CONTEXT_PROXIMITY_NEAR}${CONTEXT_TOPIC_DESTINATION_NONE}${CONTEXT_DIRECTION_NONE}`: return [ 'at' ]; // on
+    case `${CONTEXT_PROXIMITY_FAR}${CONTEXT_TOPIC_DESTINATION_NONE}${CONTEXT_DIRECTION_NONE}`: return [ 'far', 'from' ];
     
-    case `${CONTEXT_PROXIMITY_NEAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_TOWARD}`: [ 'to' ]; // towards
-    case `${CONTEXT_PROXIMITY_FAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_TOWARD}`: [ 'to' ]; // towards
+    case `${CONTEXT_PROXIMITY_NEAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_TOWARD}`: return [ 'to' ]; // towards
+    case `${CONTEXT_PROXIMITY_FAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_TOWARD}`: return [ 'to' ]; // towards
     
-    case `${CONTEXT_PROXIMITY_NEAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_AWAY}`: [ 'from' ];
-    case `${CONTEXT_PROXIMITY_FAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_AWAY}`: [ 'from' ];
+    case `${CONTEXT_PROXIMITY_NEAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_AWAY}`: return [ 'from' ];
+    case `${CONTEXT_PROXIMITY_FAR}${CONTEXT_TOPIC_DESTINATION_IRRELEVANT}${CONTEXT_DIRECTION_AWAY}`: return [ 'from' ];
 
     default:
       switch(`${contextProximity}`) {
