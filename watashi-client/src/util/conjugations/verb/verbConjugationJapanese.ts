@@ -12,6 +12,7 @@ import {
 import {
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
+  SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
 } from '../../constants/wordConstants';
 
 import {
@@ -70,19 +71,27 @@ const uVerbEndingToA = (verbEnding: string): string[] => {
 };
 
 const getVerbStem = (verb: Util.Verb, options: Util.Options): string[] => {
-  const verbAsArray = verb.verbJapanese.kanji.split('');
   const initialStemArray = getInitialVerbStem(verb.verbJapanese.kanji);
   const verbLastLetter = getLastLetterVerb(verb.verbJapanese.kanji);
 
-  if (verb.verbJapaneseType === SENTENCE_TYPE_VERB_TYPE_RU) { return initialStemArray };
-  if (verb.verbJapaneseType === SENTENCE_TYPE_VERB_TYPE_U) {
-    switch(`${options.politeness}${options.polarity}`) {
-      case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verbAsArray;
-      case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
-      case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
-      case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
-    }
-  };
+  switch(verb.verbJapaneseType) {
+    case SENTENCE_TYPE_VERB_TYPE_RU: return initialStemArray;
+    case SENTENCE_TYPE_VERB_TYPE_U: 
+      switch(`${options.politeness}${options.polarity}`) {
+        case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
+        case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
+        case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+        case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+      }
+    case SENTENCE_TYPE_VERB_TYPE_IRREGULAR:
+      switch(verb.verbJapanese.kanji) {
+        case '行く':
+        case 'する':
+        case '来る':
+          
+      }
+
+
   throw new Error(createError('conjugations/verb', 'getVerbStem', `Verb meta.verbType does not exist.`));
 };
 

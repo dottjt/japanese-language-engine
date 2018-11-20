@@ -57,8 +57,9 @@ export const categoryArray = [
 
 // word.meta
 
-export const SENTENCE_TYPE_VERB_TYPE_RU = 'ru verb';
-export const SENTENCE_TYPE_VERB_TYPE_U = 'u verb';
+export const SENTENCE_TYPE_VERB_TYPE_RU = 'SENTENCE_TYPE_VERB_TYPE_RU';
+export const SENTENCE_TYPE_VERB_TYPE_U = 'SENTENCE_TYPE_VERB_TYPE_U';
+export const SENTENCE_TYPE_VERB_TYPE_IRREGULAR = 'SENTENCE_TYPE_VERB_TYPE_IRREGULAR';
 
 export const NOUN_PLURAL_EXCEPTION = "NOUN_PLURAL_EXCEPTION";
 export const NOUN_PLURAL_ONLY = "NOUN_PLURAL_ONLY";

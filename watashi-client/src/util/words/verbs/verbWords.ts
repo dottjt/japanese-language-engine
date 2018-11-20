@@ -6,12 +6,13 @@ import {
   CATEGORY_LOCATION,
 
   SENTENCE_TYPE_VERB_TYPE_RU,
-  // SENTENCE_TYPE_VERB_TYPE_U,
+  SENTENCE_TYPE_VERB_TYPE_U,
+  SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
 } from '../../constants/wordConstants';
 
 import { createVerbWord } from '../utilWord';
 
-export const wordEat = createVerbWord({
+const wordEat = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU, 
   verbCategory: [ CATEGORY_FOOD, CATEGORY_HUMAN_ACTION ], 
   kanji: '食べる',
@@ -21,7 +22,7 @@ export const wordEat = createVerbWord({
   simplePresentContinuousHeSheIt: 'eats', 
 });
 
-export const wordSleep = createVerbWord({
+const wordSleep = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
   verbCategory: [ CATEGORY_HUMAN_ACTION ],
   kanji: '寝る',
@@ -31,8 +32,8 @@ export const wordSleep = createVerbWord({
   simplePresentContinuousHeSheIt: 'sleeps', 
 });
 
-export const wordDrink = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
+const wordDrink = createVerbWord({
+  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_U,
   verbCategory: [ CATEGORY_DRINK, CATEGORY_HUMAN_ACTION ],
   kanji: '飲む',
   infinitive: 'drink',
@@ -42,7 +43,7 @@ export const wordDrink = createVerbWord({
 });
 
 
-export const wordSee = createVerbWord({
+const wordSee = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
   verbCategory: [ CATEGORY_HUMAN_ACTION ],
   kanji: '見る',
@@ -52,8 +53,8 @@ export const wordSee = createVerbWord({
   simplePresentContinuousHeSheIt: 'sees', 
 });
 
-export const wordGo = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
+const wordGo = createVerbWord({
+  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
   verbCategory: [ CATEGORY_LOCATION ],
   kanji: '行く',
   infinitive: 'go',
@@ -62,54 +63,25 @@ export const wordGo = createVerbWord({
   simplePresentContinuousHeSheIt: 'goes', 
 });
 
+const wordDo = createVerbWord({
+  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
+  verbCategory: [ CATEGORY_LOCATION ],
+  kanji: 'する',
+  infinitive: 'do',
+  presentParticiple: 'doing',
+  pastParticiple: 'done',
+  simplePresentContinuousHeSheIt: 'does', 
+});
 
-
-// you have transitive, and intransitive.
-
-// export const wordDo = {
-//   japanese: { 
-//     kanji: 'する',
-//     // hiragana: 'する',
-//     // furigana: 'suru',
-//     __typename: __TYPENAME_JAPANESE,
-//   },
-//   english: {
-//     presentTense: 'do',
-//     simplePast: 'did',
-//     __typename: __TYPENAME_ENGLISH,
-//   },
-//   primaryType: PRIMARY_TYPE_VERB,
-//   category: [ CATEGORY_FOOD ],
-//   meta: {
-//     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
-// verbPrepositionType: '',
-//     __typename: __TYPENAME_META,
-//   },
-//   __typename: __TYPENAME_WORD,
-// };
-
-// export const wordCome = {
-//   japanese: { 
-//     kanji: '来る',
-//     // hiragana: 'くる',
-//     // furigana: 'suru',
-//     __typename: __TYPENAME_JAPANESE,
-//   },
-//   english: {
-//     presentTense: 'come',
-//     simplePast: 'came',
-//     __typename: __TYPENAME_ENGLISH,
-//   },
-//   primaryType: PRIMARY_TYPE_VERB,
-//   category: [ CATEGORY_FOOD ],
-//   meta: {
-//     verbType: SENTENCE_TYPE_VERB_TYPE_RU,
-// verbPrepositionType: '',
-//     __typename: __TYPENAME_META,
-//   },
-//   __typename: __TYPENAME_WORD,
-// };
-
+const wordCome = createVerbWord({
+  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
+  verbCategory: [ CATEGORY_LOCATION ],
+  kanji: '来る',
+  infinitive: 'come',
+  presentParticiple: 'coming',
+  pastParticiple: 'came',
+  simplePresentContinuousHeSheIt: 'comes', 
+});
 
 
 const verbArray = [
@@ -117,8 +89,9 @@ const verbArray = [
   wordDrink,
   wordSleep,
   wordSee,
-  // wordLook,
-  // wordDo,
+  wordGo,
+  wordDo,
+  wordCome,
 ];
 
 export default verbArray;
