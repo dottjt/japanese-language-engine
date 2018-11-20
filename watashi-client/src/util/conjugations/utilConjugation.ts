@@ -6,7 +6,7 @@ import {
   SENTENCE_TYPE_VERB,
   SENTENCE_TYPE_TOPIC,
   SENTENCE_TYPE_SUBJECT,
-} from '../constants/optionsConstants';
+} from '../constants/wordConstants';
 
 import {
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,

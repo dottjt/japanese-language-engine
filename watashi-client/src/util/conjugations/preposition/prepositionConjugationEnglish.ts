@@ -12,9 +12,8 @@ import {
 } from '../../constants/typeNameConstants';
 
 import {
-  // CONJUGATION_TYPE_PREPOSITION_ENGLISH,
   ENGLISH_PREPOSITION,
-} from '../../constants/optionsConstants';
+} from '../../constants/wordConstants';
 
 import {
   CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,

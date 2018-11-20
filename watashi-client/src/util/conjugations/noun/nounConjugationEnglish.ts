@@ -18,8 +18,6 @@ import {
 } from '../../constants/typeNameConstants';
 
 import {
-  ENGLISH_POLARITY,
-
   T,
   WA_TS,
   MO_TS,
@@ -28,22 +26,20 @@ import {
   // WO_SV,
   // NI_SV,
   // DE_SV,
-  
-  // SENTENCE_TYPE_VERB,
-  // SENTENCE_TYPE_TOPIC,
-  // SENTENCE_TYPE_SUBJECT,
 
   // POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
   TENSE_PRESENT,
   TENSE_PAST,
-
-  ENGLISH_TENSE,
-  JAPANESE_NOUN_DECLENSION,
-
-  // CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
+
+import {
+  ENGLISH_TENSE,
+  ENGLISH_POLARITY,
+
+  JAPANESE_NOUN_DECLENSION,
+} from '../../constants/wordConstants';
 
 import {
   CONTEXT_SUBJECT_QUANTITY_MULTIPLE,

@@ -40,14 +40,16 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
+} from '../../constants/optionsConstants';
 
+import {
   JAPANESE_CONJUGATION,
   JAPANESE_TOPIC_PARTICLE,
   JAPANESE_CATEGORY_ENDING,
   JAPANESE_NOUN_DECLENSION,
   JAPANESE_TENSE,
   JAPANESE_POLARITY,
-} from '../../constants/optionsConstants';
+} from '../../constants/wordConstants';
 
 const determinecategoryEnding = (noun: Util.Noun): Util.WordArrayElement[] => {
   // NOTE: Not 100% sure if this is still working. 
@@ -79,6 +81,10 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
   }
   return createWord([''], JAPANESE_TOPIC_PARTICLE);
 };
+
+
+
+// NOTE: Will need to update tense with sentenceContext, not the util.options.
 
 const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { nounTense: Util.WordArrayElement[], nounPolarity: Util.WordArrayElement[] } => {
   const { topic, subject, verb } = returnSentenceParts(words);

@@ -13,11 +13,9 @@ import {
   NOUN_PLURAL_EXCEPTION,
   NOUN_PLURAL_GENERAL,
   NOUN_PLURAL_NAME,
-} from '../../constants/wordConstants';
 
-import {
   ENGLISH_DECLENSION,
-} from '../../constants/optionsConstants'
+} from '../../constants/wordConstants';
 
 const determineNounPluralOnly = (noun: string): string => {
   return noun; 

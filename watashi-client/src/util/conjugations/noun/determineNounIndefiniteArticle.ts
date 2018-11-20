@@ -13,7 +13,7 @@ import {
 
 import {
   ENGLISH_INDEFINITE_ARTICLE,
-} from '../../constants/optionsConstants';
+} from '../../constants/wordConstants';
 
 const determineNounIndefiniteArticle = (words: Util.SentenceWords, noun: Util.Noun, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);

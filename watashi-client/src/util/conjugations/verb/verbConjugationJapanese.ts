@@ -20,10 +20,12 @@ import {
 
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
+} from '../../constants/optionsConstants';
 
+import {
   JAPANESE_POLARITY,
   JAPANESE_VERB_STEM,
-} from '../../constants/optionsConstants';
+} from '../../constants/wordConstants';
 
 import {
   __TYPENAME_CONJUGATED_JAPANESE_VERB,

@@ -16,8 +16,17 @@ import {
 
   HAS_QUESTION,
 
-  // SENTENCE_TYPE_TOPIC,
+  T,
+  WA_TS,
+  MO_TS,
+  GA_TS,
+  V,
+  WO_SV,
+  NI_SV,
+  DE_SV,
+} from '../../../util/constants/optionsConstants';
 
+import {
   JAPANESE_TOPIC,
   JAPANESE_SUBJECT,
   JAPANESE_VERB_STEM,
@@ -32,16 +41,7 @@ import {
   ENGLISH_POLARITY,
   ENGLISH_TENSE,
   ENGLISH_INDEFINITE_ARTICLE,
-
-  T,
-  WA_TS,
-  MO_TS,
-  GA_TS,
-  V,
-  WO_SV,
-  NI_SV,
-  DE_SV,
-} from '../../../util/constants/optionsConstants';
+} from '../../../util/constants/wordConstants';
 
 import {
   __TYPENAME_SENTENCE_STATS,
