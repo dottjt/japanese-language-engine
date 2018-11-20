@@ -3,6 +3,8 @@ import {
 } from '../../../functions';
 
 import {
+  // NOTE: This needs to be incorporated at somepoint.
+  // CONTEXT_TOPIC_POSITION_ALONE
   CONTEXT_TOPIC_POSITION_NEAR,
   CONTEXT_TOPIC_POSITION_FAR,
   CONTEXT_TOPIC_POSITION_AT,

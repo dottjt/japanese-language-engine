@@ -52,10 +52,14 @@ const GET_EVERYTHING = gql`{
       topicPosition
       topicDestination
       eventDirection
+
       eventOccurance
       eventDuration
+      eventPOV
+
       subjectConnection
       subjectRole
+      subjectQuantity
     }
 
     nouns @client {
@@ -113,6 +117,7 @@ const GET_EVERYTHING = gql`{
         
         subjectConnection
         subjectRole
+        subjectQuantity
       }
     }
   }

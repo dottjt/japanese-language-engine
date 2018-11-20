@@ -44,10 +44,12 @@ import {
   // CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
 
+import {
+  CONTEXT_SUBJECT_QUANTITY_SINGLE,
+} from '../../constants/contextConstants';
+
 import determineNounIndefiniteArticle from './determineNounIndefiniteArticle';
 import determineNounPlural from './determineNounPlural';
-
-
 
 const determineNounPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);
@@ -97,7 +99,8 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
 const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const noun = filtersentenceType(words, sentenceType) as Util.Noun;
 
-  const nounDeclension = determineNounPlural(noun, sentenceContext);
+  const nounDeclension = sentenceContext.subjectQuantity === CONTEXT_SUBJECT_QUANTITY_SINGLE ? determineNounPlural(noun) : [{ word: '', tag: '', __typename: '' }];
+  
   const nounIndefiniteArticle = determineNounIndefiniteArticle(words, noun, sentenceType);
   const nounPolarity = determineNounPolarity(words, options, sentenceType);
   const nounTense = determineNounConjugationEnglish(words, options, sentenceType);

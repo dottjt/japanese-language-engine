@@ -107,19 +107,15 @@ const determineNounGeneral = (noun: string): string => {
 
 };
 
-const determineNounPlural = (noun: Util.Noun, sentenceContext: Util.SentenceContext): Util.WordArrayElement[] => {
-  const nounString = noun.nounEnglish.singular;
-
-  console.log('determineNounPlural', noun)
-
+const determineNounPlural = (noun: Util.Noun): Util.WordArrayElement[] => {
   switch(noun.nounPluralType) {
-    case NOUN_PLURAL_ONLY: return createWord([determineNounPluralOnly(nounString)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_SINGLE_ONLY: return createWord([determineNounSingleOnly(nounString)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_IRREGULAR: return createWord([determineNounIrregular(nounString)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_EXCEPTION: return createWord([determineNounException(nounString)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_GENERAL: return createWord([determineNounGeneral(nounString)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_NAME: return createWord([determineNounNameOnly(nounString)], ENGLISH_DECLENSION);
-  }
+    case NOUN_PLURAL_ONLY: return createWord([determineNounPluralOnly(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_SINGLE_ONLY: return createWord([determineNounSingleOnly(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_IRREGULAR: return createWord([determineNounIrregular(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_EXCEPTION: return createWord([determineNounException(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_GENERAL: return createWord([determineNounGeneral(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_NAME: return createWord([determineNounNameOnly(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
+  }  
 
   throw new Error(createError('determineNounPlural.ts', 'determineNounPlural', `${noun.nounPluralType} not recognised on noun.`));
 }

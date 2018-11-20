@@ -91,9 +91,9 @@ declare namespace Util {
     tense: string; // TENSE_PRESENT, TENSE_PAST
     gender: string; // GENDER_MASCULINE, GENDER_FEMININE
     question: string; // HAS_QUESTION, NOT_QUESTION
+    // sentenceEnding: string;
     themes: string[];
     selectedTheme?: string;
-    // sentenceEnding: string;
     __typename: string;
   };
 
@@ -116,17 +116,6 @@ declare namespace Util {
     subjectAdjective: string;
     subjectAdverb: string;
   };
-
-  export type SubjectContext = {
-    internalState: string;
-    positionRelative: string;
-    quantity: string;
-    time: string;
-    direction: string;
-    __typename: string;
-  };
-
-  export type Themes = string[];
 
   export type EnglishJapaneseSentence = {
     englishSentence: WordArrayElement[]; // (ConjugatedEnglishNoun | ConjugatedEnglishVerb | ConjugatedEnglishPreposition)[];
@@ -202,6 +191,8 @@ declare namespace Util {
 
     subjectConnection: string,
     subjectRole: string,
+    subjectQuantity: string,
+    
     __typename: string,
   }
 

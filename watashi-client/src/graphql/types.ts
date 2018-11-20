@@ -112,6 +112,7 @@ export const optionTypes = `
     eventDuration: String
     subjectConnection: String
     subjectRole: String
+    subjectQuantity: String
   }
 `
 

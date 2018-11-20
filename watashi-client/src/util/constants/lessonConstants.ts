@@ -54,6 +54,80 @@ import {
 
 } from './optionsConstants';
 
+import {
+  // CONTEXT_TOPIC_POSITION_RANDOM,
+
+  CONTEXT_TOPIC_POSITION_ALONE,
+  CONTEXT_TOPIC_POSITION_NEAR,
+  // CONTEXT_TOPIC_POSITION_FAR,
+  // CONTEXT_TOPIC_POSITION_AT,
+  // CONTEXT_TOPIC_POSITION_INSIDE,
+
+  // CONTEXT_TOPIC_DESTINATION_RANDOM,
+  CONTEXT_TOPIC_DESTINATION_NONE,
+  // CONTEXT_Y_TOPIC_DESTINATION_ABOVE,
+  // CONTEXT_Y_TOPIC_DESTINATION_BELOW,
+  CONTEXT_Y_TOPIC_DESTINATION_BEHIND,
+  // CONTEXT_Y_TOPIC_DESTINATION_IN_FRONT,
+  // CONTEXT_TOPIC_DESTINATION_ALONG,
+  // CONTEXT_TOPIC_DESTINATION_BESIDE,
+  // CONTEXT_TOPIC_DESTINATION_WITH,
+  // CONTEXT_TOPIC_DESTINATION_BETWEEN,
+  // CONTEXT_TOPIC_DESTINATION_THROUGH,
+  // CONTEXT_TOPIC_DESTINATION_INSIDE,
+  // CONTEXT_TOPIC_DESTINATION_OUTSIDE,
+
+  // CONTEXT_DIRECTION_RANDOM,
+  CONTEXT_DIRECTION_NONE,
+  CONTEXT_DIRECTION_TOWARD,
+  // CONTEXT_DIRECTION_AWAY,
+  // CONTEXT_Y_DIRECTION_UP,
+  // CONTEXT_Y_DIRECTION_DOWN,
+  // CONTEXT_X_DIRECTION_LEFT,
+  // CONTEXT_X_DIRECTION_RIGHT,
+  // CONTEXT_X_DIRECTION_ACROSS,
+
+
+
+  // CONTEXT_EVENT_OCCURANCE_RANDOM,
+  // CONTEXT_EVENT_OCCURANCE_BEFORE_PAST,
+  // CONTEXT_EVENT_OCCURANCE_PAST,
+  // CONTEXT_EVENT_OCCURANCE_PAST_NOW,
+  // CONTEXT_EVENT_OCCURANCE_PAST_FUTUREPAST,
+  CONTEXT_EVENT_OCCURANCE_NOW,
+  // CONTEXT_EVENT_OCCURANCE_NOW_FUTURE,
+  // CONTEXT_EVENT_OCCURANCE_FUTURE,
+
+  // CONTEXT_EVENT_DURATION_RANDOM,
+  // CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS,
+  CONTEXT_EVENT_DURATION_COMPLETE,
+
+  // CONTEXT_POV_RANDOM,
+  CONTEXT_POV_SELF_SINGULAR,
+  // CONTEXT_POV_YOU_SINGULAR,
+  // CONTEXT_POV_HESHEIT_SINGULAR,
+  // CONTEXT_POV_WE_PLURAL,
+  // CONTEXT_POV_YOU_PLURAL,
+  // CONTEXT_POV_THEYTHOSE_PLURAL,
+
+
+
+  // CONTEXT_SUBJECT_CONNECTION_RANDOM,
+  // CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION,
+  CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,
+
+  // CONTEXT_SUBJECT_ROLE_RANDOM,
+  CONTEXT_SUBJECT_ROLE_DIRECT,
+  // CONTEXT_SUBJECT_ROLE_SECOND_HAND,
+  // CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF,
+  // CONTEXT_SUBJECT_ROLE_BECAUSE_OF,
+
+
+  // CONTEXT_SUBJECT_QUANTITY_RANDOM,
+  CONTEXT_SUBJECT_QUANTITY_SINGLE,
+  // CONTEXT_SUBJECT_QUANTITY_MULTIPLE,
+} from './contextConstants';
+
 import {  
   MODIFIERS_NA,
 } from './modifiersConstants';
@@ -61,6 +135,7 @@ import {
 import {
   __TYPENAME_OPTIONS,
   __TYPENAME_MODIFIERS,
+  __TYPENAME_SENTENCE_CONTEXT,
 } from './typeNameConstants';
 
 const createRes = (resourceType: string, urlString: string): Util.Resource => {
@@ -328,26 +403,26 @@ export const LESSON_OPTIONS = {
 
 
 export const LESSON_SENTENCE_CONTEXT = {
-  L001: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // T
-  L002: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WA_TS, MO_TS
-  L003: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // GA_TS
-  L004: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WA_TS, GA_TS
-  L005: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WA_TS, MO_TS, GA_TS
-  L006: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // V
-  L007: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // V
-  L008: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // V
-  L009: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WO_SV
-  L010: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // NI_SV
-  L011: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // DE_SV
-  L012: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WO_SV, NI_SV
-  L013: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // NI_SV, DE_SV
-  L014: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // DE_SV, WO_SV
-  L015: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // WO_SV, NI_SV, DE_SV
-  L016: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // KARA_SV
-  L017: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // MADE_SV
-  L018: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // NA - T_NO
-  L019: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // T - T_ADJ
-  L020: { topicPosition: '', topicDestination: '', eventDirection: '', eventOccurance: '', eventDuration: '', eventPOV: '', subjectConnection: '', subjectRole: '', __typename: '', } as Util.SentenceContext, // T - T_ADV
+  L001: { topicPosition: CONTEXT_TOPIC_POSITION_ALONE,        topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // T
+  L002: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // WA_TS, MO_TS
+  L003: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // GA_TS
+  L004: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // WA_TS, GA_TS
+  L005: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // WA_TS, MO_TS, GA_TS
+  L006: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // V
+  L007: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // V
+  L008: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // V
+  L009: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_Y_TOPIC_DESTINATION_BEHIND,      eventDirection: CONTEXT_DIRECTION_TOWARD,    eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // WO_SV
+  L010: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_Y_TOPIC_DESTINATION_BEHIND,      eventDirection: CONTEXT_DIRECTION_TOWARD,    eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // NI_SV
+  L011: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_Y_TOPIC_DESTINATION_BEHIND,      eventDirection: CONTEXT_DIRECTION_TOWARD,    eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // DE_SV
+  L012: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_Y_TOPIC_DESTINATION_BEHIND,      eventDirection: CONTEXT_DIRECTION_TOWARD,    eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // WO_SV, NI_SV
+  L013: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_Y_TOPIC_DESTINATION_BEHIND,      eventDirection: CONTEXT_DIRECTION_TOWARD,    eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // NI_SV, DE_SV
+  L014: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_Y_TOPIC_DESTINATION_BEHIND,      eventDirection: CONTEXT_DIRECTION_TOWARD,    eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // DE_SV, WO_SV
+  L015: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_Y_TOPIC_DESTINATION_BEHIND,      eventDirection: CONTEXT_DIRECTION_TOWARD,    eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // WO_SV, NI_SV, DE_SV
+  L016: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // KARA_SV
+  L017: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // MADE_SV
+  L018: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // NA - T_NO
+  L019: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // T - T_ADJ
+  L020: { topicPosition: CONTEXT_TOPIC_POSITION_NEAR,         topicDestination: CONTEXT_TOPIC_DESTINATION_NONE,          eventDirection: CONTEXT_DIRECTION_NONE,      eventOccurance: CONTEXT_EVENT_OCCURANCE_NOW,      eventDuration: CONTEXT_EVENT_DURATION_COMPLETE,        eventPOV: CONTEXT_POV_SELF_SINGULAR,      subjectConnection: CONTEXT_SUBJECT_CONNECTION_INDEPENDENT,       subjectRole: CONTEXT_SUBJECT_ROLE_DIRECT,         subjectQuantity: CONTEXT_SUBJECT_QUANTITY_SINGLE,            __typename: __TYPENAME_SENTENCE_CONTEXT, } as Util.SentenceContext, // T - T_ADV
   // L021:
   // L022: 
   // L023: 
