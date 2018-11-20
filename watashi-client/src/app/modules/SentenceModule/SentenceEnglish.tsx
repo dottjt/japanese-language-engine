@@ -25,6 +25,9 @@ const sentenceOptionsEnglish = (sentenceArray: Util.WordArrayElement[], options:
 const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, wordIndex: number, options: Util.Options, sentenceLength: number): string => {
 
   if (wordIndex === 0) { //   startOfArray(sentenceLength, sentencePartIndex)
+    if (sentenceLength === 1) {
+      return `${capitalise(wordArrayElement.word)}.`;
+    };
     return capitalise(wordArrayElement.word);
   };
 

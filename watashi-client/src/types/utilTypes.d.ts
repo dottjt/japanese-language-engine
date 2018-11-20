@@ -181,7 +181,7 @@ declare namespace Util {
   };
 
   export type SentenceContext = {    
-    topicPosition: string,
+    proximity: string,
     topicDestination: string,
     eventDirection: string,
 

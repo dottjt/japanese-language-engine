@@ -84,10 +84,10 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       case ROUTE_TITLE.ABOUT:
         return <About/>
 
-      case ROUTE_TITLE.EXERCISES:
       case ROUTE_TITLE.WELCOME:
         return <Welcome/>
 
+      case ROUTE_TITLE.EXERCISES:
       case ROUTE_TITLE.CONTENTS:
         return <Contents/>
 

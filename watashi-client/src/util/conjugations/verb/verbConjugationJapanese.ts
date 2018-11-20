@@ -21,8 +21,6 @@ import {
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
-  // CONJUGATION_TYPE_VERB_JAPANESE,
-  
   JAPANESE_POLARITY,
   JAPANESE_VERB_STEM,
 } from '../../constants/optionsConstants';
@@ -100,19 +98,10 @@ const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options
 const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
   
-  // const type = CONJUGATION_TYPE_VERB_JAPANESE;
-  
   const { verbStem, verbPolarity } = determineVerbConjugationJapanese(verb, options);
-
+  
   return verbStem.concat(verbPolarity);
 
-  // return {
-  //   type,
-  //   sentenceType,
-  //   verbStem, 
-  //   verbPolarity,
-  //   __typename: __TYPENAME_CONJUGATED_JAPANESE_VERB,
-  // }
 };
 
 export default verbConjugationJapanese;

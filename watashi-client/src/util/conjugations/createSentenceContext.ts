@@ -9,7 +9,7 @@ import {
 import { 
   // -----
 
-  contextTopicPositionArray,
+  contextProximityArray,
   contextTopicDestinationArray,
   contextDirectionArray,
 
@@ -22,7 +22,7 @@ import {
   contextSubjectQuantityArray,
 
   // -----
-  contextTopicPositionArrayLength,
+  contextProximityArrayLength,
   contextTopicDestinationArrayLength,
   contextDirectionArrayLength,
 
@@ -36,7 +36,7 @@ import {
 
   // -----
 
-  CONTEXT_TOPIC_POSITION_RANDOM,
+  CONTEXT_PROXIMITY_RANDOM,
   CONTEXT_TOPIC_DESTINATION_RANDOM,
   CONTEXT_DIRECTION_RANDOM,
   
@@ -50,7 +50,7 @@ import {
 } from '../constants/contextConstants';
 
 
-const randomContextTopicPositionValue = () => contextTopicPositionArray[randomArrayElement(contextTopicPositionArrayLength)];
+const randomContextProximityValue = () => contextProximityArray[randomArrayElement(contextProximityArrayLength)];
 const randomContextTopicDestinationValue = () => contextTopicDestinationArray[randomArrayElement(contextTopicDestinationArrayLength)];
 const randomContextEventDirectionValue = () => contextDirectionArray[randomArrayElement(contextDirectionArrayLength)];
 
@@ -63,11 +63,11 @@ const randomContextSubjectRoleValue = () => contextSubjectRoleArray[randomArrayE
 const randomContextSubjectQuantityValue = () => contextSubjectQuantityArray[randomArrayElement(contextSubjectQuantityArrayLength)];
 
 const createSentenceContext = (sentenceContext: Util.SentenceContext): Util.SentenceContext => {
-  const { topicPosition, topicDestination, eventDirection, eventOccurance, eventDuration, eventPOV, subjectConnection, subjectRole, subjectQuantity } = sentenceContext;
+  const { proximity, topicDestination, eventDirection, eventOccurance, eventDuration, eventPOV, subjectConnection, subjectRole, subjectQuantity } = sentenceContext;
 
   return {
     __typename: __TYPENAME_SENTENCE_CONTEXT,
-    topicPosition: topicPosition === CONTEXT_TOPIC_POSITION_RANDOM ? randomContextTopicPositionValue() : topicPosition,
+    proximity: proximity === CONTEXT_PROXIMITY_RANDOM ? randomContextProximityValue() : proximity,
     topicDestination: topicDestination === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : topicDestination,
     eventDirection: eventDirection === CONTEXT_DIRECTION_RANDOM ? randomContextEventDirectionValue() : eventDirection,
 

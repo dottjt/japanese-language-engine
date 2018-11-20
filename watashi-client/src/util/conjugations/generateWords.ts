@@ -74,25 +74,25 @@ const generateTopicWord = (nouns: Util.Noun[], selectedTheme: string, filteredVa
   throw new Error(createError('conjugations/generateWords.tsx', 'generateTopicWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
 };
 
-const generateTopicSubjectWord = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string, filteredVariation: string): Util.Noun => {
+const generateTopicSubjectWord = (nouns: Util.Noun[], selectedTheme: string, filteredVariation: string): { topic: Util.Noun, subject: Util.Noun } => {
   switch(`${selectedTheme}${filteredVariation}`) {
-    case `${THEMES_DEFAULT}${VARIATION_TS}`: return getRandomWordViaCategoryNoun(nouns, CATEGORY_LOCATION);
+    case `${THEMES_DEFAULT}${VARIATION_TS}`: return { topic: getRandomWordViaCategoryNoun(nouns, CATEGORY_HUMAN_NAME), subject: getRandomWordViaCategoryNoun(nouns, CATEGORY_LOCATION) };
   };
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateSubjectWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'generateTopicSubjectWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
 };
 
 const generateVerbWord = (verbs: Util.Verb[], selectedTheme: string, filteredVariation: string): Util.Verb => {
   switch(`${selectedTheme}${filteredVariation}`) {
     case `${THEMES_DEFAULT}${VARIATION_V}`: return getRandomWordVerb(verbs);
   };
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateSubjectWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'generateVerbWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
 };
 
 const generateSubjectVerbWord = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string, filteredVariation: string): { subject: Util.Noun, verb: Util.Verb } => {
   switch(`${selectedTheme}${filteredVariation}`) {
-    case `${THEMES_DEFAULT}${VARIATION_TS}`: return { subject: getRandomWordViaCategoryNoun(nouns, CATEGORY_LOCATION), verb: filterSpecifcWordVerb(verbs, 'eat') };
+    case `${THEMES_DEFAULT}${VARIATION_SV}`: return { subject: getRandomWordViaCategoryNoun(nouns, CATEGORY_LOCATION), verb: filterSpecifcWordVerb(verbs, 'eat') };
   };
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateSubjectWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'generateSubjectVerbWord', `Your options variation ${selectedTheme}${filteredVariation} does not exist`));
 };
 
 
@@ -115,7 +115,6 @@ const filterDownVariationTypes = (variation: string): string => {
 
 const generateWords = (nouns: Util.Noun[], verbs: Util.Verb[], options: Util.Options): () => Util.SentenceWords => {
   const filteredVariation = filterDownVariationTypes(options.selectedVariation);
-  // const selectedVariation = options.selectedVariation;
   const selectedTheme = options.selectedTheme;
 
   switch(filteredVariation) {
@@ -124,7 +123,7 @@ const generateWords = (nouns: Util.Noun[], verbs: Util.Verb[], options: Util.Opt
       return () => genTSV({ topic, subject: undefined, verb: undefined });
     };
     case VARIATION_TS: {
-      const { topic, subject } = generateTopicSubjectWord(nouns, verbs, selectedTheme, filteredVariation);
+      const { topic, subject } = generateTopicSubjectWord(nouns, selectedTheme, filteredVariation);
       return () => genTSV({ topic, subject, verb: undefined });
     };
     case VARIATION_V: {

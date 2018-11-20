@@ -91,18 +91,11 @@ const determinePreposition = (words: Util.SentenceWords, sentenceContext: Util.S
 };
 
 const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+  
+  // if options 
   const preposition = determinePreposition(words, sentenceContext);
 
-  // const type = CONJUGATION_TYPE_PREPOSITION_ENGLISH;
-
   return preposition;
-
-  // return {
-  //   preposition,
-  //   type,
-  //   sentenceType,
-  //   __typename: __TYPENAME_CONJUGATED_ENGLISH_PREPOSITION,
-  // }
 };
 
 export default prepositionConjugationEnglish;

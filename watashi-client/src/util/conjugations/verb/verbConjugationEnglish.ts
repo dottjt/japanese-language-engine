@@ -214,13 +214,10 @@ const determineVerbPolarityEnglish = (words: Util.SentenceWords, options: Util.O
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = verbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
-  // tense: createWord([''], ENGLISH_TENSE), 
-  // tense: createWord(['do'], ENGLISH_TENSE)
-
   if (permissions) {
     switch(`${options.polarity}`) {
       case `${POLARITY_POSITIVE}`: return createWord([''], ENGLISH_POLARITY);
-      case `${POLARITY_NEGATIVE}`: return createWord(['not'], ENGLISH_POLARITY);
+      case `${POLARITY_NEGATIVE}`: return createWord(['do', 'not'], ENGLISH_POLARITY);
     }
     throw new Error(createError('verbConjugationEnglish', 'determineVerbPolarityEnglish', `${options.polarity} unknown`));  
   }
@@ -230,12 +227,10 @@ const determineVerbPolarityEnglish = (words: Util.SentenceWords, options: Util.O
 const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
 
-  // const type = CONJUGATION_TYPE_VERB_ENGLISH;
-
   const verbConjugation = determineVerbConjugationEnglish(verb, sentenceContext);
   const verbPolarity = determineVerbPolarityEnglish(words, options, sentenceType);
 
-  return verbConjugation.concat(verbPolarity);
+  return verbPolarity.concat(verbConjugation);
 
   // return {
   //   type,

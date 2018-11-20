@@ -47,7 +47,7 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
   }
 
   preSentenceContext @client {
-    topicPosition
+    proximity
     topicDestination
     eventDirection
 
