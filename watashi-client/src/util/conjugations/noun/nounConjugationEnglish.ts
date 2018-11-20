@@ -40,12 +40,13 @@ import {
   TENSE_PAST,
 
   ENGLISH_TENSE,
+  JAPANESE_NOUN_DECLENSION,
 
   // CONJUGATION_TYPE_NOUN_ENGLISH,
 } from '../../constants/optionsConstants';
 
 import {
-  CONTEXT_SUBJECT_QUANTITY_SINGLE,
+  CONTEXT_SUBJECT_QUANTITY_MULTIPLE,
 } from '../../constants/contextConstants';
 
 import determineNounIndefiniteArticle from './determineNounIndefiniteArticle';
@@ -99,23 +100,12 @@ const determineNounConjugationEnglish = (words: Util.SentenceWords, options: Uti
 const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const noun = filtersentenceType(words, sentenceType) as Util.Noun;
 
-  const nounDeclension = sentenceContext.subjectQuantity === CONTEXT_SUBJECT_QUANTITY_SINGLE ? determineNounPlural(noun) : [{ word: '', tag: '', __typename: '' }];
-  
+  const nounDeclension = sentenceContext.subjectQuantity === CONTEXT_SUBJECT_QUANTITY_MULTIPLE ? determineNounPlural(noun) : createWord([noun.nounEnglish.singular], JAPANESE_NOUN_DECLENSION);
   const nounIndefiniteArticle = determineNounIndefiniteArticle(words, noun, sentenceType);
   const nounPolarity = determineNounPolarity(words, options, sentenceType);
   const nounTense = determineNounConjugationEnglish(words, options, sentenceType);
 
   return nounTense.concat(nounPolarity).concat(nounIndefiniteArticle).concat(nounDeclension); 
-
-  // return {
-  //   type,
-  //   sentenceType,
-  //   nounDeclension,
-  //   nounTense,
-  //   nounPolarity,
-  //   nounIndefiniteArticle,
-  //   __typename: __TYPENAME_CONJUGATED_ENGLISH_NOUN,
-  // };
 };
 
 export default nounConjugationEnglish;

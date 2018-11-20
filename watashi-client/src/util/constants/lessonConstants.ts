@@ -163,13 +163,13 @@ export const LESSON_SECTIONS_PREMIUM = {
 };
 
 export const LESSON_SECTIONS = {
-  S00: '00 - Introduction',
-  S01: '01 - Noun Conjugation Basics',
-  S02: '02 - Noun Basics',
-  S03: '03 - Verb Conjugation Basics',
-  S04: '04 - Verb Basics',
-  S05: '05 - From / Until statements',
-  S06: '06 - Modifier Basics',
+  S00: 'Introduction',
+  S01: 'Noun Conjugation Basics',
+  S02: 'Noun Basics',
+  S03: 'Verb Conjugation Basics',
+  S04: 'Verb Basics',
+  S05: 'From / Until statements',
+  S06: 'Modifier Basics',
   // S07: '07',
 }
 
@@ -209,24 +209,24 @@ export const LESSON_PATH = {
 export const lessonPathArray = [LESSON_PATH.L001, LESSON_PATH.L002, LESSON_PATH.L003, LESSON_PATH.L004, LESSON_PATH.L005, LESSON_PATH.L006, LESSON_PATH.L007, LESSON_PATH.L008, LESSON_PATH.L009 ];
 
 export const LESSON_TITLE = {
-  L001: 'Noun conjugations',
+  L001: '01 - Noun conjugations',
 
-  L002: 'は and も noun statements',
-  L003: 'が noun statements',
-  L004: 'は vs が noun statements',
-  L005: 'は vs も vs が noun statements',
+  L002: '02 - は and も noun statements',
+  L003: '03 - が noun statements',
+  L004: '04 - は vs が noun statements',
+  L005: '05 - は vs も vs が noun statements',
 
-  L006: 'る verb conjugations',
-  L007: 'う verb conjugations',
-  L008: 'Irregular verb conjugations',
+  L006: '06 - る verb conjugations',
+  L007: '07 - う verb conjugations',
+  L008: '08 - Irregular verb conjugations',
 
-  L009: 'を verb statements',
-  L010: 'に verb statements',
-  L011: 'で verb statements',
-  L012: 'を vs に verb statements',
-  L013: 'に vs で verb statements',
-  L014: 'で vs を verb statements',
-  L015: 'を vs に vs で verb statements',
+  L009: '09 - を verb statements',
+  L010: '10 - に verb statements',
+  L011: '11 - で verb statements',
+  L012: '12 - を vs に verb statements',
+  L013: '13 - に vs で verb statements',
+  L014: '14 - で vs を verb statements',
+  L015: '15 - を vs に vs で verb statements',
 
   L016: 'から from statement',
   L017: 'まで until statement',

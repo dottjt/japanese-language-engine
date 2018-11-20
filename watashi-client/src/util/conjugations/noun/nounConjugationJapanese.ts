@@ -32,10 +32,6 @@ import {
   NI_SV,
   DE_SV,
   
-  // SENTENCE_TYPE_VERB,
-  // SENTENCE_TYPE_TOPIC,
-  // SENTENCE_TYPE_SUBJECT,
-
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
 
@@ -44,8 +40,6 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
-
-  // CONJUGATION_TYPE_NOUN_JAPANESE,
 
   JAPANESE_CONJUGATION,
   JAPANESE_TOPIC_PARTICLE,
@@ -135,18 +129,6 @@ const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.Sent
   const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
 
   return nounDeclension.concat(nounCategoryEnding).concat(nounPolarity).concat(nounTense).concat(nounTopicParticle);
-
-
-  // return {
-  //   type,
-  //   sentenceType,
-  //   nounDeclension,
-  //   nounTense,
-  //   nounPolarity,
-  //   nounCategoryEnding,
-  //   nounTopicParticle,
-  //   __typename: __TYPENAME_CONJUGATED_JAPANESE_NOUN,
-  // }
 };
 
 export default nounConjugationJapanese;
