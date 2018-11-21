@@ -29,7 +29,7 @@ import {
   L018,
   L019,
   L020,
-} from '../../util/lessonConstants/lessonConfig';
+} from '../../util/config/collectionConfig';
 
 import LessonTemplate from '../pages/LessonTemplate';
 import Home from '../pages/Home';
@@ -61,8 +61,7 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
      } = this.props; 
 
     const isAuthenticated = auth.isAuthenticated();
-          
-    console.log(route.name)
+
     switch (route.name) {
       case ROUTE_TITLE.HOME: 
         return <Home client={client} route={route}/>

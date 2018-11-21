@@ -1,6 +1,6 @@
-import {
-  indefiniteArticlePermissionsEnglish,
-} from './adjectivePermissions';
+// import {
+//   indefiniteArticlePermissionsEnglish,
+// } from './adjectivePermissions';
 
 import {
   returnSentenceParts,
@@ -16,11 +16,11 @@ import {
 } from '../../constants/wordConstants';
 
 const adjectiveConjugationIndefiniteArticleEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
-  const { topic, subject, verb } = returnSentenceParts(sentenceWords);
+  const { topic, /*subject, verb*/ } = returnSentenceParts(sentenceWords);
 
-  const permissions = indefiniteArticlePermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
+  // const permissions = indefiniteArticlePermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
-  if (permissions) {
+  // if (permissions) {
     const vowels = 'aeiou';
     // NOTE: This is not correct, because we don't know if it will be a topic or not. Will have to provide more context. 
     const firstLetter = topic.nounEnglish.singular[0];
@@ -30,7 +30,7 @@ const adjectiveConjugationIndefiniteArticleEnglish = (sentenceWords: Util.Senten
     } else {
       return createWord(['a'], ENGLISH_INDEFINITE_ARTICLE);
     };    
-  };
+  // };
   return createWord([''], ENGLISH_INDEFINITE_ARTICLE);
 };
 

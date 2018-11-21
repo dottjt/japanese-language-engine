@@ -3,15 +3,15 @@ import {
 } from '../../functions';
 
 import {
-  returnSentenceParts,
+  // returnSentenceParts,
   createWord,  
   createEmptyWord,
 } from '../utilConjugation';
 
-import {
-  polarityPermissions, 
-  adverbConjugationPermissionsEnglish,
-} from './adverbPermissions';
+// import {
+//   polarityPermissions, 
+//   adverbConjugationPermissionsEnglish,
+// } from './adverbPermissions';
 
 import {
   __TYPENAME_CONJUGATED_ENGLISH_NOUN,
@@ -39,12 +39,12 @@ import {
 
 
 const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
-  const { topic, subject, verb } = returnSentenceParts(words);
+  // const { topic, subject, verb } = returnSentenceParts(words);
 
   // NOTE: I wonder if permissions in this context works when you can play them anywhere within a sentence, rather than having it determined within this function. 
-  const permissions = adverbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
+  // const permissions = adverbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
-  if (permissions) {
+  // if (permissions) {
     if (options.selectedVariation === WA_TS || options.selectedVariation === T) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return createEmptyWord(ENGLISH_ADVERB);
@@ -53,7 +53,7 @@ const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: U
       throw new Error(createError('adverbConjugationEnglish.ts', 'determineAdverbConjugationEnglish - WA_TS', `${options.polarity}${options.tense} unknown`));
     }
   
-    if (options.selectedVariation === MO_TS) {
+    else if (options.selectedVariation === MO_TS) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return createWord(['also'], ENGLISH_ADVERB);
         case `${TENSE_PAST}`: return createWord(['also'], ENGLISH_ADVERB);
@@ -61,26 +61,26 @@ const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: U
       throw new Error(createError('adverbConjugationEnglish.ts', 'determineAdverbConjugationEnglish - MO_TS', `${options.tense} unknown`));
     }
     
-    if (options.selectedVariation === GA_TS) {
+    else if (options.selectedVariation === GA_TS) {
       switch(`${options.tense}`) {
         case `${TENSE_PRESENT}`: return createWord(['the', 'one', 'that', 'is'], ENGLISH_ADVERB);
         case `${TENSE_PAST}`: return createWord(['the', 'one', 'that', 'was'], ENGLISH_ADVERB);
       };
       throw new Error(createError('adverbConjugationEnglish.ts', 'determineAdverbConjugationEnglish - GA_TS', `${options.tense} unknown`));
     }  
-  }
+  // }
   return createWord([''], ENGLISH_ADVERB);
 };
 
 const determineAdverbPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
-  const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = polarityPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
+  // const { topic, subject, verb } = returnSentenceParts(words);
+  // const permissions = polarityPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, options, sentenceType);
 
-  if (permissions) {
-    if (options.polarity === POLARITY_NEGATIVE) {
-      return createWord(['not'], ENGLISH_ADVERB);
-    }  
-  }
+  // if (permissions) {
+  if (options.polarity === POLARITY_NEGATIVE) {
+    return createWord(['not'], ENGLISH_ADVERB);
+  }  
+  // }
   return createWord([''], ENGLISH_ADVERB);
 };
 

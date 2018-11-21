@@ -16,7 +16,7 @@ import {
   LESSON_SUBJECT_CONNECTION,
   LESSON_SUBJECT_ROLE,
   LESSON_SUBJECT_QUANTITY,
-} from './sentenceContextConfig';
+} from './contextConfig';
 
 import {
   LESSON_OPTIONS,

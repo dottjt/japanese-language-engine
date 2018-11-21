@@ -63,7 +63,7 @@ import {
 //   verbConjugationPermissionsEnglish,
 // } from './verbPermissions';
 
-const determineVerbConjugationHelpingToBeEnglish = (context: Util.SentenceContext): Util.WordArrayElement[] => {
+const determineVerbConjugationHelpingEnglish = (context: Util.SentenceContext): Util.WordArrayElement[] => {
   
   const topicIntent = context.topicIntent;
 
@@ -267,11 +267,11 @@ const determineVerbConjugationHelpingToBeEnglish = (context: Util.SentenceContex
     // if (eventOccurance === CONTEXT_EVENT_OCCURANCE_UNKNOWN_FUTURE) {
   }
 
-  throw new Error(createError('determineVerbConjugationHelpingToBeEnglish', 'determineVerbConjugationHelpingToBeEnglish', `${eventOccurance}${eventDuration}${eventPOV} unknown`));  
+  throw new Error(createError('determineVerbConjugationHelpingEnglish', 'determineVerbConjugationHelpingEnglish', `${eventOccurance}${eventDuration}${eventPOV} unknown`));  
 }
 
 const verbConjugationHelpingToBeEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
-  return determineVerbConjugationHelpingToBeEnglish(sentenceContext);
+  return determineVerbConjugationHelpingEnglish(sentenceContext);
 };
 
 export default verbConjugationHelpingToBeEnglish;

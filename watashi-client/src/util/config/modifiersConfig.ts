@@ -2,6 +2,10 @@ import {
   MODIFIERS_NA,
 } from '../constants/modifiersConstants';
 
+import {
+  __TYPENAME_MODIFIERS,
+} from '../constants/typeNameConstants';
+
 export const LESSON_MODIFIERS = {
   L001: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // T
   L002: { topicNo: MODIFIERS_NA, subjectNo: MODIFIERS_NA, topicAdjective: MODIFIERS_NA, topicAdverb: MODIFIERS_NA, subjectAdjective: MODIFIERS_NA, subjectAdverb: MODIFIERS_NA, __typename: __TYPENAME_MODIFIERS }, // WA_TS, MO_TS

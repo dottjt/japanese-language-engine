@@ -95,17 +95,20 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
-  if (onlyTopicAndSubject) {
 
+  if (onlyTopicAndSubject) {
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
     const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
     
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);  
+    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
+    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
+    const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE);    
     const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
 
     return  {
       japaneseSentence: topicJapanese.concat(subjectJapanese),
-      englishSentence: topicEnglish.concat(subjectEnglish),
+      englishSentence: topicEnglish.concat(helpingVerbEnglish).concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(subjectEnglish),
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };  
   };

@@ -4,7 +4,7 @@ import browserPlugin from 'router5/plugins/browser';
 import {
   LESSON_TITLE,
   LESSON_PATH,
-} from './util/lessonConstants/lessonConfig';
+} from './util/config/descriptionConfig';
 
 import {
   ROUTE_TITLE,
