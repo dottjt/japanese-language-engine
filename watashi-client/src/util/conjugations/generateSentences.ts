@@ -10,6 +10,8 @@ import {
 
 import {
   SENTENCE_TYPE_VERB,
+  SENTENCE_TYPE_VERB_HELPING,
+  SENTENCE_TYPE_ADVERB,
   SENTENCE_TYPE_SUBJECT,
   SENTENCE_TYPE_TOPIC,
   SENTENCE_TYPE_PREPOSITION,
@@ -21,11 +23,13 @@ import {
 } from '../constants/typeNameConstants';
 
 import nounConjugationJapanese from './noun/nounConjugationJapanese';
-import nounConjugationEnglish from './noun/nounConjugationEnglish';
-
 import verbConjugationJapanese from './verb/verbConjugationJapanese';
+
+import nounConjugationEnglish from './noun/nounConjugationEnglish';
 import verbConjugationEnglish from './verb/verbConjugationEnglish';
+import verbConjugationHelpingEnglish from './verb/verbConjugationHelpingEnglish';
 import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
+import adverbConjugationEnglish from './adverb/adverbConjugationEnglish';
 
 import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
@@ -36,6 +40,8 @@ const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.
     case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_VERB: return verbConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_PREPOSITION: return prepositionConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_VERB_HELPING: return verbConjugationHelpingEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_ADVERB: return adverbConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
@@ -58,11 +64,14 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   if (onlyTopic) {
 
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
+    
+    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
+    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
 
     return {
       japaneseSentence: topicJapanese,
-      englishSentence: topicEnglish,
+      englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(topicEnglish),
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
@@ -82,10 +91,7 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
     const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
     
-    // const prepositionBeforeTopic = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION);
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);  
-
-    // const prepositionBeforeSubjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION);
     const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
 
     return  {
