@@ -31,7 +31,7 @@ import nounConjugationEnglish from './noun/nounConjugationEnglish';
 import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
 
 import verbConjugationEnglish from './verb/verbConjugationEnglish';
-import verbConjugationHelpingEnglish from './verb/verbConjugationHelpingToHaveEnglish';
+import verbConjugationHelpingEnglish from './verb/verbConjugationHelpingEnglish';
 import adverbConjugationEnglish from './adverb/adverbConjugationEnglish';
 import adjectiveConjugationIndefiniteArticleEnglish from './adjective/adjectiveConjugationIndefiniteArticleEnglish';
 
