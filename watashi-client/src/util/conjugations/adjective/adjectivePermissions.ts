@@ -6,6 +6,19 @@ import {
   createCommonPermissions,
 } from '../utilConjugation';
 
+// import {
+//   T,
+//   WA_TS,
+//   MO_TS,
+//   GA_TS,
+//   V,
+//   WO_SV,
+//   NI_SV,
+//   DE_SV,
+//   KARA_TS,
+//   MADE_TS,
+// } from '../../constants/optionsConstants';
+
 export const indefiniteArticlePermissionsEnglish = (topic: Util.Noun, subject: Util.Noun, verb: Util.Verb, sentenceType: string): boolean => {
   const { onlyTopic, onlySubject, onlyVerb, onlySubjectAndVerb, onlyTopicAndSubjectTOPIC, onlyTopicAndSubjectSUBJECT } = createCommonPermissions(topic, subject, verb, sentenceType);
 

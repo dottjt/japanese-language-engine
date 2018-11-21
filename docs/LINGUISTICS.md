@@ -60,6 +60,23 @@ Students have gone to the library often. (-en ending)
   // auxiliaryVerb
 
 
+  // existence - be
+  // possession - have
+  // take action - do
+
+  // potential - can
+  // possibility - may, might
+  // necessity - must
+  // obligation - should 
+  // happen in future - will
+  
+  // const infinitive = // "to hack";
+  // const presentParticiple = // "hacking";
+  // const pastParticiple = //"hacked";
+  // const simplePresentContinuousHeSheIt = // "hacks";
+
+
+
 
 https://www.fluentu.com/blog/english/english-adjectives/
 
