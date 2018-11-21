@@ -18,4 +18,3 @@ export const indefiniteArticlePermissionsEnglish = (topic: Util.Noun, subject: U
 
   throw new Error(createError('nounPermissions.ts', 'indefiniteArticlePermissionsEnglish', 'Sentence situation not covered')); 
 };
-

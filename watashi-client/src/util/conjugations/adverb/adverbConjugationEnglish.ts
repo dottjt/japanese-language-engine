@@ -3,13 +3,13 @@ import {
 } from '../../functions';
 
 import {
-  // filtersentenceType,
   returnSentenceParts,
   createWord,  
   createEmptyWord,
 } from '../utilConjugation';
 
 import {
+  polarityPermissions, 
   adverbConjugationPermissionsEnglish,
 } from './adverbPermissions';
 
@@ -29,6 +29,8 @@ import {
 
   TENSE_PRESENT,
   TENSE_PAST,
+
+  POLARITY_NEGATIVE
 } from '../../constants/optionsConstants';
 
 import {
@@ -38,6 +40,8 @@ import {
 
 const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, subject, verb } = returnSentenceParts(words);
+
+  // NOTE: I wonder if permissions in this context works when you can play them anywhere within a sentence, rather than having it determined within this function. 
   const permissions = adverbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   if (permissions) {
@@ -74,15 +78,13 @@ const determineAdverbPolarity = (words: Util.SentenceWords, options: Util.Option
 
   if (permissions) {
     if (options.polarity === POLARITY_NEGATIVE) {
-      return createWord(['not'], ENGLISH_POLARITY);
+      return createWord(['not'], ENGLISH_ADVERB);
     }  
   }
-  return createWord([''], ENGLISH_POLARITY);
+  return createWord([''], ENGLISH_ADVERB);
 };
 
 const adverbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
-  // const noun = filtersentenceType(words, sentenceType) as Util.Noun;
-
   const adverb = determineAdverbConjugationEnglish(words, options, sentenceType)
   const adverbPolarity = determineAdverbPolarity(words, options, sentenceType);
 
@@ -90,4 +92,4 @@ const adverbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.Sen
 };
 
 
-export default determineAdverbConjugationEnglish;
+export default adverbConjugationEnglish;

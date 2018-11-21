@@ -17,7 +17,6 @@ import {
 
 import determineNounPlural from './determineNounPlural';
 
-
 const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const noun = filtersentenceType(words, sentenceType) as Util.Noun;
 

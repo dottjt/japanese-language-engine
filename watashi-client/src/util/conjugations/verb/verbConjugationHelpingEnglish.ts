@@ -3,8 +3,6 @@ import {
 } from '../../functions';
 
 import {
-  filtersentenceType,
-  // returnSentenceParts,
   createWord,
 } from '../utilConjugation';
 
@@ -68,10 +66,12 @@ const determineVerbConjugationHelpingEnglish = (verb: Util.Verb, context: Util.S
   const eventDuration = context.eventDuration;
   const eventPOV = context.eventPOV;
 
-  const infinitive = verb.verbEnglish.infinitive; // "to hack";
-  const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
-  const pastParticiple = verb.verbEnglish.pastParticiple; //"hacked";
-  const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
+// instead, I need to check if it is posession or existance.
+
+  // const infinitive = verb.verbEnglish.infinitive; // "to hack";
+  // const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
+  // const pastParticiple = verb.verbEnglish.pastParticiple; //"hacked";
+  // const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     // Past Perfect - The tense that is used to make it clear that one event happened before another in the past
@@ -209,8 +209,6 @@ const determineVerbConjugationHelpingEnglish = (verb: Util.Verb, context: Util.S
 }
 
 const verbConjugationHelpingEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
-  const verb = filtersentenceType(words, sentenceType) as Util.Verb;
-
   return determineVerbConjugationHelpingEnglish(verb, sentenceContext);
 };
 
