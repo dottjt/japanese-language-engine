@@ -68,10 +68,19 @@ const determineVerbConjugationHelpingEnglish = (verb: Util.Verb, context: Util.S
 
 // instead, I need to check if it is posession or existance.
 
-  // const infinitive = verb.verbEnglish.infinitive; // "to hack";
-  // const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
-  // const pastParticiple = verb.verbEnglish.pastParticiple; //"hacked";
-  // const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
+  // existence - be
+  // possession - have
+  // take action - do
+
+  
+
+
+  // potential - can
+  // possibility - may, might
+  // necessity - must
+  // obligation - should 
+  // happen in future - will
+  
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     // Past Perfect - The tense that is used to make it clear that one event happened before another in the past

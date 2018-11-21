@@ -3,7 +3,7 @@ import {
 } from '../../../functions';
 
 import {
-  // NOTE: What is the purpose of proxmity? Need to consider a lack of proximity.
+  // NOTE: What is the purpose of proxmity? Need to consider a lack of topicProximity.
   // CONTEXT_PROXIMITY_ALONE,
   CONTEXT_PROXIMITY_NEAR,
   CONTEXT_PROXIMITY_FAR,
@@ -56,8 +56,9 @@ const destinationSwitch = (contextTopicDestination: string): string[] => {
 // - If direction is set to NONE, then direction must also be NONE 
 
 export const determinePlacePreposition = (sentenceContext: Util.SentenceContext): string[] => {
-  
-  const contextProximity = sentenceContext.proximity;
+  // topicIntent
+
+  const contextProximity = sentenceContext.topicProximity;
   const contextTopicDestination = sentenceContext.topicDestination;
   const contextEventDirection = sentenceContext.eventDirection;
 

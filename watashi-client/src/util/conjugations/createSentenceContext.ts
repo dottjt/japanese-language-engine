@@ -8,6 +8,7 @@ import {
 
 import { 
   // -----
+  contextIntentArray,
 
   contextProximityArray,
   contextTopicDestinationArray,
@@ -22,6 +23,8 @@ import {
   contextSubjectQuantityArray,
 
   // -----
+  contextIntentArrayLength,
+
   contextProximityArrayLength,
   contextTopicDestinationArrayLength,
   contextDirectionArrayLength,
@@ -35,6 +38,7 @@ import {
   contextSubjectQuantityArrayLength,
 
   // -----
+  CONTEXT_INTENT_RANDOM,
 
   CONTEXT_PROXIMITY_RANDOM,
   CONTEXT_TOPIC_DESTINATION_RANDOM,
@@ -49,6 +53,7 @@ import {
 
 } from '../constants/contextConstants';
 
+const randomContextIntentValue = () => contextIntentArray[randomArrayElement(contextIntentArrayLength)];
 
 const randomContextProximityValue = () => contextProximityArray[randomArrayElement(contextProximityArrayLength)];
 const randomContextTopicDestinationValue = () => contextTopicDestinationArray[randomArrayElement(contextTopicDestinationArrayLength)];
@@ -63,11 +68,13 @@ const randomContextSubjectRoleValue = () => contextSubjectRoleArray[randomArrayE
 const randomContextSubjectQuantityValue = () => contextSubjectQuantityArray[randomArrayElement(contextSubjectQuantityArrayLength)];
 
 const createSentenceContext = (sentenceContext: Util.SentenceContext): Util.SentenceContext => {
-  const { proximity, topicDestination, eventDirection, eventOccurance, eventDuration, eventPOV, subjectConnection, subjectRole, subjectQuantity } = sentenceContext;
+  const { topicIntent, topicProximity, topicDestination, eventDirection, eventOccurance, eventDuration, eventPOV, subjectConnection, subjectRole, subjectQuantity } = sentenceContext;
 
   return {
     __typename: __TYPENAME_SENTENCE_CONTEXT,
-    proximity: proximity === CONTEXT_PROXIMITY_RANDOM ? randomContextProximityValue() : proximity,
+    topicIntent: topicIntent === CONTEXT_INTENT_RANDOM ? randomContextIntentValue() : topicIntent,
+    
+    topicProximity: topicProximity === CONTEXT_PROXIMITY_RANDOM ? randomContextProximityValue() : topicProximity,
     topicDestination: topicDestination === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : topicDestination,
     eventDirection: eventDirection === CONTEXT_DIRECTION_RANDOM ? randomContextEventDirectionValue() : eventDirection,
 

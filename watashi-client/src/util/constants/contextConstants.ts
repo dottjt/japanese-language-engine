@@ -14,6 +14,24 @@ export const CONTEXT_TYPE_SUBJECT_ROLE = "CONTEXT_TYPE_SUBJECT_ROLE";
 
 
 
+
+/* Context Intent */
+
+export const CONTEXT_INTENT_RANDOM = "CONTEXT_INTENT_RANDOM";
+
+export const CONTEXT_INTENT_EXISTENCE = "CONTEXT_INTENT_EXISTENCE";
+export const CONTEXT_INTENT_POSSESSION = "CONTEXT_INTENT_POSSESSION";
+export const CONTEXT_INTENT_ACTION = "CONTEXT_INTENT_ACTION";
+
+export const contextIntentArray = [
+  CONTEXT_INTENT_EXISTENCE,
+  CONTEXT_INTENT_POSSESSION,
+  CONTEXT_INTENT_ACTION,
+];
+
+export const contextIntentArrayLength = contextIntentArray.length
+
+
 /* Context Location - Topic Position (how far) */
 
 export const CONTEXT_PROXIMITY_RANDOM = "CONTEXT_PROXIMITY_RANDOM";
@@ -303,7 +321,7 @@ export const contextSubjectQuantityArrayLength = contextSubjectQuantityArray.len
   // const sentenceContext = {
   //   eventPOV: '',
 
-  //   proximity: 'CONTEXT_PROXIMITY_NEAR',
+  //   topicProximity: 'CONTEXT_PROXIMITY_NEAR',
   //   topicDestination: "CONTEXT_TOPIC_RELATIVE_TOPIC_DESTINATION_INSIDE",
   //   eventDirection: "CONTEXT_DIRECTION_TOWARD",  
     

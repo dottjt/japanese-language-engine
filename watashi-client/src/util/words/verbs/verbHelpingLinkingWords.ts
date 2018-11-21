@@ -12,7 +12,7 @@ import {
 
 import { createVerbWord } from '../utilWord';
 
-// linking + helping.
+// helping ARE auxilary
 
 // NOTE: I'm not 100% sure on this, however 
 const wordBe = createVerbWord({
@@ -64,6 +64,10 @@ const wordCan = createVerbWord({
   pastParticiple: 'could',
   simplePresentContinuousHeSheIt: 'NA', 
 });
+
+
+
+// auxilary verb
 
 const wordMay = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 

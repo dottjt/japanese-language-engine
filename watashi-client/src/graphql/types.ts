@@ -105,11 +105,16 @@ export const optionTypes = `
   }
 
   type SentenceContext {
-    proximity: String
+    topicIntent: String
+
+    topicProximity: String
     topicDestination: String
     eventDirection: String
+
     eventOccurance: String
     eventDuration: String
+    eventPOV: String
+    
     subjectConnection: String
     subjectRole: String
     subjectQuantity: String

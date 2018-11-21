@@ -49,7 +49,9 @@ const GET_EVERYTHING = gql`{
     }
     
     preSentenceContext @client {
-      proximity
+      topicIntent
+
+      topicProximity
       topicDestination
       eventDirection
 
@@ -107,7 +109,9 @@ const GET_EVERYTHING = gql`{
       }
 
       sentenceContext @client {
-        proximity
+        topicIntent
+        
+        topicProximity
         topicDestination
         eventDirection
 
