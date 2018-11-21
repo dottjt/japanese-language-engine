@@ -12,14 +12,6 @@ import {
 
 import { createVerbWord } from '../utilWord';
 
-
-// // linking verbs.
-// Am • Are . Is • Was • Were
-
-
-// // sometimes linking, sometimes action verbs.
-// To appear • To continue • To feel • To grow • To look • To prove • To remain • To sound • To stay • To smell • To taste • To turn
-
 // linking + helping.
 
 // NOTE: I'm not 100% sure on this, however 
@@ -60,8 +52,7 @@ const wordHave = createVerbWord({
 
 
 
-
-
+// purely helping verbs. 
 
 const wordCan = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
