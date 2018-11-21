@@ -3,7 +3,7 @@ import {
 } from '../../functions';
 
 import {
-  filtersentenceType,
+  // filtersentenceType,
   returnSentenceParts,
   createWord,  
   createEmptyWord,
@@ -68,9 +68,26 @@ const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: U
   return createWord([''], ENGLISH_ADVERB);
 };
 
+const determineAdverbPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
+  const { topic, subject, verb } = returnSentenceParts(words);
+  const permissions = polarityPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
-const nounConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
-  return determineAdverbConjugationEnglish(words, options, sentenceType);
+  if (permissions) {
+    if (options.polarity === POLARITY_NEGATIVE) {
+      return createWord(['not'], ENGLISH_POLARITY);
+    }  
+  }
+  return createWord([''], ENGLISH_POLARITY);
 };
 
-export default nounConjugationEnglish;
+const adverbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+  // const noun = filtersentenceType(words, sentenceType) as Util.Noun;
+
+  const adverb = determineAdverbConjugationEnglish(words, options, sentenceType)
+  const adverbPolarity = determineAdverbPolarity(words, options, sentenceType);
+
+  return adverb.concat(adverbPolarity);
+};
+
+
+export default determineAdverbConjugationEnglish;

@@ -12,6 +12,8 @@ import {
   SENTENCE_TYPE_VERB,
   SENTENCE_TYPE_VERB_HELPING,
   SENTENCE_TYPE_ADVERB,
+  SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE,
+
   SENTENCE_TYPE_SUBJECT,
   SENTENCE_TYPE_TOPIC,
   SENTENCE_TYPE_PREPOSITION,
@@ -26,22 +28,26 @@ import nounConjugationJapanese from './noun/nounConjugationJapanese';
 import verbConjugationJapanese from './verb/verbConjugationJapanese';
 
 import nounConjugationEnglish from './noun/nounConjugationEnglish';
+import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
+
 import verbConjugationEnglish from './verb/verbConjugationEnglish';
 import verbConjugationHelpingEnglish from './verb/verbConjugationHelpingEnglish';
-import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
 import adverbConjugationEnglish from './adverb/adverbConjugationEnglish';
+import adjectiveConjugationIndefiniteArticleEnglish from './adjective/adjectiveConjugationIndefiniteArticleEnglish';
 
 import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
 
 const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[]  => {
   switch (sentenceType) {
-    case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
-    case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_VERB: return verbConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
-    case SENTENCE_TYPE_PREPOSITION: return prepositionConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_VERB_HELPING: return verbConjugationHelpingEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_ADVERB: return adverbConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE: return adjectiveConjugationIndefiniteArticleEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
+
+    case SENTENCE_TYPE_TOPIC: return nounConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_SUBJECT: return nounConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_PREPOSITION: return prepositionConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
@@ -67,22 +73,25 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     
     const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
     const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
+    const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE);    
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
 
     return {
       japaneseSentence: topicJapanese,
-      englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(topicEnglish),
+      englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };
   if (onlyVerb) {
 
     const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
+
     const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
+    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
     
     return  {
       japaneseSentence: verbJapanese,
-      englishSentence: verbEnglish,
+      englishSentence: verbEnglish.concat(adverbEnglish),
       __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
     };
   };

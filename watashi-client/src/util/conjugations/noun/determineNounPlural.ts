@@ -14,7 +14,7 @@ import {
   NOUN_PLURAL_GENERAL,
   NOUN_PLURAL_NAME,
 
-  ENGLISH_DECLENSION,
+  ENGLISH_NOUN_DECLENSION,
 } from '../../constants/wordConstants';
 
 const determineNounPluralOnly = (noun: string): string => {
@@ -107,12 +107,12 @@ const determineNounGeneral = (noun: string): string => {
 
 const determineNounPlural = (noun: Util.Noun): Util.WordArrayElement[] => {
   switch(noun.nounPluralType) {
-    case NOUN_PLURAL_ONLY: return createWord([determineNounPluralOnly(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_SINGLE_ONLY: return createWord([determineNounSingleOnly(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_IRREGULAR: return createWord([determineNounIrregular(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_EXCEPTION: return createWord([determineNounException(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_GENERAL: return createWord([determineNounGeneral(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
-    case NOUN_PLURAL_NAME: return createWord([determineNounNameOnly(noun.nounEnglish.singular)], ENGLISH_DECLENSION);
+    case NOUN_PLURAL_ONLY: return createWord([determineNounPluralOnly(noun.nounEnglish.singular)], ENGLISH_NOUN_DECLENSION);
+    case NOUN_PLURAL_SINGLE_ONLY: return createWord([determineNounSingleOnly(noun.nounEnglish.singular)], ENGLISH_NOUN_DECLENSION);
+    case NOUN_PLURAL_IRREGULAR: return createWord([determineNounIrregular(noun.nounEnglish.singular)], ENGLISH_NOUN_DECLENSION);
+    case NOUN_PLURAL_EXCEPTION: return createWord([determineNounException(noun.nounEnglish.singular)], ENGLISH_NOUN_DECLENSION);
+    case NOUN_PLURAL_GENERAL: return createWord([determineNounGeneral(noun.nounEnglish.singular)], ENGLISH_NOUN_DECLENSION);
+    case NOUN_PLURAL_NAME: return createWord([determineNounNameOnly(noun.nounEnglish.singular)], ENGLISH_NOUN_DECLENSION);
   }  
 
   throw new Error(createError('determineNounPlural.ts', 'determineNounPlural', `${noun.nounPluralType} not recognised on noun.`));
