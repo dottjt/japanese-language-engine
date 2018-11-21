@@ -72,7 +72,7 @@ export const indefiniteArticlePermissionsEnglish = (topic: Util.Noun, subject: U
   if (onlyTopic) { return false };
   if (onlySubject) { return true };
   if (onlyVerb) { return false }; // technically not possible.
-  if (onlySubjectAndVerb) { return true  };
+  if (onlySubjectAndVerb) { return false  }; // was true
   if (onlyTopicAndSubjectTOPIC) { return false };
   if (onlyTopicAndSubjectSUBJECT) { return true };  
 

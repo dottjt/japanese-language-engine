@@ -62,6 +62,7 @@ import {
 } from './verbPermissions';
 
 const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext): Util.WordArrayElement[] => {
+  // Note: This needs to be scoped out for to be and other things. 
 
   const eventOccurance = context.eventOccurance;
   const eventDuration = context.eventDuration;
@@ -73,7 +74,6 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
   const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
-    
     // Past Perfect - The tense that is used to make it clear that one event happened before another in the past
     case `${CONTEXT_EVENT_OCCURANCE_BEFORE_PAST}${CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
     case `${CONTEXT_EVENT_OCCURANCE_BEFORE_PAST}${CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_YOU_SINGULAR}`:
@@ -229,15 +229,6 @@ const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.Sente
   const verbPolarity = determineVerbPolarityEnglish(words, options, sentenceType);
 
   return verbPolarity.concat(verbConjugation);
-
-  // return {
-  //   type,
-  //   sentenceType,
-  //   verbConjugation,
-  //   verbPolarity,
-  //   __typename: __TYPENAME_CONJUGATED_ENGLISH_VERB,
-  // }
-  // return `${verbPolarity} ${word.english}`;
 };
 
 export default verbConjugationEnglish;

@@ -3,18 +3,31 @@ import {
   CATEGORY_DRINK,
   CATEGORY_HUMAN_ACTION,
 
-  CATEGORY_LOCATION,
+  // CATEGORY_LOCATION,
 
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
-  SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
+  // SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
+
+  // VERB_TYPE_ACTION_TRANSITIVE,
+  // VERB_TYPE_ACTION_INTRANSITIVE,
+  // VERB_TYPE_ACTION_BOTH,
+  // VERB_TYPE_HELPING,
+  // VERB_TYPE_LINKING,
+  // VERB_TYPE_LINKING_OR_ACTION,
+  // VERB_TYPE_TO_BE,
+
+  // VERB_ACTION_STATIC,
+  // VERB_ACTION_MOVEMENT,
+  // VERB_ACTION_POSESSION,
 } from '../../constants/wordConstants';
 
 import { createVerbWord } from '../utilWord';
 
 const wordEat = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU, 
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_HUMAN_ACTION ], 
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_HUMAN_ACTION ],
+  // verbType: VERB_TYPE_TRANSITIVE,
   kanji: '食べる',
   infinitive: 'eat',
   presentParticiple: 'eating',
@@ -42,7 +55,6 @@ const wordDrink = createVerbWord({
   simplePresentContinuousHeSheIt: 'drinks', 
 });
 
-
 const wordSee = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
   verbCategory: [ CATEGORY_HUMAN_ACTION ],
@@ -53,45 +65,11 @@ const wordSee = createVerbWord({
   simplePresentContinuousHeSheIt: 'sees', 
 });
 
-const wordGo = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
-  verbCategory: [ CATEGORY_LOCATION ],
-  kanji: '行く',
-  infinitive: 'go',
-  presentParticiple: 'going',
-  pastParticiple: 'gone',
-  simplePresentContinuousHeSheIt: 'goes', 
-});
-
-const wordDo = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
-  verbCategory: [ CATEGORY_LOCATION ],
-  kanji: 'する',
-  infinitive: 'do',
-  presentParticiple: 'doing',
-  pastParticiple: 'done',
-  simplePresentContinuousHeSheIt: 'does', 
-});
-
-const wordCome = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR,
-  verbCategory: [ CATEGORY_LOCATION ],
-  kanji: '来る',
-  infinitive: 'come',
-  presentParticiple: 'coming',
-  pastParticiple: 'came',
-  simplePresentContinuousHeSheIt: 'comes', 
-});
-
-
 const verbArray = [
   wordEat,
   wordDrink,
   wordSleep,
   wordSee,
-  wordGo,
-  wordDo,
-  wordCome,
 ];
 
 export default verbArray;

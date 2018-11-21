@@ -29,7 +29,7 @@ const filterSpecifcCategoryNoun = (nouns: Util.Noun[], category: string): Util.N
 
 export const getRandomWordViaCategoryNoun = (nouns: Util.Noun[], category: string): Util.Noun => {
   const getCategoryWords = filterSpecifcCategoryNoun(nouns, category);
-  return getCategoryWords[randomArrayElement(getCategoryWords.length)]
+  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], category) as Util.Noun
 }
 
 
@@ -56,7 +56,7 @@ const filterSpecifcCategoryVerb = (verbs: Util.Verb[], category: string): Util.V
 
 export const getRandomWordViaCategoryVerb = (verbs: Util.Verb[], category: string): Util.Verb => {
   const getCategoryWords = filterSpecifcCategoryVerb(verbs, category);
-  return getCategoryWords[randomArrayElement(getCategoryWords.length)]
+  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], category) as Util.Verb
 }
 
 // export const filterSpecifcMetaVerb = (nouns: Util.Verb[], metaProperty: string): Util.Verb[] => (

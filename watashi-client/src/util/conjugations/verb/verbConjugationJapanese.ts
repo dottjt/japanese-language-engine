@@ -76,20 +76,40 @@ const getVerbStem = (verb: Util.Verb, options: Util.Options): string[] => {
 
   switch(verb.verbJapaneseType) {
     case SENTENCE_TYPE_VERB_TYPE_RU: return initialStemArray;
-    case SENTENCE_TYPE_VERB_TYPE_U: 
+    case SENTENCE_TYPE_VERB_TYPE_U:
       switch(`${options.politeness}${options.polarity}`) {
         case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
         case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
         case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
         case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
       }
+
+    // NOTE: This is blatantly incorrect, will need to place correct logic at some point. 
     case SENTENCE_TYPE_VERB_TYPE_IRREGULAR:
       switch(verb.verbJapanese.kanji) {
-        case '行く':
+        case '行く': 
+          switch(`${options.politeness}${options.polarity}`) {
+            case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
+            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
+            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+          }
         case 'する':
+          switch(`${options.politeness}${options.polarity}`) {
+            case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
+            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
+            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+          }
         case '来る':
-          
+          switch(`${options.politeness}${options.polarity}`) {
+            case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
+            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
+            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+          }
       }
+  }
 
 
   throw new Error(createError('conjugations/verb', 'getVerbStem', `Verb meta.verbType does not exist.`));

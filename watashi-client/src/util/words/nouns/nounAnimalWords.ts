@@ -1,5 +1,6 @@
 import {
   CATEGORY_ANIMAL,
+  CATEGORY_ANIMATE,
 
   NOUN_PLURAL_GENERAL,
 
@@ -13,7 +14,7 @@ import { createNounWord } from '../utilWord';
 const wordCat = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
-  nounCategory: [ CATEGORY_ANIMAL ],
+  nounCategory: [ CATEGORY_ANIMAL, CATEGORY_ANIMATE ],
   kanji: '猫',
   singular: 'cat',
 });
@@ -21,7 +22,7 @@ const wordCat = createNounWord({
 const wordDog = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
-  nounCategory: [ CATEGORY_ANIMAL ],
+  nounCategory: [ CATEGORY_ANIMAL, CATEGORY_ANIMATE ],
   kanji: '犬',
   singular: 'dog',
 });
