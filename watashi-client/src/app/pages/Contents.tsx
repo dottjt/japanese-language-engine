@@ -8,7 +8,7 @@ import {
   LESSON_TITLE,
   LESSON_SECTIONS,
   LESSON_SECTIONS_PREMIUM,
-} from '../../util/constants/lessonConstants';
+} from '../../util/lessonConstants/lessonConfig';
 
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
 

@@ -29,7 +29,7 @@ import {
   L018,
   L019,
   L020,
-} from '../../util/constants/lessonConstants';
+} from '../../util/lessonConstants/lessonConfig';
 
 import LessonTemplate from '../pages/LessonTemplate';
 import Home from '../pages/Home';

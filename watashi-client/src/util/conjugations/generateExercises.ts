@@ -2,12 +2,10 @@ import {
   createError,
 } from '../functions';
 
-import {
-  LESSON_PATH,
-  LESSON_OPTIONS,
-  LESSON_MODIFIERS,
-  LESSON_SENTENCE_CONTEXT,
-} from '../constants/lessonConstants';
+import { LESSON_PATH } from '../config/descriptionConfig';
+import { LESSON_OPTIONS } from '../config/optionsConfig';
+import { LESSON_MODIFIERS } from '../config/modifiersConfig';
+import { LESSON_SENTENCE_CONTEXT } from '../config/collectionConfig';
 
 import { ROUTE_PATH } from '../constants/routeConstants';
 
