@@ -128,8 +128,10 @@ export const HIRAGANA_RYA = 'りゃ';
 export const HIRAGANA_RYU = 'りゅ'; 
 export const HIRAGANA_RYO = 'りょ'; 
 
+export const HIRAGANA_TSU_LINKING = 'っ'; 
 
-export const uVerbEndingU = {
+
+export const uVerbEnding = {
   HIRAGANA_U,
   HIRAGANA_SU,
   HIRAGANA_KU,
@@ -153,7 +155,14 @@ export const uVerbEndingA = {
   HIRAGANA_NA,
 };
 
-export const uVerbEndingI = {
+export const uVerbEndingPositivePast = {
+  HIRAGANA_SHI,
+  HIRAGANA_I,
+  HIRAGANA_N,
+  HIRAGANA_TSU_LINKING,
+};
+
+export const uVerbEndingFormal = {
   HIRAGANA_I,
   HIRAGANA_SHI,
   HIRAGANA_KI,

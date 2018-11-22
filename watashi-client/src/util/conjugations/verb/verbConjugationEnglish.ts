@@ -144,8 +144,6 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
     }
   }
 
-
-
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     // Past Perfect - The tense that is used to make it clear that one event happened before another in the past
     case `${CONTEXT_EVENT_OCCURANCE_BEFORE_PAST}${CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
