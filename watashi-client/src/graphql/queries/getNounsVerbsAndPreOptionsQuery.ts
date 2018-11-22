@@ -28,38 +28,38 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
   }
 
   preOptions @client {
-    politeness
-    variation
-    polarity
-    # tense
-    gender
-    question
-    themes
+    politenessArray
+    variationArray
+    polarityArray
+    
+    genderArray
+    questionArray
+    themesArray
   }
 
   preModifiers @client {
-    topicNo
-    subjectNo
-    topicAdjective
-    topicAdverb
-    subjectAdjective
-    subjectAdverb
+    topicNoArray
+    subjectNoArray
+    topicAdjectiveArray
+    topicAdverbArray
+    subjectAdjectiveArray
+    subjectAdverbArray
   }
 
   preSentenceContext @client {
-    topicIntent
-    
-    topicProximity
-    topicDestination
-    eventDirection
+    topicIntentArray
 
-    eventOccurance
-    eventDuration
-    eventPOV
-    
-    subjectConnection
-    subjectRole  
-    subjectQuantity
+    topicProximityArray
+    topicDestinationArray
+    eventDirectionArray
+
+    eventOccuranceArray
+    eventDurationArray
+    eventPOVArray
+
+    subjectConnectionArray
+    subjectRoleArray
+    subjectQuantityArray
   }
 }`
 

@@ -26,7 +26,7 @@ export const sentenceTypes = `
   type Noun {
     nounJapanese: JapaneseNoun
     nounEnglish: EnglishNoun
-    nounCategory: string[]
+    nounCategory: [string]
     nounWordType: String
     nounPluralType: String
     __typename: String
@@ -36,7 +36,7 @@ export const sentenceTypes = `
     verbJapanese: JapaneseVerb
     verbEnglish: EnglishVerb
     verbJapaneseType: String
-    verbCategory: string[]
+    verbCategory: [string]
     __typename: String
   }
 
@@ -73,24 +73,40 @@ export const optionTypes = `
     toggleSentenceHide: Boolean
   }
   
-  type Modifiers {
-    topicNo: String
-    subjectNo: String
-    topicAdjective: String
-    topicAdverb: String
-    subjectAdjective: String
-    subjectAdverb: String
+  export type PreModifiers = {
+    topicNoArray: [String]
+    subjectNoArray: [String]
+    topicAdjectiveArray: [String]
+    topicAdverbArray: [String]
+    subjectAdjectiveArray: [String]
+    subjectAdverbArray: [String]
+  };
+
+  export type Modifiers = {
+    selectedTopicNo: String
+    selectedSubjectNo: String
+    selectedTopicAdjective: String
+    selectedTopicAdverb: String
+    selectedSubjectAdjective: String
+    selectedSubjectAdverb: String
+  };
+
+
+  type PreOptions {
+    politenessArray: [String]
+    variationArray: [String]
+    polarityArray: [String]
+    genderArray: [String]
+    questionArray: [String]
+    themesArray: [String]
   }
 
   type Options {
-    politeness: String 
-    variation: [ String ]
-    selectedVariation?: String
-    polarity: String
-    gender: String
-    question: String
-    sentenceEnding: String
-    themes: String[]
+    selectedPoliteness: String
+    selectedVariation: String
+    selectedPolarity: String
+    selectedGender: String
+    selectedQuestion: String
     selectedTheme?: String
   }
 
@@ -103,20 +119,36 @@ export const optionTypes = `
     expiresAt: String
   }
 
-  type SentenceContext {
-    topicIntent: String
+  type PreSentenceContext {    
+    topicIntentArray: [String]
 
-    topicProximity: String
-    topicDestination: String
-    eventDirection: String
+    topicProximityArray: [String]
+    topicDestinationArray: [String]
+    eventDirectionArray: [String]
 
-    eventOccurance: String
-    eventDuration: String
-    eventPOV: String
-    
-    subjectConnection: String
-    subjectRole: String
-    subjectQuantity: String
+    eventOccuranceArray: [String]
+    eventDurationArray: [String]
+    eventPOVArray: [String]
+
+    subjectConnectionArray: [String]
+    subjectRoleArray: [String]
+    subjectQuantityArray: [String]
+  }
+
+  type SentenceContext {    
+    selectedTopicIntent: String
+
+    selectedTopicProximity: String
+    selectedTopicDestination: String
+    selectedEventDirection: String
+
+    selectedEventOccurance: String
+    selectedEventDuration: String
+    selectedEventPOV: String
+
+    selectedSubjectConnection: String
+    selectedSubjectRole: String
+    selectedSubjectQuantity: String
   }
 `
 
@@ -129,9 +161,9 @@ export const index = `
 
     exercises?: [ EnglishJapaneseOptionsSentence ]
     
-    preModifiers?: Modifiers
-    preOptions?: Options
-    preSentenceContext?: SentenceContext
+    preModifiers?: PreModifiers
+    preOptions?: PreOptions
+    preSentenceContext?: PreSentenceContext
     user?: User
   }
 `

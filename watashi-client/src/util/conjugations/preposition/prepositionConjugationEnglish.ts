@@ -104,10 +104,10 @@ const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Uti
 
     // Place Prepositions
     case NOUN_TYPE_SPACE:
-      if (sentenceContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_INDEPENDENT) {
+      if (sentenceContext.selectedSubjectConnection === CONTEXT_SUBJECT_CONNECTION_INDEPENDENT) {
         return createWord(determinePlacePreposition(sentenceContext), ENGLISH_PREPOSITION);
       }
-      if (sentenceContext.subjectConnection === CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION) {
+      if (sentenceContext.selectedSubjectConnection === CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION) {
         return createWord(determineAgencyPurposeReasonPreposition(sentenceContext), ENGLISH_PREPOSITION);
       }
     

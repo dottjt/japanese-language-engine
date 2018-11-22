@@ -24,22 +24,22 @@ import {
 // determinePurposePreposition
 export const determineAgencyPurposeReasonPreposition = (sentenceContext): string[] => { // agency or instrument
   // This poem was written by Milton.
-  if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_SECOND_HAND) { 
+  if (sentenceContext.selectedSubjectRole === CONTEXT_SUBJECT_ROLE_SECOND_HAND) { 
     return ['by']; // on 
   }
 
   // I opened my closet with a key.
-  else if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_DIRECT) {
+  else if (sentenceContext.selectedSubjectRole === CONTEXT_SUBJECT_ROLE_DIRECT) {
     return ['with'];
   }
 
   // I opened my closet with a key.
-  else if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF) {
+  else if (sentenceContext.selectedSubjectRole === CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF) {
     return ['on']; // for, // through
   }
 
   // I opened my closet with a key.
-  else if (sentenceContext.subjectRole === CONTEXT_SUBJECT_ROLE_BECAUSE_OF) {
+  else if (sentenceContext.selectedSubjectRole === CONTEXT_SUBJECT_ROLE_BECAUSE_OF) {
     return ['because of']; // on account of
   }
   // return 'from';

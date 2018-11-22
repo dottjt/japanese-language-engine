@@ -6,85 +6,36 @@ import {
   __TYPENAME_SENTENCE_CONTEXT,
 } from '../constants/typeNameConstants';
 
-import { 
-  // -----
-  contextIntentArray,
+const randomArrayValue = (array: string[]): string => array[randomArrayElement(array.length)];
 
-  contextProximityArray,
-  contextTopicDestinationArray,
-  contextDirectionArray,
-
-  contextEventOccuranceArray,
-  contextDurationArray,
-  contextEventPOVArray,
-
-  contextSubjectConnectionArray,
-  contextSubjectRoleArray,
-  contextSubjectQuantityArray,
-
-  // -----
-  contextIntentArrayLength,
-
-  contextProximityArrayLength,
-  contextTopicDestinationArrayLength,
-  contextDirectionArrayLength,
-
-  contextEventOccuranceArrayLength,
-  contextDurationArrayLength,
-  contextEventPOVArrayLength,
-
-  contextSubjectConnectionArrayLength,
-  contextSubjectRoleArrayLength,
-  contextSubjectQuantityArrayLength,
-
-  // -----
-  CONTEXT_INTENT_RANDOM,
-
-  CONTEXT_PROXIMITY_RANDOM,
-  CONTEXT_TOPIC_DESTINATION_RANDOM,
-  CONTEXT_DIRECTION_RANDOM,
-  
-  CONTEXT_EVENT_OCCURANCE_RANDOM,
-  CONTEXT_EVENT_DURATION_RANDOM,
-  
-  CONTEXT_SUBJECT_CONNECTION_RANDOM,
-  CONTEXT_SUBJECT_ROLE_RANDOM,
-  CONTEXT_SUBJECT_QUANTITY_RANDOM,
-
-} from '../constants/contextConstants';
-
-const randomContextIntentValue = () => contextIntentArray[randomArrayElement(contextIntentArrayLength)];
-
-const randomContextProximityValue = () => contextProximityArray[randomArrayElement(contextProximityArrayLength)];
-const randomContextTopicDestinationValue = () => contextTopicDestinationArray[randomArrayElement(contextTopicDestinationArrayLength)];
-const randomContextEventDirectionValue = () => contextDirectionArray[randomArrayElement(contextDirectionArrayLength)];
-
-const randomContextEventOccuranceValue = () => contextEventOccuranceArray[randomArrayElement(contextEventOccuranceArrayLength)];
-const randomContextDurationValue = () => contextDurationArray[randomArrayElement(contextDurationArrayLength)];
-const randomContextPOVValue = () => contextEventPOVArray[randomArrayElement(contextEventPOVArrayLength)];
-
-const randomContextSubjectConnectionValue = () => contextSubjectConnectionArray[randomArrayElement(contextSubjectConnectionArrayLength)];
-const randomContextSubjectRoleValue = () => contextSubjectRoleArray[randomArrayElement(contextSubjectRoleArrayLength)];
-const randomContextSubjectQuantityValue = () => contextSubjectQuantityArray[randomArrayElement(contextSubjectQuantityArrayLength)];
-
-const createSentenceContext = (sentenceContext: Util.SentenceContext): Util.SentenceContext => {
-  const { topicIntent, topicProximity, topicDestination, eventDirection, eventOccurance, eventDuration, eventPOV, subjectConnection, subjectRole, subjectQuantity } = sentenceContext;
+const createSentenceContext = (sentenceContext: Util.PreSentenceContext): Util.SentenceContext => {
+  const { 
+    topicIntentArray, 
+    topicProximityArray, 
+    topicDestinationArray, 
+    eventDirectionArray, 
+    eventOccuranceArray, 
+    eventDurationArray, 
+    eventPOVArray, 
+    subjectConnectionArray, 
+    subjectRoleArray, 
+    subjectQuantityArray } = sentenceContext;
 
   return {
     __typename: __TYPENAME_SENTENCE_CONTEXT,
-    topicIntent: topicIntent === CONTEXT_INTENT_RANDOM ? randomContextIntentValue() : topicIntent,
+    selectedTopicIntent: topicIntentArray.length === 1 ? topicIntentArray[0] : randomArrayValue(topicIntentArray),
     
-    topicProximity: topicProximity === CONTEXT_PROXIMITY_RANDOM ? randomContextProximityValue() : topicProximity,
-    topicDestination: topicDestination === CONTEXT_TOPIC_DESTINATION_RANDOM ? randomContextTopicDestinationValue() : topicDestination,
-    eventDirection: eventDirection === CONTEXT_DIRECTION_RANDOM ? randomContextEventDirectionValue() : eventDirection,
+    selectedTopicProximity: topicProximityArray.length === 1 ? topicProximityArray[0] : randomArrayValue(topicProximityArray),
+    selectedTopicDestination: topicDestinationArray.length === 1 ? topicDestinationArray[0] : randomArrayValue(topicDestinationArray),
+    selectedEventDirection: eventDirectionArray.length === 1 ? eventDirectionArray[0] : randomArrayValue(eventDirectionArray),
 
-    eventOccurance: eventOccurance === CONTEXT_EVENT_OCCURANCE_RANDOM ? randomContextEventOccuranceValue() : eventOccurance,
-    eventDuration: eventDuration === CONTEXT_EVENT_DURATION_RANDOM ? randomContextDurationValue() : eventDuration,
-    eventPOV: eventPOV === CONTEXT_DIRECTION_RANDOM ? randomContextPOVValue() : eventPOV,
+    selectedEventOccurance: eventOccuranceArray.length === 1 ? eventOccuranceArray[0] : randomArrayValue(eventOccuranceArray),
+    selectedEventDuration: eventDurationArray.length === 1 ? eventDurationArray[0] : randomArrayValue(eventDurationArray),
+    selectedEventPOV: eventPOVArray.length === 1 ? eventPOVArray[0] : randomArrayValue(eventPOVArray),
 
-    subjectConnection: subjectConnection === CONTEXT_SUBJECT_CONNECTION_RANDOM ? randomContextSubjectConnectionValue() : subjectConnection,  
-    subjectRole: subjectRole === CONTEXT_SUBJECT_ROLE_RANDOM ? randomContextSubjectRoleValue() : subjectRole,
-    subjectQuantity: subjectQuantity === CONTEXT_SUBJECT_QUANTITY_RANDOM ? randomContextSubjectQuantityValue() : subjectQuantity,
+    selectedSubjectConnection: subjectConnectionArray.length === 1 ? subjectConnectionArray[0] : randomArrayValue(subjectConnectionArray),
+    selectedSubjectRole: subjectRoleArray.length === 1 ? subjectRoleArray[0] : randomArrayValue(subjectRoleArray),
+    selectedSubjectQuantity: subjectQuantityArray.length === 1 ? subjectQuantityArray[0] : randomArrayValue(subjectQuantityArray),
   }
 };
 

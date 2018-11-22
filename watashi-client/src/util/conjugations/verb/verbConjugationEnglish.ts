@@ -64,9 +64,9 @@ import {
 const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext): Util.WordArrayElement[] => {
   // Note: This needs to be scoped out for to be and other things. 
 
-  const eventOccurance = context.eventOccurance;
-  const eventDuration = context.eventDuration;
-  const eventPOV = context.eventPOV;
+  const eventOccurance = context.selectedEventOccurance;
+  const eventDuration = context.selectedEventDuration;
+  const eventPOV = context.selectedEventPOV;
 
   const infinitive = verb.verbEnglish.infinitive; // "to hack";
   const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
@@ -200,11 +200,11 @@ const determineVerbPolarityEnglish = (words: Util.SentenceWords, options: Util.O
   const permissions = verbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   if (permissions) {
-    switch(`${options.polarity}`) {
+    switch(`${options.selectedPolarity}`) {
       case `${POLARITY_POSITIVE}`: return createWord([''], ENGLISH_POLARITY);
       case `${POLARITY_NEGATIVE}`: return createWord(['do', 'not'], ENGLISH_POLARITY);
     }
-    throw new Error(createError('verbConjugationEnglish', 'determineVerbPolarityEnglish', `${options.polarity} unknown`));  
+    throw new Error(createError('verbConjugationEnglish', 'determineVerbPolarityEnglish', `${options.selectedPolarity} unknown`));  
   }
   return createWord([''], ENGLISH_POLARITY);
 }; 

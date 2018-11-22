@@ -20,7 +20,7 @@ import {
 } from '../../../util/constants/optionsConstants';
 
 // const phraseOptionsJapanese = (phraseArray: Util.WordArrayElement[], options: Util.Options, index: number): Util.WordArrayElement[] => {
-//   // const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
+//   // const japaneseQuestionEnding = options.selectedPoliteness !== POLITENESS_CASUAL ? 'か？' : '？';
 
 //   // options.question === HAS_QUESTION ? 
 //   //   phraseArray[phraseArray.length - 1].word = `${phraseArray[phraseArray.length - 1].word}${japaneseQuestionEnding}` : 
@@ -34,10 +34,10 @@ const sentenceOptionsJapanese = (sentenceArray: Util.WordArrayElement[], options
 };
 
 const wordOptionsJapanese = (character: Util.WordArrayElement, wordIndex: number, options: Util.Options, sentenceLength: number): string => {
-  const japaneseQuestionEnding = options.politeness !== POLITENESS_CASUAL ? 'か？' : '？';
+  const japaneseQuestionEnding = options.selectedPoliteness !== POLITENESS_CASUAL ? 'か？' : '？';
 
   if (wordIndex === sentenceLength - 1) {
-    return options.question === HAS_QUESTION ? `${character.word}${japaneseQuestionEnding}` : `${character.word}。`
+    return options.selectedQuestion === HAS_QUESTION ? `${character.word}${japaneseQuestionEnding}` : `${character.word}。`
   };
   return character.word;
 };

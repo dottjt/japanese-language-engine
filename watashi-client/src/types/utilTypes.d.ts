@@ -200,37 +200,37 @@ declare namespace Util {
   };
 
   export type SentenceContext = {    
-    selectedTopicIntent: string[],
+    selectedTopicIntent: string,
 
-    selectedTopicProximity: string[],
-    selectedTopicDestination: string[],
-    selectedEventDirection: string[],
+    selectedTopicProximity: string,
+    selectedTopicDestination: string,
+    selectedEventDirection: string,
 
-    selectedEventOccurance: string[],
-    selectedEventDuration: string[],
-    selectedEventPOV: string[],
+    selectedEventOccurance: string,
+    selectedEventDuration: string,
+    selectedEventPOV: string,
 
-    selectedSubjectConnection: string[],
-    selectedSubjectRole: string[],
-    selectedSubjectQuantity: string[],
+    selectedSubjectConnection: string,
+    selectedSubjectRole: string,
+    selectedSubjectQuantity: string,
     
     __typename: string,
   }
 
   export type PreSentenceContext = {    
-    topicIntentArray: string,
+    topicIntentArray: string[],
 
-    topicProximityArray: string,
-    topicDestinationArray: string,
-    eventDirectionArray: string,
+    topicProximityArray: string[],
+    topicDestinationArray: string[],
+    eventDirectionArray: string[],
 
-    eventOccuranceArray: string,
-    eventDurationArray: string,
-    eventPOVArray: string,
+    eventOccuranceArray: string[],
+    eventDurationArray: string[],
+    eventPOVArray: string[],
 
-    subjectConnectionArray: string,
-    subjectRoleArray: string,
-    subjectQuantityArray: string,
+    subjectConnectionArray: string[],
+    subjectRoleArray: string[],
+    subjectQuantityArray: string[],
     
     __typename: string,
   }

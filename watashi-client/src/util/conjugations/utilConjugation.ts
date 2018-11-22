@@ -141,9 +141,9 @@ export const generateSentenceTypes = (topic?: Util.Noun, subject?: Util.Noun, ve
 };
 
 export const determineJapaneseTense = (context: Util.SentenceContext): string => {
-  const eventOccurance = context.eventOccurance;
-  const eventDuration = context.eventDuration;
-  const eventPOV = context.eventPOV;
+  const eventOccurance = context.selectedEventOccurance;
+  const eventDuration = context.selectedEventDuration;
+  const eventPOV = context.selectedEventPOV;
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     // Past Perfect - The tense that is used to make it clear that one event happened before another in the past

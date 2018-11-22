@@ -72,7 +72,7 @@ const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: U
       case `${TENSE_PRESENT}${DE_SV}`:
         return createEmptyWord(ENGLISH_ADVERB);
     }
-    throw new Error(createError('adverbConjugationEnglish.ts', 'determineAdverbConjugationEnglish - WA_TS', `${japaneseTense}${options.polarity} unknown`));
+    throw new Error(createError('adverbConjugationEnglish.ts', 'determineAdverbConjugationEnglish - WA_TS', `${japaneseTense}${options.selectedPolarity} unknown`));
   }
   return createEmptyWord(ENGLISH_ADVERB);
 };

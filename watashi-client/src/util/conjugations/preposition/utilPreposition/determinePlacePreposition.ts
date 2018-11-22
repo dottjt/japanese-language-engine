@@ -58,9 +58,9 @@ const destinationSwitch = (contextTopicDestination: string): string[] => {
 export const determinePlacePreposition = (sentenceContext: Util.SentenceContext): string[] => {
   // topicIntent
 
-  const contextProximity = sentenceContext.topicProximity;
-  const contextTopicDestination = sentenceContext.topicDestination;
-  const contextEventDirection = sentenceContext.eventDirection;
+  const contextProximity = sentenceContext.selectedTopicProximity;
+  const contextTopicDestination = sentenceContext.selectedTopicDestination;
+  const contextEventDirection = sentenceContext.selectedEventDirection;
 
   if (contextTopicDestination === CONTEXT_TOPIC_DESTINATION_NONE && contextEventDirection !== CONTEXT_DIRECTION_NONE) {
     throw new Error(createError('determinePlacePreposition.ts', 'determinePlacePreposition', `If destination is ${contextTopicDestination} then contextEventDirection must be CONTEXT_DIRECTION_NONE`))

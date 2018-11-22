@@ -32,7 +32,7 @@ const wordOptionsEnglish = (wordArrayElement: Util.WordArrayElement, wordIndex: 
   };
 
   if (wordIndex === sentenceLength - 1) { // endOfArray(sentenceLength, sentencePartIndex)
-    return options.question === HAS_QUESTION ? `${wordArrayElement.word}?` : `${wordArrayElement.word}.`
+    return options.selectedQuestion === HAS_QUESTION ? `${wordArrayElement.word}?` : `${wordArrayElement.word}.`
   };
 
   return wordArrayElement.word;

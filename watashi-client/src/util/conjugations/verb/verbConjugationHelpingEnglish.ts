@@ -64,11 +64,11 @@ import {
 
 const determineVerbConjugationHelpingEnglish = (context: Util.SentenceContext, options: Util.Options): Util.WordArrayElement[] => {
   
-  const topicIntent = context.topicIntent;
+  const topicIntent = context.selectedTopicIntent;
 
-  const eventOccurance = context.eventOccurance;
-  const eventDuration = context.eventDuration;
-  const eventPOV = context.eventPOV;
+  const eventOccurance = context.selectedEventOccurance;
+  const eventDuration = context.selectedEventDuration;
+  const eventPOV = context.selectedEventPOV;
 
   const permissions = verbConjugationHelpingPermissionsEnglish(options);
 

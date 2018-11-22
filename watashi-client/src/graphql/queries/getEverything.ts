@@ -30,38 +30,37 @@ const GET_EVERYTHING = gql`{
     }
 
     preOptions @client {
-      politeness
-      variation
-      polarity
-      # tense
-      gender
-      question
-      themes
+      politenessArray
+      variationArray
+      polarityArray
+      genderArray
+      questionArray
+      themesArray
     }
     
     preModifiers @client {
-      topicNo
-      subjectNo
-      topicAdjective
-      topicAdverb
-      subjectAdjective
-      subjectAdverb
+      topicNoArray
+      subjectNoArray
+      topicAdjectiveArray
+      topicAdverbArray
+      subjectAdjectiveArray
+      subjectAdverbArray
     }
     
     preSentenceContext @client {
-      topicIntent
+      topicIntentArray
 
-      topicProximity
-      topicDestination
-      eventDirection
+      topicProximityArray
+      topicDestinationArray
+      eventDirectionArray
 
-      eventOccurance
-      eventDuration
-      eventPOV
+      eventOccuranceArray
+      eventDurationArray
+      eventPOVArray
 
-      subjectConnection
-      subjectRole
-      subjectQuantity
+      subjectConnectionArray
+      subjectRoleArray
+      subjectQuantityArray
     }
 
     nouns @client {
@@ -88,40 +87,37 @@ const GET_EVERYTHING = gql`{
       }
       
       options @client {
-        politeness
-        variation
+        selectedPoliteness
         selectedVariation
-        polarity
-        # tense
-        gender
-        question
-        themes
+        selectedPolarity
+        selectedGender
+        selectedQuestion
         selectedTheme
       }
 
       modifiers @client {
-        topicNo
-        subjectNo
-        topicAdjective
-        topicAdverb
-        subjectAdjective
-        subjectAdverb
+        selectedTopicNo
+        selectedSubjectNo
+        selectedTopicAdjective
+        selectedTopicAdverb
+        selectedSubjectAdjective
+        selectedSubjectAdverb
       }
 
       sentenceContext @client {
-        topicIntent
-        
-        topicProximity
-        topicDestination
-        eventDirection
+        selectedTopicIntent
+       
+        selectedTopicProximity
+        selectedTopicDestination
+        selectedEventDirection
 
-        eventOccurance
-        eventDuration
-        eventPOV
-        
-        subjectConnection
-        subjectRole
-        subjectQuantity
+        selectedEventOccurance
+        selectedEventDuration
+        selectedEventPOV
+       
+        selectedSubjectConnection
+        selectedSubjectRole
+        selectedSubjectQuantity
       }
     }
   }

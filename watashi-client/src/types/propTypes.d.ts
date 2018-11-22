@@ -59,7 +59,7 @@ declare module PropTypes {
     exercises: Util.EnglishJapaneseOptionsSentence[],
     resources: Util.Resource[],
     explanation: string[], 
-    preOptions: Util.Options,
+    preOptions: Util.PreOptions,
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
     client: any,

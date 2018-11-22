@@ -18,8 +18,8 @@ import {
 // I think I need to keep in count sentence structure as well to determine what these things mean.
 
 export const determineTimePrepositionDayOfWeek = (sentenceContext): string[] => {
-  const contextWhen = sentenceContext.eventOccurance;
-  const contextDuration = sentenceContext.eventDuration;
+  const contextWhen = sentenceContext.selectedEventOccurance;
+  const contextDuration = sentenceContext.selectedEventDuration;
 
   // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
   switch(`${contextWhen}${contextDuration}`) {
@@ -57,8 +57,8 @@ export const determineTimePrepositionDayOfWeek = (sentenceContext): string[] => 
 // NOUN_TYPE_SEASON
 // NOUN_TYPE_YEAR_DATE
 export const determineTimePrepositionMonthSeasonDate = (sentenceContext): string[] => {
-  const contextWhen = sentenceContext.eventOccurance;
-  const contextDuration = sentenceContext.eventDuration;
+  const contextWhen = sentenceContext.selectedEventOccurance;
+  const contextDuration = sentenceContext.selectedEventDuration;
 
   // January, February, March, April
   // Spring, Autumn, Winter
@@ -105,8 +105,8 @@ export const determineTimePrepositionMonthSeasonDate = (sentenceContext): string
 // NOUN_TYPE_POINT_OF_DAY
 // NOUN_TYPE_PERIOD_DESCRIPTOR
 export const determineTimePrepositionPeriodDescriptor = (sentenceContext): string[] => {
-  const contextWhen = sentenceContext.eventOccurance;
-  const contextDuration = sentenceContext.eventDuration;
+  const contextWhen = sentenceContext.selectedEventOccurance;
+  const contextDuration = sentenceContext.selectedEventDuration;
 
   // year, day, week, month
   switch(`${contextWhen}${contextDuration}`) {

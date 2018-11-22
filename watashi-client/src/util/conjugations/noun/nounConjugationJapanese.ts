@@ -94,7 +94,7 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
   const japaneseNounTense = determineJapaneseTense(sentenceContext);
 
   if (permissions) {
-    switch(`${options.politeness}${options.polarity}${japaneseNounTense}`) {
+    switch(`${options.selectedPoliteness}${options.selectedPolarity}${japaneseNounTense}`) {
 
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
         return { japaneseNounTense: emptyWord, nounPolarity: emptyWord };
@@ -120,7 +120,7 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
       case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
         return { japaneseNounTense: createWord(['で','し','た'], JAPANESE_TENSE), nounPolarity: createWord(['じ','ゃ','あ','り','ま','せ','ん'], JAPANESE_POLARITY) };
     }
-    throw new Error(createError('conjugations/noun', 'determineNounConjugationJapanese', `${options.politeness}${options.polarity}${japaneseNounTense} unknown`));
+    throw new Error(createError('conjugations/noun', 'determineNounConjugationJapanese', `${options.selectedPoliteness}${options.selectedPolarity}${japaneseNounTense} unknown`));
   }
   return { japaneseNounTense: emptyWord, nounPolarity: emptyWord };
 };

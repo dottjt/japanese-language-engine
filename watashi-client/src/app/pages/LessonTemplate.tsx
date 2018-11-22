@@ -6,7 +6,7 @@ import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
 
 import Helmet from '../components/Helmet';
 
-import SentenceControlPanel from '../modules/SentenceModule/SentenceControlPanel';
+// import SentenceControlPanel from '../modules/SentenceModule/SentenceControlPanel';
 import SentenceOptions from '../modules/SentenceModule/SentenceOptions';
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
 import ResourceModule from '../modules/ResourceModule';
@@ -15,7 +15,7 @@ import { ExternalLink } from '../atoms/ClickableStyles';
 
 class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}> {
   public render() {
-    const { title, description, client, path, sentenceDisplayOptions, preOptions, sentenceStats, exercises, explanation, resources, auth, isAuthenticated, premiumLesson, } = this.props;
+    const { title, description, client, path, sentenceDisplayOptions, /*preOptions,*/ sentenceStats, exercises, explanation, resources, auth, isAuthenticated, premiumLesson, } = this.props;
 
     return (
       <PageWrapper>
@@ -49,12 +49,12 @@ class LessonTemplate extends React.Component<PropTypes.ILessonTemplateProps, {}>
               <Text fontSize={4} mb={0} color='white'>You must <ExternalLink onClick={auth.login} fontSize={4} mb={0}>login</ExternalLink> or <ExternalLink onClick={auth.login} fontSize={4} mb={0}>create an account</ExternalLink> in order to use this feature.</Text>
             </PremiumFilter>
 
-            <SentenceControlPanel
+            {/* <SentenceControlPanel
               sentenceDisplayOptions={this.props.sentenceDisplayOptions}
               preOptions={preOptions}
               client={client}
               path={path}
-            />
+            /> */}
           </FlexColumn>
 
           <SecondaryPageHeading>Sentence Analysis Options</SecondaryPageHeading>

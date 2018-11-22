@@ -44,7 +44,7 @@ export const adverbConjugationPermissionsEnglish = (options: Util.Options): bool
 
 export const polarityPermissions = (options: Util.Options): boolean => {
 
-  if (options.polarity === POLARITY_NEGATIVE) {
+  if (options.selectedPolarity === POLARITY_NEGATIVE) {
     switch(options.selectedVariation) {
       case T: return true;
       case WA_TS: return true;
