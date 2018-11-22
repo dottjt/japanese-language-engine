@@ -33,7 +33,7 @@ const GET_EVERYTHING = gql`{
       politeness
       variation
       polarity
-      tense
+      # tense
       gender
       question
       themes
@@ -92,7 +92,7 @@ const GET_EVERYTHING = gql`{
         variation
         selectedVariation
         polarity
-        tense
+        # tense
         gender
         question
         themes

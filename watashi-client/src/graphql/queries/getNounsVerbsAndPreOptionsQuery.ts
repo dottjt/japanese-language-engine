@@ -31,7 +31,7 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
     politeness
     variation
     polarity
-    tense
+    # tense
     gender
     question
     themes

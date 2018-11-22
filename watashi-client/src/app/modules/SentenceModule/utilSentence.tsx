@@ -8,11 +8,11 @@ import {
   POLITENESS_HUMBLE,
   POLITENESS_HONORIFIC,
 
-  POLARITY_POSITIVE,
-  POLARITY_NEGATIVE,
+  // POLARITY_POSITIVE,
+  // POLARITY_NEGATIVE,
 
-  TENSE_PRESENT,
-  TENSE_PAST,
+  // TENSE_PRESENT,
+  // TENSE_PAST,
 
   HAS_QUESTION,
 
@@ -50,15 +50,15 @@ import {
 
 // SENTENCE STATS
 
-const determinePolarityTense = (polarity: string, tense: string): string | undefined => {
-  switch(`${polarity}${tense}`) {
-    case `${POLARITY_POSITIVE}${TENSE_PRESENT}`: return 'Positive Present';
-    case `${POLARITY_POSITIVE}${TENSE_PAST}`: return 'Positive Past';
-    case `${POLARITY_NEGATIVE}${TENSE_PRESENT}`: return 'Negative Present';
-    case `${POLARITY_NEGATIVE}${TENSE_PAST}`: return 'Negative Past';
-    default: return undefined;
-  }
-};
+// const determinePolarityTense = (polarity: string, tense: string): string | undefined => {
+//   switch(`${polarity}${tense}`) {
+//     case `${POLARITY_POSITIVE}${TENSE_PRESENT}`: return 'Positive Present';
+//     case `${POLARITY_POSITIVE}${TENSE_PAST}`: return 'Positive Past';
+//     case `${POLARITY_NEGATIVE}${TENSE_PRESENT}`: return 'Negative Present';
+//     case `${POLARITY_NEGATIVE}${TENSE_PAST}`: return 'Negative Past';
+//     default: return undefined;
+//   }
+// };
 
 export const convertPolitenessIntoValue = (politeness: string): string | undefined => {
   switch(politeness) {
@@ -88,15 +88,17 @@ const convertQuestionIntoValue = (question: string): string | undefined =>
   question === HAS_QUESTION ? 'Question' : undefined;
 
 export const determineStatTypes = (options: Util.Options) => {
-  const { politeness, polarity, tense, question, selectedVariation, /* variation, gender */ } = options;
+  const { politeness, /*polarity,*/ question, selectedVariation, /* variation, gender */ } = options;
     
+
+
   const politenessValue = convertPolitenessIntoValue(politeness);
-  const polarityTenseValue = determinePolarityTense(polarity, tense);
+  // const polarityTenseValue = determinePolarityTense(polarity, tense);
   const questionValue = convertQuestionIntoValue(question);
   const { topic, subject, verb } = determineTopicSubjectVerb(selectedVariation);
 
   return {
-    polarityTenseValue,
+    // polarityTenseValue,
     questionValue,
     politenessValue,
     topic,

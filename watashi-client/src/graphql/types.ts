@@ -87,7 +87,6 @@ export const optionTypes = `
     variation: [ String ]
     selectedVariation?: String
     polarity: String
-    tense: String
     gender: String
     question: String
     sentenceEnding: String

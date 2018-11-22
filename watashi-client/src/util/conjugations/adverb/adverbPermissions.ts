@@ -46,7 +46,7 @@ export const polarityPermissions = (options: Util.Options): boolean => {
 
   if (options.polarity === POLARITY_NEGATIVE) {
     switch(options.selectedVariation) {
-      case T: return false;
+      case T: return true;
       case WA_TS: return true;
       case MO_TS: return true;
       case GA_TS: return true;

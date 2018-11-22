@@ -207,16 +207,18 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
     );
   }
 
-  private convertValues = (values: string[], controlPanelType: string, preOptions: Util.Options): Util.IButtonValues[] =>
-    values.map((value: string): Util.IButtonValues => {
-      const { politeness, polarity, tense, gender, question } = preOptions;
+  private convertValues = (values: string[], controlPanelType: string, preOptions: Util.Options): Util.IButtonValues[] => {
+    const { politeness, polarity,/* tense,*/ gender, question } = preOptions;
+    const japaneseTense = 'PRESENT_TENSE'; // determineJapaneseTense(sentenceContext);
+    
+    return values.map((value: string): Util.IButtonValues => {
       switch(controlPanelType) {
         case POLITENESS_CONTROL_PANEL_TYPE: 
           return value === politeness ? { value, selected: true } : { value, selected: false };
         case POLARITY_CONTROL_PANEL_TYPE:  
           return value === polarity ? { value, selected: true } : { value, selected: false };
-        case TENSE_CONTROL_PANEL_TYPE:    
-          return value === tense ? { value, selected: true } : { value, selected: false };
+        case TENSE_CONTROL_PANEL_TYPE:   
+          return value === japaneseTense ? { value, selected: true } : { value, selected: false };
         case GENDER_CONTROL_PANEL_TYPE:     
           return value === gender ? { value, selected: true } : { value, selected: false };
         case QUESTION_CONTROL_PANEL_TYPE:   
@@ -224,6 +226,8 @@ class SentenceControlPanel extends React.Component<PropTypes.ISentenceControlPan
       }
       throw new Error(createError('SentenceControlPanel.tsx', 'convertValues', `${controlPanelType} does not exist.`));    
     });
+
+  }
 
   private politenessRedirect = (client: any, value: string): void => this.updateControlPanelOptions(client, { politeness: value }); 
   private polarityRedirect = (client: any, value: string): void => this.updateControlPanelOptions(client, { polarity: value });

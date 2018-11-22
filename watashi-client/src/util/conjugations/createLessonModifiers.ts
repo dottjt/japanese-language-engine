@@ -6,33 +6,25 @@ import {
   __TYPENAME_MODIFIERS,
 } from '../constants/typeNameConstants';
 
-import {
-  topicNoArray,
-  subjectNoArray,
-  topicAdjectiveArray,
-  topicAdverbArray,
-  subjectAdjectiveArray,
-  subjectAdverbArray,
-} from '../constants/modifiersConstants';
+const randomArrayValue = (array: string[]): string => array[randomArrayElement(array.length)];
 
-const randomTopicNo = (): string => topicNoArray[randomArrayElement(topicNoArray.length)];
-const randomSubjectNoValue = (): string => subjectNoArray[randomArrayElement(subjectNoArray.length)];
-const randomTopicAdjectiveValue = (): string =>  topicAdjectiveArray[randomArrayElement(topicAdjectiveArray.length)];
-const randomTopicAdverbValue = (): string => topicAdverbArray[randomArrayElement(topicAdverbArray.length)];
-const randomSubjectAdjectiveValue = (): string => subjectAdjectiveArray[randomArrayElement(subjectAdjectiveArray.length)];
-const randomSubjectAdverbValue = (): string => subjectAdverbArray[randomArrayElement(subjectAdverbArray.length)];
-
-const createLessonModifiers = (modifiers: Util.Modifiers): Util.Modifiers => {
-  const { topicNo, subjectNo, topicAdjective, topicAdverb, subjectAdjective, subjectAdverb } = modifiers;
+const createLessonModifiers = (modifiers: Util.PreModifiers): Util.Modifiers => {
+  const { 
+    topicNoArray, 
+    subjectNoArray, 
+    topicAdjectiveArray, 
+    topicAdverbArray, 
+    subjectAdjectiveArray, 
+    subjectAdverbArray } = modifiers;
   
   return {
     __typename: __TYPENAME_MODIFIERS,
-    topicNo: topicNo ? topicNo : randomTopicNo(),
-    subjectNo: subjectNo ? subjectNo : randomSubjectNoValue(),
-    topicAdjective: topicAdjective ? topicAdjective : randomTopicAdjectiveValue(),
-    topicAdverb: topicAdverb ? topicAdverb : randomTopicAdverbValue(),
-    subjectAdjective: subjectAdjective ? subjectAdjective : randomSubjectAdjectiveValue(),
-    subjectAdverb: subjectAdverb ? subjectAdverb : randomSubjectAdverbValue(),  
+    selectedTopicNo: topicNoArray.length === 1 ? topicNoArray[0] : randomArrayValue(topicNoArray),
+    selectedSubjectNo: subjectNoArray.length === 1 ? subjectNoArray[0] : randomArrayValue(subjectNoArray),
+    selectedTopicAdjective: topicAdjectiveArray.length === 1 ? topicAdjectiveArray[0] : randomArrayValue(topicAdjectiveArray),
+    selectedTopicAdverb: topicAdverbArray.length === 1 ? topicAdverbArray[0] : randomArrayValue(topicAdverbArray),
+    selectedSubjectAdjective: subjectAdjectiveArray.length === 1 ? subjectAdjectiveArray[0] : randomArrayValue(subjectAdjectiveArray),
+    selectedSubjectAdverb: subjectAdverbArray.length === 1 ? subjectAdverbArray[0] : randomArrayValue(subjectAdverbArray),  
   }
 };
 

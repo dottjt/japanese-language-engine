@@ -61,14 +61,14 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
                 {statTypes.politenessValue}
               </Text>
             }
-            {statTypes.polarityTenseValue &&
+            {/* {statTypes.polarityTenseValue &&
               <Text mr={4} p={2} color='sentenceStat'
                 onMouseEnter={() => this.onPolarityTenseEnter(exerciseIndex)}
                 onMouseLeave={this.onPolarityTenseExit}
               >
                 {statTypes.polarityTenseValue}
               </Text>
-            }
+            } */}
           </Flex>
         </ToggleVisibility>
     );
@@ -102,12 +102,12 @@ class SentenceStats extends React.Component<PropTypes.ISentenceStatsProps, {}> {
     changeSentenceStats(this.props.client, { questionHover: false });
   }
 
-  private onPolarityTenseEnter = (exerciseIndex: number): void => {
-    changeSentenceStats(this.props.client, { polarityHover: true, tenseHover: true, selectedExerciseNumber: exerciseIndex });
-  }
-  private onPolarityTenseExit = (): void => {
-    changeSentenceStats(this.props.client, { polarityHover: false, tenseHover: false });
-  }
+  // private onPolarityTenseEnter = (exerciseIndex: number): void => {
+  //   changeSentenceStats(this.props.client, { polarityHover: true, tenseHover: true, selectedExerciseNumber: exerciseIndex });
+  // }
+  // private onPolarityTenseExit = (): void => {
+  //   changeSentenceStats(this.props.client, { polarityHover: false, tenseHover: false });
+  // }
 
   private onPolitenessEnter = (exerciseIndex: number): void => {
     changeSentenceStats(this.props.client, { politenessHover: true, selectedExerciseNumber: exerciseIndex });

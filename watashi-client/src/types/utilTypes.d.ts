@@ -83,19 +83,28 @@ declare namespace Util {
     __typename: string;
   };
 
-  export type Options = {
-    politeness: string; // POLITENESS_CASUAL, POLITENESS_FORMAL
-    variation: string[]; // wa-sob,
-    selectedVariation?: string; // wa-sob,
-    polarity: string; // POLARITY_POSITIVE, POLARITY_NEGATIVE
-    tense: string; // TENSE_PRESENT, TENSE_PAST
-    gender: string; // GENDER_MASCULINE, GENDER_FEMININE
-    question: string; // HAS_QUESTION, NOT_QUESTION
+  export type PreOptions = {
+    politenessArray: string[]; // POLITENESS_CASUAL, POLITENESS_FORMAL
+    variationArray: string[]; // wa-sob,
+    polarityArray: string[]; // POLARITY_POSITIVE, POLARITY_NEGATIVE
+    genderArray: string[]; // GENDER_MASCULINE, GENDER_FEMININE
+    questionArray: string[]; // HAS_QUESTION, NOT_QUESTION
     // sentenceEnding: string;
-    themes: string[];
+    themesArray: string[];
+    __typename: string;
+  };
+
+  export type Options = {
+    selectedPoliteness: string; // POLITENESS_CASUAL, POLITENESS_FORMAL
+    selectedVariation: string; // wa-sob,
+    selectedPolarity: string; // POLARITY_POSITIVE, POLARITY_NEGATIVE
+    selectedGender: string; // GENDER_MASCULINE, GENDER_FEMININE
+    selectedQuestion: string; // HAS_QUESTION, NOT_QUESTION
+    // selectedSentenceEnding: string;
     selectedTheme?: string;
     __typename: string;
   };
+
 
   export type ControlPanelOptions = {
     controlPanelPoliteness?: string;
@@ -107,14 +116,24 @@ declare namespace Util {
     controlPanelSentenceEnding?: string;
   };
 
+  export type PreModifiers = {
+    __typename: string;
+    topicNoArray: string[];
+    subjectNoArray: string[];
+    topicAdjectiveArray: string[];
+    topicAdverbArray: string[];
+    subjectAdjectiveArray: string[];
+    subjectAdverbArray: string[];
+  };
+
   export type Modifiers = {
     __typename: string;
-    topicNo: string;
-    subjectNo: string;
-    topicAdjective: string;
-    topicAdverb: string;
-    subjectAdjective: string;
-    subjectAdverb: string;
+    selectedTopicNo: string;
+    selectedSubjectNo: string;
+    selectedTopicAdjective: string;
+    selectedTopicAdverb: string;
+    selectedSubjectAdjective: string;
+    selectedSubjectAdverb: string;
   };
 
   export type EnglishJapaneseSentence = {
@@ -181,19 +200,37 @@ declare namespace Util {
   };
 
   export type SentenceContext = {    
-    topicIntent: string,
+    selectedTopicIntent: string[],
 
-    topicProximity: string,
-    topicDestination: string,
-    eventDirection: string,
+    selectedTopicProximity: string[],
+    selectedTopicDestination: string[],
+    selectedEventDirection: string[],
 
-    eventOccurance: string,
-    eventDuration: string,
-    eventPOV: string,
+    selectedEventOccurance: string[],
+    selectedEventDuration: string[],
+    selectedEventPOV: string[],
 
-    subjectConnection: string,
-    subjectRole: string,
-    subjectQuantity: string,
+    selectedSubjectConnection: string[],
+    selectedSubjectRole: string[],
+    selectedSubjectQuantity: string[],
+    
+    __typename: string,
+  }
+
+  export type PreSentenceContext = {    
+    topicIntentArray: string,
+
+    topicProximityArray: string,
+    topicDestinationArray: string,
+    eventDirectionArray: string,
+
+    eventOccuranceArray: string,
+    eventDurationArray: string,
+    eventPOVArray: string,
+
+    subjectConnectionArray: string,
+    subjectRoleArray: string,
+    subjectQuantityArray: string,
     
     __typename: string,
   }

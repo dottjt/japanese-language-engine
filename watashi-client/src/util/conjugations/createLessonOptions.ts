@@ -6,55 +6,32 @@ import {
   __TYPENAME_OPTIONS,
 } from '../constants/typeNameConstants';
 
-import { 
-  politenessArray,
-  polarityArray,
-  tenseArray,
-  genderArray,
-  questionArray,
-  // sentenceEndingArray,
-  themesArray,
+import {
 
-  politenessArrayLength,
-  polarityArrayLength,
-  tenseArrayLength,
-  genderArrayLength,
-  questionArrayLength,
-  // sentenceEndingArrayLength,
-  themesArrayLength,
-
-  GENDER_RANDOM,
-  POLITENESS_RANDOM,
-  TENSE_RANDOM,
-  POLARITY_RANDOM,
-  RANDOM_QUESTION,
-  // SENTENCE_ENDING_RANDOM,
 } from '../constants/optionsConstants';
 
-const randomVariationValue = (variationArray: string[]): string => variationArray[randomArrayElement(variationArray.length)];
-const randomPolitenessValue = (): string => politenessArray[randomArrayElement(politenessArrayLength)];
-const randomPolarityValue = (): string =>  polarityArray[randomArrayElement(polarityArrayLength)];
-const randomTenseValue = (): string => tenseArray[randomArrayElement(tenseArrayLength)];
-const randomQuestionValue = (): string => questionArray[randomArrayElement(questionArrayLength)];
-const randomGenderValue = (): string => genderArray[randomArrayElement(genderArrayLength)];
-// const randomSentenceEndingValue = (): string => sentenceEndingArray[randomArrayElement(sentenceEndingArrayLength)];
-const randomThemesValue = (): string => themesArray[randomArrayElement(themesArrayLength)];
+const randomArrayValue = (array: string[]): string => array[randomArrayElement(array.length)];
 
-const createLessonOptions = (options: Util.Options): Util.Options => {
-  const { variation, politeness, polarity, tense, question, gender, /* sentenceEnding, */ themes } = options;
+const createLessonOptions = (options: Util.PreOptions): Util.Options => {
+  const { 
+    variationArray, 
+    politenessArray, 
+    polarityArray, 
+    questionArray, 
+    genderArray, 
+    /* sentenceEnding, */ 
+    themesArray } = options;
 
   return {
     __typename: __TYPENAME_OPTIONS,
-    variation,
-    selectedVariation: variation.length === 1 ? variation[0] : randomVariationValue(variation),
-    question: question === RANDOM_QUESTION ? randomQuestionValue() : question,
-    politeness: politeness === POLITENESS_RANDOM ? randomPolitenessValue() : politeness,
-    polarity: polarity === POLARITY_RANDOM ? randomPolarityValue() : polarity,
-    tense: tense === TENSE_RANDOM ? randomTenseValue() : tense,
-    gender: gender === GENDER_RANDOM ? randomGenderValue() : gender,  
+    // variation,
+    selectedVariation: variationArray.length === 1 ? variationArray[0] : randomArrayValue(variationArray),
+    selectedQuestion: questionArray.length === 1 ? questionArray[0] : randomArrayValue(questionArray),
+    selectedPoliteness: politenessArray.length === 1 ? politenessArray[0] : randomArrayValue(politenessArray),
+    selectedPolarity: polarityArray.length === 1 ? polarityArray[0] : randomArrayValue(polarityArray),
+    selectedGender: genderArray.length === 1 ? genderArray[0] : randomArrayValue(genderArray),  
     // sentenceEnding: sentenceEnding === SENTENCE_ENDING_RANDOM ? randomSentenceEndingValue() : sentenceEnding,
-    themes,
-    selectedTheme: themes.length === 1 ? themes[0] : randomThemesValue(),
+    selectedTheme: themesArray.length === 1 ? themesArray[0] : randomArrayValue(themesArray),
   }
 };
 

@@ -3,6 +3,7 @@ import {
 } from '../../functions';
 
 import {
+  determineJapaneseTense,
   returnSentenceParts,
   filtersentenceType,
   createWord,
@@ -12,6 +13,7 @@ import {
   nounParticlePermissions,
   nounConjugationPermissions,
 } from './nounPermissions';
+
 
 import {
   CATEGORY_HUMAN_NAME,
@@ -83,45 +85,44 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
 };
 
 
-
-// NOTE: Will need to update tense with sentenceContext, not the util.options.
-
-const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): { nounTense: Util.WordArrayElement[], nounPolarity: Util.WordArrayElement[] } => {
+const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): { japaneseNounTense: Util.WordArrayElement[], nounPolarity: Util.WordArrayElement[] } => {
   const { topic, subject, verb } = returnSentenceParts(words);
   const permissions = nounConjugationPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   const emptyWord = createWord([''], JAPANESE_CONJUGATION);
 
+  const japaneseNounTense = determineJapaneseTense(sentenceContext);
+
   if (permissions) {
-    switch(`${options.politeness}${options.polarity}${options.tense}`) {
+    switch(`${options.politeness}${options.polarity}${japaneseNounTense}`) {
 
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
-        return { nounTense: emptyWord, nounPolarity: emptyWord };
+        return { japaneseNounTense: emptyWord, nounPolarity: emptyWord };
         
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
-        return { nounTense: createWord(['だ','っ','た'], JAPANESE_TENSE), nounPolarity: emptyWord };
+        return { japaneseNounTense: createWord(['だ','っ','た'], JAPANESE_TENSE), nounPolarity: emptyWord };
 
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
-        return { nounTense: emptyWord, nounPolarity: createWord(['じ','ゃ','な','い'], JAPANESE_POLARITY) };
+        return { japaneseNounTense: emptyWord, nounPolarity: createWord(['じ','ゃ','な','い'], JAPANESE_POLARITY) };
 
       case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
-        return { nounTense: createWord(['か','っ','た'], JAPANESE_TENSE), nounPolarity: createWord(['じ','ゃ','な'], JAPANESE_POLARITY) };
+        return { japaneseNounTense: createWord(['か','っ','た'], JAPANESE_TENSE), nounPolarity: createWord(['じ','ゃ','な'], JAPANESE_POLARITY) };
 
       case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
-        return { nounTense: createWord(['で','す'], JAPANESE_TENSE), nounPolarity: emptyWord };
+        return { japaneseNounTense: createWord(['で','す'], JAPANESE_TENSE), nounPolarity: emptyWord };
 
       case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
-        return { nounTense: createWord(['で','し','た'], JAPANESE_TENSE), nounPolarity: emptyWord };
+        return { japaneseNounTense: createWord(['で','し','た'], JAPANESE_TENSE), nounPolarity: emptyWord };
 
       case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PRESENT}`:
-        return { nounTense: emptyWord, nounPolarity: createWord(['じ','ゃ', 'あ','り','ま','せ','ん'], JAPANESE_POLARITY) };
+        return { japaneseNounTense: emptyWord, nounPolarity: createWord(['じ','ゃ', 'あ','り','ま','せ','ん'], JAPANESE_POLARITY) };
 
       case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}${TENSE_PAST}`:
-        return { nounTense: createWord(['で','し','た'], JAPANESE_TENSE), nounPolarity: createWord(['じ','ゃ','あ','り','ま','せ','ん'], JAPANESE_POLARITY) };
+        return { japaneseNounTense: createWord(['で','し','た'], JAPANESE_TENSE), nounPolarity: createWord(['じ','ゃ','あ','り','ま','せ','ん'], JAPANESE_POLARITY) };
     }
-    throw new Error(createError('conjugations/noun', 'determineNounConjugationJapanese', `${options.politeness}${options.polarity}${options.tense} unknown`));
+    throw new Error(createError('conjugations/noun', 'determineNounConjugationJapanese', `${options.politeness}${options.polarity}${japaneseNounTense} unknown`));
   }
-  return { nounTense: emptyWord, nounPolarity: emptyWord };
+  return { japaneseNounTense: emptyWord, nounPolarity: emptyWord };
 };
 
 const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
@@ -130,11 +131,11 @@ const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.Sent
   // const type = CONJUGATION_TYPE_NOUN_JAPANESE;
 
   const nounDeclension = createWord([noun.nounJapanese.kanji], JAPANESE_NOUN_DECLENSION);
-  const { nounTense, nounPolarity } = determineNounConjugationJapanese(words, options, sentenceType);
+  const { japaneseNounTense, nounPolarity } = determineNounConjugationJapanese(words, options, sentenceContext, sentenceType);
   const nounCategoryEnding = determinecategoryEnding(noun as Util.Noun);
   const nounTopicParticle = determineTopicParticleJapanese(words, options, sentenceType);
 
-  return nounDeclension.concat(nounCategoryEnding).concat(nounPolarity).concat(nounTense).concat(nounTopicParticle);
+  return nounDeclension.concat(nounCategoryEnding).concat(nounPolarity).concat(japaneseNounTense).concat(nounTopicParticle);
 };
 
 export default nounConjugationJapanese;
