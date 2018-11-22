@@ -4,17 +4,17 @@ import {
 
 import {
   filtersentenceType,
-  returnSentenceParts,
+  // returnSentenceParts,
   createWord,
 } from '../utilConjugation';
 
-import {
-  POLARITY_POSITIVE,
-  POLARITY_NEGATIVE,
-} from '../../constants/optionsConstants';
+// import {
+//   POLARITY_POSITIVE,
+//   POLARITY_NEGATIVE,
+// } from '../../constants/optionsConstants';
 
 import {
-  ENGLISH_POLARITY,
+  // ENGLISH_POLARITY,
 
   TENSE_SIMPLE_PRESENT,
   TENSE_PRESENT_CONTINUOUS,
@@ -33,6 +33,10 @@ import {
 } from '../../constants/wordConstants';
 
 import {
+  CONTEXT_INTENT_EXISTENCE,
+  CONTEXT_INTENT_POSSESSION,
+  CONTEXT_INTENT_ACTION,
+
   CONTEXT_EVENT_OCCURANCE_BEFORE_PAST,
   CONTEXT_EVENT_OCCURANCE_PAST,
   CONTEXT_EVENT_OCCURANCE_PAST_NOW,
@@ -57,12 +61,11 @@ import {
   __TYPENAME_CONJUGATED_ENGLISH_VERB,
 } from '../../constants/typeNameConstants';
 
-import {
-  verbConjugationPermissionsEnglish,
-} from './verbPermissions';
 
 const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext): Util.WordArrayElement[] => {
   // Note: This needs to be scoped out for to be and other things. 
+
+  const topicIntent = context.selectedTopicIntent;
 
   const eventOccurance = context.selectedEventOccurance;
   const eventDuration = context.selectedEventDuration;
@@ -72,6 +75,76 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
   const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
   const pastParticiple = verb.verbEnglish.pastParticiple; //"hacked";
   const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
+
+
+  // const infinitive = // "to hack";
+  // const presentParticiple = // "hacking";
+  // const pastParticiple = //"hacked";
+  // const simplePresentContinuousHeSheIt = // "hacks";
+
+
+  // simple present and simple past are the only difference between the common helping verbs
+  if (topicIntent === CONTEXT_INTENT_EXISTENCE) {
+    switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
+      // Simple Past - Event that describes an event or action that happened in the past.     
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      
+      // Simple Present - "Happening all the time, or exist now"
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ presentParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ presentParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ simplePresentContinuousHeSheIt ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ presentParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ presentParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ presentParticiple ], TENSE_SIMPLE_PRESENT);
+    }
+  }
+
+  if (topicIntent === CONTEXT_INTENT_POSSESSION) {
+    switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
+      // Simple Past - Event that describes an event or action that happened in the past.     
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+      
+      // Simple Present - "Happening all the time, or exist now"
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ pastParticiple ], TENSE_SIMPLE_PRESENT);
+    }
+  }
+
+  if (topicIntent === CONTEXT_INTENT_ACTION) {
+    switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
+      // Simple Past - Event that describes an event or action that happened in the past.
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PAST);
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PAST);
+      
+      // Simple Present - Happening all the time, or exist now
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    }
+  }
+
+
 
   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
     // Past Perfect - The tense that is used to make it clear that one event happened before another in the past
@@ -98,14 +171,14 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
     case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
       return createWord([ presentParticiple ], TENSE_PAST_CONTINUOUS);
 
-    // Simple Past - Event that describes an event or action that happened in the past.     
-    case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
-    case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
-    case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
-    case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
-    case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
-    case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
-      return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
+    // // Simple Past - Event that describes an event or action that happened in the past.     
+    // case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`:
+    // case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    // case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    // case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    // case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    // case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    //   return createWord([ pastParticiple ], TENSE_SIMPLE_PAST);
 
     // Present Perfect Continuous - "Started in the past and continuing to present time".    
     case `${CONTEXT_EVENT_OCCURANCE_PAST_NOW}${CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`:
@@ -148,13 +221,13 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
     case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_THEYTHOSE_PLURAL}`: 
       return createWord([ presentParticiple ], TENSE_PRESENT_CONTINUOUS);
 
-    // Simple Present - "Happening all the time, or exist now"
-    case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ simplePresentContinuousHeSheIt ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
-    case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    // // Simple Present - "Happening all the time, or exist now"
+    // case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    // case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    // case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`: return createWord([ simplePresentContinuousHeSheIt ], TENSE_SIMPLE_PRESENT);
+    // case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    // case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
+    // case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`: return createWord([ infinitive ], TENSE_SIMPLE_PRESENT);
     
     // Future Continuous - The tense that is used for an unfinished action or event that will occur in future and continue for an expected length of time
     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS}${CONTEXT_POV_SELF_SINGULAR}`: return createWord([ presentParticiple ], TENSE_FUTURE_CONTINUOUS);
@@ -195,27 +268,12 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
   throw new Error(createError('verbConjugationEnglish', 'determineVerbConjugationEnglish', `${eventOccurance}${eventDuration}${eventPOV} unknown`));  
 }
 
-const determineVerbPolarityEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceType: string): Util.WordArrayElement[] => {
-  const { topic, subject, verb } = returnSentenceParts(words);
-  const permissions = verbConjugationPermissionsEnglish(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
-
-  if (permissions) {
-    switch(`${options.selectedPolarity}`) {
-      case `${POLARITY_POSITIVE}`: return createWord([''], ENGLISH_POLARITY);
-      case `${POLARITY_NEGATIVE}`: return createWord(['do', 'not'], ENGLISH_POLARITY);
-    }
-    throw new Error(createError('verbConjugationEnglish', 'determineVerbPolarityEnglish', `${options.selectedPolarity} unknown`));  
-  }
-  return createWord([''], ENGLISH_POLARITY);
-}; 
 
 const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
-
   const verbConjugation = determineVerbConjugationEnglish(verb, sentenceContext);
-  const verbPolarity = determineVerbPolarityEnglish(words, options, sentenceType);
 
-  return verbPolarity.concat(verbConjugation);
+  return verbConjugation;
 };
 
 export default verbConjugationEnglish;

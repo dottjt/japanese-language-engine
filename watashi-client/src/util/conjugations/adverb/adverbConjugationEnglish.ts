@@ -20,6 +20,7 @@ import {
 
 import {
   T,
+  V,
   WA_TS,
   MO_TS,
   GA_TS,
@@ -50,6 +51,8 @@ const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: U
     switch(`${japaneseTense}${options.selectedVariation}`) {
       case `${TENSE_PRESENT}${T}`:
       case `${TENSE_PAST}${T}`:
+      case `${TENSE_PRESENT}${V}`:
+      case `${TENSE_PAST}${V}`:
       case `${TENSE_PRESENT}${WA_TS}`:
       case `${TENSE_PAST}${WA_TS}`:
         return createEmptyWord(ENGLISH_ADVERB);
@@ -72,7 +75,7 @@ const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: U
       case `${TENSE_PRESENT}${DE_SV}`:
         return createEmptyWord(ENGLISH_ADVERB);
     }
-    throw new Error(createError('adverbConjugationEnglish.ts', 'determineAdverbConjugationEnglish - WA_TS', `${japaneseTense}${options.selectedPolarity} unknown`));
+    throw new Error(createError('adverbConjugationEnglish.ts', 'determineAdverbConjugationEnglish', `${japaneseTense}${options.selectedVariation} unknown`));
   }
   return createEmptyWord(ENGLISH_ADVERB);
 };

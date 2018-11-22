@@ -51,7 +51,7 @@ const uVerbEndingToI = (verbEnding: string): string[] => {
     case uVerbEndingU.HIRAGANA_RU: return [ uVerbEndingI.HIRAGANA_RI ]; 
     case uVerbEndingU.HIRAGANA_NU: return [ uVerbEndingI.HIRAGANA_NI ]; 
   }
-  throw new Error(createError('conjugations/verb', 'uVerbEndingToI', `${verbEnding} does not exist.`));
+  throw new Error(createError('verbConjugationJapanese', 'uVerbEndingToI', `${verbEnding} does not exist.`));
 };
 
 // Negative U Verbs
@@ -67,8 +67,10 @@ const uVerbEndingToA = (verbEnding: string): string[] => {
     case uVerbEndingU.HIRAGANA_RU: return [ uVerbEndingA.HIRAGANA_RA ]; 
     case uVerbEndingU.HIRAGANA_NU: return [ uVerbEndingA.HIRAGANA_NA ]; 
   }
-  throw new Error(createError('conjugations/verb', 'uVerbEndingToA', `${verbEnding} does not exist.`));
+  throw new Error(createError('verbConjugationJapanese', 'uVerbEndingToA', `${verbEnding} does not exist.`));
 };
+
+// NOTE: Don't I need to factor in tense as well? 
 
 const getVerbStem = (verb: Util.Verb, options: Util.Options): string[] => {
   const initialStemArray = getInitialVerbStem(verb.verbJapanese.kanji);
@@ -87,7 +89,7 @@ const getVerbStem = (verb: Util.Verb, options: Util.Options): string[] => {
     // NOTE: This is blatantly incorrect, will need to place correct logic at some point. 
     case SENTENCE_TYPE_VERB_TYPE_IRREGULAR:
       switch(verb.verbJapanese.kanji) {
-        case '行く': 
+        case '行く':
           switch(`${options.selectedPoliteness}${options.selectedPolarity}`) {
             case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
             case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
@@ -97,33 +99,38 @@ const getVerbStem = (verb: Util.Verb, options: Util.Options): string[] => {
         case 'する':
           switch(`${options.selectedPoliteness}${options.selectedPolarity}`) {
             case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
-            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
-            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
-            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return [ 'し' ]
+            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return [ 'し' ]
+            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return [ 'し' ]
           }
         case '来る':
           switch(`${options.selectedPoliteness}${options.selectedPolarity}`) {
             case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
-            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToA(verbLastLetter));
-            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
-            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return initialStemArray.concat(uVerbEndingToI(verbLastLetter));
+            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return [ 'こ' ];
+            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return [ 'き' ];
+            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return [ 'き' ];
           }
+        case 'ある':
+          switch(`${options.selectedPoliteness}${options.selectedPolarity}`) {
+            case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return verb.verbJapanese.kanji.split('');
+            case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return [ '' ]
+            case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return [ 'あり' ]
+            case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return [ 'あり' ]
+          }          
       }
   }
-
-
-  throw new Error(createError('conjugations/verb', 'getVerbStem', `Verb meta.verbType does not exist.`));
+  throw new Error(createError('verbConjugationJapanese.ts', 'getVerbStem', `${verb.verbJapanese.kanji} - ${verb.verbJapaneseType} - ${options.selectedPoliteness}${options.selectedPolarity} does not exist.`));
 };
 
 const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options): { verbStem: Util.WordArrayElement[], verbPolarity: Util.WordArrayElement[] } => {
   const verbStem = getVerbStem(verb, options);
   switch(`${options.selectedPoliteness}${options.selectedPolarity}`) {
-    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verb.verbJapanese.kanji.split(''), JAPANESE_VERB_STEM), verbPolarity: createWord([''], JAPANESE_POLARITY)  };
+    case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), verbPolarity: createWord([''], JAPANESE_POLARITY)  };
     case `${POLITENESS_CASUAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), verbPolarity: createWord(['な','い'], JAPANESE_POLARITY)  };
     case `${POLITENESS_FORMAL}${POLARITY_POSITIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), verbPolarity: createWord(['ま','す'], JAPANESE_POLARITY)  };
     case `${POLITENESS_FORMAL}${POLARITY_NEGATIVE}`: return { verbStem: createWord(verbStem, JAPANESE_VERB_STEM), verbPolarity: createWord(['ま','せ','ん'], JAPANESE_POLARITY)  };
   }
-  throw new Error(createError('conjugations/verb', 'determineVerbConjugationJapanese', `${options.selectedPoliteness}${options.selectedPolarity} unknown`));
+  throw new Error(createError('verbConjugationJapanese', 'determineVerbConjugationJapanese', `${options.selectedPoliteness}${options.selectedPolarity} unknown`));
 };
 
 const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {

@@ -54,74 +54,74 @@ const wordHave = createVerbWord({
 
 // purely helping verbs. 
 
-const wordCan = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
-  verbCategory: [],
-  verbType: 'NA',
-  kanji: '出来る',
-  infinitive: 'can',
-  presentParticiple: 'NA',
-  pastParticiple: 'could',
-  simplePresentContinuousHeSheIt: 'NA', 
-});
+// const wordCan = createVerbWord({
+//   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
+//   verbCategory: [],
+//   verbType: 'NA',
+//   kanji: '出来る',
+//   infinitive: 'can',
+//   presentParticiple: 'NA',
+//   pastParticiple: 'could',
+//   simplePresentContinuousHeSheIt: 'NA', 
+// });
 
 
 
-// auxilary verb
+// // auxilary verb
 
-const wordMay = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
-  verbCategory: [],
-  verbType: 'NA',
-  kanji: '出来る',
-  infinitive: 'may',
-  presentParticiple: 'NA',
-  pastParticiple: 'might',
-  simplePresentContinuousHeSheIt: 'NA', 
-});
+// const wordMay = createVerbWord({
+//   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
+//   verbCategory: [],
+//   verbType: 'NA',
+//   kanji: '出来る',
+//   infinitive: 'may',
+//   presentParticiple: 'NA',
+//   pastParticiple: 'might',
+//   simplePresentContinuousHeSheIt: 'NA', 
+// });
 
-const wordMust = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
-  verbCategory: [],
-  verbType: 'NA',
-  kanji: 'ければ',
-  infinitive: 'must',
-  presentParticiple: 'NA',
-  pastParticiple: 'ought to',
-  simplePresentContinuousHeSheIt: 'NA', 
-});
+// const wordMust = createVerbWord({
+//   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
+//   verbCategory: [],
+//   verbType: 'NA',
+//   kanji: 'ければ',
+//   infinitive: 'must',
+//   presentParticiple: 'NA',
+//   pastParticiple: 'ought to',
+//   simplePresentContinuousHeSheIt: 'NA', 
+// });
 
-const wordShall = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
-  verbCategory: [],
-  verbType: 'NA',
-  kanji: 'TODO',
-  infinitive: 'shall',
-  presentParticiple: 'NA',
-  pastParticiple: 'should',
-  simplePresentContinuousHeSheIt: 'NA', 
-});
+// const wordShall = createVerbWord({
+//   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
+//   verbCategory: [],
+//   verbType: 'NA',
+//   kanji: 'TODO',
+//   infinitive: 'shall',
+//   presentParticiple: 'NA',
+//   pastParticiple: 'should',
+//   simplePresentContinuousHeSheIt: 'NA', 
+// });
 
-const wordWill = createVerbWord({
-  verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
-  verbCategory: [],
-  verbType: 'NA',
-  kanji: 'TODO',
-  infinitive: 'will',
-  presentParticiple: 'NA',
-  pastParticiple: 'would',
-  simplePresentContinuousHeSheIt: 'NA', 
-});
+// const wordWill = createVerbWord({
+//   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_IRREGULAR, 
+//   verbCategory: [],
+//   verbType: 'NA',
+//   kanji: 'TODO',
+//   infinitive: 'will',
+//   presentParticiple: 'NA',
+//   pastParticiple: 'would',
+//   simplePresentContinuousHeSheIt: 'NA', 
+// });
 
 const verbArray = [
   wordBe,
   wordDo,
   wordHave,
-  wordCan,
-  wordMay,
-  wordMust,
-  wordShall,
-  wordWill,
+  // wordCan,
+  // wordMay,
+  // wordMust,
+  // wordShall,
+  // wordWill,
 ]
 
 export default verbArray;

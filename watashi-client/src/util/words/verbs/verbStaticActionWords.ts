@@ -63,8 +63,8 @@ const wordSee = createVerbWord({
   kanji: '見る',
   infinitive: 'see',
   presentParticiple: 'seeing',
-  pastParticiple: 'saw',
-  simplePresentContinuousHeSheIt: 'sees', 
+  pastParticiple: 'seen',
+  simplePresentContinuousHeSheIt: 'saw', 
 });
 
 const verbArray = [
