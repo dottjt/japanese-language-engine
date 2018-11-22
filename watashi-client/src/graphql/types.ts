@@ -7,6 +7,7 @@ export const sentenceTypes = `
   type EnglishVerb {
     infinitive: String
     presentParticiple: String
+    preterite: String
     pastParticiple: String
     simplePresentContinuousHeSheIt: String
   }

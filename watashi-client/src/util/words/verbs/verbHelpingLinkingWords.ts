@@ -23,6 +23,7 @@ const wordBe = createVerbWord({
   infinitive: 'be',
   presentParticiple: 'being',
   pastParticiple: 'been',
+  preterite: 'was',
   simplePresentContinuousHeSheIt: 'is', 
 });
 
@@ -35,6 +36,7 @@ const wordDo = createVerbWord({
   infinitive: 'did',
   presentParticiple: 'do',
   pastParticiple: 'done',
+  preterite: 'did',
   simplePresentContinuousHeSheIt: 'does', 
 });
 
@@ -47,6 +49,7 @@ const wordHave = createVerbWord({
   infinitive: 'have',
   presentParticiple: 'having',
   pastParticiple: 'had',
+  preterite: 'had',
   simplePresentContinuousHeSheIt: 'has', 
 });
 

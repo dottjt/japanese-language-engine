@@ -31,7 +31,8 @@ const wordEat = createVerbWord({
   kanji: '食べる',
   infinitive: 'eat',
   presentParticiple: 'eating',
-  pastParticiple: 'ate',
+  pastParticiple: 'eaten',
+  preterite: 'ate',
   simplePresentContinuousHeSheIt: 'eats', 
 });
 
@@ -43,6 +44,7 @@ const wordSleep = createVerbWord({
   infinitive: 'sleep',
   presentParticiple: 'sleeping',
   pastParticiple: 'slept',
+  preterite: 'slept',
   simplePresentContinuousHeSheIt: 'sleeps', 
 });
 
@@ -53,7 +55,8 @@ const wordDrink = createVerbWord({
   kanji: '飲む',
   infinitive: 'drink',
   presentParticiple: 'drinking',
-  pastParticiple: 'drank',
+  pastParticiple: 'drunk',
+  preterite: 'drank',
   simplePresentContinuousHeSheIt: 'drinks', 
 });
 
@@ -65,6 +68,7 @@ const wordSee = createVerbWord({
   infinitive: 'see',
   presentParticiple: 'seeing',
   pastParticiple: 'seen',
+  preterite: 'saw',
   simplePresentContinuousHeSheIt: 'saw', 
 });
 

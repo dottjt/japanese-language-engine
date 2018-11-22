@@ -13,6 +13,7 @@
 - Properly figure out nouns and how to do them nicely. 
 - Just put the plural in the actual word. It will make everything so much easier than trying to handle exceptions. Then if you want, build a plural machine. 
 - So it seems that a eventPOV cannot be set, it needs to be implied. from the topic. topicPOV can change depending on the topic. 
+- Incorporate 'preterite'
 
 # TODO NICE HAVES 
 - Find open contributors. 

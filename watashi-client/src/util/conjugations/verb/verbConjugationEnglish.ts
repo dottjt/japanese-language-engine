@@ -73,6 +73,7 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
 
   const infinitive = verb.verbEnglish.infinitive; // "to hack";
   const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
+  // const preterite = verb.verbEnglish.preterite; // "hacked";
   const pastParticiple = verb.verbEnglish.pastParticiple; //"hacked";
   const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
 

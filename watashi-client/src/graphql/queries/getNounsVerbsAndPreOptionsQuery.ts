@@ -20,6 +20,7 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
     verbEnglish @client {
       infinitive
       presentParticiple
+      preterite
       pastParticiple
       simplePresentContinuousHeSheIt
     }

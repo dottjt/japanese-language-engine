@@ -27,6 +27,7 @@ const wordGo = createVerbWord({
   infinitive: 'go',
   presentParticiple: 'going',
   pastParticiple: 'gone',
+  preterite: 'went',
   simplePresentContinuousHeSheIt: 'goes', 
 });
 
@@ -37,7 +38,8 @@ const wordCome = createVerbWord({
   kanji: '来る',
   infinitive: 'come',
   presentParticiple: 'coming',
-  pastParticiple: 'came',
+  pastParticiple: 'come',
+  preterite: 'came',
   simplePresentContinuousHeSheIt: 'comes', 
 });
 

@@ -47,6 +47,7 @@ declare namespace Util {
     infinitive: string;
     presentParticiple: string;
     pastParticiple: string;
+    preterite: string;
     simplePresentContinuousHeSheIt: string;
     __typename: string;
   }

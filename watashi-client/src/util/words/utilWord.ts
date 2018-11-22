@@ -22,7 +22,7 @@ export const createNounWord = ({ nounWordType, nounPluralType, nounCategory, kan
   __typename: __TYPENAME_NOUN,
 });
 
-export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, infinitive, presentParticiple, simplePresentContinuousHeSheIt, pastParticiple }: any): Util.Verb => ({
+export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, infinitive, presentParticiple, preterite, simplePresentContinuousHeSheIt, pastParticiple }: any): Util.Verb => ({
   verbJapanese: {
     kanji,
     __typename: __TYPENAME_JAPANESE_VERB,
@@ -32,6 +32,7 @@ export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, infiniti
     presentParticiple,
     pastParticiple,
     simplePresentContinuousHeSheIt,
+    preterite,
     __typename: __TYPENAME_ENGLISH_VERB,
   },
   verbCategory,
