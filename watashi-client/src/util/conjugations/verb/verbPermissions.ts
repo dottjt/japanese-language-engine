@@ -34,7 +34,7 @@ export const verbConjugationPermissionsEnglish = (topic: Util.Noun, subject: Uti
 export const verbConjugationHelpingPermissionsEnglish = (options: Util.Options): boolean => {
 
   switch(options.selectedVariation) {
-    case T: return false; 
+    case T: return true; 
     case WA_TS: return true;
     case MO_TS: return true;
     case GA_TS: return true;
