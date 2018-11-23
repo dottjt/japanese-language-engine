@@ -20,6 +20,10 @@ import {
 } from '../constants/wordConstants';
 
 import {
+  HAS_QUESTION,
+} from '../constants/optionsConstants';
+
+import {
   __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
   __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,
 } from '../constants/typeNameConstants';
@@ -33,7 +37,7 @@ import prepositionConjugationEnglish from './preposition/prepositionConjugationE
 import verbConjugationEnglish from './verb/verbConjugationEnglish';
 import verbConjugationHelpingEnglish from './verb/verbConjugationHelpingEnglish';
 import adverbConjugationEnglish from './adverb/adverbConjugationEnglish';
-import adjectiveConjugationIndefiniteArticleEnglish from './adjective/adjectiveConjugationIndefiniteArticleEnglish';
+import { adjectiveConjugationIndefiniteArticleEnglish } from './adjective/adjectiveConjugationEnglish';
 
 import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
@@ -66,9 +70,11 @@ const generateJapaneseWord = (sentenceWords: Util.SentenceWords, modifiers: Util
 const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, sentenceContext: Util.SentenceContext, options: Util.Options): Util.EnglishJapaneseSentence => {
   const { topic, subject, verb } = returnSentenceParts(sentenceWords);
   const { onlyTopic, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
-  
-  if (onlyTopic) {
+  const isQuestion = options.selectedQuestion === HAS_QUESTION;
 
+  if (onlyTopic) {
+    // NOTE: May need different types of sentences, depending if it's a question or not. :)
+    // NOTE: May need sentenceContext for who is being talked to. // you, yourself. this is different to eventPOV. 
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
     
     const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
@@ -76,25 +82,35 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE);    
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
 
-    return {
-      japaneseSentence: topicJapanese,
-      englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };
+    if (!isQuestion) {
+      return {
+        japaneseSentence: topicJapanese, 
+        englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };
+    } else {
+      return {
+        japaneseSentence: topicJapanese,
+        englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };
+    }
   };
   if (onlyVerb) {
-
     const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
 
     const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
     const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
     const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
     
-    return  {
-      japaneseSentence: verbJapanese,
-      englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(verbEnglish),
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };
+    if (!isQuestion) {
+      return  {
+        japaneseSentence: verbJapanese,
+        englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(verbEnglish),
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };
+    }
+    throw new Error(`Question sentence for onlyVerb not created yet.`) 
   };
 
   if (onlyTopicAndSubject) {
@@ -107,26 +123,32 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE);    
     const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
 
-    return  {
-      japaneseSentence: topicJapanese.concat(subjectJapanese),
-      englishSentence: topicEnglish.concat(helpingVerbEnglish).concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(subjectEnglish),
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-    };  
+    if (!isQuestion) {
+      return  {
+        japaneseSentence: topicJapanese.concat(subjectJapanese),
+        englishSentence: topicEnglish.concat(helpingVerbEnglish).concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(subjectEnglish),
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };  
+    }
+    throw new Error(`Question sentence for onlyTopicAndSubject not created yet.`);
   };
   if (onlySubjectAndVerb) {
-
     const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
     const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
 
     const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
-    // const prepositionBeforeSubjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_PREPOSITION);
+
     const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
     
-    return {
-      japaneseSentence: subjectJapanese.concat(verbJapanese),
-      englishSentence: verbEnglish/*.concat(prepositionBeforeSubjectEnglish)*/.concat(subjectEnglish),
-      __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+    if (!isQuestion) {
+      return {
+        japaneseSentence: subjectJapanese.concat(verbJapanese),
+        englishSentence: verbEnglish.concat(subjectEnglish),
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };
     };
+    throw new Error(`Question sentence for onlySubjectAndVerb not created yet.`);
+
   };
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateSentences', 'sentenceType does not exist'));
 };

@@ -1,12 +1,11 @@
 import {
-  randomArrayElement,
+  // randomArrayElement,
+  randomArrayValue,
 } from '../functions';
 
 import {
   __TYPENAME_SENTENCE_CONTEXT,
 } from '../constants/typeNameConstants';
-
-const randomArrayValue = (array: string[]): string => array[randomArrayElement(array.length)];
 
 const createSentenceContext = (sentenceContext: Util.PreSentenceContext): Util.SentenceContext => {
   const { 

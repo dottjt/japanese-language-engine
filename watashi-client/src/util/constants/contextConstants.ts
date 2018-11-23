@@ -17,7 +17,6 @@ export const CONTEXT_TYPE_SUBJECT_ROLE = "CONTEXT_TYPE_SUBJECT_ROLE";
 
 /* Context Intent */
 
-export const CONTEXT_INTENT_RANDOM = "CONTEXT_INTENT_RANDOM";
 
 export const CONTEXT_INTENT_EXISTENCE = "CONTEXT_INTENT_EXISTENCE";
 export const CONTEXT_INTENT_POSSESSION = "CONTEXT_INTENT_POSSESSION";
@@ -34,7 +33,6 @@ export const contextIntentArrayLength = contextIntentArray.length
 
 /* Context Location - Topic Position (how far) */
 
-export const CONTEXT_PROXIMITY_RANDOM = "CONTEXT_PROXIMITY_RANDOM";
 export const CONTEXT_PROXIMITY_ALONE = "CONTEXT_PROXIMITY_ALONE";
 export const CONTEXT_PROXIMITY_NEAR = "CONTEXT_PROXIMITY_NEAR";
 export const CONTEXT_PROXIMITY_FAR = "CONTEXT_PROXIMITY_FAR";
@@ -49,7 +47,6 @@ export const contextProximityArrayLength = contextProximityArray.length
 
 /* Context Location - Destination (where to) */
 
-export const CONTEXT_TOPIC_DESTINATION_RANDOM = "CONTEXT_TOPIC_DESTINATION_RANDOM";
 
 // NOTE: If destination is none, then direction MUST be none.
 export const CONTEXT_TOPIC_DESTINATION_NONE = "CONTEXT_TOPIC_DESTINATION_NONE";
@@ -89,7 +86,6 @@ export const contextTopicDestinationArrayLength = contextTopicDestinationArray.l
 
 /* Context Location - Direction (how to) */
 
-export const CONTEXT_DIRECTION_RANDOM = "CONTEXT_DIRECTION_RANDOM";
 export const CONTEXT_DIRECTION_NONE = "CONTEXT_DIRECTION_NONE";
 
 export const CONTEXT_DIRECTION_TOWARD = "CONTEXT_DIRECTION_TOWARD";
@@ -107,7 +103,6 @@ export const contextDirectionArrayLength = contextDirectionArray.length
 
 /* Context Time - when */
 
-export const CONTEXT_EVENT_OCCURANCE_RANDOM = "CONTEXT_EVENT_OCCURANCE_RANDOM";
 export const CONTEXT_EVENT_OCCURANCE_BEFORE_PAST = "CONTEXT_EVENT_OCCURANCE_PAST";
 export const CONTEXT_EVENT_OCCURANCE_PAST = "CONTEXT_EVENT_OCCURANCE_PAST";
 export const CONTEXT_EVENT_OCCURANCE_PAST_NOW = "CONTEXT_EVENT_OCCURANCE_PAST_NOW";
@@ -152,7 +147,6 @@ export const contextEventOccuranceArrayLength = contextEventOccuranceArray.lengt
 
 /* Context Time - Duration (how long) */
 
-export const CONTEXT_EVENT_DURATION_RANDOM = "CONTEXT_EVENT_DURATION_RANDOM";
 export const CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS = "CONTEXT_EVENT_DURATION_PARTIAL_CONTINUOUS";
 export const CONTEXT_EVENT_DURATION_COMPLETE = "CONTEXT_EVENT_DURATION_COMPLETE";
 // export const CONTEXT_EVENT_DURATION_UNKNOWN = "CONTEXT_EVENT_DURATION_UNKNOWN";
@@ -165,7 +159,6 @@ export const contextDurationArray = [
 
 /* Point of View */
 
-export const CONTEXT_POV_RANDOM = "CONTEXT_POV_RANDOM";
 export const CONTEXT_POV_SELF_SINGULAR = "CONTEXT_POV_SELF_SINGULAR";
 export const CONTEXT_POV_YOU_SINGULAR = "CONTEXT_POV_YOU_SINGULAR";
 export const CONTEXT_POV_HESHEIT_SINGULAR = "CONTEXT_POV_HESHEIT_SINGULAR";
@@ -196,7 +189,6 @@ export const contextDurationArrayLength = contextDurationArray.length
 
 /* Context Subject Connection */
 
-export const CONTEXT_SUBJECT_CONNECTION_RANDOM = "CONTEXT_SUBJECT_CONNECTION_RANDOM";
 export const CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION = "CONTEXT_SUBJECT_CONNECTION_IN_CONJUNCTION";
 export const CONTEXT_SUBJECT_CONNECTION_INDEPENDENT = "CONTEXT_SUBJECT_CONNECTION_INDEPENDENT";
 
@@ -209,7 +201,6 @@ export const contextSubjectConnectionArrayLength = contextSubjectConnectionArray
 
 /* Context Subject Role */
 
-export const CONTEXT_SUBJECT_ROLE_RANDOM = "CONTEXT_SUBJECT_ROLE_RANDOM";
 export const CONTEXT_SUBJECT_ROLE_DIRECT = "CONTEXT_SUBJECT_ROLE_DIRECT";
 export const CONTEXT_SUBJECT_ROLE_SECOND_HAND = "CONTEXT_SUBJECT_ROLE_SECOND_HAND";
 export const CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF = "CONTEXT_SUBJECT_ROLE_ON_BEHALF_OF";
@@ -228,7 +219,6 @@ export const contextSubjectRoleArrayLength = contextSubjectRoleArray.length
 
 /* Context Subject Role */
 
-export const CONTEXT_SUBJECT_QUANTITY_RANDOM = "CONTEXT_SUBJECT_QUANTITY_RANDOM";
 export const CONTEXT_SUBJECT_QUANTITY_SINGLE = "CONTEXT_SUBJECT_QUANTITY_SINGLE";
 export const CONTEXT_SUBJECT_QUANTITY_MULTIPLE = "CONTEXT_SUBJECT_QUANTITY_MULTIPLE";
 

@@ -1,5 +1,5 @@
 import {
-  randomArrayElement,
+  randomArrayValue,
 } from '../functions';
 
 import {
@@ -9,8 +9,6 @@ import {
 import {
 
 } from '../constants/optionsConstants';
-
-const randomArrayValue = (array: string[]): string => array[randomArrayElement(array.length)];
 
 const createLessonOptions = (options: Util.PreOptions): Util.Options => {
   const { 

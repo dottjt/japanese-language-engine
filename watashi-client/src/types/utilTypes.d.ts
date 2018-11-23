@@ -43,6 +43,13 @@ declare namespace Util {
     __typename: string;
   };
 
+  export type EnglishAdjective = {
+    positive: string;
+    comparative: string;
+    superlative: string;
+    __typename: string;
+  }
+
   export type EnglishVerb = {
     infinitive: string;
     presentParticiple: string;
@@ -57,12 +64,17 @@ declare namespace Util {
     __typename: string;
   }
 
-  export type JapaneseNoun = {
+  export type JapaneseAdjective = {
     kanji: string;
     __typename: string;
   }
 
   export type JapaneseVerb = {
+    kanji: string;
+    __typename: string;
+  }
+  
+  export type JapaneseNoun = {
     kanji: string;
     __typename: string;
   }
@@ -83,6 +95,15 @@ declare namespace Util {
     verbCategory: string[];
     __typename: string;
   };
+
+  export type Adjective = {
+    adjectiveJapanese: JapaneseAdjective;
+    adjectiveEnglish: EnglishAdjective;
+    adjectiveCategory: string[];
+    adjectiveType: string;
+    __typename: string;
+  };
+
 
   export type PreOptions = {
     politenessArray: string[]; // POLITENESS_CASUAL, POLITENESS_FORMAL

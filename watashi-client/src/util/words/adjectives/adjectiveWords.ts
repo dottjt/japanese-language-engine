@@ -31,29 +31,6 @@
 //   __typename: __TYPENAME_WORD,
 // };
 
-// export const wordLike = {
-//   japanese: { 
-//     kanji: '好き',
-//     // hiragana: 'すき',
-//     // furigana: 'suki',
-//     __typename: __TYPENAME_JAPANESE,
-//   },
-//   english: {
-//     presentTense: 'like',
-//     presentParticiple: 'NA',
-//     simplePast: 'NA',
-//     pastParticiple: 'NA',
-//     __typename: __TYPENAME_ENGLISH,
-//   },
-//   primaryType: PRIMARY_TYPE_ADJECTIVE,
-//   category: [ CATEGORY_FOOD ],
-//   meta: {
-//     verbType: 'NA',
-//     __typename: __TYPENAME_META,
-//   },
-//   __typename: __TYPENAME_WORD,
-// };
-
 const adjectiveArray = [
   // wordDelicious,
   // wordLike,

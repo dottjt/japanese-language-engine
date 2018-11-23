@@ -1,12 +1,11 @@
 import {
-  randomArrayElement,
+  // randomArrayElement,
+  randomArrayValue,
 } from '../functions';
 
 import {
   __TYPENAME_MODIFIERS,
 } from '../constants/typeNameConstants';
-
-const randomArrayValue = (array: string[]): string => array[randomArrayElement(array.length)];
 
 const createLessonModifiers = (modifiers: Util.PreModifiers): Util.Modifiers => {
   const { 
