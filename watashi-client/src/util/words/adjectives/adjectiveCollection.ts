@@ -1,5 +1,7 @@
-import adjectiveWords from './adjectiveWords';
+import iAdjectiveWords from './iAdjectiveWords';
+import naAdjectiveWords from './naAdjectiveWords';
 
 export default [
-  ...adjectiveWords,
+  ...iAdjectiveWords,
+  ...naAdjectiveWords,
 ];
