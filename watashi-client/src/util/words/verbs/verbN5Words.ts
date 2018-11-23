@@ -1202,7 +1202,7 @@ const wordArray = [
   wordBuy,
   wordReturnObject,
   wordReturnHome,
-  take,
+  wordTake,
   wordWrite,
   wordWearClothes,
   wordMakePhoneCall,
@@ -1278,7 +1278,6 @@ const wordArray = [
   wordForget,
   wordHandOver,
   wordCross,
-  wordArray,
 ];
 
 export default wordArray;

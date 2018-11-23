@@ -81,21 +81,21 @@ const wordGood = createAdjectiveWord({
   positive: 'good',
 });
 
-const wordTo be busy = createAdjectiveWord({
+const wordBusy = createAdjectiveWord({ // to be busy
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '忙しい',
-  positive: 'to be busy',
+  positive: 'busy', // to be busy
 });
 
-const wordTo be painful = createAdjectiveWord({
+const wordPainful = createAdjectiveWord({ // to be painful
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '痛い',
-  positive: 'to be painful',
+  positive: 'painful', // to be painful
 });
 
-const wordThin = createAdjectiveWord({
+const wordThinBody = createAdjectiveWord({
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '薄い',
@@ -116,11 +116,11 @@ const wordBig = createAdjectiveWord({
   positive: 'big',
 });
 
-const wordLate, slow = createAdjectiveWord({
+const wordLate = createAdjectiveWord({ // slow
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '遅い',
-  positive: 'late, slow',
+  positive: 'late', // slow
 });
 
 const wordHeavy = createAdjectiveWord({
@@ -130,32 +130,32 @@ const wordHeavy = createAdjectiveWord({
   positive: 'heavy',
 });
 
-const wordIntersting, funny = createAdjectiveWord({
+const wordIntersting = createAdjectiveWord({ // funny
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '面白い',
-  positive: 'intersting, funny',
+  positive: 'intersting', // funny
 });
 
-const wordHot, spicy = createAdjectiveWord({
+const wordspicy = createAdjectiveWord({ // hot
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '辛い',
-  positive: 'hot, spicy',
+  positive: 'spicy', // hot, 
 });
 
-const wordLight (not heavy) = createAdjectiveWord({
+const wordLightWeight = createAdjectiveWord({ // 
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '軽い',
-  positive: 'light (not heavy)',
+  positive: 'light',
 });
 
-const wordCute, pretty = createAdjectiveWord({
+const wordCute = createAdjectiveWord({ // pretty
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '可愛い',
-  positive: 'cute, pretty',
+  positive: 'cute', // pretty
 });
 
 const wordYellow = createAdjectiveWord({
@@ -186,13 +186,6 @@ const wordBlack = createAdjectiveWord({
   positive: 'black',
 });
 
-const wordCold = createAdjectiveWord({
-  adjectiveType: '',
-  adjectiveCategory: [ ],
-  kanji: '寒い',
-  positive: 'cold',
-});
-
 const wordWhite = createAdjectiveWord({
   adjectiveType: '',
   adjectiveCategory: [ ],
@@ -214,18 +207,18 @@ const wordNarrow = createAdjectiveWord({
   positive: 'narrow',
 });
 
-const wordHigh, expensive = createAdjectiveWord({
+const wordHigh = createAdjectiveWord({ // expensive
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '高い',
-  positive: 'high, expensive',
+  positive: 'high', // expensive
 });
 
-const wordPleasant, enjoyable = createAdjectiveWord({
+const wordEnjoyable = createAdjectiveWord({ // Pleasant, 
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '楽しい',
-  positive: 'pleasant, enjoyable',
+  positive: 'enjoyable', // pleasant, 
 });
 
 const wordSmall = createAdjectiveWord({
@@ -235,11 +228,11 @@ const wordSmall = createAdjectiveWord({
   positive: 'small',
 });
 
-const wordNear, close = createAdjectiveWord({
+const wordNear = createAdjectiveWord({ // close
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '近い',
-  positive: 'near, close',
+  positive: 'near', // close
 });
 
 const wordUninteresting = createAdjectiveWord({
@@ -253,6 +246,13 @@ const wordCold = createAdjectiveWord({
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '冷たい',
+  positive: 'cold',
+});
+
+const wordColdTwo = createAdjectiveWord({
+  adjectiveType: '',
+  adjectiveCategory: [ ],
+  kanji: '寒い',
   positive: 'cold',
 });
 
@@ -284,11 +284,11 @@ const wordEarly = createAdjectiveWord({
   positive: 'early',
 });
 
-const wordFast, quick = createAdjectiveWord({
+const wordFast = createAdjectiveWord({ // quick
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '速い',
-  positive: 'fast, quick',
+  positive: 'fast', // quick
 });
 
 const wordLow = createAdjectiveWord({
@@ -298,11 +298,11 @@ const wordLow = createAdjectiveWord({
   positive: 'low',
 });
 
-const wordWide, spacious = createAdjectiveWord({
+const wordWide = createAdjectiveWord({ // spacious
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '広い',
-  positive: 'wide, spacious',
+  positive: 'wide', // spacious
 });
 
 
@@ -313,25 +313,25 @@ const wordOld = createAdjectiveWord({
   positive: 'old',
 });
 
-const wordTo want something = createAdjectiveWord({
+const wordToWant = createAdjectiveWord({ //  something
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '欲しい',
-  positive: 'to want something',
+  positive: 'to want', // something
 });
 
-const wordThin, fine = createAdjectiveWord({
+const wordThin = createAdjectiveWord({ // fine
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '細い',
-  positive: 'thin, fine',
+  positive: 'thin', // fine
 });
 
-const wordBad tasting = createAdjectiveWord({
+const wordDisgusting = createAdjectiveWord({ // Bad tasting
   adjectiveType: '',
   adjectiveCategory: [ ],
   kanji: '不味い',
-  positive: 'bad tasting',
+  positive: 'disgusting', // bad tasting
 });
 
 const wordRound = createAdjectiveWord({
@@ -376,11 +376,60 @@ const wordYoung = createAdjectiveWord({
   positive: 'young',
 });
 
-
-
 const adjectiveArray = [
-  // wordDelicious,
-  // wordLike,
+  wordBlue,
+  wordRed,
+  wordBright,
+  wordWarm,
+  wordNew,
+  wordHotAir,
+  wordThick,
+  wordFat,
+  wordDangerous,
+  wordSweet,
+  wordGood,
+  wordBusy,
+  wordPainful,
+  wordThinBody,
+  wordDelicious,
+  wordBig,
+  wordLate,
+  wordHeavy,
+  wordIntersting,
+  wordspicy,
+  wordLightWeight,
+  wordCute,
+  wordYellow,
+  wordDirty,
+  wordDark,
+  wordBlack,
+  wordWhite,
+  wordCool,
+  wordNarrow,
+  wordHigh,
+  wordEnjoyable,
+  wordSmall,
+  wordNear,
+  wordUninteresting,
+  wordCold,
+  wordColdTwo,
+  wordStrong,
+  wordFar,
+  wordLong,
+  wordEarly,
+  wordFast,
+  wordLow,
+  wordWide,
+  wordOld,
+  wordToWant,
+  wordThin,
+  wordDisgusting,
+  wordRound,
+  wordShort,
+  wordDifficult,
+  wordGentle,
+  wordCheap,
+  wordYoung,
 ];
 
 export default adjectiveArray;
