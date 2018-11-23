@@ -1,7 +1,7 @@
 
 import {
   CATEGORY_FOOD,
-  CATEGORY_FOOD_GENERAL,
+  CATEGORY_FOOD_SAUCE_SPICE,
 
   NOUN_PLURAL_GENERAL,
 
@@ -18,68 +18,243 @@ const wordPeach = createNounWord({
   kanji: '桃',
 });
 
-醤油	しょうゆ	shouyu	Soy Sauce
-54.	酢	す	su	Vinegar
-山葵	わさび	wasabi	Japanese Horseradish
-56.	油	あぶら	abura	Oil
-57.	砂糖	さとう	satou	Sugar
-58.	塩	しお	shio	Salt
-59.	胡椒	こしょう	koshou	Pepper
-60.	調味料	ちょうみ
-りょう	choumi ryou	Seasoning / Condiment / Flavoring / Spices
 
-oyster sauce: オイスターソース (おいすたー そーす)
+// 60.	調味料	ちょうみりょう	choumi ryou	Seasoning / Condiment / Flavoring / Spices
 
-wine: ワイン (わいん)
+const wordFlavouring = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'flavouring',
+  kanji: '調味料',
+  hiragana:	'ちょうみりょう'
+});
 
-white wine: 白ワイン (しろ わいん)
+const wordSugar = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'sugar',
+  kanji: '砂糖',
+  hiragana:	'さとう'
+});
 
-red wine: 赤ワイン (あか わいん)
+const wordWasabi = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'wasabi',
+  kanji: '山葵',
+  hiragana:	'わさび'
+});
 
+const wordOil = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'oil',
+  kanji: '油',
+  hiragana: 'あぶら'
+});
 
-soy sauce: 醤油 (しょうゆ)
+const wordOysterSauce = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'oyster sauce',
+  kanji: 'オイスターソース',
+  hiragana: 'おいすたーそーす'
+});
 
-rice wine vinegar: みりん
+const wordWine = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'wine',
+  kanji: 'ワイン',
+  hiragana: 'わいん'
+});
 
-sesame oil: 胡麻油 (ごま あぶら)
+const wordWhiteWine = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'white wine',
+  kanji: '白ワイン',
+  hiragana: 'しろわいん'
+});
 
-vegetable oil: サラダ油 (さらだ ゆ/さらだ あぶら)
+const wordRedWine = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'red wine',
+  kanji: '赤ワイン',
+  hiragana: 'あかわいん'
+});
 
-water: 水 (みず)
+const wordSoySauce = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'soy sauce',
+  kanji: '醤油',
+  hiragana: 'しょうゆ'
+});
 
-sauce: たれ or ソース (そーす)
+const wordRiceWineVinegar = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'rice wine vinegar',
+  kanji: 'みりん',
+  hiragana: 'みりん',
+});
 
-broth: 出汁 (だし)
+const wordSesameOil = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'sesame oil',
+  kanji: '胡麻油',
+  hiragana: 'ごまあぶら'
+});
 
-rice wine: 酒 (さけ) or 日本酒 (にほんしゅ)
+const wordVegetableOil = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'vegetable oil',
+  kanji: 'サラダ油',
+  hiragana: 'さらだゆ' // /さらだあぶら
+});
 
-olive oil: オリーブ油 (おりーぶ ゆ/おりーぶ おいる)
+const wordWater = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'water',
+  kanji: '水',
+  hiragana: 'みず'
+});
 
-salt: 塩 (しお)
+const wordSauce = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'sauce',
+  kanji: 'たれ',
+  hiragana: 'たれ' // or ソース (そーす)
+});
 
-black pepper: 胡椒 (こしょう)
+const wordBroth = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'broth',
+  kanji: '出汁',
+  hiragana: 'だし'
+});
 
-Japanese pepper: 山椒 (さんしょう)
+const wordRiceWine = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'rice wine',
+  kanji: '酒',
+  hiragana: 'さけ' // ) or 日本酒 (にほんしゅ
+});
 
-vinegar: 酢 (す)
+const wordOliveOil = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'olive oil',
+  kanji: 'オリーブ油',
+  hiragana: 'おりーぶゆ' // /おりーぶおいる
+});
 
-mustard: 辛子 (からし)
+const wordSalt = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'salt',
+  kanji: '塩',
+  hiragana: 'しお'
+});
 
-honey: 蜂蜜 (はちみつ)
+const wordBlackPepper = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'black pepper',
+  kanji: '胡椒',
+  hiragana: 'こしょう'
+});
 
+const wordJapanesePepper = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'Japanese pepper',
+  kanji: '山椒',
+  hiragana: 'さんしょう'
+});
 
+const wordVinegar = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'vinegar',
+  kanji: '酢',
+  hiragana: 'す'
+});
 
+const wordMustard = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'mustard',
+  kanji: '辛子',
+  hiragana: 'からし'
+});
 
-// https://www.learn-japanese-adventure.com/japanese-food.html
+const wordHoney = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_SAUCE_SPICE ],
+  singular: 'honey',
+  kanji: '蜂蜜',
+  hiragana: 'はちみつ'
+});
 
 const nounArray = [
-  wordApple,
+  wordFlavouring,
+  wordSugar,
+  wordWasabi,
+  wordOil,
+  wordOysterSauce,
+  wordWine,
+  wordWhiteWine,
+  wordRedWine,
+  wordSoySauce,
+  wordRiceWineVinegar,
+  wordSesameOil,
+  wordVegetableOil,
+  wordWater,
+  wordSauce,
+  wordBroth,
+  wordRiceWine,
+  wordOliveOil,
+  wordSalt,
+  wordBlackPepper,
+  wordJapanesePepper,
+  wordVinegar,
+  wordMustard,
+  wordHoney,
 ];
 
 export default nounArray;
 
 
 
-
-Pepper	胡椒	こしょう	
-Salt	塩	しお	

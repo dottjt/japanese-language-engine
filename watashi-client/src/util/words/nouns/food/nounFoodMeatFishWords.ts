@@ -9,7 +9,7 @@ import {
 
 import { createNounWord } from '../../utilWord';
 
-const gelatin = createNounWord({
+const wordGelatin = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -18,7 +18,7 @@ const gelatin = createNounWord({
   hiragana: 'ぜらちん',
 });
 
-const egg = createNounWord({
+const wordEgg = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -27,7 +27,7 @@ const egg = createNounWord({
   hiragana: 'たまご',
 });
 
-const eggYolk = createNounWord({
+const wordEggYolk = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -36,7 +36,7 @@ const eggYolk = createNounWord({
   hiragana: 'らんおう',
 });
 
-const eggWhite = createNounWord({
+const wordEggWhite = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -45,7 +45,7 @@ const eggWhite = createNounWord({
   hiragana: 'らんぱく',
 });
 
-const condensedMilk = createNounWord({
+const wordCondensedMilk = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -54,7 +54,7 @@ const condensedMilk = createNounWord({
   hiragana: 'れんにゅう',
 });
 
-const bonitoFlakes = createNounWord({
+const wordBonitoFlakes = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -63,7 +63,7 @@ const bonitoFlakes = createNounWord({
   hiragana: 'かつおぶし',
 });
 
-const unsaltedButter = createNounWord({
+const wordUnsaltedButter = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -72,7 +72,7 @@ const unsaltedButter = createNounWord({
     hiragana: 'むえんばたー',
 });
 
-const saltedButter = createNounWord({
+const wordSaltedButter = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -81,7 +81,7 @@ const saltedButter = createNounWord({
   hiragana: 'ゆうえんばたー',
 });
 
-  const cream = createNounWord({
+  const wordCream = createNounWord({
 
     nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
@@ -91,7 +91,7 @@ const saltedButter = createNounWord({
     hiragana: 'なまくりーむ',
 });
 
-  const meat = createNounWord({
+  const wordMeat = createNounWord({
 
     nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
@@ -101,7 +101,7 @@ const saltedButter = createNounWord({
   hiragana: 'にく',
 });
 
-const mince = createNounWord({
+const wordMince = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -110,7 +110,7 @@ const mince = createNounWord({
   hiragana: 'ひきにく',
 });
 
-const chicken = createNounWord({
+const wordChicken = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -119,7 +119,7 @@ const chicken = createNounWord({
   hiragana: 'とりにく',
 });
 
-const chickenWings = createNounWord({
+const wordChickenWings = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -128,7 +128,7 @@ const chickenWings = createNounWord({
   hiragana: 'てばさき',
 });
 
-const chickenTender = createNounWord({
+const wordChickenTender = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -137,7 +137,7 @@ const chickenTender = createNounWord({
   hiragana: 'ささみ',
 });
 
-const shrimp = createNounWord({
+const wordShrimp = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -146,7 +146,7 @@ const shrimp = createNounWord({
   hiragana: 'えび',
 });
 
-const oyster = createNounWord({
+const wordOyster = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -155,7 +155,7 @@ const oyster = createNounWord({
   hiragana: 'かき',
 });
 
-const porkBone = createNounWord({
+const wordPorkBone = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -164,7 +164,7 @@ const porkBone = createNounWord({
   hiragana: 'とんこつ',
 });
 
-const cartilage = createNounWord({
+const wordCartilage = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -173,7 +173,7 @@ const cartilage = createNounWord({
   hiragana: 'なんこつ',
 });
 
-const quail = createNounWord({
+const wordQuail = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -182,7 +182,7 @@ const quail = createNounWord({
   hiragana: 'うずら',
 });
 
-const sausage = createNounWord({
+const wordSausage = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -191,7 +191,7 @@ const sausage = createNounWord({
   hiragana: 'そーせーじ',
 });
 
-const tsukun = createNounWord({
+const wordTsukun = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -200,7 +200,7 @@ const tsukun = createNounWord({
   hiragana: 'つくね',
 });
 
-const clams = createNounWord({
+const wordClams = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -209,7 +209,7 @@ const clams = createNounWord({
   hiragana: 'あさり',
 });
 
-const pork = createNounWord({
+const wordPork = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -218,7 +218,7 @@ const pork = createNounWord({
   hiragana: 'ぶたにく',
 });
 
-const beef = createNounWord({
+const wordBeef = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -227,7 +227,7 @@ const beef = createNounWord({
   hiragana: 'ぎゅうにく',
 });
 
-const lamb = createNounWord({
+const wordLamb = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -236,7 +236,7 @@ const lamb = createNounWord({
   hiragana: 'ようにく',
 });
 
-const crab = createNounWord({
+const wordCrab = createNounWord({
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_MEAT_FISH ],
@@ -258,7 +258,32 @@ const crab = createNounWord({
 // });
 
 const nounArray = [
-
+  wordGelatin,
+  wordEgg,
+  wordEggYolk,
+  wordEggWhite,
+  wordCondensedMilk,
+  wordBonitoFlakes,
+  wordUnsaltedButter,
+  wordSaltedButter,
+  wordCream,
+  wordMeat,
+  wordMince,
+  wordChicken,
+  wordChickenWings,
+  wordChickenTender,
+  wordShrimp,
+  wordOyster,
+  wordPorkBone,
+  wordCartilage,
+  wordQuail,
+  wordSausage,
+  wordTsukun,
+  wordClams,
+  wordPork,
+  wordBeef,
+  wordLamb,
+  wordCrab,
 ];
 
 export default nounArray;
