@@ -4,251 +4,287 @@
 
 import { createAdjectiveWord } from '../utilWord';
 
-const wordLike = createAdjectiveWord({
+const wordLike = createAdjectiveWord({ // , love
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '好き',
-  positive: 'Like, love',
+  hiragana: 'すき',
+  positive:	'Like', //love
 });
 
-const wordWonderful = createAdjectiveWord({
+const wordWonderful = createAdjectiveWord({ // enviable
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '結構',
-  positive: 'wonderful,enviable',
+  hiragana: 'けっこう',
+  positive:	'wonderful', // enviable
 });
 
 const wordFamous = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '有名',
-  positive: 'Famous',
+  hiragana: 'ゆうめい',
+  positive:	'famous',
 });
 
-const wordPretty = createAdjectiveWord({
+const wordPretty = createAdjectiveWord({ //beautiful
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: 'きれい',
-  positive: 'Pretty, beautiful',
+  hiragana: 'きれい',
+  positive:	'Pretty', //beautiful
 });
 
 const wordPolite = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '丁寧',
-  positive: 'polite',
+  hiragana: 'ていねい',
+  positive:	'polite',
 });
 
 const wordDislike = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '嫌い',
-  positive: 'dislike',
+  hiragana: 'きらい',
+  positive:	'dislike',
 });
 
 const wordQuiet = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '静か',
-  positive: 'quiet',
+  hiragana: 'しずか',
+  positive:	'quiet',
+});
+
+const wordFreeTime = createAdjectiveWord({ // (time)
+  adjectiveType: '',
+  adjectiveCategory: [ ],
+  kanji: '暇',
+  hiragana: 'ひま',
+  positive:	'free', // (time)
 });
 
 const wordLively = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '賑やか',
-  positive: 'lively',
+  hiragana: 'にぎやか',
+  positive:	'lively',
 });
 
-const wordUseful = createAdjectiveWord({
+const wordUseful = createAdjectiveWord({ // convenient
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '便利',
-  positive: 'useful, convenient',
+  hiragana: 'べんり',
+  positive:	'useful', // convenient
 });
 
 const wordHealthy = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '元気',
-  positive: 'healthy',
+  hiragana: 'げんき',
+  positive:	'healthy',
 });
 
 const wordVarious = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '色々',
-  positive: 'various',
+  hiragana: 'いろいろ',
+  positive:	'various',
 });
 
-const wordOK = createAdjectiveWord({
+const wordOK = createAdjectiveWord({ // fine
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '大丈夫',
-  positive: 'OK,fine',
+  hiragana: 'だいじょうぶ',
+  positive:	'ok', // fine
 });
 
-// what? 
-// const wordHealthy = createAdjectiveWord({
-//   adjectiveType: '',
-// adjectiveCategory: [],
-//   kanji: '丈夫',
-//   positive: 'Healthy, robust',
-// });
+const wordRobust = createAdjectiveWord({ // Healthy, 
+  adjectiveType: '',
+  adjectiveCategory: [ ],
+  kanji: '丈夫',
+  hiragana: 'じょうぶ',
+  positive:	'robust', // Healthy, 
+});
 
 const wordTerrible = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '大変',
-  positive: 'Terrible',
+  hiragana: 'たいへん',
+  positive:	'terrible',
 });
 
-const wordComfortable = createAdjectiveWord({
+const wordComfortable = createAdjectiveWord({ // easy
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '楽',
-  positive: 'comfortable, easy',
+  hiragana: 'らく',
+  positive:	'comfortable', // easy
 });
 
 const wordUnpleasant = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: 'いや',
-  positive: 'unpleasant',
+  hiragana: 'いや',
+  positive:	'unpleasant',
 });
 
-const wordImportant = createAdjectiveWord({
+const wordImportant = createAdjectiveWord({ // ,precious 
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '大切',
-  positive: 'important,precious',
+  hiragana: 'たいせつ',
+  positive:	'important', // ,precious
 });
 
-const wordGood = createAdjectiveWord({
+const wordSkilled = createAdjectiveWord({ // good, 
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '上手',
-  positive: 'good, skilled',
+  hiragana: 'じょうず',
+  positive:	'skilled', // good, 
 });
 
-const wordBad = createAdjectiveWord({
+const wordUnskilled = createAdjectiveWord({ // bad at, 
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '下手',
-  positive: 'bad at, unskilled',
+  hiragana: 'へた',
+  positive:	'unskilled', // bad at, 
 });
 
-const wordTo = createAdjectiveWord({
+const wordToFullOfPossibility = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '一生懸命',
-  positive: 'to one’s fullest possibility',
+  hiragana: 'いっしょうけんめい',
+  positive:	'full of possibility',
 });
 
 const wordDangerous = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '危険',
-  positive: 'Dangerous',
+  hiragana: 'きけん',
+  positive:	'Dangerous',
 });
 
-const wordRegrettable = createAdjectiveWord({
+const wordDissapointing = createAdjectiveWord({ // regrettable
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '残念',
-  positive: 'regrettable, dissapointing',
+  hiragana: 'ざんねん',
+  positive:	'dissapointing', // regrettable, 
 });
 
-const wordCare = createAdjectiveWord({
+const wordWorry = createAdjectiveWord({ // care, 
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '心配',
-  positive: 'care, worry',
+  hiragana: 'しんぱい',
+  positive:	'worry', // care, 
 });
 
-const wordFree = createAdjectiveWord({
+const wordUnrestrained = createAdjectiveWord({ // free, 
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '自由',
-  positive: 'free', // unrestrained
-});
-
-const wordFreeTime = createAdjectiveWord({
-  adjectiveType: '',
-  adjectiveCategory: [],
-  kanji: '暇',
-  positive: 'free', // (time)
+  hiragana: 'じゆう',
+  positive:	'unrestrained', // free, 
 });
 
 const wordSufficient = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '十分',
-  positive: 'sufficient',
+  hiragana: 'じゅうぶん',
+  positive:	'sufficient',
 });
 
 const wordPassionate = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '大好き',
-  positive: 'Passionate',
+  hiragana: 'だいすき',
+  positive:	'Passionate',
 });
 
-const wordProper = createAdjectiveWord({
+const wordSuitable = createAdjectiveWord({ // proper,
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '適当',
-  positive: 'proper, suitable',
+  hiragana: 'てきとう',
+  positive:	'suitable', // proper,
 });
 
 const wordSpecial = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '特別',
-  positive: 'special',
+  hiragana: 'とくべつ',
+  positive:	'special',
 });
 
-const wordEager = createAdjectiveWord({
+const wordEager = createAdjectiveWord({ // enthusiastic
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '熱心',
-  positive: 'eager, enthusiastic',
+  hiragana: 'ねっしん',
+  positive:	'eager', // enthusiastic
 });
 
 const wordNecessary = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '必要',
-  positive: 'necessary',
+  hiragana: 'ひつよう',
+  positive:	'necessary',
 });
 
-const wordSerious = createAdjectiveWord({
+const wordSerious = createAdjectiveWord({ // earnest
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: 'まじめ',
-  positive: 'serious, earnest',
+  hiragana: 'まじめ',
+  positive:	'serious', // earnest
 });
 
 const wordStraight = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '真直ぐ',
-  positive: 'straight',
+  hiragana: 'まっすぐ',
+  positive:	'straight',
 });
 
 const wordUnreasonnable = createAdjectiveWord({
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '無理',
-  positive: 'unreasonnable',
+  hiragana: 'むり',
+  positive:	'unreasonnable',
 });
 
-const wordExcellent = createAdjectiveWord({
+const wordSplendid = createAdjectiveWord({ // Excellent, ,fine
   adjectiveType: '',
-  adjectiveCategory: [],
+  adjectiveCategory: [ ],
   kanji: '立派',
-  positive: 'Excellent, splendid,fine',
+  hiragana: 'りっぱ',
+  positive:	'splendid', // Excellent, ,fine
 });
+
+
     
 const adjectiveArray = [
   wordLike,
@@ -256,36 +292,36 @@ const adjectiveArray = [
   wordFamous,
   wordPretty,
   wordPolite,
-  wordTo,
+  wordDislike,
   wordQuiet,
-  wordFree,
+  wordFreeTime,
   wordLively,
   wordUseful,
   wordHealthy,
   wordVarious,
   wordOK,
-  wordHealthy,
+  wordRobust,
   wordTerrible,
   wordComfortable,
   wordUnpleasant,
   wordImportant,
-  wordGood,
-  wordBad,
-  wordDislike,
+  wordSkilled,
+  wordUnskilled,
+  wordToFullOfPossibility,
   wordDangerous,
-  wordRegrettable,
-  wordCare,
-  wordFreeTime,
+  wordDissapointing,
+  wordWorry,
+  wordUnrestrained,
   wordSufficient,
   wordPassionate,
-  wordProper,
+  wordSuitable,
   wordSpecial,
   wordEager,
   wordNecessary,
   wordSerious,
   wordStraight,
   wordUnreasonnable,
-  wordExcellent,
+  wordSplendid,
 ];
 
 export default adjectiveArray;

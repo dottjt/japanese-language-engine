@@ -132,7 +132,6 @@ const wordLate = createAdjectiveWord({ // slow
   positive:	'late' // slow
 });
 
-
 const wordHeavy = createAdjectiveWord({
   adjectiveType: '',
   adjectiveCategory: '',
@@ -156,7 +155,6 @@ const wordSpicy = createAdjectiveWord({ // hot
   hiragana:	'からい',
   positive:	'spicy' // hot, 
 });
-
 
 const wordLightWeight = createAdjectiveWord({
   ajectiveType: '',

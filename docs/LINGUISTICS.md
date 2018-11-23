@@ -102,3 +102,5 @@ https://nihongoichiban.com/home/jlpt-n5-study-material/
 https://www.japanvisitor.com/japanese-culture/food-glossary - really good dish guide
 https://www.fluentu.com/blog/japanese/japanese-food-vocabulary/ - general foods - really good 
 
+// good N5 related vocab things. 
+https://nihongoichiban.com/home/jlpt-n5-study-material/
