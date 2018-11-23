@@ -90,3 +90,15 @@ http://www.writeawriting.com/grammar/prepositions-types-examples/
 https://webapps.towson.edu/ows/prepositions.htm
 https://webapps.towson.edu/ows/verbs.htm
 http://www.studyandexam.com/preposition2.html
+
+
+// vocabulary lists
+
+https://nihongoichiban.com/home/jlpt-n5-study-material/
+
+
+// future vocab 
+// FOOD 
+https://www.japanvisitor.com/japanese-culture/food-glossary - really good dish guide
+https://www.fluentu.com/blog/japanese/japanese-food-vocabulary/ - general foods - really good 
+

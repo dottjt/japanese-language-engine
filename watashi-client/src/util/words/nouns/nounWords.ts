@@ -18,7 +18,6 @@ const wordPerson = createNounWord({
   singular: 'person',
 });
 
-
 const nounArray = [
   wordPerson,
 ];
