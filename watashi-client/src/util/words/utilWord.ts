@@ -45,7 +45,6 @@ export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, hiragana
   __typename: __TYPENAME_VERB,
 });
 
-
 export const createAdjectiveWord = ({ adjectiveType, adjectiveCategory, kanji, hiragana, positive, comparative, superlative }: any): Util.Adjective => ({
   adjectiveJapanese: {
     kanji,
@@ -62,4 +61,3 @@ export const createAdjectiveWord = ({ adjectiveType, adjectiveCategory, kanji, h
   adjectiveType,
   __typename: __TYPENAME_ADJECTIVE,
 });
-

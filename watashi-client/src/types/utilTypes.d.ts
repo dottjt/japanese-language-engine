@@ -202,11 +202,11 @@ declare namespace Util {
     verb?: Verb;
   };
 
-  export type SentenceWordModifiers = {
-    tAdj?: WordModifier;
+  export type SentenceModifierWords = {
+    tAdj?: Adjective;
     tAdv?: WordModifier;
 
-    sAdj?: WordModifier;
+    sAdj?: Adjective;
     sAdv?: WordModifier;
 
     tNo?: WordModifierNo;

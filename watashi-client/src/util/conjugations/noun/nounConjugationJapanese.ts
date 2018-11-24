@@ -125,7 +125,7 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
   return { japaneseNounTense: emptyWord, nounPolarity: emptyWord };
 };
 
-const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const nounConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const noun = filtersentenceType(words, sentenceType) as Util.Noun;
   
   // const type = CONJUGATION_TYPE_NOUN_JAPANESE;

@@ -76,6 +76,36 @@ const GET_EVERYTHING = gql`{
       nounPluralType
     }
 
+    verbs @client {
+      verbJapanese @client {
+        kanji
+        hiragana
+      }
+      verbEnglish @client {
+        infinitive
+        presentParticiple
+        preterite
+        pastParticiple
+        simplePresentContinuousHeSheIt
+      }
+      verbJapaneseType
+      verbCategory
+    }
+
+    adjectives @client {
+      adjectiveJapanese @client {
+        kanji
+        hiragana
+      }
+      adjectiveEnglish @client {
+        positive
+        comparative
+        superlative
+    
+      }
+      adjectiveCategory
+      adjectiveType
+    }
     exercises @client {
       englishSentence @client {
         word

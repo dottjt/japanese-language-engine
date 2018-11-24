@@ -258,7 +258,7 @@ const determineVerbConjugationHelpingEnglish = (context: Util.SentenceContext, o
 
 }
 
-const verbConjugationHelpingToBeEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const verbConjugationHelpingToBeEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   return determineVerbConjugationHelpingEnglish(sentenceContext, options);
 };
 

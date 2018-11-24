@@ -211,7 +211,7 @@ const determineVerbConjugationJapanese = (verb: Util.Verb, options: Util.Options
   throw new Error(createError('verbConjugationJapanese', 'determineVerbConjugationJapanese', `${options.selectedPoliteness}${options.selectedPolarity} unknown`));
 };
 
-const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const verbConjugationJapanese = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
   
   const { verbStem, verbPolarity } = determineVerbConjugationJapanese(verb, options, sentenceContext);

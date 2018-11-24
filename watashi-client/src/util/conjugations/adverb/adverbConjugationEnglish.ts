@@ -95,7 +95,7 @@ const determineAdverbPolarity = (words: Util.SentenceWords, options: Util.Option
 
 
 
-const adverbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const adverbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const adverb = determineAdverbConjugationEnglish(words, options, sentenceContext, sentenceType)
   const adverbPolarity = determineAdverbPolarity(words, options, sentenceContext, sentenceType);
 

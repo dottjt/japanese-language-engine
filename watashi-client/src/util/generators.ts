@@ -3,12 +3,19 @@ import {
   createError,
 } from './functions';
 
-const checkIfValueExists = (word: Util.Noun | Util.Verb, englishName: string): Util.Noun | Util.Verb => {
+// generatorUtils
+
+const checkIfValueExists = (word: Util.Noun | Util.Verb | Util.Adjective, englishName: string): Util.Noun | Util.Verb | Util.Adjective => {
   if (word === undefined) {
     throw new Error(createError('filters.ts', 'checkIfValueExists', `${englishName} does not exist`))
   } 
   return word;
 };
+
+
+
+// ---------------
+// noun Methods
 
 export const filterSpecifcWordNoun = (nouns: Util.Noun[], englishName: string): Util.Noun => (
   checkIfValueExists(nouns.filter((noun: Util.Noun): boolean => (
@@ -57,6 +64,33 @@ const filterSpecifcCategoryVerb = (verbs: Util.Verb[], category: string): Util.V
 export const getRandomWordViaCategoryVerb = (verbs: Util.Verb[], category: string): Util.Verb => {
   const getCategoryWords = filterSpecifcCategoryVerb(verbs, category);
   return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], category) as Util.Verb
+}
+
+
+
+// ---------------
+// adjective Methods
+
+export const filterSpecifcWordAdjective = (adjectives: Util.Adjective[], englishName: string): Util.Adjective => (
+  checkIfValueExists(adjectives.filter((noun: Util.Adjective): boolean => (
+    noun.adjectiveEnglish.infinitive === englishName
+  ))[0], englishName) as Util.Adjective
+);
+
+export const getRandomWordAdjective = (adjectives: Util.Adjective[]): Util.Adjective => (
+  adjectives[randomArrayElement(adjectives.length)]
+);
+
+const filterSpecifcCategoryAdjective = (adjectives: Util.Adjective[], category: string): Util.Adjective[] => (
+  adjectives.filter((noun: Util.Adjective) => {
+    const checkIfCategoryExistsInCategoryArray = noun.adjectiveCategory.filter(nounCategory => nounCategory === category).length > 0
+    return checkIfCategoryExistsInCategoryArray ? true : false 
+  })
+);
+
+export const getRandomWordViaCategoryAdjective = (adjectives: Util.Adjective[], category: string): Util.Adjective => {
+  const getCategoryWords = filterSpecifcCategoryAdjective(adjectives, category);
+  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], category) as Util.Adjective
 }
 
 // export const filterSpecifcMetaVerb = (nouns: Util.Verb[], metaProperty: string): Util.Verb[] => (

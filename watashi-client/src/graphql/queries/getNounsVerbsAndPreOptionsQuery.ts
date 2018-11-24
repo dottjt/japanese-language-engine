@@ -30,6 +30,21 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
     verbCategory
   }
 
+  adjectives @client {
+    adjectiveJapanese @client {
+      kanji
+      hiragana
+    }
+    adjectiveEnglish @client {
+      positive
+      comparative
+      superlative
+  
+    }
+    adjectiveCategory
+    adjectiveType
+  }
+
   preOptions @client {
     politenessArray
     variationArray

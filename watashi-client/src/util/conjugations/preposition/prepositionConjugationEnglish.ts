@@ -67,7 +67,7 @@ import {
 // Run at the cat. 
 
 
-const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const prepositionConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   // NOTE: Maybe themes are the bridge between subject and context. 
   const { subject, /* topic, verb */ } = returnSentenceParts(words);
 

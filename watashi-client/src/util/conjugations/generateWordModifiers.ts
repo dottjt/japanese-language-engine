@@ -2,7 +2,7 @@ import {
   filterSpecifcWordNoun,
   // getRandomWordViaCategory,
   // getRandomWordViaPrimaryType,
-} from '../filters';
+} from '../generators';
 
 import {
   T_ADJ,
@@ -28,10 +28,10 @@ import {
 
 const createWordModifier = (type: string, word: Util.Noun): Util.WordModifier => ({ type, word });
 
-const generateWordModifiers = (nouns: Util.Noun[], verbs: Util.Verb[], modifiers: Util.Modifiers): Util.SentenceWordModifiers => {
+const generateWordModifiers = (nouns: Util.Noun[], verbs: Util.Verb[], modifiers: Util.Modifiers): Util.SentenceModifierWords => {
 
   const modifiersKeys = Object.keys(modifiers);
-  const sentenceWordModifiers: Util.SentenceWordModifiers = {
+  const SentenceModifierWords: Util.SentenceModifierWords = {
     tNo: {
       no1: undefined,
       no2: undefined,
@@ -53,36 +53,36 @@ const generateWordModifiers = (nouns: Util.Noun[], verbs: Util.Verb[], modifiers
   const word = filterSpecifcWordNoun(nouns, 'person');
 
   modifiersKeys.forEach((modifierField: string): void => {
-    if (modifiers[modifierField] !== undefined) {
-      if (modifierField === TOPIC_NO) {
-        switch(modifiers[modifierField]) { 
-          case T_NO1: sentenceWordModifiers.tNo = { no1: createWordModifier(T_NO1, word) }; return;
-          case T_NO2: sentenceWordModifiers.tNo = { no1: createWordModifier(T_NO2, word), no2: createWordModifier(T_NO2, word) }; return;
-          case T_NO3: sentenceWordModifiers.tNo = { no1: createWordModifier(T_NO3, word), no2: createWordModifier(T_NO3, word), no3: createWordModifier(T_NO3, word) }; return;
-        }
-      }
-      if (modifierField === SUBJECT_NO) {
-        switch(modifiers[modifierField]) {
-          case S_NO1: sentenceWordModifiers.sNo = { no1: createWordModifier(T_NO1, word) }; return;
-          case S_NO2: sentenceWordModifiers.sNo = { no1: createWordModifier(T_NO2, word), no2: createWordModifier(T_NO2, word) }; return;
-          case S_NO3: sentenceWordModifiers.sNo = { no1: createWordModifier(T_NO3, word), no2: createWordModifier(T_NO3, word), no3: createWordModifier(T_NO3, word) }; return;
-        }
-      }
+    // if (modifiers[modifierField] !== undefined) {
+    //   if (modifierField === TOPIC_NO) {
+    //     switch(modifiers[modifierField]) { 
+    //       case T_NO1: SentenceModifierWords.tNo = { no1: createWordModifier(T_NO1, word) }; return;
+    //       case T_NO2: SentenceModifierWords.tNo = { no1: createWordModifier(T_NO2, word), no2: createWordModifier(T_NO2, word) }; return;
+    //       case T_NO3: SentenceModifierWords.tNo = { no1: createWordModifier(T_NO3, word), no2: createWordModifier(T_NO3, word), no3: createWordModifier(T_NO3, word) }; return;
+    //     }
+    //   }
+    //   if (modifierField === SUBJECT_NO) {
+    //     switch(modifiers[modifierField]) {
+    //       case S_NO1: SentenceModifierWords.sNo = { no1: createWordModifier(T_NO1, word) }; return;
+    //       case S_NO2: SentenceModifierWords.sNo = { no1: createWordModifier(T_NO2, word), no2: createWordModifier(T_NO2, word) }; return;
+    //       case S_NO3: SentenceModifierWords.sNo = { no1: createWordModifier(T_NO3, word), no2: createWordModifier(T_NO3, word), no3: createWordModifier(T_NO3, word) }; return;
+    //     }
+    //   }
       if (modifierField === TOPIC_ADJECTIVE) {
-        sentenceWordModifiers.tAdj = createWordModifier(T_ADJ, word); return;
+        SentenceModifierWords.tAdj = createWordModifier(T_ADJ, word); return;
       }
       if (modifierField === TOPIC_ADVERB) {
-        sentenceWordModifiers.tAdv = createWordModifier(T_ADV, word); return;
+        SentenceModifierWords.tAdv = createWordModifier(T_ADV, word); return;
       }
       if (modifierField === SUBJECT_ADJECTIVE) {
-        sentenceWordModifiers.sAdj = createWordModifier(S_ADJ, word); return;
+        SentenceModifierWords.sAdj = createWordModifier(S_ADJ, word); return;
       }
       if (modifierField === SUBJECT_ADVERB) {
-        sentenceWordModifiers.sAdv = createWordModifier(S_ADV, word); return;
+        SentenceModifierWords.sAdv = createWordModifier(S_ADV, word); return;
       }
     }
   });
-  return sentenceWordModifiers;
+  return SentenceModifierWords;
 };
 
 export default generateWordModifiers;

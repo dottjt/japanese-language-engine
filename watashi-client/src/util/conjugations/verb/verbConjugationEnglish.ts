@@ -268,7 +268,7 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
 }
 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
   const verbConjugation = determineVerbConjugationEnglish(verb, sentenceContext);
 

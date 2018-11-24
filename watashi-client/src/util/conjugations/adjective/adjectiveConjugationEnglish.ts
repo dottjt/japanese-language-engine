@@ -60,7 +60,7 @@ import {
 
 // https://www.fluentu.com/blog/english/english-adjectives/
 
-export const adjectiveConjugationIndefiniteArticleEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+export const adjectiveConjugationIndefiniteArticleEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   const { topic, /*subject, verb*/ } = returnSentenceParts(sentenceWords);
 
   // NOTE: Need a query to check if what is being spoken about is specific, or general in order to know whether to use the or a. 
@@ -89,7 +89,7 @@ export const adjectiveConjugationIndefiniteArticleEnglish = (sentenceWords: Util
   // return createEmptyWord(ENGLISH_INDEFINITE_ARTICLE);
 };
 
-export const adjectiveConjugationDescriptiveEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+export const adjectiveConjugationDescriptiveEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   // const { topic, /*subject, verb*/ } = returnSentenceParts(sentenceWords);
 
   
@@ -104,7 +104,7 @@ export const adjectiveConjugationDescriptiveEnglish = (sentenceWords: Util.Sente
 
 
 
-export const adjectiveConjugationQuantitativeEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+export const adjectiveConjugationQuantitativeEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
 
   // In other words, they answer the question “how much?” or “how many?” 
   // numbers
@@ -124,7 +124,7 @@ export const adjectiveConjugationQuantitativeEnglish = (sentenceWords: Util.Sent
   return createWord([''], ADJECTIVE_TYPE_QUANTITATIVE);
 };
 
-export const adjectiveConjugationDemonstrativeEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+export const adjectiveConjugationDemonstrativeEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
 
   // Demonstrative adjectives always come before the word they’re modifying.
   // A demonstrative adjective describes “which” noun or pronoun you’re referring to. 
@@ -161,7 +161,7 @@ export const adjectiveConjugationDemonstrativeEnglish = (sentenceWords: Util.Sen
   
 
 
-export const adjectiveConjugationPossessiveEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+export const adjectiveConjugationPossessiveEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
 
   // Possessive adjectives show possession. 
   // They describe to whom a thing belongs. 
@@ -194,7 +194,7 @@ export const adjectiveConjugationPossessiveEnglish = (sentenceWords: Util.Senten
 };
     
   
-export const adjectiveConjugationInterrogativeEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+export const adjectiveConjugationInterrogativeEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
 
   // permissions is question. 
 
@@ -228,7 +228,7 @@ export const adjectiveConjugationInterrogativeEnglish = (sentenceWords: Util.Sen
   
 
 
-export const adjectiveConjugationDistributiveEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceWordModifiers, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+export const adjectiveConjugationDistributiveEnglish = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
 
   // Distributive adjectives describe specific members out of a group. These adjectives are used to single out one or more individual items or people. Some of the most common distributive adjectives include:
 
