@@ -301,6 +301,7 @@ const nounArray = [
   wordSoba,
   wordMochi,
   wordAnpan,
+  wordTofu,
 ];
 
 export default nounArray;

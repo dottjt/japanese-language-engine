@@ -15,6 +15,7 @@ const wordPerson = createNounWord({
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_HUMAN ],
   kanji: '人',
+  hiragana: 'ひと',
   singular: 'person',
 });
 

@@ -10,14 +10,6 @@ import {
 
 import { createNounWord } from '../../utilWord';
 
-const wordPeach = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
-  nounPluralType: NOUN_PLURAL_GENERAL,
-  nounCategory: [ CATEGORY_FOOD ],
-  singular: 'peach',
-  kanji: '桃',
-});
-
 
 // 60.	調味料	ちょうみりょう	choumi ryou	Seasoning / Condiment / Flavoring / Spices
 

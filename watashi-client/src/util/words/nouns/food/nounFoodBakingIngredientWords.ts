@@ -1,13 +1,13 @@
-import {
-  CATEGORY_FOOD,
-  // CATEGORY_FOOD_DESSERT,
+// import {
+//   CATEGORY_FOOD,
+//   // CATEGORY_FOOD_DESSERT,
 
-  NOUN_PLURAL_GENERAL,
+//   NOUN_PLURAL_GENERAL,
 
-  NOUN_TYPE_SPACE,
-} from '../../../constants/wordConstants';
+//   NOUN_TYPE_SPACE,
+// } from '../../../constants/wordConstants';
 
-import { createNounWord } from '../../utilWord';
+// import { createNounWord } from '../../utilWord';
 
 // granulated sugar: グラニュー糖 (ぐらにゅー とう)
 // brown sugar: 黒砂糖 (くろ ざとう)

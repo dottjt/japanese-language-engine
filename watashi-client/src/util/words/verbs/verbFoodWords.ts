@@ -1,6 +1,6 @@
 import {
   CATEGORY_FOOD,
-  CATEGORY_FOOD_COOK_PREPARTION_ACTIONS,
+  CATEGORY_FOOD_COOK_ACTION_PREPARTION,
 
   SENTENCE_TYPE_VERB_TYPE_RU,
   SENTENCE_TYPE_VERB_TYPE_U,
@@ -9,6 +9,10 @@ import {
 
 import { createVerbWord } from '../utilWord';
 
+
+
+// CATEGORY_FOOD_COOK_ACTION_PREPARTION
+
 // In the case of rice or noodles (“fried rice,” “stir-fried noodles” and so on), this means “to stir-fry” or “to pan fry.” The next verb below is used with meat, vegetables and sautéing. 焼く is for baking pastries, frying pancakes or omelets, grilling, roasting in the oven, pan searing (steak, etc.) and the aforementioned stir-fried noodles and rice.
 
 // to fry, grill, roast, bake: 焼く (やく)
@@ -16,10 +20,10 @@ import { createVerbWord } from '../utilWord';
 
 const wordStirFry = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '炒める',
-  katakana: 'いためる',
+  hiragana: 'いためる',
   infinitive: 'fry', // grill, roast, bake
   presentParticiple: '',
   pastParticiple: '',
@@ -30,10 +34,10 @@ const wordStirFry = createVerbWord({
 
 const wordDeepFry = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '揚げる',
-  katakana: 'あげる',
+  hiragana: 'あげる',
   infinitive: 'deep fry',
   presentParticiple: '',
   pastParticiple: '',
@@ -43,10 +47,10 @@ const wordDeepFry = createVerbWord({
 
 const wordSteam = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_U,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '蒸す',
-  katakana: 'むす',
+  hiragana: 'むす',
   infinitive: 'steam',
   presentParticiple: '',
   pastParticiple: '',
@@ -56,10 +60,10 @@ const wordSteam = createVerbWord({
 
 const wordCut = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '切る',
-  katakana: 'きる',
+  hiragana: 'きる',
   infinitive: 'cut',
   presentParticiple: '',
   pastParticiple: '',
@@ -69,10 +73,10 @@ const wordCut = createVerbWord({
 
 const wordHeat = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '熱する',
-  katakana: 'ねっする',
+  hiragana: 'ねっする',
   infinitive: 'heat',
   presentParticiple: '',
   pastParticiple: '',
@@ -82,10 +86,10 @@ const wordHeat = createVerbWord({
 
 const wordPreHeat = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '予熱をする',
-  katakana: 'よねつをする',
+  hiragana: 'よねつをする',
   infinitive: 'pre-heat',
   presentParticiple: '',
   pastParticiple: '',
@@ -95,10 +99,10 @@ const wordPreHeat = createVerbWord({
 
 const wordMixTogether = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '混ぜる',
-  katakana: 'まぜる',
+  hiragana: 'まぜる',
   infinitive: 'mix together',
   presentParticiple: '',
   pastParticiple: '',
@@ -108,10 +112,10 @@ const wordMixTogether = createVerbWord({
 
 const wordServe = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '盛り付ける',
-  katakana: 'もりつける',
+  hiragana: 'もりつける',
   infinitive: 'serve',
   presentParticiple: '',
   pastParticiple: '',
@@ -121,10 +125,10 @@ const wordServe = createVerbWord({
 
 const wordGrate = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_U,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '卸す',
-  katakana: 'おろす',
+  hiragana: 'おろす',
   infinitive: 'grate', //  (ginger, sesame seeds, etc.)
   presentParticiple: '',
   pastParticiple: '',
@@ -134,10 +138,10 @@ const wordGrate = createVerbWord({
 
 const wordAdd = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '加える',
-  katakana: 'くわえる',
+  hiragana: 'くわえる',
   infinitive: 'add',
   presentParticiple: '',
   pastParticiple: '',
@@ -149,10 +153,10 @@ const wordAdd = createVerbWord({
 
 const wordStewFood = createVerbWord({ // cooking object in water
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '茹でる',
-  katakana: 'ゆでる',
+  hiragana: 'ゆでる',
   infinitive: 'stew',
   presentParticiple: '',
   pastParticiple: '',
@@ -162,10 +166,10 @@ const wordStewFood = createVerbWord({ // cooking object in water
 
 const wordBoilWater = createVerbWord({ // 
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_RU,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '煮る',
-  katakana: 'にる',
+  hiragana: 'にる',
   infinitive: 'boil', // stew, simmer
   presentParticiple: '',
   pastParticiple: '',
@@ -175,10 +179,10 @@ const wordBoilWater = createVerbWord({ //
 
 const wordSimmer = createVerbWord({
   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_U,
-  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   verbType: '',
   kanji: '煮立つ',
-  katakana: 'にたつ',
+  hiragana: 'にたつ',
   infinitive: 'simmer', // come to a simmer
   presentParticiple: '',
   pastParticiple: '',
@@ -209,10 +213,10 @@ const verbArray = [
 
   // const wordTurnOffTheStove = createVerbWord({
   //   verbJapaneseType: SENTENCE_TYPE_VERB_TYPE_U,
-  //   verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_PREPARTION_ACTIONS ],
+  //   verbCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_COOK_ACTION_PREPARTION ],
   //   verbType: '',
   //   kanji: '火を止める',
-  //   katakana: 'ひをとめる',
+  //   hiragana: 'ひをとめる',
   //   infinitive: 'turn off', // turn off the stove
   //   presentParticiple: '',
   //   pastParticiple: '',

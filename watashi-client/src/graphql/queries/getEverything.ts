@@ -66,6 +66,7 @@ const GET_EVERYTHING = gql`{
     nouns @client {
       nounJapanese @client {
         kanji
+        hiragana
       }
       nounEnglish @client {
         singular

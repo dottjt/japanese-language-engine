@@ -66,16 +66,19 @@ declare namespace Util {
 
   export type JapaneseAdjective = {
     kanji: string;
+    hiragana: string;
     __typename: string;
   }
 
   export type JapaneseVerb = {
     kanji: string;
+    hiragana: string;
     __typename: string;
   }
   
   export type JapaneseNoun = {
     kanji: string;
+    hiragana: string;
     __typename: string;
   }
 

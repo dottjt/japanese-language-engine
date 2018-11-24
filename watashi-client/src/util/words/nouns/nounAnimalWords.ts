@@ -16,6 +16,7 @@ const wordCat = createNounWord({
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_ANIMAL, CATEGORY_ANIMATE ],
   kanji: '猫',
+  hiragana: 'ねこ',
   singular: 'cat',
 });
 
@@ -24,6 +25,7 @@ const wordDog = createNounWord({
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_ANIMAL, CATEGORY_ANIMATE ],
   kanji: '犬',
+  hiragana: 'いぬ',
   singular: 'dog',
 });
 

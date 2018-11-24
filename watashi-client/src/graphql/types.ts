@@ -18,10 +18,12 @@ export const sentenceTypes = `
 
   type JapaneseNoun {
     kanji: String
+    hiragana: String
   }
 
   type JapaneseVerb {
     kanji: String
+    hiragana: String
   }
 
   type Noun {

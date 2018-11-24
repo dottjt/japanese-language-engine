@@ -19,7 +19,6 @@ import {
   // VERB_TYPE_LINKING,
   // VERB_TYPE_LINKING_OR_ACTION,
   // VERB_TYPE_TO_BE,
-
 } from '../../constants/wordConstants';
 
 import { createVerbWord } from '../utilWord';
@@ -29,6 +28,7 @@ const wordEat = createVerbWord({
   verbCategory: [ CATEGORY_FOOD, CATEGORY_VERB_ACTION_STATIC ],
   verbType: VERB_TYPE_ACTION_BOTH,
   kanji: '食べる',
+  hiragana: 'たべる',
   infinitive: 'eat',
   presentParticiple: 'eating',
   pastParticiple: 'eaten',
@@ -41,6 +41,7 @@ const wordSleep = createVerbWord({
   verbCategory: [ CATEGORY_VERB_ACTION_STATIC ],
   verbType: VERB_TYPE_ACTION_BOTH,
   kanji: '寝る',
+  hiragana: 'ねる',
   infinitive: 'sleep',
   presentParticiple: 'sleeping',
   pastParticiple: 'slept',
@@ -53,6 +54,7 @@ const wordDrink = createVerbWord({
   verbCategory: [ CATEGORY_DRINK, CATEGORY_VERB_ACTION_STATIC ],
   verbType: VERB_TYPE_ACTION_BOTH,
   kanji: '飲む',
+  hiragana: 'のむ',
   infinitive: 'drink',
   presentParticiple: 'drinking',
   pastParticiple: 'drunk',
@@ -65,6 +67,7 @@ const wordSee = createVerbWord({
   verbCategory: [ CATEGORY_VERB_ACTION_STATIC ],
   verbType: VERB_TYPE_ACTION_BOTH,
   kanji: '見る',
+  hiragana: 'みる',
   infinitive: 'see',
   presentParticiple: 'seeing',
   pastParticiple: 'seen',

@@ -41,7 +41,9 @@ import {
 import {
   CATEGORY_HUMAN_NAME,
   CATEGORY_LOCATION,
+  
   CATEGORY_FOOD,
+
 } from '../constants/wordConstants';
 
 // const VARIATION_TSV = 'VARIATION_TSV';

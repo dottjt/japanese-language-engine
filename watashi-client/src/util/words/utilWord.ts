@@ -10,9 +10,10 @@ import {
   __TYPENAME_ENGLISH_ADJECTIVE,
 } from '../constants/typeNameConstants';
 
-export const createNounWord = ({ nounWordType, nounPluralType, nounCategory, kanji, singular }: any): Util.Noun => ({
+export const createNounWord = ({ nounWordType, nounPluralType, nounCategory, kanji, hiragana, singular }: any): Util.Noun => ({
   nounJapanese: { 
     kanji,
+    hiragana,
     __typename: __TYPENAME_JAPANESE_NOUN,
   },
   nounEnglish: { 
@@ -25,9 +26,10 @@ export const createNounWord = ({ nounWordType, nounPluralType, nounCategory, kan
   __typename: __TYPENAME_NOUN,
 });
 
-export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, infinitive, presentParticiple, preterite, simplePresentContinuousHeSheIt, pastParticiple }: any): Util.Verb => ({
+export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, hiragana, infinitive, presentParticiple, preterite, simplePresentContinuousHeSheIt, pastParticiple }: any): Util.Verb => ({
   verbJapanese: {
     kanji,
+    hiragana,
     __typename: __TYPENAME_JAPANESE_VERB,
   },
   verbEnglish: {
@@ -44,9 +46,10 @@ export const createVerbWord = ({ verbJapaneseType, verbCategory, kanji, infiniti
 });
 
 
-export const createAdjectiveWord = ({ adjectiveType, adjectiveCategory, kanji, positive, comparative, superlative }: any): Util.Adjective => ({
+export const createAdjectiveWord = ({ adjectiveType, adjectiveCategory, kanji, hiragana, positive, comparative, superlative }: any): Util.Adjective => ({
   adjectiveJapanese: {
     kanji,
+    hiragana,
     __typename: __TYPENAME_JAPANESE_ADJECTIVE,
   },
   adjectiveEnglish: {

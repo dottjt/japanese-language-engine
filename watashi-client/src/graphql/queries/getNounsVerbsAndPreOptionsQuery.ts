@@ -4,6 +4,7 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
   nouns @client {
     nounJapanese @client {
       kanji
+      hiragana
     }
     nounEnglish @client {
       singular
@@ -16,6 +17,7 @@ const GET_NOUNS_VERBS_AND_PRE_OPTIONS = gql`{
   verbs @client {
     verbJapanese @client {
       kanji
+      hiragana
     }
     verbEnglish @client {
       infinitive

@@ -15,6 +15,7 @@ const wordHome = createNounWord({
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_LOCATION ],
   kanji: '家',
+  hiragana: 'いえ',  
   singular: 'home',
 });
 
@@ -32,7 +33,7 @@ const wordBuildingTwo = createNounWord({
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_LOCATION ],
   kanji: 'ビル',
-  hiragana: 'biru',
+  hiragana: 'びる',
   singular: 'building',
 });
 
