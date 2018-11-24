@@ -1,10 +1,12 @@
-****# Watashi Engine.
+# Watashi Engine.
 
 Homepage: https://watashiengine.com/ 
 
 ## What is it?
 
-Watashi Engine is a Japanese language engine.
+Watashi Engine is a Japanese/English language engine. It is designed to produce accurate English and Japanese phrases via various configuration options.
+
+NOTE: This project is still in very early alpha, meaning that it isn't yet in a usable state. I will remove this message once I believe it is ready for a hard release, which I approximate will be mid-2019. 
 
 Released under the [GNU GPLv3 licence](https://github.com/dottjt/watashi-engine/blob/master/LICENSE).
 
