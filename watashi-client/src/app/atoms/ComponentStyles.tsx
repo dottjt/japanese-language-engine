@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Flex } from './LayoutStyles';
-import { Heading, Text } from './TextStyles';
+import { Heading } from './TextStyles';
 import { ExternalLink, InternalLink } from './ClickableStyles';
 
 import system from '@rebass/components';
@@ -37,9 +37,6 @@ export const SidebarItemExternal = (props) => (
       >
         {props.children}
       </ExternalLink>  
-        {props.isPremium && (
-          <Text fontSize={1} m={1}>Premium</Text>
-        )}
   </Item>
 );
 
@@ -67,9 +64,6 @@ export const SidebarItem = (props) => (
       routeOptions={props.routeOptions}>
         {props.children}
       </InternalLink> 
-        {props.isPremium && (
-          <Text fontSize={1} m={1}>Premium</Text>
-        )}
   </Item>
 );
 

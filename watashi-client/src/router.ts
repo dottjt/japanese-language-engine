@@ -4,7 +4,7 @@ import browserPlugin from 'router5/plugins/browser';
 import {
   LESSON_TITLE,
   LESSON_PATH,
-} from './util/config/descriptionConfig';
+} from './util/config/lessonConfig';
 
 import {
   ROUTE_TITLE,
@@ -38,6 +38,7 @@ const routes = [
   // Other lesson pages
   { name: ROUTE_TITLE.WELCOME, path: `${ROUTE_PATH.WELCOME}` },
   { name: ROUTE_TITLE.CONTENTS, path: `${ROUTE_PATH.CONTENTS}` },
+  { name: ROUTE_TITLE.PHILOSOPHY, path: `${ROUTE_PATH.PHILOSOPHY}` },
   { name: ROUTE_TITLE.PREREQ, path: `${ROUTE_PATH.PREREQ}` },
   
   // Noun - Basic

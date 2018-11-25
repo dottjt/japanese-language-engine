@@ -16,6 +16,7 @@
 - Incorporate 'preterite'
 - Ability in the front-end to show which words are being used for these exercises.
 - Get adjectives for foods. 
+- Different types of lessons.
 
 # TODO NICE HAVES 
 - Find open contributors. 

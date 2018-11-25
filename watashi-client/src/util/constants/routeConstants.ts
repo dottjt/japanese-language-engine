@@ -3,7 +3,8 @@ export const ROUTE_TITLE = {
   WELCOME: 'Welcome',
   CONTENTS: 'Contents',
   PREREQ: 'Prerequisites',
-  REDIRECT: 'Redirect',
+  PHILOSOPHY: 'Philosophy',
+
   HOME: 'Home',  
   EXERCISES: 'Exercises',
   ABOUT: 'About',
@@ -13,6 +14,8 @@ export const ROUTE_TITLE = {
 
   LOGIN: 'Login',
   SIGN_UP: 'Sign Up',
+  REDIRECT: 'Redirect',
+
   GUIDES: 'Guides',
   TOOLS: 'Tools',
 };
@@ -21,7 +24,8 @@ export const ROUTE_PATH = {
   WELCOME: '/welcome',
   CONTENTS: '/contents',
   PREREQ: '/prerequisites',
-  REDIRECT: '/redirect',
+  PHILOSOPHY: '/philosophy',
+
   HOME: '/',
   EXERCISES: '/exercises',
   ABOUT: '/about',
@@ -29,17 +33,20 @@ export const ROUTE_PATH = {
   ARTICLE: '/article',
   PROFILE: '/profile',
 
-  GUIDES: '/guides',
-  TOOLS: '/tools',
   LOGIN: '/login',
   SIGN_UP: '/sign-up',
+  REDIRECT: '/redirect',
+
+  GUIDES: '/guides',
+  TOOLS: '/tools',
 };
 
 export const ROUTE_DESCRIPTION = {
   WELCOME: 'Hello! Welcome to Watashi Engine! I have been designed to teach you Japanese grammar via the Instantaneous Composition Method!',
   CONTENTS: 'Discover all the amazing Japanese grammar lessons in our extensive Japanese grammar course!',
+  PHILOSOPHY: '',
   PREREQ: 'Here are a few of the prerequisites ',
-  REDIRECT: 'A simple redirect page which helps link our auth provider with our own online database :)',
+  
   HOME: 'Watashi Engine is a Japanese grammar learning web application that uses the Instantaneous Composition Method to teach Japanese Grammar!',
   EXERCISES: '',
   ABOUT: '',
@@ -48,7 +55,9 @@ export const ROUTE_DESCRIPTION = {
   PROFILE: '',
 
   LOGIN: '',
+  SIGN_UP: '',
+  REDIRECT: 'A simple redirect page which helps link our auth provider with our own online database :)',
+
   GUIDES: '',
   TOOLS: '',
-  SIGN_UP: '',
 };

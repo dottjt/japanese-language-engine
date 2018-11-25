@@ -18,26 +18,31 @@ const createRes = (resourceType: string, urlString: string): Util.Resource => {
   };
 };
 
-export const LESSON_SECTIONS_PREMIUM = {
-  S00: false,
-  S01: false,
-  S02: false,
-  S03: false,
-  S04: false,
-  S05: true,
-  S06: true,
-};
 
-export const LESSON_SECTIONS = {
-  S00: 'Introduction',
-  S01: 'Noun Conjugation Basics',
-  S02: 'Noun Basics',
-  S03: 'Verb Conjugation Basics',
-  S04: 'Verb Basics',
-  S05: 'From / Until statements',
-  S06: 'Modifier Basics',
-  // S07: '07',
-}
+// LESSON STRUCTURE
+
+// L001: // Understanding the topic.
+// L002: 
+// L003: 
+// L004: 
+// L005: 
+// L006: 
+// L007: 
+// L008: 
+// L009: 
+// L010: 
+// L011: 
+// L012: 
+// L013: 
+// L014: 
+// L015: 
+// L016: 
+// L017: 
+// L018: 
+// L019: 
+// L020: 
+
+
 
 export const LESSON_PATH = {  
   L001: '/japanese-noun-congjuations',
@@ -74,42 +79,68 @@ export const LESSON_PATH = {
 
 export const lessonPathArray = [LESSON_PATH.L001, LESSON_PATH.L002, LESSON_PATH.L003, LESSON_PATH.L004, LESSON_PATH.L005, LESSON_PATH.L006, LESSON_PATH.L007, LESSON_PATH.L008, LESSON_PATH.L009 ];
 
-export const LESSON_TITLE = {
-  L001: '01 - Noun conjugations',
-
-  L002: '02 - は and も noun statements',
-  L003: '03 - が noun statements',
-  L004: '04 - は vs が noun statements',
-  L005: '05 - は vs も vs が noun statements',
-
-  L006: '06 - る verb conjugations',
-  L007: '07 - う verb conjugations',
-  L008: '08 - Irregular verb conjugations',
-
-  L009: '09 - を verb statements',
-  L010: '10 - に verb statements',
-  L011: '11 - で verb statements',
-  L012: '12 - を vs に verb statements',
-  L013: '13 - に vs で verb statements',
-  L014: '14 - で vs を verb statements',
-  L015: '15 - を vs に vs で verb statements',
-
-  L016: 'から from statement',
-  L017: 'まで until statement',
-
-  L018: 'の noun modifiers',
-  L019: 'Japanese adjective modifiers',
-  L020: 'Japanese adverb modifiers',
-  // L021: 
-  // L022: 
-  // L023: 
-  // L024: 
-  // L025: 
-  // L026: 
-  // L027: 
+export const LESSON_SECTIONS = {
+  S00: 'Course Introduction',
+  S01: 'The Topic',
+  S02: 'The Subject',
+  S03: 'Japanese Topic Particles',
+  S04: 'The Verb',
+  S05: 'The Verb / Subject Agreement',
+  S06: '',
+  // S07: '07',
 };
 
+export const LESSON_TITLE = {
+  // The Topic
+  L001: '001 - ' + 'Essential Linguistics: Topic', /* I am. 私 */
+  L002: '002 - ' + 'Essential Linguistics: Topic POV - I, You, He/She/It, They, Us', /* he is, you are, they are. */
+  L003: '003 - ' + 'Essential Linguistics: Understanding Topic Intent - to be, to have, to do', /* to be/to have/to do */
+  // The Subject 
+  L004: '004 - ' + 'Essential Linguistics: Subject', /* I am a person. It is a bannana.  */
+  L005: '005 - ' + 'Grammar Basics: Present and Past Japanese Noun Conjugations', /* past present. I am a person.  */
+  L006: '006 - ' + 'Grammar Basics: Future Japanese Noun Conjugations', /* I will be a person. */
+  L007: '007 - ' + 'Grammar Basics: Negative Japanese Noun Conjugations', /* I am not a person */
+  L008: '008 - ' + 'Exercise Challenge: Present, Past, Future and Negative Japanese Noun Conjugations',
+  // Japanese Topic Particles
+  L009: '009 - ' + 'Grammar Basics: Introducing the は and も Topic Particle', /* I am also a person.  */
+  L010: '010 - ' + 'Grammar Basics: Introducing the が Topic Particle', /* I am the  */
+  L011: '011 - ' + 'Grammar Comparison: Difference between は and が Noun Statements',
+  L012: '012 - ' + 'Exercise Challenge: は vs も vs が Noun Statements',
+  L013: '013 - ' + 'Watashi Engine Limitations: Topic, Subject and Japanese Nouns',
+  // The Verb
+  L014: '014 - ' + 'Essential Linguistics: Verb',
+  L015: '015 - ' + 'Grammar Basics: る verb conjugations',
+  L016: '016 - ' + 'Grammar Basics: う verb conjugations',
+  L017: '017 - ' + 'Grammar Basics: Irregular verb conjugations',
+  L018: '018 - ' + 'Exercise Challenge: る vs も vs が verb conjugations',
+  // The Verb / Subject agreement
+  L019: '019 - ' + 'Essential Linguistics: Verb / Subject agreement',
+  L020: '020 - ' + 'Grammar Basics: を Verb Statements',
+  L021: '021 - ' + 'Grammar Basics: に Verb Statements',
+  L022: '022 - ' + 'Grammar Basics: で Verb Statements',
+  L023: '023 - ' + 'Grammar Comparison: を vs に Verb Statements', // dunno if each different thing should be it's own module.
+  L024: '024 - ' + 'Grammar Comparison: に vs で Verb Statements',
+  L025: '025 - ' + 'Grammar Comparison: で vs を Verb Statements',
+  L026: '026 - ' + 'Exercise Challenge: を vs に vs で verb statements',
+  
+  L027: '027 - ' + 'から from statement',
+  L028: '028 - ' + 'まで until statement',
+  L029: '029 - ' + 'の noun modifiers',
+  L030: '030 - ' + 'Japanese adjective modifiers',
+  L031: '031 - ' + 'Japanese adverb modifiers',
+  // L032: '032 - ' + 
+  // L033: '033 - ' + 
+  // L034: '034 - ' + 
+  // L035: '035 - ' + 
+  // L036: '036 - ' + 
+  // L037: '037 - ' + 
+  // L038: '038 - ' + 
+  // L039: '039 - ' + 
+  // L040: '040 - ' + 
+  // L041: '041 - ' + 
+};
 
+// NOTE: I don't think this is being used anywhere, or hasn't yet been configured
 export const LESSON_DESCRIPTION = {
   L001: 'Noun conjugations',
 

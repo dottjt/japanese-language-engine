@@ -4,17 +4,16 @@ import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
 // import { lessonPathArray } from '../../util/constants/lessonConstants';
 import { ROUTE_TITLE, ROUTE_DESCRIPTION } from '../../util/constants/routeConstants';
-import { BLOG_TITLE } from '../../util/constants/blogConstants';
-
+// import { BLOG_TITLE } from '../../util/constants/blogConstants';
 // import { randomArrayElement, getExercisesApollo } from '../../util/functions';
 
 import SentenceModule from '../modules/SentenceModule/SentenceModule';
-
 import Helmet from '../components/Helmet';
+import LessonList from '../components/LessonList';
 
 import { PageHeading, SecondaryPageHeading, Text } from '../atoms/TextStyles';
 import { FlexColumn, PageWrapper, List, ListItem } from '../atoms/LayoutStyles';
-import { ExternalLink, InternalLink } from '../atoms/ClickableStyles';
+// import { ExternalLink, InternalLink } from '../atoms/ClickableStyles';
 
 
 class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }> {
@@ -64,12 +63,11 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   />
                 ))}
               </FlexColumn>
-
+{/*                     
               <SecondaryPageHeading>What makes Watashi Engine effective?</SecondaryPageHeading>
               <FlexColumn width={600} mb={4}>
                 <Text>01 - Watashi Engine is entirely focused on what you want to achieve.</Text>
                 <Text>Need to practice sentence translations of only を and に verb sentence variations, using vocabulary specific to JLPT N2, while also relevant to a particular theme, with only negative phrases in polite form, randomly generated without thought?</Text>
-                {/* Then here, actually insert that configuration. */}
                 <Text>Watashi Engine can.</Text>
               </FlexColumn>
 
@@ -95,15 +93,15 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   <ListItem>Actively teaches you Japanese grammar usage in the most effective and intuitive way possible.</ListItem>
                   <ListItem>More than 100 randomly generated grammar exercises.</ListItem>
                 </List>
-              </FlexColumn>
+              </FlexColumn> */}
 
-              <FlexColumn width={600} mb={5}>
+              {/* <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>What it doesn't do</SecondaryPageHeading>
                 <List>
                   <ListItem>Translate arbitrary Japanese text into English.</ListItem>
                   <ListItem>Provide in-depth knowledge of Japanese grammar (instead we use <ExternalLink href='http://www.guidetojapanese.org/'>Kim Tae</ExternalLink> and <ExternalLink href='https://www.wasabi-jpn.com/'>Watashi</ExternalLink> as excellent references).</ListItem>
                 </List>
-              </FlexColumn>
+              </FlexColumn> */}
 
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>Strong use cases</SecondaryPageHeading>
@@ -114,6 +112,13 @@ class Home extends React.Component<PropTypes.IHomeProps, { randomIndex: number }
                   <ListItem>Teachers wanting the ability to easily create grammar exercises for their students.</ListItem>
                 </List>
               </FlexColumn>
+
+              <FlexColumn width={600} mb={5}>
+                <SecondaryPageHeading>Course contents</SecondaryPageHeading>
+                <LessonList/>
+              </FlexColumn>
+
+
 
               <FlexColumn width={600} mb={5}>
                 <SecondaryPageHeading>Try Watashi Engine Today</SecondaryPageHeading>

@@ -72,16 +72,21 @@ import {
   CATEGORY_LOCATION,
   
   CATEGORY_FOOD,
+  CATEGORY_FOOD_FRUIT,
 } from '../constants/wordConstants';
 
 const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   // const unknownSubject = getRandomWordViaCategoryNoun(nouns, [ CATEGORY_SUBJECT_UNKNOWN ]);
   
-  const T_variations = [
-    {  // Is a fruit.
-      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
+  const L011 = [ 
+    {  // Is an apple.
+      sentenceWords: () => genTSV({ topic: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_FOOD_FRUIT ]) }),
       sentenceModifiers: () => {},
     },
+  ];
+
+  const T_variations = [
+    ...L011,
     {  // Is tasty.
       sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
       sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },

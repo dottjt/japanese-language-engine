@@ -19,6 +19,11 @@ export const Button = system({
 );
 Button.displayName = 'Button';
 
+const textDecoration = style({
+  prop: 'textDecoration',
+  cssProperty: 'textDecoration'
+});
+
 export const Link = system({
     extend: BaseLink,
     is: 'a',
@@ -27,10 +32,12 @@ export const Link = system({
     m: 0,
   },
   'fontSize',
+  textDecoration,
 );
 Link.displayName = 'Link';
 
 // ---------------------------------------- // 
+import { style } from 'styled-system'
 
 export const InternalLink = system({
   extend: Link,
@@ -39,11 +46,13 @@ export const InternalLink = system({
     routeName: props.routeName,
     routeOptions: props.routeOptions,
   }),
+  textDecoration: 'none',
 });
 InternalLink.displayName = 'InternalLink';
 
 export const ExternalLink = system({
   extend: Link,
+  textDecoration: 'none',
 });
 ExternalLink.displayName = 'ExternalLink';
 

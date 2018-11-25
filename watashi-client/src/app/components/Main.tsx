@@ -40,9 +40,11 @@ import Profile from '../pages/Profile';
 // import Guides from '../pages/Guides';
 // import Tools from '../pages/Tools';
 
-import Prerequisites from '../pages/Prerequisites';
 import Contents from '../pages/Contents';
 import Welcome from '../pages/Welcome';
+import Philosophy from '../pages/Philosophy';
+import Prerequisites from '../pages/Prerequisites';
+
 import Blog from '../pages/Blog';
 import Article from '../pages/Article';
 import About from '../pages/About';
@@ -93,6 +95,11 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       case ROUTE_TITLE.PREREQ:
         return <Prerequisites/>
 
+      case ROUTE_TITLE.PHILOSOPHY:
+        return <Philosophy/>
+
+
+        
       // case ROUTE_TITLE.LOGIN:
       //   return <Login auth={auth}/>
       

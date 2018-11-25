@@ -2,7 +2,7 @@ import {
   createError,
 } from '../functions';
 
-import { LESSON_PATH } from '../config/descriptionConfig';
+import { LESSON_PATH } from '../config/lessonConfig';
 import { LESSON_PRE_OPTIONS } from '../config/optionsConfig';
 import { LESSON_PRE_MODIFIERS } from '../config/modifiersConfig';
 import { LESSON_PRE_SENTENCE_CONTEXT } from '../config/collectionConfig';

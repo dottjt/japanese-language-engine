@@ -3,7 +3,7 @@ import {
   LESSON_DESCRIPTION,
   LESSON_EXPLANATION,
   LESSON_RESOURCES,
-} from './descriptionConfig';
+} from './lessonConfig';
 
 import {
   LESSON_TOPIC_INTENT,
@@ -16,7 +16,7 @@ import {
   LESSON_SUBJECT_CONNECTION,
   LESSON_SUBJECT_ROLE,
   LESSON_SUBJECT_QUANTITY,
-} from './lessonContextConfig';
+} from './contextConfig';
 
 import {
   LESSON_PRE_OPTIONS,

@@ -109,3 +109,6 @@ https://nihongoichiban.com/home/jlpt-n5-study-material/
 
 // really good for some extra vocab on words.
 http://ilovelanguages.org/japanese_lesson2.php 
+
+
+https://www.learn-japanese-adventure.com/japanese-words.html
