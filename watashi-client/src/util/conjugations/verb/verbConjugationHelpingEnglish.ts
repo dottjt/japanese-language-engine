@@ -72,8 +72,11 @@ const determineVerbConjugationHelpingEnglish = (context: Util.SentenceContext, o
 
   const permissions = verbConjugationHelpingPermissionsEnglish(options);
 
+  // NOTE: I need to check if there is a verb. If there is a verb, then 
+
   if (permissions) {
     // simple present and simple past are the only difference between the common helping verbs
+    
     if (topicIntent === CONTEXT_INTENT_EXISTENCE) {
       switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
         // Simple Past - Event that describes an event or action that happened in the past.     
@@ -258,9 +261,9 @@ const determineVerbConjugationHelpingEnglish = (context: Util.SentenceContext, o
 
 }
 
-const verbConjugationHelpingToBeEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const verbConjugationHelpingEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   return determineVerbConjugationHelpingEnglish(sentenceContext, options);
 };
 
-export default verbConjugationHelpingToBeEnglish;
+export default verbConjugationHelpingEnglish;
 

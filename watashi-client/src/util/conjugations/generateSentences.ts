@@ -42,9 +42,9 @@ import { adjectiveConjugationIndefiniteArticleEnglish } from './adjective/adject
 // import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
 
-const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[]  => {
+const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, additionalContext: string): Util.WordArrayElement[]  => {
   switch (sentenceType) {
-    case SENTENCE_TYPE_VERB: return verbConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
+    case SENTENCE_TYPE_VERB: return verbConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType, additionalContext);
     case SENTENCE_TYPE_VERB_HELPING: return verbConjugationHelpingEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_ADVERB: return adverbConjugationEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE: return adjectiveConjugationIndefiniteArticleEnglish(sentenceWords, modifiers, options, sentenceContext, sentenceType);
@@ -57,11 +57,11 @@ const generateEnglishWord = (sentenceWords: Util.SentenceWords, modifiers: Util.
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateEnglishWord', 'sentenceType does not exist'));
 };
 
-const generateJapaneseWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const generateJapaneseWord = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, additionalContext: string): Util.WordArrayElement[] => {
   switch (sentenceType) {
+    case SENTENCE_TYPE_VERB: return verbConjugationJapanese(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_TOPIC: return nounConjugationJapanese(sentenceWords, modifiers, options, sentenceContext, sentenceType);
     case SENTENCE_TYPE_SUBJECT: return nounConjugationJapanese(sentenceWords, modifiers, options, sentenceContext, sentenceType);
-    case SENTENCE_TYPE_VERB: return verbConjugationJapanese(sentenceWords, modifiers, options, sentenceContext, sentenceType);
   }
 
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateJapaneseWord', 'sentenceType does not exist'));
@@ -75,17 +75,18 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   if (onlyTopic) {
     // NOTE: May need different types of sentences, depending if it's a question or not. :)
     // NOTE: May need sentenceContext for who is being talked to. // you, yourself. this is different to eventPOV. 
-    const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
+    const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
     
-    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
-    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
-    const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE);    
-    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
+    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING, "NA");    
+    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB, "NA");    
+    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "HELPING_VERB_NO_VERB");    
+    const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE, "NA");    
+    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
 
     if (!isQuestion) {
       return {
         japaneseSentence: topicJapanese, 
-        englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
+        englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(verbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
         __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
       };
     } else {
@@ -97,11 +98,11 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     }
   };
   if (onlyVerb) {
-    const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
+    const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "NA");
 
-    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
-    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
-    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
+    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING, "NA");    
+    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB, "NA");    
+    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "NA");
     
     if (!isQuestion) {
       return  {
@@ -114,14 +115,14 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   };
 
   if (onlyTopicAndSubject) {
-    const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);
-    const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
+    const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
+    const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, "NA");
     
-    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC);  
-    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING);    
-    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB);    
-    const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE);    
-    const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
+    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");  
+    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING, "NA");    
+    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB, "NA");    
+    const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE, "NA");    
+    const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, "NA");
 
     if (!isQuestion) {
       return  {
@@ -133,12 +134,12 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
     throw new Error(`Question sentence for onlyTopicAndSubject not created yet.`);
   };
   if (onlySubjectAndVerb) {
-    const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
-    const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
+    const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "NA");
+    const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, "NA");
 
-    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB);
+    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "NA");
 
-    const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT);
+    const subjectEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, "NA");
     
     if (!isQuestion) {
       return {
@@ -153,16 +154,16 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateSentences', 'sentenceType does not exist'));
 };
 
-const generateSentences = (nouns: Util.Noun[], verbs: Util.Verb[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, sentenceContextLambda: () => Util.SentenceContext, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
+const generateSentences = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, sentenceContextLambda: () => Util.SentenceContext, numberOfExercises: number): Util.EnglishJapaneseOptionsSentence[] => 
   Array.from(Array(numberOfExercises)).map(() => {
 
     const options = optionsLambda();
     const modifiers = modifiersLambda();
     const sentenceContext = sentenceContextLambda();
 
-    const { sentenceWords, modifierWords } = generateWords(nouns, verbs, options);
+    const { sentenceWords, sentenceModifiers } = generateWords(nouns, verbs, adjectives, options);
 
-    const phrases = generatePhrases(sentenceWords(), modifierWords, sentenceContext, options);
+    const phrases = generatePhrases(sentenceWords(), sentenceModifiers(), sentenceContext, options);
 
     const englishSentence = phrases.englishSentence.filter(wordArrayElement => wordArrayElement.word !== '');
     const japaneseSentence = phrases.japaneseSentence.filter(wordArrayElement => wordArrayElement.word !== '');

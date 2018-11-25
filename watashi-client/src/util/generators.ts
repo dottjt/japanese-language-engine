@@ -5,10 +5,10 @@ import {
 
 // generatorUtils
 
-const checkIfValueExists = (word: Util.Noun | Util.Verb | Util.Adjective, englishName: string): Util.Noun | Util.Verb | Util.Adjective => {
+const checkIfValueExists = (word: Util.Noun | Util.Verb | Util.Adjective, englishName: string | string[]): Util.Noun | Util.Verb | Util.Adjective => {
   if (word === undefined) {
-    throw new Error(createError('filters.ts', 'checkIfValueExists', `${englishName} does not exist`))
-  } 
+    throw new Error(createError('filters.ts', 'checkIfValueExists', `${englishName} - word: '${word}' does not exist`))
+  };
   return word;
 };
 
@@ -27,16 +27,18 @@ export const getRandomWordNoun = (nouns: Util.Noun[]): Util.Noun => (
   nouns[randomArrayElement(nouns.length)]
 );
 
-const filterSpecifcCategoryNoun = (nouns: Util.Noun[], category: string): Util.Noun[] => (
-  nouns.filter((noun: Util.Noun) => {
-    const checkIfCategoryExistsInCategoryArray = noun.nounCategory.filter(nounCategory => nounCategory === category).length > 0
+const filterSpecifcCategoriesNoun = (nouns: Util.Noun[], categories: string[]): Util.Noun[] => {
+  const randomCategory = categories[randomArrayElement(categories.length)];
+
+  return nouns.filter((noun: Util.Noun) => {
+    const checkIfCategoryExistsInCategoryArray = noun.nounCategory.filter(nounCategory => nounCategory === randomCategory).length > 0
     return checkIfCategoryExistsInCategoryArray ? true : false 
   })
-);
+};
 
-export const getRandomWordViaCategoryNoun = (nouns: Util.Noun[], category: string): Util.Noun => {
-  const getCategoryWords = filterSpecifcCategoryNoun(nouns, category);
-  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], category) as Util.Noun
+export const getRandomWordViaCategoryNoun = (nouns: Util.Noun[], categories: string[]): Util.Noun => {
+  const getCategoryWords = filterSpecifcCategoriesNoun(nouns, categories);
+  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], categories) as Util.Noun
 }
 
 
@@ -54,16 +56,18 @@ export const getRandomWordVerb = (verbs: Util.Verb[]): Util.Verb => (
   verbs[randomArrayElement(verbs.length)]
 );
 
-const filterSpecifcCategoryVerb = (verbs: Util.Verb[], category: string): Util.Verb[] => (
-  verbs.filter((noun: Util.Verb) => {
-    const checkIfCategoryExistsInCategoryArray = noun.verbCategory.filter(nounCategory => nounCategory === category).length > 0
+const filterSpecifcCategoriesVerb = (verbs: Util.Verb[], categories: string[]): Util.Verb[] => {
+  const randomCategory = categories[randomArrayElement(categories.length)];
+
+  return verbs.filter((noun: Util.Verb) => {
+    const checkIfCategoryExistsInCategoryArray = noun.verbCategory.filter(nounCategory => nounCategory === randomCategory).length > 0
     return checkIfCategoryExistsInCategoryArray ? true : false 
   })
-);
+};
 
-export const getRandomWordViaCategoryVerb = (verbs: Util.Verb[], category: string): Util.Verb => {
-  const getCategoryWords = filterSpecifcCategoryVerb(verbs, category);
-  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], category) as Util.Verb
+export const getRandomWordViaCategoryVerb = (verbs: Util.Verb[], categories: string[]): Util.Verb => {
+  const getCategoryWords = filterSpecifcCategoriesVerb(verbs, categories);
+  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], categories) as Util.Verb
 }
 
 
@@ -73,7 +77,7 @@ export const getRandomWordViaCategoryVerb = (verbs: Util.Verb[], category: strin
 
 export const filterSpecifcWordAdjective = (adjectives: Util.Adjective[], englishName: string): Util.Adjective => (
   checkIfValueExists(adjectives.filter((noun: Util.Adjective): boolean => (
-    noun.adjectiveEnglish.infinitive === englishName
+    noun.adjectiveEnglish.positive === englishName
   ))[0], englishName) as Util.Adjective
 );
 
@@ -81,16 +85,17 @@ export const getRandomWordAdjective = (adjectives: Util.Adjective[]): Util.Adjec
   adjectives[randomArrayElement(adjectives.length)]
 );
 
-const filterSpecifcCategoryAdjective = (adjectives: Util.Adjective[], category: string): Util.Adjective[] => (
-  adjectives.filter((noun: Util.Adjective) => {
-    const checkIfCategoryExistsInCategoryArray = noun.adjectiveCategory.filter(nounCategory => nounCategory === category).length > 0
+const filterSpecifcCategoriesAdjective = (adjectives: Util.Adjective[], categories: string[]): Util.Adjective[] => {
+  const randomCategory = categories[randomArrayElement(categories.length)];
+  return adjectives.filter((noun: Util.Adjective) => {
+    const checkIfCategoryExistsInCategoryArray = noun.adjectiveCategory.filter(nounCategory => nounCategory === randomCategory).length > 0
     return checkIfCategoryExistsInCategoryArray ? true : false 
   })
-);
+};
 
-export const getRandomWordViaCategoryAdjective = (adjectives: Util.Adjective[], category: string): Util.Adjective => {
-  const getCategoryWords = filterSpecifcCategoryAdjective(adjectives, category);
-  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], category) as Util.Adjective
+export const getRandomWordViaCategoryAdjective = (adjectives: Util.Adjective[], categories: string[]): Util.Adjective => {
+  const getCategoryWords = filterSpecifcCategoriesAdjective(adjectives, categories);
+  return checkIfValueExists(getCategoryWords[randomArrayElement(getCategoryWords.length)], categories) as Util.Adjective
 }
 
 // export const filterSpecifcMetaVerb = (nouns: Util.Verb[], metaProperty: string): Util.Verb[] => (

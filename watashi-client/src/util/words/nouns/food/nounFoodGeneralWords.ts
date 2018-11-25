@@ -36,6 +36,15 @@ const wordVegetable = createNounWord({
   singular: 'vegetable',
 });
 
+const wordFruit = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_GENERAL ],
+  kanji: 'フルーツ',
+  hiragana:	'フルーツ',
+  singular: 'fruit',
+});
+
 const wordJapaneseFood = createNounWord({ // japanese dish, japanese cooking
   nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
@@ -162,6 +171,7 @@ const nounArray = [
   wordFood,
   wordDrink,
   wordVegetable,
+  wordFruit,
   wordJapaneseFood,
   wordBreakfast,
   wordBreakfastTwo,

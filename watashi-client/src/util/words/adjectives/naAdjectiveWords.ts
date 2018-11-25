@@ -5,7 +5,7 @@
 import { createAdjectiveWord } from '../utilWord';
 
 const wordLike = createAdjectiveWord({ // , love
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '好き',
   hiragana: 'すき',
@@ -13,7 +13,7 @@ const wordLike = createAdjectiveWord({ // , love
 });
 
 const wordWonderful = createAdjectiveWord({ // enviable
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '結構',
   hiragana: 'けっこう',
@@ -21,7 +21,7 @@ const wordWonderful = createAdjectiveWord({ // enviable
 });
 
 const wordFamous = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '有名',
   hiragana: 'ゆうめい',
@@ -29,7 +29,7 @@ const wordFamous = createAdjectiveWord({
 });
 
 const wordPretty = createAdjectiveWord({ //beautiful
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: 'きれい',
   hiragana: 'きれい',
@@ -37,7 +37,7 @@ const wordPretty = createAdjectiveWord({ //beautiful
 });
 
 const wordPolite = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '丁寧',
   hiragana: 'ていねい',
@@ -45,7 +45,7 @@ const wordPolite = createAdjectiveWord({
 });
 
 const wordDislike = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '嫌い',
   hiragana: 'きらい',
@@ -53,7 +53,7 @@ const wordDislike = createAdjectiveWord({
 });
 
 const wordQuiet = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '静か',
   hiragana: 'しずか',
@@ -61,7 +61,7 @@ const wordQuiet = createAdjectiveWord({
 });
 
 const wordFreeTime = createAdjectiveWord({ // (time)
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '暇',
   hiragana: 'ひま',
@@ -69,7 +69,7 @@ const wordFreeTime = createAdjectiveWord({ // (time)
 });
 
 const wordLively = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '賑やか',
   hiragana: 'にぎやか',
@@ -77,7 +77,7 @@ const wordLively = createAdjectiveWord({
 });
 
 const wordUseful = createAdjectiveWord({ // convenient
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '便利',
   hiragana: 'べんり',
@@ -85,7 +85,7 @@ const wordUseful = createAdjectiveWord({ // convenient
 });
 
 const wordHealthy = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '元気',
   hiragana: 'げんき',
@@ -93,7 +93,7 @@ const wordHealthy = createAdjectiveWord({
 });
 
 const wordVarious = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '色々',
   hiragana: 'いろいろ',
@@ -101,7 +101,7 @@ const wordVarious = createAdjectiveWord({
 });
 
 const wordOK = createAdjectiveWord({ // fine
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '大丈夫',
   hiragana: 'だいじょうぶ',
@@ -109,7 +109,7 @@ const wordOK = createAdjectiveWord({ // fine
 });
 
 const wordRobust = createAdjectiveWord({ // Healthy, 
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '丈夫',
   hiragana: 'じょうぶ',
@@ -117,7 +117,7 @@ const wordRobust = createAdjectiveWord({ // Healthy,
 });
 
 const wordTerrible = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '大変',
   hiragana: 'たいへん',
@@ -125,7 +125,7 @@ const wordTerrible = createAdjectiveWord({
 });
 
 const wordComfortable = createAdjectiveWord({ // easy
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '楽',
   hiragana: 'らく',
@@ -133,7 +133,7 @@ const wordComfortable = createAdjectiveWord({ // easy
 });
 
 const wordUnpleasant = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: 'いや',
   hiragana: 'いや',
@@ -141,7 +141,7 @@ const wordUnpleasant = createAdjectiveWord({
 });
 
 const wordImportant = createAdjectiveWord({ // ,precious 
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '大切',
   hiragana: 'たいせつ',
@@ -149,7 +149,7 @@ const wordImportant = createAdjectiveWord({ // ,precious
 });
 
 const wordSkilled = createAdjectiveWord({ // good, 
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '上手',
   hiragana: 'じょうず',
@@ -157,7 +157,7 @@ const wordSkilled = createAdjectiveWord({ // good,
 });
 
 const wordUnskilled = createAdjectiveWord({ // bad at, 
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '下手',
   hiragana: 'へた',
@@ -165,7 +165,7 @@ const wordUnskilled = createAdjectiveWord({ // bad at,
 });
 
 const wordToFullOfPossibility = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '一生懸命',
   hiragana: 'いっしょうけんめい',
@@ -173,7 +173,7 @@ const wordToFullOfPossibility = createAdjectiveWord({
 });
 
 const wordDangerous = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '危険',
   hiragana: 'きけん',
@@ -181,7 +181,7 @@ const wordDangerous = createAdjectiveWord({
 });
 
 const wordDissapointing = createAdjectiveWord({ // regrettable
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '残念',
   hiragana: 'ざんねん',
@@ -189,7 +189,7 @@ const wordDissapointing = createAdjectiveWord({ // regrettable
 });
 
 const wordWorry = createAdjectiveWord({ // care, 
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '心配',
   hiragana: 'しんぱい',
@@ -197,7 +197,7 @@ const wordWorry = createAdjectiveWord({ // care,
 });
 
 const wordUnrestrained = createAdjectiveWord({ // free, 
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '自由',
   hiragana: 'じゆう',
@@ -205,7 +205,7 @@ const wordUnrestrained = createAdjectiveWord({ // free,
 });
 
 const wordSufficient = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '十分',
   hiragana: 'じゅうぶん',
@@ -213,7 +213,7 @@ const wordSufficient = createAdjectiveWord({
 });
 
 const wordPassionate = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '大好き',
   hiragana: 'だいすき',
@@ -221,7 +221,7 @@ const wordPassionate = createAdjectiveWord({
 });
 
 const wordSuitable = createAdjectiveWord({ // proper,
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '適当',
   hiragana: 'てきとう',
@@ -229,7 +229,7 @@ const wordSuitable = createAdjectiveWord({ // proper,
 });
 
 const wordSpecial = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '特別',
   hiragana: 'とくべつ',
@@ -237,7 +237,7 @@ const wordSpecial = createAdjectiveWord({
 });
 
 const wordEager = createAdjectiveWord({ // enthusiastic
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '熱心',
   hiragana: 'ねっしん',
@@ -245,7 +245,7 @@ const wordEager = createAdjectiveWord({ // enthusiastic
 });
 
 const wordNecessary = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '必要',
   hiragana: 'ひつよう',
@@ -253,7 +253,7 @@ const wordNecessary = createAdjectiveWord({
 });
 
 const wordSerious = createAdjectiveWord({ // earnest
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: 'まじめ',
   hiragana: 'まじめ',
@@ -261,7 +261,7 @@ const wordSerious = createAdjectiveWord({ // earnest
 });
 
 const wordStraight = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '真直ぐ',
   hiragana: 'まっすぐ',
@@ -269,7 +269,7 @@ const wordStraight = createAdjectiveWord({
 });
 
 const wordUnreasonnable = createAdjectiveWord({
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '無理',
   hiragana: 'むり',
@@ -277,14 +277,12 @@ const wordUnreasonnable = createAdjectiveWord({
 });
 
 const wordSplendid = createAdjectiveWord({ // Excellent, ,fine
-  adjectiveType: '',
+  adjectiveType: 'TODO',
   adjectiveCategory: [ ],
   kanji: '立派',
   hiragana: 'りっぱ',
   positive:	'splendid', // Excellent, ,fine
 });
-
-
     
 const adjectiveArray = [
   wordLike,

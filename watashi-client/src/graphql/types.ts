@@ -11,7 +11,18 @@ export const sentenceTypes = `
     pastParticiple: String
     simplePresentContinuousHeSheIt: String
   }
-  
+
+  EnglishAdjective {
+    positive: String
+    comparative?: String
+    superlative?: String
+  }
+
+  JapaneseAdjective {
+    kanji: String
+    hiragana: String
+  }
+
   type EnglishNoun {
     singular: String
   }
@@ -29,24 +40,28 @@ export const sentenceTypes = `
   type Noun {
     nounJapanese: JapaneseNoun
     nounEnglish: EnglishNoun
-    nounCategory: [string]
+    nounCategory: [ String ]
     nounWordType: String
     nounPluralType: String
-    __typename: String
   }
 
   type Verb {
     verbJapanese: JapaneseVerb
     verbEnglish: EnglishVerb
     verbJapaneseType: String
-    verbCategory: [string]
-    __typename: String
+    verbCategory: [ String ]
+  }
+
+  type Adjective {
+    adjectiveJapanese: JapaneseAdjective
+    adjectiveEnglish: EnglishAdjective
+    adjectiveCategory: [ String ]
+    adjectiveType: String
   }
 
   type WordArrayElement {
     word: String
     tag: String
-    __typename: String
   }
 
   type EnglishJapaneseOptionsSentence {
@@ -76,16 +91,16 @@ export const optionTypes = `
     toggleSentenceHide: Boolean
   }
   
-  export type PreModifiers = {
-    topicNoArray: [String]
-    subjectNoArray: [String]
-    topicAdjectiveArray: [String]
-    topicAdverbArray: [String]
-    subjectAdjectiveArray: [String]
-    subjectAdverbArray: [String]
+  PreModifiers {
+    topicNoArray: [ String ]
+    subjectNoArray: [ String ]
+    topicAdjectiveArray: [ String ]
+    topicAdverbArray: [ String ]
+    subjectAdjectiveArray: [ String ]
+    subjectAdverbArray: [ String ]
   };
 
-  export type Modifiers = {
+  Modifiers {
     selectedTopicNo: String
     selectedSubjectNo: String
     selectedTopicAdjective: String
@@ -96,12 +111,12 @@ export const optionTypes = `
 
 
   type PreOptions {
-    politenessArray: [String]
-    variationArray: [String]
-    polarityArray: [String]
-    genderArray: [String]
-    questionArray: [String]
-    themesArray: [String]
+    politenessArray: [ String ]
+    variationArray: [ String ]
+    polarityArray: [ String ]
+    genderArray: [ String ]
+    questionArray: [ String ]
+    themesArray: [ String ]
   }
 
   type Options {
@@ -123,19 +138,19 @@ export const optionTypes = `
   }
 
   type PreSentenceContext {    
-    topicIntentArray: [String]
+    topicIntentArray: [ String ]
 
-    topicProximityArray: [String]
-    topicDestinationArray: [String]
-    eventDirectionArray: [String]
+    topicProximityArray: [ String ]
+    topicDestinationArray: [ String ]
+    eventDirectionArray: [ String ]
 
-    eventOccuranceArray: [String]
-    eventDurationArray: [String]
-    eventPOVArray: [String]
+    eventOccuranceArray: [ String ]
+    eventDurationArray: [ String ]
+    eventPOVArray: [ String ]
 
-    subjectConnectionArray: [String]
-    subjectRoleArray: [String]
-    subjectQuantityArray: [String]
+    subjectConnectionArray: [ String ]
+    subjectRoleArray: [ String ]
+    subjectQuantityArray: [ String ]
   }
 
   type SentenceContext {    

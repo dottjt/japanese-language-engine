@@ -33,7 +33,16 @@
 // red pepper or chili pepper: 唐辛子 (とうがらし) or パプリカ (ぱぷりか)
 // shishito pepper: 獅子唐 (ししとう)
 
-
+// Avocados	アボカド [abokado]	
+// Beans	豆 [mame]	
+// Corn	とうもろこし [toumorokoshi]	
+// Cucumbers	キューリ [kyuuri]	
+// Lettuce	レタス [retasu]	
+// Olives	オリーブ [oriibu]	
+// Onions	タマネギ、玉葱 [tamanegi]	
+// Potatoes	ジャガイモ [jagaimo]	
+// Pumpkin	カボチャ [kabocha]	
+// Tomatoes	トマト [tomato]	
 
 
 

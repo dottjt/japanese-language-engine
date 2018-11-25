@@ -21,7 +21,7 @@ const wordApple = createNounWord({ // リンゴ
 });
 
 const wordOrange = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'orange',
@@ -30,7 +30,7 @@ const wordOrange = createNounWord({
 });
 
 const wordJapanesePlum = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'japanese plum',
@@ -39,7 +39,7 @@ const wordJapanesePlum = createNounWord({
 });
 
 const wordWatermelon = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'watermelon',
@@ -48,7 +48,7 @@ const wordWatermelon = createNounWord({
 });
 
 const wordGrape = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'grape',
@@ -56,8 +56,8 @@ const wordGrape = createNounWord({
   hiragana: 'ぶどう',
 });
 
-const wordPear = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+const wordPear = createNounWord({ // NOTE: or should it just be 梨?
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'pear',
@@ -66,7 +66,7 @@ const wordPear = createNounWord({
 });
 
 const wordGrapefruit = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'grapefruit',
@@ -75,7 +75,7 @@ const wordGrapefruit = createNounWord({
 });
 
 const wordBanana = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'banana',
@@ -84,7 +84,7 @@ const wordBanana = createNounWord({
 });
 
 const wordCherry = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'cherry',
@@ -93,7 +93,7 @@ const wordCherry = createNounWord({
 });
 
 const wordStrawberry = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'strawberry',
@@ -102,7 +102,7 @@ const wordStrawberry = createNounWord({
 });
 
 const wordPeach = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'peach',
@@ -111,7 +111,7 @@ const wordPeach = createNounWord({
 });
 
 const wordFig = createNounWord({
-  nounWOrdType: NOUN_TYPE_SPACE,
+  nounWordType: NOUN_TYPE_SPACE,
   nounPluralType: NOUN_PLURAL_GENERAL,
   nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
   singular: 'fig',
@@ -119,6 +119,23 @@ const wordFig = createNounWord({
   hiragana: 'いちじく',
 });
 
+const wordLemon = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
+  singular: 'lemon',
+  kanji: 'レモン',
+  hiragana: 'レモン',
+});
+
+const wordPineapple = createNounWord({
+  nounWordType: NOUN_TYPE_SPACE,
+  nounPluralType: NOUN_PLURAL_GENERAL,
+  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_FRUIT ],
+  singular: 'pineapple',
+  kanji: 'パイナップル',
+  hiragana: 'パイナップル',
+});
 
 const nounArray = [
   wordApple,
@@ -133,6 +150,8 @@ const nounArray = [
   wordStrawberry,
   wordPeach,
   wordFig,
+  wordLemon,
+  wordPineapple,
 ];
 
 export default nounArray;

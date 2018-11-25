@@ -5,19 +5,16 @@ import {
 
 import { 
   filterSpecifcWordNoun,
-  // filterSpecifcCategoryNoun,
   // getRandomWordNoun,
   getRandomWordViaCategoryNoun,
 
   filterSpecifcWordVerb,
-  // filterSpecifcCategoryVerb,
   getRandomWordVerb,
   // getRandomWordViaCategoryVerb,
 
   // filterSpecifcWordAdjective,
-  // filterSpecifcCategoryAdjective,
   // getRandomWordAdjective,
-  // getRandomWordViaCategoryAdjective,
+  getRandomWordViaCategoryAdjective,
 
 } from '../generators';
 
@@ -68,7 +65,7 @@ import {
 
 import {
   // CATEGORY_TOPIC_UNKNOWN,
-  CATEGORY_SUBJECT_UNKNOWN,
+  // CATEGORY_SUBJECT_UNKNOWN,
   // CATEGORY_VERB_UNKNOWN,
 
   CATEGORY_HUMAN_NAME,
@@ -77,45 +74,42 @@ import {
   CATEGORY_FOOD,
 } from '../constants/wordConstants';
 
-
-
-const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
-  const unknownSubject = getRandomWordViaCategoryNoun(nouns, CATEGORY_SUBJECT_UNKNOWN);
+const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
+  // const unknownSubject = getRandomWordViaCategoryNoun(nouns, [ CATEGORY_SUBJECT_UNKNOWN ]);
   
   const T_variations = [
-    {  // Is person.
-      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'person') , subject: unknownSubject }),
+    {  // Is a fruit.
+      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
       sentenceModifiers: () => {},
     },
-    {  // Is person.
-      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'person') , subject: unknownSubject }),
-      sentenceModifiers: () => {}
+    {  // Is tasty.
+      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
+      sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
     }
   ];
 
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(T_variations);
   }
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateWords', `${selectedTheme} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'T_variations', `${selectedTheme} does not exist`));
 };
 
-const generate_TS_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
+const generate_TS_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   
   const TS_variations = [
     { 
-      sentenceWords: () => genTSV({ topic: getRandomWordViaCategoryNoun(nouns, CATEGORY_HUMAN_NAME), subject: filterSpecifcWordNoun(nouns, 'person') }),
+      sentenceWords: () => genTSV({ topic: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_HUMAN_NAME ]), subject: filterSpecifcWordNoun(nouns, 'person') }),
       sentenceModifiers: () => {}
     }
-    
   ];
 
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(TS_variations);
   }
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateWords', `${selectedTheme} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'TS_variations', `${selectedTheme} does not exist`));
 };
 
-const generate_V_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
+const generate_V_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   
   const V_variations = [
     {
@@ -127,14 +121,14 @@ const generate_V_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selectedT
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(V_variations);
   }
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateWords', `${selectedTheme} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'generate_V_variations', `${selectedTheme} does not exist`));
 };
 
-const generate_WO_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
+const generate_WO_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   
   const WO_SV_variations = [
     {
-      sentenceWords: () => genTSV({ subject: getRandomWordViaCategoryNoun(nouns, CATEGORY_FOOD), verb: filterSpecifcWordVerb(verbs, 'eat') }),
+      sentenceWords: () => genTSV({ subject: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_FOOD ]), verb: filterSpecifcWordVerb(verbs, 'eat') }),
       sentenceModifiers: () => {},
     }
   ];
@@ -142,14 +136,14 @@ const generate_WO_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selec
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(WO_SV_variations);
   }
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateWords', `${selectedTheme} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'generate_WO_SV_variations', `${selectedTheme} does not exist`));
 };
 
-const generate_NI_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
+const generate_NI_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   
   const NI_SV_variations = [
     {
-      sentenceWords: () => genTSV({ subject: getRandomWordViaCategoryNoun(nouns, CATEGORY_LOCATION), verb: filterSpecifcWordVerb(verbs, 'go') }),
+      sentenceWords: () => genTSV({ subject: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_LOCATION ]), verb: filterSpecifcWordVerb(verbs, 'go') }),
       sentenceModifiers: () => {},
     }
   ];
@@ -157,21 +151,21 @@ const generate_NI_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selec
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(NI_SV_variations);
   }
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateWords', `${selectedTheme} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'generate_NI_SV_variations', `${selectedTheme} does not exist`));
 };
 
-const generate_DE_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
+const generate_DE_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   
   const DE_SV_variations = [
     {
-      sentenceWords: () => genTSV({ subject: getRandomWordViaCategoryNoun(nouns, CATEGORY_LOCATION), verb: filterSpecifcWordVerb(verbs, 'go') }),
+      sentenceWords: () => genTSV({ subject: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_LOCATION ]), verb: filterSpecifcWordVerb(verbs, 'go') }),
       sentenceModifiers: () => {},
     }
   ];
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(DE_SV_variations);
   }
-  throw new Error(createError('conjugations/generateWords.tsx', 'generateWords', `${selectedTheme} does not exist`));
+  throw new Error(createError('conjugations/generateWords.tsx', 'generate_DE_SV_variations', `${selectedTheme} does not exist`));
 };
 
 
@@ -181,19 +175,19 @@ const generate_DE_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], selec
 // getRandomWordNoun,
 // getRandomWordViaCategoryNoun,
 
-const generateWords = (nouns: Util.Noun[], verbs: Util.Verb[], options: Util.Options): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () =>  Util.SentenceModifierWords } => {
+const generateWords = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], options: Util.Options): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () =>  Util.SentenceModifierWords } => {
   const selectedVariation = options.selectedVariation;
   const selectedTheme = options.selectedTheme;
 
   switch(`${selectedVariation}`) {
-    case `${T}`:     return generate_T_variations(nouns, verbs, selectedTheme);
-    case `${WA_TS}`: return generate_TS_variations(nouns, verbs, selectedTheme);
-    case `${MO_TS}`: return generate_TS_variations(nouns, verbs, selectedTheme);
-    case `${GA_TS}`: return generate_TS_variations(nouns, verbs, selectedTheme);
-    case `${V}`:     return generate_V_variations(nouns, verbs, selectedTheme);
-    case `${WO_SV}`: return generate_WO_SV_variations(nouns, verbs, selectedTheme);
-    case `${NI_SV}`: return generate_NI_SV_variations(nouns, verbs, selectedTheme);
-    case `${DE_SV}`: return generate_DE_SV_variations(nouns, verbs, selectedTheme);
+    case `${T}`:     return generate_T_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${WA_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${MO_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${GA_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${V}`:     return generate_V_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${WO_SV}`: return generate_WO_SV_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${NI_SV}`: return generate_NI_SV_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${DE_SV}`: return generate_DE_SV_variations(nouns, verbs, adjectives, selectedTheme);
     case `${KARA_TS}`: 
     case `${MADE_TS}`:
   };

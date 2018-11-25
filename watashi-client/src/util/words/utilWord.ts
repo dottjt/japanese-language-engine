@@ -53,8 +53,8 @@ export const createAdjectiveWord = ({ adjectiveType, adjectiveCategory, kanji, h
   },
   adjectiveEnglish: {
     positive,
-    comparative,
-    superlative, 
+    // comparative,
+    // superlative, 
     __typename: __TYPENAME_ENGLISH_ADJECTIVE,
   },
   adjectiveCategory,

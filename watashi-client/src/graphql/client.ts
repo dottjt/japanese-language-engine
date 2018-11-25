@@ -15,12 +15,13 @@ import {
 
 import { index, sentenceTypes, optionTypes } from './types';
 
-import { nounWords, verbWords } from '../util/words/collection';
+import { nounWords, verbWords, adjectiveWords } from '../util/words/collection';
 // import { contextSubjectRoleArrayLength } from '../util/constants/contextConstants';
 
 const defaults = {
   nouns: nounWords,
   verbs: verbWords,
+  adjectives: adjectiveWords,
   sentenceDisplayOptions: {
     toggleSentenceStats: true,
     toggleSentenceOrder: false, 

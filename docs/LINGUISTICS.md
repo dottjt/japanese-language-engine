@@ -104,3 +104,8 @@ https://www.fluentu.com/blog/japanese/japanese-food-vocabulary/ - general foods 
 
 // good N5 related vocab things. 
 https://nihongoichiban.com/home/jlpt-n5-study-material/
+
+
+
+// really good for some extra vocab on words.
+http://ilovelanguages.org/japanese_lesson2.php 

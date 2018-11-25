@@ -61,8 +61,60 @@ import {
   __TYPENAME_CONJUGATED_ENGLISH_VERB,
 } from '../../constants/typeNameConstants';
 
+const determineVerbCongjuationCommonEnglish = (verb: Util.Verb, sentenceContext: Util.SentenceContext, additionalContext: string): { infinitive: string, presentParticiple: string, pastParticiple: string, simplePresentContinuousHeSheIt: string } => {
+  if (additionalContext === "HELPING_VERB_NO_VERB") {
+    
+    switch(`${sentenceContext.selectedEventOccurance}${sentenceContext.selectedEventDuration}`) {
+      case `${CONTEXT_EVENT_OCCURANCE_PAST}${CONTEXT_EVENT_DURATION_COMPLETE}`:
+      case `${CONTEXT_EVENT_OCCURANCE_NOW}${CONTEXT_EVENT_DURATION_COMPLETE}`:
+        return {
+          infinitive: '',
+          presentParticiple: '',
+          // preterite: '',
+          pastParticiple: '',
+          simplePresentContinuousHeSheIt: '',  
+        }
+      default: 
+        if (sentenceContext.selectedTopicIntent === CONTEXT_INTENT_EXISTENCE) {
+          return {
+            infinitive: 'be',
+            presentParticiple: 'being',
+            // preterite: 'was',
+            pastParticiple: 'been',
+            simplePresentContinuousHeSheIt: 'is',  
+          };
+        }
+        if (sentenceContext.selectedTopicIntent === CONTEXT_INTENT_POSSESSION) {
+          return {
+            infinitive: 'have',
+            presentParticiple: 'having',
+            // preterite: 'had',
+            pastParticiple: 'had',
+            simplePresentContinuousHeSheIt: 'has',  
+          };
+        }
+        if (sentenceContext.selectedTopicIntent === CONTEXT_INTENT_ACTION) {
+          return {
+            infinitive: 'did',
+            presentParticiple: 'do',
+            // preterite: 'did',
+            pastParticiple: 'done',
+            simplePresentContinuousHeSheIt: 'does',  
+          };
+        }
+      }
+  }
 
-const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext): Util.WordArrayElement[] => {
+  return {
+    infinitive: verb.verbEnglish.infinitive, // "to hack";
+    presentParticiple: verb.verbEnglish.presentParticiple, // "hacking";
+    // preterite: '',
+    pastParticiple: verb.verbEnglish.pastParticiple, //"hacked";
+    simplePresentContinuousHeSheIt: verb.verbEnglish.simplePresentContinuousHeSheIt, // "hacks"; 
+  };
+}
+
+const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.SentenceContext, additionalContext: string): Util.WordArrayElement[] => {
   // Note: This needs to be scoped out for to be and other things. 
 
   const topicIntent = context.selectedTopicIntent;
@@ -71,18 +123,12 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
   const eventDuration = context.selectedEventDuration;
   const eventPOV = context.selectedEventPOV;
 
-  const infinitive = verb.verbEnglish.infinitive; // "to hack";
-  const presentParticiple = verb.verbEnglish.presentParticiple; // "hacking";
-  // const preterite = verb.verbEnglish.preterite; // "hacked";
-  const pastParticiple = verb.verbEnglish.pastParticiple; //"hacked";
-  const simplePresentContinuousHeSheIt = verb.verbEnglish.simplePresentContinuousHeSheIt; // "hacks";
-
-
-  // const infinitive = // "to hack";
-  // const presentParticiple = // "hacking";
-  // const pastParticiple = //"hacked";
-  // const simplePresentContinuousHeSheIt = // "hacks";
-
+  const { 
+    infinitive,
+    presentParticiple,
+    pastParticiple,
+    simplePresentContinuousHeSheIt,
+  } = determineVerbCongjuationCommonEnglish(verb, context, additionalContext);
 
   // simple present and simple past are the only difference between the common helping verbs
   if (topicIntent === CONTEXT_INTENT_EXISTENCE) {
@@ -268,12 +314,11 @@ const determineVerbConjugationEnglish = (verb: Util.Verb, context: Util.Sentence
 }
 
 
-const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
+const verbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string, additionalContext: string): Util.WordArrayElement[] => {
   const verb = filtersentenceType(words, sentenceType) as Util.Verb;
-  const verbConjugation = determineVerbConjugationEnglish(verb, sentenceContext);
+  const verbConjugation = determineVerbConjugationEnglish(verb, sentenceContext, additionalContext);
 
   return verbConjugation;
 };
 
 export default verbConjugationEnglish;
-

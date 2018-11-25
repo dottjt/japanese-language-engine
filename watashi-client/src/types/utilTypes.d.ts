@@ -45,8 +45,8 @@ declare namespace Util {
 
   export type EnglishAdjective = {
     positive: string;
-    comparative: string;
-    superlative: string;
+    comparative?: string;
+    superlative?: string;
     __typename: string;
   }
 

@@ -3,6 +3,7 @@ import nounAnimalWords from './nounAnimalWords';
 import nounHumanNameWords from './nounHumanNameWords';
 import nounLocationWords from './nounLocationWords';
 import nounWords from './nounWords';
+import food from './food';
 
 export default [
   ...humanNameWords,
@@ -10,4 +11,5 @@ export default [
   ...nounHumanNameWords,
   ...nounLocationWords,
   ...nounWords,
+  ...food,
 ];

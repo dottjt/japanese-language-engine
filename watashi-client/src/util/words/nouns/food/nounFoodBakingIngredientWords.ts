@@ -31,6 +31,10 @@
 // walnuts: 胡桃 (くるみ)
 // oats: 麦 (むぎ)
 
+// Bread	パン [pan]	
+// Butter	バター [batā]	
+// Cheese	チーズ [chīzu]	
+
 const nounArray = [
   
 ];

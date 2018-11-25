@@ -18,18 +18,11 @@ const wordCake = createNounWord({
   singular: 'cake',
 });
 
-const wordBread = createNounWord({
-  nounWordType: NOUN_TYPE_SPACE,
-  nounPluralType: NOUN_PLURAL_GENERAL,
-  nounCategory: [ CATEGORY_FOOD, CATEGORY_FOOD_DESSERT ],
-  kanji: '食パン',
-  hiragana: 'しょくパン',
-  singular: 'bread',
-});
+// Ice cream	アイスクリーム [aisukuriimu]	
+
 
 const nounArray = [
   wordCake,
-  wordBread,
 ];
 
 export default nounArray;

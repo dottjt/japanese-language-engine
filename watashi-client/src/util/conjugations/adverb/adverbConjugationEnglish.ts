@@ -37,6 +37,21 @@ import {
   ENGLISH_ADVERB,
 } from '../../constants/wordConstants';
 
+// import {
+//   CONTEXT_EVENT_OCCURANCE_FUTURE,
+//   CONTEXT_EVENT_DURATION_COMPLETE,
+
+//   CONTEXT_POV_SELF_SINGULAR,
+//   CONTEXT_POV_YOU_SINGULAR,
+//   CONTEXT_POV_HESHEIT_SINGULAR,
+//   CONTEXT_POV_WE_PLURAL,
+//   CONTEXT_POV_YOU_PLURAL,
+//   CONTEXT_POV_THEYTHOSE_PLURAL,
+
+//   CONTEXT_INTENT_EXISTENCE,
+//   CONTEXT_INTENT_POSSESSION,
+//   CONTEXT_INTENT_ACTION,
+// } from '../../constants/contextConstants';
 
 const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   // const { topic, subject, verb } = returnSentenceParts(words);
@@ -81,18 +96,58 @@ const determineAdverbConjugationEnglish = (words: Util.SentenceWords, options: U
 };
 
 
-
 const determineAdverbPolarity = (words: Util.SentenceWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {
   // const { topic, subject, verb } = returnSentenceParts(words);
   // const permissions = polarityPermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, options, sentenceType);
   const permissions = polarityPermissions(options);
 
+  // const topicIntent = sentenceContext.selectedTopicIntent;
+
+  // const eventOccurance = sentenceContext.selectedEventOccurance;
+  // const eventDuration = sentenceContext.selectedEventDuration;
+  // const eventPOV = sentenceContext.selectedEventPOV;
+
   if (permissions) {
+    // NOTE: Can most likely delete this :)
+    // if (topicIntent === CONTEXT_INTENT_EXISTENCE) {
+    //   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: 
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    //       return createWord(['not', 'be'], ENGLISH_ADVERB);
+    //   };  
+    // };
+    // if (topicIntent === CONTEXT_INTENT_POSSESSION) {
+    //   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: 
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    //       return createWord(['not', 'have'], ENGLISH_ADVERB);
+    //   };
+    // };
+    // if (topicIntent === CONTEXT_INTENT_ACTION) {
+    //   switch(`${eventOccurance}${eventDuration}${eventPOV}`) {
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_SELF_SINGULAR}`: 
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_SINGULAR}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_HESHEIT_SINGULAR}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_WE_PLURAL}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_YOU_PLURAL}`:
+    //     case `${CONTEXT_EVENT_OCCURANCE_FUTURE}${CONTEXT_EVENT_DURATION_COMPLETE}${CONTEXT_POV_THEYTHOSE_PLURAL}`:
+    //       return createWord(['not', 'do'], ENGLISH_ADVERB);
+    //   };
+    // };
+  
     return createWord(['not'], ENGLISH_ADVERB);
+
   }
   return createEmptyWord(ENGLISH_ADVERB);
 };
-
 
 
 const adverbConjugationEnglish = (words: Util.SentenceWords, modifiers: Util.SentenceModifierWords, options: Util.Options, sentenceContext: Util.SentenceContext, sentenceType: string): Util.WordArrayElement[] => {

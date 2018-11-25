@@ -99,13 +99,11 @@ const GET_EVERYTHING = gql`{
       }
       adjectiveEnglish @client {
         positive
-        comparative
-        superlative
-    
       }
       adjectiveCategory
       adjectiveType
     }
+    
     exercises @client {
       englishSentence @client {
         word
