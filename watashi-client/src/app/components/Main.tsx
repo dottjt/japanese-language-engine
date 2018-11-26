@@ -113,7 +113,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L001.LESSON_TITLE}
-            description={L001.LESSON_DESCRIPTION}                  
             explanation={L001.LESSON_EXPLANATION}
             resources={L001.LESSON_RESOURCES}
             preOptions={L001.LESSON_PRE_OPTIONS}
@@ -131,7 +130,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L002.LESSON_TITLE}
-            description={L002.LESSON_DESCRIPTION}                  
             explanation={L002.LESSON_EXPLANATION}
             resources={L002.LESSON_RESOURCES}
             preOptions={L002.LESSON_PRE_OPTIONS}
@@ -149,7 +147,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L003.LESSON_TITLE}
-            description={L003.LESSON_DESCRIPTION}                  
             explanation={L003.LESSON_EXPLANATION}
             resources={L003.LESSON_RESOURCES}
             preOptions={L003.LESSON_PRE_OPTIONS}
@@ -167,7 +164,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L004.LESSON_TITLE}
-            description={L004.LESSON_DESCRIPTION}                  
             explanation={L004.LESSON_EXPLANATION}
             resources={L004.LESSON_RESOURCES}
             preOptions={L004.LESSON_PRE_OPTIONS}
@@ -185,7 +181,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L005.LESSON_TITLE}
-            description={L005.LESSON_DESCRIPTION}                  
             explanation={L005.LESSON_EXPLANATION}
             resources={L005.LESSON_RESOURCES}
             preOptions={L005.LESSON_PRE_OPTIONS}
@@ -203,7 +198,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L006.LESSON_TITLE}
-            description={L006.LESSON_DESCRIPTION}                  
             explanation={L006.LESSON_EXPLANATION}
             resources={L006.LESSON_RESOURCES}
             preOptions={L006.LESSON_PRE_OPTIONS}
@@ -221,7 +215,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L007.LESSON_TITLE}
-            description={L007.LESSON_DESCRIPTION}                  
             explanation={L007.LESSON_EXPLANATION}
             resources={L007.LESSON_RESOURCES}
             preOptions={L007.LESSON_PRE_OPTIONS}
@@ -239,7 +232,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L008.LESSON_TITLE}
-            description={L008.LESSON_DESCRIPTION}                  
             explanation={L008.LESSON_EXPLANATION}
             resources={L008.LESSON_RESOURCES}
             preOptions={L008.LESSON_PRE_OPTIONS}
@@ -257,7 +249,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L009.LESSON_TITLE}
-            description={L009.LESSON_DESCRIPTION}                  
             explanation={L009.LESSON_EXPLANATION}
             resources={L009.LESSON_RESOURCES}
             preOptions={L009.LESSON_PRE_OPTIONS}
@@ -275,7 +266,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L010.LESSON_TITLE}
-            description={L010.LESSON_DESCRIPTION}                  
             explanation={L010.LESSON_EXPLANATION}
             resources={L010.LESSON_RESOURCES}
             preOptions={L010.LESSON_PRE_OPTIONS}
@@ -293,7 +283,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L011.LESSON_TITLE}
-            description={L011.LESSON_DESCRIPTION}                  
             explanation={L011.LESSON_EXPLANATION}
             resources={L011.LESSON_RESOURCES}
             preOptions={L011.LESSON_PRE_OPTIONS}
@@ -311,7 +300,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L012.LESSON_TITLE}
-            description={L012.LESSON_DESCRIPTION}                  
             explanation={L012.LESSON_EXPLANATION}
             resources={L012.LESSON_RESOURCES}
             preOptions={L012.LESSON_PRE_OPTIONS}
@@ -329,7 +317,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L013.LESSON_TITLE}
-            description={L013.LESSON_DESCRIPTION}                  
             explanation={L013.LESSON_EXPLANATION}
             resources={L013.LESSON_RESOURCES}
             preOptions={L013.LESSON_PRE_OPTIONS}
@@ -347,7 +334,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L014.LESSON_TITLE}
-            description={L014.LESSON_DESCRIPTION}                  
             explanation={L014.LESSON_EXPLANATION}
             resources={L014.LESSON_RESOURCES}
             preOptions={L014.LESSON_PRE_OPTIONS}
@@ -365,7 +351,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L015.LESSON_TITLE}
-            description={L015.LESSON_DESCRIPTION}                  
             explanation={L015.LESSON_EXPLANATION}
             resources={L015.LESSON_RESOURCES}
             preOptions={L015.LESSON_PRE_OPTIONS}
@@ -384,7 +369,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L016.LESSON_TITLE}
-            description={L016.LESSON_DESCRIPTION}                  
             explanation={L016.LESSON_EXPLANATION}
             resources={L016.LESSON_RESOURCES}
             preOptions={L016.LESSON_PRE_OPTIONS}
@@ -402,7 +386,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L017.LESSON_TITLE}
-            description={L017.LESSON_DESCRIPTION}                  
             explanation={L017.LESSON_EXPLANATION}
             resources={L017.LESSON_RESOURCES}
             preOptions={L017.LESSON_PRE_OPTIONS}
@@ -420,7 +403,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L018.LESSON_TITLE}
-            description={L018.LESSON_DESCRIPTION}                  
             explanation={L018.LESSON_EXPLANATION}
             resources={L018.LESSON_RESOURCES}
             preOptions={L018.LESSON_PRE_OPTIONS}
@@ -438,7 +420,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L019.LESSON_TITLE}
-            description={L019.LESSON_DESCRIPTION}                  
             explanation={L019.LESSON_EXPLANATION}
             resources={L019.LESSON_RESOURCES}
             preOptions={L019.LESSON_PRE_OPTIONS}
@@ -456,7 +437,6 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
         return (
           <LessonTemplate
             title={L020.LESSON_TITLE}
-            description={L020.LESSON_DESCRIPTION}                  
             explanation={L020.LESSON_EXPLANATION}
             resources={L020.LESSON_RESOURCES}
             preOptions={L020.LESSON_PRE_OPTIONS}
