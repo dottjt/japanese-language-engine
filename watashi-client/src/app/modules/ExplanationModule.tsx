@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text } from '../atoms/TextStyles';
+import { Text, SecondaryPageHeading } from '../atoms/TextStyles';
 
 class Explanation extends React.Component<PropTypes.IExplanationProps, {}> {
   public render() {
@@ -9,11 +9,22 @@ class Explanation extends React.Component<PropTypes.IExplanationProps, {}> {
     const { explanation } = this.props;
     return (
       <React.Fragment>
-        {explanation.map((text: string, index: number): any => (
-          <Text key={index}>
-            {text}
-          </Text>
-        ))}
+        {explanation.map((text: string, index: number): any => {
+          if (text[0] === '#') {
+            return (
+              <SecondaryPageHeading key={index}>
+                {text.slice(1)}
+              </SecondaryPageHeading>
+            )
+          }
+
+          return (
+            <Text key={index}>
+              {text}
+            </Text>
+          )
+        }
+        )}
       </React.Fragment>
     );
   };

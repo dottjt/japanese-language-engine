@@ -124,8 +124,90 @@ export const sentenceEndingArrayLength = sentenceEndingArray.length;
 
 export const THEMES_DEFAULT = 'THEMES_DEFAULT';
 
+export const THEMES_L001 = 'THEMES_L001';
+export const THEMES_L002 = 'THEMES_L002';
+export const THEMES_L003 = 'THEMES_L003';
+export const THEMES_L004 = 'THEMES_L004';
+export const THEMES_L005 = 'THEMES_L005';
+export const THEMES_L006 = 'THEMES_L006';
+export const THEMES_L007 = 'THEMES_L007';
+export const THEMES_L008 = 'THEMES_L008';
+export const THEMES_L009 = 'THEMES_L009';
+export const THEMES_L010 = 'THEMES_L010';
+export const THEMES_L011 = 'THEMES_L011';
+export const THEMES_L012 = 'THEMES_L012';
+export const THEMES_L013 = 'THEMES_L013';
+export const THEMES_L014 = 'THEMES_L014';
+export const THEMES_L015 = 'THEMES_L015';
+export const THEMES_L016 = 'THEMES_L016';
+export const THEMES_L017 = 'THEMES_L017';
+export const THEMES_L018 = 'THEMES_L018';
+export const THEMES_L019 = 'THEMES_L019';
+export const THEMES_L020 = 'THEMES_L020';
+export const THEMES_L021 = 'THEMES_L021';
+export const THEMES_L022 = 'THEMES_L022';
+export const THEMES_L023 = 'THEMES_L023';
+export const THEMES_L024 = 'THEMES_L024';
+export const THEMES_L025 = 'THEMES_L025';
+export const THEMES_L026 = 'THEMES_L026';
+export const THEMES_L027 = 'THEMES_L027';
+export const THEMES_L028 = 'THEMES_L028';
+export const THEMES_L029 = 'THEMES_L029';
+export const THEMES_L030 = 'THEMES_L030';
+export const THEMES_L031 = 'THEMES_L031';
+export const THEMES_L032 = 'THEMES_L032';
+export const THEMES_L033 = 'THEMES_L033';
+export const THEMES_L034 = 'THEMES_L034';
+export const THEMES_L035 = 'THEMES_L035';
+export const THEMES_L036 = 'THEMES_L036';
+export const THEMES_L037 = 'THEMES_L037';
+export const THEMES_L038 = 'THEMES_L038';
+export const THEMES_L039 = 'THEMES_L039';
+export const THEMES_L040 = 'THEMES_L040';
+
+
 export const themesArray = [
   THEMES_DEFAULT,
+  THEMES_L001,
+  THEMES_L002,
+  THEMES_L003,
+  THEMES_L004,
+  THEMES_L005,
+  THEMES_L006,
+  THEMES_L007,
+  THEMES_L008,
+  THEMES_L009,
+  THEMES_L010,
+  THEMES_L011,
+  THEMES_L012,
+  THEMES_L013,
+  THEMES_L014,
+  THEMES_L015,
+  THEMES_L016,
+  THEMES_L017,
+  THEMES_L018,
+  THEMES_L019,
+  THEMES_L020,
+  THEMES_L021,
+  THEMES_L022,
+  THEMES_L023,
+  THEMES_L024,
+  THEMES_L025,
+  THEMES_L026,
+  THEMES_L027,
+  THEMES_L028,
+  THEMES_L029,
+  THEMES_L030,
+  THEMES_L031,
+  THEMES_L032,
+  THEMES_L033,
+  THEMES_L034,
+  THEMES_L035,
+  THEMES_L036,
+  THEMES_L037,
+  THEMES_L038,
+  THEMES_L039,
+  THEMES_L040,
 ];
 
 export const themesArrayLength = themesArray.length;

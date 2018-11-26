@@ -73,26 +73,21 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   const isQuestion = options.selectedQuestion === HAS_QUESTION;
 
   if (onlyTopic) {
-    // NOTE: May need different types of sentences, depending if it's a question or not. :)
     // NOTE: May need sentenceContext for who is being talked to. // you, yourself. this is different to eventPOV. 
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
     
-    const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING, "NA");    
-    const adverbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADVERB, "NA");    
-    const verbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "HELPING_VERB_NO_VERB");    
-    const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE, "NA");    
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
 
     if (!isQuestion) {
       return {
         japaneseSentence: topicJapanese, 
-        englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(verbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
+        englishSentence: topicEnglish,
         __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
       };
     } else {
       return {
         japaneseSentence: topicJapanese,
-        englishSentence: helpingVerbEnglish.concat(adverbEnglish).concat(adjectiveIndefiniteArticleEnglish).concat(topicEnglish),
+        englishSentence: topicEnglish,
         __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
       };
     }

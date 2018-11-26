@@ -17,6 +17,7 @@
 - Ability in the front-end to show which words are being used for these exercises.
 - Get adjectives for foods. 
 - Different types of lessons.
+- Figure out question sentence types as well. 
 
 # TODO NICE HAVES 
 - Find open contributors. 

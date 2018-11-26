@@ -39,6 +39,8 @@ import {
   MADE_TS,
 
   THEMES_DEFAULT,
+
+  
 } from '../constants/optionsConstants';
 
 // import {
@@ -78,7 +80,7 @@ import {
 const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   // const unknownSubject = getRandomWordViaCategoryNoun(nouns, [ CATEGORY_SUBJECT_UNKNOWN ]);
   
-  const L011 = [ 
+  const L001 = [ // Apple is.  
     {  // Is an apple.
       sentenceWords: () => genTSV({ topic: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_FOOD_FRUIT ]) }),
       sentenceModifiers: () => {},
@@ -86,7 +88,7 @@ const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjective
   ];
 
   const T_variations = [
-    ...L011,
+    ...L001,
     {  // Is tasty.
       sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
       sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
@@ -95,6 +97,7 @@ const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjective
 
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(T_variations);
+    case THEMES_L001: return L001[0];
   }
   throw new Error(createError('conjugations/generateWords.tsx', 'T_variations', `${selectedTheme} does not exist`));
 };

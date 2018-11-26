@@ -138,13 +138,22 @@ export const LESSON_PATH = {
 export const lessonPathArray = [ LESSON_PATH.L001, LESSON_PATH.L002, LESSON_PATH.L003, LESSON_PATH.L004, LESSON_PATH.L005, LESSON_PATH.L006, LESSON_PATH.L007, LESSON_PATH.L008, LESSON_PATH.L009 ];
 
 export const LESSON_EXPLANATION = {
-  L001: ['The topic refers to main idea of the sentence. It answers the question \"Who or what is this paragraph about?\".', 
-         'It is important to understand this concept of the topic, because Japanese (along with other East Asian languages such as Korean and Chinese) are topic prominent languages. In other words, Japanese distinguishes between the topic and the subject, whereas in a language like English, they are usually the same thing (although you don\'t need to worry about this right now, just remember that Japanese deals with this concept of the topic with a different emphasis).', 
-         'As a result, Japanese makes identifying the topic of the sentence super easy! In fact, there are a number of dedicated topic particles (は, も, が etc.) in Japanese that help us identify the topic of a sentence. Before we get into this however, let\'s explore some really simple examples of sentences that do not require any additional topic particles to be comprehended.',
-         'Perhaps the simplest statement we can make in any language is a declaration, and in these very simple instances, the topic is obvious.',
-         'In the sentence \"Cat is.\" the cat is the topic. In the sentence \"I am.\", the topic is myself. Gradually we will build up our ability to identify the topic with a bunch of useful tips and tricks, because in a sentence like \"A cat\" it can become difficult to identify the topic (hint: While in English the topic is the cat, in a language like Japanese it may not be the cat).',
-         'The way we declare something is by identifying the topic by first using the thing (noun) followed by a verb (to be). I am. Bannana is. Person am.',
-         'In Japanese, we do not need to specify a verb to denote the declaration.' 
+  L001: ['The topic refers to the main theme or idea of a sentence.',
+         'The topic is a really important concept in a language like Japanese, because unlike in English, Japanese is a language which distinguishes between the topic and the subject (or the thing that is being talked about in the sentence).',
+         'So in a statement like \"the cat\", the topic is obvious in a language like English. However in a language like Japanese, it may not be so obvious (hint: It may not be the cat, as you will come to learn).',
+         'Sounds confusing?',
+         'Well, that\'s okay! Better to be confused now, rather than later :)',
+         'In order to gain an intuitive understanding of this idea of the topic, let us use noun delcarations as a strong foundational starting point.',
+         'When you declare a noun, the topic is rather obvious. The topic is the noun you are declaring.',
+         'When you say \"cat\" the cat is the topic.',
+         'When you say \"I\", the topic refers to yourself.',
+         'However, if you were to say something like "the cat" or "a frog" then you are no longer declaring something, so much as you are stating something. And in the next lesson, I will make it quite clear as to what exactly what this means.',
+         '#Topic Prominent Languages',
+         'As mentioned earlier, the concept of the topic is important in Japanese because languages such as Japanese, Korean and Chinese are topic prominent languages.', 
+         'In other words, these languages distinguish between the topic and the subject, whereas in English,they are usually the same thing (although need not worry about what a \'subject\' is for the time being).',
+         'As a result, Japanese makes identifying the topic of the sentence super easy! In fact, there are a number of dedicated topic particles (は, も, が etc.) in Japanese that help us identify the topic of a sentence.',
+         'Of course, the topic particle (as with any particle in Japanese) is only truly necessary if there is not enough context to figure out what one is saying.',
+         'And in fact, as you\'ll come to learn through out your Japanese studies, Japanese is a language built around using context to remove unnecessary words from a sentence, in order to make a message as concise as possible (unlike in English which utilises a heap of helping verbs, prepositions etc. to help glue it all together).'
         ], // Essential Linguistics: Topic
   L002: ['The reason why I\'ve decided to introduce you to this concept of the topic is because it will help you understand how words are used in Japanese.', 
          'This is important because Japanese is a very concise language by design, so ', 
