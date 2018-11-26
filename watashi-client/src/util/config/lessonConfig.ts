@@ -30,6 +30,7 @@ export const LESSON_SECTIONS = {
 };
 
 export const LESSON_TITLE = {
+  // NOTE: Noun Plural?
 
   L001: '001 - ' + 'Essential Linguistics: Topic', /* I am. 私 */
   L002: '002 - ' + 'Essential Linguistics: Understanding Topic Intent - to be, to have, to do', /* to be/to have/to do */
@@ -38,7 +39,7 @@ export const LESSON_TITLE = {
   L005: '005 - ' + 'Grammar Basics: Future Japanese Noun Conjugations', /* I will be a person. */
   L006: '006 - ' + 'Grammar Basics: Negative Japanese Noun Conjugations', /* I am not a person */
   L007: '007 - ' + 'Exercise Challenge: Present, Past, Future and Negative Japanese Noun Conjugations',
-  
+
   L008: '008 - ' + 'Essential Linguistics: Subject', /* I am a person. It is a bannana.  */
   L009: '009 - ' + 'Grammar Basics: Introducing the は and も Topic Particle', /* I am also a person.  */
   L010: '010 - ' + 'Grammar Basics: Introducing the が Topic Particle', /* I am the  */
@@ -47,35 +48,44 @@ export const LESSON_TITLE = {
   L013: '013 - ' + 'Watashi Engine Limitations: Topic, Subject and Japanese Nouns',
 
   L014: '014 - ' + 'Essential Linguistics: Verb',
-  L015: '015 - ' + 'Grammar Basics: る verb conjugations',
-  L016: '016 - ' + 'Grammar Basics: う verb conjugations',
-  L017: '017 - ' + 'Grammar Basics: Irregular verb conjugations',
-  L018: '018 - ' + 'Exercise Challenge: る vs も vs が verb conjugations',
+  L015: '015 - ' + 'Grammar Basics: Present and Past る verb conjugations',
+  L016: '016 - ' + 'Grammar Basics: Future る verb conjugations',
+  L017: '017 - ' + 'Grammar Basics: Negative る verb conjugations',
+  L018: '018 - ' + 'Grammar Basics: Present and Past う verb conjugations',
+  L019: '019 - ' + 'Grammar Basics: Future う verb conjugations',
+  L020: '020 - ' + 'Grammar Basics: Negative う verb conjugations',
+  L021: '021 - ' + 'Grammar Basics: Present and Past Irregular verb conjugations',
+  L022: '022 - ' + 'Grammar Basics: Future Irregular verb conjugations',
+  L023: '023 - ' + 'Grammar Basics: Negative Irregular verb conjugations',
+  L024: '024 - ' + 'Exercise Challenge: Present, Past, Future and Negative verb conjugations',
 
-  L019: '019 - ' + 'Essential Linguistics: Verb / Subject agreement',
-  L020: '020 - ' + 'Grammar Basics: を Verb Statements',
-  L021: '021 - ' + 'Grammar Basics: に Verb Statements',
-  L022: '022 - ' + 'Grammar Basics: で Verb Statements',
-  L023: '023 - ' + 'Grammar Comparison: を vs に Verb Statements', // dunno if each different thing should be it's own module.
-  L024: '024 - ' + 'Grammar Comparison: に vs で Verb Statements',
-  L025: '025 - ' + 'Grammar Comparison: で vs を Verb Statements',
-  L026: '026 - ' + 'Exercise Challenge: を vs に vs で verb statements',
-
-  L027: '027 - ' + 'から from statement',
-  L028: '028 - ' + 'まで until statement',
-  L029: '029 - ' + 'の noun modifiers',
-  L030: '030 - ' + 'Japanese adjective modifiers',
-  L031: '031 - ' + 'Japanese adverb modifiers',
-  // L032: '032 - ' + 
-  // L033: '033 - ' + 
-  // L034: '034 - ' + 
-  // L035: '035 - ' + 
-  // L036: '036 - ' + 
-  // L037: '037 - ' + 
+  L025: '025 - ' + 'Essential Linguistics: Verb / Subject agreement',
+  L026: '026 - ' + 'Grammar Basics: を Verb Statements',
+  L027: '027 - ' + 'Grammar Basics: に Verb Statements',
+  L028: '028 - ' + 'Grammar Basics: で Verb Statements',
+  L029: '029 - ' + 'Grammar Comparison: を vs に Verb Statements', // NOTE: dunno if each different thing should be it's own module.
+  L030: '030 - ' + 'Grammar Comparison: に vs で Verb Statements',
+  L031: '031 - ' + 'Grammar Comparison: で vs を Verb Statements',
+  L032: '032 - ' + 'Exercise Challenge: を vs に vs で verb statements',
+  L033: '033 - ' + 'から from statement',
+  L034: '034 - ' + 'まで until statement',
+  L035: '035 - ' + 'の noun modifiers',
+  L036: '036 - ' + 'Japanese adjective modifiers',
+  L037: '037 - ' + 'Japanese adverb modifiers',
   // L038: '038 - ' + 
   // L039: '039 - ' + 
   // L040: '040 - ' + 
   // L041: '041 - ' + 
+  // L042: '042 - ' + 
+  // L043: '043 - ' + 
+  // L044: '044 - ' + 
+  // L045: '045 - ' + 
+  // L046: '046 - ' + 
+  // L047: '047 - ' + 
+  // L048: '048 - ' + 
+  // L049: '049 - ' + 
+  // L050: '050 - ' + 
+  // L051: '051 - ' + 
 };
 
 export const LESSON_PATH = {
@@ -113,23 +123,33 @@ export const LESSON_PATH = {
   L029: 'の noun-modifiers',
   L030: 'japanese-adjective-modifiers',
   L031: 'japanese-adverb-modifiers',
-  // L032: 
-  // L033: 
-  // L034: 
-  // L035: 
-  // L036: 
-  // L037: 
-  // L038: 
-  // L039: '039 - ' + 
-  // L040: '040 - ' + 
+  L032: '',
+  L033: '',
+  L034: '',
+  L035: '',
+  L036: '',
+  L037: '',
+  L038: '',
+  L039: '',
+  L040: '',
   // L041: '041 - ' + 
 };
 
 export const lessonPathArray = [ LESSON_PATH.L001, LESSON_PATH.L002, LESSON_PATH.L003, LESSON_PATH.L004, LESSON_PATH.L005, LESSON_PATH.L006, LESSON_PATH.L007, LESSON_PATH.L008, LESSON_PATH.L009 ];
 
 export const LESSON_EXPLANATION = {
-  L001: ['Nouns when used by themselves can be used as a kind of declaration of it\'s existence.', 'Unlike in English where one must use additional grammatical constructs in order to declare/describe something i.e. "this is a car" in Japanese it is as simple as declaring the noun.', 'You will find this pattern repeated throughout the language, especially when it comes to verbs which we will get to soon.', 'We will also learn basic Japanese noun conjugations which include present tense, past tense, present negative and past negative.'],
-  L002: ['In this lesson we utilise the は and も particles in order to describe nouns.', 'They are both designed to introduce the topic of a sentence. The topic is what the sentence is refering to.', 'In simple terms they introduce what the speaker is refering to.'],
+  L001: ['The topic refers to main idea of the sentence. It answers the question \"Who or what is this paragraph about?\".', 
+         'It is important to understand this concept of the topic, because Japanese (along with other East Asian languages such as Korean and Chinese) are topic prominent languages. In other words, Japanese distinguishes between the topic and the subject, whereas in a language like English, they are usually the same thing (although you don\'t need to worry about this right now, just remember that Japanese deals with this concept of the topic with a different emphasis).', 
+         'As a result, Japanese makes identifying the topic of the sentence super easy! In fact, there are a number of dedicated topic particles (は, も, が etc.) in Japanese that help us identify the topic of a sentence. Before we get into this however, let\'s explore some really simple examples of sentences that do not require any additional topic particles to be comprehended.',
+         'Perhaps the simplest statement we can make in any language is a declaration, and in these very simple instances, the topic is obvious.',
+         'In the sentence \"Cat is.\" the cat is the topic. In the sentence \"I am.\", the topic is myself. Gradually we will build up our ability to identify the topic with a bunch of useful tips and tricks, because in a sentence like \"A cat\" it can become difficult to identify the topic (hint: While in English the topic is the cat, in a language like Japanese it may not be the cat).',
+         'The way we declare something is by identifying the topic by first using the thing (noun) followed by a verb (to be). I am. Bannana is. Person am.',
+         'In Japanese, we do not need to specify a verb to denote the declaration.' 
+        ], // Essential Linguistics: Topic
+  L002: ['The reason why I\'ve decided to introduce you to this concept of the topic is because it will help you understand how words are used in Japanese.', 
+         'This is important because Japanese is a very concise language by design, so ', 
+         '',
+        ], // Essential Linguistics: Understanding Topic Intent - to be, to have, to do
   L003: ['From the perspective of English, the は and が particles are almost identical and more-or-less translate into the same thing.', 'Of course, this is only from the perspective of English translation. In Japanese they serve quite different purposes.'],
   L004: [''],
   L005: [''],
@@ -150,13 +170,95 @@ export const LESSON_EXPLANATION = {
   L018: [''],
   L019: [''],
   L020: [''],
-  // L021: [''],
-  // L022: [''],
-  // L023: [''],
-  // L024: [''],
-  // L025: [''],
-  // L026: [''],
-  // L027: [''],
+  L021: [''],
+  L022: [''],
+  L023: [''],
+  L024: [''],
+  L025: [''],
+  L026: [''],
+  L027: [''],
+  L028: [''],
+  L029: [''],
+  L030: [''],
+  L031: [''],
+  L032: [''],
+  L033: [''],
+  L034: [''],
+  L035: [''],
+  L036: [''],
+  L037: [''],
+  L038: [''],
+  L039: [''],
+  L040: [''],
+  L041: [''],
+  L042: [''],
+  L043: [''],
+  L044: [''],
+  L045: [''],
+  L046: [''],
+  L047: [''],
+  L048: [''],
+  L049: [''],
+  L050: [''],
+  L051: [''],
+
+};
+
+
+export const LESSON_DESCRIPTION = {
+  // NOTE: Noun Plural?
+
+  L001: '',
+  L002: '',
+  L003: '',
+  L004: '',
+  L005: '',
+  L006: '',
+  L007: '',
+  L008: '',
+  L009: '',
+  L010: '',
+  L011: '',
+  L012: '',
+  L013: '',
+  L014: '',
+  L015: '',
+  L016: '',
+  L017: '',
+  L018: '',
+  L019: '',
+  L020: '',
+  L021: '',
+  L022: '',
+  L023: '',
+  L024: '',
+  L025: '',
+  L026: '',
+  L027: '',
+  L028: '',
+  L029: '',
+  L030: '',
+  L031: '',
+  L032: '',
+  L033: '',
+  L034: '',
+  L035: '',
+  L036: '',
+  L037: '',
+  L038: '',
+  L039: '',
+  L040: '',
+  L041: '',
+  L042: '',
+  L043: '',
+  L044: '',
+  L045: '',
+  L046: '',
+  L047: '',
+  L048: '',
+  L049: '',
+  L050: '',
+  L051: '',
 };
 
 
@@ -181,11 +283,35 @@ export const LESSON_RESOURCES = {
   L018: [], // NA - TNO
   L019: [], // T - 
   L020: [], // T - 
-  // L021:
-  // L022: 
-  // L023: 
-  // L024: 
-  // L025: 
-  // L026: 
-  // L027: 
+  L022: [],
+  L021: [],
+  L023: [],
+  L024: [],
+  L025: [],
+  L026: [],
+  L027: [],
+  L028: [],
+  L029: [],
+  L030: [],
+  L031: [],
+  L032: [],
+  L033: [],
+  L034: [],
+  L035: [],
+  L036: [],
+  L037: [],
+  L038: [],
+  L039: [],
+  L040: [],
+  L041: [],
+  L042: [],
+  L043: [],
+  L044: [],
+  L045: [],
+  L046: [],
+  L047: [],
+  L048: [],
+  L049: [],
+  L050: [],
+  L051: [],
 }

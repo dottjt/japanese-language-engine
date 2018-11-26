@@ -86,15 +86,15 @@ const LESSON_VARIATION = {
   L029: [ ],
   L030: [ ],
   L031: [ ],
-  // L032: 
-  // L033: 
-  // L034: 
-  // L035: 
-  // L036:
-  // L037:
-  // L038:
-  // L039:
-  // L040:
+  L032: [ ],
+  L033: [ ],
+  L034: [ ],
+  L035: [ ],
+  L036: [ ],
+  L037: [ ],
+  L038: [ ],
+  L039: [ ],
+  L040: [ ],
   // L041:
   // L042:
   // L043:
@@ -137,15 +137,15 @@ const LESSON_POLITENESS = {
   L030: [ POLITENESS_CASUAL ],
   L031: [ POLITENESS_CASUAL ],
   
-  // L032: 
-  // L033:
-  // L034:
-  // L035:
-  // L036:
-  // L037:
-  // L038:
-  // L039:
-  // L040:
+  L032: [ POLITENESS_CASUAL ],
+  L033: [ POLITENESS_CASUAL ],
+  L034: [ POLITENESS_CASUAL ],
+  L035: [ POLITENESS_CASUAL ],
+  L036: [ POLITENESS_CASUAL ],
+  L037: [ POLITENESS_CASUAL ],
+  L038: [ POLITENESS_CASUAL ],
+  L039: [ POLITENESS_CASUAL ],
+  L040: [ POLITENESS_CASUAL ],
   // L041:
   // L042:
   // L043:
@@ -187,15 +187,15 @@ const LESSON_POLARITY = {
   L029: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
   L030: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
   L031: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
-  // L032: 
-  // L033:
-  // L034:
-  // L035:
-  // L036:
-  // L037:
-  // L038:
-  // L039:
-  // L040:
+  L032: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L033: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L034: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L035: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L036: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L037: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L038: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L039: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
+  L040: [ POLARITY_POSITIVE, POLARITY_NEGATIVE ],
   // L041:
   // L042:
   // L043:
@@ -234,15 +234,15 @@ const LESSON_QUESTION = {
   L029: [ NOT_QUESTION ],
   L030: [ NOT_QUESTION ],
   L031: [ NOT_QUESTION ],
-  // L032: 
-  // L033:
-  // L034:
-  // L035:
-  // L036:
-  // L037:
-  // L038:
-  // L039:
-  // L040:
+  L032: [ NOT_QUESTION ],
+  L033: [ NOT_QUESTION ],
+  L034: [ NOT_QUESTION ],
+  L035: [ NOT_QUESTION ],
+  L036: [ NOT_QUESTION ],
+  L037: [ NOT_QUESTION ],
+  L038: [ NOT_QUESTION ],
+  L039: [ NOT_QUESTION ],
+  L040: [ NOT_QUESTION ],
   // L041:
   // L042:
   // L043:
@@ -281,15 +281,15 @@ const LESSON_GENDER = {
   L029: [ GENDER_MASCULINE ],
   L030: [ GENDER_MASCULINE ],
   L031: [ GENDER_MASCULINE ],
-  // L032: 
-  // L033:
-  // L034:
-  // L035:
-  // L036:
-  // L037:
-  // L038:
-  // L039:
-  // L040:
+  L032: [ GENDER_MASCULINE ],
+  L033: [ GENDER_MASCULINE ],
+  L034: [ GENDER_MASCULINE ],
+  L035: [ GENDER_MASCULINE ],
+  L036: [ GENDER_MASCULINE ],
+  L037: [ GENDER_MASCULINE ],
+  L038: [ GENDER_MASCULINE ],
+  L039: [ GENDER_MASCULINE ],
+  L040: [ GENDER_MASCULINE ],
   // L041:
   // L042:
   // L043:
@@ -327,15 +327,15 @@ const LESSON_THEMES = {
   L029: [ THEMES_DEFAULT ],
   L030: [ THEMES_DEFAULT ],
   L031: [ THEMES_DEFAULT ],
-  // L032: 
-  // L033:
-  // L034:
-  // L035:
-  // L036:
-  // L037:
-  // L038:
-  // L039:
-  // L040:
+  L032: [ THEMES_DEFAULT ],
+  L033: [ THEMES_DEFAULT ],
+  L034: [ THEMES_DEFAULT ],
+  L035: [ THEMES_DEFAULT ],
+  L036: [ THEMES_DEFAULT ],
+  L037: [ THEMES_DEFAULT ],
+  L038: [ THEMES_DEFAULT ],
+  L039: [ THEMES_DEFAULT ],
+  L040: [ THEMES_DEFAULT ],
   // L041:
   // L042:
   // L043:
@@ -374,15 +374,15 @@ export const LESSON_PRE_OPTIONS = {
   L029: { variationArray: LESSON_VARIATION.L029, politenessArray: LESSON_POLITENESS.L029, polarityArray: LESSON_POLARITY.L029, questionArray: LESSON_QUESTION.L029, genderArray: LESSON_GENDER.L029, themesArray: LESSON_THEMES.L029, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
   L030: { variationArray: LESSON_VARIATION.L030, politenessArray: LESSON_POLITENESS.L030, polarityArray: LESSON_POLARITY.L030, questionArray: LESSON_QUESTION.L030, genderArray: LESSON_GENDER.L030, themesArray: LESSON_THEMES.L030, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
   L031: { variationArray: LESSON_VARIATION.L031, politenessArray: LESSON_POLITENESS.L031, polarityArray: LESSON_POLARITY.L031, questionArray: LESSON_QUESTION.L031, genderArray: LESSON_GENDER.L031, themesArray: LESSON_THEMES.L031, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
-  // L032: 
-  // L033:
-  // L034:
-  // L035:
-  // L036:
-  // L037:
-  // L038:
-  // L039:
-  // L040:
+  L032: { variationArray: LESSON_VARIATION.L032, politenessArray: LESSON_POLITENESS.L032, polarityArray: LESSON_POLARITY.L032, questionArray: LESSON_QUESTION.L032, genderArray: LESSON_GENDER.L032, themesArray: LESSON_THEMES.L032, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L033: { variationArray: LESSON_VARIATION.L033, politenessArray: LESSON_POLITENESS.L033, polarityArray: LESSON_POLARITY.L033, questionArray: LESSON_QUESTION.L033, genderArray: LESSON_GENDER.L033, themesArray: LESSON_THEMES.L033, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L034: { variationArray: LESSON_VARIATION.L034, politenessArray: LESSON_POLITENESS.L034, polarityArray: LESSON_POLARITY.L034, questionArray: LESSON_QUESTION.L034, genderArray: LESSON_GENDER.L034, themesArray: LESSON_THEMES.L034, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L035: { variationArray: LESSON_VARIATION.L035, politenessArray: LESSON_POLITENESS.L035, polarityArray: LESSON_POLARITY.L035, questionArray: LESSON_QUESTION.L035, genderArray: LESSON_GENDER.L035, themesArray: LESSON_THEMES.L035, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L036: { variationArray: LESSON_VARIATION.L036, politenessArray: LESSON_POLITENESS.L036, polarityArray: LESSON_POLARITY.L036, questionArray: LESSON_QUESTION.L036, genderArray: LESSON_GENDER.L036, themesArray: LESSON_THEMES.L036, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L037: { variationArray: LESSON_VARIATION.L037, politenessArray: LESSON_POLITENESS.L037, polarityArray: LESSON_POLARITY.L037, questionArray: LESSON_QUESTION.L037, genderArray: LESSON_GENDER.L037, themesArray: LESSON_THEMES.L037, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L038: { variationArray: LESSON_VARIATION.L038, politenessArray: LESSON_POLITENESS.L038, polarityArray: LESSON_POLARITY.L038, questionArray: LESSON_QUESTION.L038, genderArray: LESSON_GENDER.L038, themesArray: LESSON_THEMES.L038, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L039: { variationArray: LESSON_VARIATION.L039, politenessArray: LESSON_POLITENESS.L039, polarityArray: LESSON_POLARITY.L039, questionArray: LESSON_QUESTION.L039, genderArray: LESSON_GENDER.L039, themesArray: LESSON_THEMES.L039, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
+  L040: { variationArray: LESSON_VARIATION.L040, politenessArray: LESSON_POLITENESS.L040, polarityArray: LESSON_POLARITY.L040, questionArray: LESSON_QUESTION.L040, genderArray: LESSON_GENDER.L040, themesArray: LESSON_THEMES.L040, __typename: __TYPENAME_OPTIONS } as Util.PreOptions, 
   // L041:
   // L042:
   // L043:
