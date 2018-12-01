@@ -60,59 +60,31 @@ const Item = system({
 });
 
 const MODIFY_PRE_OPTIONS = gql`
-  mutation ModifyPreOptions($arrayValue: String!, $currentArray: [String]!, $valuesArray: [String]!) {
-    modifyPreOptions(arrayValue: $arrayValue, currentArray: $currentArray, valuesArray: $valuesArray) @client
+  mutation ModifyPreOptions($currentArray: [String], $arrayValue: String, $type: String, $arrayType: String) {
+    modifyPreOptions(arrayValue: $arrayValue, currentArray: $currentArray, type: $type, arrayType: $arrayType) @client
   }
 `
 
-class KeySet extends React.Component<{ currentArray: string[], valuesArray: string[], arrayType: string, setValue: string, client: any, type: string }, {}> {
+class KeySet extends React.Component<{ currentArray: string[], arrayType: string, arrayValue: { selected: boolean, value: string }, type: string }, {}> {
 
   public render() {
-    const {  currentArray, valuesArray, setValue } = this.props;
+    const { currentArray, arrayValue, type, arrayType } = this.props;
     
     return (
       <Mutation mutation={MODIFY_PRE_OPTIONS}>
         {modifyPreOptions => {
           return (
-            valuesArray !== null &&
-              valuesArray.map((value, index) => (
-                <FlexColumn key={`${value}${index}`} css={{ display: 'inline-block' }}>
-                  <Item 
-                    onClick={() => modifyPreOptions({ variables: { arrayValue: value, currentArray, valuesArray } })} 
-                    css={{display: 'inline-block'}}
-                    color={setValue === value ? 'red' : null}>{value}</Item>
-                </FlexColumn>  
-              ))
+            <FlexColumn css={{ display: 'inline-block' }}>
+              <Item 
+                onClick={() => modifyPreOptions({ variables: { arrayValue: arrayValue.value, currentArray, type, arrayType } })} 
+                css={{ display: 'inline-block' }}
+                color={arrayValue.selected ? 'red' : null}>{arrayValue.value}</Item>
+            </FlexColumn>  
           )      
         }}
       </Mutation>
     )
   }
-
-  // public clickItem = (arrayValue, currentArray, hasAlreadySelected) => {
-  //   if (hasAlreadySelected) {
-  //     this.props.client.writeData({
-  //       data: {
-  //         [this.props.type]: { // preOptions 
-  //           [this.props.arrayType]: currentArray.filter(value => value !== arrayValue), // politenessArray
-  //           __typename: selectOptionsArrayTypename(this.props.arrayType)
-  //         },
-  //         __typename: this.getTypename(this.props.type), // NOTE: This should probably be something more official.
-  //       },
-  //     });
-
-  //   } else {
-  //     this.props.client.writeData({
-  //       data: {
-  //         [this.props.type]: {
-  //           [this.props.arrayType]: [ ...currentArray, arrayValue ],
-  //           __typename: selectOptionsArrayTypename(this.props.arrayType)
-  //         },
-  //         __typename: this.getTypename(this.props.type),
-  //       },
-  //     }); 
-  //   }
-  // }
 
   public getTypename = (type) => {
     switch(type) {
@@ -124,42 +96,10 @@ class KeySet extends React.Component<{ currentArray: string[], valuesArray: stri
   }
 };
 
-class OptionsSet extends React.Component<{ preOptions: Util.PreOptions, preModifiers: Util.PreModifiers, preSentenceContext: Util.PreSentenceContext, client: string }, {}> {
-
-  // private clickItem = (arrayValue, currentArray, hasAlreadySelected) => {
-  //   if (hasAlreadySelected) {
-  //     this.props.client.writeData({
-  //       data: {
-  //         [this.props.type]: { // preOptions 
-  //           [this.props.arrayType]: currentArray.filter(value => value !== arrayValue), // politenessArray
-  //           __typename: this.getTypename(this.props.type), // NOTE: This should probably be something more official.
-  //         },
-  //       },
-  //     });
-  //   } else {
-  //     this.props.client.writeData({
-  //       data: {
-  //         [this.props.type]: {
-  //           [this.props.arrayType]: [ ...currentArray, arrayValue ],
-  //           __typename: this.getTypename(this.props.type),
-  //         },
-  //       },
-  //     }); 
-  //   }
-  // }
-
-  // private getTypename = (type) => {
-  //   switch(type) {
-  //     case 'preOptions': return __TYPENAME_OPTIONS;
-  //     case 'preModifiers': return __TYPENAME_MODIFIERS;
-  //     case 'preSentenceContext': return __TYPENAME_SENTENCE_CONTEXT;
-  //   }
-  //   throw Error('eh')
-  // }
+class OptionsSet extends React.Component<{ preOptions: Util.PreOptions, preModifiers: Util.PreModifiers, preSentenceContext: Util.PreSentenceContext }, {}> {
 
   public render() {
     const {
-      client,
       preOptions,
       preModifiers,
       preSentenceContext,
@@ -176,22 +116,34 @@ class OptionsSet extends React.Component<{ preOptions: Util.PreOptions, preModif
 
     return (
       <FlexColumn>
-        {optionsKeys.map((optionsField, index) => (
-          <FlexColumn key={`${index}${optionsField}`}>
-            <Heading>{optionsField}</Heading>
-            {preOptions[optionsField].map((selectedOptionsField, index) => (
-              <KeySet
-                key={`${index}${selectedOptionsField}`}
-                client={client}
-                type='preOptions'
-                arrayType={optionsField}
-                setValue={selectedOptionsField}
-                valuesArray={selectOptionsArray(optionsField)}
-                currentArray={preOptions[optionsField]}
-              />
-            ))}
-          </FlexColumn>
-        ))}
+        {optionsKeys.map((optionsField, index) => {
+
+          const currentArrayOfValues = preOptions[optionsField]; // ['a', 'b']
+          const completeArrayOfValues = selectOptionsArray(optionsField) // ['a', 'b']
+
+          const selectedArray = completeArrayOfValues.map(completeValue => {
+            if (currentArrayOfValues.includes(completeValue)) {
+              return { selected: true, value: completeValue }
+            } else {
+              return { selected: false, value: completeValue }
+            }
+          });
+
+          return (
+            <FlexColumn key={`${index}${optionsField}`}>
+              <Heading>{optionsField}</Heading>
+              {selectedArray.map((selectedOptionsField, index) => (
+                <KeySet
+                  key={`${index}`}
+                  type='preOptions'
+                  arrayType={optionsField}
+                  arrayValue={selectedOptionsField}
+                  currentArray={preOptions[optionsField]}
+                />
+              ))}
+            </FlexColumn>
+          )
+        })}
 
         {/* {optionsKeys.map((optionsField, index) => (
           <FlexColumn key={`${index}${optionsField}`}>
@@ -246,10 +198,10 @@ class OptionsSet extends React.Component<{ preOptions: Util.PreOptions, preModif
   }
 }
 
-class Prerequistes extends React.Component<{ preOptions: Util.PreOptions, preModifiers: Util.PreModifiers, preSentenceContext: Util.PreSentenceContext, client: string }, {}> {
+class Playground extends React.Component<{ preOptions: Util.PreOptions, preModifiers: Util.PreModifiers, preSentenceContext: Util.PreSentenceContext, client: any }, {}> {
   public render() {
     const {
-      client,
+      // client,
       preOptions,
       preModifiers,
       preSentenceContext,
@@ -261,7 +213,6 @@ class Prerequistes extends React.Component<{ preOptions: Util.PreOptions, preMod
 
         <FlexColumn>
           <OptionsSet
-            client={client}
             preOptions={preOptions}
             preModifiers={preModifiers}
             preSentenceContext={preSentenceContext}
@@ -273,7 +224,7 @@ class Prerequistes extends React.Component<{ preOptions: Util.PreOptions, preMod
   };
 };
 
-export default Prerequistes;
+export default Playground;
 
 
 

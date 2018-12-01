@@ -5,8 +5,6 @@ import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { withClientState } from 'apollo-link-state';
 
-// import gql from 'graphql-tag';
-
 import {
   __TYPENAME_USER,
   __TYPENAME_CONTROL_PANEL_OPTIONS,
@@ -19,9 +17,6 @@ import {
 import { index, sentenceTypes, optionTypes } from './types';
 
 import { nounWords, verbWords, adjectiveWords } from '../util/words/collection';
-// import { contextSubjectRoleArrayLength } from '../util/constants/contextConstants';
-
-// import { getExercisesApollo } from '../util/conjugations/generateExercises';
 
 import {
   determinePreOptions,
@@ -78,30 +73,38 @@ const stateLink = withClientState({
   resolvers: {
     Query: {},
     Mutation: {
-      modifyPreOptions: (_, { arrayValue, currentArray }, { cache, getCacheKey }) => {
-        console.log(arrayValue, currentArray)
+      modifyPreOptions: (_, { arrayValue, currentArray, type, arrayType }, { cache, getCacheKey }) => {
+      
         const currentArrayHasValue = currentArray.filter(value => value === arrayValue);
-        
+        console.log(currentArrayHasValue, currentArray, arrayValue);
+
         if (currentArrayHasValue.length > 0) {
-          console.log('wrend')
-        } else {      
           cache.writeData({
             data: {
-              preOptions: {
-                politenessArray: currentArray.concat(arrayValue),
-                __typename: __TYPENAME_PRE_OPTIONS, // this.getTypename(this.props.type),
+              [type]: {
+                [arrayType]: currentArray.filter(value => value !== arrayValue),
+                __typename: __TYPENAME_PRE_OPTIONS,
+              },
+            },
+          });
+        } else {
+          cache.writeData({
+            data: {
+              [type]: {
+                [arrayType]: currentArray.concat(arrayValue),
+                __typename: __TYPENAME_PRE_OPTIONS,
               },
             },
           });
         }
         cache.writeData({ data: { exerciseLoadCounter: 0 } });
-        // const data = cache.readQuery({ query: gql`{ preOptions { politenessArray } }` }) as any;
         return null;
       },
       populateEverything: (_, { path, exerciseLoadCounter, preLoadCounter }, { cache, getCacheKey }) => {
 
+        // NOTE: So, the problem I'm having is that preOptions will not save the __typename in. 
         if (preLoadCounter === 0) {
-          cache.writeData({ data: { 
+          cache.writeData({ data: {
             preOptions: determinePreOptions(path),
             preModifiers: determinePreModifiers(path),
             preSentenceContext: determineSentenceContext(path),
