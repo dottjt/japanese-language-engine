@@ -1,4 +1,9 @@
 export const sentenceTypes = `
+  type PlaygroundArrayValue {
+    value: String
+    selected: Boolean
+  }
+
   type WordElement {
     wordArray: [ String ]
     wordType: String

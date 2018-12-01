@@ -75,29 +75,27 @@ const stateLink = withClientState({
     Mutation: {
       modifyPreOptions: (_, { arrayValue, currentArray, type, arrayType }, { cache, getCacheKey }) => {
       
-        const currentArrayHasValue = currentArray.filter(value => value === arrayValue);
-        console.log(currentArrayHasValue, currentArray, arrayValue);
-
-        if (currentArrayHasValue.length > 0) {
+        if (arrayValue.selected && currentArray.length > 1) {
           cache.writeData({
             data: {
               [type]: {
-                [arrayType]: currentArray.filter(value => value !== arrayValue),
+                [arrayType]: currentArray.filter(value => value !== arrayValue.value),
                 __typename: __TYPENAME_PRE_OPTIONS,
               },
+              exerciseLoadCounter: 0,
             },
           });
         } else {
           cache.writeData({
             data: {
               [type]: {
-                [arrayType]: currentArray.concat(arrayValue),
+                [arrayType]: currentArray.concat(arrayValue.value),
                 __typename: __TYPENAME_PRE_OPTIONS,
               },
+              exerciseLoadCounter: 0,
             },
           });
         }
-        cache.writeData({ data: { exerciseLoadCounter: 0 } });
         return null;
       },
       populateEverything: (_, { path, exerciseLoadCounter, preLoadCounter }, { cache, getCacheKey }) => {

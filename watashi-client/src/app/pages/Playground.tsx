@@ -60,7 +60,7 @@ const Item = system({
 });
 
 const MODIFY_PRE_OPTIONS = gql`
-  mutation ModifyPreOptions($currentArray: [String], $arrayValue: String, $type: String, $arrayType: String) {
+  mutation ModifyPreOptions($currentArray: [String], $arrayValue: PlaygroundArrayValue, $type: String, $arrayType: String) {
     modifyPreOptions(arrayValue: $arrayValue, currentArray: $currentArray, type: $type, arrayType: $arrayType) @client
   }
 `
@@ -76,7 +76,7 @@ class KeySet extends React.Component<{ currentArray: string[], arrayType: string
           return (
             <FlexColumn css={{ display: 'inline-block' }}>
               <Item 
-                onClick={() => modifyPreOptions({ variables: { arrayValue: arrayValue.value, currentArray, type, arrayType } })} 
+                onClick={() => modifyPreOptions({ variables: { arrayValue: arrayValue, currentArray, type, arrayType } })} 
                 css={{ display: 'inline-block' }}
                 color={arrayValue.selected ? 'red' : null}>{arrayValue.value}</Item>
             </FlexColumn>  
