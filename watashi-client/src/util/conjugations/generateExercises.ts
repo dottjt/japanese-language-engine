@@ -1,6 +1,8 @@
-import {
-  createError,
-} from '../functions';
+// import {
+//   createError,
+// } from '../functions';
+
+// import gql from 'graphql-tag';
 
 import { LESSON_PATH } from '../config/lessonConfig';
 import { LESSON_PRE_OPTIONS } from '../config/optionsConfig';
@@ -9,13 +11,13 @@ import { LESSON_PRE_SENTENCE_CONTEXT } from '../config/collectionConfig';
 
 import { ROUTE_PATH } from '../constants/routeConstants';
 
-import GET_NOUNS_VERBS_AND_PRE_OPTIONS from '../../graphql/queries/getNounsVerbsAndPreOptionsQuery';
-import GET_EVERYTHING from '../../graphql/queries/getEverything';
+// import GET_NOUNS_VERBS_AND_PRE_OPTIONS from '../../graphql/queries/getNounsVerbsAndPreOptionsQuery';
+// import GET_EVERYTHING from '../../graphql/queries/getEverything';
 
-import {
-  __TYPENAME_OPTIONS,
-  __TYPENAME_MODIFIERS,
-} from '../constants/typeNameConstants';
+// import {
+//   __TYPENAME_OPTIONS,
+//   __TYPENAME_MODIFIERS,
+// } from '../constants/typeNameConstants';
 
 import createLessonModifiers from './createLessonModifiers';
 import createLessonOptions from './createLessonOptions';
@@ -123,33 +125,38 @@ export const determineGetExercise = (nouns: Util.Noun[], verbs: Util.Verb[], adj
   };
 };
 
-export const getExercisesApollo = (client: any, path: string, numberOfExercices: number): void => {
-  try {
-    // I need to figure out how to get this 
-    // NOTE: user should not be null, it should be gotten from the server, if at all possible. 
+// export const getExercisesApollo = async (client: any, path: string, numberOfExercices: number) => {
+//   try {
+//     // I need to figure out how to get this 
+//     // NOTE: user should not be null, it should be gotten from the server, if at all possible. 
     
-    client.writeData({ 
-      data: {
-        user: null,
-        preOptions: determinePreOptions(path), 
-        preModifiers: determinePreModifiers(path),
-        preSentenceContext: determineSentenceContext(path),
-      }
-    });
+//     await client.mutate({
+//       mutation: gql`
+//         mutation populateEverything($preOptions: PreOptions, $preModifiers: PreModifiers, $preSentenceContext: PreSentenceContext) {
+//           populateEverything(preOptions: $preOptions, preModifiers: $preModifiers, preSentenceContext: $preSentenceContext) @client
+//         }
+//       `,
+//       variables: {
+//         preOptions: determinePreOptions(path), 
+//         preModifiers: determinePreModifiers(path),
+//         preSentenceContext: determineSentenceContext(path),
+//       }
+//     })
 
-    const data = client.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;
+//     const data = await client.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;
 
-    client.writeData({ 
-      data: { 
-        exercises: determineGetExercise(data.nouns, data.verbs, data.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) 
-      } 
-    });
+//     console.log('data1', data);
 
-    console.log('b4')
-    const data2 = client.readQuery({ query: GET_EVERYTHING }) as any;
-    console.log('data2', data2);
+//     await client.writeData({ 
+//       data: { 
+//         exercises: determineGetExercise(data.nouns, data.verbs, data.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) 
+//       } 
+//     });
 
-  } catch(error) {
-    throw new Error(createError('generateExercises.ts', 'getExercisesApollo', `Error: ${error}.`));
-  } 
-};
+//     const data2 = await client.readQuery({ query: GET_EVERYTHING }) as any;
+//     console.log('data2', data2);
+
+//   } catch(error) {
+//     throw new Error(createError('generateExercises.ts', 'getExercisesApollo', `Error: ${error}.`));
+//   } 
+// };

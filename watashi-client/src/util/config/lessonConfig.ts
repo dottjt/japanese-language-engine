@@ -34,116 +34,112 @@ export const LESSON_TITLE = {
 
   L001: '001 - ' + 'Essential Linguistics: Topic', /* I am. 私 */
   L002: '002 - ' + 'Essential Linguistics: Understanding Topic Intent - to be, to have, to do', /* to be/to have/to do */
-  L003: '003 - ' + 'Essential Linguistics: Topic POV - I, You, He/She/It, They, Us', /* he is, you are, they are. */
-  L004: '004 - ' + 'Grammar Basics: Present and Past Japanese Noun Conjugations', /* past present. I am a person. */
-  L005: '005 - ' + 'Grammar Basics: Future Japanese Noun Conjugations', /* I will be a person. */
-  L006: '006 - ' + 'Grammar Basics: Negative Japanese Noun Conjugations', /* I am not a person */
-  L007: '007 - ' + 'Exercise Challenge: Present, Past, Future and Negative Japanese Noun Conjugations',
-
-  L008: '008 - ' + 'Essential Linguistics: Subject', /* I am a person. It is a bannana.  */
-  L009: '009 - ' + 'Grammar Basics: Introducing the は and も Topic Particle', /* I am also a person.  */
-  L010: '010 - ' + 'Grammar Basics: Introducing the が Topic Particle', /* I am the  */
-  L011: '011 - ' + 'Grammar Comparison: Difference between は and が Noun Statements',
-  L012: '012 - ' + 'Exercise Challenge: は vs も vs が Noun Statements',
-  L013: '013 - ' + 'Watashi Engine Limitations: Topic, Subject and Japanese Nouns',
-
-  L014: '014 - ' + 'Essential Linguistics: Verb',
-  L015: '015 - ' + 'Grammar Basics: Present and Past る verb conjugations',
-  L016: '016 - ' + 'Grammar Basics: Future る verb conjugations',
-  L017: '017 - ' + 'Grammar Basics: Negative る verb conjugations',
-  L018: '018 - ' + 'Grammar Basics: Present and Past う verb conjugations',
-  L019: '019 - ' + 'Grammar Basics: Future う verb conjugations',
-  L020: '020 - ' + 'Grammar Basics: Negative う verb conjugations',
-  L021: '021 - ' + 'Grammar Basics: Present and Past Irregular verb conjugations',
-  L022: '022 - ' + 'Grammar Basics: Future Irregular verb conjugations',
-  L023: '023 - ' + 'Grammar Basics: Negative Irregular verb conjugations',
-  L024: '024 - ' + 'Exercise Challenge: Present, Past, Future and Negative verb conjugations',
-
-  L025: '025 - ' + 'Essential Linguistics: Verb / Subject agreement',
-  L026: '026 - ' + 'Grammar Basics: を Verb Statements',
-  L027: '027 - ' + 'Grammar Basics: に Verb Statements',
-  L028: '028 - ' + 'Grammar Basics: で Verb Statements',
-  L029: '029 - ' + 'Grammar Comparison: を vs に Verb Statements', // NOTE: dunno if each different thing should be it's own module.
-  L030: '030 - ' + 'Grammar Comparison: に vs で Verb Statements',
-  L031: '031 - ' + 'Grammar Comparison: で vs を Verb Statements',
-  L032: '032 - ' + 'Exercise Challenge: を vs に vs で verb statements',
-  L033: '033 - ' + 'から from statement',
-  L034: '034 - ' + 'まで until statement',
-  L035: '035 - ' + 'の noun modifiers',
-  L036: '036 - ' + 'Japanese adjective modifiers',
-  L037: '037 - ' + 'Japanese adverb modifiers',
-  // L038: '038 - ' + 
-  // L039: '039 - ' + 
-  // L040: '040 - ' + 
-  // L041: '041 - ' + 
-  // L042: '042 - ' + 
-  // L043: '043 - ' + 
-  // L044: '044 - ' + 
-  // L045: '045 - ' + 
-  // L046: '046 - ' + 
-  // L047: '047 - ' + 
-  // L048: '048 - ' + 
-  // L049: '049 - ' + 
-  // L050: '050 - ' + 
-  // L051: '051 - ' + 
+  L003: '003 - ' + 'Grammar Basics: Japanese Noun Conjugations', /* past present. I am a person. */
+  L004: '004 - ' + 'Essential Linguistics: Subject', /* I am a person. It is a bannana.  */
+  L005: '005 - ' + 'Grammar Basics: Introducing the は and も Topic Particle', /* I am also a person.  */
+  L006: '006 - ' + 'Grammar Basics: Introducing the が Topic Particle', /* I am the  */
+  L007: '007 - ' + 'Grammar Differences: は and が Topic Particles',
+  L008: '008 - ' + 'Essential Linguistics: Verb',
+  L009: '009 - ' + 'Grammar Basics: る verb conjugations',
+  L010: '010 - ' + 'Grammar Basics: う verb conjugations',
+  L011: '011 - ' + 'Grammar Basics: Irregular verb conjugations',
+  L012: '012 - ' + 'Essential Linguistics: Verb / Subject agreement',
+  L013: '013 - ' + 'Grammar Basics: を Verb Statements',
+  L014: '014 - ' + 'Grammar Basics: に Verb Statements',
+  L015: '015 - ' + 'Grammar Basics: で Verb Statements',
+  L016: '016 - ' + 'Grammar Differences: を vs に Verb Statements', // NOTE: dunno if each different thing should be it's own module.
+  L017: '017 - ' + 'Grammar Differences: に vs で Verb Statements',
+  L018: '018 - ' + 'Grammar Differences: で vs を Verb Statements',
+  L019: '019 - ' + 'Exercise Challenge: を vs に vs で verb statements',
+  L020: '020 - ' + 'から from statement',
+  L021: '021 - ' + 'まで until statement',
+  L022: '022 - ' + 'の noun modifiers',
+  L023: '023 - ' + 'Japanese adjective modifiers',
+  L024: '024 - ' + 'Japanese adverb modifiers',
+  L025: '025 - ' + '',
+  L026: '026 - ' + '',
+  L027: '027 - ' + '',
+  L028: '028 - ' + '',
+  L029: '029 - ' + '',
+  L030: '030 - ' + '',
+  L031: '031 - ' + '',
+  L032: '032 - ' + '',
+  L033: '033 - ' + '',
+  L034: '034 - ' + '',
+  L035: '035 - ' + '',
+  L036: '036 - ' + '',
+  L037: '037 - ' + '',
+  L038: '038 - ' + '',
+  L039: '039 - ' + '',
+  L040: '040 - ' +  '',
+  L041: '041 - ' + '',
+  L042: '042 - ' + '',
+  L043: '043 - ' + '',
+  L044: '044 - ' + '',
+  L045: '045 - ' + '',
+  L046: '046 - ' + '',
+  L047: '047 - ' + '',
+  L048: '048 - ' + '',
+  L049: '049 - ' + '',
+  L050: '050 - ' + '',
+  L051: '051 - ' + '',
 };
 
 export const LESSON_PATH = {
   L001: 'essential-linguistics-topic',
   L002: 'essential-linguistics-understanding-topic-intent',
-  L003: 'essential-linguistics-topic-pov',
-  L004: 'grammar-basics-present-and-past-japanese-noun-conjugations',
-  L005: 'grammar-basics-future-japanese-noun-conjugations',
-  L006: 'grammar-basics-negative-japanese-noun-conjugations',
-  L007: 'exercise-challenge-present-past-future-and-negative-japanese-noun-conjugations',
-
-  L008: 'essential-linguistics-subject',
-  L009: 'grammar-basics-introducing-the-wa-and-mo-topic-particle',
-  L010: 'grammar-basics-introducing-the-ga-topic-particle',
-  L011: 'grammar-comparison-difference-between-wa-and-ga-noun-statements',
-  L012: 'exercise-challenge-wa-mo-ga-noun-statements',
-  L013: 'watashi-engine-imitations-topic-subject-and-japanese-nouns',
-
-  L014: 'essential-linguistics-verb',
-  L015: 'grammar-basics-ru-verb-conjugations',
-  L016: 'grammar-basics-u-verb-conjugations',
-  L017: 'grammar-basics-irregular-verb-conjugations',
-  L018: 'exercise-challenge-ru-u-ga-verb-conjugations',
-  L019: 'essential-linguistics-verb-subject-agreement',
-  L020: 'grammar-basics-wo-verb-statements',
-  L021: 'grammar-basics-ni-verb-statements',
-  L022: 'grammar-basics-de-verb-statements',
-  L023: 'grammar-comparison-wo-ni-verb-statements', // dunno if each different thing should be it's own module.
-  L024: 'grammar-comparison-ni-de-verb-statements',
-  L025: 'grammar-comparison-de-wo-verb-statements',
-  L026: 'exercise-challenge-wo-ni-de-verb-statements',
-
-  L027: 'から-from-tatement',
-  L028: 'まで-until-tatement',
-  L029: 'の noun-modifiers',
-  L030: 'japanese-adjective-modifiers',
-  L031: 'japanese-adverb-modifiers',
-  L032: '',
-  L033: '',
-  L034: '',
-  L035: '',
-  L036: '',
-  L037: '',
-  L038: '',
-  L039: '',
-  L040: '',
+  L003: 'grammar-basics-japanese-noun-conjugations',
+  L004: 'essential-linguistics-subject',
+  L005: 'grammar-basics-introducing-the-wa-and-mo-topic-particle',
+  L006: 'grammar-basics-introducing-the-ga-topic-particle',
+  L007: 'grammar-comparison-difference-between-wa-and-ga-noun-statements',
+  L008: 'essential-linguistics-verb',
+  L009: 'grammar-basics-ru-verb-conjugations',
+  L010: 'grammar-basics-u-verb-conjugations',
+  L011: 'grammar-basics-irregular-verb-conjugations',
+  L012: 'essential-linguistics-verb-subject-agreement',
+  L013: 'grammar-basics-wo-verb-statements',
+  L014: 'grammar-basics-ni-verb-statements',
+  L015: 'grammar-basics-de-verb-statements',
+  L016: 'grammar-comparison-wo-ni-verb-statements', // dunno if each different thing should be it's own module.
+  L017: 'grammar-comparison-ni-de-verb-statements',
+  L018: 'grammar-comparison-de-wo-verb-statements',
+  L019: 'exercise-challenge-wo-ni-de-verb-statements',
+  // L020: 
+  // L021: 
+  // L022: 
+  // L023: 
+  // L024: 
+  // L025: 
+  // L026: 
+  // L027: 'から-from-tatement',
+  // L028: 'まで-until-tatement',
+  // L029: 'の noun-modifiers',
+  // L030: 'japanese-adjective-modifiers',
+  // L031: 'japanese-adverb-modifiers',
+  // L032: '',
+  // L033: '',
+  // L034: '',
+  // L035: '',
+  // L036: '',
+  // L037: '',
+  // L038: '',
+  // L039: '',
+  // L040: '',
   // L041: '041 - ' + 
 };
 
 export const lessonPathArray = [ LESSON_PATH.L001, LESSON_PATH.L002, LESSON_PATH.L003, LESSON_PATH.L004, LESSON_PATH.L005, LESSON_PATH.L006, LESSON_PATH.L007, LESSON_PATH.L008, LESSON_PATH.L009 ];
 
 export const LESSON_EXPLANATION = {
-  L001: ['The topic refers to the main theme or idea of a sentence.',
+  L001: ['#What is the topic?',
+         'The topic refers to the main theme or idea of a sentence.',
          'The topic is a really important concept in a language like Japanese, because unlike in English, Japanese is a language which distinguishes between the topic and the subject (or the thing that is being talked about in the sentence).',
          'So in a statement like \"the cat\", the topic is obvious in a language like English. However in a language like Japanese, it may not be so obvious (hint: It may not be the cat, as you will come to learn).',
          'Sounds confusing?',
          'Well, that\'s okay! Better to be confused now, rather than later :)',
          'In order to gain an intuitive understanding of this idea of the topic, let us use noun delcarations as a strong foundational starting point.',
+         'In order to make declarations in Japanese, you first state the noun followed by the declaration particle だ。',
          'When you declare a noun, the topic is rather obvious. The topic is the noun you are declaring.',
          'When you say \"cat\" the cat is the topic.',
          'When you say \"I\", the topic refers to yourself.',
@@ -155,28 +151,44 @@ export const LESSON_EXPLANATION = {
          'Of course, the topic particle (as with any particle in Japanese) is only truly necessary if there is not enough context to figure out what one is saying.',
          'And in fact, as you\'ll come to learn through out your Japanese studies, Japanese is a language built around using context to remove unnecessary words from a sentence, in order to make a message as concise as possible (unlike in English which utilises a heap of helping verbs, prepositions etc. to help glue it all together).'
         ], // Essential Linguistics: Topic
-  L002: ['The reason why I\'ve decided to introduce you to this concept of the topic is because it will help you understand how words are used in Japanese.', 
-         'This is important because Japanese is a very concise language by design, so ', 
-         '',
+  L002: ['In the previous lesson I briefly mentioned this idea that there is a difference between declarating something and stating something, and that\'s what I would like to explore in this lesson.', 
+         'You see, each sentence has what I would describe as an "intention" behind what is effectively trying to be conveyed.',
+         'These intentions are conveyed using three core verbs (also known as auxillary verbs) which help provide further context as to what exactly is actually going on.',
+         'In English these verbs are:',
+         '\"to be\" (which denotes declaration or existence) i.e. English: Cat is. Japanese: 猫だ。',
+         '\"to have\" (which denotes possession) i.e. Cat has.', 
+         '\"to do\" (which denotes action) i.e. Cat does.', 
+         'The topic is the thing that does the intent and with these three verbs we can basically establish the intent of a sentence. For the time being, we will just focus on declarations',
+         '#Explicit vs Implicit Intentions',
+         'When we say something like "Cat" we can generally imply that we\'re saying something along the lines of "Cat is", denoting the existence or declaration of a cat.',
+         'And no different to saying "Cat is" or "I am", you could still know the cat is the topic in both English and Japanese.',
+         'Where things get tricky is when you begin to say things like "Is a cat" or "Has a dog" because topic is not clear, especially in a topic prominent language such as Japanese.',
+         'In this instance, what exactly is a cat? We can infer that the topic of the sentence "Is a cat" is an actual cat, which explicitly we would say "The cat is a cat", but in a language like Japanese the topic cannot be inferred.',
+         'In simple sentences like "Cat is" the topic is not infered, however in sentences like "Is a cat" ',
+         'Why? Simply, because Japanese is topic prominent. Or in other words, you can think of it this rule as an appropriate convention to the Japanese language, no different to how saying "thank you" in a language like English to denote politeness. It may possibly seem silly to someone coming from the perspective of someone who natively knows a language that does not have any words for politeness, but that is not to say that it is not incorrect.'
         ], // Essential Linguistics: Understanding Topic Intent - to be, to have, to do
-  L003: ['From the perspective of English, the は and が particles are almost identical and more-or-less translate into the same thing.', 'Of course, this is only from the perspective of English translation. In Japanese they serve quite different purposes.'],
-  L004: [''],
-  L005: [''],
-  L006: [''],
-  L007: [''],
+  L003: ['Before we continue onto more advanced sentences, let us first learn to use what we currently have.',
+         'I won\'t go into the specifics of it, given other resources already cover this quite well, however here is a table with all necessary conjugations.',
+        ], // Grammar Basics: Japanese Noun Conjugations
+  L004: ['Ah, the subject.',
+         'The subject refers to the thing that is being manipulated or is taking an action.',
+        ],  // Essential Linguistics: Subject
+  L005: [''], // Grammar Differences: は and が Topic Particles
+  L006: [''], // Grammar Basics: Introducing the が Topic Particle'
+  L007: [''], // Essential Linguistics: Verb
 
-  L008: [''],
-  L009: [''],
-  L010: [''], 
-  L011: [''], 
-  L012: [''], 
-  L013: [''], 
+  L008: [''], // Grammar Basics: る verb conjugations
+  L009: [''], // Grammar Basics: う verb conjugations
+  L010: [''], // Grammar Basics: Irregular verb conjugations 
+  L011: [''], // Essential Linguistics: Verb / Subject agreement
+  L012: [''], // Grammar Basics: を Verb Statements
+  L013: [''], // Grammar Basics: に Verb Statements
 
-  L014: [''],
-  L015: [''],
-  L016: [''],
-  L017: [''],
-  L018: [''],
+  L014: [''], // Grammar Basics: で Verb Statements
+  L015: [''], // Grammar Differences: を vs に Verb Statements
+  L016: [''], // Grammar Differences: に vs で Verb Statements
+  L017: [''], // Grammar Differences: で vs を Verb Statements
+  L018: [''], // Exercise Challenge: を vs に vs で verb statements
   L019: [''],
   L020: [''],
   L021: [''],

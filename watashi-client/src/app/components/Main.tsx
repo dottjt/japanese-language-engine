@@ -28,7 +28,7 @@ import {
   L017,
   L018,
   L019,
-  L020,
+  // L020,
   // L021,
   // L022,
   // L023,
@@ -54,6 +54,7 @@ import Contents from '../pages/Contents';
 import Welcome from '../pages/Welcome';
 import Philosophy from '../pages/Philosophy';
 import Prerequisites from '../pages/Prerequisites';
+import Playground from '../pages/Playground';
 
 import Blog from '../pages/Blog';
 import Article from '../pages/Article';
@@ -70,9 +71,14 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       exercises,
       sentenceDisplayOptions,
       sentenceStats,
+      preOptions,
+      preModifiers,
+      preSentenceContext,
      } = this.props; 
 
     const isAuthenticated = auth.isAuthenticated();
+
+    console.log('preOptions', preOptions);
 
     switch (route.name) {
       case ROUTE_TITLE.HOME: 
@@ -101,6 +107,14 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
       case ROUTE_TITLE.EXERCISES:
       case ROUTE_TITLE.CONTENTS:
         return <Contents/>
+
+      case ROUTE_TITLE.PLAYGROUND:
+        return <Playground
+                  client={client}
+                  preOptions={preOptions}
+                  preModifiers={preModifiers}
+                  preSentenceContext={preSentenceContext}
+                />
 
       case ROUTE_TITLE.PREREQ:
         return <Prerequisites/>
@@ -462,24 +476,24 @@ class Main extends React.Component<PropTypes.IMainProps, {}> {
             premiumLesson={true}
           />
         );
-      case L020.LESSON_TITLE:
-        return (
-          <LessonTemplate
-            title={L020.LESSON_TITLE}
-            description={L020.LESSON_DESCRIPTION}
-            explanation={L020.LESSON_EXPLANATION}
-            resources={L020.LESSON_RESOURCES}
-            preOptions={L020.LESSON_PRE_OPTIONS}
-            exercises={exercises}
-            sentenceDisplayOptions={sentenceDisplayOptions}
-            sentenceStats={sentenceStats}
-            client={client}
-            path={route.path}                  
-            auth={auth}
-            isAuthenticated={isAuthenticated}
-            premiumLesson={true}
-          />
-        );
+      // case L020.LESSON_TITLE:
+      //   return (
+      //     <LessonTemplate
+      //       title={L020.LESSON_TITLE}
+      //       description={L020.LESSON_DESCRIPTION}
+      //       explanation={L020.LESSON_EXPLANATION}
+      //       resources={L020.LESSON_RESOURCES}
+      //       preOptions={L020.LESSON_PRE_OPTIONS}
+      //       exercises={exercises}
+      //       sentenceDisplayOptions={sentenceDisplayOptions}
+      //       sentenceStats={sentenceStats}
+      //       client={client}
+      //       path={route.path}                  
+      //       auth={auth}
+      //       isAuthenticated={isAuthenticated}
+      //       premiumLesson={true}
+      //     />
+      //   );
       default:
         throw new Error('le application is not working, sorry buddy.');
     }

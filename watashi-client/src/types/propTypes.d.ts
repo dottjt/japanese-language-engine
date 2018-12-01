@@ -28,6 +28,9 @@ declare module PropTypes {
     exercises: Util.EnglishJapaneseOptionsSentence[],
     sentenceDisplayOptions: Util.SentenceDisplayOptions,
     sentenceStats: Util.SentenceStats,
+    preOptions: Util.PreOptions,
+    preModifiers: Util.PreModifiers,
+    preSentenceContext: Util.PreSentenceContext,
   }
   
   export type ISentenceControlPanelProps = {

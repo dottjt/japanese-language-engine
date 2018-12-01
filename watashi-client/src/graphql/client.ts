@@ -5,12 +5,15 @@ import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { withClientState } from 'apollo-link-state';
 
+// import gql from 'graphql-tag';
+
 import {
   __TYPENAME_USER,
   __TYPENAME_CONTROL_PANEL_OPTIONS,
   __TYPENAME_SENTENCE_DISPLAY_OPTIONS,
   __TYPENAME_SENTENCE_STATS,
   __TYPENAME_CONJUGATED_ENGLISH_VERB,
+  __TYPENAME_PRE_OPTIONS,
 } from '../util/constants/typeNameConstants';
 
 import { index, sentenceTypes, optionTypes } from './types';
@@ -18,7 +21,17 @@ import { index, sentenceTypes, optionTypes } from './types';
 import { nounWords, verbWords, adjectiveWords } from '../util/words/collection';
 // import { contextSubjectRoleArrayLength } from '../util/constants/contextConstants';
 
+// import { getExercisesApollo } from '../util/conjugations/generateExercises';
+
+
+import GET_NOUNS_VERBS_AND_PRE_OPTIONS from './queries/getNounsVerbsAndPreOptionsQuery';
+import GET_EVERYTHING from './queries/getEverything';
+
+import { determineGetExercise } from '../util/conjugations/generateExercises';
+
+
 const defaults = {
+  loadCounter: 0,
   nouns: nounWords,
   verbs: verbWords,
   adjectives: adjectiveWords,
@@ -40,11 +53,11 @@ const defaults = {
     selectedExerciseNumber: 0,
     __typename: __TYPENAME_SENTENCE_STATS,
   },
-  // exercises, // exists 
-  // preOptions, // exists 
-  // preModifiers, // exists
-  // preSentenceContext, // exists
-  // user, // exists
+  // exercises: null, // exists 
+  // preOptions: null, // exists 
+  // preModifiers: null, // exists
+  // preSentenceContext: null, // exists
+  // user: null, // exists
 };
 
 const preloadedState = (<any>window).__APOLLO_STATE__;
@@ -58,7 +71,36 @@ const stateLink = withClientState({
   defaults,
   resolvers: {
     Query: {},
-    Mutation: {},
+    Mutation: {
+      modifyPreOptions: (_, { arrayValue, currentArray }, { cache, getCacheKey }) => {
+        const currentArrayHasValue = currentArray.filter(value => value === arrayValue);
+        if (currentArrayHasValue.length > 0) {
+          console.log('wrend')
+        } else {      
+          console.log('wrend not')
+          cache.writeData({
+            data: {
+              preOptions: {
+                politenessArray: currentArray.concat(arrayValue),
+                __typename: __TYPENAME_PRE_OPTIONS, // this.getTypename(this.props.type),
+              },
+            },
+          });
+        }
+        cache.writeData({ data: { loadCounter: 0 } });
+        // const data = cache.readQuery({ query: gql`{ preOptions { politenessArray } }` }) as any;
+        return null;
+      },
+      populateEverything: (_, { preOptions, preModifiers, preSentenceContext, path }, { cache, getCacheKey }) => {
+        cache.writeData({ data: { preOptions, preModifiers, preSentenceContext, user: null } });        
+        const data = cache.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;
+        const numberOfExercices = path === '/' ? 1 : 10;
+        cache.writeData({ data: { exercises: determineGetExercise(data.nouns, data.verbs, data.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) } });
+        const returnData = cache.readQuery({ query: GET_EVERYTHING }) as any;
+        cache.writeData({ data: { loadCounter: 1 } });
+        return returnData;
+      },
+    },
   },
   typeDefs: [ index, sentenceTypes, optionTypes ],
 });

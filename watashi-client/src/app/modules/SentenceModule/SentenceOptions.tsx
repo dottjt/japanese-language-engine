@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Button } from '../../atoms/ClickableStyles';
 
-import { getExercisesApollo } from '../../../util/conjugations/generateExercises';
+// import { getExercisesApollo } from '../../../util/conjugations/generateExercises';
 
 import {
   __TYPENAME_SENTENCE_STATS,
@@ -39,7 +39,7 @@ class SentenceOptions extends React.Component<PropTypes.ISentenceOptionsProps, {
   };
 
   private randomiseExerices = (client: any, path: string): void => {
-    getExercisesApollo(client, path, 10);
+    // getExercisesApollo(client, path, 10);
   };
 
   private toggleSentenceOrder = (client: any, toggleSentenceOrder: boolean): void => {

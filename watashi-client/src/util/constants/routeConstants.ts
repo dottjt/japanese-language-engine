@@ -7,6 +7,7 @@ export const ROUTE_TITLE = {
 
   HOME: 'Home',  
   EXERCISES: 'Exercises',
+  PLAYGROUND: 'Playground',
   ABOUT: 'About',
   BLOG: 'Blog',
   ARTICLE: 'Article',
@@ -28,6 +29,7 @@ export const ROUTE_PATH = {
 
   HOME: '/',
   EXERCISES: '/exercises',
+  PLAYGROUND: '/playground',
   ABOUT: '/about',
   BLOG: '/blog',
   ARTICLE: '/article',
@@ -49,6 +51,7 @@ export const ROUTE_DESCRIPTION = {
   
   HOME: 'Watashi Engine is a Japanese grammar learning web application that uses the Instantaneous Composition Method to teach Japanese Grammar!',
   EXERCISES: '',
+  PLAYGROUND: '',
   ABOUT: '',
   BLOG: '',
   ARTICLE: '',

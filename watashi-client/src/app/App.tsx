@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { Query } from 'react-apollo';
+import gql from 'graphql-tag'
+import { Query, Mutation } from 'react-apollo';
 import { Helmet } from 'react-helmet';
-import { getExercisesApollo } from '../util/conjugations/generateExercises';
-
-import GET_EVERYTHING from '../graphql/queries/getEverything'
 
 import { Flex, FlexColumn } from './atoms/LayoutStyles';
 
@@ -13,42 +11,76 @@ import Main from './components/Main';
 
 import './reset.css';
 
+import {
+  determinePreOptions,
+  determinePreModifiers,
+  determineSentenceContext,
+} from '../util/conjugations/generateExercises';
+
+const POPULATE_OPTIONS = gql`
+  mutation PopulateEverything($preOptions: PreOptions, $preModifiers: PreModifiers, $preSentenceContext: PreSentenceContext, $path: String) {
+    populateEverything(preOptions: $preOptions, preModifiers: $preModifiers, preSentenceContext: $preSentenceContext, path: $path) @client
+  }
+`;
+
 class App extends React.Component<PropTypes.IAppProps, {}> {
 
   public render() {
     const { auth, client, route } = this.props;
-    
-    route.path === '/' ? getExercisesApollo(client, route.path, 1) : getExercisesApollo(client, route.path, 10);
-    
+        
     return (
       <FlexColumn>
         <AppHelmet/>
-        <Query query={GET_EVERYTHING}>
-          {({ data, client }) => {
+        <Query query={gql`{ loadCounter @client }`}>
+          {({data}) => (
+            <Mutation mutation={POPULATE_OPTIONS}>
+              {(createInitialOptions, outcome) => {
+                if (data.loadCounter === 0) {
+                  createInitialOptions({
+                    variables: {
+                      preOptions: determinePreOptions(route.path), 
+                      preModifiers: determinePreModifiers(route.path),
+                      preSentenceContext: determineSentenceContext(route.path),
+                      path: route.path
+                    }
+                  });
+                }
 
-            console.log('App.tsx', data);
+                if (outcome.error) {
+                  return <p>{outcome.error}</p>
+                }
 
-            return (
-              <React.Fragment>
-                {/* <Navbar
-                  user={data.user}
-                  auth={auth}/> */}
-                <Flex>
-                  <Sidebar
-                    route={route}
-                    auth={auth}
-                    user={data.user}
-                  />
-                  <Main 
-                    auth={auth}
-                    route={route}
-                    client={client}
-                    {...data}
-                  />
-                </Flex>
-              </React.Fragment>
-            )
-          }}
+                if (outcome.called && outcome.data) {
+                  // console.log('App', outcome.data.populateEverything);
+                  return (
+                    <React.Fragment>
+                      {/* <Navbar
+                        user={data.user}
+                        auth={auth}/> */}
+                      <Flex>
+                        <Sidebar
+                          route={route}
+                          auth={auth}
+                          user={outcome.data.user}
+                        />
+                        <Main 
+                          auth={auth}
+                          route={route}
+                          client={client}
+                          {...outcome.data.populateEverything}
+                        />
+                      </Flex>
+                    </React.Fragment>
+                  )
+                }
+
+                if (outcome.loading || !outcome.called) {
+                  return <p>loading...</p>
+                }
+                return <p>loading...</p>
+              }}
+            </Mutation>
+          )}
         </Query>
       </FlexColumn>
     );

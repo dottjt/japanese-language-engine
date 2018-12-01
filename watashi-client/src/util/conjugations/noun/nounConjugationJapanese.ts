@@ -40,6 +40,8 @@ import {
   POLARITY_POSITIVE,
   POLARITY_NEGATIVE,
 
+  GENDER_FEMININE,
+
   TENSE_PRESENT,
   TENSE_PAST,
 } from '../../constants/optionsConstants';
@@ -97,7 +99,11 @@ const determineNounConjugationJapanese = (words: Util.SentenceWords, options: Ut
     switch(`${options.selectedPoliteness}${options.selectedPolarity}${japaneseNounTense}`) {
 
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PRESENT}`:
-        return { japaneseNounTense: emptyWord, nounPolarity: emptyWord };
+        if (options.selectedGender === GENDER_FEMININE) {
+          return { japaneseNounTense: emptyWord, nounPolarity: emptyWord };
+        } else {
+          return { japaneseNounTense: createWord(['だ'], JAPANESE_TENSE), nounPolarity: emptyWord };
+        }
         
       case `${POLITENESS_CASUAL}${POLARITY_POSITIVE}${TENSE_PAST}`:
         return { japaneseNounTense: createWord(['だ','っ','た'], JAPANESE_TENSE), nounPolarity: emptyWord };

@@ -40,7 +40,47 @@ import {
 
   THEMES_DEFAULT,
 
-  
+  THEMES_L001,
+  // THEMES_L002,
+  // THEMES_L003,
+  // THEMES_L004,
+  // THEMES_L005,
+  // THEMES_L006,
+  // THEMES_L007,
+  // THEMES_L008,
+  // THEMES_L009,
+  // THEMES_L010,
+  // THEMES_L011,
+  // THEMES_L012,
+  // THEMES_L013,
+  // THEMES_L014,
+  // THEMES_L015,
+  // THEMES_L016,
+  // THEMES_L017,
+  // THEMES_L018,
+  // THEMES_L019,
+  // THEMES_L020,
+  // THEMES_L021,
+  // THEMES_L022,
+  // THEMES_L023,
+  // THEMES_L024,
+  // THEMES_L025,
+  // THEMES_L026,
+  // THEMES_L027,
+  // THEMES_L028,
+  // THEMES_L029,
+  // THEMES_L030,
+  // THEMES_L031,
+  // THEMES_L032,
+  // THEMES_L033,
+  // THEMES_L034,
+  // THEMES_L035,
+  // THEMES_L036,
+  // THEMES_L037,
+  // THEMES_L038,
+  // THEMES_L039,
+  // THEMES_L040,
+
 } from '../constants/optionsConstants';
 
 // import {
@@ -97,7 +137,7 @@ const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjective
 
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(T_variations);
-    case THEMES_L001: return L001[0];
+    case THEMES_L001: return randomArrayValue(L001);
   }
   throw new Error(createError('conjugations/generateWords.tsx', 'T_variations', `${selectedTheme} does not exist`));
 };
