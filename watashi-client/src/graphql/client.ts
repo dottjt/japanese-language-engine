@@ -23,15 +23,21 @@ import { nounWords, verbWords, adjectiveWords } from '../util/words/collection';
 
 // import { getExercisesApollo } from '../util/conjugations/generateExercises';
 
+import {
+  determinePreOptions,
+  determinePreModifiers,
+  determineSentenceContext,
+} from '../util/conjugations/generateExercises';
+
 
 import GET_NOUNS_VERBS_AND_PRE_OPTIONS from './queries/getNounsVerbsAndPreOptionsQuery';
 import GET_EVERYTHING from './queries/getEverything';
 
 import { determineGetExercise } from '../util/conjugations/generateExercises';
 
-
 const defaults = {
-  loadCounter: 0,
+  exerciseLoadCounter: 0,
+  preLoadCounter: 0,
   nouns: nounWords,
   verbs: verbWords,
   adjectives: adjectiveWords,
@@ -73,11 +79,12 @@ const stateLink = withClientState({
     Query: {},
     Mutation: {
       modifyPreOptions: (_, { arrayValue, currentArray }, { cache, getCacheKey }) => {
+        console.log(arrayValue, currentArray)
         const currentArrayHasValue = currentArray.filter(value => value === arrayValue);
+        
         if (currentArrayHasValue.length > 0) {
           console.log('wrend')
         } else {      
-          console.log('wrend not')
           cache.writeData({
             data: {
               preOptions: {
@@ -87,19 +94,35 @@ const stateLink = withClientState({
             },
           });
         }
-        cache.writeData({ data: { loadCounter: 0 } });
+        cache.writeData({ data: { exerciseLoadCounter: 0 } });
         // const data = cache.readQuery({ query: gql`{ preOptions { politenessArray } }` }) as any;
         return null;
       },
-      populateEverything: (_, { preOptions, preModifiers, preSentenceContext, path }, { cache, getCacheKey }) => {
-        cache.writeData({ data: { preOptions, preModifiers, preSentenceContext, user: null } });        
+      populateEverything: (_, { path, exerciseLoadCounter, preLoadCounter }, { cache, getCacheKey }) => {
+
+        if (preLoadCounter === 0) {
+          cache.writeData({ data: { 
+            preOptions: determinePreOptions(path),
+            preModifiers: determinePreModifiers(path),
+            preSentenceContext: determineSentenceContext(path),
+            user: null,
+            preLoadCounter: 1 }
+          });
+        }
+        
         const data = cache.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;
         const numberOfExercices = path === '/' ? 1 : 10;
-        cache.writeData({ data: { exercises: determineGetExercise(data.nouns, data.verbs, data.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices) } });
+        
+        if (exerciseLoadCounter === 0) {
+          cache.writeData({ data: { 
+            exercises: determineGetExercise(data.nouns, data.verbs, data.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices),
+            exerciseLoadCounter: 1 } 
+          });
+        }
+
         const returnData = cache.readQuery({ query: GET_EVERYTHING }) as any;
-        cache.writeData({ data: { loadCounter: 1 } });
         return returnData;
-      },
+      }
     },
   },
   typeDefs: [ index, sentenceTypes, optionTypes ],

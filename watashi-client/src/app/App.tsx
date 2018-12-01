@@ -11,15 +11,9 @@ import Main from './components/Main';
 
 import './reset.css';
 
-import {
-  determinePreOptions,
-  determinePreModifiers,
-  determineSentenceContext,
-} from '../util/conjugations/generateExercises';
-
 const POPULATE_OPTIONS = gql`
-  mutation PopulateEverything($preOptions: PreOptions, $preModifiers: PreModifiers, $preSentenceContext: PreSentenceContext, $path: String) {
-    populateEverything(preOptions: $preOptions, preModifiers: $preModifiers, preSentenceContext: $preSentenceContext, path: $path) @client
+  mutation PopulateEverything($exerciseLoadCounter: Int, $preLoadCounter: Int, $path: String) {
+    populateEverything(exerciseLoadCounter: $exerciseLoadCounter, preLoadCounter: $preLoadCounter, path: $path) @client
   }
 `;
 
@@ -31,19 +25,13 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
     return (
       <FlexColumn>
         <AppHelmet/>
-        <Query query={gql`{ loadCounter @client }`}>
-          {({data}) => (
+        <Query query={gql`{ exerciseLoadCounter @client, preLoadCounter @client }`}>
+          {({data: { exerciseLoadCounter, preLoadCounter } }) => (
             <Mutation mutation={POPULATE_OPTIONS}>
               {(createInitialOptions, outcome) => {
-                if (data.loadCounter === 0) {
-                  createInitialOptions({
-                    variables: {
-                      preOptions: determinePreOptions(route.path), 
-                      preModifiers: determinePreModifiers(route.path),
-                      preSentenceContext: determineSentenceContext(route.path),
-                      path: route.path
-                    }
-                  });
+
+                if (exerciseLoadCounter === 0 || preLoadCounter === 0) {
+                  createInitialOptions({ variables: { path: route.path, exerciseLoadCounter, preLoadCounter } });
                 }
 
                 if (outcome.error) {

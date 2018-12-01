@@ -69,24 +69,23 @@ class KeySet extends React.Component<{ currentArray: string[], valuesArray: stri
 
   public render() {
     const {  currentArray, valuesArray, setValue } = this.props;
-
-     return (
-      valuesArray !== null &&
-        valuesArray.map((value, index) => (
-          <Mutation mutation={MODIFY_PRE_OPTIONS}>
-            {(modifyPreOptions, wayOfLife) => {
-              console.log(wayOfLife);
-              return (
+    
+    return (
+      <Mutation mutation={MODIFY_PRE_OPTIONS}>
+        {modifyPreOptions => {
+          return (
+            valuesArray !== null &&
+              valuesArray.map((value, index) => (
                 <FlexColumn key={`${value}${index}`} css={{ display: 'inline-block' }}>
-                <Item 
-                  onClick={() => modifyPreOptions({ variables: { arrayValue: value, currentArray, valuesArray } })} 
-                  css={{display: 'inline-block'}}
-                  color={setValue === value ? 'red' : null}>{value}</Item>
-              </FlexColumn>  
-              )
-            }}
-          </Mutation>
-        ))
+                  <Item 
+                    onClick={() => modifyPreOptions({ variables: { arrayValue: value, currentArray, valuesArray } })} 
+                    css={{display: 'inline-block'}}
+                    color={setValue === value ? 'red' : null}>{value}</Item>
+                </FlexColumn>  
+              ))
+          )      
+        }}
+      </Mutation>
     )
   }
 
