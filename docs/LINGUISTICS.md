@@ -112,3 +112,9 @@ http://ilovelanguages.org/japanese_lesson2.php
 
 
 https://www.learn-japanese-adventure.com/japanese-words.html
+
+
+
+https://en.oxforddictionaries.com/grammar/word-classes-or-parts-of-speech
+
+Oh, and did you know about conjunctive adverbs? 

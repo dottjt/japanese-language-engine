@@ -102,6 +102,7 @@ export const filtersentenceType = (words: Util.SentenceWords, sentenceType: stri
 };
 
 export const createCommonPermissions = (topic: Util.Noun, subject: Util.Noun, verb: Util.Verb, sentenceType: string) => {
+  const none = (!topic && !subject && !verb);
   const onlyTopic = (topic && !subject && !verb);
   const onlySubject = (!topic && subject && !verb);
   const onlyVerb = (!topic && !subject && verb);
@@ -112,6 +113,8 @@ export const createCommonPermissions = (topic: Util.Noun, subject: Util.Noun, ve
   const onlyTopicAndSubjectSUBJECT = (topic && subject && !verb && sentenceType === SENTENCE_TYPE_SUBJECT);
 
   return {
+    none,
+
     onlyTopic,
     onlySubject,
     onlyVerb,

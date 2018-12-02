@@ -4,9 +4,10 @@ import {
 } from '../functions';
 
 import {
+  createEmptyWord,
   returnSentenceParts,
   generateSentenceTypes,
-} from './utilConjugation';
+} from '../conjugations/utilConjugation';
 
 import {
   SENTENCE_TYPE_VERB,
@@ -28,16 +29,16 @@ import {
   __TYPENAME_ENGLISH_JAPANESE_OPTIONS_SENTENCE,
 } from '../constants/typeNameConstants';
 
-import nounConjugationJapanese from './noun/nounConjugationJapanese';
-import verbConjugationJapanese from './verb/verbConjugationJapanese';
+import nounConjugationJapanese from '../conjugations/noun/nounConjugationJapanese';
+import verbConjugationJapanese from '../conjugations/verb/verbConjugationJapanese';
 
-import nounConjugationEnglish from './noun/nounConjugationEnglish';
-import prepositionConjugationEnglish from './preposition/prepositionConjugationEnglish';
+import nounConjugationEnglish from '../conjugations/noun/nounConjugationEnglish';
+import prepositionConjugationEnglish from '../conjugations/preposition/prepositionConjugationEnglish';
 
-import verbConjugationEnglish from './verb/verbConjugationEnglish';
-import verbConjugationHelpingEnglish from './verb/verbConjugationHelpingEnglish';
-import adverbConjugationEnglish from './adverb/adverbConjugationEnglish';
-import { adjectiveConjugationIndefiniteArticleEnglish } from './adjective/adjectiveConjugationEnglish';
+import verbConjugationEnglish from '../conjugations/verb/verbConjugationEnglish';
+import verbConjugationHelpingEnglish from '../conjugations/verb/verbConjugationHelpingEnglish';
+import adverbConjugationEnglish from '../conjugations/adverb/adverbConjugationEnglish';
+import { adjectiveConjugationIndefiniteArticleEnglish } from '../conjugations/adjective/adjectiveConjugationEnglish';
 
 // import generateWordModifiers from './generateWordModifiers';
 import generateWords from './generateWords';
@@ -72,10 +73,28 @@ const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.Sent
   const { onlyTopic, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
   const isQuestion = options.selectedQuestion === HAS_QUESTION;
 
+  if (none) {
+    const topicJapanese = createEmptyWord('NO_TRANSLATION');
+    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
+
+    if (!isQuestion) {
+      return {
+        japaneseSentence: topicJapanese, 
+        englishSentence: topicEnglish,
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };
+    } else {
+      return {
+        japaneseSentence: topicJapanese,
+        englishSentence: topicEnglish,
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };
+    }
+  }
+
   if (onlyTopic) {
     // NOTE: May need sentenceContext for who is being talked to. // you, yourself. this is different to eventPOV. 
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
-    
     const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
 
     if (!isQuestion) {

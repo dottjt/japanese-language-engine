@@ -22,13 +22,13 @@ import {
   determinePreOptions,
   determinePreModifiers,
   determineSentenceContext,
-} from '../util/conjugations/generateExercises';
+} from '../util/generate/generateExercises';
 
 
 import GET_NOUNS_VERBS_AND_PRE_OPTIONS from './queries/getNounsVerbsAndPreOptionsQuery';
 // import GET_EVERYTHING from './queries/getEverything';
 
-import { determineGetExercise } from '../util/conjugations/generateExercises';
+import { determineGetExercise } from '../util/generate/generateExercises';
 
 const defaults = {
   exerciseLoadCounter: 0,
