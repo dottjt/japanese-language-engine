@@ -1,6 +1,6 @@
-import {
-  __TYPENAME_SENTENCE_CONTEXT,
-} from '../constants/typeNameConstants';
+// import {
+//   __TYPENAME_PRE_SENTENCE_CONTEXT,
+// } from '../constants/typeNameConstants';
 
 import {
   CONTEXT_INTENT_EXISTENCE,

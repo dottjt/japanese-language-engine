@@ -17,6 +17,8 @@ const POPULATE_OPTIONS = gql`
   }
 `;
 
+import GET_EVERYTHING from '../graphql/queries/getEverything';
+
 class App extends React.Component<PropTypes.IAppProps, {}> {
 
   public render() {
@@ -25,21 +27,22 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
     return (
       <FlexColumn>
         <AppHelmet/>
-        <Query query={gql`{ exerciseLoadCounter @client, preLoadCounter @client }`}>
-          {({data: { exerciseLoadCounter, preLoadCounter } }) => (
+        {/* <Query query={gql`{ exerciseLoadCounter @client, preLoadCounter @client }`}> */}
+        <Query query={GET_EVERYTHING}>
+          {({ data }) => (
             <Mutation mutation={POPULATE_OPTIONS}>
               {(createInitialOptions, outcome) => {
-
-                if (exerciseLoadCounter === 0 || preLoadCounter === 0) {
-                  createInitialOptions({ variables: { path: route.path, exerciseLoadCounter, preLoadCounter } });
+                console.log(data)
+                if (data.exerciseLoadCounter === 0 || data.preLoadCounter === 0) {
+                  createInitialOptions({ variables: { path: route.path, exerciseLoadCounter: data.exerciseLoadCounter, preLoadCounter: data.preLoadCounter } });
                 }
 
                 if (outcome.error) {
                   return <p>{outcome.error}</p>
                 }
 
-                if (outcome.called && outcome.data) {
-                  // console.log('App', outcome.data.populateEverything);
+                if (outcome.called && !outcome.loading && data.exercises && data.preOptions) {
+                  console.log('App', data);
                   return (
                     <React.Fragment>
                       {/* <Navbar
@@ -49,13 +52,13 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
                         <Sidebar
                           route={route}
                           auth={auth}
-                          user={outcome.data.user}
+                          user={data.user}
                         />
                         <Main 
                           auth={auth}
                           route={route}
                           client={client}
-                          {...outcome.data.populateEverything}
+                          {...data}
                         />
                       </Flex>
                     </React.Fragment>
@@ -65,7 +68,8 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
                 if (outcome.loading || !outcome.called) {
                   return <p>loading...</p>
                 }
-                return <p>loading...</p>
+
+                throw Error ('hello')
               }}
             </Mutation>
           )}

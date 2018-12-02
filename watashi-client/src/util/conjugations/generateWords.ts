@@ -110,45 +110,78 @@ import {
   // CATEGORY_SUBJECT_UNKNOWN,
   // CATEGORY_VERB_UNKNOWN,
 
-  CATEGORY_HUMAN_NAME,
+  // CATEGORY_HUMAN_NAME,
   CATEGORY_LOCATION,
   
   CATEGORY_FOOD,
   CATEGORY_FOOD_FRUIT,
 } from '../constants/wordConstants';
 
+// NOTE: IHD stands for Is/Has/Does
+
 const generate_T_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   // const unknownSubject = getRandomWordViaCategoryNoun(nouns, [ CATEGORY_SUBJECT_UNKNOWN ]);
   
-  const L001 = [ // Apple is.  
-    {  // Is an apple.
+  const topic = [ // apple. - The apple. - An apple. 
+    {
       sentenceWords: () => genTSV({ topic: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_FOOD_FRUIT ]) }),
       sentenceModifiers: () => {},
     },
   ];
 
   const T_variations = [
-    ...L001,
-    {  // Is tasty.
-      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
-      sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
-    }
+    ...topic,
   ];
 
   switch(selectedTheme) {
     case THEMES_DEFAULT: return randomArrayValue(T_variations);
-    case THEMES_L001: return randomArrayValue(L001);
   }
   throw new Error(createError('conjugations/generateWords.tsx', 'T_variations', `${selectedTheme} does not exist`));
 };
 
 const generate_TS_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
-  
-  const TS_variations = [
-    { 
-      sentenceWords: () => genTSV({ topic: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_HUMAN_NAME ]), subject: filterSpecifcWordNoun(nouns, 'person') }),
-      sentenceModifiers: () => {}
+
+  const unknownTopic_IHD_UnknownSubject = [ 
+    {  // (Unknown Noun) is (Unknown). // Is
+      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
+      sentenceModifiers: () => {},
     }
+  ];
+
+  const unknownTopic_IHD_Subject = [ 
+    {  // (Unknown Noun) is a (Noun). // Is an apple. 
+      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
+      sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
+    }
+  ];
+
+  const unknownTopic_IHD_Adj_Subject = [ 
+    {  // (Unknown Noun) is a (Adjective) (Noun). // Is a tasty apple. 
+      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
+      sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
+    }
+  ];
+
+  const topic_IHD_Subject = [ 
+    {  // (Noun) is a (Noun). // Apple is a fruit.
+      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
+      sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
+    }
+  ];
+
+  const topic_IHD_Adj_Subject = [ 
+    {  // (Noun) is a (Adjective) (Noun). // Apple is a tasty fruit.
+      sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
+      sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
+    }
+  ];
+
+  const TS_variations = [
+    unknownTopic_IHD_UnknownSubject,
+    unknownTopic_IHD_Subject,
+    unknownTopic_IHD_Adj_Subject,
+    topic_IHD_Subject,
+    topic_IHD_Adj_Subject,
   ];
 
   switch(selectedTheme) {

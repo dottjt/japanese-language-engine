@@ -26,7 +26,7 @@ import {
 
 
 import GET_NOUNS_VERBS_AND_PRE_OPTIONS from './queries/getNounsVerbsAndPreOptionsQuery';
-import GET_EVERYTHING from './queries/getEverything';
+// import GET_EVERYTHING from './queries/getEverything';
 
 import { determineGetExercise } from '../util/conjugations/generateExercises';
 
@@ -54,11 +54,11 @@ const defaults = {
     selectedExerciseNumber: 0,
     __typename: __TYPENAME_SENTENCE_STATS,
   },
-  // exercises: null, // exists 
-  // preOptions: null, // exists 
-  // preModifiers: null, // exists
-  // preSentenceContext: null, // exists
-  // user: null, // exists
+  exercises: null, // exists 
+  preOptions: null, // exists 
+  preModifiers: null, // exists
+  preSentenceContext: null, // exists
+  user: null, // exists
 };
 
 const preloadedState = (<any>window).__APOLLO_STATE__;
@@ -73,24 +73,24 @@ const stateLink = withClientState({
   resolvers: {
     Query: {},
     Mutation: {
-      modifyPreOptions: (_, { arrayValue, currentArray, type, arrayType }, { cache, getCacheKey }) => {
-      
+      modifyPlaygroundOptions: (_, { arrayValue, currentArray, type, arrayType, typename }, { cache, getCacheKey }) => {
         if (arrayValue.selected && currentArray.length > 1) {
           cache.writeData({
             data: {
               [type]: {
                 [arrayType]: currentArray.filter(value => value !== arrayValue.value),
-                __typename: __TYPENAME_PRE_OPTIONS,
+                __typename: typename,
               },
-              exerciseLoadCounter: 0,
+              exerciseLoadCounter: 0, // NOTE: Will need to see if we want a separate model for this. 
             },
           });
         } else {
+          console.log('hey, yo!')
           cache.writeData({
             data: {
               [type]: {
                 [arrayType]: currentArray.concat(arrayValue.value),
-                __typename: __TYPENAME_PRE_OPTIONS,
+                __typename: typename,
               },
               exerciseLoadCounter: 0,
             },
@@ -120,9 +120,9 @@ const stateLink = withClientState({
             exerciseLoadCounter: 1 } 
           });
         }
-
-        const returnData = cache.readQuery({ query: GET_EVERYTHING }) as any;
-        return returnData;
+        return null;
+        // const returnData = cache.readQuery({ query: GET_EVERYTHING }) as any;
+        // return returnData;
       }
     },
   },

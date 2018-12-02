@@ -1,6 +1,10 @@
 import gql from 'graphql-tag';
 
 const GET_EVERYTHING = gql`{
+    
+    exerciseLoadCounter @client
+    preLoadCounter @client
+    
     user @client {
       username
       email
