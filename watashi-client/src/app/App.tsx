@@ -12,8 +12,8 @@ import Main from './components/Main';
 import './reset.css';
 
 const POPULATE_OPTIONS = gql`
-  mutation PopulateEverything($exerciseLoadCounter: Int, $preLoadCounter: Int, $path: String) {
-    populateEverything(exerciseLoadCounter: $exerciseLoadCounter, preLoadCounter: $preLoadCounter, path: $path) @client
+  mutation PopulateEverything($playgroundLoadCounter: Int, $exerciseLoadCounter: Int, $preLoadCounter: Int, $path: String) {
+    populateEverything(playgroundLoadCounter: $playgroundLoadCounter, exerciseLoadCounter: $exerciseLoadCounter, preLoadCounter: $preLoadCounter, path: $path) @client
   }
 `;
 
@@ -34,7 +34,7 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
               {(createInitialOptions, outcome) => {
                 console.log(data)
                 if (data.exerciseLoadCounter === 0 || data.preLoadCounter === 0) {
-                  createInitialOptions({ variables: { path: route.path, exerciseLoadCounter: data.exerciseLoadCounter, preLoadCounter: data.preLoadCounter } });
+                  createInitialOptions({ variables: { path: route.path, exerciseLoadCounter: data.exerciseLoadCounter, preLoadCounter: data.preLoadCounter, playgroundLoadCounter: data.playgroundLoadCounter } });
                 }
 
                 if (outcome.error) {

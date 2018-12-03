@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import { FlexColumn } from '../atoms/LayoutStyles';
-import { SidebarItem, HeadingItem } from '../atoms/ComponentStyles';
-import { LESSON_TITLE, LESSON_SECTIONS } from '../../util/config/lessonConfig';
-import { ROUTE_TITLE } from '../../util/constants/routeConstants';
+// import { FlexColumn } from '../atoms/LayoutStyles';
+// import { SidebarItem, HeadingItem } from '../atoms/ComponentStyles';
+// // import { LESSON_TITLE, LESSON_SECTIONS } from '../../util/constants/lessonConstants';
+// import { ROUTE_TITLE } from '../../util/constants/routeConstants';
 
 class LessonList extends React.Component<{}, {}> {
   public render() {
     return (
       <React.Fragment>
-        <FlexColumn>
+        {/* <FlexColumn>
           <HeadingItem>{LESSON_SECTIONS.S00}</HeadingItem>
           <SidebarItem routeName={ROUTE_TITLE.WELCOME} routeOptions={{reload: true}}>{ROUTE_TITLE.WELCOME}</SidebarItem>
           <SidebarItem routeName={ROUTE_TITLE.CONTENTS} routeOptions={{reload: true}}>{ROUTE_TITLE.CONTENTS}</SidebarItem>
@@ -49,7 +49,7 @@ class LessonList extends React.Component<{}, {}> {
           <SidebarItem routeName={LESSON_TITLE.L017} routeOptions={{reload: true}}>{LESSON_TITLE.L017}</SidebarItem>
           <SidebarItem routeName={LESSON_TITLE.L018} routeOptions={{reload: true}}>{LESSON_TITLE.L018}</SidebarItem>
           <SidebarItem routeName={LESSON_TITLE.L019} routeOptions={{reload: true}}>{LESSON_TITLE.L019}</SidebarItem>
-        </FlexColumn>
+        </FlexColumn> */}
 
         {/* <FlexColumn>
           <HeadingItem>{LESSON_SECTIONS.S05}</HeadingItem>

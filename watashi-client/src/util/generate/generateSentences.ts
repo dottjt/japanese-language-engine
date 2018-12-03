@@ -4,7 +4,7 @@ import {
 } from '../functions';
 
 import {
-  createEmptyWord,
+  // createEmptyWord,
   returnSentenceParts,
   generateSentenceTypes,
 } from '../conjugations/utilConjugation';
@@ -68,29 +68,10 @@ const generateJapaneseWord = (sentenceWords: Util.SentenceWords, modifiers: Util
   throw new Error(createError('conjugations/generateSentences.tsx', 'generateJapaneseWord', 'sentenceType does not exist'));
 };
 
-const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, sentenceContext: Util.SentenceContext, options: Util.Options): Util.EnglishJapaneseSentence => {
+export const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Util.SentenceModifierWords, sentenceContext: Util.SentenceContext, options: Util.Options): Util.EnglishJapaneseSentence => {
   const { topic, subject, verb } = returnSentenceParts(sentenceWords);
   const { onlyTopic, onlyVerb, onlyTopicAndSubject, onlySubjectAndVerb } = generateSentenceTypes(topic, subject, verb);
   const isQuestion = options.selectedQuestion === HAS_QUESTION;
-
-  if (none) {
-    const topicJapanese = createEmptyWord('NO_TRANSLATION');
-    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
-
-    if (!isQuestion) {
-      return {
-        japaneseSentence: topicJapanese, 
-        englishSentence: topicEnglish,
-        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-      };
-    } else {
-      return {
-        japaneseSentence: topicJapanese,
-        englishSentence: topicEnglish,
-        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
-      };
-    }
-  }
 
   if (onlyTopic) {
     // NOTE: May need sentenceContext for who is being talked to. // you, yourself. this is different to eventPOV. 

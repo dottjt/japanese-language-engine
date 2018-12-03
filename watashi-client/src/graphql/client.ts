@@ -14,6 +14,8 @@ import {
   __TYPENAME_PRE_OPTIONS,
 } from '../util/constants/typeNameConstants';
 
+import { ROUTE_PATH } from '../util/constants/routeConstants';
+
 import { index, sentenceTypes, optionTypes } from './types';
 
 import { nounWords, verbWords, adjectiveWords } from '../util/words/collection';
@@ -24,14 +26,14 @@ import {
   determineSentenceContext,
 } from '../util/generate/generateExercises';
 
+import GET_NOUNS_VERBS_ADJECTIVES from './queries/getNounsVerbsAndPreOptionsQuery';
+import GET_PRE_QUERY from './queries/getPreQuery';
 
-import GET_NOUNS_VERBS_AND_PRE_OPTIONS from './queries/getNounsVerbsAndPreOptionsQuery';
-// import GET_EVERYTHING from './queries/getEverything';
-
-import { determineGetExercise } from '../util/generate/generateExercises';
+import { determineExercises, determinePlayground } from '../util/generate/generateExercises';
 
 const defaults = {
   exerciseLoadCounter: 0,
+  playgroundLoadCounter: 0,
   preLoadCounter: 0,
   nouns: nounWords,
   verbs: verbWords,
@@ -74,55 +76,71 @@ const stateLink = withClientState({
     Query: {},
     Mutation: {
       modifyPlaygroundOptions: (_, { arrayValue, currentArray, type, arrayType, typename }, { cache, getCacheKey }) => {
+        const createPlaygroundOptions = (type, arrayType, arrayTypeValue) => ({
+          data: {
+            [type]: {
+              [arrayType]: currentArray.filter(value => value !== arrayValue.value),
+              __typename: typename,
+            },
+            exerciseLoadCounter: 0, // NOTE: Will need to see if we want a separate model for this. 
+          },  
+        });
+
         if (arrayValue.selected && currentArray.length > 1) {
-          cache.writeData({
-            data: {
-              [type]: {
-                [arrayType]: currentArray.filter(value => value !== arrayValue.value),
-                __typename: typename,
-              },
-              exerciseLoadCounter: 0, // NOTE: Will need to see if we want a separate model for this. 
-            },
-          });
+          cache.writeData(createPlaygroundOptions(type, arrayType, currentArray.filter(value => value !== arrayValue.value)));
         } else {
-          console.log('hey, yo!')
-          cache.writeData({
-            data: {
-              [type]: {
-                [arrayType]: currentArray.concat(arrayValue.value),
-                __typename: typename,
-              },
-              exerciseLoadCounter: 0,
-            },
-          });
+          cache.writeData(createPlaygroundOptions(type, arrayType, currentArray.concat(arrayValue.value)));
         }
         return null;
       },
-      populateEverything: (_, { path, exerciseLoadCounter, preLoadCounter }, { cache, getCacheKey }) => {
+      populateEverything: (_, { path, exerciseLoadCounter, preLoadCounter, playgroundLoadCounter }, { cache, getCacheKey }) => {
+        const pathArray = path.split('/');
+        const firstPath = '/' + pathArray[1];
 
-        // NOTE: So, the problem I'm having is that preOptions will not save the __typename in. 
-        if (preLoadCounter === 0) {
-          cache.writeData({ data: {
-            preOptions: determinePreOptions(path),
-            preModifiers: determinePreModifiers(path),
-            preSentenceContext: determineSentenceContext(path),
-            user: null,
-            preLoadCounter: 1 }
-          });
+        // - /exercises
+        if (firstPath === ROUTE_PATH.EXERCISES && pathArray.length === 2) {
+          return null;
         }
-        
-        const data = cache.readQuery({ query: GET_NOUNS_VERBS_AND_PRE_OPTIONS }) as any;
-        const numberOfExercices = path === '/' ? 1 : 10;
-        
-        if (exerciseLoadCounter === 0) {
-          cache.writeData({ data: { 
-            exercises: determineGetExercise(data.nouns, data.verbs, data.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices),
-            exerciseLoadCounter: 1 } 
-          });
+
+        const words = cache.readQuery({ query: GET_NOUNS_VERBS_ADJECTIVES }) as any;
+
+        // - /playground
+        // - /exercises/cake
+        // - /playground/cake
+        if (firstPath === ROUTE_PATH.EXERCISES || firstPath === ROUTE_PATH.PLAYGROUND) {
+          if (preLoadCounter === 0) {
+            cache.writeData({ data: {
+              preOptions: determinePreOptions(path),
+              preModifiers: determinePreModifiers(path),
+              preSentenceContext: determineSentenceContext(path),
+              user: null,
+              preLoadCounter: 1 }
+            });
+          }
+          
+          const data = cache.readQuery({ query: GET_PRE_QUERY }) as any;
+          const numberOfExercices = path === '/' ? 1 : 10;
+          
+          if (playgroundLoadCounter === 0) {
+            if (firstPath === ROUTE_PATH.PLAYGROUND && pathArray.length === 2) {
+              cache.writeData({ data: {
+                exercises: determinePlayground(words.nouns, words.verbs, words.adjectives, data.preModifiers, data.preOptions, data.preSentenceContext),
+                playgroundLoadCounter: 1 }
+              });  
+            }  
+          }
+
+          if (exerciseLoadCounter === 0) {
+            if (firstPath === ROUTE_PATH.EXERCISES) {
+              cache.writeData({ data: { 
+                exercises: determineExercises(words.nouns, words.verbs, words.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices),
+                exerciseLoadCounter: 1 } 
+              });
+            }
+          }
+          return null;
         }
         return null;
-        // const returnData = cache.readQuery({ query: GET_EVERYTHING }) as any;
-        // return returnData;
       }
     },
   },

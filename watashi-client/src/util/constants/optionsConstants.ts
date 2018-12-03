@@ -34,6 +34,36 @@ export const variationArray = [
   MADE_TS,
 ];
 
+// options.variation TRY AGAIN
+
+export const uTop = 'uTop';
+export const top = 'top';
+export const adjTop = 'adjTop';
+
+export const uTop_uSub = 'uTop_uSub';
+export const uTop_Sub = 'uTop_Sub';
+export const uTop_adjSub = 'uTop_adjSub';
+export const top_Sub = 'top_Sub';
+export const top_adjSub = 'top_adjSub';
+
+export const verb = 'verb';
+export const verbAdv = 'verbAdv';
+
+export const verb_Sub = 'verb_Sub';
+
+export const optionsVariationArray = [
+  uTop,
+  top,
+  adjTop,
+  uTop_uSub,
+  uTop_Sub,
+  uTop_adjSub,
+  top_Sub,
+  top_adjSub,
+  verb,
+  verbAdv,
+  verb_Sub,
+];
 
 // options.question
 
@@ -93,7 +123,7 @@ export const politenessArrayLength = politenessArray.length;
 export const GENDER_MASCULINE = 'GENDER_MASCULINE';
 export const GENDER_FEMININE = 'GENDER_FEMININE';
 
-export const genderArray = [ 
+export const genderArray = [
   GENDER_MASCULINE,
   GENDER_FEMININE,
 ];

@@ -31,7 +31,6 @@ const Index = () => (
     <ApolloProvider client={client}>
       <RouteProvider router={router}>
         <Route>{({ route }) => {
-          
           // I need to manually get the user information and authenticate that. perhaps from database, not 100% sure at this stage.
 
           if (route !== null) {

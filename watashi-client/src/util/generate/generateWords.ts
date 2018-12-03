@@ -159,35 +159,35 @@ const generate_TS_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectiv
   const unknownTopic = getRandomWordViaCategoryNoun(nouns, [ CATEGORY_TOPIC_UNKNOWN ]);
   const unknownSubject = getRandomWordViaCategoryNoun(nouns, [ CATEGORY_SUBJECT_UNKNOWN ]);
   
-  const uTop_IHD_uSub = [
+  const uTop_uSub = [
     {  // (Unknown Noun) is (Unknown). // Is
       sentenceWords: () => genTSV({ topic: unknownTopic, subject: unknownSubject }),
       sentenceModifiers: () => {},
     }
   ];
 
-  const uTop_IHD_Sub = [
+  const uTop_Sub = [
     {  // (Unknown Noun) is a (Noun). // Is an apple. 
       sentenceWords: () => genTSV({ topic: unknownTopic, subject: filterSpecifcWordNoun(nouns, 'fruit') }),
       sentenceModifiers: () => {},
     }
   ];
 
-  const uTop_IHD_adjSub = [ 
+  const uTop_adjSub = [ 
     {  // (Unknown Noun) is a (Adjective) (Noun). // Is a tasty apple. 
       sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
       sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
     }
   ];
 
-  const topic_IHD_Sub = [ 
+  const top_Sub = [ 
     {  // (Noun) is a (Noun). // Apple is a fruit.
       sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
       sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
     }
   ];
 
-  const topic_IHD_adjSub = [
+  const top_adjSub = [
     {  // (Noun) is a (Adjective) (Noun). // Apple is a tasty fruit.
       sentenceWords: () => genTSV({ topic: filterSpecifcWordNoun(nouns, 'fruit') }),
       sentenceModifiers: () => { tAdj: getRandomWordViaCategoryAdjective(adjectives, [ CATEGORY_FOOD ]) },
@@ -195,11 +195,11 @@ const generate_TS_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectiv
   ];
 
   const TS_variations = [
-    uTop_IHD_uSub,
-    uTop_IHD_Sub,
-    uTop_IHD_adjSub,
-    topic_IHD_Sub,
-    topic_IHD_adjSub,
+    uTop_uSub,
+    uTop_Sub,
+    uTop_adjSub,
+    top_Sub,
+    top_adjSub,
   ];
 
   switch(selectedTheme) {
@@ -237,7 +237,7 @@ const generate_V_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjective
 
 const generate_WO_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], selectedTheme: string): { sentenceWords: () => Util.SentenceWords, sentenceModifiers: () => Util.SentenceModifierWords } => {
   
-  const verbSub = [
+  const verb_Sub = [
     { // (Verb) (Subject). // Eat Cake - Eat the cake - Eat a cake
       sentenceWords: () => genTSV({ verb: getRandomWordVerb(verbs) }),
       sentenceModifiers: () => {}
@@ -246,17 +246,8 @@ const generate_WO_SV_variations = (nouns: Util.Noun[], verbs: Util.Verb[], adjec
 
   // NOTE: I would need to figure out the various combinations here. So for example, creating food variations and linking those categories together.
 
-  const verbPrepSub = [
-    { // (Unknown) (motion preposition) the (Subject). // (Go to) the house.
-      sentenceWords: () => genTSV({ verb: getRandomWordVerb(verbs) }),
-      sentenceModifiers: () => {}
-    }
-  ]
-
   const WO_SV_variations = [
-    ...verbSub,
-    ...verbPrepSub,
-
+    ...verb_Sub,
     // {
     //   sentenceWords: () => genTSV({ subject: getRandomWordViaCategoryNoun(nouns, [ CATEGORY_FOOD ]), verb: filterSpecifcWordVerb(verbs, 'eat') }),
     //   sentenceModifiers: () => {},

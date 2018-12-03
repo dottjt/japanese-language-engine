@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 const GET_EVERYTHING = gql`{
     
     exerciseLoadCounter @client
+    playgroundLoadCounter @client
     preLoadCounter @client
     
     user @client {
