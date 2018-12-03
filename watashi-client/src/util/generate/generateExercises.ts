@@ -48,6 +48,8 @@ export const determinePreOptions = (path: string): Util.PreOptions | any => {
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verb}`: return PLAYGROUND_PRE_OPTIONS.verb;
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verbAdv}`: return PLAYGROUND_PRE_OPTIONS.verbAdv;
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verb_Sub}`: return PLAYGROUND_PRE_OPTIONS.verb_Sub;
+      default:
+        return PLAYGROUND_PRE_OPTIONS.uTop;
     }
   }
   
@@ -95,6 +97,8 @@ export const determinePreModifiers = (path: string): Util.PreModifiers => {
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verb}`: return PLAYGROUND_PRE_MODIFIERS.verb;
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verbAdv}`: return PLAYGROUND_PRE_MODIFIERS.verbAdv;
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verb_Sub}`: return PLAYGROUND_PRE_MODIFIERS.verb_Sub;
+      default:
+        return PLAYGROUND_PRE_MODIFIERS.uTop;
     }
   }
 
@@ -142,6 +146,8 @@ export const determineSentenceContext = (path: string): Util.PreSentenceContext 
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verb}`: return PLAYGROUND_PRE_SENTENCE_CONTEXT.verb;
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verbAdv}`: return PLAYGROUND_PRE_SENTENCE_CONTEXT.verbAdv;
       case `${ROUTE_PATH.PLAYGROUND}${PLAYGROUND_PATH.verb_Sub}`: return PLAYGROUND_PRE_SENTENCE_CONTEXT.verb_Sub;
+      default:
+        return PLAYGROUND_PRE_SENTENCE_CONTEXT.uTop;
     }
   }
 
@@ -226,15 +232,16 @@ import generateWords from './generateWords';
 import { optionsVariationArray } from '../constants/optionsConstants';
 import { generatePhrases } from './generateSentences';
 
-export const determinePlayground = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], modifiersLambda: () => Util.Modifiers, optionsLambda: () => Util.Options, sentenceContextLambda: () => Util.SentenceContext): Util.EnglishJapaneseOptionsSentence[] => {
+export const determinePlayground = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.Adjective[], preModifiers: Util.PreModifiers, preOptions: Util.PreOptions, preSentenceContext: Util.PreSentenceContext): Util.EnglishJapaneseOptionsSentence[] => {
 
   // NOTE: Need to figure this out on the client.
 
   // so, depending on the path,
   // so we need to get the routes sorted, first :)
-  const options = optionsLambda();
-  const modifiers = modifiersLambda();
-  const sentenceContext = sentenceContextLambda();
+
+  const options = createLessonOptions(preOptions);
+  const modifiers = createLessonModifiers(preModifiers);
+  const sentenceContext = createSentenceContext(preSentenceContext);
 
   return optionsVariationArray.map(optionsVariation => {
     // so they should still get an options? Or should they not?

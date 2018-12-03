@@ -33,7 +33,7 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
             <Mutation mutation={POPULATE_OPTIONS}>
               {(createInitialOptions, outcome) => {
                 console.log(data)
-                if (data.exerciseLoadCounter === 0 || data.preLoadCounter === 0) {
+                if (data.exerciseLoadCounter === 0 || data.preLoadCounter === 0 || data.playgroundLoadCounter === 0) {
                   createInitialOptions({ variables: { path: route.path, exerciseLoadCounter: data.exerciseLoadCounter, preLoadCounter: data.preLoadCounter, playgroundLoadCounter: data.playgroundLoadCounter } });
                 }
 
@@ -41,7 +41,8 @@ class App extends React.Component<PropTypes.IAppProps, {}> {
                   return <p>{outcome.error}</p>
                 }
 
-                if (outcome.called && !outcome.loading && data.exercises && data.preOptions) {
+                // maybe it hsould be look at the load counters instead to see if they equal = 1
+                if (outcome.called && !outcome.loading && data.preOptions) {
                   console.log('App', data);
                   return (
                     <React.Fragment>

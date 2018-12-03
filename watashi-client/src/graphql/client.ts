@@ -127,6 +127,7 @@ const stateLink = withClientState({
                 exercises: determinePlayground(words.nouns, words.verbs, words.adjectives, data.preModifiers, data.preOptions, data.preSentenceContext),
                 playgroundLoadCounter: 1 }
               });  
+              return null;
             }  
           }
 
@@ -136,9 +137,9 @@ const stateLink = withClientState({
                 exercises: determineExercises(words.nouns, words.verbs, words.adjectives, path, data.preOptions, data.preModifiers, data.preSentenceContext, numberOfExercices),
                 exerciseLoadCounter: 1 } 
               });
+              return null;
             }
           }
-          return null;
         }
         return null;
       }

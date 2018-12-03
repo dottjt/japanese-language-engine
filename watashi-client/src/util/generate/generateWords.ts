@@ -301,16 +301,31 @@ const generateWords = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: Util.
   const selectedTheme = options.selectedTheme;
 
   switch(`${selectedVariation}`) {
-    case `${T}`:     return generate_T_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${WA_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${MO_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${GA_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${V}`:     return generate_V_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${WO_SV}`: return generate_WO_SV_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${NI_SV}`: return generate_NI_SV_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${DE_SV}`: return generate_DE_SV_variations(nouns, verbs, adjectives, selectedTheme);
-    case `${KARA_TS}`: 
-    case `${MADE_TS}`:
+    case `${uTop}`: return generate_T_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${top}`: return generate_T_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${adjTop}`: return generate_T_variations(nouns, verbs, adjectives, selectedTheme);
+
+    case `${uTop_uSub}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${uTop_Sub}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${uTop_adjSub}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${top_Sub}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${top_adjSub}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    
+    case `${verb}`: return generate_V_variations(nouns, verbs, adjectives, selectedTheme);
+    case `${verbAdv}`: return generate_V_variations(nouns, verbs, adjectives, selectedTheme);
+
+    case `${verb_Sub}`: return generate_DE_SV_variations(nouns, verbs, adjectives, selectedTheme);
+
+    // case `${T}`:     return generate_T_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${WA_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${MO_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${GA_TS}`: return generate_TS_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${V}`:     return generate_V_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${WO_SV}`: return generate_WO_SV_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${NI_SV}`: return generate_NI_SV_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${DE_SV}`: return generate_DE_SV_variations(nouns, verbs, adjectives, selectedTheme);
+    // case `${KARA_TS}`: 
+    // case `${MADE_TS}`:
   };
   throw new Error(createError('conjugations/generateWords.tsx', 'generateWords', `Your options variation ${selectedTheme}${selectedVariation} does not exist`));
 };
