@@ -97,8 +97,6 @@ export const optionTypes = `
   }
   
   PreModifiers {
-    topicNoArray: [ String ]
-    subjectNoArray: [ String ]
     topicAdjectiveArray: [ String ]
     topicAdverbArray: [ String ]
     subjectAdjectiveArray: [ String ]
@@ -106,14 +104,11 @@ export const optionTypes = `
   };
 
   Modifiers {
-    selectedTopicNo: String
-    selectedSubjectNo: String
     selectedTopicAdjective: String
     selectedTopicAdverb: String
     selectedSubjectAdjective: String
     selectedSubjectAdverb: String
   };
-
 
   type PreOptions {
     politenessArray: [ String ]

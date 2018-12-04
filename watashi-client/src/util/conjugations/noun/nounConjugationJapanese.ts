@@ -24,16 +24,20 @@ import {
 } from '../../constants/typeNameConstants';
 
 import {
-  T,
+  uTop,
+  top,
+  adjTop,
 
-  WA_TS,
-  MO_TS,
-  GA_TS,
+  uTop_uSub,
+  uTop_Sub,
+  uTop_adjSub,
+  top_Sub,
+  top_adjSub,
 
-  WO_SV,
-  NI_SV,
-  DE_SV,
-  
+  verb,
+  verbAdv,
+  verb_Sub,
+
   POLITENESS_CASUAL,
   POLITENESS_FORMAL,
 
@@ -72,14 +76,28 @@ const determineTopicParticleJapanese = (words: Util.SentenceWords, options: Util
   const permissions = nounParticlePermissions(topic as Util.Noun, subject as Util.Noun, verb as Util.Verb, sentenceType);
 
   if (permissions) {
+    // NOTE: I need to change the way this works, so it looks at the preposition, perhaps?
     switch (options.selectedVariation) {
-      case T:     return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
-      case WA_TS: return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
-      case MO_TS: return createWord(['も'], JAPANESE_TOPIC_PARTICLE);
-      case GA_TS: return createWord(['が'], JAPANESE_TOPIC_PARTICLE);
-      case WO_SV: return createWord(['を'], JAPANESE_TOPIC_PARTICLE);
-      case NI_SV: return createWord(['に'], JAPANESE_TOPIC_PARTICLE);
-      case DE_SV: return createWord(['で'], JAPANESE_TOPIC_PARTICLE);
+      case uTop: return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
+      case top: return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
+      case adjTop: return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
+      
+      // case uTop_uSub:
+      // case uTop_Sub:
+      // case uTop_adjSub:
+      // case top_Sub:
+      // case top_adjSub:
+
+      // case verb:
+      // case verbAdv:
+      // case verb_Sub:
+      // case T:     return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
+      // case WA_TS: return createWord(['は'], JAPANESE_TOPIC_PARTICLE);
+      // case MO_TS: return createWord(['も'], JAPANESE_TOPIC_PARTICLE);
+      // case GA_TS: return createWord(['が'], JAPANESE_TOPIC_PARTICLE);
+      // case WO_SV: return createWord(['を'], JAPANESE_TOPIC_PARTICLE);
+      // case NI_SV: return createWord(['に'], JAPANESE_TOPIC_PARTICLE);
+      // case DE_SV: return createWord(['で'], JAPANESE_TOPIC_PARTICLE);
     }
     throw new Error(createError('conjugations/noun/nounConjugationJapanese', 'determineTopicParticleJapanese', 'options.variation unknown'));
   }

@@ -20,8 +20,6 @@ import {
 } from '../../util/constants/optionsConstants';
 
 import {
-  topicNoArray,
-  subjectNoArray,
   topicAdjectiveArray,
   topicAdverbArray,
   subjectAdjectiveArray,
@@ -267,9 +265,7 @@ const selectOptionsArray = (optionsField) => {
 
 const selectModifiersArray = (modifiersField) => {
   switch(modifiersField) {
-    case 'topicNoArray': return topicNoArray;
-    case 'subjectNoArray': return subjectNoArray;
-    case 'topicAdjectiveArray': return topicAdjectiveArray;
+    case 'topicAdjectiveArray': topicAdjectiveArray;
     case 'topicAdverbArray': return topicAdverbArray;
     case 'subjectAdjectiveArray': return subjectAdjectiveArray;
     case 'subjectAdverbArray': return subjectAdverbArray;

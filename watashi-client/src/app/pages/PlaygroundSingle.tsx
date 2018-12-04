@@ -19,8 +19,6 @@ import Helmet from '../components/Helmet';
 // } from '../../util/constants/optionsConstants';
 
 // import {
-//   topicNoArray,
-//   subjectNoArray,
 //   topicAdjectiveArray,
 //   topicAdverbArray,
 //   subjectAdjectiveArray,

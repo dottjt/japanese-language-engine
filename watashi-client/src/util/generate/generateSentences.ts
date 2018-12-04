@@ -4,7 +4,7 @@ import {
 } from '../functions';
 
 import {
-  // createEmptyWord,
+  createEmptyWord,
   returnSentenceParts,
   generateSentenceTypes,
 } from '../conjugations/utilConjugation';
@@ -21,6 +21,20 @@ import {
 } from '../constants/wordConstants';
 
 import {
+  uTop,
+  top,
+  adjTop,
+
+  uTop_uSub,
+  uTop_Sub,
+  uTop_adjSub,
+  top_Sub,
+  top_adjSub,
+
+  verb,
+  verbAdv,
+  verb_Sub,
+
   HAS_QUESTION,
 } from '../constants/optionsConstants';
 
@@ -74,25 +88,85 @@ export const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Ut
   const isQuestion = options.selectedQuestion === HAS_QUESTION;
 
   if (onlyTopic) {
-    // NOTE: May need sentenceContext for who is being talked to. // you, yourself. this is different to eventPOV. 
-    const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
-    const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
 
-    if (!isQuestion) {
+    // NOTE: We can use the specifier to determine ownership. 
+    
+    // possessive
+    // my, his,
+
+    // CAN
+    // indefinite article. - a - the 
+    // demonstrative. - this, that, these, those
+
+    // CANNOT
+    // descriptive // good. // maybe?
+    // quantitative. // maybe? 
+    // interrogative. // which, what, whose
+    // distributive. // each, every, either, neither, any
+    // So, I can make separate categories for it. Or I can just say that it depends on the theme.
+
+    // ''. - the. - a. - my. - your. - his. - their. - this.
+    if (options.selectedVariation === uTop) {
+      const nothingJapanese = createEmptyWord('EMPTY WORD')
+
+      const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE, "NA");    
       return {
-        japaneseSentence: topicJapanese, 
-        englishSentence: topicEnglish,
+        japaneseSentence: nothingJapanese,
+        englishSentence: adjectiveIndefiniteArticleEnglish,
         __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
       };
-    } else {
+    };
+
+    // apple. - the apple. - an apple.
+    if (options.selectedVariation === top) {
+      const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
+
+      const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE, "NA");    
+      const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
+      
       return {
         japaneseSentence: topicJapanese,
-        englishSentence: topicEnglish,
+        englishSentence: adjectiveIndefiniteArticleEnglish.concat(topicEnglish),
         __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
       };
-    }
+    };
+
+    // tasty apple. - the tasty apple. - a tasty apple.
+    if (options.selectedVariation === adjTop) {
+      const adjectiveIndefiniteArticleEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_ADJECTIVE_INDEFINITE_ARTICLE, "NA");    
+      // const adjectiveEnglish = 
+      const topicEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
+      
+      const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
+
+      return {
+        japaneseSentence: topicJapanese,
+        englishSentence: adjectiveIndefiniteArticleEnglish.concat(topicEnglish),
+        __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      };
+
+    };
+
+    // if (!isQuestion) {
+    //   return {
+    //     japaneseSentence: topicJapanese, 
+    //     englishSentence: topicEnglish,
+    //     __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+    //   };
+    // } else {
+      // return {
+      //   japaneseSentence: topicJapanese,
+      //   englishSentence: topicEnglish,
+      //   __typename: __TYPENAME_ENGLISH_JAPANESE_SENTENCE,
+      // };
+    // }
   };
   if (onlyVerb) {
+    verb
+    verbAdv
+    
+
+
     const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "NA");
 
     const helpingVerbEnglish = generateEnglishWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB_HELPING, "NA");    
@@ -110,6 +184,13 @@ export const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Ut
   };
 
   if (onlyTopicAndSubject) {
+
+    uTop_uSub
+    uTop_Sub
+    uTop_adjSub
+    top_Sub
+    top_adjSub
+
     const topicJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_TOPIC, "NA");
     const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, "NA");
     
@@ -129,6 +210,8 @@ export const generatePhrases = (sentenceWords: Util.SentenceWords, modifiers: Ut
     throw new Error(`Question sentence for onlyTopicAndSubject not created yet.`);
   };
   if (onlySubjectAndVerb) {
+    verb_Sub
+
     const verbJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_VERB, "NA");
     const subjectJapanese = generateJapaneseWord(sentenceWords, modifiers, options, sentenceContext, SENTENCE_TYPE_SUBJECT, "NA");
 
@@ -156,7 +239,7 @@ const generateSentences = (nouns: Util.Noun[], verbs: Util.Verb[], adjectives: U
     const modifiers = modifiersLambda();
     const sentenceContext = sentenceContextLambda();
 
-    const { sentenceWords, sentenceModifiers } = generateWords(nouns, verbs, adjectives, options);
+    const { sentenceWords, sentenceModifiers } = generateWords(nouns, verbs, adjectives, options, modifiers);
 
     const phrases = generatePhrases(sentenceWords(), sentenceModifiers(), sentenceContext, options);
 

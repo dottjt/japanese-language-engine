@@ -12,8 +12,6 @@ const GET_PRE_QUERY = gql`{
   }
 
   preModifiers @client {
-    topicNoArray
-    subjectNoArray
     topicAdjectiveArray
     topicAdverbArray
     subjectAdjectiveArray

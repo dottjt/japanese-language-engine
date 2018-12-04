@@ -71,9 +71,18 @@ export const PLAYGROUND_PRE_OPTIONS = {
 
 const playgroundPreModifiersStem = (variation) => ({
   __typename: __TYPENAME_PRE_MODIFIERS,
-  topicNoArray: [ 'MODIFIERS_NA' ],
-  subjectNoArray: [ 'MODIFIERS_NA' ],
+  // topicNoArray: [ 'MODIFIERS_NA' ],
+  // subjectNoArray: [ 'MODIFIERS_NA' ],
   topicAdjectiveArray: [ 'MODIFIERS_NA' ],
+
+  tAdjIndefinite: [],
+  tAdjQuantitative: [],
+  tAdjDemonstrative: [],
+  tAdjPossessive: [],
+  tAdjInterrogative: [],
+  tAdjDistributive: [],
+  tAdjDescriptive: [],
+
   topicAdverbArray: [ 'MODIFIERS_NA' ],
   subjectAdjectiveArray: [ 'MODIFIERS_NA' ],
   subjectAdverbArray: [ 'MODIFIERS_NA' ],

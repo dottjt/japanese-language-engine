@@ -44,9 +44,7 @@ const GET_EVERYTHING = gql`{
     }
     
     preModifiers @client {
-      topicNoArray
-      subjectNoArray
-      topicAdjectiveArray
+      topicAdjectiveArray,
       topicAdverbArray
       subjectAdjectiveArray
       subjectAdverbArray
@@ -130,8 +128,6 @@ const GET_EVERYTHING = gql`{
       }
 
       modifiers @client {
-        selectedTopicNo
-        selectedSubjectNo
         selectedTopicAdjective
         selectedTopicAdverb
         selectedSubjectAdjective

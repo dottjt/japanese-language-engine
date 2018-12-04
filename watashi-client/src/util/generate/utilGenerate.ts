@@ -11,17 +11,13 @@ import {
 
 export const createLessonModifiers = (modifiers: Util.PreModifiers): Util.Modifiers => {
   const { 
-    topicNoArray, 
-    subjectNoArray, 
-    topicAdjectiveArray, 
-    topicAdverbArray, 
+    topicAdjectiveArray,
+    topicAdverbArray,
     subjectAdjectiveArray, 
     subjectAdverbArray } = modifiers;
   
   return {
     __typename: __TYPENAME_MODIFIERS,
-    selectedTopicNo: topicNoArray.length === 1 ? topicNoArray[0] : randomArrayValue(topicNoArray),
-    selectedSubjectNo: subjectNoArray.length === 1 ? subjectNoArray[0] : randomArrayValue(subjectNoArray),
     selectedTopicAdjective: topicAdjectiveArray.length === 1 ? topicAdjectiveArray[0] : randomArrayValue(topicAdjectiveArray),
     selectedTopicAdverb: topicAdverbArray.length === 1 ? topicAdverbArray[0] : randomArrayValue(topicAdverbArray),
     selectedSubjectAdjective: subjectAdjectiveArray.length === 1 ? subjectAdjectiveArray[0] : randomArrayValue(subjectAdjectiveArray),

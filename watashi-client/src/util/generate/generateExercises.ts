@@ -247,7 +247,7 @@ export const determinePlayground = (nouns: Util.Noun[], verbs: Util.Verb[], adje
     // so they should still get an options? Or should they not?
     options.selectedVariation = optionsVariation;
 
-    const { sentenceWords, sentenceModifiers } = generateWords(nouns, verbs, adjectives, options);
+    const { sentenceWords, sentenceModifiers } = generateWords(nouns, verbs, adjectives, options, modifiers);
     const phrases = generatePhrases(sentenceWords(), sentenceModifiers(), sentenceContext, options);
     
     const englishSentence = phrases.englishSentence.filter(wordArrayElement => wordArrayElement.word !== '');

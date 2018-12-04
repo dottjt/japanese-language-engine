@@ -143,8 +143,6 @@ declare namespace Util {
 
   export type PreModifiers = {
     __typename: string;
-    topicNoArray: string[];
-    subjectNoArray: string[];
     topicAdjectiveArray: string[];
     topicAdverbArray: string[];
     subjectAdjectiveArray: string[];
@@ -153,8 +151,6 @@ declare namespace Util {
 
   export type Modifiers = {
     __typename: string;
-    selectedTopicNo: string;
-    selectedSubjectNo: string;
     selectedTopicAdjective: string;
     selectedTopicAdverb: string;
     selectedSubjectAdjective: string;
@@ -203,7 +199,15 @@ declare namespace Util {
   };
 
   export type SentenceModifierWords = {
-    tAdj?: Adjective;
+    tAdjIndefinite?: Adjective; // a, the
+    tAdjOther: Adjective
+    // tAdjQuantitative?: Adjective; // maybe
+    // tAdjDemonstrative?: Adjective; // this, that, these
+    // tAdjPossessive?: Adjective; // my, his
+    // tAdjInterrogative?: Adjective; // which, what, whose
+    // tAdjDistributive?: Adjective; // each, every, either, neither, any
+    // tAdjDescriptive?: Adjective; // good, lonely
+
     tAdv?: WordModifier;
 
     sAdj?: Adjective;

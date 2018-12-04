@@ -11,33 +11,10 @@ export const SUBJECT_ADVERB = 'subjectAdverb';
 
 export const MODIFIERS_NA = 'MODIFIERS_NA';
 
-// modifiers.topicNo
 
-export const T_NO1 = 'TNO1';
-export const T_NO2 = 'TNO2';
-export const T_NO3 = 'TNO3';
+// modifiers.topicAdjectiveArray
 
-export const topicNoArray = [
-  T_NO1,
-  T_NO2,
-  T_NO3,
-];
-
-// modifiers.subjectNo
-
-export const S_NO1 = 'S_NO1';
-export const S_NO2 = 'S_NO2';
-export const S_NO3 = 'S_NO3';
-
-export const subjectNoArray = [
-  S_NO1,
-  S_NO2,
-  S_NO3,
-];
-
-// modifiers.topicAdjective
-
-export const T_ADJ = 'TADJ';
+export const T_ADJ = 'T_ADJ';
 
 export const topicAdjectiveArray = [
   T_ADJ,
